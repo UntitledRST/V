@@ -24,6 +24,10 @@
     --ok: #4ADE80;
     --err: #F87171;
     --pending: #6B7280;
+    --app-color: #60A5FA;
+    --app-dim: #1E3A5F;
+    --web-color: #C084FC;
+    --web-dim: #3B2A57;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
   }
@@ -135,14 +139,24 @@
     min-height: 0;
   }
 
-  .app-block{ flex: 3; display:flex; flex-direction:column; min-height:0; }
-  .web-block{ flex: 1.4; display:flex; flex-direction:column; min-height:0; }
+  .app-block{
+    flex: 3; display:flex; flex-direction:column; min-height:0;
+    border: 1px solid var(--app-dim); border-radius: 10px; padding: 10px 10px 10px;
+    background: rgba(96,165,250,0.03);
+  }
+  .web-block{
+    flex: 1.4; display:flex; flex-direction:column; min-height:0;
+    border: 1px solid var(--web-dim); border-radius: 10px; padding: 10px 10px 10px;
+    background: rgba(192,132,252,0.03);
+  }
 
   .subgroup-label{
     flex: 0 0 auto;
-    font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+    font-family: var(--font-mono); font-size: 12.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px;
   }
+  .subgroup-label.app{ color: var(--app-color); }
+  .subgroup-label.web{ color: var(--web-color); }
 
   .card-grid{
     flex: 1;
@@ -176,9 +190,9 @@
   .build-number{ font-family: var(--font-mono); font-size: clamp(30px, 4.2vw, 46px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
   .build-label{ font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-  .meta-row{ flex: 0 0 auto; display:flex; flex-direction: column; gap: 2px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); }
+  .meta-row{ flex: 0 0 auto; display:flex; flex-direction: column; gap: 3px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); }
   .meta-row .version{ color: var(--text-primary); font-weight: 500; }
-  .meta-row .updated-time{ color: var(--text-muted); }
+  .meta-row .updated-time{ color: var(--text-secondary); font-size: 12.5px; font-weight: 500; }
 
   .error-msg{ font-size: 11px; color: var(--err); line-height: 1.4; }
 
@@ -218,7 +232,9 @@
     .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
     .card{ min-height: 150px; padding: 16px 14px; gap: 12px; }
     .build-number{ font-size: clamp(34px, 11vw, 48px); }
-    .meta-row{ font-size: 11.5px; }
+    .meta-row{ font-size: 12px; }
+    .meta-row .updated-time{ font-size: 14px; }
+    .subgroup-label{ font-size: 14px; }
   }
 
   @media (max-width: 480px){
@@ -263,11 +279,11 @@
       <div class="channel-heading"><span class="channel-badge alpha">Alpha</span><h2>알파 채널</h2></div>
       <div class="channel-body">
         <div class="app-block">
-          <div class="subgroup-label">App</div>
+          <div class="subgroup-label app">App</div>
           <div class="card-grid" id="alpha-app-grid"></div>
         </div>
         <div class="web-block">
-          <div class="subgroup-label">Web</div>
+          <div class="subgroup-label web">Web</div>
           <div class="card-grid web-grid" id="alpha-web-grid"></div>
         </div>
       </div>
@@ -277,11 +293,11 @@
       <div class="channel-heading"><span class="channel-badge beta">Beta</span><h2>베타 채널</h2></div>
       <div class="channel-body">
         <div class="app-block">
-          <div class="subgroup-label">App</div>
+          <div class="subgroup-label app">App</div>
           <div class="card-grid" id="beta-app-grid"></div>
         </div>
         <div class="web-block">
-          <div class="subgroup-label">Web</div>
+          <div class="subgroup-label web">Web</div>
           <div class="card-grid web-grid" id="beta-web-grid"></div>
         </div>
       </div>
