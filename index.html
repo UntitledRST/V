@@ -30,147 +30,201 @@
 
   *{ box-sizing: border-box; margin:0; padding:0; }
 
+  html, body{ height: 100%; }
+
   body{
     background: var(--bg);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    min-height: 100vh;
-    padding: 32px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    padding: 16px 22px;
   }
 
-  .wrap{ max-width: 1080px; margin: 0 auto; }
+  .wrap{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
   header{
+    flex: 0 0 auto;
     display:flex;
     align-items:flex-start;
     justify-content:space-between;
     gap: 24px;
-    margin-bottom: 36px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
   }
 
-  .title-block h1{ font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
-  .title-block p{ font-size: 13px; color: var(--text-secondary); }
+  .title-block h1{ font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 3px; }
+  .title-block p{ font-size: 12px; color: var(--text-secondary); }
   .title-block .dot{
     display:inline-block; width:6px; height:6px; border-radius:50%;
     background: var(--alpha); margin-right: 4px; vertical-align: 1px;
   }
 
-  .header-right{ display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
-
+  .header-right{ display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
   .header-controls{ display:flex; align-items:center; gap:8px; }
 
-  #last-sync{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+  #last-sync{ font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
 
   #auto-refresh-select{
-    background: var(--panel);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    font-weight: 600;
-    padding: 8px 10px;
-    border-radius: 8px;
-    cursor: pointer;
+    background: var(--panel); border: 1px solid var(--border); color: var(--text-primary);
+    font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+    padding: 7px 9px; border-radius: 8px; cursor: pointer;
   }
   #auto-refresh-select:focus{ outline: none; border-color: var(--alpha-dim); }
 
   #refresh-btn{
-    display:flex; align-items:center; gap:8px;
+    display:flex; align-items:center; gap:7px;
     background: var(--panel); border: 1px solid var(--border); color: var(--text-primary);
-    font-family: var(--font-sans); font-size: 13px; font-weight: 600;
-    padding: 9px 16px; border-radius: 8px; cursor: pointer;
+    font-family: var(--font-sans); font-size: 12.5px; font-weight: 600;
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
     transition: border-color .15s ease, background .15s ease;
   }
   #refresh-btn:hover{ border-color: var(--border-soft); background: var(--panel-2); }
   #refresh-btn:active{ transform: scale(0.98); }
   #refresh-btn.spinning svg{ animation: spin 0.8s linear infinite; }
   #refresh-btn:disabled{ opacity: 0.6; cursor: default; }
+  #refresh-btn svg{ width:14px; height:14px; }
 
   @keyframes spin{ to{ transform: rotate(360deg); } }
 
-  .channel-section{ margin-bottom: 44px; }
+  .channels-row{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
 
-  .channel-heading{ display:flex; align-items:center; gap:10px; margin-bottom: 16px; }
+  .channel-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.012);
+  }
+
+  .channel-heading{ flex: 0 0 auto; display:flex; align-items:center; gap:9px; margin-bottom: 10px; }
 
   .channel-badge{
-    font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-    letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px;
+    font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px;
     border-radius: 5px; border: 1px solid;
   }
   .channel-badge.alpha{ color: var(--alpha); border-color: var(--alpha-dim); background: rgba(61,214,196,0.08); }
   .channel-badge.beta{ color: var(--beta); border-color: var(--beta-dim); background: rgba(242,169,59,0.08); }
 
-  .channel-heading h2{ font-size: 15px; font-weight: 600; color: var(--text-secondary); }
+  .channel-heading h2{ font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+
+  .channel-body{
+    flex: 1;
+    display: flex;
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .app-block{ flex: 3; display:flex; flex-direction:column; min-height:0; }
+  .web-block{ flex: 1.4; display:flex; flex-direction:column; min-height:0; }
 
   .subgroup-label{
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin: 18px 0 10px;
+    flex: 0 0 auto;
+    font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
   }
-  .subgroup-label:first-of-type{ margin-top: 0; }
 
-  .card-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); max-width: 560px; }
-
-  @media (max-width: 900px){
-    .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  .card-grid{
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    min-height: 0;
   }
-  @media (max-width: 520px){
-    .card-grid{ grid-template-columns: 1fr; }
-    .card-grid.web-grid{ max-width: none; }
-  }
+  .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
 
   .card{
     background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
-    padding: 18px 16px; display:flex; flex-direction:column; gap: 14px;
-    position: relative; min-height: 180px;
+    padding: 12px 12px; display:flex; flex-direction:column; gap: 8px;
+    position: relative; min-height: 0;
   }
 
-  .card-top{ display:flex; align-items:center; justify-content:space-between; }
+  .card-top{ flex: 0 0 auto; display:flex; align-items:center; justify-content:space-between; }
 
-  .platform-label{ display:flex; align-items:center; gap:8px; font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+  .platform-label{ display:flex; align-items:center; gap:7px; font-size: 12px; font-weight: 600; color: var(--text-secondary); }
 
-  .platform-icon{ width: 18px; height: 18px; flex-shrink:0; stroke: var(--text-secondary); }
+  .platform-icon{ width: 16px; height: 16px; flex-shrink:0; stroke: var(--text-secondary); }
 
-  .status-dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--pending); flex-shrink: 0; }
+  .status-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--pending); flex-shrink: 0; }
   .status-dot.ok{ background: var(--ok); }
   .status-dot.err{ background: var(--err); }
   .status-dot.loading{ background: var(--text-muted); animation: pulse 1s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{ opacity: 1; } 50%{ opacity: 0.3; } }
 
-  .build-block{ display:flex; flex-direction: column; gap: 2px; }
+  .build-block{ flex: 1; display:flex; flex-direction: column; justify-content:center; gap: 1px; min-height: 0; }
 
-  .build-number{ font-family: var(--font-mono); font-size: 30px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
-  .build-label{ font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .build-number{ font-family: var(--font-mono); font-size: 22px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  .build-label{ font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
-  .meta-row{ display:flex; flex-direction: column; gap: 4px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); }
+  .meta-row{ flex: 0 0 auto; display:flex; flex-direction: column; gap: 2px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-secondary); }
   .meta-row .version{ color: var(--text-primary); font-weight: 500; }
   .meta-row .updated-time{ color: var(--text-muted); }
 
-  .error-msg{ font-size: 12px; color: var(--err); line-height: 1.5; }
+  .error-msg{ font-size: 11px; color: var(--err); line-height: 1.4; }
 
   .download-btn{
-    display:flex; align-items:center; justify-content:center; gap: 7px; margin-top: auto;
-    text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 9px 12px;
+    flex: 0 0 auto;
+    display:flex; align-items:center; justify-content:center; gap: 6px;
+    text-decoration: none; font-size: 11.5px; font-weight: 600; padding: 7px 10px;
     border-radius: 7px; border: 1px solid var(--border); color: var(--text-primary);
     background: var(--panel-2); transition: border-color .15s ease, background .15s ease;
   }
   .download-btn:hover{ border-color: var(--alpha-dim); background: rgba(61,214,196,0.06); }
   .card.beta-card .download-btn:hover{ border-color: var(--beta-dim); background: rgba(242,169,59,0.06); }
-  .download-btn svg{ width:14px; height:14px; flex-shrink:0; }
+  .download-btn svg{ width:13px; height:13px; flex-shrink:0; }
   .download-btn.disabled{ opacity: 0.4; pointer-events: none; }
 
   .skeleton{
     background: linear-gradient(90deg, var(--panel-2) 25%, #20242e 37%, var(--panel-2) 63%);
-    background-size: 400% 100%; animation: shimmer 1.4s ease infinite; border-radius: 4px; height: 30px; width: 60%;
+    background-size: 400% 100%; animation: shimmer 1.4s ease infinite; border-radius: 4px; height: 22px; width: 60%;
   }
   @keyframes shimmer{ 0%{ background-position: 100% 50%; } 100%{ background-position: 0 50%; } }
 
-  footer{ margin-top: 40px; font-size: 11.5px; color: var(--text-muted); text-align: center; }
+  /* 모바일: 뷰포트 고정 대신 일반 스크롤 허용 */
+  @media (max-width: 860px){
+    html, body{ height: auto; }
+    body{ display:block; overflow: auto; height: auto; padding: 20px 16px 60px; }
+    .wrap{ display:block; }
+    header{ margin-bottom: 20px; }
+    .title-block h1{ font-size: 21px; }
+    .title-block p{ font-size: 13px; }
+    .channels-row{ display:block; }
+    .channel-section{ display:block; margin-bottom: 22px; padding: 14px 14px; }
+    .channel-heading{ margin-bottom: 14px; }
+    .channel-body{ display:block; }
+    .app-block, .web-block{ display:block; margin-bottom: 16px; }
+    .subgroup-label{ margin: 4px 0 10px; }
+    .card-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
+    .card{ min-height: 150px; padding: 16px 14px; gap: 12px; }
+    .build-number{ font-size: 28px; }
+    .meta-row{ font-size: 11.5px; }
+  }
+
+  @media (max-width: 480px){
+    .card-grid{ grid-template-columns: 1fr; }
+    .card-grid.web-grid{ grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -204,23 +258,35 @@
     </div>
   </header>
 
-  <section class="channel-section">
-    <div class="channel-heading"><span class="channel-badge alpha">Alpha</span><h2>알파 채널</h2></div>
-    <div class="subgroup-label">App</div>
-    <div class="card-grid" id="alpha-app-grid"></div>
-    <div class="subgroup-label">Web</div>
-    <div class="card-grid web-grid" id="alpha-web-grid"></div>
-  </section>
+  <div class="channels-row">
+    <section class="channel-section">
+      <div class="channel-heading"><span class="channel-badge alpha">Alpha</span><h2>알파 채널</h2></div>
+      <div class="channel-body">
+        <div class="app-block">
+          <div class="subgroup-label">App</div>
+          <div class="card-grid" id="alpha-app-grid"></div>
+        </div>
+        <div class="web-block">
+          <div class="subgroup-label">Web</div>
+          <div class="card-grid web-grid" id="alpha-web-grid"></div>
+        </div>
+      </div>
+    </section>
 
-  <section class="channel-section">
-    <div class="channel-heading"><span class="channel-badge beta">Beta</span><h2>베타 채널</h2></div>
-    <div class="subgroup-label">App</div>
-    <div class="card-grid" id="beta-app-grid"></div>
-    <div class="subgroup-label">Web</div>
-    <div class="card-grid web-grid" id="beta-web-grid"></div>
-  </section>
-
-  <footer>버전 정보는 서버리스 함수(/api/builds)를 거쳐 가져옵니다. 서버 쪽에서 직접 요청하므로 브라우저 CORS 제한이 적용되지 않습니다. Web 항목의 업데이트 시간은 각 페이지의 build-date 메타태그 값입니다.</footer>
+    <section class="channel-section">
+      <div class="channel-heading"><span class="channel-badge beta">Beta</span><h2>베타 채널</h2></div>
+      <div class="channel-body">
+        <div class="app-block">
+          <div class="subgroup-label">App</div>
+          <div class="card-grid" id="beta-app-grid"></div>
+        </div>
+        <div class="web-block">
+          <div class="subgroup-label">Web</div>
+          <div class="card-grid web-grid" id="beta-web-grid"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </div>
 
@@ -232,6 +298,7 @@ const WEB_ITEM_LABELS = { viewer: 'Viewer', host: 'Host' };
 const WEB_ITEM_ORDER = ['viewer', 'host'];
 
 const CHANNEL_ORDER = ['alpha', 'beta'];
+const CHANNEL_TAG = { alpha: 'alpha', beta: 'beta' };
 
 const APP_ICONS = {
   windows: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5.5 10.5 4.4V11.3H3V5.5Z"/><path d="M11.5 4.3 21 3v8.2h-9.5V4.3Z"/><path d="M3 12.3h7.5v6.9L3 18.1v-5.8Z"/><path d="M11.5 12.3H21V21l-9.5-1.3v-7.4Z"/></svg>',
@@ -312,7 +379,7 @@ function applyAppResult(ck, pk, result){
     const buildNo = data.build ?? data.build_number ?? '-';
     dot.className = 'status-dot ok';
     buildBlock.innerHTML = `<span class="build-number">#${buildNo}</span><span class="build-label">현재 빌드</span>`;
-    meta.innerHTML = `<span class="version">v${data.version ?? '-'}${data.channel ? ' · ' + data.channel : ''}</span><span class="updated-time">업데이트: ${formatIsoDate(data.releasedAt)}</span>`;
+    meta.innerHTML = `<span class="version">v${data.version ?? '-'} · ${CHANNEL_TAG[ck]}</span><span class="updated-time">업데이트: ${formatIsoDate(data.releasedAt)}</span>`;
     dlBtn.href = result.download;
     dlBtn.classList.remove('disabled');
     dlBtn.setAttribute('target', '_blank');
@@ -336,10 +403,15 @@ function applyWebResult(ck, ik, result){
   if(result && result.ok){
     const data = result.data || {};
     const buildNo = data.build_number ?? data.build ?? '-';
-    const timeText = result.buildDate ? result.buildDate : (result.buildDateError || '알 수 없음');
     dot.className = 'status-dot ok';
     buildBlock.innerHTML = `<span class="build-number">#${buildNo}</span><span class="build-label">현재 빌드</span>`;
-    meta.innerHTML = `<span class="version">v${data.version ?? '-'}</span><span class="updated-time">업데이트: ${timeText}</span>`;
+
+    const versionLine = `<span class="version">v${data.version ?? '-'} · ${CHANNEL_TAG[ck]}</span>`;
+    const timeLine = (ik === 'host')
+      ? ''
+      : `<span class="updated-time">업데이트: ${result.buildDate ? result.buildDate : (result.buildDateError || '알 수 없음')}</span>`;
+    meta.innerHTML = versionLine + timeLine;
+
     dlBtn.href = result.open;
     dlBtn.classList.remove('disabled');
     dlBtn.setAttribute('target', '_blank');
