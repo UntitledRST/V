@@ -395,7 +395,7 @@ function applyAppResult(ck, pk, result){
     const buildNo = data.build ?? data.build_number ?? '-';
     dot.className = 'status-dot ok';
     buildBlock.innerHTML = `<span class="build-number">#${buildNo}</span><span class="build-label">현재 빌드</span>`;
-    meta.innerHTML = `<span class="version">v${data.version ?? '-'} · ${CHANNEL_TAG[ck]}</span><span class="updated-time">업데이트: ${formatIsoDate(data.releasedAt)}</span>`;
+    meta.innerHTML = `<span class="updated-time">업데이트: ${formatIsoDate(data.releasedAt)}</span>`;
     dlBtn.href = result.download;
     dlBtn.classList.remove('disabled');
     dlBtn.setAttribute('target', '_blank');
@@ -422,11 +422,10 @@ function applyWebResult(ck, ik, result){
     dot.className = 'status-dot ok';
     buildBlock.innerHTML = `<span class="build-number">#${buildNo}</span><span class="build-label">현재 빌드</span>`;
 
-    const versionLine = `<span class="version">v${data.version ?? '-'} · ${CHANNEL_TAG[ck]}</span>`;
     const timeLine = (ik === 'host')
       ? ''
       : `<span class="updated-time">업데이트: ${result.buildDate ? result.buildDate : (result.buildDateError || '알 수 없음')}</span>`;
-    meta.innerHTML = versionLine + timeLine;
+    meta.innerHTML = timeLine;
 
     dlBtn.href = result.open;
     dlBtn.classList.remove('disabled');
