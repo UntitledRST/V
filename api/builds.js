@@ -45,20 +45,24 @@ const WEB_CHANNELS = {
     viewer: {
       json: "https://stapn.startsupport.com/version.json",
       page: "https://stapn.startsupport.com",
+      checkBuildDate: true,
     },
     host: {
       json: "https://stapn.113366.com/version.json",
       page: "https://stapn.113366.com",
+      checkBuildDate: false,
     },
   },
   beta: {
     viewer: {
       json: "https://stbtn.startsupport.com/version.json",
       page: "https://stbtn.startsupport.com",
+      checkBuildDate: true,
     },
     host: {
       json: "https://stbtn.113366.com/version.json",
       page: "https://stbtn.113366.com",
+      checkBuildDate: false,
     },
   },
 };
@@ -123,15 +127,19 @@ export default async function handler(req, res) {
     }
   }
 
-  // Web 항목: version.json + 페이지의 build-date 메타태그 둘 다 필요
+  // Web 항목: version.json + (필요한 경우만) 페이지의 build-date 메타태그
   for (const [channelKey, items] of Object.entries(WEB_CHANNELS)) {
     for (const [itemKey, cfg] of Object.entries(items)) {
       tasks.push(
-        Promise.all([fetchJson(cfg.json), fetchBuildDate(cfg.page)]).then(([jsonResult, dateResult]) => {
+        Promise.all([
+          fetchJson(cfg.json),
+          cfg.checkBuildDate ? fetchBuildDate(cfg.page) : Promise.resolve({ ok: false, skipped: true }),
+        ]).then(([jsonResult, dateResult]) => {
           results[channelKey].web[itemKey] = {
             ...jsonResult,
             buildDate: dateResult.ok ? dateResult.buildDate : null,
-            buildDateError: dateResult.ok ? null : dateResult.error,
+            buildDateError: dateResult.ok || dateResult.skipped ? null : dateResult.error,
+            showBuildDate: cfg.checkBuildDate,
             open: cfg.page,
           };
         })
