@@ -102,7 +102,8 @@ async function fetchBuildDate(url) {
     if (!match) {
       return { ok: false, error: "build-date 메타태그 없음" };
     }
-    return { ok: true, buildDate: match[1] };
+    const cleaned = match[1].replace(/\s*KST\s*$/i, "").trim();
+    return { ok: true, buildDate: cleaned };
   } catch (err) {
     return { ok: false, error: err.name === "AbortError" ? "요청 시간 초과" : String(err.message || err) };
   }
