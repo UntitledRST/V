@@ -531,28 +531,37 @@ function initGrids(){
 
 function pad(n){ return String(n).padStart(2, '0'); }
 
-// 업데이트 시간은 항상 hh:mm:ss 형식으로만 표시
-function formatTime(iso){
+// 업데이트 날짜시간: yyyy-mm-dd hh:mm:ss 형식
+function formatDateTime(iso){
   if(!iso) return null;
   const d = new Date(iso);
   if(isNaN(d.getTime())) return null;
-  return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 }
 
-// Date 파싱이 안 되는 원문 문자열에서 hh:mm:ss 패턴만 직접 추출
-function extractTimePattern(s){
-  const m = s.match(/([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)/);
-  if(!m) return null;
-  return `${pad(Number(m[1]))}:${m[2]}:${m[3]}`;
+// Date 파싱이 안 되는 원문에서 yyyy-mm-dd 와 hh:mm:ss 패턴을 직접 추출해 조합
+function extractDateTimePattern(s){
+  const dateMatch = s.match(/(\d{4})[-./](\d{1,2})[-./](\d{1,2})/);
+  const timeMatch = s.match(/([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)/);
+  if(dateMatch && timeMatch){
+    return `${dateMatch[1]}-${pad(Number(dateMatch[2]))}-${pad(Number(dateMatch[3]))} ${pad(Number(timeMatch[1]))}:${timeMatch[2]}:${timeMatch[3]}`;
+  }
+  if(dateMatch){
+    return `${dateMatch[1]}-${pad(Number(dateMatch[2]))}-${pad(Number(dateMatch[3]))}`;
+  }
+  if(timeMatch){
+    return `${pad(Number(timeMatch[1]))}:${timeMatch[2]}:${timeMatch[3]}`;
+  }
+  return null;
 }
 
-// KST 문구 제거 + hh:mm:ss 형식으로 표시
+// KST 문구 제거 + "업데이트: yyyy-mm-dd hh:mm:ss" 형식으로 표시
 function cleanUpdatedText(raw){
   if(!raw) return null;
   let s = String(raw).replace(/KST/gi, '').trim().replace(/\s+/g, ' ');
   if(!s.length) return null;
-  const formatted = formatTime(s) || extractTimePattern(s);
-  return formatted || s;
+  const formatted = formatDateTime(s) || extractDateTimePattern(s);
+  return `업데이트: ${formatted || s}`;
 }
 
 // "v8.0.1" 로 시작하는 버전 문구는 표시하지 않음
