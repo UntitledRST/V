@@ -40,7 +40,7 @@
     background: var(--bg);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    padding: 20px 22px 16px;
+    padding: 20px 22px 16px;F
     overflow: hidden;
   }
 
@@ -390,7 +390,7 @@
   <header>
     <div class="title-block">
       <h1><span class="dot"></span>빌드 배포 대시보드</h1>
-      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Host)</p>
+      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Relay)</p>
     </div>
     <div class="header-right">
       <span id="last-sync">불러오는 중…</span>
@@ -461,7 +461,7 @@ const ICONS = {
   host: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg>'
 };
 
-const PLATFORM_LABELS = { windows: 'Windows', macos: 'macOS', android: 'Android', ios: 'iOS', viewer: 'Viewer', host: 'Host' };
+const PLATFORM_LABELS = { windows: 'Windows', macos: 'macOS', android: 'Android', ios: 'iOS', viewer: 'Viewer', relay: 'Relay' };
 
 // 프론트엔드 참고/폴백용 설정 (다운로드 링크가 API 응답에 없을 때의 대체 링크로 사용)
 const FRONT_CONFIG = {
@@ -474,7 +474,7 @@ const FRONT_CONFIG = {
     },
     web: {
       viewer: { page: 'https://stapn.startsupport.com' },
-      host:   { json: 'https://stapn.113366.com/version.json' }
+      relay:   { json: 'https://stapn.113366.com/version.json' }
     }
   },
   beta: {
@@ -486,7 +486,7 @@ const FRONT_CONFIG = {
     },
     web: {
       viewer: { page: 'https://stbtn.startsupport.com' },
-      host:   { json: 'https://stbtn.113366.com/version.json' }
+      relay:   { json: 'https://stbtn.113366.com/version.json' }
     }
   }
 };
