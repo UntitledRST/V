@@ -1,778 +1,167 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RC8 빌드 배포 대시보드</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0B0D12;
-    --panel: #14171F;
-    --panel-2: #191D26;
-    --panel-3: #1D212B;
-    --border: #262B36;
-    --border-soft: #1E222C;
-    --text-primary: #E7E9EE;
-    --text-secondary: #9AA3B2;
-    --text-muted: #5C6474;
-    --alpha: #3DD6C4;
-    --alpha-dim: #1B4A45;
-    --beta: #F2A93B;
-    --beta-dim: #4A3A17;
-    --app-color: #7DA6FF;
-    --web-color: #E77DE0;
-    --ok: #4ADE80;
-    --err: #F87171;
-    --pending: #6B7280;
-    --today: #F87171;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  }
+// api/builds.js
+// -----------------------------------------------------------------------
+// Vercel(Node.js) 서버리스 함수
+// 브라우저가 아닌 서버(이 함수)가 직접 각 version.json / 페이지를 요청하므로
+// 브라우저의 CORS 제한을 받지 않습니다.
+// -----------------------------------------------------------------------
 
-  *{ box-sizing: border-box; margin:0; padding:0; }
+const APP_PLATFORMS = ["windows", "macos", "android", "ios"];
+const FETCH_TIMEOUT_MS = 8000;
 
-  html, body{ height: 100%; }
-
-  body{
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    overflow: hidden;
-  }
-
-  @media (max-width: 900px){
-    body{ overflow-y: auto; height: auto; min-height: 100%; }
-  }
-
-  .wrap{
-    max-width: 1600px;
-    height: 100vh;
-    margin: 0 auto;
-    padding: clamp(16px, 3vh, 32px) clamp(16px, 2.4vw, 32px);
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (max-width: 900px){
-    .wrap{ height: auto; padding: 20px 16px 60px; }
-  }
-
-  header{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap: 24px;
-    margin-bottom: clamp(20px, 4vh, 40px);
-    flex-wrap: wrap;
-    flex-shrink: 0;
-  }
-
-  .title-block h1{
-    font-size: clamp(19px, 2.4vh, 24px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
-  .title-block p{
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  .title-block .dot{
-    display:inline-block;
-    width:7px; height:7px;
-    border-radius:50%;
-    background: var(--alpha);
-    margin-right: 5px;
-    vertical-align: 1px;
-  }
-
-  .header-right{
-    display:flex;
-    align-items:center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .sync-block{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap: 2px;
-    min-width: 120px;
-  }
-
-  #last-sync{
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-align: right;
-  }
-  #last-sync.error{ color: var(--err); }
-  .sync-caption{
-    font-size: 10px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .auto-refresh select{
-    background: var(--panel);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 14px;
-    cursor: pointer;
-  }
-
-  #refresh-btn{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 10px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: border-color .15s ease, background .15s ease;
-    line-height: 1.3;
-  }
-  #refresh-btn svg{ width: 18px; height: 18px; }
-  #refresh-btn:hover{
-    border-color: var(--border-soft);
-    background: var(--panel-2);
-  }
-  #refresh-btn:active{ transform: scale(0.98); }
-  #refresh-btn.spinning svg{ animation: spin 0.8s linear infinite; }
-  #refresh-btn:disabled{ opacity: 0.6; cursor: default; }
-
-  @keyframes spin{ to{ transform: rotate(360deg); } }
-
-  .channels{
-    display: flex;
-    flex-direction: column;
-    gap: clamp(16px, 3vh, 32px);
-    flex: 1;
-    min-height: 0;
-    justify-content: center;
-  }
-
-  .channel-block{
-    display: flex;
-    flex-direction: column;
-    gap: clamp(10px, 1.6vh, 16px);
-  }
-
-  .channel-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .channel-badge{
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid;
-  }
-  .channel-badge.alpha{
-    color: var(--alpha);
-    border-color: var(--alpha-dim);
-    background: rgba(61,214,196,0.1);
-  }
-  .channel-badge.beta{
-    color: var(--beta);
-    border-color: var(--beta-dim);
-    background: rgba(242,169,59,0.1);
-  }
-  .channel-title .channel-name{
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-  }
-
-  .channel-row{
-    display: flex;
-    gap: clamp(10px, 1.6vw, 20px);
-    align-items: stretch;
-  }
-
-  @media (max-width: 900px){
-    .channel-row{ flex-direction: column; }
-  }
-
-  .group{
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: clamp(12px, 1.8vh, 20px);
-    background: var(--panel);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(10px, 1.6vh, 16px);
-  }
-  .group.app-group{ flex: 4 1 0; border-color: rgba(125,166,255,0.25); }
-  .group.web-group{ flex: 2 1 0; border-color: rgba(231,125,224,0.25); }
-
-  @media (max-width: 900px){
-    .group.app-group, .group.web-group{ flex: 1 1 auto; }
-  }
-
-  .group-label{
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 0.01em;
-  }
-  .group-label.app-label{ color: var(--app-color); }
-  .group-label.web-label{ color: var(--web-color); }
-
-  .card-grid{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(8px, 1.1vw, 14px);
-    flex: 1;
-  }
-  .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
-
-  @media (max-width: 560px){
-    .card-grid, .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .card{
-    background: var(--panel-2);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: clamp(14px, 2.2vh, 22px) 12px;
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    text-align: center;
-    gap: clamp(6px, 1vh, 10px);
-    position: relative;
-    height: clamp(190px, 32vh, 260px);
-    overflow: hidden;
-  }
-  .card.updated-today{
-    border-color: var(--today);
-    box-shadow: 0 0 0 1px rgba(248,113,113,0.25), 0 0 14px rgba(248,113,113,0.12);
-  }
-
-  .badge-count{
-    position:absolute;
-    top: -8px;
-    right: -6px;
-    background: var(--today);
-    color: #1a0505;
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 800;
-    padding: 2px 6px;
-    border-radius: 20px;
-    line-height: 1.3;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  }
-
-  .card-top{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 6px;
-    width: 100%;
-  }
-
-  .platform-label{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-secondary);
-  }
-
-  .platform-icon{
-    width: 18px;
-    height: 18px;
-    flex-shrink:0;
-    stroke: var(--text-secondary);
-  }
-
-  .status-dot{
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--pending);
-    flex-shrink: 0;
-  }
-  .status-dot.ok{ background: var(--ok); }
-  .status-dot.err{ background: var(--err); }
-  .status-dot.loading{
-    background: var(--text-muted);
-    animation: pulse 1s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{ opacity: 1; }
-    50%{ opacity: 0.3; }
-  }
-
-  .build-block{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    gap: 2px;
-    width: 100%;
-    flex: 1;
-    justify-content: center;
-  }
-
-  .build-number{
-    font-family: var(--font-mono);
-    font-size: clamp(30px, 5.6vh, 46px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-  }
-  .build-label{
-    font-size: 10.5px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-  }
-
-  .meta-row{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    font-family: var(--font-mono);
-    width: 100%;
-  }
-  .meta-row .version{
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 11.5px;
-  }
-  .meta-row .updated-time{
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .error-msg{
-    font-size: 12px;
-    color: var(--err);
-    line-height: 1.5;
-  }
-
-  .action-btn{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 6px;
-    margin-top: auto;
-    width: 100%;
-    text-decoration: none;
-    font-size: 12.5px;
-    font-weight: 700;
-    padding: 9px 10px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    background: var(--panel-3);
-    transition: border-color .15s ease, background .15s ease;
-  }
-  .action-btn:hover{
-    border-color: var(--alpha-dim);
-    background: rgba(61,214,196,0.06);
-  }
-  .beta-card .action-btn:hover{
-    border-color: var(--beta-dim);
-    background: rgba(242,169,59,0.06);
-  }
-  .action-btn svg{ width:13px; height:13px; flex-shrink:0; }
-  .action-btn.disabled{
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .skeleton{
-    background: linear-gradient(90deg, var(--panel-3) 25%, #232733 37%, var(--panel-3) 63%);
-    background-size: 400% 100%;
-    animation: shimmer 1.4s ease infinite;
-    border-radius: 4px;
-    height: 30px;
-    width: 70%;
-  }
-  @keyframes shimmer{
-    0%{ background-position: 100% 50%; }
-    100%{ background-position: 0 50%; }
-  }
-</style>
-</head>
-<body>
-<div class="wrap">
-
-  <header>
-    <div class="title-block">
-      <h1><span class="dot"></span>빌드 배포 대시보드</h1>
-      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Relay)</p>
-    </div>
-    <div class="header-right">
-      <div class="sync-block">
-        <span id="last-sync">불러오는 중…</span>
-        <span class="sync-caption">마지막 갱신 시간</span>
-      </div>
-      <div class="auto-refresh">
-        <select id="auto-refresh-select">
-          <option value="0">자동 새로고침: 끄기</option>
-          <option value="10">자동 새로고침: 10초</option>
-          <option value="20">자동 새로고침: 20초</option>
-          <option value="30">자동 새로고침: 30초</option>
-          <option value="40">자동 새로고침: 40초</option>
-          <option value="50">자동 새로고침: 50초</option>
-          <option value="60">자동 새로고침: 60초</option>
-        </select>
-      </div>
-      <button id="refresh-btn" onclick="refreshAll()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
-          <path d="M21 3v6h-6"/>
-        </svg>
-        새로고침
-      </button>
-    </div>
-  </header>
-
-  <div class="channels">
-
-    <div class="channel-block">
-      <div class="channel-title">
-        <span class="channel-badge alpha">ALPHA</span>
-        <span class="channel-name">알파 채널</span>
-      </div>
-      <div class="channel-row">
-        <div class="group app-group">
-          <div class="group-label app-label">App</div>
-          <div class="card-grid" id="grid-alpha-app"></div>
-        </div>
-        <div class="group web-group">
-          <div class="group-label web-label">Web</div>
-          <div class="card-grid web-grid" id="grid-alpha-web"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="channel-block">
-      <div class="channel-title">
-        <span class="channel-badge beta">BETA</span>
-        <span class="channel-name">베타 채널</span>
-      </div>
-      <div class="channel-row">
-        <div class="group app-group">
-          <div class="group-label app-label">App</div>
-          <div class="card-grid" id="grid-beta-app"></div>
-        </div>
-        <div class="group web-group">
-          <div class="group-label web-label">Web</div>
-          <div class="card-grid web-grid" id="grid-beta-web"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-const ICONS = {
-  windows: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5.5 10.5 4.4V11.3H3V5.5Z"/><path d="M11.5 4.3 21 3v8.2h-9.5V4.3Z"/><path d="M3 12.3h7.5v6.9L3 18.1v-5.8Z"/><path d="M11.5 12.3H21V21l-9.5-1.3v-7.4Z"/></svg>',
-  macos: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.7 12.3c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.5 2 1-.1 1.4-.6 2.6-.6 1.2 0 1.6.6 2.7.6 1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2-.8-2-3.1Z"/><path d="M14.5 5.8c.6-.7 1-1.7.9-2.7-.9.1-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2Z"/></svg>',
-  android: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9"/><path d="M4.5 9v5.5"/><path d="M19.5 9v5.5"/><path d="M9 20l.7-2"/><path d="M15 20l-.7-2"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/><path d="M6 9h12"/><path d="M9.5 5.2 8.3 3.4"/><path d="M14.5 5.2 15.7 3.4"/></svg>',
-  ios: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>',
-  viewer: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg>',
-  relay: '<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M4.9 4.9l3.5 3.5"/><path d="M19.1 4.9l-3.5 3.5"/><path d="M4.9 19.1l3.5-3.5"/><path d="M19.1 19.1l-3.5-3.5"/></svg>'
+const CONFIG = {
+  alpha: {
+    app: {
+      windows: "https://stapn.113366.com/pub/windows/version.json",
+      macos: "https://stapn.113366.com/pub/macos/version.json",
+      android: "https://stapn.113366.com/pub/android/version.json",
+      ios: "https://stapn.113366.com/pub/ios/version.json",
+    },
+    web: {
+      viewer: {
+        json: "https://stapn.startsupport.com/version.json",
+        page: "https://stapn.startsupport.com",
+      },
+      relay: {
+        json: "https://stapn.113366.com/version.json",
+        shortcut: "https://stapn.113366.com/vp",
+      },
+    },
+  },
+  beta: {
+    app: {
+      windows: "https://stbtn.113366.com/pub/windows/version.json",
+      macos: "https://stbtn.113366.com/pub/macos/version.json",
+      android: "https://stbtn.113366.com/pub/android/version.json",
+      ios: "https://stbtn.113366.com/pub/ios/version.json",
+    },
+    web: {
+      viewer: {
+        json: "https://stbtn.startsupport.com/version.json",
+        page: "https://stbtn.startsupport.com",
+      },
+      relay: {
+        json: "https://stbtn.113366.com/version.json",
+        shortcut: "https://stbtn.113366.com/vp",
+      },
+    },
+  },
 };
 
-const PLATFORM_LABELS = { windows: 'Windows', macos: 'macOS', android: 'Android', ios: 'iOS' };
-const APP_PLATFORMS = ['windows', 'macos', 'android', 'ios'];
-const CHANNELS = ['alpha', 'beta'];
-
-function cardId(channel, category, key){
-  return `card-${channel}-${category}-${key}`;
+function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return fetch(url, { cache: "no-store", signal: controller.signal }).finally(() =>
+    clearTimeout(timer)
+  );
 }
 
-function renderSkeletonCard(channel, category, key, label){
-  const id = cardId(channel, category, key);
-  const icon = ICONS[key];
-  return `
-    <div class="card ${channel}-card" id="${id}">
-      <div class="card-top">
-        <span class="platform-label">${icon}${label}</span>
-        <span class="status-dot loading" id="${id}-dot"></span>
-      </div>
-      <div class="build-block" id="${id}-build">
-        <div class="skeleton"></div>
-      </div>
-      <div class="meta-row" id="${id}-meta"></div>
-      <a class="action-btn disabled" id="${id}-btn" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-        불러오는 중
-      </a>
-    </div>
-  `;
-}
-
-function initGrids(){
-  for(const channel of CHANNELS){
-    document.getElementById(`grid-${channel}-app`).innerHTML =
-      APP_PLATFORMS.map(p => renderSkeletonCard(channel, 'app', p, PLATFORM_LABELS[p])).join('');
-    document.getElementById(`grid-${channel}-web`).innerHTML =
-      renderSkeletonCard(channel, 'web', 'viewer', 'Viewer') +
-      renderSkeletonCard(channel, 'web', 'relay', 'Relay');
-  }
-}
-
-// ---------- KST 날짜/시간 유틸 ----------
-function getKstDateString(date = new Date()){
-  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit' }).format(date);
-}
-
-function formatKst(iso){
-  if(!iso) return null;
-  const d = new Date(iso);
-  if(isNaN(d.getTime())) return null;
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit',
-    hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
-  }).formatToParts(d).reduce((acc,p)=>{ acc[p.type]=p.value; return acc; }, {});
-  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`;
-}
-
-function isSameKstDate(iso, todayStr){
-  if(!iso) return false;
-  return getKstDateString(new Date(iso)) === todayStr;
-}
-
-// ---------- 오늘 업데이트 추적 (localStorage) ----------
-function trackAndGetBadge(storageKey, build, isTodayFromServer){
-  const todayStr = getKstDateString();
-  let stored = null;
-  try{ stored = JSON.parse(localStorage.getItem(storageKey)); }catch(e){}
-
-  let date = stored ? stored.date : undefined;
-  let prevBuild = stored ? stored.build : undefined;
-  let count = stored ? (stored.count || 0) : 0;
-
-  if(build === null || build === undefined){
-    return { count: 0, highlightToday: false };
-  }
-
-  if(prevBuild === undefined){
-    date = todayStr;
-    count = isTodayFromServer ? 1 : 0;
-  }else if(prevBuild !== build){
-    count = (date === todayStr ? count : 0) + 1;
-    date = todayStr;
-  }else{
-    if(date !== todayStr){
-      count = isTodayFromServer ? 1 : 0;
-      date = todayStr;
-    }
-  }
-
-  try{ localStorage.setItem(storageKey, JSON.stringify({ date, build, count })); }catch(e){}
-
-  const showBadge = date === todayStr && count > 0;
-  const highlightToday = isTodayFromServer || showBadge;
-  return { count: showBadge ? count : 0, highlightToday };
-}
-
-// ---------- 카드 렌더링 ----------
-function applyCard(channel, category, key, opts){
-  const id = cardId(channel, category, key);
-  const card = document.getElementById(id);
-  const dot = document.getElementById(`${id}-dot`);
-  const buildBlock = document.getElementById(`${id}-build`);
-  const meta = document.getElementById(`${id}-meta`);
-  const btn = document.getElementById(`${id}-btn`);
-
-  const oldBadge = card.querySelector('.badge-count');
-  if(oldBadge) oldBadge.remove();
-  card.classList.remove('updated-today');
-
-  if(!opts.ok){
-    dot.className = 'status-dot err';
-    buildBlock.innerHTML = `<span class="error-msg">불러오기 실패</span>`;
-    meta.innerHTML = '';
-    btn.classList.add('disabled');
-    btn.removeAttribute('target');
-    btn.innerHTML = `실패`;
-    return;
-  }
-
-  dot.className = 'status-dot ok';
-  buildBlock.innerHTML = `
-    <span class="build-number">#${opts.build ?? '-'}</span>
-    <span class="build-label">현재 빌드</span>
-  `;
-
-  let metaHtml = '';
-  if(opts.showVersion && opts.version){
-    metaHtml += `<span class="version">v${opts.version}</span>`;
-  }
-  if(opts.updatedText){
-    metaHtml += `<span class="updated-time">업데이트: ${opts.updatedText}</span>`;
-  }
-  meta.innerHTML = metaHtml;
-
-  if(opts.url){
-    btn.href = opts.url;
-    btn.classList.remove('disabled');
-    btn.setAttribute('target', '_blank');
-    btn.setAttribute('rel', 'noopener noreferrer');
-    btn.innerHTML = `
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-      ${opts.btnLabel}
-    `;
-  }else{
-    btn.classList.add('disabled');
-    btn.innerHTML = opts.btnLabel;
-  }
-
-  const storageKey = `rc8dash:${channel}:${category}:${key}`;
-  const { count, highlightToday } = trackAndGetBadge(storageKey, opts.build, opts.isTodayFromServer);
-
-  if(highlightToday){
-    card.classList.add('updated-today');
-    if(count > 0){
-      const badge = document.createElement('span');
-      badge.className = 'badge-count';
-      badge.textContent = `+${count}`;
-      card.appendChild(badge);
-    }
-  }
-}
-
-async function loadAll(){
-  const res = await fetch('/api/builds', { cache: 'no-store' });
-  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+async function fetchJson(url) {
+  const res = await fetchWithTimeout(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
-function renderAppCard(channel, platform, data){
-  const todayStr = getKstDateString();
-  applyCard(channel, 'app', platform, {
-    ok: data.ok,
-    build: data.build,
-    version: data.version,
-    showVersion: true,
-    updatedText: formatKst(data.releasedAt),
-    url: data.downloadUrl,
-    btnLabel: '다운로드',
-    isTodayFromServer: isSameKstDate(data.releasedAt, todayStr)
-  });
+// 뷰어 페이지 HTML에서 <meta name="build-date" content="..."> 값을 추출
+async function fetchBuildDateMeta(pageUrl) {
+  const res = await fetchWithTimeout(pageUrl);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const html = await res.text();
+  const m =
+    html.match(/<meta[^>]+name=["']build-date["'][^>]*content=["']([^"']+)["']/i) ||
+    html.match(/<meta[^>]+content=["']([^"']+)["'][^>]*name=["']build-date["']/i);
+  return m ? m[1].trim() : null; // 예: "2026-06-24 18:56:16 KST"
 }
 
-function renderViewerCard(channel, data){
-  const todayStr = getKstDateString();
-  applyCard(channel, 'web', 'viewer', {
-    ok: data.ok,
-    build: data.build,
-    version: data.version,
-    showVersion: true,
-    updatedText: formatKst(data.updatedAt),
-    url: data.shortcutUrl,
-    btnLabel: '바로가기',
-    isTodayFromServer: isSameKstDate(data.updatedAt, todayStr)
-  });
+// "2026-06-24 18:56:16 KST" -> ISO(+09:00) 문자열로 정규화
+function parseKstString(raw) {
+  if (!raw) return null;
+  const cleaned = raw.replace(/KST/i, "").trim();
+  const iso = cleaned.replace(" ", "T") + "+09:00";
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? null : d.toISOString();
 }
 
-function renderRelayCard(channel, data){
-  const hideVersion = !!(data.version && ('v' + data.version).startsWith('v8.0.1'));
-  applyCard(channel, 'web', 'relay', {
-    ok: data.ok,
-    build: data.build,
-    version: data.version,
-    showVersion: !hideVersion,
-    updatedText: null,
-    url: data.shortcutUrl,
-    btnLabel: '바로가기',
-    isTodayFromServer: false
-  });
+async function loadAppPlatform(url) {
+  try {
+    const data = await fetchJson(url);
+    return {
+      ok: true,
+      build: data.build ?? data.build_number ?? null,
+      version: data.version ?? null,
+      releasedAt: data.releasedAt ?? null,
+      downloadUrl: data.url ?? null,
+    };
+  } catch (err) {
+    return { ok: false, error: String((err && err.message) || err) };
+  }
 }
 
-async function refreshAll(){
-  const btn = document.getElementById('refresh-btn');
-  const lastSync = document.getElementById('last-sync');
-  btn.disabled = true;
-  btn.classList.add('spinning');
-  lastSync.classList.remove('error');
+async function loadViewer(cfg) {
+  const [jsonResult, dateResult] = await Promise.allSettled([
+    fetchJson(cfg.json),
+    fetchBuildDateMeta(cfg.page),
+  ]);
 
-  try{
-    const data = await loadAll();
+  if (jsonResult.status !== "fulfilled") {
+    return { ok: false, error: String((jsonResult.reason && jsonResult.reason.message) || jsonResult.reason) };
+  }
+  const data = jsonResult.value;
+  const rawDate = dateResult.status === "fulfilled" ? dateResult.value : null;
 
-    for(const channel of CHANNELS){
-      const ch = data.channels[channel];
-      for(const platform of APP_PLATFORMS){
-        renderAppCard(channel, platform, ch.app[platform]);
-      }
-      renderViewerCard(channel, ch.web.viewer);
-      renderRelayCard(channel, ch.web.relay);
+  return {
+    ok: true,
+    build: data.build_number ?? data.build ?? null,
+    version: data.version ?? null,
+    updatedAt: parseKstString(rawDate),
+    shortcutUrl: cfg.page,
+  };
+}
+
+async function loadRelay(cfg) {
+  try {
+    const data = await fetchJson(cfg.json);
+    return {
+      ok: true,
+      build: data.build_number ?? data.build ?? null,
+      version: data.version ?? null,
+      shortcutUrl: cfg.shortcut,
+    };
+  } catch (err) {
+    return { ok: false, error: String((err && err.message) || err) };
+  }
+}
+
+module.exports = async (req, res) => {
+  try {
+    const result = {};
+
+    for (const channelKey of Object.keys(CONFIG)) {
+      const channelCfg = CONFIG[channelKey];
+
+      const appEntries = await Promise.all(
+        APP_PLATFORMS.map(async (platform) => [
+          platform,
+          await loadAppPlatform(channelCfg.app[platform]),
+        ])
+      );
+
+      const [viewer, relay] = await Promise.all([
+        loadViewer(channelCfg.web.viewer),
+        loadRelay(channelCfg.web.relay),
+      ]);
+
+      result[channelKey] = {
+        app: Object.fromEntries(appEntries),
+        web: { viewer, relay },
+      };
     }
 
-    lastSync.textContent = formatKst(data.generatedAt) || '-';
-  }catch(err){
-    lastSync.textContent = `갱신 실패: ${err.message}`;
-    lastSync.classList.add('error');
-    console.error(err);
-  }finally{
-    btn.disabled = false;
-    btn.classList.remove('spinning');
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json({
+      generatedAt: new Date().toISOString(),
+      channels: result,
+    });
+  } catch (err) {
+    res.status(500).json({ error: String((err && err.message) || err) });
   }
-}
-
-// ---------- 자동 새로고침 ----------
-let autoRefreshTimer = null;
-const AUTO_REFRESH_KEY = 'rc8dash:auto-refresh-seconds';
-
-function setAutoRefresh(seconds){
-  if(autoRefreshTimer){
-    clearInterval(autoRefreshTimer);
-    autoRefreshTimer = null;
-  }
-  if(seconds > 0){
-    autoRefreshTimer = setInterval(refreshAll, seconds * 1000);
-  }
-  try{ localStorage.setItem(AUTO_REFRESH_KEY, String(seconds)); }catch(e){}
-}
-
-function initAutoRefreshControl(){
-  const select = document.getElementById('auto-refresh-select');
-  let saved = '0';
-  try{ saved = localStorage.getItem(AUTO_REFRESH_KEY) || '0'; }catch(e){}
-  select.value = saved;
-  setAutoRefresh(Number(saved));
-
-  select.addEventListener('change', () => {
-    setAutoRefresh(Number(select.value));
-  });
-}
-
-initGrids();
-initAutoRefreshControl();
-refreshAll();
-</script>
-
-</body>
-</html>
+};
