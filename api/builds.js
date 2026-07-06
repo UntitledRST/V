@@ -1,236 +1,167 @@
-// /api/builds.js
-// Vercel Serverless Function (Node.js runtime)
-// - version.json 을 서버 쪽에서 직접 요청하므로 브라우저 CORS 제한이 적용되지 않습니다.
-// - App 항목: build/build_number, version, releasedAt(업데이트 시간), 다운로드 URL을 추출합니다.
-// - Web 항목: build/build_number 는 version.json 에서, 업데이트 시간은 Viewer 페이지 HTML의
-//   <meta name="build-date" content="..."> 또는 releasedAt 값을 찾아 추출합니다. (Host 는 업데이트 시간 미표시)
-//
-// ⚠️ 실제 서비스의 version.json / 페이지 구조에 따라 아래 필드명(extractBuild, extractDownloadUrl 등)을
-//    조정해야 할 수 있습니다. 알 수 없는 필드는 여러 후보 이름을 순서대로 시도하도록 구성했습니다.
+// api/builds.js
+// -----------------------------------------------------------------------
+// Vercel(Node.js) 서버리스 함수
+// 브라우저가 아닌 서버(이 함수)가 직접 각 version.json / 페이지를 요청하므로
+// 브라우저의 CORS 제한을 받지 않습니다.
+// -----------------------------------------------------------------------
 
-const SOURCES = {
+const APP_PLATFORMS = ["windows", "macos", "android", "ios"];
+const FETCH_TIMEOUT_MS = 8000;
+
+const CONFIG = {
   alpha: {
     app: {
-      windows: { json: 'https://stapn.113366.com/pub/windows/version.json' },
-      macos:   { json: 'https://stapn.113366.com/pub/macos/version.json' },
-      android: { json: 'https://stapn.113366.com/pub/android/version.json' },
-      ios:     { json: 'https://stapn.113366.com/pub/ios/version.json' }
+      windows: "https://stapn.113366.com/pub/windows/version.json",
+      macos: "https://stapn.113366.com/pub/macos/version.json",
+      android: "https://stapn.113366.com/pub/android/version.json",
+      ios: "https://stapn.113366.com/pub/ios/version.json",
     },
     web: {
-      viewer: { json: 'https://stapn.startsupport.com/version.json', page: 'https://stapn.startsupport.com' },
-      host:   { json: 'https://stapn.113366.com/version.json' }
-    }
+      viewer: {
+        json: "https://stapn.startsupport.com/version.json",
+        page: "https://stapn.startsupport.com",
+      },
+      relay: {
+        json: "https://stapn.113366.com/version.json",
+        shortcut: "https://stapn.113366.com/vp",
+      },
+    },
   },
   beta: {
     app: {
-      windows: { json: 'https://stbtn.113366.com/pub/windows/version.json' },
-      macos:   { json: 'https://stbtn.113366.com/pub/macos/version.json' },
-      android: { json: 'https://stbtn.113366.com/pub/android/version.json' },
-      ios:     { json: 'https://stbtn.113366.com/pub/ios/version.json' }
+      windows: "https://stbtn.113366.com/pub/windows/version.json",
+      macos: "https://stbtn.113366.com/pub/macos/version.json",
+      android: "https://stbtn.113366.com/pub/android/version.json",
+      ios: "https://stbtn.113366.com/pub/ios/version.json",
     },
     web: {
-      viewer: { json: 'https://stbtn.startsupport.com/version.json', page: 'https://stbtn.startsupport.com' },
-      host:   { json: 'https://stbtn.113366.com/version.json' }
-    }
-  }
+      viewer: {
+        json: "https://stbtn.startsupport.com/version.json",
+        page: "https://stbtn.startsupport.com",
+      },
+      relay: {
+        json: "https://stbtn.113366.com/version.json",
+        shortcut: "https://stbtn.113366.com/vp",
+      },
+    },
+  },
 };
 
-const FETCH_TIMEOUT_MS = 8000;
-const UA = 'Mozilla/5.0 (compatible; BuildDashboardBot/1.0; +https://example.com)';
-
-function withTimeout(promiseFactory, ms) {
+function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ms);
-  return promiseFactory(controller.signal).finally(() => clearTimeout(timer));
-}
-
-async function fetchJson(url) {
-  return withTimeout(async (signal) => {
-    const res = await fetch(url, {
-      signal,
-      cache: 'no-store',
-      headers: { 'User-Agent': UA, 'Accept': 'application/json,text/plain,*/*' }
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const text = await res.text();
-    try {
-      return JSON.parse(text);
-    } catch (e) {
-      // 응답이 JSON 앞뒤로 불필요한 텍스트를 포함한 경우 대비
-      const start = text.indexOf('{');
-      const end = text.lastIndexOf('}');
-      if (start !== -1 && end !== -1 && end > start) {
-        return JSON.parse(text.slice(start, end + 1));
-      }
-      throw new Error('JSON 파싱 실패');
-    }
-  }, FETCH_TIMEOUT_MS);
-}
-
-async function fetchText(url) {
-  return withTimeout(async (signal) => {
-    const res = await fetch(url, {
-      signal,
-      cache: 'no-store',
-      headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.text();
-  }, FETCH_TIMEOUT_MS);
-}
-
-function extractBuild(data) {
-  if (!data || typeof data !== 'object') return null;
-  const v = data.build ?? data.build_number ?? data.buildNumber ?? data.buildNo ?? null;
-  return v === undefined ? null : v;
-}
-
-function extractVersion(data) {
-  if (!data || typeof data !== 'object') return null;
-  return data.version ?? data.ver ?? null;
-}
-
-function extractReleasedAt(data) {
-  if (!data || typeof data !== 'object') return null;
-  return (
-    data.releasedAt ??
-    data.released_at ??
-    data.updatedAt ??
-    data.updated_at ??
-    data.buildDate ??
-    data.build_date ??
-    data.date ??
-    null
+  return fetch(url, { cache: "no-store", signal: controller.signal }).finally(() =>
+    clearTimeout(timer)
   );
 }
 
-function extractDownloadUrl(data, baseUrl) {
-  if (!data || typeof data !== 'object') return null;
-  const candidates = [
-    data.url,
-    data.download_url,
-    data.downloadUrl,
-    data.file_url,
-    data.fileUrl,
-    data.package_url,
-    data.packageUrl,
-    data.installer,
-    data.installer_url,
-    data.download,
-    data.path
-  ];
-  for (const c of candidates) {
-    if (typeof c === 'string' && c.trim().length > 0) {
-      try {
-        return new URL(c, baseUrl).href;
-      } catch (e) {
-        return c;
-      }
-    }
-  }
-  return null;
+async function fetchJson(url) {
+  const res = await fetchWithTimeout(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
 
-function extractBuildDateFromHtml(html) {
-  if (!html) return null;
-  let m = html.match(/<meta\s+[^>]*name=["']build-date["'][^>]*content=["']([^"']+)["'][^>]*>/i);
-  if (!m) {
-    m = html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*name=["']build-date["'][^>]*>/i);
-  }
-  if (m) return m[1];
-
-  const m2 = html.match(/"releasedAt"\s*:\s*"([^"]+)"/i);
-  if (m2) return m2[1];
-
-  return null;
+// 뷰어 페이지 HTML에서 <meta name="build-date" content="..."> 값을 추출
+async function fetchBuildDateMeta(pageUrl) {
+  const res = await fetchWithTimeout(pageUrl);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const html = await res.text();
+  const m =
+    html.match(/<meta[^>]+name=["']build-date["'][^>]*content=["']([^"']+)["']/i) ||
+    html.match(/<meta[^>]+content=["']([^"']+)["'][^>]*name=["']build-date["']/i);
+  return m ? m[1].trim() : null; // 예: "2026-06-24 18:56:16 KST"
 }
 
-async function buildAppItem(cfg) {
+// "2026-06-24 18:56:16 KST" -> ISO(+09:00) 문자열로 정규화
+function parseKstString(raw) {
+  if (!raw) return null;
+  const cleaned = raw.replace(/KST/i, "").trim();
+  const iso = cleaned.replace(" ", "T") + "+09:00";
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? null : d.toISOString();
+}
+
+async function loadAppPlatform(url) {
+  try {
+    const data = await fetchJson(url);
+    return {
+      ok: true,
+      build: data.build ?? data.build_number ?? null,
+      version: data.version ?? null,
+      releasedAt: data.releasedAt ?? null,
+      downloadUrl: data.url ?? null,
+    };
+  } catch (err) {
+    return { ok: false, error: String((err && err.message) || err) };
+  }
+}
+
+async function loadViewer(cfg) {
+  const [jsonResult, dateResult] = await Promise.allSettled([
+    fetchJson(cfg.json),
+    fetchBuildDateMeta(cfg.page),
+  ]);
+
+  if (jsonResult.status !== "fulfilled") {
+    return { ok: false, error: String((jsonResult.reason && jsonResult.reason.message) || jsonResult.reason) };
+  }
+  const data = jsonResult.value;
+  const rawDate = dateResult.status === "fulfilled" ? dateResult.value : null;
+
+  return {
+    ok: true,
+    build: data.build_number ?? data.build ?? null,
+    version: data.version ?? null,
+    updatedAt: parseKstString(rawDate),
+    shortcutUrl: cfg.page,
+  };
+}
+
+async function loadRelay(cfg) {
   try {
     const data = await fetchJson(cfg.json);
     return {
-      build: extractBuild(data),
-      version: extractVersion(data),
-      updatedAt: extractReleasedAt(data),
-      downloadUrl: extractDownloadUrl(data, cfg.json),
-      sourceJson: cfg.json,
-      error: null
+      ok: true,
+      build: data.build_number ?? data.build ?? null,
+      version: data.version ?? null,
+      shortcutUrl: cfg.shortcut,
     };
   } catch (err) {
-    return {
-      build: null,
-      version: null,
-      updatedAt: null,
-      downloadUrl: null,
-      sourceJson: cfg.json,
-      error: err && err.message ? err.message : 'fetch failed'
-    };
+    return { ok: false, error: String((err && err.message) || err) };
   }
 }
 
-async function buildWebItem(key, cfg) {
+module.exports = async (req, res) => {
   try {
-    const data = await fetchJson(cfg.json);
-    const item = {
-      build: extractBuild(data),
-      version: extractVersion(data),
-      updatedAt: null,
-      downloadUrl: cfg.page || extractDownloadUrl(data, cfg.json),
-      sourceJson: cfg.json,
-      error: null
-    };
-
-    if (key === 'viewer' && cfg.page) {
-      try {
-        const html = await fetchText(cfg.page);
-        item.updatedAt = extractBuildDateFromHtml(html) || extractReleasedAt(data);
-      } catch (e) {
-        item.updatedAt = extractReleasedAt(data);
-      }
-    }
-    return item;
-  } catch (err) {
-    return {
-      build: null,
-      version: null,
-      updatedAt: null,
-      downloadUrl: cfg.page || null,
-      sourceJson: cfg.json,
-      error: err && err.message ? err.message : 'fetch failed'
-    };
-  }
-}
-
-module.exports = async function handler(req, res) {
-  try {
-    const channels = Object.keys(SOURCES);
     const result = {};
 
-    await Promise.all(
-      channels.map(async (ch) => {
-        result[ch] = { app: {}, web: {} };
+    for (const channelKey of Object.keys(CONFIG)) {
+      const channelCfg = CONFIG[channelKey];
 
-        const appKeys = Object.keys(SOURCES[ch].app);
-        await Promise.all(
-          appKeys.map(async (key) => {
-            result[ch].app[key] = await buildAppItem(SOURCES[ch].app[key]);
-          })
-        );
+      const appEntries = await Promise.all(
+        APP_PLATFORMS.map(async (platform) => [
+          platform,
+          await loadAppPlatform(channelCfg.app[platform]),
+        ])
+      );
 
-        const webKeys = Object.keys(SOURCES[ch].web);
-        await Promise.all(
-          webKeys.map(async (key) => {
-            result[ch].web[key] = await buildWebItem(key, SOURCES[ch].web[key]);
-          })
-        );
-      })
-    );
+      const [viewer, relay] = await Promise.all([
+        loadViewer(channelCfg.web.viewer),
+        loadRelay(channelCfg.web.relay),
+      ]);
 
-    result.fetchedAt = new Date().toISOString();
+      result[channelKey] = {
+        app: Object.fromEntries(appEntries),
+        web: { viewer, relay },
+      };
+    }
 
-    res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json(result);
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json({
+      generatedAt: new Date().toISOString(),
+      channels: result,
+    });
   } catch (err) {
-    res.status(500).json({ error: err && err.message ? err.message : 'Unknown error' });
+    res.status(500).json({ error: String((err && err.message) || err) });
   }
 };
