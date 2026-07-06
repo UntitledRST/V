@@ -48,10 +48,10 @@
   }
 
   .wrap{
-    max-width: 1440px;
+    max-width: 1600px;
     height: 100vh;
     margin: 0 auto;
-    padding: clamp(12px, 2vh, 28px) clamp(14px, 2vw, 28px);
+    padding: clamp(16px, 3vh, 32px) clamp(16px, 2.4vw, 32px);
     display: flex;
     flex-direction: column;
   }
@@ -65,34 +65,34 @@
     align-items:flex-start;
     justify-content:space-between;
     gap: 24px;
-    margin-bottom: clamp(12px, 2vh, 24px);
+    margin-bottom: clamp(20px, 4vh, 40px);
     flex-wrap: wrap;
     flex-shrink: 0;
   }
 
   .title-block h1{
-    font-size: clamp(17px, 2vh, 21px);
+    font-size: clamp(19px, 2.4vh, 24px);
     font-weight: 800;
     letter-spacing: -0.02em;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
   .title-block p{
-    font-size: 12.5px;
+    font-size: 13px;
     color: var(--text-secondary);
   }
   .title-block .dot{
     display:inline-block;
-    width:6px; height:6px;
+    width:7px; height:7px;
     border-radius:50%;
     background: var(--alpha);
-    margin-right: 4px;
+    margin-right: 5px;
     vertical-align: 1px;
   }
 
   .header-right{
     display:flex;
     align-items:center;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
@@ -101,6 +101,7 @@
     flex-direction:column;
     align-items:flex-end;
     gap: 2px;
+    min-width: 120px;
   }
 
   #last-sync{
@@ -108,7 +109,9 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--text-secondary);
+    text-align: right;
   }
+  #last-sync.error{ color: var(--err); }
   .sync-caption{
     font-size: 10px;
     color: var(--text-muted);
@@ -116,47 +119,37 @@
     letter-spacing: 0.06em;
   }
 
-  .auto-refresh{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 10px;
-  }
-  .auto-refresh label{
-    font-size: 11.5px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-  }
   .auto-refresh select{
-    background: var(--panel-2);
+    background: var(--panel);
     color: var(--text-primary);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 9px;
     font-family: var(--font-sans);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    padding: 5px 8px;
+    padding: 10px 14px;
     cursor: pointer;
   }
 
   #refresh-btn{
     display:flex;
+    flex-direction: column;
     align-items:center;
-    gap:8px;
+    justify-content:center;
+    gap:4px;
     background: var(--panel);
     border: 1px solid var(--border);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 9px 16px;
-    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 10px;
     cursor: pointer;
     transition: border-color .15s ease, background .15s ease;
+    line-height: 1.3;
   }
+  #refresh-btn svg{ width: 18px; height: 18px; }
   #refresh-btn:hover{
     border-color: var(--border-soft);
     background: var(--panel-2);
@@ -168,28 +161,19 @@
   @keyframes spin{ to{ transform: rotate(360deg); } }
 
   .channels{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(10px, 1.4vw, 18px);
-    flex: 1;
-    min-height: 0;
-  }
-
-  @media (max-width: 900px){
-    .channels{ grid-template-columns: 1fr; }
-  }
-
-  .channel-panel{
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: clamp(10px, 1.6vh, 16px);
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 1.4vh, 14px);
+    gap: clamp(16px, 3vh, 32px);
+    flex: 1;
     min-height: 0;
+    justify-content: center;
   }
-  .channel-panel.alpha{ border-color: var(--alpha-dim); background: rgba(61,214,196,0.03); }
-  .channel-panel.beta{ border-color: var(--beta-dim); background: rgba(242,169,59,0.03); }
+
+  .channel-block{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.6vh, 16px);
+  }
 
   .channel-title{
     display:flex;
@@ -216,67 +200,71 @@
     border-color: var(--beta-dim);
     background: rgba(242,169,59,0.1);
   }
+  .channel-title .channel-name{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .channel-row{
+    display: flex;
+    gap: clamp(10px, 1.6vw, 20px);
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px){
+    .channel-row{ flex-direction: column; }
+  }
 
   .group{
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: clamp(8px, 1.3vh, 12px);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: clamp(12px, 1.8vh, 20px);
     background: var(--panel);
     display: flex;
     flex-direction: column;
-    gap: clamp(6px, 1vh, 10px);
-    flex: 1;
-    min-height: 0;
+    gap: clamp(10px, 1.6vh, 16px);
   }
-  .group.web-group{ flex: 0 0 auto; }
+  .group.app-group{ flex: 4 1 0; border-color: rgba(125,166,255,0.25); }
+  .group.web-group{ flex: 2 1 0; border-color: rgba(231,125,224,0.25); }
+
+  @media (max-width: 900px){
+    .group.app-group, .group.web-group{ flex: 1 1 auto; }
+  }
 
   .group-label{
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 800;
     letter-spacing: 0.01em;
-    display:flex;
-    align-items:center;
-    gap:6px;
   }
   .group-label.app-label{ color: var(--app-color); }
   .group-label.web-label{ color: var(--web-color); }
-  .group-label .count-chip{
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 700;
-    color: var(--text-muted);
-    background: var(--panel-2);
-    border: 1px solid var(--border);
-    padding: 1px 7px;
-    border-radius: 20px;
-  }
 
   .card-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: clamp(6px, 1vw, 12px);
+    gap: clamp(8px, 1.1vw, 14px);
     flex: 1;
-    min-height: 0;
   }
   .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
 
-  @media (max-width: 640px){
-    .card-grid{ grid-template-columns: repeat(2, 1fr); }
-    .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 560px){
+    .card-grid, .card-grid.web-grid{ grid-template-columns: repeat(2, 1fr); }
   }
 
   .card{
     background: var(--panel-2);
     border: 1.5px solid var(--border);
     border-radius: 10px;
-    padding: clamp(10px, 1.6vh, 16px) 10px;
+    padding: clamp(14px, 2.2vh, 22px) 12px;
     display:flex;
     flex-direction:column;
     align-items: center;
     text-align: center;
-    gap: clamp(4px, 0.8vh, 8px);
+    gap: clamp(6px, 1vh, 10px);
     position: relative;
-    min-height: 0;
+    height: clamp(190px, 32vh, 260px);
+    overflow: hidden;
   }
   .card.updated-today{
     border-color: var(--today);
@@ -309,21 +297,21 @@
   .platform-label{
     display:flex;
     align-items:center;
-    gap:6px;
-    font-size: 12.5px;
+    gap:7px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-secondary);
   }
 
   .platform-icon{
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     flex-shrink:0;
     stroke: var(--text-secondary);
   }
 
   .status-dot{
-    width: 6px; height: 6px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--pending);
     flex-shrink: 0;
@@ -343,19 +331,21 @@
     display:flex;
     flex-direction: column;
     align-items:center;
-    gap: 1px;
+    gap: 2px;
     width: 100%;
+    flex: 1;
+    justify-content: center;
   }
 
   .build-number{
     font-family: var(--font-mono);
-    font-size: clamp(22px, 3.4vh, 30px);
+    font-size: clamp(30px, 5.6vh, 46px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.01em;
   }
   .build-label{
-    font-size: 9.5px;
+    font-size: 10.5px;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -372,16 +362,16 @@
   .meta-row .version{
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 11px;
+    font-size: 11.5px;
   }
   .meta-row .updated-time{
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
   }
 
   .error-msg{
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--err);
     line-height: 1.5;
   }
@@ -394,9 +384,9 @@
     margin-top: auto;
     width: 100%;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
-    padding: 8px 10px;
+    padding: 9px 10px;
     border-radius: 7px;
     border: 1px solid var(--border);
     color: var(--text-primary);
@@ -422,7 +412,7 @@
     background-size: 400% 100%;
     animation: shimmer 1.4s ease infinite;
     border-radius: 4px;
-    height: 26px;
+    height: 30px;
     width: 70%;
   }
   @keyframes shimmer{
@@ -436,20 +426,23 @@
 
   <header>
     <div class="title-block">
-      <h1><span class="dot"></span>RC8 빌드 배포 대시보드</h1>
-      <p>Alpha / Beta · App(Windows·macOS·Android·iOS) · Web(Viewer·Relay)</p>
+      <h1><span class="dot"></span>빌드 배포 대시보드</h1>
+      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Relay)</p>
     </div>
     <div class="header-right">
+      <div class="sync-block">
+        <span id="last-sync">불러오는 중…</span>
+        <span class="sync-caption">마지막 갱신 시간</span>
+      </div>
       <div class="auto-refresh">
-        <label for="auto-refresh-select">자동 새로고침</label>
         <select id="auto-refresh-select">
-          <option value="0">사용 안함</option>
-          <option value="10">10초</option>
-          <option value="20">20초</option>
-          <option value="30">30초</option>
-          <option value="40">40초</option>
-          <option value="50">50초</option>
-          <option value="60">60초</option>
+          <option value="0">자동 새로고침: 끄기</option>
+          <option value="10">자동 새로고침: 10초</option>
+          <option value="20">자동 새로고침: 20초</option>
+          <option value="30">자동 새로고침: 30초</option>
+          <option value="40">자동 새로고침: 40초</option>
+          <option value="50">자동 새로고침: 50초</option>
+          <option value="60">자동 새로고침: 60초</option>
         </select>
       </div>
       <button id="refresh-btn" onclick="refreshAll()">
@@ -459,42 +452,44 @@
         </svg>
         새로고침
       </button>
-      <div class="sync-block">
-        <span id="last-sync">불러오는 중…</span>
-        <span class="sync-caption">마지막 갱신 시간</span>
-      </div>
     </div>
   </header>
 
   <div class="channels">
 
-    <section class="channel-panel alpha">
-      <div class="channel-title"><span class="channel-badge alpha">Alpha</span></div>
-
-      <div class="group app-group">
-        <div class="group-label app-label">App</div>
-        <div class="card-grid app-grid" id="grid-alpha-app"></div>
+    <div class="channel-block">
+      <div class="channel-title">
+        <span class="channel-badge alpha">ALPHA</span>
+        <span class="channel-name">알파 채널</span>
       </div>
-
-      <div class="group web-group">
-        <div class="group-label web-label">Web</div>
-        <div class="card-grid web-grid" id="grid-alpha-web"></div>
+      <div class="channel-row">
+        <div class="group app-group">
+          <div class="group-label app-label">App</div>
+          <div class="card-grid" id="grid-alpha-app"></div>
+        </div>
+        <div class="group web-group">
+          <div class="group-label web-label">Web</div>
+          <div class="card-grid web-grid" id="grid-alpha-web"></div>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="channel-panel beta">
-      <div class="channel-title"><span class="channel-badge beta">Beta</span></div>
-
-      <div class="group app-group">
-        <div class="group-label app-label">App</div>
-        <div class="card-grid app-grid" id="grid-beta-app"></div>
+    <div class="channel-block">
+      <div class="channel-title">
+        <span class="channel-badge beta">BETA</span>
+        <span class="channel-name">베타 채널</span>
       </div>
-
-      <div class="group web-group">
-        <div class="group-label web-label">Web</div>
-        <div class="card-grid web-grid" id="grid-beta-web"></div>
+      <div class="channel-row">
+        <div class="group app-group">
+          <div class="group-label app-label">App</div>
+          <div class="card-grid" id="grid-beta-app"></div>
+        </div>
+        <div class="group web-group">
+          <div class="group-label web-label">Web</div>
+          <div class="card-grid web-grid" id="grid-beta-web"></div>
+        </div>
       </div>
-    </section>
+    </div>
 
   </div>
 </div>
@@ -612,7 +607,6 @@ function applyCard(channel, category, key, opts){
   const meta = document.getElementById(`${id}-meta`);
   const btn = document.getElementById(`${id}-btn`);
 
-  // 기존 뱃지 제거
   const oldBadge = card.querySelector('.badge-count');
   if(oldBadge) oldBadge.remove();
   card.classList.remove('updated-today');
@@ -656,7 +650,6 @@ function applyCard(channel, category, key, opts){
     btn.innerHTML = opts.btnLabel;
   }
 
-  // 오늘 업데이트 여부 + 뱃지
   const storageKey = `rc8dash:${channel}:${category}:${key}`;
   const { count, highlightToday } = trackAndGetBadge(storageKey, opts.build, opts.isTodayFromServer);
 
@@ -712,10 +705,10 @@ function renderRelayCard(channel, data){
     build: data.build,
     version: data.version,
     showVersion: !hideVersion,
-    updatedText: null, // Relay는 업데이트 시간 표시 안 함
+    updatedText: null,
     url: data.shortcutUrl,
     btnLabel: '바로가기',
-    isTodayFromServer: false // Relay는 별도 날짜 정보가 없어 빌드 변경 감지로만 판단
+    isTodayFromServer: false
   });
 }
 
@@ -724,6 +717,7 @@ async function refreshAll(){
   const lastSync = document.getElementById('last-sync');
   btn.disabled = true;
   btn.classList.add('spinning');
+  lastSync.classList.remove('error');
 
   try{
     const data = await loadAll();
@@ -739,7 +733,8 @@ async function refreshAll(){
 
     lastSync.textContent = formatKst(data.generatedAt) || '-';
   }catch(err){
-    lastSync.textContent = '갱신 실패';
+    lastSync.textContent = `갱신 실패: ${err.message}`;
+    lastSync.classList.add('error');
     console.error(err);
   }finally{
     btn.disabled = false;
