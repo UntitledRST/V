@@ -1,244 +1,236 @@
-// builds.js
-// /api/builds 서버리스 함수를 호출하여 빌드 정보를 표시합니다.
+// /api/builds.js
+// Vercel Serverless Function (Node.js runtime)
+// - version.json 을 서버 쪽에서 직접 요청하므로 브라우저 CORS 제한이 적용되지 않습니다.
+// - App 항목: build/build_number, version, releasedAt(업데이트 시간), 다운로드 URL을 추출합니다.
+// - Web 항목: build/build_number 는 version.json 에서, 업데이트 시간은 Viewer 페이지 HTML의
+//   <meta name="build-date" content="..."> 또는 releasedAt 값을 찾아 추출합니다. (Host 는 업데이트 시간 미표시)
+//
+// ⚠️ 실제 서비스의 version.json / 페이지 구조에 따라 아래 필드명(extractBuild, extractDownloadUrl 등)을
+//    조정해야 할 수 있습니다. 알 수 없는 필드는 여러 후보 이름을 순서대로 시도하도록 구성했습니다.
 
-const API_URL = "/api/builds";
-const STORAGE_PREFIX = "bdash_v1_";
-
-// 카드 정의: 표시 순서, 라벨, 아이콘, 바로가기 오버라이드 링크
-const CARD_DEFS = {
+const SOURCES = {
   alpha: {
-    app: [
-      { key: "windows", label: "Windows", icon: "W" },
-      { key: "macos", label: "macOS", icon: "M" },
-      { key: "android", label: "Android", icon: "A" },
-      { key: "ios", label: "iOS", icon: "i" },
-    ],
-    web: [
-      { key: "viewer", label: "Viewer", icon: "V", linkOverride: "https://stapn.startsupport.com" },
-      { key: "relay", label: "Relay", icon: "R", linkOverride: "https://stapn.113366.com/vp" },
-    ],
+    app: {
+      windows: { json: 'https://stapn.113366.com/pub/windows/version.json' },
+      macos:   { json: 'https://stapn.113366.com/pub/macos/version.json' },
+      android: { json: 'https://stapn.113366.com/pub/android/version.json' },
+      ios:     { json: 'https://stapn.113366.com/pub/ios/version.json' }
+    },
+    web: {
+      viewer: { json: 'https://stapn.startsupport.com/version.json', page: 'https://stapn.startsupport.com' },
+      host:   { json: 'https://stapn.113366.com/version.json' }
+    }
   },
   beta: {
-    app: [
-      { key: "windows", label: "Windows", icon: "W" },
-      { key: "macos", label: "macOS", icon: "M" },
-      { key: "android", label: "Android", icon: "A" },
-      { key: "ios", label: "iOS", icon: "i" },
-    ],
-    web: [
-      { key: "viewer", label: "Viewer", icon: "V", linkOverride: "https://stbtn.startsupport.com" },
-      { key: "relay", label: "Relay", icon: "R", linkOverride: "https://stbtn.113366.com/vp" },
-    ],
-  },
+    app: {
+      windows: { json: 'https://stbtn.113366.com/pub/windows/version.json' },
+      macos:   { json: 'https://stbtn.113366.com/pub/macos/version.json' },
+      android: { json: 'https://stbtn.113366.com/pub/android/version.json' },
+      ios:     { json: 'https://stbtn.113366.com/pub/ios/version.json' }
+    },
+    web: {
+      viewer: { json: 'https://stbtn.startsupport.com/version.json', page: 'https://stbtn.startsupport.com' },
+      host:   { json: 'https://stbtn.113366.com/version.json' }
+    }
+  }
 };
 
-const CHANNEL_META = {
-  alpha: { badgeClass: "alpha", badgeText: "ALPHA", koName: "알파 채널" },
-  beta: { badgeClass: "beta", badgeText: "BETA", koName: "베타 채널" },
+const FETCH_TIMEOUT_MS = 8000;
+const UA = 'Mozilla/5.0 (compatible; BuildDashboardBot/1.0; +https://example.com)';
+
+function withTimeout(promiseFactory, ms) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return promiseFactory(controller.signal).finally(() => clearTimeout(timer));
+}
+
+async function fetchJson(url) {
+  return withTimeout(async (signal) => {
+    const res = await fetch(url, {
+      signal,
+      cache: 'no-store',
+      headers: { 'User-Agent': UA, 'Accept': 'application/json,text/plain,*/*' }
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      // 응답이 JSON 앞뒤로 불필요한 텍스트를 포함한 경우 대비
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start !== -1 && end !== -1 && end > start) {
+        return JSON.parse(text.slice(start, end + 1));
+      }
+      throw new Error('JSON 파싱 실패');
+    }
+  }, FETCH_TIMEOUT_MS);
+}
+
+async function fetchText(url) {
+  return withTimeout(async (signal) => {
+    const res = await fetch(url, {
+      signal,
+      cache: 'no-store',
+      headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  }, FETCH_TIMEOUT_MS);
+}
+
+function extractBuild(data) {
+  if (!data || typeof data !== 'object') return null;
+  const v = data.build ?? data.build_number ?? data.buildNumber ?? data.buildNo ?? null;
+  return v === undefined ? null : v;
+}
+
+function extractVersion(data) {
+  if (!data || typeof data !== 'object') return null;
+  return data.version ?? data.ver ?? null;
+}
+
+function extractReleasedAt(data) {
+  if (!data || typeof data !== 'object') return null;
+  return (
+    data.releasedAt ??
+    data.released_at ??
+    data.updatedAt ??
+    data.updated_at ??
+    data.buildDate ??
+    data.build_date ??
+    data.date ??
+    null
+  );
+}
+
+function extractDownloadUrl(data, baseUrl) {
+  if (!data || typeof data !== 'object') return null;
+  const candidates = [
+    data.url,
+    data.download_url,
+    data.downloadUrl,
+    data.file_url,
+    data.fileUrl,
+    data.package_url,
+    data.packageUrl,
+    data.installer,
+    data.installer_url,
+    data.download,
+    data.path
+  ];
+  for (const c of candidates) {
+    if (typeof c === 'string' && c.trim().length > 0) {
+      try {
+        return new URL(c, baseUrl).href;
+      } catch (e) {
+        return c;
+      }
+    }
+  }
+  return null;
+}
+
+function extractBuildDateFromHtml(html) {
+  if (!html) return null;
+  let m = html.match(/<meta\s+[^>]*name=["']build-date["'][^>]*content=["']([^"']+)["'][^>]*>/i);
+  if (!m) {
+    m = html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*name=["']build-date["'][^>]*>/i);
+  }
+  if (m) return m[1];
+
+  const m2 = html.match(/"releasedAt"\s*:\s*"([^"]+)"/i);
+  if (m2) return m2[1];
+
+  return null;
+}
+
+async function buildAppItem(cfg) {
+  try {
+    const data = await fetchJson(cfg.json);
+    return {
+      build: extractBuild(data),
+      version: extractVersion(data),
+      updatedAt: extractReleasedAt(data),
+      downloadUrl: extractDownloadUrl(data, cfg.json),
+      sourceJson: cfg.json,
+      error: null
+    };
+  } catch (err) {
+    return {
+      build: null,
+      version: null,
+      updatedAt: null,
+      downloadUrl: null,
+      sourceJson: cfg.json,
+      error: err && err.message ? err.message : 'fetch failed'
+    };
+  }
+}
+
+async function buildWebItem(key, cfg) {
+  try {
+    const data = await fetchJson(cfg.json);
+    const item = {
+      build: extractBuild(data),
+      version: extractVersion(data),
+      updatedAt: null,
+      downloadUrl: cfg.page || extractDownloadUrl(data, cfg.json),
+      sourceJson: cfg.json,
+      error: null
+    };
+
+    if (key === 'viewer' && cfg.page) {
+      try {
+        const html = await fetchText(cfg.page);
+        item.updatedAt = extractBuildDateFromHtml(html) || extractReleasedAt(data);
+      } catch (e) {
+        item.updatedAt = extractReleasedAt(data);
+      }
+    }
+    return item;
+  } catch (err) {
+    return {
+      build: null,
+      version: null,
+      updatedAt: null,
+      downloadUrl: cfg.page || null,
+      sourceJson: cfg.json,
+      error: err && err.message ? err.message : 'fetch failed'
+    };
+  }
+}
+
+module.exports = async function handler(req, res) {
+  try {
+    const channels = Object.keys(SOURCES);
+    const result = {};
+
+    await Promise.all(
+      channels.map(async (ch) => {
+        result[ch] = { app: {}, web: {} };
+
+        const appKeys = Object.keys(SOURCES[ch].app);
+        await Promise.all(
+          appKeys.map(async (key) => {
+            result[ch].app[key] = await buildAppItem(SOURCES[ch].app[key]);
+          })
+        );
+
+        const webKeys = Object.keys(SOURCES[ch].web);
+        await Promise.all(
+          webKeys.map(async (key) => {
+            result[ch].web[key] = await buildWebItem(key, SOURCES[ch].web[key]);
+          })
+        );
+      })
+    );
+
+    result.fetchedAt = new Date().toISOString();
+
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ error: err && err.message ? err.message : 'Unknown error' });
+  }
 };
-
-let autoRefreshTimer = null;
-
-/* ---------- 유틸 ---------- */
-
-function pad(n) { return String(n).padStart(2, "0"); }
-
-// 현재 시각 -> "yyyy-mm-dd hh:mm:ss" (KST 고정, 브라우저 타임존 무관)
-function nowKstString() {
-  const d = new Date(Date.now() + 9 * 60 * 60 * 1000);
-  return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
-}
-
-// 현재 날짜 -> "yyyy-mm-dd" (KST 고정)
-function todayKstDate() {
-  return nowKstString().slice(0, 10);
-}
-
-function dateOnly(str) {
-  if (!str) return null;
-  return str.slice(0, 10);
-}
-
-// v8.0.1 같은 버전 문자열이 텍스트에 섞여 있으면 제거 (안전장치)
-function stripVersionString(text) {
-  if (!text) return text;
-  return String(text).replace(/v?\d+\.\d+\.\d+/gi, "").trim();
-}
-
-/* ---------- localStorage 기반 "오늘 업데이트 횟수" 추적 ---------- */
-
-function trackUpdateCount(cardId, currentBuild, today) {
-  const key = STORAGE_PREFIX + cardId;
-  let stored = null;
-  try {
-    stored = JSON.parse(localStorage.getItem(key) || "null");
-  } catch (e) {
-    stored = null;
-  }
-
-  if (currentBuild === null || currentBuild === undefined) {
-    return stored && stored.date === today ? stored.count : 0;
-  }
-
-  if (!stored || stored.date !== today) {
-    stored = { date: today, build: currentBuild, count: 0 };
-  } else if (String(stored.build) !== String(currentBuild)) {
-    stored = { date: today, build: currentBuild, count: stored.count + 1 };
-  }
-
-  try {
-    localStorage.setItem(key, JSON.stringify(stored));
-  } catch (e) {
-    /* ignore quota errors */
-  }
-
-  return stored.count;
-}
-
-/* ---------- 카드 렌더링 ---------- */
-
-function renderCard(channel, section, def, data) {
-  const cardId = `${channel}_${section}_${def.key}`;
-  const today = todayKstDate();
-
-  const build = data ? data.build : null;
-  const updatedAt = data ? data.updatedAt : null; // relay는 항상 null
-  const url = data ? data.url : null;
-
-  const updateCount = trackUpdateCount(cardId, build, today);
-
-  let isUpdatedToday = false;
-  if (updatedAt) {
-    isUpdatedToday = dateOnly(updatedAt) === today;
-  } else if (section === "web" && def.key === "relay") {
-    // Relay는 타임스탬프가 없으므로 오늘 감지된 변경 횟수로 판단
-    isUpdatedToday = updateCount > 0;
-  }
-
-  const buildText = build !== null && build !== undefined && build !== ""
-    ? `#${stripVersionString(String(build))}`
-    : "—";
-
-  const showUpdateLine = !(section === "web" && def.key === "relay");
-  const updateLineHtml = showUpdateLine
-    ? `<div class="update-text">업데이트: <span class="u-date">${updatedAt ? stripVersionString(updatedAt) : "정보 없음"}</span></div>`
-    : `<div class="update-text">&nbsp;</div>`;
-
-  const isDownload = section === "app";
-  const btnLabel = isDownload ? "다운로드" : "바로가기";
-  const linkHref = isDownload ? url : (def.linkOverride || url);
-  const btnDisabledClass = linkHref ? "" : " disabled";
-
-  const btnIconSvg = isDownload
-    ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>`
-    : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>`;
-
-  return `
-    <div class="card${isUpdatedToday ? " updated-today" : ""}" data-card-id="${cardId}">
-      ${updateCount > 0 ? `<span class="update-badge">+${updateCount}</span>` : ""}
-      <div class="card-head">
-        <span class="icon-badge">${def.icon}</span>
-        <span class="card-name">${def.label}</span>
-        <span class="status-dot"></span>
-      </div>
-      <div class="build-number">${buildText}</div>
-      <div class="build-label">현재 빌드</div>
-      ${updateLineHtml}
-      <div class="spacer"></div>
-      <a class="action-btn${btnDisabledClass}" href="${linkHref || "#"}" target="_blank" rel="noopener noreferrer">
-        ${btnIconSvg}<span>${btnLabel}</span>
-      </a>
-    </div>
-  `;
-}
-
-function renderChannel(channel, channelData) {
-  const meta = CHANNEL_META[channel];
-  const defs = CARD_DEFS[channel];
-
-  const appCards = defs.app
-    .map((def) => renderCard(channel, "app", def, channelData ? channelData.app[def.key] : null))
-    .join("");
-
-  const webCards = defs.web
-    .map((def) => renderCard(channel, "web", def, channelData ? channelData.web[def.key] : null))
-    .join("");
-
-  return `
-    <div class="channel-block">
-      <div class="channel-heading">
-        <span class="badge ${meta.badgeClass}">${meta.badgeText}</span>
-        <span class="ko-name">${meta.koName}</span>
-      </div>
-      <div class="channel-row">
-        <div class="panel app-panel">
-          <div class="panel-label app">App</div>
-          <div class="cards-grid">${appCards}</div>
-        </div>
-        <div class="panel web-panel">
-          <div class="panel-label web">Web</div>
-          <div class="cards-grid">${webCards}</div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderAll(data) {
-  const container = document.getElementById("channels");
-  container.innerHTML =
-    renderChannel("alpha", data ? data.alpha : null) +
-    renderChannel("beta", data ? data.beta : null);
-}
-
-/* ---------- 데이터 페치 ---------- */
-
-async function fetchBuilds() {
-  const btn = document.getElementById("refreshBtn");
-  btn.classList.add("spinning");
-  try {
-    const res = await fetch(API_URL, { cache: "no-store" });
-    if (!res.ok) throw new Error("API 오류: " + res.status);
-    const data = await res.json();
-    renderAll(data);
-    document.getElementById("lastRefreshValue").textContent = nowKstString();
-  } catch (e) {
-    console.error(e);
-    document.getElementById("lastRefreshValue").textContent = nowKstString() + " (실패)";
-  } finally {
-    setTimeout(() => btn.classList.remove("spinning"), 400);
-  }
-}
-
-/* ---------- 자동 새로고침 ---------- */
-
-function setupAutoRefresh() {
-  const select = document.getElementById("autoRefreshSelect");
-  const savedInterval = localStorage.getItem(STORAGE_PREFIX + "autorefresh") || "0";
-  select.value = savedInterval;
-  applyAutoRefresh(parseInt(savedInterval, 10));
-
-  select.addEventListener("change", () => {
-    const seconds = parseInt(select.value, 10);
-    localStorage.setItem(STORAGE_PREFIX + "autorefresh", String(seconds));
-    applyAutoRefresh(seconds);
-  });
-}
-
-function applyAutoRefresh(seconds) {
-  if (autoRefreshTimer) {
-    clearInterval(autoRefreshTimer);
-    autoRefreshTimer = null;
-  }
-  if (seconds > 0) {
-    autoRefreshTimer = setInterval(fetchBuilds, seconds * 1000);
-  }
-}
-
-/* ---------- 초기화 ---------- */
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("refreshBtn").addEventListener("click", fetchBuilds);
-  setupAutoRefresh();
-  fetchBuilds();
-});
