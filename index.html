@@ -390,7 +390,7 @@
   <header>
     <div class="title-block">
       <h1><span class="dot"></span>빌드 배포 대시보드</h1>
-      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Relay)</p>
+      <p>Alpha / Beta 채널 · App(Windows·macOS·Android·iOS) · Web(Viewer·Host)</p>
     </div>
     <div class="header-right">
       <span id="last-sync">불러오는 중…</span>
@@ -474,7 +474,7 @@ const FRONT_CONFIG = {
     },
     web: {
       viewer: { page: 'https://stapn.startsupport.com' },
-      Relay:   { json: 'https://stapn.113366.com/version.json' }
+      host:   { json: 'https://stapn.113366.com/version.json' }
     }
   },
   beta: {
@@ -486,7 +486,7 @@ const FRONT_CONFIG = {
     },
     web: {
       viewer: { page: 'https://stbtn.startsupport.com' },
-      Relay:   { json: 'https://stbtn.113366.com/version.json' }
+      host:   { json: 'https://stbtn.113366.com/version.json' }
     }
   }
 };
