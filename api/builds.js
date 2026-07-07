@@ -134,11 +134,18 @@ function stripTZSuffix(raw) {
   return raw.replace(/\s*(KST|UTC|GMT[+-]?\d*)\s*$/i, '').trim();
 }
 
+// 값이 문자열/숫자 등 "표시 가능한 값"인지 확인 (객체가 build 필드에 잘못 들어오는 것을 방지)
+function isPrimitiveValue(v) {
+  return v !== null && v !== undefined && (typeof v === 'number' || typeof v === 'string') && String(v).trim() !== '';
+}
+
 async function fetchAppJson(src) {
   const res = await fetchWithTimeout(src.url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const j = await res.json();
-  const build = j.build ?? j.build_number ?? j.buildNumber ?? null;
+  const buildCandidates = [j.build, j.build_number, j.buildNumber];
+  let build = null;
+  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
   const date = parseAsUTCDate(j.releasedAt || j.released_at || null);
   return {
     build,
@@ -168,17 +175,44 @@ async function fetchAdminTxt(src) {
       downloadLabel: '바로가기',
     };
   }
-  const build = j.buildNumber ?? j.build_number ?? j.build ?? null;
+
+  // buildNumber는 반드시 "값"(문자열/숫자)이어야 함 - 객체가 걸리면 절대 사용하지 않음
+  // (예전 버그: j.build가 {version, time, ...} 같은 객체인 경우가 있어 "#[object Object]"로 표시되던 문제 수정)
+  const buildCandidates = [
+    j.buildNumber,
+    j.build_number,
+    j.build && j.build.buildNumber,
+    j.build && j.build.build_number,
+    j.build && j.build.number,
+    j.info && j.info.buildNumber,
+    j.info && j.info.build && j.info.build.buildNumber,
+    isPrimitiveValue(j.build) ? j.build : undefined,
+  ];
+  let build = null;
+  for (const c of buildCandidates) {
+    if (isPrimitiveValue(c)) { build = c; break; }
+  }
 
   // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
   // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
   const timeField = src.timeField || 'time';
   const timeMode = src.timeMode || 'utc';
-  const rawTimeValue = j[timeField] ?? j.time ?? j['build-date'] ?? null;
+  const timeCandidates = [
+    j[timeField],
+    j.time,
+    j['build-date'],
+    j.build && j.build[timeField],
+    j.build && j.build.time,
+    j.build && j.build['build-date'],
+  ];
+  let rawTimeValue = null;
+  for (const c of timeCandidates) {
+    if (isPrimitiveValue(c)) { rawTimeValue = c; break; }
+  }
 
   let updateDateText = null;
   let updateDateForCompare = null;
-  if (rawTimeValue !== null && rawTimeValue !== undefined && rawTimeValue !== '') {
+  if (rawTimeValue !== null) {
     if (timeMode === 'kst') {
       const stripped = stripTZSuffix(String(rawTimeValue).trim());
       updateDateText = stripped;
@@ -206,7 +240,9 @@ async function fetchWebViewer(src) {
   ]);
   if (!jsonRes.ok) throw new Error(`HTTP ${jsonRes.status}`);
   const j = await jsonRes.json();
-  const build = j.build_number ?? j.build ?? null;
+  const buildCandidates = [j.build_number, j.build];
+  let build = null;
+  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
 
   let updateDateText = null;
   let updateDateForCompare = null;
@@ -234,7 +270,9 @@ async function fetchWebRelay(src) {
   const res = await fetchWithTimeout(src.url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const j = await res.json();
-  const build = j.build_number ?? j.build ?? null;
+  const buildCandidates = [j.build_number, j.build];
+  let build = null;
+  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
   return {
     build,
     updateDateText: null, // Relay는 업데이트 시간을 표시하지 않음
