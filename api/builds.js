@@ -50,11 +50,11 @@ const SOURCES = [
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stbtnpartners.startsupport.com/verion.txt', // 원본 URL의 오탈자(verion) 유지
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
-    timeField: 'build-date', timeMode: 'kst' },
+    timeField: 'build_date', timeMode: 'utc' },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'build_date', timeMode: 'kst' },
+    timeField: 'build_date', timeMode: 'utc' },
 ];
 
 const FETCH_TIMEOUT_MS = 8000;
