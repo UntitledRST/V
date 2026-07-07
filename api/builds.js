@@ -258,12 +258,13 @@ async function fetchAdminTxt(src) {
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
   };
-  // buildNumber를 끝내 못 찾은 경우, 실제 응답 구조를 바로 확인할 수 있도록 진단 정보를 함께 내려줌
-  if (build === null) {
+  // buildNumber나 업데이트 시간을 끝내 못 찾은 경우, 실제 응답 구조를 바로 확인할 수 있도록 진단 정보를 함께 내려줌
+  if (build === null || updateDateText === null) {
     result._debug = {
-      reason: 'buildNumber 후보 키를 찾지 못함',
+      reason: (build === null ? 'buildNumber 후보 키를 찾지 못함' : '') +
+              (updateDateText === null ? (build === null ? ' / ' : '') + `시간 필드(${timeField}) 후보를 찾지 못함` : ''),
       topLevelKeys: Object.keys(j),
-      rawSnippet: text.slice(0, 400),
+      rawSnippet: text.slice(0, 500),
     };
   }
   return result;
@@ -330,7 +331,7 @@ async function fetchOne(src) {
     const todayKST = todayKSTDateStr();
     const isToday = !!data.updateDateForCompare && data.updateDateForCompare === todayKST;
 
-    return {
+    const out = {
       key: src.key,
       channel: src.channel,
       group: src.group,
@@ -343,6 +344,8 @@ async function fetchOne(src) {
       downloadUrl: data.downloadUrl,
       downloadLabel: data.downloadLabel,
     };
+    if (data._debug) out._debug = data._debug; // 진단 정보가 있으면 항상 응답에 포함시킴
+    return out;
   } catch (err) {
     return {
       key: src.key,
