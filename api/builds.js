@@ -175,6 +175,22 @@ async function fetchAppJson(src) {
   };
 }
 
+// key="value" 형태의 한 줄씩 나오는 텍스트(자바 properties 스타일)를 객체로 파싱
+// 예: name="user-admin"\nversion="8.0.1"\nbuild_date="2026-07-06T04:01:58.693Z"
+function parseKeyValueText(text) {
+  const obj = {};
+  const lines = text.split(/\r?\n/);
+  let matched = false;
+  for (const line of lines) {
+    const m = line.match(/^\s*([A-Za-z0-9_.-]+)\s*=\s*"?([^"\n]*?)"?\s*$/);
+    if (m) {
+      obj[m[1]] = m[2];
+      matched = true;
+    }
+  }
+  return matched ? obj : null;
+}
+
 async function fetchAdminTxt(src) {
   const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -186,13 +202,17 @@ async function fetchAdminTxt(src) {
     j = null;
   }
   if (!j) {
+    // JSON이 아니면 "key=value" 한 줄씩 나오는 텍스트 포맷(예: name="user-admin")으로 시도
+    j = parseKeyValueText(text);
+  }
+  if (!j) {
     return {
       build: null,
       updateDateText: null,
       updateDateForCompare: null,
       downloadUrl: src.siteUrl,
       downloadLabel: '바로가기',
-      _debug: { reason: 'JSON 파싱 실패', rawSnippet: text.slice(0, 300) },
+      _debug: { reason: 'JSON도 key=value 텍스트도 아님(파싱 실패)', rawSnippet: text.slice(0, 300) },
     };
   }
 
@@ -218,7 +238,7 @@ async function fetchAdminTxt(src) {
   }
 
   // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
-  // 베타 PartnerAdmin/UserAdmin: "build_date" 필드, 이미 KST 값이므로 접미사만 제거
+  // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
   const timeField = src.timeField || 'time';
   const timeMode = src.timeMode || 'utc';
   const timeCandidates = [
