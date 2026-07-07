@@ -139,6 +139,25 @@ function isPrimitiveValue(v) {
   return v !== null && v !== undefined && (typeof v === 'number' || typeof v === 'string') && String(v).trim() !== '';
 }
 
+// 정확한 필드명을 모를 때 대비: "build"와 "number"(또는 no)가 모두 들어간 키를 대소문자 구분 없이 재귀 탐색
+function findBuildNumberDeep(obj, maxDepth) {
+  if (maxDepth < 0 || obj === null || typeof obj !== 'object') return null;
+  const keys = Object.keys(obj);
+  for (const k of keys) {
+    if (/^build[_-]?number$/i.test(k) && isPrimitiveValue(obj[k])) return obj[k];
+  }
+  for (const k of keys) {
+    if (/build/i.test(k) && /(num|no)/i.test(k) && isPrimitiveValue(obj[k])) return obj[k];
+  }
+  for (const k of keys) {
+    if (obj[k] && typeof obj[k] === 'object') {
+      const found = findBuildNumberDeep(obj[k], maxDepth - 1);
+      if (found !== null) return found;
+    }
+  }
+  return null;
+}
+
 async function fetchAppJson(src) {
   const res = await fetchWithTimeout(src.url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -173,6 +192,7 @@ async function fetchAdminTxt(src) {
       updateDateForCompare: null,
       downloadUrl: src.siteUrl,
       downloadLabel: '바로가기',
+      _debug: { reason: 'JSON 파싱 실패', rawSnippet: text.slice(0, 300) },
     };
   }
 
@@ -191,6 +211,10 @@ async function fetchAdminTxt(src) {
   let build = null;
   for (const c of buildCandidates) {
     if (isPrimitiveValue(c)) { build = c; break; }
+  }
+  // 정확한 필드명을 못 찾으면, "build"와 "number"가 들어간 키를 대소문자 구분 없이 재귀적으로 탐색 (2단계 깊이)
+  if (build === null) {
+    build = findBuildNumberDeep(j, 2);
   }
 
   // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
@@ -224,13 +248,22 @@ async function fetchAdminTxt(src) {
     }
   }
 
-  return {
+  const result = {
     build,
     updateDateText,
     updateDateForCompare,
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
   };
+  // buildNumber를 끝내 못 찾은 경우, 실제 응답 구조를 바로 확인할 수 있도록 진단 정보를 함께 내려줌
+  if (build === null) {
+    result._debug = {
+      reason: 'buildNumber 후보 키를 찾지 못함',
+      topLevelKeys: Object.keys(j),
+      rawSnippet: text.slice(0, 400),
+    };
+  }
+  return result;
 }
 
 async function fetchWebViewer(src) {
