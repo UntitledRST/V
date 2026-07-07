@@ -286,6 +286,10 @@
     line-height:1.5;
     box-shadow: 0 0 0 2px var(--card-bg);
   }
+  .badge-count.zero{
+    background: rgba(255,255,255,0.08);
+    color: var(--text-tertiary);
+  }
 
   .card-mid{
     flex: 1 1 auto;
@@ -521,7 +525,7 @@
         '<div class="card-name">' + (ICONS[item.platform] || '') + '<span>' + displayLabel + '</span></div>' +
         '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
       '</div>' +
-      (count > 0 ? '<div class="badge-count">+' + count + '</div>' : '') +
+      (item.ok ? '<div class="badge-count' + (count > 0 ? '' : ' zero') + '">+' + count + '</div>' : '') +
       '<div class="card-mid">' +
         '<div class="build-number' + (hasBuild ? '' : ' na') + '">' + buildText + '</div>' +
         '<div class="build-label">현재 빌드</div>' +
