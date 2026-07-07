@@ -324,19 +324,57 @@ async function fetchWebViewer(src) {
 }
 
 async function fetchWebRelay(src) {
-  const res = await fetchWithTimeout(src.url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const j = await res.json();
+  const [jsonRes, pageRes] = await Promise.all([
+    fetchWithTimeout(src.url),
+    fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }).catch(() => null),
+  ]);
+  if (!jsonRes.ok) throw new Error(`HTTP ${jsonRes.status}`);
+  const j = await jsonRes.json();
   const buildCandidates = [j.build_number, j.build];
   let build = null;
   for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
-  return {
+
+  // Relay 응답 자체에는 날짜 정보가 없어서, (1) 페이지의 build-date 메타태그(Viewer와 동일한 방식)
+  // -> (2) HTTP Last-Modified 헤더 순으로 시도해서 업데이트 시간을 구함(이제 텍스트로도 표시).
+  let updateDateText = null;
+  let updateDateForCompare = null;
+  let metaFound = false;
+  if (pageRes && pageRes.ok) {
+    const html = await pageRes.text();
+    const m = html.match(/<meta[^>]+name=["']build-date["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/meta-build-date:\s*(.+)/i);
+    if (m) {
+      const raw = stripTZSuffix(m[1]); // 이미 KST 값
+      updateDateText = raw;
+      updateDateForCompare = raw ? raw.slice(0, 10) : null;
+      metaFound = true;
+    }
+  }
+  const lastModified = jsonRes.headers.get('last-modified');
+  if (!updateDateText && lastModified) {
+    const d = new Date(lastModified);
+    if (!isNaN(d.getTime())) {
+      updateDateText = formatKST(d);
+      updateDateForCompare = updateDateText.slice(0, 10);
+    }
+  }
+
+  const result = {
     build,
-    updateDateText: null, // Relay는 업데이트 시간을 표시하지 않음
-    updateDateForCompare: null,
+    updateDateText,
+    updateDateForCompare,
     downloadUrl: src.pageUrl,
     downloadLabel: '바로가기',
   };
+  if (!updateDateText) {
+    result._debug = {
+      reason: '업데이트 시간을 못 찾음',
+      pageFetchOk: !!(pageRes && pageRes.ok),
+      metaTagFound: metaFound,
+      lastModifiedHeader: lastModified || null,
+    };
+  }
+  return result;
 }
 
 async function fetchOne(src) {
