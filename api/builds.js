@@ -54,7 +54,7 @@ const SOURCES = [
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'build-date', timeMode: 'kst' },
+    timeField: 'build_date', timeMode: 'kst' },
 ];
 
 const FETCH_TIMEOUT_MS = 8000;
@@ -224,9 +224,12 @@ async function fetchAdminTxt(src) {
   const timeCandidates = [
     j[timeField],
     j.time,
+    j['build_date'],
     j['build-date'],
+    j.buildDate,
     j.build && j.build[timeField],
     j.build && j.build.time,
+    j.build && j.build['build_date'],
     j.build && j.build['build-date'],
   ];
   let rawTimeValue = null;
