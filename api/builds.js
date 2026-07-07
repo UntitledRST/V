@@ -1,301 +1,235 @@
 // /api/builds.js
-// 서버리스 함수: 각 버전 소스에서 서버 사이드로 직접 데이터를 가져와 정규화한 뒤
-// 브라우저로 내려줍니다. 서버 -> 원본 서버 요청이므로 브라우저 CORS 제한을 받지 않습니다.
-// Vercel Node.js 서버리스 함수 형식 (Node 18+ 전역 fetch 사용)
+// Vercel Serverless Function (Node.js runtime)
+// - version.json 을 서버 쪽에서 직접 요청하므로 브라우저 CORS 제한이 적용되지 않습니다.
+// - App 항목: build/build_number, version, releasedAt(업데이트 시간), 다운로드 URL을 추출합니다.
+// - Web 항목: build/build_number 는 version.json 에서, 업데이트 시간은 Viewer 페이지 HTML의
+//   <meta name="build-date" content="..."> 또는 releasedAt 값을 찾아 추출합니다. (Host 는 업데이트 시간 미표시)ㅁ//
+// ⚠️ 실제 서비스의 version.json / 페이지 구조에 따라 아래 필드명(extractBuild, extractDownloadUrl 등)을
+//    조정해야 할 수 있습니다. 알 수 없는 필드는 여러 후보 이름을 순서대로 시도하도록 구성했습니다.
 
-const SOURCES = [
-  // ---------------- ALPHA / APP ----------------
-  { key: 'alpha-app-windows', channel: 'alpha', group: 'app', platform: 'windows', label: 'Windows',
-    url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'alpha-app-macos', channel: 'alpha', group: 'app', platform: 'macos', label: 'macOS',
-    url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'alpha-app-android', channel: 'alpha', group: 'app', platform: 'android', label: 'Android',
-    url: 'https://stapn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'alpha-app-ios', channel: 'alpha', group: 'app', platform: 'ios', label: 'iOS',
-    url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
-  { key: 'alpha-app-partneradmin', channel: 'alpha', group: 'app', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stapnpartners.startsupport.com/version.txt',
-    siteUrl: 'https://stapnpartners.startsupport.com', type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
-  { key: 'alpha-app-useradmin', channel: 'alpha', group: 'app', platform: 'admin', label: 'UserAdmin',
-    url: 'https://stapnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
-
-  // ---------------- ALPHA / WEB ----------------
-  { key: 'alpha-web-viewer', channel: 'alpha', group: 'web', platform: 'viewer', label: 'Viewer',
-    url: 'https://stapn.startsupport.com/version.json',
-    pageUrl: 'https://stapn.startsupport.com', type: 'web-viewer' },
-  { key: 'alpha-web-relay', channel: 'alpha', group: 'web', platform: 'relay', label: 'Relay',
-    url: 'https://stapn.113366.com/version.json',
-    pageUrl: 'https://stapn.113366.com', type: 'web-relay' },
-
-  // ---------------- BETA / APP ----------------
-  { key: 'beta-app-windows', channel: 'beta', group: 'app', platform: 'windows', label: 'Windows',
-    url: 'https://stbtn.113366.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'beta-app-macos', channel: 'beta', group: 'app', platform: 'macos', label: 'macOS',
-    url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'beta-app-android', channel: 'beta', group: 'app', platform: 'android', label: 'Android',
-    url: 'https://stbtn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'beta-app-ios', channel: 'beta', group: 'app', platform: 'ios', label: 'iOS',
-    url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
-  { key: 'beta-app-partneradmin', channel: 'beta', group: 'app', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stbtnpartners.startsupport.com/verion.txt', // 원본 URL의 오탈자(verion) 유지
-    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
-    timeField: 'build-date', timeMode: 'kst' },
-  { key: 'beta-app-useradmin', channel: 'beta', group: 'app', platform: 'admin', label: 'UserAdmin',
-    url: 'https://stbtnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'build-date', timeMode: 'kst' },
-
-  // ---------------- BETA / WEB ----------------
-  { key: 'beta-web-viewer', channel: 'beta', group: 'web', platform: 'viewer', label: 'Viewer',
-    url: 'https://stbtn.startsupport.com/version.json',
-    pageUrl: 'https://stbtn.startsupport.com', type: 'web-viewer' },
-  { key: 'beta-web-relay', channel: 'beta', group: 'web', platform: 'relay', label: 'Relay',
-    url: 'https://stbtn.113366.com/version.json',
-    pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
-];
+const SOURCES = {
+  alpha: {
+    app: {
+      windows: { json: 'https://stapn.113366.com/pub/windows/version.json' },
+      macos:   { json: 'https://stapn.113366.com/pub/macos/version.json' },
+      android: { json: 'https://stapn.113366.com/pub/android/version.json' },
+      ios:     { json: 'https://stapn.113366.com/pub/ios/version.json' }
+    },
+    web: {
+      viewer: { json: 'https://stapn.startsupport.com/version.json', page: 'https://stapn.startsupport.com' },
+      host:   { json: 'https://stapn.113366.com/version.json' }
+    }
+  },
+  beta: {
+    app: {
+      windows: { json: 'https://stbtn.113366.com/pub/windows/version.json' },
+      macos:   { json: 'https://stbtn.113366.com/pub/macos/version.json' },
+      android: { json: 'https://stbtn.113366.com/pub/android/version.json' },
+      ios:     { json: 'https://stbtn.113366.com/pub/ios/version.json' }
+    },
+    web: {
+      viewer: { json: 'https://stbtn.startsupport.com/version.json', page: 'https://stbtn.startsupport.com' },
+      host:   { json: 'https://stbtn.113366.com/version.json' }
+    }
+  }
+};
 
 const FETCH_TIMEOUT_MS = 8000;
+const UA = 'Mozilla/5.0 (compatible; BuildDashboardBot/1.0; +https://example.com)';
 
-async function fetchWithTimeout(url, opts = {}) {
+function withTimeout(promiseFactory, ms) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
+  const timer = setTimeout(() => controller.abort(), ms);
+  return promiseFactory(controller.signal).finally(() => clearTimeout(timer));
+}
+
+async function fetchJson(url) {
+  return withTimeout(async (signal) => {
     const res = await fetch(url, {
-      ...opts,
-      signal: controller.signal,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (build-dashboard serverless fetcher)',
-        Accept: '*/*',
-        ...(opts.headers || {}),
-      },
+      signal,
       cache: 'no-store',
+      headers: { 'User-Agent': UA, 'Accept': 'application/json,text/plain,*/*' }
     });
-    return res;
-  } finally {
-    clearTimeout(timer);
-  }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      // 응답이 JSON 앞뒤로 불필요한 텍스트를 포함한 경우 대비
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start !== -1 && end !== -1 && end > start) {
+        return JSON.parse(text.slice(start, end + 1));
+      }
+      throw new Error('JSON 파싱 실패');
+    }
+  }, FETCH_TIMEOUT_MS);
 }
 
-// raw 시간 문자열/숫자를 UTC 기준 Date 로 최대한 관대하게 파싱
-function parseAsUTCDate(raw) {
-  if (raw === null || raw === undefined || raw === '') return null;
-  if (typeof raw === 'number') {
-    return new Date(raw < 1e12 ? raw * 1000 : raw);
-  }
-  const s = String(raw).trim();
-  if (/^\d+$/.test(s)) {
-    const n = Number(s);
-    return new Date(n < 1e12 ? n * 1000 : n);
-  }
-  // 이미 타임존 정보(Z 또는 +09:00 등)가 있으면 그대로 파싱
-  if (/Z$|[+-]\d{2}:?\d{2}$/.test(s)) {
-    const d = new Date(s);
-    return isNaN(d.getTime()) ? null : d;
-  }
-  // 타임존 정보가 없으면 UTC로 간주
-  const iso = s.includes('T') ? s : s.replace(' ', 'T');
-  const d = new Date(iso + 'Z');
-  return isNaN(d.getTime()) ? null : d;
+async function fetchText(url) {
+  return withTimeout(async (signal) => {
+    const res = await fetch(url, {
+      signal,
+      cache: 'no-store',
+      headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  }, FETCH_TIMEOUT_MS);
 }
 
-// UTC Date -> 'YYYY-MM-DD HH:mm:ss' (Asia/Seoul)
-function formatKST(date) {
-  if (!date) return null;
-  const fmt = new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  });
-  // sv-SE 로케일은 'YYYY-MM-DD HH:mm:ss' 형태(콤마 없이)로 출력됨
-  return fmt.format(date).replace(',', '');
+function extractBuild(data) {
+  if (!data || typeof data !== 'object') return null;
+  const v = data.build ?? data.build_number ?? data.buildNumber ?? data.buildNo ?? null;
+  return v === undefined ? null : v;
 }
 
-function todayKSTDateStr() {
-  const fmt = new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-  return fmt.format(new Date());
+function extractVersion(data) {
+  if (!data || typeof data !== 'object') return null;
+  return data.version ?? data.ver ?? null;
 }
 
-// 이미 KST 문자열(예: "2026-06-24 18:56:16 KST")에서 뒤에 붙은 " KST" 등의 타임존 표기만 제거
-function stripTZSuffix(raw) {
-  if (!raw) return null;
-  return raw.replace(/\s*(KST|UTC|GMT[+-]?\d*)\s*$/i, '').trim();
+function extractReleasedAt(data) {
+  if (!data || typeof data !== 'object') return null;
+  return (
+    data.releasedAt ??
+    data.released_at ??
+    data.updatedAt ??
+    data.updated_at ??
+    data.buildDate ??
+    data.build_date ??
+    data.date ??
+    null
+  );
 }
 
-async function fetchAppJson(src) {
-  const res = await fetchWithTimeout(src.url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const j = await res.json();
-  const build = j.build ?? j.build_number ?? j.buildNumber ?? null;
-  const date = parseAsUTCDate(j.releasedAt || j.released_at || null);
-  return {
-    build,
-    updateDateText: formatKST(date),
-    updateDateForCompare: date ? formatKST(date).slice(0, 10) : null,
-    downloadUrl: j.url || null,
-    downloadLabel: '다운로드',
-  };
-}
-
-async function fetchAdminTxt(src) {
-  const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const text = await res.text();
-  let j = null;
-  try {
-    j = JSON.parse(text);
-  } catch (e) {
-    j = null;
-  }
-  if (!j) {
-    return {
-      build: null,
-      updateDateText: null,
-      updateDateForCompare: null,
-      downloadUrl: src.siteUrl,
-      downloadLabel: '바로가기',
-    };
-  }
-  const build = j.buildNumber ?? j.build_number ?? j.build ?? null;
-
-  // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
-  // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
-  const timeField = src.timeField || 'time';
-  const timeMode = src.timeMode || 'utc';
-  const rawTimeValue = j[timeField] ?? j.time ?? j['build-date'] ?? null;
-
-  let updateDateText = null;
-  let updateDateForCompare = null;
-  if (rawTimeValue !== null && rawTimeValue !== undefined && rawTimeValue !== '') {
-    if (timeMode === 'kst') {
-      const stripped = stripTZSuffix(String(rawTimeValue).trim());
-      updateDateText = stripped;
-      updateDateForCompare = stripped ? stripped.slice(0, 10) : null;
-    } else {
-      const date = parseAsUTCDate(rawTimeValue);
-      updateDateText = formatKST(date);
-      updateDateForCompare = date ? updateDateText.slice(0, 10) : null;
+function extractDownloadUrl(data, baseUrl) {
+  if (!data || typeof data !== 'object') return null;
+  const candidates = [
+    data.url,
+    data.download_url,
+    data.downloadUrl,
+    data.file_url,
+    data.fileUrl,
+    data.package_url,
+    data.packageUrl,
+    data.installer,
+    data.installer_url,
+    data.download,
+    data.path
+  ];
+  for (const c of candidates) {
+    if (typeof c === 'string' && c.trim().length > 0) {
+      try {
+        return new URL(c, baseUrl).href;
+      } catch (e) {
+        return c;
+      }
     }
   }
-
-  return {
-    build,
-    updateDateText,
-    updateDateForCompare,
-    downloadUrl: src.siteUrl,
-    downloadLabel: '바로가기',
-  };
+  return null;
 }
 
-async function fetchWebViewer(src) {
-  const [jsonRes, pageRes] = await Promise.all([
-    fetchWithTimeout(src.url),
-    fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }),
-  ]);
-  if (!jsonRes.ok) throw new Error(`HTTP ${jsonRes.status}`);
-  const j = await jsonRes.json();
-  const build = j.build_number ?? j.build ?? null;
-
-  let updateDateText = null;
-  let updateDateForCompare = null;
-  if (pageRes.ok) {
-    const html = await pageRes.text();
-    const m = html.match(/<meta[^>]+name=["']build-date["'][^>]+content=["']([^"']+)["']/i)
-      || html.match(/meta-build-date:\s*(.+)/i); // 일부 렌더러가 프론트매터 형태로 반환하는 경우 대비
-    if (m) {
-      const raw = stripTZSuffix(m[1]); // 이미 KST, "KST" 접미사만 제거
-      updateDateText = raw;
-      updateDateForCompare = raw ? raw.slice(0, 10) : null;
-    }
+function extractBuildDateFromHtml(html) {
+  if (!html) return null;
+  let m = html.match(/<meta\s+[^>]*name=["']build-date["'][^>]*content=["']([^"']+)["'][^>]*>/i);
+  if (!m) {
+    m = html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*name=["']build-date["'][^>]*>/i);
   }
+  if (m) return m[1];
 
-  return {
-    build,
-    updateDateText,
-    updateDateForCompare,
-    downloadUrl: src.pageUrl,
-    downloadLabel: '바로가기',
-  };
+  const m2 = html.match(/"releasedAt"\s*:\s*"([^"]+)"/i);
+  if (m2) return m2[1];
+
+  return null;
 }
 
-async function fetchWebRelay(src) {
-  const res = await fetchWithTimeout(src.url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const j = await res.json();
-  const build = j.build_number ?? j.build ?? null;
-  return {
-    build,
-    updateDateText: null, // Relay는 업데이트 시간을 표시하지 않음
-    updateDateForCompare: null,
-    downloadUrl: src.pageUrl,
-    downloadLabel: '바로가기',
-  };
-}
-
-async function fetchOne(src) {
+async function buildAppItem(cfg) {
   try {
-    let data;
-    if (src.type === 'app-json') data = await fetchAppJson(src);
-    else if (src.type === 'admin-txt') data = await fetchAdminTxt(src);
-    else if (src.type === 'web-viewer') data = await fetchWebViewer(src);
-    else if (src.type === 'web-relay') data = await fetchWebRelay(src);
-    else throw new Error('unknown source type');
-
-    const todayKST = todayKSTDateStr();
-    const isToday = !!data.updateDateForCompare && data.updateDateForCompare === todayKST;
-
+    const data = await fetchJson(cfg.json);
     return {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: true,
-      build: data.build,
-      updateDateText: data.updateDateText,
-      isToday,
-      downloadUrl: data.downloadUrl,
-      downloadLabel: data.downloadLabel,
+      build: extractBuild(data),
+      version: extractVersion(data),
+      updatedAt: extractReleasedAt(data),
+      downloadUrl: extractDownloadUrl(data, cfg.json),
+      sourceJson: cfg.json,
+      error: null
     };
   } catch (err) {
     return {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: false,
-      error: String(err && err.message ? err.message : err),
       build: null,
-      updateDateText: null,
-      isToday: false,
-      downloadUrl: src.siteUrl || src.pageUrl || null,
-      downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
+      version: null,
+      updatedAt: null,
+      downloadUrl: null,
+      sourceJson: cfg.json,
+      error: err && err.message ? err.message : 'fetch failed'
     };
   }
 }
 
-module.exports = async (req, res) => {
+async function buildWebItem(key, cfg) {
   try {
-    const results = await Promise.all(SOURCES.map(fetchOne));
-    res.setHeader('Cache-Control', 'no-store, max-age=0');
-    res.status(200).json({
-      serverTime: new Date().toISOString(),
-      items: results,
-    });
+    const data = await fetchJson(cfg.json);
+    const item = {
+      build: extractBuild(data),
+      version: extractVersion(data),
+      updatedAt: null,
+      downloadUrl: cfg.page || extractDownloadUrl(data, cfg.json),
+      sourceJson: cfg.json,
+      error: null
+    };
+
+    if (key === 'viewer' && cfg.page) {
+      try {
+        const html = await fetchText(cfg.page);
+        item.updatedAt = extractBuildDateFromHtml(html) || extractReleasedAt(data);
+      } catch (e) {
+        item.updatedAt = extractReleasedAt(data);
+      }
+    }
+    return item;
   } catch (err) {
-    res.status(500).json({ error: String(err && err.message ? err.message : err) });
+    return {
+      build: null,
+      version: null,
+      updatedAt: null,
+      downloadUrl: cfg.page || null,
+      sourceJson: cfg.json,
+      error: err && err.message ? err.message : 'fetch failed'
+    };
+  }
+}
+
+module.exports = async function handler(req, res) {
+  try {
+    const channels = Object.keys(SOURCES);
+    const result = {};
+
+    await Promise.all(
+      channels.map(async (ch) => {
+        result[ch] = { app: {}, web: {} };
+
+        const appKeys = Object.keys(SOURCES[ch].app);
+        await Promise.all(
+          appKeys.map(async (key) => {
+            result[ch].app[key] = await buildAppItem(SOURCES[ch].app[key]);
+          })
+        );
+
+        const webKeys = Object.keys(SOURCES[ch].web);
+        await Promise.all(
+          webKeys.map(async (key) => {
+            result[ch].web[key] = await buildWebItem(key, SOURCES[ch].web[key]);
+          })
+        );
+      })
+    );
+
+    result.fetchedAt = new Date().toISOString();
+
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ error: err && err.message ? err.message : 'Unknown error' });
   }
 };
