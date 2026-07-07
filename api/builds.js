@@ -15,10 +15,12 @@ const SOURCES = [
     url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
   { key: 'alpha-app-partneradmin', channel: 'alpha', group: 'app', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stapnpartners.startsupport.com/version.txt',
-    siteUrl: 'https://stapnpartners.startsupport.com', type: 'admin-txt' },
+    siteUrl: 'https://stapnpartners.startsupport.com', type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
   { key: 'alpha-app-useradmin', channel: 'alpha', group: 'app', platform: 'admin', label: 'UserAdmin',
     url: 'https://stapnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt' },
+    siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
 
   // ---------------- ALPHA / WEB ----------------
   { key: 'alpha-web-viewer', channel: 'alpha', group: 'web', platform: 'viewer', label: 'Viewer',
@@ -39,10 +41,12 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
   { key: 'beta-app-partneradmin', channel: 'beta', group: 'app', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stbtnpartners.startsupport.com/verion.txt', // 원본 URL의 오탈자(verion) 유지
-    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt' },
+    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
+    timeField: 'build-date', timeMode: 'kst' },
   { key: 'beta-app-useradmin', channel: 'beta', group: 'app', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt' },
+    siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
+    timeField: 'build-date', timeMode: 'kst' },
 
   // ---------------- BETA / WEB ----------------
   { key: 'beta-web-viewer', channel: 'beta', group: 'web', platform: 'viewer', label: 'Viewer',
@@ -165,11 +169,31 @@ async function fetchAdminTxt(src) {
     };
   }
   const build = j.buildNumber ?? j.build_number ?? j.build ?? null;
-  const date = parseAsUTCDate(j.time || j.releasedAt || null);
+
+  // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
+  // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
+  const timeField = src.timeField || 'time';
+  const timeMode = src.timeMode || 'utc';
+  const rawTimeValue = j[timeField] ?? j.time ?? j['build-date'] ?? null;
+
+  let updateDateText = null;
+  let updateDateForCompare = null;
+  if (rawTimeValue !== null && rawTimeValue !== undefined && rawTimeValue !== '') {
+    if (timeMode === 'kst') {
+      const stripped = stripTZSuffix(String(rawTimeValue).trim());
+      updateDateText = stripped;
+      updateDateForCompare = stripped ? stripped.slice(0, 10) : null;
+    } else {
+      const date = parseAsUTCDate(rawTimeValue);
+      updateDateText = formatKST(date);
+      updateDateForCompare = date ? updateDateText.slice(0, 10) : null;
+    }
+  }
+
   return {
     build,
-    updateDateText: formatKST(date),
-    updateDateForCompare: date ? formatKST(date).slice(0, 10) : null,
+    updateDateText,
+    updateDateForCompare,
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
   };
