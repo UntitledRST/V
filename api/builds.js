@@ -218,7 +218,7 @@ async function fetchAdminTxt(src) {
   }
 
   // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
-  // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
+  // 베타 PartnerAdmin/UserAdmin: "build_date" 필드, 이미 KST 값이므로 접미사만 제거
   const timeField = src.timeField || 'time';
   const timeMode = src.timeMode || 'utc';
   const timeCandidates = [
