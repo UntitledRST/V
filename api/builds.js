@@ -48,17 +48,17 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stbtnpartners.startsupport.com/version.txt',
-    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
-    timeField: 'build_date', timeMode: 'utc' },
+    url: 'https://stbtnpartners.startsupport.com',
+    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-head',
+    timeoutMs: 2000 },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 8000; // 실제 응답은 즉시 오므로 8초면 충분함 (느려서가 아니라 차단/무응답 문제였음)
-const FETCH_MAX_RETRIES = 1; // 일시적 오류 대비 1회 재시도
+const FETCH_TIMEOUT_MS = 2000; // 모든 소스의 기본 타임아웃을 2초로 통일
+const FETCH_MAX_RETRIES = 0; // 재시도 없이 2초에서 바로 실패 처리 (베타 PartnerAdmin과 동일하게 통일)
 
 const https = require('https');
 const { URL } = require('url');
@@ -150,24 +150,31 @@ function fetchViaNodeHttps(url, opts, timeoutMs) {
   });
 }
 
-async function fetchWithTimeout(url, opts = {}) {
+async function fetchWithTimeout(url, opts = {}, config = {}) {
+  // config로 개별 소스가 기본 타임아웃(2초)/재시도(0회)/https 폴백 여부를 오버라이드할 수 있음
+  // 기본값은 재시도/폴백 없이 정확히 timeoutMs에서 바로 실패 처리 (모든 소스 통일)
+  const timeoutMs = config.timeoutMs != null ? config.timeoutMs : FETCH_TIMEOUT_MS;
+  const maxRetries = config.maxRetries != null ? config.maxRetries : FETCH_MAX_RETRIES;
+  const allowNodeHttpsFallback = config.allowNodeHttpsFallback === true;
+
   let lastErr;
-  for (let attempt = 0; attempt <= FETCH_MAX_RETRIES; attempt++) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
-      return await fetchOnce(url, opts, FETCH_TIMEOUT_MS);
+      return await fetchOnce(url, opts, timeoutMs);
     } catch (err) {
       lastErr = err;
       // 타임아웃(AbortError)이나 일시적 네트워크 오류일 수 있으므로, 마지막 시도가 아니면 짧게 쉬었다가 재시도
-      if (attempt < FETCH_MAX_RETRIES) {
+      if (attempt < maxRetries) {
         await new Promise((r) => setTimeout(r, 500));
         continue;
       }
 
     }
   }
+  if (!allowNodeHttpsFallback) throw lastErr;
   // fetch(undici)로 계속 실패하면, HTTP/1.1을 강제하는 Node https 모듈로 마지막으로 한 번 더 시도
   try {
-    return await fetchViaNodeHttps(url, opts, FETCH_TIMEOUT_MS);
+    return await fetchViaNodeHttps(url, opts, timeoutMs);
   } catch (fallbackErr) {
     // 폴백까지 실패하면, 더 구체적인(원래) 에러를 우선 노출
     throw lastErr || fallbackErr;
@@ -385,6 +392,41 @@ async function fetchAdminTxt(src) {
   return result;
 }
 
+// HEAD 요청(curl -I와 동일)을 보내 응답 헤더의 Last-Modified 값을 업데이트 시간으로 사용.
+// version.txt 경로가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
+async function fetchAdminHead(src) {
+  const res = await fetchWithTimeout(
+    src.url,
+    { method: 'HEAD' },
+    {
+      timeoutMs: src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS,
+      maxRetries: 0, // 페이지 로딩이 길어지지 않도록 재시도하지 않고 바로 실패 처리
+      allowNodeHttpsFallback: false, // 같은 이유로 https 폴백도 시도하지 않음 (지연 시간 최소화)
+    }
+  );
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+  const lastModifiedRaw = res.headers.get('last-modified');
+  // Last-Modified는 표준 HTTP-date 형식(예: "Wed, 21 Oct 2015 07:28:00 GMT")이라 Date가 바로 파싱 가능
+  const date = lastModifiedRaw ? new Date(lastModifiedRaw) : null;
+  const valid = !!(date && !isNaN(date.getTime()));
+
+  const result = {
+    build: null,
+    updateDateText: valid ? formatKST(date) : null,
+    updateDateForCompare: valid ? formatKST(date).slice(0, 10) : null,
+    downloadUrl: src.siteUrl || src.url,
+    downloadLabel: '바로가기',
+  };
+  if (!valid) {
+    result._debug = {
+      reason: 'Last-Modified 헤더를 찾지 못함',
+      lastModifiedHeader: lastModifiedRaw || null,
+    };
+  }
+  return result;
+}
+
 async function fetchWebViewer(src) {
   const [jsonRes, pageRes] = await Promise.all([
     fetchWithTimeout(src.url),
@@ -477,6 +519,7 @@ async function fetchOne(src) {
     let data;
     if (src.type === 'app-json') data = await fetchAppJson(src);
     else if (src.type === 'admin-txt') data = await fetchAdminTxt(src);
+    else if (src.type === 'admin-head') data = await fetchAdminHead(src);
     else if (src.type === 'web-viewer') data = await fetchWebViewer(src);
     else if (src.type === 'web-relay') data = await fetchWebRelay(src);
     else throw new Error('unknown source type');
@@ -501,8 +544,9 @@ async function fetchOne(src) {
     return out;
   } catch (err) {
     const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
+    const effectiveTimeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
     const errorMessage = isAbort
-      ? `타임아웃: ${FETCH_TIMEOUT_MS / 1000}초 응답 없음 (재시도 ${FETCH_MAX_RETRIES}회 포함)`
+      ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
     return {
       key: src.key,
