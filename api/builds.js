@@ -61,7 +61,7 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 800; // 모든 소스의 기본 타임아웃을 800ms로 통일
+const FETCH_TIMEOUT_MS = 1000; // 모든 소스의 기본 타임아웃을 800ms로 통일
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 const https = require('https');
