@@ -53,7 +53,7 @@ const SOURCES = [
     // 원본 서버가 522(원본 응답 없음)로 응답해 조회가 불가능함이 확인됨.
     // 더 이상 네트워크 요청을 시도하지 않고, 아래 고정 문구를 그대로 표시함.
     disabled: true,
-    staticNote: '업데이트 시간: 2026-07-06 13:01:50',
+    staticNote: '업데이트: 2026-07-06 13:01:50',
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
