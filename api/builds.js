@@ -61,14 +61,14 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 800; // 개별 소스 조회의 기본 타임아웃(800ms)
+const FETCH_TIMEOUT_MS = 1200; // 개별 소스 조회의 기본 타임아웃(1200ms)
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 // 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
 // 절대 이 시간을 넘기지 않도록 하는 "최종 안전장치" 데드라인.
 // (개별 FETCH_TIMEOUT_MS를 아무리 잘 맞춰도, 코드 경로에 따라 재시도/폴백이 겹치면
 //  1.2초를 넘길 수 있으므로, 소스 하나하나를 이 시간으로 강제 컷오프함)
-const HARD_DEADLINE_MS = 1300;
+const HARD_DEADLINE_MS = 1200;
 
 // promise가 ms 안에 끝나지 않으면, 원래 처리 결과를 기다리지 않고 즉시 fallbackFactory()의
 // 결과로 대체해서 응답함 (원래 promise 자체가 취소되는 건 아니지만, 응답에는 영향을 주지 않음)
