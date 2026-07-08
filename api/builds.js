@@ -53,7 +53,7 @@ const SOURCES = [
     // 원본 서버가 522(원본 응답 없음)로 응답해 조회가 불가능함이 확인됨.
     // 더 이상 네트워크 요청을 시도하지 않고, 아래 고정 문구를 그대로 표시함.
     disabled: true,
-    staticNote: '업데이트: 2026-07-06 13:01:50',
+    staticNote: '업데이트 시간: 2026-07-06 13:01:50',
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
@@ -61,8 +61,44 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 1000; // 모든 소스의 기본 타임아웃을 800ms로 통일
+const FETCH_TIMEOUT_MS = 800; // 개별 소스 조회의 기본 타임아웃(800ms)
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
+
+// 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
+// 절대 이 시간을 넘기지 않도록 하는 "최종 안전장치" 데드라인.
+// (개별 FETCH_TIMEOUT_MS를 아무리 잘 맞춰도, 코드 경로에 따라 재시도/폴백이 겹치면
+//  1초를 넘길 수 있으므로, 소스 하나하나를 이 시간으로 강제 컷오프함)
+const HARD_DEADLINE_MS = 1000;
+
+// promise가 ms 안에 끝나지 않으면, 원래 처리 결과를 기다리지 않고 즉시 fallbackFactory()의
+// 결과로 대체해서 응답함 (원래 promise 자체가 취소되는 건 아니지만, 응답에는 영향을 주지 않음)
+function withHardDeadline(promise, ms, fallbackFactory) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const timer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      resolve(fallbackFactory());
+    }, ms);
+
+    Promise.resolve(promise).then(
+      (value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        resolve(value);
+      },
+      () => {
+        // fetchOne은 내부에서 이미 모든 에러를 잡아서 정상 반환하므로 여기로 올 일은 거의 없지만,
+        // 혹시 모를 예외 상황에서도 응답 자체는 절대 지연/실패하지 않도록 안전하게 처리
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        resolve(fallbackFactory());
+      }
+    );
+  });
+}
 
 const https = require('https');
 const { URL } = require('url');
@@ -245,6 +281,18 @@ function isPrimitiveValue(v) {
   return v !== null && v !== undefined && (typeof v === 'number' || typeof v === 'string') && String(v).trim() !== '';
 }
 
+// HTTP 실패 시, 상태 코드를 err.status에 담아서 던짐 (나중에 "배포 중 추정" 판단에 사용)
+function httpStatusError(status, messagePrefix) {
+  const e = new Error((messagePrefix || 'HTTP') + ' ' + status);
+  e.status = status;
+  return e;
+}
+
+// 재배포(원본 서버 재시작) 도중 흔히 나타나는 상태코드/네트워크 오류 코드.
+// 이 값들이 감지되면 "서버 완전 장애"가 아니라 "빌드 업데이트로 인한 일시적 접속 불가"일 가능성이 높다고 판단함.
+const GATEWAY_STATUS_CODES = [502, 503, 504, 520, 521, 522, 523, 524];
+const GATEWAY_NETWORK_CODES = ['ECONNRESET', 'ECONNREFUSED', 'ETIMEDOUT', 'EAI_AGAIN', 'ENOTFOUND', 'EPIPE', 'UND_ERR_SOCKET'];
+
 // 정확한 필드명을 모를 때 대비: "build"와 "number"(또는 no)가 모두 들어간 키를 대소문자 구분 없이 재귀 탐색
 function findBuildNumberDeep(obj, maxDepth) {
   if (maxDepth < 0 || obj === null || typeof obj !== 'object') return null;
@@ -266,7 +314,7 @@ function findBuildNumberDeep(obj, maxDepth) {
 
 async function fetchAppJson(src) {
   const res = await fetchWithTimeout(src.url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  if (!res.ok) throw httpStatusError(res.status);
   const j = await res.json();
   const buildCandidates = [j.build, j.build_number, j.buildNumber];
   let build = null;
@@ -299,7 +347,7 @@ function parseKeyValueText(text) {
 
 async function fetchAdminTxt(src) {
   const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  if (!res.ok) throw httpStatusError(res.status);
   const text = await res.text();
   let j = null;
   try {
@@ -411,7 +459,7 @@ async function fetchAdminHead(src) {
       { headers: src.proxyKey ? { 'x-proxy-key': src.proxyKey } : {} },
       { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: false }
     );
-    if (!res.ok) throw new Error(`프록시 HTTP ${res.status}`);
+    if (!res.ok) throw httpStatusError(res.status, '프록시 HTTP');
     const json = await res.json();
     if (json && json.ok === false && json.error) throw new Error(`프록시 오류: ${json.error}`);
     lastModifiedRaw = (json && json.lastModified) || null;
@@ -422,7 +470,7 @@ async function fetchAdminHead(src) {
       { method: 'GET' },
       { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: true }
     );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) throw httpStatusError(res.status);
     lastModifiedRaw = res.headers.get('last-modified');
   }
 
@@ -451,7 +499,7 @@ async function fetchWebViewer(src) {
     fetchWithTimeout(src.url),
     fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }),
   ]);
-  if (!jsonRes.ok) throw new Error(`HTTP ${jsonRes.status}`);
+  if (!jsonRes.ok) throw httpStatusError(jsonRes.status);
   const j = await jsonRes.json();
   const buildCandidates = [j.build_number, j.build];
   let build = null;
@@ -484,7 +532,7 @@ async function fetchWebRelay(src) {
     fetchWithTimeout(src.url),
     fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }).catch(() => null),
   ]);
-  if (!jsonRes.ok) throw new Error(`HTTP ${jsonRes.status}`);
+  if (!jsonRes.ok) throw httpStatusError(jsonRes.status);
   const j = await jsonRes.json();
   const buildCandidates = [j.build_number, j.build];
   let build = null;
@@ -585,6 +633,17 @@ async function fetchOne(src) {
     const errorMessage = isAbort
       ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
+
+    // 실패 원인이 "게이트웨이/원본서버 응답 없음" 계열 상태코드이거나, 연결이 끊기는 네트워크 오류이거나,
+    // 타임아웃(응답 자체가 없음)인 경우 -> 완전한 장애라기보다 "빌드 업데이트로 서버가 재시작 중"일 가능성이 높음
+    const statusCode = (err && typeof err.status === 'number') ? err.status : null;
+    const networkErrorCode = (err && (err.code || (err.cause && err.cause.code))) || null;
+    const possibleDeployIssue = !!(
+      isAbort ||
+      (statusCode !== null && GATEWAY_STATUS_CODES.indexOf(statusCode) !== -1) ||
+      (networkErrorCode !== null && GATEWAY_NETWORK_CODES.indexOf(networkErrorCode) !== -1)
+    );
+
     return {
       key: src.key,
       channel: src.channel,
@@ -593,6 +652,9 @@ async function fetchOne(src) {
       label: src.label,
       ok: false,
       error: errorMessage,
+      statusCode,
+      networkErrorCode,
+      possibleDeployIssue,
       build: null,
       updateDateText: null,
       isToday: false,
@@ -602,9 +664,35 @@ async function fetchOne(src) {
   }
 }
 
+// 하드 데드라인(HARD_DEADLINE_MS)을 넘긴 소스에 대해 내려줄 결과.
+// 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
+function buildHardDeadlineResult(src) {
+  return {
+    key: src.key,
+    channel: src.channel,
+    group: src.group,
+    platform: src.platform,
+    label: src.label,
+    ok: false,
+    error: `응답 지연으로 강제 종료(${HARD_DEADLINE_MS}ms 초과)`,
+    statusCode: null,
+    networkErrorCode: null,
+    possibleDeployIssue: true, // 응답이 이례적으로 느린 것도 재배포/재시작 정황일 가능성이 높아 동일하게 취급
+    build: null,
+    updateDateText: null,
+    isToday: false,
+    downloadUrl: src.siteUrl || src.pageUrl || src.url || null,
+    downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
+  };
+}
+
 module.exports = async (req, res) => {
   try {
-    const results = await Promise.all(SOURCES.map(fetchOne));
+    // 소스 하나하나에 HARD_DEADLINE_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
+    // /api/builds 응답 자체는 절대 HARD_DEADLINE_MS(1초)를 넘기지 않음
+    const results = await Promise.all(
+      SOURCES.map((src) => withHardDeadline(fetchOne(src), HARD_DEADLINE_MS, () => buildHardDeadlineResult(src)))
+    );
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.status(200).json({
       serverTime: new Date().toISOString(),
