@@ -60,12 +60,29 @@ const SOURCES = [
 const FETCH_TIMEOUT_MS = 8000; // 실제 응답은 즉시 오므로 8초면 충분함 (느려서가 아니라 차단/무응답 문제였음)
 const FETCH_MAX_RETRIES = 1; // 일시적 오류 대비 1회 재시도
 
+const https = require('https');
+const { URL } = require('url');
+
 // 일부 사이트가 서버리스/데이터센터發 요청이나 봇으로 보이는 User-Agent를 방화벽(CDN/WAF) 단에서
 // 조용히 무응답 처리(블랙홀)하는 경우가 있어, 실제 브라우저와 최대한 유사한 헤더로 요청함
 const BROWSER_LIKE_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
   'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+  'Sec-Fetch-Site': 'none',
+  'Sec-Fetch-Mode': 'navigate',
+  'Sec-Fetch-Dest': 'document',
+  'Upgrade-Insecure-Requests': '1',
 };
+
+// 요청 URL 자신의 오리진을 Referer로 넣어 "그 사이트 내에서 이동한 것"처럼 보이게 함
+function refererFor(url) {
+  try {
+    const u = new URL(url);
+    return `${u.protocol}//${u.host}/`;
+  } catch (e) {
+    return undefined;
+  }
+}
 
 async function fetchOnce(url, opts, timeoutMs) {
   const controller = new AbortController();
@@ -76,6 +93,7 @@ async function fetchOnce(url, opts, timeoutMs) {
       signal: controller.signal,
       headers: {
         ...BROWSER_LIKE_HEADERS,
+        Referer: refererFor(url),
         Accept: '*/*',
         ...(opts.headers || {}),
       },
@@ -85,6 +103,51 @@ async function fetchOnce(url, opts, timeoutMs) {
   } finally {
     clearTimeout(timer);
   }
+}
+
+// 최후의 수단: Node 기본 https 모듈로 HTTP/1.1 연결을 강제해서 재시도.
+// fetch(undici)가 사용하는 HTTP/2 협상이나 TLS 핑거프린트를 근거로 차단하는 WAF를 우회하기 위함.
+function fetchViaNodeHttps(url, opts, timeoutMs) {
+  return new Promise((resolve, reject) => {
+    let u;
+    try { u = new URL(url); } catch (e) { return reject(e); }
+
+    const headers = {
+      ...BROWSER_LIKE_HEADERS,
+      Referer: refererFor(url),
+      Accept: '*/*',
+      ...((opts && opts.headers) || {}),
+    };
+
+    const req = https.request({
+      hostname: u.hostname,
+      path: u.pathname + u.search,
+      method: 'GET',
+      port: u.port || 443,
+      headers,
+      ALPNProtocols: ['http/1.1'], // HTTP/2 협상을 하지 않고 HTTP/1.1로만 접속
+      timeout: timeoutMs,
+    }, (res) => {
+      const chunks = [];
+      res.on('data', (c) => chunks.push(c));
+      res.on('end', () => {
+        const body = Buffer.concat(chunks).toString('utf8');
+        resolve({
+          ok: res.statusCode >= 200 && res.statusCode < 300,
+          status: res.statusCode,
+          headers: { get: (name) => res.headers[String(name).toLowerCase()] || null },
+          text: async () => body,
+          json: async () => JSON.parse(body),
+        });
+      });
+    });
+    req.on('timeout', () => {
+      req.destroy();
+      reject(Object.assign(new Error('This operation was aborted'), { name: 'AbortError' }));
+    });
+    req.on('error', reject);
+    req.end();
+  });
 }
 
 async function fetchWithTimeout(url, opts = {}) {
@@ -102,7 +165,13 @@ async function fetchWithTimeout(url, opts = {}) {
 
     }
   }
-  throw lastErr;
+  // fetch(undici)로 계속 실패하면, HTTP/1.1을 강제하는 Node https 모듈로 마지막으로 한 번 더 시도
+  try {
+    return await fetchViaNodeHttps(url, opts, FETCH_TIMEOUT_MS);
+  } catch (fallbackErr) {
+    // 폴백까지 실패하면, 더 구체적인(원래) 에러를 우선 노출
+    throw lastErr || fallbackErr;
+  }
 }
 
 // raw 시간 문자열/숫자를 UTC 기준 Date 로 최대한 관대하게 파싱
