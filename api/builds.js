@@ -57,17 +57,25 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 8000;
+const FETCH_TIMEOUT_MS = 8000; // 실제 응답은 즉시 오므로 8초면 충분함 (느려서가 아니라 차단/무응답 문제였음)
+const FETCH_MAX_RETRIES = 1; // 일시적 오류 대비 1회 재시도
 
-async function fetchWithTimeout(url, opts = {}) {
+// 일부 사이트가 서버리스/데이터센터發 요청이나 봇으로 보이는 User-Agent를 방화벽(CDN/WAF) 단에서
+// 조용히 무응답 처리(블랙홀)하는 경우가 있어, 실제 브라우저와 최대한 유사한 헤더로 요청함
+const BROWSER_LIKE_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+  'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+};
+
+async function fetchOnce(url, opts, timeoutMs) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const res = await fetch(url, {
       ...opts,
       signal: controller.signal,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (build-dashboard serverless fetcher)',
+        ...BROWSER_LIKE_HEADERS,
         Accept: '*/*',
         ...(opts.headers || {}),
       },
@@ -77,6 +85,24 @@ async function fetchWithTimeout(url, opts = {}) {
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function fetchWithTimeout(url, opts = {}) {
+  let lastErr;
+  for (let attempt = 0; attempt <= FETCH_MAX_RETRIES; attempt++) {
+    try {
+      return await fetchOnce(url, opts, FETCH_TIMEOUT_MS);
+    } catch (err) {
+      lastErr = err;
+      // 타임아웃(AbortError)이나 일시적 네트워크 오류일 수 있으므로, 마지막 시도가 아니면 짧게 쉬었다가 재시도
+      if (attempt < FETCH_MAX_RETRIES) {
+        await new Promise((r) => setTimeout(r, 500));
+        continue;
+      }
+
+    }
+  }
+  throw lastErr;
 }
 
 // raw 시간 문자열/숫자를 UTC 기준 Date 로 최대한 관대하게 파싱
@@ -405,6 +431,10 @@ async function fetchOne(src) {
     if (data._debug) out._debug = data._debug; // 진단 정보가 있으면 항상 응답에 포함시킴
     return out;
   } catch (err) {
+    const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
+    const errorMessage = isAbort
+      ? `타임아웃: ${FETCH_TIMEOUT_MS / 1000}초 응답 없음 (재시도 ${FETCH_MAX_RETRIES}회 포함)`
+      : String(err && err.message ? err.message : err);
     return {
       key: src.key,
       channel: src.channel,
@@ -412,7 +442,7 @@ async function fetchOne(src) {
       platform: src.platform,
       label: src.label,
       ok: false,
-      error: String(err && err.message ? err.message : err),
+      error: errorMessage,
       build: null,
       updateDateText: null,
       isToday: false,
