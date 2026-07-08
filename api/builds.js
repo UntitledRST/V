@@ -50,7 +50,12 @@ const SOURCES = [
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stbtnpartners.startsupport.com',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-head',
-    timeoutMs: 2000 },
+    timeoutMs: 2000,
+    // Cloudflare Worker 프록시를 통해 Last-Modified를 가져오려면 아래 두 값을 채우세요.
+    // (비워두면 기존처럼 직접 요청 -> 실패 시 HTTP/1.1 폴백 순서로 시도합니다)
+    proxyUrl: 'https://quiet-rice-5de5.lmc1009a.workers.dev', // 예: 'https://partneradmin-proxy.내계정서브도메인.workers.dev'
+    proxyKey: 'floccinaucinihilipilification', // cloudflare-worker.js에 설정한 PROXY_SECRET과 동일한 값
+  },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
@@ -392,24 +397,36 @@ async function fetchAdminTxt(src) {
   return result;
 }
 
-// GET 요청으로 응답 헤더의 Last-Modified 값을 업데이트 시간으로 사용.
-// version.txt 경로가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
-// (HEAD가 일부 서버/WAF에서 별도로 막히는 경우가 있어 GET으로 요청하되, 본문은 사용하지 않고 헤더만 읽음)
-// 1차 시도가 실패하면 HTTP/1.1을 강제하는 https 폴백까지 시도함(이 소스에 한해 최악 약 4초까지 허용).
+// Cloudflare Worker 등 별도 경유지(proxyUrl)를 통해, 혹은 직접 GET 요청으로
+// 응답 헤더의 Last-Modified 값을 가져와 업데이트 시간으로 사용.
+// direct fetch가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
 async function fetchAdminHead(src) {
   const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
-  const res = await fetchWithTimeout(
-    src.url,
-    { method: 'GET' },
-    {
-      timeoutMs,
-      maxRetries: 0, // 같은 방식으로 반복 재시도는 하지 않음 (재시도 대신 아래 https 폴백을 씀)
-      allowNodeHttpsFallback: true, // 실패 시 HTTP/1.1 강제 접속으로 마지막 한 번 더 시도
-    }
-  );
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  let lastModifiedRaw = null;
 
-  const lastModifiedRaw = res.headers.get('last-modified');
+  if (src.proxyUrl) {
+    // Cloudflare Worker 프록시를 거쳐 대상 사이트의 헤더를 대신 가져옴
+    // (Worker는 다른 네트워크/IP 대역에서 요청하므로, 원본 사이트가 서버리스 IP를 차단해도 우회 가능)
+    const res = await fetchWithTimeout(
+      src.proxyUrl,
+      { headers: src.proxyKey ? { 'x-proxy-key': src.proxyKey } : {} },
+      { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: false }
+    );
+    if (!res.ok) throw new Error(`프록시 HTTP ${res.status}`);
+    const json = await res.json();
+    if (json && json.ok === false && json.error) throw new Error(`프록시 오류: ${json.error}`);
+    lastModifiedRaw = (json && json.lastModified) || null;
+  } else {
+    // 프록시 미설정 시: 기존처럼 직접 GET 요청 (실패하면 HTTP/1.1 강제 폴백까지 시도)
+    const res = await fetchWithTimeout(
+      src.url,
+      { method: 'GET' },
+      { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: true }
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    lastModifiedRaw = res.headers.get('last-modified');
+  }
+
   // Last-Modified는 표준 HTTP-date 형식(예: "Wed, 21 Oct 2015 07:28:00 GMT")이라 Date가 바로 파싱 가능
   const date = lastModifiedRaw ? new Date(lastModifiedRaw) : null;
   const valid = !!(date && !isNaN(date.getTime()));
