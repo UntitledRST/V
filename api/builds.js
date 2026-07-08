@@ -48,13 +48,12 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stbtnpartners.startsupport.com',
-    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-head',
-    timeoutMs: 2000,
-    // Cloudflare Worker 프록시를 통해 Last-Modified를 가져오려면 아래 두 값을 채우세요.
-    // (비워두면 기존처럼 직접 요청 -> 실패 시 HTTP/1.1 폴백 순서로 시도합니다)
-    proxyUrl: 'https://quiet-rice-5de5.lmc1009a.workers.dev', // 예: 'https://partneradmin-proxy.내계정서브도메인.workers.dev'
-    proxyKey: 'floccinaucinihilipilification', // cloudflare-worker.js에 설정한 PROXY_SECRET과 동일한 값
+    siteUrl: 'https://stbtnpartners.startsupport.com',
+    // 이 사이트는 Vercel 직접요청/HTTP1.1 강제/Cloudflare Worker 경유까지 모두 시도했지만
+    // 원본 서버가 522(원본 응답 없음)로 응답해 조회가 불가능함이 확인됨.
+    // 더 이상 네트워크 요청을 시도하지 않고, 아래 고정 문구를 그대로 표시함.
+    disabled: true,
+    staticNote: '업데이트 시간: 2026-07-06 13:01:50',
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
@@ -62,8 +61,8 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 2000; // 모든 소스의 기본 타임아웃을 2초로 통일
-const FETCH_MAX_RETRIES = 0; // 재시도 없이 2초에서 바로 실패 처리 (베타 PartnerAdmin과 동일하게 통일)
+const FETCH_TIMEOUT_MS = 800; // 모든 소스의 기본 타임아웃을 800ms로 통일
+const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 const https = require('https');
 const { URL } = require('url');
@@ -385,11 +384,11 @@ async function fetchAdminTxt(src) {
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
   };
-  // buildNumber나 업데이트 시간을 끝내 못 찾은 경우, 실제 응답 구조를 바로 확인할 수 있도록 진단 정보를 함께 내려줌
-  if (build === null || updateDateText === null) {
+  // build 필드는 이 API에 애초에 존재하지 않는 경우가 많아 정상 상황이므로 진단 메시지에서 제외하고,
+  // 실제 문제인 "시간 필드를 못 찾은 경우"만 진단 정보를 내려줌
+  if (updateDateText === null) {
     result._debug = {
-      reason: (build === null ? 'buildNumber 후보 키를 찾지 못함' : '') +
-              (updateDateText === null ? (build === null ? ' / ' : '') + `시간 필드(${timeField}) 후보를 찾지 못함` : ''),
+      reason: `시간 필드(${timeField}) 후보를 찾지 못함`,
       topLevelKeys: Object.keys(j),
       rawSnippet: text.slice(0, 500),
     };
@@ -535,6 +534,24 @@ async function fetchWebRelay(src) {
 }
 
 async function fetchOne(src) {
+  // 조회를 아예 포기한 소스: 네트워크 요청을 전혀 시도하지 않고 항상 "정보 없음" 상태로 반환
+  if (src.disabled) {
+    return {
+      key: src.key,
+      channel: src.channel,
+      group: src.group,
+      platform: src.platform,
+      label: src.label,
+      ok: true,
+      build: null,
+      updateDateText: null,
+      staticNote: src.staticNote || null, // 있으면 카드에 이 문구를 그대로 표시 (index.html에서 처리)
+      isToday: false,
+      downloadUrl: src.siteUrl || src.url || null,
+      downloadLabel: '바로가기',
+    };
+  }
+
   try {
     let data;
     if (src.type === 'app-json') data = await fetchAppJson(src);
