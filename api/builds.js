@@ -48,7 +48,7 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stbtnpartners.startsupport.com/verion.txt', // 원본 URL의 오탈자(verion) 유지
+    url: 'https://stbtnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'build_date', timeMode: 'utc' },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
