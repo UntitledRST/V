@@ -486,7 +486,10 @@
     var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
 
     var updateHtml = '';
-    if (item.ok && item.updateDateText){
+    if (item.staticNote){
+      // 백엔드가 고정 문구를 내려준 경우, 계산된 상태와 무관하게 그 문구를 그대로 표시
+      updateHtml = '<div class="update-text">' + escapeHtml(item.staticNote) + '</div>';
+    } else if (item.ok && item.updateDateText){
       var parts = item.updateDateText.split(' ');
       var datePart = parts[0] || '';
       var timePart = parts[1] || '';
