@@ -50,7 +50,7 @@ const SOURCES = [
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stbtnpartners.startsupport.com',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-head',
-    timeoutMs: 2000,
+    timeoutMs: 8000, // Worker를 경유하면서 왕복 시간이 늘어날 수 있어 임시로 늘림 (원인 파악 후 다시 줄일 예정)
     // Cloudflare Worker 프록시를 통해 Last-Modified를 가져오려면 아래 두 값을 채우세요.
     // (비워두면 기존처럼 직접 요청 -> 실패 시 HTTP/1.1 폴백 순서로 시도합니다)
     proxyUrl: 'https://quiet-rice-5de5.lmc1009a.workers.dev', // 예: 'https://partneradmin-proxy.내계정서브도메인.workers.dev'
