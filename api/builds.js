@@ -392,16 +392,19 @@ async function fetchAdminTxt(src) {
   return result;
 }
 
-// HEAD 요청(curl -I와 동일)을 보내 응답 헤더의 Last-Modified 값을 업데이트 시간으로 사용.
+// GET 요청으로 응답 헤더의 Last-Modified 값을 업데이트 시간으로 사용.
 // version.txt 경로가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
+// (HEAD가 일부 서버/WAF에서 별도로 막히는 경우가 있어 GET으로 요청하되, 본문은 사용하지 않고 헤더만 읽음)
+// 1차 시도가 실패하면 HTTP/1.1을 강제하는 https 폴백까지 시도함(이 소스에 한해 최악 약 4초까지 허용).
 async function fetchAdminHead(src) {
+  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
   const res = await fetchWithTimeout(
     src.url,
-    { method: 'HEAD' },
+    { method: 'GET' },
     {
-      timeoutMs: src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS,
-      maxRetries: 0, // 페이지 로딩이 길어지지 않도록 재시도하지 않고 바로 실패 처리
-      allowNodeHttpsFallback: false, // 같은 이유로 https 폴백도 시도하지 않음 (지연 시간 최소화)
+      timeoutMs,
+      maxRetries: 0, // 같은 방식으로 반복 재시도는 하지 않음 (재시도 대신 아래 https 폴백을 씀)
+      allowNodeHttpsFallback: true, // 실패 시 HTTP/1.1 강제 접속으로 마지막 한 번 더 시도
     }
   );
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
