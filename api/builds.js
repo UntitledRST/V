@@ -6,7 +6,9 @@
 const SOURCES = [
   // ---------------- ALPHA / APP ----------------
   { key: 'alpha-app-windows', channel: 'alpha', group: 'app', platform: 'windows', label: 'Windows',
-    url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json' },
+    url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json',
+    // fixed download url regardless of version.json's url field
+    downloadUrl: 'https://stapan.113366.com/pub/windows/remotecall-host.exe' },
   { key: 'alpha-app-macos', channel: 'alpha', group: 'app', platform: 'macos', label: 'macOS',
     url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'alpha-app-android', channel: 'alpha', group: 'app', platform: 'android', label: 'Android',
@@ -324,7 +326,7 @@ async function fetchAppJson(src) {
     build,
     updateDateText: formatKST(date),
     updateDateForCompare: date ? formatKST(date).slice(0, 10) : null,
-    downloadUrl: j.url || null,
+    downloadUrl: src.downloadUrl || j.url || null,
     downloadLabel: '다운로드',
   };
 }
