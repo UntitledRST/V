@@ -8,7 +8,7 @@ const SOURCES = [
   { key: 'alpha-app-windows', channel: 'alpha', group: 'app', platform: 'windows', label: 'Windows',
     url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json',
     // fixed download url regardless of version.json's url field
-    downloadUrl: 'https://stapan.113366.com/pub/windows/remotecall-host.exe' },
+    downloadUrl: 'https://stapn.113366.com/pub/windows/remotecall-host.exe' },
   { key: 'alpha-app-macos', channel: 'alpha', group: 'app', platform: 'macos', label: 'macOS',
     url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'alpha-app-android', channel: 'alpha', group: 'app', platform: 'android', label: 'Android',
