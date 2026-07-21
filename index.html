@@ -222,6 +222,9 @@
 
   /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
   .app-subgroup-gap{
+    display:flex;
+    flex-direction:column;
+    flex: 1 1 auto;
     margin-top: 18px;
     padding-top: 14px;
     border-top: 1px dashed var(--panel-border);
@@ -236,6 +239,7 @@
 
   /* ---------------- App(Host)/App(Viewer) 행(row) 목록: 여러 항목을 하나의 카드 안에 리스트로 표시 ---------------- */
   .app-rows{
+    flex: 1 1 auto;
     display:flex;
     flex-direction:column;
     border: 1px solid var(--card-border);
@@ -243,6 +247,7 @@
     overflow:hidden;
   }
   .app-row{
+    flex: 1 1 auto;
     display:flex;
     align-items:center;
     gap: 10px;
