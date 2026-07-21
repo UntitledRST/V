@@ -4,17 +4,23 @@
 // Vercel Node.js 서버리스 함수 형식 (Node 18+ 전역 fetch 사용)
 
 const SOURCES = [
-  // ---------------- ALPHA / APP ----------------
-  { key: 'alpha-app-windows', channel: 'alpha', group: 'app', platform: 'windows', label: 'Windows',
+  // ---------------- ALPHA / APP (Host) ----------------
+  { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Windows',
     url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json',
     // fixed download url regardless of version.json's url field
     downloadUrl: 'https://stapn.113366.com/pub/windows/remotecall-host.exe' },
-  { key: 'alpha-app-macos', channel: 'alpha', group: 'app', platform: 'macos', label: 'macOS',
+  { key: 'alpha-app-macos', channel: 'alpha', group: 'app-host', platform: 'macos', label: 'macOS',
     url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'alpha-app-android', channel: 'alpha', group: 'app', platform: 'android', label: 'Android',
+  { key: 'alpha-app-android', channel: 'alpha', group: 'app-host', platform: 'android', label: 'Android',
     url: 'https://stapn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'alpha-app-ios', channel: 'alpha', group: 'app', platform: 'ios', label: 'iOS',
+  { key: 'alpha-app-ios', channel: 'alpha', group: 'app-host', platform: 'ios', label: 'iOS',
     url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
+
+  // ---------------- ALPHA / APP (Viewer) ----------------
+  { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Windows',
+    url: 'http://stapn.startsupport.com/pub/windows/version.json', type: 'app-json' },
+  { key: 'alpha-appviewer-macos', channel: 'alpha', group: 'app-viewer', platform: 'macos', label: 'macOS',
+    url: 'http://stapn.startsupport.com/pub/macos/version.json', type: 'app-json' },
 
   // ---------------- ALPHA / WEB ----------------
   { key: 'alpha-web-viewer', channel: 'alpha', group: 'web', platform: 'viewer', label: 'Viewer',
@@ -32,15 +38,21 @@ const SOURCES = [
     siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
 
-  // ---------------- BETA / APP ----------------
-  { key: 'beta-app-windows', channel: 'beta', group: 'app', platform: 'windows', label: 'Windows',
+  // ---------------- BETA / APP (Host) ----------------
+  { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Windows',
     url: 'https://stbtn.113366.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'beta-app-macos', channel: 'beta', group: 'app', platform: 'macos', label: 'macOS',
+  { key: 'beta-app-macos', channel: 'beta', group: 'app-host', platform: 'macos', label: 'macOS',
     url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'beta-app-android', channel: 'beta', group: 'app', platform: 'android', label: 'Android',
+  { key: 'beta-app-android', channel: 'beta', group: 'app-host', platform: 'android', label: 'Android',
     url: 'https://stbtn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'beta-app-ios', channel: 'beta', group: 'app', platform: 'ios', label: 'iOS',
+  { key: 'beta-app-ios', channel: 'beta', group: 'app-host', platform: 'ios', label: 'iOS',
     url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
+
+  // ---------------- BETA / APP (Viewer) ----------------
+  { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Windows',
+    url: 'http://stbtn.startsupport.com/pub/windows/version.json', type: 'app-json' },
+  { key: 'beta-appviewer-macos', channel: 'beta', group: 'app-viewer', platform: 'macos', label: 'macOS',
+    url: 'http://stbtn.startsupport.com/pub/macos/version.json', type: 'app-json' },
 
   // ---------------- BETA / WEB ----------------
   { key: 'beta-web-viewer', channel: 'beta', group: 'web', platform: 'viewer', label: 'Viewer',
