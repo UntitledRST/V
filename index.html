@@ -183,8 +183,7 @@
 
   .panels{
     display:flex;
-    justify-content: space-between;
-    gap: 12px;
+    gap: 6px;
     flex: 1 1 auto;
     overflow-x: auto; /* 좁은 데스크톱 창에서 카드가 과도하게 압축/클리핑되는 대신 가로 스크롤로 대체 */
     overflow-y: hidden;
@@ -202,10 +201,11 @@
 
   .panel-app{ flex: 0 0 auto; }
   .panel-app-outer{
-    flex: 0 0 auto;
+    flex: 6 6 0;
     display:flex;
     flex-direction:row;
-    gap: 12px;
+    gap: 6px;
+    min-width: 0;
   }
   .app-subpanel{
     display:flex;
@@ -214,10 +214,10 @@
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius-md);
-    padding: 10px;
+    padding: 8px;
   }
-  .app-subpanel-host{ flex: 0 0 auto; }
-  .app-subpanel-viewer{ flex: 0 0 auto; }
+  .app-subpanel-host{ flex: 4 4 0; min-width: 0; }
+  .app-subpanel-viewer{ flex: 2 2 0; min-width: 0; }
   .app-subpanel-title{
     margin:0;
     font-size: 14px;
@@ -226,9 +226,9 @@
     letter-spacing: 0.01em;
   }
   .app-subpanel .cards-grid{ flex: 1 1 auto; display:grid; gap:10px; grid-auto-rows:1fr; }
-  .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, var(--card-w)); }
-  .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, var(--card-w)); }
-  .panel-web{ flex: 0 0 auto; }
+  .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
+  .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
+  .panel-web{ flex: 4 4 0; min-width: 0; }
 
   .panel-title{
     margin:0;
@@ -247,7 +247,7 @@
   }
   /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
      패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
-  .panel-web .cards-grid{ grid-template-columns: repeat(4, var(--card-w)); }
+  .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
 
   /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
   .app-subgroup-gap{
