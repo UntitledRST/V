@@ -74,7 +74,7 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const FETCH_TIMEOUT_MS = 1200; // 개별 소스 조회의 기본 타임아웃(1200ms)
+const TIMEOUT_MS = 1000; // 유일한 타임아웃 설정: 모든 곳에서 이 값(1초) 하나만 사용
 
 // 소스별로 "마지막에 성공했던 결과"를 저장해두는 캐시.
 // cacheOnSuccess:true 인 소스가 조회에 실패하면, 에러 대신 이 캐시에 저장된 값을 그대로 보여줌.
@@ -83,7 +83,7 @@ const LAST_GOOD_CACHE = new Map();
 
 // 최초 배포 시점에는 아직 한 번도 조회에 성공한 적이 없어 캐시가 비어있으므로,
 // 사용자가 직접 확인한 실제 값(2026-07-16T08:02:16.335Z, buildNumber 4)으로 미리 시드해둠.
-// 이후 실제 조회가 0.7초 안에 성공하면 이 값은 최신 조회 결과로 자동 갱신됨.
+// 이후 실제 조회가 1초 안에 성공하면 이 값은 최신 조회 결과로 자동 갱신됨.
 (function seedBetaPartnerAdminCache() {
   const seedDate = parseAsUTCDate('2026-07-16T08:02:16.335Z');
   const seedText = formatKST(seedDate);
@@ -97,12 +97,6 @@ const LAST_GOOD_CACHE = new Map();
   });
 })();
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
-
-// 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
-// 절대 이 시간을 넘기지 않도록 하는 "최종 안전장치" 데드라인.
-// (개별 FETCH_TIMEOUT_MS를 아무리 잘 맞춰도, 코드 경로에 따라 재시도/폴백이 겹치면
-//  1.2초를 넘길 수 있으므로, 소스 하나하나를 이 시간으로 강제 컷오프함)
-const HARD_DEADLINE_MS = 1200;
 
 // promise가 ms 안에 끝나지 않으면, 원래 처리 결과를 기다리지 않고 즉시 fallbackFactory()의
 // 결과로 대체해서 응답함 (원래 promise 자체가 취소되는 건 아니지만, 응답에는 영향을 주지 않음)
@@ -225,9 +219,9 @@ function fetchViaNodeHttps(url, opts, timeoutMs) {
 }
 
 async function fetchWithTimeout(url, opts = {}, config = {}) {
-  // config로 개별 소스가 기본 타임아웃(2초)/재시도(0회)/https 폴백 여부를 오버라이드할 수 있음
+  // config로 개별 소스가 기본 타임아웃(1초)/재시도(0회)/https 폴백 여부를 오버라이드할 수 있음
   // 기본값은 재시도/폴백 없이 정확히 timeoutMs에서 바로 실패 처리 (모든 소스 통일)
-  const timeoutMs = config.timeoutMs != null ? config.timeoutMs : FETCH_TIMEOUT_MS;
+  const timeoutMs = config.timeoutMs != null ? config.timeoutMs : TIMEOUT_MS;
   const maxRetries = config.maxRetries != null ? config.maxRetries : FETCH_MAX_RETRIES;
   const allowNodeHttpsFallback = config.allowNodeHttpsFallback === true;
 
@@ -380,7 +374,7 @@ function parseKeyValueText(text) {
 }
 
 async function fetchAdminTxt(src) {
-  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
+  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
   const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } }, { timeoutMs });
   if (!res.ok) throw httpStatusError(res.status);
   const text = await res.text();
@@ -483,7 +477,7 @@ async function fetchAdminTxt(src) {
 // 응답 헤더의 Last-Modified 값을 가져와 업데이트 시간으로 사용.
 // direct fetch가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
 async function fetchAdminHead(src) {
-  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
+  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
   let lastModifiedRaw = null;
 
   if (src.proxyUrl) {
@@ -677,13 +671,13 @@ async function fetchOne(src) {
     return out;
   } catch (err) {
     const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
-    const effectiveTimeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
+    const effectiveTimeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
     const errorMessage = isAbort
       ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
 
     // cacheOnSuccess 소스가 실패(타임아웃 포함)한 경우: 에러를 보여주는 대신
-    // 마지막으로 성공했던 값을 그대로 유지해서 보여줌 (요청하신 "0.7초 안에 안 들어가면 기존 값 유지" 동작)
+    // 마지막으로 성공했던 값을 그대로 유지해서 보여줌 ("1초 안에 안 들어가면 기존 값 유지" 동작)
     if (src.cacheOnSuccess && LAST_GOOD_CACHE.has(src.key)) {
       const cached = LAST_GOOD_CACHE.get(src.key);
       const todayKST = todayKSTDateStr();
@@ -733,7 +727,7 @@ async function fetchOne(src) {
   }
 }
 
-// 하드 데드라인(HARD_DEADLINE_MS)을 넘긴 소스에 대해 내려줄 결과.
+// 하드 데드라인(TIMEOUT_MS)을 넘긴 소스에 대해 내려줄 결과.
 // 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
 function buildHardDeadlineResult(src) {
   // cacheOnSuccess 소스는 전역 하드 데드라인에 걸리더라도 마지막 성공값을 유지 (개별 timeoutMs가 하드 데드라인보다
@@ -764,7 +758,7 @@ function buildHardDeadlineResult(src) {
     platform: src.platform,
     label: src.label,
     ok: false,
-    error: `응답 지연으로 강제 종료(${HARD_DEADLINE_MS}ms 초과)`,
+    error: `응답 지연으로 강제 종료(${TIMEOUT_MS}ms 초과)`,
     statusCode: null,
     networkErrorCode: null,
     possibleDeployIssue: true, // 응답이 이례적으로 느린 것도 재배포/재시작 정황일 가능성이 높아 동일하게 취급
@@ -778,10 +772,10 @@ function buildHardDeadlineResult(src) {
 
 module.exports = async (req, res) => {
   try {
-    // 소스 하나하나에 HARD_DEADLINE_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
-    // /api/builds 응답 자체는 절대 HARD_DEADLINE_MS(1초)를 넘기지 않음
+    // 소스 하나하나에 TIMEOUT_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
+    // /api/builds 응답 자체는 절대 TIMEOUT_MS(1초)를 넘기지 않음
     const results = await Promise.all(
-      SOURCES.map((src) => withHardDeadline(fetchOne(src), HARD_DEADLINE_MS, () => buildHardDeadlineResult(src)))
+      SOURCES.map((src) => withHardDeadline(fetchOne(src), TIMEOUT_MS, () => buildHardDeadlineResult(src)))
     );
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.status(200).json({
