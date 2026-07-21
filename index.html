@@ -199,6 +199,33 @@
   }
 
   .panel-app{ flex: 1 1 0; }
+  .panel-app-outer{
+    flex: 1 1 0;
+    display:flex;
+    flex-direction:row;
+    gap: 12px;
+  }
+  .app-subpanel{
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+    padding: 10px;
+  }
+  .app-subpanel-host{ flex: 4 4 0; }
+  .app-subpanel-viewer{ flex: 2 2 0; }
+  .app-subpanel-title{
+    margin:0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: 0.01em;
+  }
+  .app-subpanel .cards-grid{ flex: 1 1 auto; display:grid; gap:10px; grid-auto-rows:1fr; }
+  .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(100px, 1fr)); }
+  .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(100px, 1fr)); }
   .panel-web{ flex: 1 1 0; }
 
   .panel-title{
@@ -449,6 +476,9 @@
     .content{ flex: none; }
     .panels{ flex-direction: column; flex: none; overflow-x: visible; }
     .panel-web .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .panel-app-outer{ flex-direction: column; }
+    .app-subpanel-host .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, 1fr); }
     .cards-grid{ flex: none; grid-auto-rows: auto; }
     .card{ min-height: 190px; }
     .channel{ flex: none; }
@@ -686,44 +716,48 @@
       var panels = document.createElement('div');
       panels.className = 'panels';
 
-      // ---- App 패널: App(Host) 4개를 하나의 카드로, App(Viewer) 2개를 하나의 카드로 묶고,
-      //      이 둘을 다시 하나의 패널(카드) 안에 합쳐서 표시 ----
+      // ---- App 패널: 바깥 큰 박스 하나 안에 App(Host) 박스와 App(Viewer) 박스가 나란히 배치 ----
       var hostList = byChannel[ch]['app-host'];
       var viewerList = byChannel[ch]['app-viewer'];
       if (hostList || viewerList) {
-        var appPanel = document.createElement('div');
-        appPanel.className = 'panel panel-app';
+        var appOuter = document.createElement('div');
+        appOuter.className = 'panel panel-app-outer';
 
         if (hostList) {
-          var hostTitle = document.createElement('h2');
-          hostTitle.className = 'panel-title app';
-          hostTitle.textContent = 'App(Host)';
-          appPanel.appendChild(hostTitle);
+          var hostSub = document.createElement('div');
+          hostSub.className = 'app-subpanel app-subpanel-host';
 
-          var hostRows = document.createElement('div');
-          hostRows.className = 'app-rows';
-          hostList.forEach(function(item){ hostRows.appendChild(renderAppRow(item)); });
-          appPanel.appendChild(hostRows);
+          var hostTitle = document.createElement('h3');
+          hostTitle.className = 'app-subpanel-title';
+          hostTitle.textContent = 'App(Host)';
+          hostSub.appendChild(hostTitle);
+
+          var hostGrid = document.createElement('div');
+          hostGrid.className = 'cards-grid';
+          hostList.forEach(function(item){ hostGrid.appendChild(renderCard(item)); });
+          hostSub.appendChild(hostGrid);
+
+          appOuter.appendChild(hostSub);
         }
 
         if (viewerList) {
-          var viewerBlock = document.createElement('div');
-          viewerBlock.className = 'app-subgroup-gap';
+          var viewerSub = document.createElement('div');
+          viewerSub.className = 'app-subpanel app-subpanel-viewer';
 
           var viewerTitle = document.createElement('h3');
-          viewerTitle.className = 'subgroup-title';
+          viewerTitle.className = 'app-subpanel-title';
           viewerTitle.textContent = 'App(Viewer)';
-          viewerBlock.appendChild(viewerTitle);
+          viewerSub.appendChild(viewerTitle);
 
-          var viewerRows = document.createElement('div');
-          viewerRows.className = 'app-rows';
-          viewerList.forEach(function(item){ viewerRows.appendChild(renderAppRow(item)); });
-          viewerBlock.appendChild(viewerRows);
+          var viewerGrid = document.createElement('div');
+          viewerGrid.className = 'cards-grid';
+          viewerList.forEach(function(item){ viewerGrid.appendChild(renderCard(item)); });
+          viewerSub.appendChild(viewerGrid);
 
-          appPanel.appendChild(viewerBlock);
+          appOuter.appendChild(viewerSub);
         }
 
-        panels.appendChild(appPanel);
+        panels.appendChild(appOuter);
       }
 
       // ---- Web 패널: 기존 방식 그대로 ----
