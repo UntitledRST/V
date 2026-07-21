@@ -62,12 +62,12 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    siteUrl: 'https://stbtnpartners.startsupport.com',
-    // 이 사이트는 Vercel 직접요청/HTTP1.1 강제/Cloudflare Worker 경유까지 모두 시도했지만
-    // 원본 서버가 522(원본 응답 없음)로 응답해 조회가 불가능함이 확인됨.
-    // 더 이상 네트워크 요청을 시도하지 않고, 아래 고정 문구를 그대로 표시함.
-    disabled: true,
-    staticNote: '업데이트: 2026-07-06 13:01:50',
+    url: 'https://stbtnpartners.startsupport.com/version.txt',
+    siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc',
+    // 0.7초 안에 응답이 없으면 실패 처리하고, 마지막으로 성공했던 값을 대신 표시함(아래 LAST_GOOD_CACHE 참고)
+    timeoutMs: 700,
+    cacheOnSuccess: true,
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
@@ -76,6 +76,11 @@ const SOURCES = [
 ];
 
 const FETCH_TIMEOUT_MS = 1200; // 개별 소스 조회의 기본 타임아웃(1200ms)
+
+// 소스별로 "마지막에 성공했던 결과"를 저장해두는 캐시.
+// cacheOnSuccess:true 인 소스가 조회에 실패하면, 에러 대신 이 캐시에 저장된 값을 그대로 보여줌.
+// 주의: 서버리스 함수 특성상 이 캐시는 함수 인스턴스가 재시작(cold start)되면 초기화됨(메모리 전용, 영구 저장 아님).
+const LAST_GOOD_CACHE = new Map();
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 // 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
@@ -360,7 +365,8 @@ function parseKeyValueText(text) {
 }
 
 async function fetchAdminTxt(src) {
-  const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } });
+  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
+  const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } }, { timeoutMs });
   if (!res.ok) throw httpStatusError(res.status);
   const text = await res.text();
   let j = null;
@@ -640,6 +646,19 @@ async function fetchOne(src) {
       downloadLabel: data.downloadLabel,
     };
     if (data._debug) out._debug = data._debug; // 진단 정보가 있으면 항상 응답에 포함시킴
+
+    // 이번 조회가 성공했으니, 다음에 실패할 경우를 대비해 결과를 캐시에 저장해둠
+    if (src.cacheOnSuccess) {
+      LAST_GOOD_CACHE.set(src.key, {
+        build: data.build,
+        updateDateText: data.updateDateText,
+        updateDateForCompare: data.updateDateForCompare,
+        downloadUrl: data.downloadUrl,
+        downloadLabel: data.downloadLabel,
+        cachedAt: Date.now(),
+      });
+    }
+
     return out;
   } catch (err) {
     const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
@@ -647,6 +666,30 @@ async function fetchOne(src) {
     const errorMessage = isAbort
       ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
+
+    // cacheOnSuccess 소스가 실패(타임아웃 포함)한 경우: 에러를 보여주는 대신
+    // 마지막으로 성공했던 값을 그대로 유지해서 보여줌 (요청하신 "0.7초 안에 안 들어가면 기존 값 유지" 동작)
+    if (src.cacheOnSuccess && LAST_GOOD_CACHE.has(src.key)) {
+      const cached = LAST_GOOD_CACHE.get(src.key);
+      const todayKST = todayKSTDateStr();
+      const isToday = !!cached.updateDateForCompare && cached.updateDateForCompare === todayKST;
+      return {
+        key: src.key,
+        channel: src.channel,
+        group: src.group,
+        platform: src.platform,
+        label: src.label,
+        ok: true,
+        build: cached.build,
+        updateDateText: cached.updateDateText,
+        isToday,
+        downloadUrl: cached.downloadUrl,
+        downloadLabel: cached.downloadLabel,
+        _debug: {
+          reason: `조회 실패(${errorMessage}) - 마지막 성공값 유지 중 (마지막 성공 시각: ${formatKST(new Date(cached.cachedAt))})`,
+        },
+      };
+    }
 
     // 실패 원인이 "게이트웨이/원본서버 응답 없음" 계열 상태코드이거나, 연결이 끊기는 네트워크 오류이거나,
     // 타임아웃(응답 자체가 없음)인 경우 -> 완전한 장애라기보다 "빌드 업데이트로 서버가 재시작 중"일 가능성이 높음
@@ -681,6 +724,30 @@ async function fetchOne(src) {
 // 하드 데드라인(HARD_DEADLINE_MS)을 넘긴 소스에 대해 내려줄 결과.
 // 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
 function buildHardDeadlineResult(src) {
+  // cacheOnSuccess 소스는 전역 하드 데드라인에 걸리더라도 마지막 성공값을 유지 (개별 timeoutMs가 하드 데드라인보다
+  // 짧게 설정되어 있어 보통은 이 경로를 타지 않지만, 방어적으로 동일하게 처리)
+  if (src.cacheOnSuccess && LAST_GOOD_CACHE.has(src.key)) {
+    const cached = LAST_GOOD_CACHE.get(src.key);
+    const todayKST = todayKSTDateStr();
+    const isToday = !!cached.updateDateForCompare && cached.updateDateForCompare === todayKST;
+    return {
+      key: src.key,
+      channel: src.channel,
+      group: src.group,
+      platform: src.platform,
+      label: src.label,
+      ok: true,
+      build: cached.build,
+      updateDateText: cached.updateDateText,
+      isToday,
+      downloadUrl: cached.downloadUrl,
+      downloadLabel: cached.downloadLabel,
+      _debug: {
+        reason: `응답 지연(${HARD_DEADLINE_MS}ms 초과) - 마지막 성공값 유지 중 (마지막 성공 시각: ${formatKST(new Date(cached.cachedAt))})`,
+      },
+    };
+  }
+
   return {
     key: src.key,
     channel: src.channel,
