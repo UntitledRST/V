@@ -65,8 +65,7 @@ const SOURCES = [
     url: 'https://stbtnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
-    // 0.7초 안에 응답이 없으면 실패 처리하고, 마지막으로 성공했던 값을 대신 표시함(아래 LAST_GOOD_CACHE 참고)
-    timeoutMs: 700,
+    // 응답이 없으면 실패 처리하고, 마지막으로 성공했던 값을 대신 표시함(아래 LAST_GOOD_CACHE 참고)
     cacheOnSuccess: true,
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
