@@ -198,8 +198,8 @@
     gap: 8px;
   }
 
-  .panel-app{ flex: 6 6 0; }
-  .panel-web{ flex: 4 4 0; }
+  .panel-app{ flex: 1 1 0; }
+  .panel-web{ flex: 1 1 0; }
 
   .panel-title{
     margin:0;
@@ -218,8 +218,81 @@
   }
   /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
      패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
-  .panel-app .cards-grid{ grid-template-columns: repeat(6, minmax(128px, 1fr)); }
   .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
+
+  /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
+  .app-subgroup-gap{
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--panel-border);
+  }
+  .subgroup-title{
+    margin: 0 0 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------------- App(Host)/App(Viewer) 행(row) 목록: 여러 항목을 하나의 카드 안에 리스트로 표시 ---------------- */
+  .app-rows{
+    display:flex;
+    flex-direction:column;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow:hidden;
+  }
+  .app-row{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    padding: 9px 12px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--card-border);
+    font-size: 13px;
+  }
+  .app-row:last-child{ border-bottom: none; }
+  .app-row.updated-today{ box-shadow: inset 0 0 0 1px rgba(239,68,68,0.35); }
+  .app-row .status-dot{ margin-left:0; }
+  .app-row-icon{ display:flex; align-items:center; flex-shrink:0; }
+  .app-row-icon svg{ width:15px; height:15px; color: var(--text-secondary); }
+  .app-row-name{
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 84px;
+    flex-shrink:0;
+  }
+  .app-row-build{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 70px;
+    flex-shrink:0;
+  }
+  .app-row-build.na{ color: var(--text-tertiary); font-weight:600; font-size:12px; }
+  .app-row-update{
+    flex: 1 1 auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .app-row-update.na{ color: var(--text-tertiary); }
+  .app-row-update.err{ color: var(--red); }
+  .app-row-download.download-btn{
+    flex-shrink:0;
+    width:auto;
+    margin-top:0;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 700px){
+    .app-row{ flex-wrap: wrap; }
+    .app-row-update{ white-space:normal; flex-basis:100%; order:5; }
+  }
 
   /* ---------------- Card ---------------- */
   .card{
@@ -370,7 +443,6 @@
     .dashboard{ min-height: auto; padding: 18px 16px 24px; }
     .content{ flex: none; }
     .panels{ flex-direction: column; flex: none; overflow-x: visible; }
-    .panel-app .cards-grid{ grid-template-columns: repeat(3, 1fr); }
     .panel-web .cards-grid{ grid-template-columns: repeat(2, 1fr); }
     .cards-grid{ flex: none; grid-auto-rows: auto; }
     .card{ min-height: 190px; }
@@ -381,7 +453,7 @@
   }
 
   @media (max-width: 520px){
-    .panel-app .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .app-row-name{ min-width: 64px; }
   }
 </style>
 </head>
@@ -433,10 +505,8 @@
     relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>'
   };
 
-  var GROUP_LABEL = { app: 'App(Host) / App(Viewer)', web: 'Web' };
   var CHANNEL_LABEL = { alpha: { pill: 'ALPHA', name: '알파 채널' }, beta: { pill: 'BETA', name: '베타 채널' } };
   var CHANNEL_ORDER = ['alpha', 'beta'];
-  var GROUP_ORDER = ['app', 'web'];
 
   var contentEl = document.getElementById('content');
   var lastRefreshEl = document.getElementById('lastRefresh');
@@ -538,7 +608,53 @@
     return card;
   }
 
-  var DISPLAY_GROUP = { 'app-host': 'app', 'app-viewer': 'app', 'web': 'web' };
+  // ---------- App(Host)/App(Viewer) 전용: 하나의 카드 안에 여러 항목을 행(row) 형태로 표시 ----------
+  function renderAppRow(item){
+    var row = document.createElement('div');
+    row.className = 'app-row';
+    if (item.isToday) row.classList.add('updated-today');
+
+    var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
+    var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
+
+    var updateText = '';
+    var updateClass = '';
+    if (item.staticNote){
+      updateText = escapeHtml(item.staticNote);
+    } else if (item.ok && item.updateDateText){
+      updateText = '업데이트: ' + escapeHtml(item.updateDateText);
+    } else if (item.ok){
+      updateText = '업데이트: 정보 없음';
+      updateClass = 'na';
+    } else {
+      updateText = '업데이트: 조회 실패';
+      updateClass = 'err';
+    }
+
+    var diagText = null;
+    if (item._debug && item._debug.reason) diagText = item._debug.reason;
+    else if (!item.ok && item.error) diagText = item.error;
+    if (diagText) row.title = diagText;
+
+    var downloadHtml = '';
+    if (item.ok && item.downloadUrl){
+      downloadHtml = '<a class="download-btn app-row-download" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
+        (item.downloadLabel || '다운로드') + '</a>';
+    } else {
+      downloadHtml = '<span class="download-btn app-row-download disabled">이용 불가</span>';
+    }
+
+    row.innerHTML =
+      '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
+      '<span class="app-row-icon">' + (ICONS[item.platform] || '') + '</span>' +
+      '<span class="app-row-name">' + escapeHtml(item.label || '') + '</span>' +
+      '<span class="app-row-build' + (hasBuild ? '' : ' na') + '">' + buildText + '</span>' +
+      '<span class="app-row-update ' + updateClass + '">' + updateText + '</span>' +
+      downloadHtml;
+
+    return row;
+  }
 
   // ---------- 전체 렌더링 ----------
   function render(items){
@@ -546,10 +662,9 @@
 
     var byChannel = {};
     items.forEach(function(it){
-      var dispGrp = DISPLAY_GROUP[it.group] || it.group;
       byChannel[it.channel] = byChannel[it.channel] || {};
-      byChannel[it.channel][dispGrp] = byChannel[it.channel][dispGrp] || [];
-      byChannel[it.channel][dispGrp].push(it);
+      byChannel[it.channel][it.group] = byChannel[it.channel][it.group] || [];
+      byChannel[it.channel][it.group].push(it);
     });
 
     CHANNEL_ORDER.forEach(function(ch){
@@ -566,24 +681,63 @@
       var panels = document.createElement('div');
       panels.className = 'panels';
 
-      GROUP_ORDER.forEach(function(grp){
-        var list = byChannel[ch][grp];
-        if (!list) return;
-        var panel = document.createElement('div');
-        panel.className = 'panel panel-' + grp;
+      // ---- App 패널: App(Host)/App(Viewer) 6개 항목을 하나의 카드(패널) 안에 행(row) 목록으로 표시 ----
+      var hostList = byChannel[ch]['app-host'];
+      var viewerList = byChannel[ch]['app-viewer'];
+      if (hostList || viewerList) {
+        var appPanel = document.createElement('div');
+        appPanel.className = 'panel panel-app';
 
-        var title = document.createElement('h2');
-        title.className = 'panel-title ' + grp;
-        title.textContent = GROUP_LABEL[grp];
-        panel.appendChild(title);
+        if (hostList) {
+          var hostTitle = document.createElement('h2');
+          hostTitle.className = 'panel-title app';
+          hostTitle.textContent = 'App(Host)';
+          appPanel.appendChild(hostTitle);
 
-        var grid = document.createElement('div');
-        grid.className = 'cards-grid';
-        list.forEach(function(item){ grid.appendChild(renderCard(item)); });
-        panel.appendChild(grid);
+          var hostRows = document.createElement('div');
+          hostRows.className = 'app-rows';
+          hostList.forEach(function(item){ hostRows.appendChild(renderAppRow(item)); });
+          appPanel.appendChild(hostRows);
+        }
 
-        panels.appendChild(panel);
-      });
+        if (viewerList) {
+          var viewerBlock = document.createElement('div');
+          viewerBlock.className = 'app-subgroup-gap';
+
+          var viewerTitle = document.createElement('h3');
+          viewerTitle.className = 'subgroup-title';
+          viewerTitle.textContent = 'App(Viewer)';
+          viewerBlock.appendChild(viewerTitle);
+
+          var viewerRows = document.createElement('div');
+          viewerRows.className = 'app-rows';
+          viewerList.forEach(function(item){ viewerRows.appendChild(renderAppRow(item)); });
+          viewerBlock.appendChild(viewerRows);
+
+          appPanel.appendChild(viewerBlock);
+        }
+
+        panels.appendChild(appPanel);
+      }
+
+      // ---- Web 패널: 기존 방식 그대로 ----
+      var webList = byChannel[ch]['web'];
+      if (webList) {
+        var webPanel = document.createElement('div');
+        webPanel.className = 'panel panel-web';
+
+        var webTitle = document.createElement('h2');
+        webTitle.className = 'panel-title web';
+        webTitle.textContent = 'Web';
+        webPanel.appendChild(webTitle);
+
+        var webGrid = document.createElement('div');
+        webGrid.className = 'cards-grid';
+        webList.forEach(function(item){ webGrid.appendChild(renderCard(item)); });
+        webPanel.appendChild(webGrid);
+
+        panels.appendChild(webPanel);
+      }
 
       section.appendChild(panels);
       contentEl.appendChild(section);
