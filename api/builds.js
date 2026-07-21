@@ -66,7 +66,7 @@ const SOURCES = [
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
     // 0.7초 안에 응답이 없으면 실패 처리하고, 마지막으로 성공했던 값을 대신 표시함(아래 LAST_GOOD_CACHE 참고)
-    timeoutMs: 2000,
+    timeoutMs: 700,
     cacheOnSuccess: true,
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
@@ -81,6 +81,22 @@ const FETCH_TIMEOUT_MS = 1200; // 개별 소스 조회의 기본 타임아웃(12
 // cacheOnSuccess:true 인 소스가 조회에 실패하면, 에러 대신 이 캐시에 저장된 값을 그대로 보여줌.
 // 주의: 서버리스 함수 특성상 이 캐시는 함수 인스턴스가 재시작(cold start)되면 초기화됨(메모리 전용, 영구 저장 아님).
 const LAST_GOOD_CACHE = new Map();
+
+// 최초 배포 시점에는 아직 한 번도 조회에 성공한 적이 없어 캐시가 비어있으므로,
+// 사용자가 직접 확인한 실제 값(2026-07-16T08:02:16.335Z, buildNumber 4)으로 미리 시드해둠.
+// 이후 실제 조회가 0.7초 안에 성공하면 이 값은 최신 조회 결과로 자동 갱신됨.
+(function seedBetaPartnerAdminCache() {
+  const seedDate = parseAsUTCDate('2026-07-16T08:02:16.335Z');
+  const seedText = formatKST(seedDate);
+  LAST_GOOD_CACHE.set('beta-web-partneradmin', {
+    build: '4',
+    updateDateText: seedText,
+    updateDateForCompare: seedText ? seedText.slice(0, 10) : null,
+    downloadUrl: 'https://stbtnpartners.startsupport.com',
+    downloadLabel: '바로가기',
+    cachedAt: Date.now(),
+  });
+})();
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 // 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
