@@ -1,718 +1,789 @@
-// /api/builds.js
-// 서버리스 함수: 각 버전 소스에서 서버 사이드로 직접 데이터를 가져와 정규화한 뒤
-// 브라우저로 내려줍니다. 서버 -> 원본 서버 요청이므로 브라우저 CORS 제한을 받지 않습니다.
-// Vercel Node.js 서버리스 함수 형식 (Node 18+ 전역 fetch 사용)
-
-const SOURCES = [
-  // ---------------- ALPHA / APP (Host) ----------------
-  { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Windows',
-    url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json',
-    // fixed download url regardless of version.json's url field
-    downloadUrl: 'https://stapn.113366.com/pub/windows/remotecall-host.exe' },
-  { key: 'alpha-app-macos', channel: 'alpha', group: 'app-host', platform: 'macos', label: 'macOS',
-    url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'alpha-app-android', channel: 'alpha', group: 'app-host', platform: 'android', label: 'Android',
-    url: 'https://stapn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'alpha-app-ios', channel: 'alpha', group: 'app-host', platform: 'ios', label: 'iOS',
-    url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
-
-  // ---------------- ALPHA / APP (Viewer) ----------------
-  { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Windows',
-    url: 'http://stapn.startsupport.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'alpha-appviewer-macos', channel: 'alpha', group: 'app-viewer', platform: 'macos', label: 'macOS',
-    url: 'http://stapn.startsupport.com/pub/macos/version.json', type: 'app-json' },
-
-  // ---------------- ALPHA / WEB ----------------
-  { key: 'alpha-web-viewer', channel: 'alpha', group: 'web', platform: 'viewer', label: 'Viewer',
-    url: 'https://stapn.startsupport.com/version.json',
-    pageUrl: 'https://stapn.startsupport.com', type: 'web-viewer' },
-  { key: 'alpha-web-relay', channel: 'alpha', group: 'web', platform: 'relay', label: 'Relay',
-    url: 'https://stapn.113366.com/version.json',
-    pageUrl: 'https://stapn.113366.com', type: 'web-relay' },
-  { key: 'alpha-web-partneradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    url: 'https://stapnpartners.startsupport.com/version.txt',
-    siteUrl: 'https://stapnpartners.startsupport.com', type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
-  { key: 'alpha-web-useradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'UserAdmin',
-    url: 'https://stapnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
-
-  // ---------------- BETA / APP (Host) ----------------
-  { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Windows',
-    url: 'https://stbtn.113366.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'beta-app-macos', channel: 'beta', group: 'app-host', platform: 'macos', label: 'macOS',
-    url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
-  { key: 'beta-app-android', channel: 'beta', group: 'app-host', platform: 'android', label: 'Android',
-    url: 'https://stbtn.113366.com/pub/android/version.json', type: 'app-json' },
-  { key: 'beta-app-ios', channel: 'beta', group: 'app-host', platform: 'ios', label: 'iOS',
-    url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
-
-  // ---------------- BETA / APP (Viewer) ----------------
-  { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Windows',
-    url: 'http://stbtn.startsupport.com/pub/windows/version.json', type: 'app-json' },
-  { key: 'beta-appviewer-macos', channel: 'beta', group: 'app-viewer', platform: 'macos', label: 'macOS',
-    url: 'http://stbtn.startsupport.com/pub/macos/version.json', type: 'app-json' },
-
-  // ---------------- BETA / WEB ----------------
-  { key: 'beta-web-viewer', channel: 'beta', group: 'web', platform: 'viewer', label: 'Viewer',
-    url: 'https://stbtn.startsupport.com/version.json',
-    pageUrl: 'https://stbtn.startsupport.com', type: 'web-viewer' },
-  { key: 'beta-web-relay', channel: 'beta', group: 'web', platform: 'relay', label: 'Relay',
-    url: 'https://stbtn.113366.com/version.json',
-    pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
-  { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
-    siteUrl: 'https://stbtnpartners.startsupport.com',
-    // 이 사이트는 Vercel 직접요청/HTTP1.1 강제/Cloudflare Worker 경유까지 모두 시도했지만
-    // 원본 서버가 522(원본 응답 없음)로 응답해 조회가 불가능함이 확인됨.
-    // 더 이상 네트워크 요청을 시도하지 않고, 아래 고정 문구를 그대로 표시함.
-    disabled: true,
-    staticNote: '업데이트: 2026-07-06 13:01:50',
-  },
-  { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
-    url: 'https://stbtnadmin.startsupport.com/version.txt',
-    siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'build_date', timeMode: 'utc' },
-];
-
-const FETCH_TIMEOUT_MS = 1200; // 개별 소스 조회의 기본 타임아웃(1200ms)
-const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
-
-// 페이지 전체(=/api/builds 응답)는 개별 소스가 내부적으로 재시도/폴백을 하든 말든
-// 절대 이 시간을 넘기지 않도록 하는 "최종 안전장치" 데드라인.
-// (개별 FETCH_TIMEOUT_MS를 아무리 잘 맞춰도, 코드 경로에 따라 재시도/폴백이 겹치면
-//  1.2초를 넘길 수 있으므로, 소스 하나하나를 이 시간으로 강제 컷오프함)
-const HARD_DEADLINE_MS = 1200;
-
-// promise가 ms 안에 끝나지 않으면, 원래 처리 결과를 기다리지 않고 즉시 fallbackFactory()의
-// 결과로 대체해서 응답함 (원래 promise 자체가 취소되는 건 아니지만, 응답에는 영향을 주지 않음)
-function withHardDeadline(promise, ms, fallbackFactory) {
-  return new Promise((resolve) => {
-    let settled = false;
-    const timer = setTimeout(() => {
-      if (settled) return;
-      settled = true;
-      resolve(fallbackFactory());
-    }, ms);
-
-    Promise.resolve(promise).then(
-      (value) => {
-        if (settled) return;
-        settled = true;
-        clearTimeout(timer);
-        resolve(value);
-      },
-      () => {
-        // fetchOne은 내부에서 이미 모든 에러를 잡아서 정상 반환하므로 여기로 올 일은 거의 없지만,
-        // 혹시 모를 예외 상황에서도 응답 자체는 절대 지연/실패하지 않도록 안전하게 처리
-        if (settled) return;
-        settled = true;
-        clearTimeout(timer);
-        resolve(fallbackFactory());
-      }
-    );
-  });
-}
-
-const https = require('https');
-const { URL } = require('url');
-
-// 일부 사이트가 서버리스/데이터센터發 요청이나 봇으로 보이는 User-Agent를 방화벽(CDN/WAF) 단에서
-// 조용히 무응답 처리(블랙홀)하는 경우가 있어, 실제 브라우저와 최대한 유사한 헤더로 요청함
-const BROWSER_LIKE_HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-  'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
-  'Sec-Fetch-Site': 'none',
-  'Sec-Fetch-Mode': 'navigate',
-  'Sec-Fetch-Dest': 'document',
-  'Upgrade-Insecure-Requests': '1',
-};
-
-// 요청 URL 자신의 오리진을 Referer로 넣어 "그 사이트 내에서 이동한 것"처럼 보이게 함
-function refererFor(url) {
-  try {
-    const u = new URL(url);
-    return `${u.protocol}//${u.host}/`;
-  } catch (e) {
-    return undefined;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>빌드 버전 업데이트 현황</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #080b11;
+    --panel-bg: #0d131d;
+    --card-bg: #0f1622;
+    --card-border: #1d2635;
+    --panel-border: #1c2536;
+    --text-primary: #e9edf5;
+    --text-secondary: #8791a3;
+    --text-tertiary: #5b6478;
+    --teal: #2dd4bf;
+    --teal-soft: rgba(45,212,191,0.12);
+    --orange: #f5a524;
+    --orange-soft: rgba(245,165,36,0.12);
+    --blue: #5b9dff;
+    --purple: #c084fc;
+    --red: #ef4444;
+    --green: #34d399;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
   }
-}
 
-async function fetchOnce(url, opts, timeoutMs) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const res = await fetch(url, {
-      ...opts,
-      signal: controller.signal,
-      headers: {
-        ...BROWSER_LIKE_HEADERS,
-        Referer: refererFor(url),
-        Accept: '*/*',
-        ...(opts.headers || {}),
-      },
-      cache: 'no-store',
-    });
-    return res;
-  } finally {
-    clearTimeout(timer);
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-}
 
-// 최후의 수단: Node 기본 https 모듈로 HTTP/1.1 연결을 강제해서 재시도.
-// fetch(undici)가 사용하는 HTTP/2 협상이나 TLS 핑거프린트를 근거로 차단하는 WAF를 우회하기 위함.
-function fetchViaNodeHttps(url, opts, timeoutMs) {
-  return new Promise((resolve, reject) => {
-    let u;
-    try { u = new URL(url); } catch (e) { return reject(e); }
-
-    const headers = {
-      ...BROWSER_LIKE_HEADERS,
-      Referer: refererFor(url),
-      Accept: '*/*',
-      ...((opts && opts.headers) || {}),
-    };
-
-    const req = https.request({
-      hostname: u.hostname,
-      path: u.pathname + u.search,
-      method: 'GET',
-      port: u.port || 443,
-      headers,
-      ALPNProtocols: ['http/1.1'], // HTTP/2 협상을 하지 않고 HTTP/1.1로만 접속
-      timeout: timeoutMs,
-    }, (res) => {
-      const chunks = [];
-      res.on('data', (c) => chunks.push(c));
-      res.on('end', () => {
-        const body = Buffer.concat(chunks).toString('utf8');
-        resolve({
-          ok: res.statusCode >= 200 && res.statusCode < 300,
-          status: res.statusCode,
-          headers: { get: (name) => res.headers[String(name).toLowerCase()] || null },
-          text: async () => body,
-          json: async () => JSON.parse(body),
-        });
-      });
-    });
-    req.on('timeout', () => {
-      req.destroy();
-      reject(Object.assign(new Error('This operation was aborted'), { name: 'AbortError' }));
-    });
-    req.on('error', reject);
-    req.end();
-  });
-}
-
-async function fetchWithTimeout(url, opts = {}, config = {}) {
-  // config로 개별 소스가 기본 타임아웃(2초)/재시도(0회)/https 폴백 여부를 오버라이드할 수 있음
-  // 기본값은 재시도/폴백 없이 정확히 timeoutMs에서 바로 실패 처리 (모든 소스 통일)
-  const timeoutMs = config.timeoutMs != null ? config.timeoutMs : FETCH_TIMEOUT_MS;
-  const maxRetries = config.maxRetries != null ? config.maxRetries : FETCH_MAX_RETRIES;
-  const allowNodeHttpsFallback = config.allowNodeHttpsFallback === true;
-
-  let lastErr;
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    try {
-      return await fetchOnce(url, opts, timeoutMs);
-    } catch (err) {
-      lastErr = err;
-      // 타임아웃(AbortError)이나 일시적 네트워크 오류일 수 있으므로, 마지막 시도가 아니면 짧게 쉬었다가 재시도
-      if (attempt < maxRetries) {
-        await new Promise((r) => setTimeout(r, 500));
-        continue;
-      }
-
-    }
+  .num{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
   }
-  if (!allowNodeHttpsFallback) throw lastErr;
-  // fetch(undici)로 계속 실패하면, HTTP/1.1을 강제하는 Node https 모듈로 마지막으로 한 번 더 시도
-  try {
-    return await fetchViaNodeHttps(url, opts, timeoutMs);
-  } catch (fallbackErr) {
-    // 폴백까지 실패하면, 더 구체적인(원래) 에러를 우선 노출
-    throw lastErr || fallbackErr;
+
+  .dashboard{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    padding: 16px 24px 12px;
+    gap: 10px;
   }
-}
 
-// raw 시간 문자열/숫자를 UTC 기준 Date 로 최대한 관대하게 파싱
-function parseAsUTCDate(raw) {
-  if (raw === null || raw === undefined || raw === '') return null;
-  if (typeof raw === 'number') {
-    return new Date(raw < 1e12 ? raw * 1000 : raw);
+  /* ---------------- Header ---------------- */
+  .topbar{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 14px 24px;
   }
-  const s = String(raw).trim();
-  if (/^\d+$/.test(s)) {
-    const n = Number(s);
-    return new Date(n < 1e12 ? n * 1000 : n);
+
+  .brand-block{ min-width: 260px; }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
   }
-  // 이미 타임존 정보(Z 또는 +09:00 등)가 있으면 그대로 파싱
-  if (/Z$|[+-]\d{2}:?\d{2}$/.test(s)) {
-    const d = new Date(s);
-    return isNaN(d.getTime()) ? null : d;
+
+  .brand .dot{
+    width:9px; height:9px; border-radius:50%;
+    background: var(--green);
+    box-shadow: 0 0 10px rgba(52,211,153,0.8);
+    flex-shrink:0;
   }
-  // 타임존 정보가 없으면 UTC로 간주
-  const iso = s.includes('T') ? s : s.replace(' ', 'T');
-  const d = new Date(iso + 'Z');
-  return isNaN(d.getTime()) ? null : d;
-}
 
-// UTC Date -> 'YYYY-MM-DD HH:mm:ss' (Asia/Seoul)
-function formatKST(date) {
-  if (!date) return null;
-  const fmt = new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  });
-  // sv-SE 로케일은 'YYYY-MM-DD HH:mm:ss' 형태(콤마 없이)로 출력됨
-  return fmt.format(date).replace(',', '');
-}
-
-function todayKSTDateStr() {
-  const fmt = new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-  return fmt.format(new Date());
-}
-
-// 이미 KST 문자열(예: "2026-06-24 18:56:16 KST")에서 뒤에 붙은 " KST" 등의 타임존 표기만 제거
-function stripTZSuffix(raw) {
-  if (!raw) return null;
-  return raw.replace(/\s*(KST|UTC|GMT[+-]?\d*)\s*$/i, '').trim();
-}
-
-// 값이 문자열/숫자 등 "표시 가능한 값"인지 확인 (객체가 build 필드에 잘못 들어오는 것을 방지)
-function isPrimitiveValue(v) {
-  return v !== null && v !== undefined && (typeof v === 'number' || typeof v === 'string') && String(v).trim() !== '';
-}
-
-// HTTP 실패 시, 상태 코드를 err.status에 담아서 던짐 (나중에 "배포 중 추정" 판단에 사용)
-function httpStatusError(status, messagePrefix) {
-  const e = new Error((messagePrefix || 'HTTP') + ' ' + status);
-  e.status = status;
-  return e;
-}
-
-// 재배포(원본 서버 재시작) 도중 흔히 나타나는 상태코드/네트워크 오류 코드.
-// 이 값들이 감지되면 "서버 완전 장애"가 아니라 "빌드 업데이트로 인한 일시적 접속 불가"일 가능성이 높다고 판단함.
-const GATEWAY_STATUS_CODES = [502, 503, 504, 520, 521, 522, 523, 524];
-const GATEWAY_NETWORK_CODES = ['ECONNRESET', 'ECONNREFUSED', 'ETIMEDOUT', 'EAI_AGAIN', 'ENOTFOUND', 'EPIPE', 'UND_ERR_SOCKET'];
-
-// 정확한 필드명을 모를 때 대비: "build"와 "number"(또는 no)가 모두 들어간 키를 대소문자 구분 없이 재귀 탐색
-function findBuildNumberDeep(obj, maxDepth) {
-  if (maxDepth < 0 || obj === null || typeof obj !== 'object') return null;
-  const keys = Object.keys(obj);
-  for (const k of keys) {
-    if (/^build[_-]?number$/i.test(k) && isPrimitiveValue(obj[k])) return obj[k];
+  .brand h1{
+    font-size: 22px;
+    font-weight: 800;
+    margin:0;
+    letter-spacing: -0.01em;
   }
-  for (const k of keys) {
-    if (/build/i.test(k) && /(num|no)/i.test(k) && isPrimitiveValue(obj[k])) return obj[k];
-  }
-  for (const k of keys) {
-    if (obj[k] && typeof obj[k] === 'object') {
-      const found = findBuildNumberDeep(obj[k], maxDepth - 1);
-      if (found !== null) return found;
-    }
-  }
-  return null;
-}
 
-async function fetchAppJson(src) {
-  const res = await fetchWithTimeout(src.url);
-  if (!res.ok) throw httpStatusError(res.status);
-  const j = await res.json();
-  const buildCandidates = [j.build, j.build_number, j.buildNumber];
-  let build = null;
-  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
-  const date = parseAsUTCDate(j.releasedAt || j.released_at || null);
-  return {
-    build,
-    updateDateText: formatKST(date),
-    updateDateForCompare: date ? formatKST(date).slice(0, 10) : null,
-    downloadUrl: src.downloadUrl || j.url || null,
-    downloadLabel: '다운로드',
+  .subtitle{
+    margin: 6px 0 0 19px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .controls{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .last-refresh{
+    text-align:right;
+    line-height:1.3;
+  }
+  .last-refresh .label{
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+  .last-refresh .value{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .auto-refresh-select{
+    appearance:none;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 34px 10px 14px;
+    border-radius: 10px;
+    cursor:pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238791a3' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+  }
+  .auto-refresh-select:focus{ outline: 2px solid var(--teal); }
+
+  .refresh-btn{
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel-bg);
+    color: var(--text-primary);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .refresh-btn:hover{ border-color: var(--teal); }
+  .refresh-btn.spinning svg{ animation: spin .7s linear infinite; }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+
+  /* ---------------- Content / layout that avoids scroll on desktop ---------------- */
+  .content{
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    min-height:0;
+  }
+
+  .channel{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    flex: 1 1 auto;
+  }
+
+  .channel-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .pill{
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .pill-alpha{ background: var(--teal-soft); color: var(--teal); border: 1px solid rgba(45,212,191,0.35); }
+  .pill-beta{ background: var(--orange-soft); color: var(--orange); border: 1px solid rgba(245,165,36,0.35); }
+
+  .channel-name{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .panels{
+    display:flex;
+    gap: 12px;
+    flex: 1 1 auto;
+    overflow-x: auto; /* 좁은 데스크톱 창에서 카드가 과도하게 압축/클리핑되는 대신 가로 스크롤로 대체 */
+    overflow-y: hidden;
+  }
+
+  .panel{
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+  }
+
+  .panel-app{ flex: 1 1 0; }
+  .panel-web{ flex: 1 1 0; }
+
+  .panel-title{
+    margin:0;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+  .panel-title.app{ color: var(--blue); }
+  .panel-title.web{ color: var(--purple); }
+
+  .cards-grid{
+    flex: 1 1 auto;
+    display:grid;
+    gap: 10px;
+    grid-auto-rows: 1fr;
+  }
+  /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
+     패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
+  .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
+
+  /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
+  .app-subgroup-gap{
+    display:flex;
+    flex-direction:column;
+    flex: 1 1 auto;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--panel-border);
+  }
+  .subgroup-title{
+    margin: 0 0 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------------- App(Host)/App(Viewer) 행(row) 목록: 여러 항목을 하나의 카드 안에 리스트로 표시 ---------------- */
+  .app-rows{
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction:column;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow:hidden;
+  }
+  .app-row{
+    flex: 1 1 auto;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    padding: 9px 12px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--card-border);
+    font-size: 13px;
+  }
+  .app-row:last-child{ border-bottom: none; }
+  .app-row.updated-today{ box-shadow: inset 0 0 0 1px rgba(239,68,68,0.35); }
+  .app-row .status-dot{ margin-left:0; }
+  .app-row-icon{ display:flex; align-items:center; flex-shrink:0; }
+  .app-row-icon svg{ width:15px; height:15px; color: var(--text-secondary); }
+  .app-row-name{
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 84px;
+    flex-shrink:0;
+  }
+  .app-row-build{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 70px;
+    flex-shrink:0;
+  }
+  .app-row-build.na{ color: var(--text-tertiary); font-weight:600; font-size:12px; }
+  .app-row-update{
+    flex: 1 1 auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .app-row-update.na{ color: var(--text-tertiary); }
+  .app-row-update.err{ color: var(--red); }
+  .app-row-download.download-btn{
+    flex-shrink:0;
+    width:auto;
+    margin-top:0;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 700px){
+    .app-row{ flex-wrap: wrap; }
+    .app-row-update{ white-space:normal; flex-basis:100%; order:5; }
+  }
+
+  /* ---------------- Card ---------------- */
+  .card{
+    position:relative;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 10px 9px 9px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    min-height: 148px;
+    transition: border-color .2s ease;
+  }
+  .card > *{ flex-shrink: 0; }
+  .card-mid{ flex-shrink: 1; }
+  .card.updated-today{
+    border-color: var(--red);
+    box-shadow: 0 0 0 1px rgba(239,68,68,0.25) inset;
+  }
+
+  .card-top{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    margin-bottom: 4px;
+  }
+  .card-name{
+    display:flex;
+    align-items:flex-start;
+    gap:5px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width:0;
+    line-height: 1.25;
+    text-align:left;
+    overflow-wrap: break-word;
+  }
+  .card-name svg{ width:15px; height:15px; color: var(--text-secondary); flex-shrink:0; margin-top:1px; }
+
+  .status-dot{
+    width:8px; height:8px; border-radius:50%;
+    flex-shrink:0;
+    margin-left: 6px;
+  }
+  .status-dot.ok{ background: var(--green); box-shadow: 0 0 6px rgba(52,211,153,.8); }
+  .status-dot.err{ background: var(--red); box-shadow: 0 0 6px rgba(239,68,68,.8); }
+
+  .card-mid{
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    gap: 1px;
+    padding: 2px 0 3px;
+  }
+
+  .build-number{
+    font-weight: 800;
+    line-height:1;
+    color: var(--text-primary);
+    font-size: clamp(18px, 2.1vw, 30px);
+    width:100%;
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+  .build-number.na{ color: var(--text-tertiary); font-size: clamp(13px, 1.3vw, 16px); white-space: normal; }
+
+  .build-label{
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-top: 1px;
+  }
+
+  .update-text{
+    font-size: clamp(10.5px, 1vw, 13px);
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 5px;
+    line-height: 1.3;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .update-text.na{
+    color: var(--text-tertiary);
+    font-weight: 600;
+  }
+  .update-text.err{
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .diag-text{
+    font-size: 9.5px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    line-height: 1.3;
+    font-family: 'Inter', sans-serif;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .download-btn{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    width:100%;
+    margin-top: 6px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    text-decoration:none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .download-btn:hover{ background: rgba(255,255,255,0.08); border-color: var(--teal); }
+  .download-btn.disabled{
+    opacity: .4;
+    pointer-events:none;
+  }
+  .download-btn svg{ width:14px; height:14px; }
+
+  /* Web 카드는 App 카드와 테두리 색으로 구분 (App(Host)/App(Viewer)는 서로 동일한 톤) */
+  .panel-web .card{ border-color: rgba(192,132,252,0.28); }
+  .panel-app .card{ border-color: rgba(91,157,255,0.22); }
+  .panel-web .card.updated-today,
+  .panel-app .card.updated-today{ border-color: var(--red); }
+
+
+  /* ---------------- Responsive ---------------- */
+  @media (min-width: 901px){
+    html, body{ overflow: hidden; height: 100%; }
+    .dashboard{ height: 100vh; }
+    .content{ overflow-y: auto; } /* 극단적으로 낮은 화면 높이에서도 겹치지 않고 스크롤로 안전하게 대체 */
+  }
+
+  @media (max-width: 900px){
+    html, body{ overflow-y:auto; }
+    .dashboard{ min-height: auto; padding: 18px 16px 24px; }
+    .content{ flex: none; }
+    .panels{ flex-direction: column; flex: none; overflow-x: visible; }
+    .panel-web .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .cards-grid{ flex: none; grid-auto-rows: auto; }
+    .card{ min-height: 190px; }
+    .channel{ flex: none; }
+    .topbar{ flex-direction: column; align-items:flex-start; }
+    .controls{ width:100%; justify-content: space-between; }
+    .last-refresh{ text-align:left; }
+  }
+
+  @media (max-width: 520px){
+    .app-row-name{ min-width: 64px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand">
+        <span class="dot"></span>
+        <h1>빌드 버전 업데이트 현황</h1>
+      </div>
+      <p class="subtitle">Alpha / Beta 채널 · App(Host: Windows·macOS·Android·iOS) / App(Viewer: Windows·macOS) · Web(Viewer·Relay·PartnerAdmin·UserAdmin)</p>
+    </div>
+    <div class="controls">
+      <div class="last-refresh">
+        <div class="label">마지막 갱신</div>
+        <div class="value" id="lastRefresh">-</div>
+      </div>
+      <select id="autoRefreshSelect" class="auto-refresh-select" aria-label="자동 새로고침 간격"></select>
+      <button id="refreshBtn" class="refresh-btn" title="지금 새로고침" aria-label="새로고침">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <path d="M23 4v6h-6"></path>
+          <path d="M1 20v-6h6"></path>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="content" id="content">
+    <!-- JS로 채워짐 -->
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var AUTO_OPTIONS = [0, 10, 20, 30, 40, 50, 60]; // 초 단위, 0 = 끄기
+
+  var ICONS = {
+    windows: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5.5 10.5 4.4V11H3zM11.5 4.3 21 3v8H11.5zM3 12h7.5v6.6L3 17.5zM11.5 12H21v8l-9.5-1.3z"/></svg>',
+    macos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.6-.9.9-1.7 1.2-2.5-3-1.1-3.6-2.3-3.6-4.1z"/><path d="M14.8 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>',
+    android: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16v-4a7 7 0 0 1 14 0v4"/><path d="M5 16h14v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M8 3l1.5 2M16 3l-1.5 2"/><circle cx="9" cy="11" r="0.6" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="0.6" fill="currentColor" stroke="none"/></svg>',
+    ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg>',
+    admin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>',
+    viewer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+    relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>'
   };
-}
 
-// key="value" 형태의 한 줄씩 나오는 텍스트(자바 properties 스타일)를 객체로 파싱
-// 예: name="user-admin"\nversion="8.0.1"\nbuild_date="2026-07-06T04:01:58.693Z"
-function parseKeyValueText(text) {
-  const obj = {};
-  const lines = text.split(/\r?\n/);
-  let matched = false;
-  for (const line of lines) {
-    const m = line.match(/^\s*([A-Za-z0-9_.-]+)\s*=\s*"?([^"\n]*?)"?\s*$/);
-    if (m) {
-      obj[m[1]] = m[2];
-      matched = true;
+  var CHANNEL_LABEL = { alpha: { pill: 'ALPHA', name: '알파 채널' }, beta: { pill: 'BETA', name: '베타 채널' } };
+  var CHANNEL_ORDER = ['alpha', 'beta'];
+
+  var contentEl = document.getElementById('content');
+  var lastRefreshEl = document.getElementById('lastRefresh');
+  var refreshBtn = document.getElementById('refreshBtn');
+  var autoSelect = document.getElementById('autoRefreshSelect');
+
+  var autoTimer = null;
+  var isFetching = false;
+
+  // ---------- 자동 새로고침 드롭다운 구성 ----------
+  AUTO_OPTIONS.forEach(function(sec){
+    var opt = document.createElement('option');
+    opt.value = String(sec);
+    opt.textContent = sec === 0 ? '자동 새로고침: 끄기' : '자동 새로고침: ' + sec + '초';
+    autoSelect.appendChild(opt);
+  });
+  autoSelect.value = '0';
+  autoSelect.addEventListener('change', function(){
+    setupAutoRefresh(Number(autoSelect.value));
+  });
+
+  function setupAutoRefresh(seconds){
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (seconds > 0){
+      autoTimer = setInterval(fetchAndRender, seconds * 1000);
     }
   }
-  return matched ? obj : null;
-}
 
-async function fetchAdminTxt(src) {
-  const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } });
-  if (!res.ok) throw httpStatusError(res.status);
-  const text = await res.text();
-  let j = null;
-  try {
-    j = JSON.parse(text);
-  } catch (e) {
-    j = null;
-  }
-  if (!j) {
-    // JSON이 아니면 "key=value" 한 줄씩 나오는 텍스트 포맷(예: name="user-admin")으로 시도
-    j = parseKeyValueText(text);
-  }
-  if (!j) {
-    return {
-      build: null,
-      updateDateText: null,
-      updateDateForCompare: null,
-      downloadUrl: src.siteUrl,
-      downloadLabel: '바로가기',
-      _debug: { reason: 'JSON도 key=value 텍스트도 아님(파싱 실패)', rawSnippet: text.slice(0, 300) },
-    };
+  refreshBtn.addEventListener('click', function(){ fetchAndRender(); });
+
+  // ---------- 카드 렌더링 ----------
+  function escapeHtml(str){
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
-  // buildNumber는 반드시 "값"(문자열/숫자)이어야 함 - 객체가 걸리면 절대 사용하지 않음
-  // (예전 버그: j.build가 {version, time, ...} 같은 객체인 경우가 있어 "#[object Object]"로 표시되던 문제 수정)
-  const buildCandidates = [
-    j.buildNumber,
-    j.build_number,
-    j.build && j.build.buildNumber,
-    j.build && j.build.build_number,
-    j.build && j.build.number,
-    j.info && j.info.buildNumber,
-    j.info && j.info.build && j.info.build.buildNumber,
-    isPrimitiveValue(j.build) ? j.build : undefined,
-  ];
-  let build = null;
-  for (const c of buildCandidates) {
-    if (isPrimitiveValue(c)) { build = c; break; }
-  }
-  // 정확한 필드명을 못 찾으면, "build"와 "number"가 들어간 키를 대소문자 구분 없이 재귀적으로 탐색 (2단계 깊이)
-  if (build === null) {
-    build = findBuildNumberDeep(j, 2);
-  }
+  function renderCard(item){
+    var card = document.createElement('div');
+    card.className = 'card';
+    if (item.isToday) card.classList.add('updated-today');
 
-  // 알파 PartnerAdmin/UserAdmin: "time" 필드, UTC로 간주하고 KST로 변환
-  // 베타 PartnerAdmin/UserAdmin: "build-date" 필드, 이미 KST 값이므로 접미사만 제거
-  const timeField = src.timeField || 'time';
-  const timeMode = src.timeMode || 'utc';
-  const timeCandidates = [
-    j[timeField],
-    j.time,
-    j['build_date'],
-    j['build-date'],
-    j.buildDate,
-    j.build && j.build[timeField],
-    j.build && j.build.time,
-    j.build && j.build['build_date'],
-    j.build && j.build['build-date'],
-  ];
-  let rawTimeValue = null;
-  for (const c of timeCandidates) {
-    if (isPrimitiveValue(c)) { rawTimeValue = c; break; }
-  }
 
-  let updateDateText = null;
-  let updateDateForCompare = null;
-  if (rawTimeValue !== null) {
-    if (timeMode === 'kst') {
-      const stripped = stripTZSuffix(String(rawTimeValue).trim());
-      updateDateText = stripped;
-      updateDateForCompare = stripped ? stripped.slice(0, 10) : null;
+    var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
+    var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
+
+    var updateHtml = '';
+    if (item.staticNote){
+      // 백엔드가 고정 문구를 내려준 경우, 계산된 상태와 무관하게 그 문구를 그대로 표시
+      updateHtml = '<div class="update-text">' + escapeHtml(item.staticNote) + '</div>';
+    } else if (item.ok && item.updateDateText){
+      var parts = item.updateDateText.split(' ');
+      var datePart = parts[0] || '';
+      var timePart = parts[1] || '';
+      updateHtml = '<div class="update-text">업데이트: ' + datePart + (timePart ? ('<br>' + timePart) : '') + '</div>';
+    } else if (item.ok){
+      // 응답은 정상(ok)이지만 업데이트 시간을 못 가져온 경우: 빈칸으로 두지 않고 원인을 알 수 있게 표시
+      updateHtml = '<div class="update-text na">업데이트: 정보 없음</div>';
     } else {
-      const date = parseAsUTCDate(rawTimeValue);
-      updateDateText = formatKST(date);
-      updateDateForCompare = date ? updateDateText.slice(0, 10) : null;
+      // 조회 자체가 실패한 경우(네트워크 오류/타임아웃/HTTP 오류 등): 실패했다는 사실을 화면에 명시
+      updateHtml = '<div class="update-text err">업데이트: 조회 실패</div>';
     }
-  }
 
-  const result = {
-    build,
-    updateDateText,
-    updateDateForCompare,
-    downloadUrl: src.siteUrl,
-    downloadLabel: '바로가기',
-  };
-  // build 필드는 이 API에 애초에 존재하지 않는 경우가 많아 정상 상황이므로 진단 메시지에서 제외하고,
-  // 실제 문제인 "시간 필드를 못 찾은 경우"만 진단 정보를 내려줌
-  if (updateDateText === null) {
-    result._debug = {
-      reason: `시간 필드(${timeField}) 후보를 찾지 못함`,
-      topLevelKeys: Object.keys(j),
-      rawSnippet: text.slice(0, 500),
-    };
-  }
-  return result;
-}
+    // 백엔드가 내려준 진단 정보(_debug) 또는 실제 오류 메시지(error)를 확인할 수 있도록 노출
+    // 모바일 등 터치 환경에서는 마우스 hover(title 툴팁)가 동작하지 않으므로, 카드에 작은 글씨로도 직접 표시
+    var diagText = null;
+    if (item._debug && item._debug.reason) diagText = item._debug.reason;
+    else if (!item.ok && item.error) diagText = item.error;
 
-// Cloudflare Worker 등 별도 경유지(proxyUrl)를 통해, 혹은 직접 GET 요청으로
-// 응답 헤더의 Last-Modified 값을 가져와 업데이트 시간으로 사용.
-// direct fetch가 방화벽/봇 차단으로 계속 응답을 못 받는 사이트(예: 베타 PartnerAdmin)를 위한 대안.
-async function fetchAdminHead(src) {
-  const timeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
-  let lastModifiedRaw = null;
-
-  if (src.proxyUrl) {
-    // Cloudflare Worker 프록시를 거쳐 대상 사이트의 헤더를 대신 가져옴
-    // (Worker는 다른 네트워크/IP 대역에서 요청하므로, 원본 사이트가 서버리스 IP를 차단해도 우회 가능)
-    const res = await fetchWithTimeout(
-      src.proxyUrl,
-      { headers: src.proxyKey ? { 'x-proxy-key': src.proxyKey } : {} },
-      { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: false }
-    );
-    if (!res.ok) throw httpStatusError(res.status, '프록시 HTTP');
-    const json = await res.json();
-    if (json && json.ok === false && json.error) throw new Error(`프록시 오류: ${json.error}`);
-    lastModifiedRaw = (json && json.lastModified) || null;
-  } else {
-    // 프록시 미설정 시: 기존처럼 직접 GET 요청 (실패하면 HTTP/1.1 강제 폴백까지 시도)
-    const res = await fetchWithTimeout(
-      src.url,
-      { method: 'GET' },
-      { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: true }
-    );
-    if (!res.ok) throw httpStatusError(res.status);
-    lastModifiedRaw = res.headers.get('last-modified');
-  }
-
-  // Last-Modified는 표준 HTTP-date 형식(예: "Wed, 21 Oct 2015 07:28:00 GMT")이라 Date가 바로 파싱 가능
-  const date = lastModifiedRaw ? new Date(lastModifiedRaw) : null;
-  const valid = !!(date && !isNaN(date.getTime()));
-
-  const result = {
-    build: null,
-    updateDateText: valid ? formatKST(date) : null,
-    updateDateForCompare: valid ? formatKST(date).slice(0, 10) : null,
-    downloadUrl: src.siteUrl || src.url,
-    downloadLabel: '바로가기',
-  };
-  if (!valid) {
-    result._debug = {
-      reason: 'Last-Modified 헤더를 찾지 못함',
-      lastModifiedHeader: lastModifiedRaw || null,
-    };
-  }
-  return result;
-}
-
-async function fetchWebViewer(src) {
-  const [jsonRes, pageRes] = await Promise.all([
-    fetchWithTimeout(src.url),
-    fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }),
-  ]);
-  if (!jsonRes.ok) throw httpStatusError(jsonRes.status);
-  const j = await jsonRes.json();
-  const buildCandidates = [j.build_number, j.build];
-  let build = null;
-  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
-
-  let updateDateText = null;
-  let updateDateForCompare = null;
-  if (pageRes.ok) {
-    const html = await pageRes.text();
-    const m = html.match(/<meta[^>]+name=["']build-date["'][^>]+content=["']([^"']+)["']/i)
-      || html.match(/meta-build-date:\s*(.+)/i); // 일부 렌더러가 프론트매터 형태로 반환하는 경우 대비
-    if (m) {
-      const raw = stripTZSuffix(m[1]); // 이미 KST, "KST" 접미사만 제거
-      updateDateText = raw;
-      updateDateForCompare = raw ? raw.slice(0, 10) : null;
+    if (diagText){
+      card.title = diagText;
+      updateHtml += '<div class="diag-text">' + escapeHtml(diagText) + '</div>';
     }
-  }
 
-  return {
-    build,
-    updateDateText,
-    updateDateForCompare,
-    downloadUrl: src.pageUrl,
-    downloadLabel: '바로가기',
-  };
-}
-
-async function fetchWebRelay(src) {
-  const [jsonRes, pageRes] = await Promise.all([
-    fetchWithTimeout(src.url),
-    fetchWithTimeout(src.pageUrl, { headers: { Accept: 'text/html' } }).catch(() => null),
-  ]);
-  if (!jsonRes.ok) throw httpStatusError(jsonRes.status);
-  const j = await jsonRes.json();
-  const buildCandidates = [j.build_number, j.build];
-  let build = null;
-  for (const c of buildCandidates) { if (isPrimitiveValue(c)) { build = c; break; } }
-
-  // Relay 응답 자체에는 날짜 정보가 없어서, (1) 페이지의 build-date 메타태그(Viewer와 동일한 방식)
-  // -> (2) HTTP Last-Modified 헤더 순으로 시도해서 업데이트 시간을 구함(이제 텍스트로도 표시).
-  let updateDateText = null;
-  let updateDateForCompare = null;
-  let metaFound = false;
-  if (pageRes && pageRes.ok) {
-    const html = await pageRes.text();
-    const m = html.match(/<meta[^>]+name=["']build-date["'][^>]+content=["']([^"']+)["']/i)
-      || html.match(/meta-build-date:\s*(.+)/i);
-    if (m) {
-      const raw = stripTZSuffix(m[1]); // 이미 KST 값
-      updateDateText = raw;
-      updateDateForCompare = raw ? raw.slice(0, 10) : null;
-      metaFound = true;
+    var downloadHtml = '';
+    if (item.ok && item.downloadUrl){
+      downloadHtml = '<a class="download-btn" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
+        (item.downloadLabel || '다운로드') + '</a>';
+    } else {
+      downloadHtml = '<span class="download-btn disabled">이용 불가</span>';
     }
+
+    var displayLabel = (item.label || '').replace(/([a-z0-9])([A-Z])/g, '$1<wbr>$2');
+    card.innerHTML =
+      '<div class="card-top">' +
+        '<div class="card-name">' + (ICONS[item.platform] || '') + '<span>' + displayLabel + '</span></div>' +
+        '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
+      '</div>' +
+      '<div class="card-mid">' +
+        '<div class="build-number' + (hasBuild ? '' : ' na') + '">' + buildText + '</div>' +
+        '<div class="build-label">현재 빌드</div>' +
+        updateHtml +
+      '</div>' +
+      downloadHtml;
+
+    return card;
   }
-  const lastModified = jsonRes.headers.get('last-modified');
-  if (!updateDateText && lastModified) {
-    const d = new Date(lastModified);
-    if (!isNaN(d.getTime())) {
-      updateDateText = formatKST(d);
-      updateDateForCompare = updateDateText.slice(0, 10);
+
+  // ---------- App(Host)/App(Viewer) 전용: 하나의 카드 안에 여러 항목을 행(row) 형태로 표시 ----------
+  function renderAppRow(item){
+    var row = document.createElement('div');
+    row.className = 'app-row';
+    if (item.isToday) row.classList.add('updated-today');
+
+    var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
+    var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
+
+    var updateText = '';
+    var updateClass = '';
+    if (item.staticNote){
+      updateText = escapeHtml(item.staticNote);
+    } else if (item.ok && item.updateDateText){
+      updateText = '업데이트: ' + escapeHtml(item.updateDateText);
+    } else if (item.ok){
+      updateText = '업데이트: 정보 없음';
+      updateClass = 'na';
+    } else {
+      updateText = '업데이트: 조회 실패';
+      updateClass = 'err';
     }
+
+    var diagText = null;
+    if (item._debug && item._debug.reason) diagText = item._debug.reason;
+    else if (!item.ok && item.error) diagText = item.error;
+    if (diagText) row.title = diagText;
+
+    var downloadHtml = '';
+    if (item.ok && item.downloadUrl){
+      downloadHtml = '<a class="download-btn app-row-download" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
+        (item.downloadLabel || '다운로드') + '</a>';
+    } else {
+      downloadHtml = '<span class="download-btn app-row-download disabled">이용 불가</span>';
+    }
+
+    row.innerHTML =
+      '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
+      '<span class="app-row-icon">' + (ICONS[item.platform] || '') + '</span>' +
+      '<span class="app-row-name">' + escapeHtml(item.label || '') + '</span>' +
+      '<span class="app-row-build' + (hasBuild ? '' : ' na') + '">' + buildText + '</span>' +
+      '<span class="app-row-update ' + updateClass + '">' + updateText + '</span>' +
+      downloadHtml;
+
+    return row;
   }
 
-  const result = {
-    build,
-    updateDateText,
-    updateDateForCompare,
-    downloadUrl: src.pageUrl,
-    downloadLabel: '바로가기',
-  };
-  if (!updateDateText) {
-    result._debug = {
-      reason: '업데이트 시간을 못 찾음',
-      pageFetchOk: !!(pageRes && pageRes.ok),
-      metaTagFound: metaFound,
-      lastModifiedHeader: lastModified || null,
-    };
-  }
-  return result;
-}
+  // ---------- 전체 렌더링 ----------
+  function render(items){
+    contentEl.innerHTML = '';
 
-async function fetchOne(src) {
-  // 조회를 아예 포기한 소스: 네트워크 요청을 전혀 시도하지 않고 항상 "정보 없음" 상태로 반환
-  if (src.disabled) {
-    return {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: true,
-      build: null,
-      updateDateText: null,
-      staticNote: src.staticNote || null, // 있으면 카드에 이 문구를 그대로 표시 (index.html에서 처리)
-      isToday: false,
-      downloadUrl: src.siteUrl || src.url || null,
-      downloadLabel: '바로가기',
-    };
-  }
-
-  try {
-    let data;
-    if (src.type === 'app-json') data = await fetchAppJson(src);
-    else if (src.type === 'admin-txt') data = await fetchAdminTxt(src);
-    else if (src.type === 'admin-head') data = await fetchAdminHead(src);
-    else if (src.type === 'web-viewer') data = await fetchWebViewer(src);
-    else if (src.type === 'web-relay') data = await fetchWebRelay(src);
-    else throw new Error('unknown source type');
-
-    const todayKST = todayKSTDateStr();
-    const isToday = !!data.updateDateForCompare && data.updateDateForCompare === todayKST;
-
-    const out = {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: true,
-      build: data.build,
-      updateDateText: data.updateDateText,
-      isToday,
-      downloadUrl: data.downloadUrl,
-      downloadLabel: data.downloadLabel,
-    };
-    if (data._debug) out._debug = data._debug; // 진단 정보가 있으면 항상 응답에 포함시킴
-    return out;
-  } catch (err) {
-    const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
-    const effectiveTimeoutMs = src.timeoutMs != null ? src.timeoutMs : FETCH_TIMEOUT_MS;
-    const errorMessage = isAbort
-      ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
-      : String(err && err.message ? err.message : err);
-
-    // 실패 원인이 "게이트웨이/원본서버 응답 없음" 계열 상태코드이거나, 연결이 끊기는 네트워크 오류이거나,
-    // 타임아웃(응답 자체가 없음)인 경우 -> 완전한 장애라기보다 "빌드 업데이트로 서버가 재시작 중"일 가능성이 높음
-    const statusCode = (err && typeof err.status === 'number') ? err.status : null;
-    const networkErrorCode = (err && (err.code || (err.cause && err.cause.code))) || null;
-    const possibleDeployIssue = !!(
-      isAbort ||
-      (statusCode !== null && GATEWAY_STATUS_CODES.indexOf(statusCode) !== -1) ||
-      (networkErrorCode !== null && GATEWAY_NETWORK_CODES.indexOf(networkErrorCode) !== -1)
-    );
-
-    return {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: false,
-      error: errorMessage,
-      statusCode,
-      networkErrorCode,
-      possibleDeployIssue,
-      build: null,
-      updateDateText: null,
-      isToday: false,
-      downloadUrl: src.siteUrl || src.pageUrl || null,
-      downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
-    };
-  }
-}
-
-// 하드 데드라인(HARD_DEADLINE_MS)을 넘긴 소스에 대해 내려줄 결과.
-// 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
-function buildHardDeadlineResult(src) {
-  return {
-    key: src.key,
-    channel: src.channel,
-    group: src.group,
-    platform: src.platform,
-    label: src.label,
-    ok: false,
-    error: `응답 지연으로 강제 종료(${HARD_DEADLINE_MS}ms 초과)`,
-    statusCode: null,
-    networkErrorCode: null,
-    possibleDeployIssue: true, // 응답이 이례적으로 느린 것도 재배포/재시작 정황일 가능성이 높아 동일하게 취급
-    build: null,
-    updateDateText: null,
-    isToday: false,
-    downloadUrl: src.siteUrl || src.pageUrl || src.url || null,
-    downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
-  };
-}
-
-module.exports = async (req, res) => {
-  try {
-    // 소스 하나하나에 HARD_DEADLINE_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
-    // /api/builds 응답 자체는 절대 HARD_DEADLINE_MS(1초)를 넘기지 않음
-    const results = await Promise.all(
-      SOURCES.map((src) => withHardDeadline(fetchOne(src), HARD_DEADLINE_MS, () => buildHardDeadlineResult(src)))
-    );
-    res.setHeader('Cache-Control', 'no-store, max-age=0');
-    res.status(200).json({
-      serverTime: new Date().toISOString(),
-      items: results,
+    var byChannel = {};
+    items.forEach(function(it){
+      byChannel[it.channel] = byChannel[it.channel] || {};
+      byChannel[it.channel][it.group] = byChannel[it.channel][it.group] || [];
+      byChannel[it.channel][it.group].push(it);
     });
-  } catch (err) {
-    res.status(500).json({ error: String(err && err.message ? err.message : err) });
+
+    CHANNEL_ORDER.forEach(function(ch){
+      if (!byChannel[ch]) return;
+      var section = document.createElement('section');
+      section.className = 'channel channel-' + ch;
+
+      var header = document.createElement('div');
+      header.className = 'channel-header';
+      header.innerHTML = '<span class="pill pill-' + ch + '">' + CHANNEL_LABEL[ch].pill + '</span>' +
+        '<span class="channel-name">' + CHANNEL_LABEL[ch].name + '</span>';
+      section.appendChild(header);
+
+      var panels = document.createElement('div');
+      panels.className = 'panels';
+
+      // ---- App 패널: App(Host) 4개를 하나의 카드로, App(Viewer) 2개를 하나의 카드로 묶고,
+      //      이 둘을 다시 하나의 패널(카드) 안에 합쳐서 표시 ----
+      var hostList = byChannel[ch]['app-host'];
+      var viewerList = byChannel[ch]['app-viewer'];
+      if (hostList || viewerList) {
+        var appPanel = document.createElement('div');
+        appPanel.className = 'panel panel-app';
+
+        if (hostList) {
+          var hostTitle = document.createElement('h2');
+          hostTitle.className = 'panel-title app';
+          hostTitle.textContent = 'App(Host)';
+          appPanel.appendChild(hostTitle);
+
+          var hostRows = document.createElement('div');
+          hostRows.className = 'app-rows';
+          hostList.forEach(function(item){ hostRows.appendChild(renderAppRow(item)); });
+          appPanel.appendChild(hostRows);
+        }
+
+        if (viewerList) {
+          var viewerBlock = document.createElement('div');
+          viewerBlock.className = 'app-subgroup-gap';
+
+          var viewerTitle = document.createElement('h3');
+          viewerTitle.className = 'subgroup-title';
+          viewerTitle.textContent = 'App(Viewer)';
+          viewerBlock.appendChild(viewerTitle);
+
+          var viewerRows = document.createElement('div');
+          viewerRows.className = 'app-rows';
+          viewerList.forEach(function(item){ viewerRows.appendChild(renderAppRow(item)); });
+          viewerBlock.appendChild(viewerRows);
+
+          appPanel.appendChild(viewerBlock);
+        }
+
+        panels.appendChild(appPanel);
+      }
+
+      // ---- Web 패널: 기존 방식 그대로 ----
+      var webList = byChannel[ch]['web'];
+      if (webList) {
+        var webPanel = document.createElement('div');
+        webPanel.className = 'panel panel-web';
+
+        var webTitle = document.createElement('h2');
+        webTitle.className = 'panel-title web';
+        webTitle.textContent = 'Web';
+        webPanel.appendChild(webTitle);
+
+        var webGrid = document.createElement('div');
+        webGrid.className = 'cards-grid';
+        webList.forEach(function(item){ webGrid.appendChild(renderCard(item)); });
+        webPanel.appendChild(webGrid);
+
+        panels.appendChild(webPanel);
+      }
+
+      section.appendChild(panels);
+      contentEl.appendChild(section);
+    });
   }
-};
+
+  function setLastRefreshNow(){
+    var d = new Date();
+    var pad = function(n){ return String(n).padStart(2,'0'); };
+    var text = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + ' ' +
+      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+    lastRefreshEl.textContent = text;
+  }
+
+  function fetchAndRender(){
+    if (isFetching) return;
+    isFetching = true;
+    refreshBtn.classList.add('spinning');
+
+    fetch('/api/builds', { cache: 'no-store' })
+      .then(function(res){
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(data){
+        render(data.items || []);
+        setLastRefreshNow();
+      })
+      .catch(function(err){
+        contentEl.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary)">' +
+          '데이터를 불러오지 못했습니다. (' + (err && err.message ? err.message : err) + ')</div>';
+      })
+      .finally(function(){
+        isFetching = false;
+        refreshBtn.classList.remove('spinning');
+      });
+  }
+
+  fetchAndRender();
+})();
+</script>
+</body>
+</html>
