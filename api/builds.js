@@ -700,9 +700,6 @@ async function fetchOne(src) {
         isToday,
         downloadUrl: cached.downloadUrl,
         downloadLabel: cached.downloadLabel,
-        _debug: {
-          reason: `조회 실패(${errorMessage}) - 마지막 성공값 유지 중 (마지막 성공 시각: ${formatKST(new Date(cached.cachedAt))})`,
-        },
       };
     }
 
@@ -757,9 +754,6 @@ function buildHardDeadlineResult(src) {
       isToday,
       downloadUrl: cached.downloadUrl,
       downloadLabel: cached.downloadLabel,
-      _debug: {
-        reason: `응답 지연(${HARD_DEADLINE_MS}ms 초과) - 마지막 성공값 유지 중 (마지막 성공 시각: ${formatKST(new Date(cached.cachedAt))})`,
-      },
     };
   }
 
