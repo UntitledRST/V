@@ -198,8 +198,8 @@
     gap: 8px;
   }
 
-  .panel-app{ flex: 1 1 0; }
-  .panel-web{ flex: 1 1 0; }
+  .panel-app{ flex: 6 6 0; }
+  .panel-web{ flex: 4 4 0; }
 
   .panel-title{
     margin:0;
@@ -218,7 +218,7 @@
   }
   /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
      패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
-  .panel-app .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
+  .panel-app .cards-grid{ grid-template-columns: repeat(6, minmax(128px, 1fr)); }
   .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
 
   /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
@@ -688,41 +688,23 @@
       var panels = document.createElement('div');
       panels.className = 'panels';
 
-      // ---- App 패널: App(Host)/App(Viewer)를 하나의 패널 안에 타일 카드 그리드로 표시 (Web 카드와 동일 크기) ----
-      var hostList = byChannel[ch]['app-host'];
-      var viewerList = byChannel[ch]['app-viewer'];
-      if (hostList || viewerList) {
+      // ---- App 패널: Host+Viewer 6개 항목을 구분 없이 한 줄로 쭉 배치 (Web 카드와 동일 크기) ----
+      var hostList = byChannel[ch]['app-host'] || [];
+      var viewerList = byChannel[ch]['app-viewer'] || [];
+      var appList = hostList.concat(viewerList);
+      if (appList.length) {
         var appPanel = document.createElement('div');
         appPanel.className = 'panel panel-app';
 
-        if (hostList) {
-          var hostTitle = document.createElement('h2');
-          hostTitle.className = 'panel-title app';
-          hostTitle.textContent = 'App(Host)';
-          appPanel.appendChild(hostTitle);
+        var appTitle = document.createElement('h2');
+        appTitle.className = 'panel-title app';
+        appTitle.textContent = 'App';
+        appPanel.appendChild(appTitle);
 
-          var hostGrid = document.createElement('div');
-          hostGrid.className = 'cards-grid';
-          hostList.forEach(function(item){ hostGrid.appendChild(renderCard(item)); });
-          appPanel.appendChild(hostGrid);
-        }
-
-        if (viewerList) {
-          var viewerBlock = document.createElement('div');
-          viewerBlock.className = 'app-subgroup-gap';
-
-          var viewerTitle = document.createElement('h3');
-          viewerTitle.className = 'subgroup-title';
-          viewerTitle.textContent = 'App(Viewer)';
-          viewerBlock.appendChild(viewerTitle);
-
-          var viewerGrid = document.createElement('div');
-          viewerGrid.className = 'cards-grid';
-          viewerList.forEach(function(item){ viewerGrid.appendChild(renderCard(item)); });
-          viewerBlock.appendChild(viewerGrid);
-
-          appPanel.appendChild(viewerBlock);
-        }
+        var appGrid = document.createElement('div');
+        appGrid.className = 'cards-grid';
+        appList.forEach(function(item){ appGrid.appendChild(renderCard(item)); });
+        appPanel.appendChild(appGrid);
 
         panels.appendChild(appPanel);
       }
