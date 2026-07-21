@@ -198,8 +198,7 @@
     gap: 8px;
   }
 
-  .panel-app-host{ flex: 4 4 0; }
-  .panel-app-viewer{ flex: 2 2 0; }
+  .panel-app{ flex: 6 6 0; }
   .panel-web{ flex: 4 4 0; }
 
   .panel-title{
@@ -208,8 +207,7 @@
     font-weight: 800;
     letter-spacing: 0.01em;
   }
-  .panel-title.app-host{ color: var(--blue); }
-  .panel-title.app-viewer{ color: #8fc0ff; }
+  .panel-title.app{ color: var(--blue); }
   .panel-title.web{ color: var(--purple); }
 
   .cards-grid{
@@ -218,10 +216,9 @@
     gap: 10px;
     grid-auto-rows: 1fr;
   }
-  /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
-     위 패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
-  .panel-app-host .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
-  .panel-app-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(128px, 1fr)); }
+  /* App(6항목: Windows·macOS·Android·iOS Host + Windows·macOS Viewer)과 Web(4항목)의
+     패널 flex 비율(6:4)과 컬럼 수(6:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
+  .panel-app .cards-grid{ grid-template-columns: repeat(6, minmax(128px, 1fr)); }
   .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(128px, 1fr)); }
 
   /* ---------------- Card ---------------- */
@@ -354,13 +351,11 @@
   }
   .download-btn svg{ width:14px; height:14px; }
 
-  /* Web/App(Host)/App(Viewer) 카드는 테두리 색으로 구분 */
+  /* Web 카드는 App 카드와 테두리 색으로 구분 */
   .panel-web .card{ border-color: rgba(192,132,252,0.28); }
-  .panel-app-host .card{ border-color: rgba(91,157,255,0.22); }
-  .panel-app-viewer .card{ border-color: rgba(143,192,255,0.32); }
+  .panel-app .card{ border-color: rgba(91,157,255,0.22); }
   .panel-web .card.updated-today,
-  .panel-app-host .card.updated-today,
-  .panel-app-viewer .card.updated-today{ border-color: var(--red); }
+  .panel-app .card.updated-today{ border-color: var(--red); }
 
 
   /* ---------------- Responsive ---------------- */
@@ -375,8 +370,7 @@
     .dashboard{ min-height: auto; padding: 18px 16px 24px; }
     .content{ flex: none; }
     .panels{ flex-direction: column; flex: none; overflow-x: visible; }
-    .panel-app-host .cards-grid{ grid-template-columns: repeat(2, 1fr); }
-    .panel-app-viewer .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .panel-app .cards-grid{ grid-template-columns: repeat(3, 1fr); }
     .panel-web .cards-grid{ grid-template-columns: repeat(2, 1fr); }
     .cards-grid{ flex: none; grid-auto-rows: auto; }
     .card{ min-height: 190px; }
@@ -387,7 +381,7 @@
   }
 
   @media (max-width: 520px){
-    .panel-app-host .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    .panel-app .cards-grid{ grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -400,7 +394,7 @@
         <span class="dot"></span>
         <h1>빌드 버전 업데이트 현황</h1>
       </div>
-      <p class="subtitle">Alpha / Beta 채널 · App(Host: Windows·macOS·Android·iOS) / App(Viewer: Windows·macOS) · Web(Viewer·Relay·PartnerAdmin·UserAdmin)</p>
+      <p class="subtitle">Alpha / Beta 채널 · App(Host: Windows·macOS·Android·iOS, Viewer: Windows·macOS) · Web(Viewer·Relay·PartnerAdmin·UserAdmin)</p>
     </div>
     <div class="controls">
       <div class="last-refresh">
@@ -439,10 +433,10 @@
     relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>'
   };
 
-  var GROUP_LABEL = { 'app-host': 'App(Host)', 'app-viewer': 'App(Viewer)', web: 'Web' };
+  var GROUP_LABEL = { app: 'App', web: 'Web' };
   var CHANNEL_LABEL = { alpha: { pill: 'ALPHA', name: '알파 채널' }, beta: { pill: 'BETA', name: '베타 채널' } };
   var CHANNEL_ORDER = ['alpha', 'beta'];
-  var GROUP_ORDER = ['app-host', 'app-viewer', 'web'];
+  var GROUP_ORDER = ['app', 'web'];
 
   var contentEl = document.getElementById('content');
   var lastRefreshEl = document.getElementById('lastRefresh');
@@ -544,15 +538,23 @@
     return card;
   }
 
+  var DISPLAY_GROUP = { 'app-host': 'app', 'app-viewer': 'app', 'web': 'web' };
+  var GROUP_LABEL_SUFFIX = { 'app-host': '(Host)', 'app-viewer': '(Viewer)' };
+
   // ---------- 전체 렌더링 ----------
   function render(items){
     contentEl.innerHTML = '';
 
     var byChannel = {};
     items.forEach(function(it){
+      var dispGrp = DISPLAY_GROUP[it.group] || it.group;
+      var suffix = GROUP_LABEL_SUFFIX[it.group] || '';
+      // App(Host)/App(Viewer)를 같은 'app' 영역에 합치되, 카드 이름에는 구분 표기를 붙여서
+      // 같은 이름(Windows/macOS)이 중복돼도 어느 쪽인지 알 수 있게 함
+      var displayItem = suffix ? Object.assign({}, it, { label: (it.label || '') + suffix }) : it;
       byChannel[it.channel] = byChannel[it.channel] || {};
-      byChannel[it.channel][it.group] = byChannel[it.channel][it.group] || [];
-      byChannel[it.channel][it.group].push(it);
+      byChannel[it.channel][dispGrp] = byChannel[it.channel][dispGrp] || [];
+      byChannel[it.channel][dispGrp].push(displayItem);
     });
 
     CHANNEL_ORDER.forEach(function(ch){
