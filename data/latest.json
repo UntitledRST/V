@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T09:21:03.817389+00:00",
+  "fetchedAt": "2026-07-22T09:25:39.703434+00:00",
   "count": 161,
   "issues": [
     {
@@ -700,7 +700,7 @@
       "번호": 64,
       "일감번호": 274684,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [에이전트] 다국어 리소스 적용 시, 배너 문구가 말줄임표로 표시되어 전체 내용 확인 불가 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1283,7 +1283,7 @@
       "번호": 117,
       "일감번호": 274003,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 상담 일지 팝업 이동 및 축소·확장 불가",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1777,8 +1777,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 117,
-      "done": 44,
+      "notDone": 116,
+      "done": 45,
       "total": 161
     },
     "assignees": [
@@ -1841,9 +1841,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 5,
+        "done": 6,
         "complete": false,
-        "rate": 29
+        "rate": 35
       },
       {
         "name": "장기중(Jay)",
@@ -1881,15 +1881,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 107,
-        "done": 39,
+        "progress": 106,
+        "done": 40,
         "total": 146
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 88
+        "count": 87
       },
       {
         "label": "진행",
@@ -1901,7 +1901,7 @@
       },
       {
         "label": "해결",
-        "count": 42
+        "count": 43
       },
       {
         "label": "피드백",
@@ -2010,23 +2010,23 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 38,
-        "rate": 38,
+        "cumDone": 39,
+        "rate": 39,
         "newCount": 16,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 41,
-        "rate": 36,
+        "cumDone": 42,
+        "rate": 37,
         "newCount": 12,
         "doneCount": 3
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 43,
+        "cumDone": 44,
         "rate": 33,
         "newCount": 19,
         "doneCount": 2
@@ -2034,8 +2034,8 @@
       {
         "date": "2026-07-22",
         "cumIssue": 161,
-        "cumDone": 44,
-        "rate": 27,
+        "cumDone": 45,
+        "rate": 28,
         "newCount": 29,
         "doneCount": 1
       }
