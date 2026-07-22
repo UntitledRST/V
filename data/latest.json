@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T10:27:27.293512+00:00",
+  "fetchedAt": "2026-07-22T10:31:04.710340+00:00",
   "count": 163,
   "issues": [
     {
@@ -249,7 +249,7 @@
       "번호": 23,
       "일감번호": 274966,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어] 원격 모니터 선택 \"최대 4개\" 기획 문언 확인 요청 — 실기 9개 모니터 정상 동작·RC7.6.7 은 8개 이상 지원 (4개 제한 적용 시 회귀 우려)",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1799,17 +1799,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 118,
-      "done": 45,
+      "notDone": 117,
+      "done": 46,
       "total": 163
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 18,
-        "done": 6,
+        "done": 7,
         "complete": false,
-        "rate": 33
+        "rate": 38
       },
       {
         "name": "김성식(kimss)",
@@ -1891,8 +1891,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 9,
-        "done": 3,
+        "progress": 8,
+        "done": 4,
         "total": 12
       },
       {
@@ -1911,7 +1911,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 89
+        "count": 88
       },
       {
         "label": "진행",
@@ -1923,7 +1923,7 @@
       },
       {
         "label": "해결",
-        "count": 43
+        "count": 44
       },
       {
         "label": "피드백",
@@ -2056,10 +2056,10 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 45,
+        "cumDone": 46,
         "rate": 28,
         "newCount": 31,
-        "doneCount": 1
+        "doneCount": 2
       }
     ]
   }
