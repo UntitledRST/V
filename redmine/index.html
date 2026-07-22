@@ -32,7 +32,7 @@
     height:100%;
   }
   .wrap{
-    max-width:1600px; margin:0 auto; padding:20px 24px;
+    width:100%; margin:0; padding:20px 32px;
     height:100vh; display:flex; flex-direction:column;
   }
 
@@ -40,14 +40,14 @@
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
     margin-bottom:16px; flex:0 0 auto;
   }
-  .title-block h1{ margin:0; font-size:24px; font-weight:800; letter-spacing:-0.01em; }
-  .title-block p{ margin:5px 0 0; font-size:14px; color:var(--text-secondary); }
+  .title-block h1{ margin:0; font-size:30px; font-weight:800; letter-spacing:-0.01em; }
+  .title-block p{ margin:6px 0 0; font-size:17px; color:var(--text-secondary); }
   .title-block p span{ color:var(--green); font-family:var(--mono); }
 
   .refresh-btn{
     display:flex; align-items:center; gap:8px;
     background:var(--blue); color:#04101f; border:none; border-radius:999px;
-    padding:11px 20px; font-size:15px; font-weight:700; cursor:pointer;
+    padding:13px 24px; font-size:18px; font-weight:700; cursor:pointer;
     transition: transform .15s ease, box-shadow .15s ease;
     box-shadow: 0 0 0 0 rgba(91,157,255,0.4);
   }
@@ -59,70 +59,62 @@
 
   #errorBox:empty{ display:none; }
 
-  /* ---- 메인 영역: 화면을 꽉 채우도록 남은 세로 공간을 3구역(히어로/패널/차트)에 분배 ---- */
+  /* ---- 메인 영역: 화면을 꽉 채우도록 남은 세로 공간을 3구역(통계/이슈목록/하단)에 분배 ---- */
   .main-grid{
     flex:1 1 auto; min-height:0;
     display:flex; flex-direction:column; gap:14px;
   }
 
-  /* 히어로 영역: 통계 카드 2x2 + 전체 이슈 목록(오른쪽, 크게) */
-  .hero-grid{
-    flex:1 1 40%; min-height:0;
-    display:grid;
-    grid-template-columns: 1fr 1fr 2.1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "s1 s2 issues"
-      "s3 s4 issues";
-    gap:14px;
+  /* 상단: 통계 카드 4개 한 줄 */
+  .stat-row{
+    flex:0 0 auto;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
   }
   .stat-card{
-    grid-area: s1;
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
     padding:16px 18px; display:flex; flex-direction:column; justify-content:center;
   }
-  .stat-card.notdone{ grid-area: s1; }
-  .stat-card.done{ grid-area: s2; }
-  .stat-card.total{ grid-area: s3; }
-  .stat-card.rate{ grid-area: s4; }
-  .stat-card .label{ font-size:14px; color:var(--text-secondary); margin-bottom:6px; }
-  .stat-card .value{ font-size:34px; font-weight:800; font-family:var(--mono); }
+  .stat-card .label{ font-size:17px; color:var(--text-secondary); margin-bottom:6px; }
+  .stat-card .value{ font-size:42px; font-weight:800; font-family:var(--mono); }
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
 
-  .issues-panel{ grid-area: issues; display:flex; flex-direction:column; min-height:0; }
+  /* 중단: 전체 이슈 목록, 전체 폭 */
+  .issues-panel{
+    flex:1 1 40%; min-height:0;
+    display:flex; flex-direction:column;
+  }
   .issues-panel .issues-table-scroll{ flex:1 1 auto; min-height:0; max-height:none; }
 
-  /* 4개 요약 패널: 한 줄에 나란히 */
-  .panels{ flex:0 1 auto; display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; min-height:0; }
+  /* 하단: 왼쪽 2x2 요약 패널 + 오른쪽 차트 */
+  .bottom-section{
+    flex:1 1 45%; min-height:0;
+    display:flex; gap:14px;
+  }
+  .panels{
+    flex:1 1 56%; min-height:0;
+    display:grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap:14px;
+  }
   .panels .panel{ display:flex; flex-direction:column; min-height:0; overflow:auto; }
 
-  /* 차트 영역: 남는 공간 채움 */
-  .chart-panel{ flex:1 1 30%; min-height:180px; display:flex; flex-direction:column; }
+  .chart-panel{ flex:1 1 44%; min-height:0; display:flex; flex-direction:column; }
   .chart-wrap{ flex:1 1 auto; min-height:0; position:relative; }
 
   @media (max-width: 1100px){
-    .hero-grid{
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-      grid-template-areas:
-        "s1 s2"
-        "s3 s4"
-        "issues issues";
-    }
+    .bottom-section{ flex-direction:column; }
   }
 
   @media (max-width: 900px){
     html, body{ height:auto; }
     .wrap{ height:auto; padding:18px 16px 40px; }
     .main-grid{ flex:none; }
-    .hero-grid{
-      display:flex; flex-direction:column; flex:none;
-    }
+    .stat-row{ grid-template-columns: repeat(2, 1fr); }
     .stat-card{ min-height:70px; }
+    .issues-panel{ flex:none; }
     .issues-panel .issues-table-scroll{ max-height:340px; }
-    .panels{ grid-template-columns: repeat(2, 1fr); flex:none; }
+    .bottom-section{ flex:none; flex-direction:column; }
+    .panels{ grid-template-columns: repeat(2, 1fr); grid-template-rows:none; flex:none; }
     .panels .panel{ max-height:none; overflow:visible; }
     .chart-panel{ flex:none; min-height:280px; }
     .chart-wrap{ height:280px; }
@@ -132,19 +124,19 @@
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
     padding:16px 18px;
   }
-  .panel h2{ margin:0 0 12px; font-size:16px; font-weight:800; letter-spacing:0.01em; flex:0 0 auto; }
+  .panel h2{ margin:0 0 12px; font-size:19px; font-weight:800; letter-spacing:0.01em; flex:0 0 auto; }
   .panel h2.c-blue{ color:var(--blue); }
   .panel h2.c-purple{ color:var(--purple); }
   .panel h2.c-orange{ color:var(--orange); }
   .panel h2.c-green{ color:var(--green); }
 
-  table{ width:100%; border-collapse:collapse; font-size:14.5px; }
-  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
-  td{ padding:8px 9px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  table{ width:100%; border-collapse:collapse; font-size:17px; }
+  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:14.5px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
+  td{ padding:10px 11px; border-bottom:1px solid rgba(255,255,255,0.04); }
   tr.total-row td{ font-weight:800; color:var(--text-primary); border-top:1px solid var(--panel-border); }
   tr.clickable{ cursor:pointer; }
   tr.clickable:hover td{ background:rgba(91,157,255,0.07); }
-  .pill{ display:inline-block; padding:3px 11px; border-radius:999px; font-size:13px; font-weight:700; }
+  .pill{ display:inline-block; padding:4px 13px; border-radius:999px; font-size:15px; font-weight:700; }
   .pill.done{ background:rgba(52,211,153,0.15); color:var(--green); }
   .pill.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .mono{ font-family:var(--mono); }
@@ -153,25 +145,25 @@
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
   .filter-chip{
     display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
-    font-size:13.5px; font-weight:700; padding:5px 12px; border-radius:999px; cursor:pointer;
+    font-size:16px; font-weight:700; padding:6px 14px; border-radius:999px; cursor:pointer;
   }
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
   .issues-table-scroll{ overflow:auto; }
-  .issues-table-scroll table{ font-size:14px; }
+  .issues-table-scroll table{ font-size:16.5px; }
   .issues-table-scroll th{ position:sticky; top:0; background:var(--panel-bg); }
-  .status-badge{ font-size:12px; font-weight:700; padding:3px 9px; border-radius:6px; white-space:nowrap; }
+  .status-badge{ font-size:14px; font-weight:700; padding:4px 10px; border-radius:6px; white-space:nowrap; }
   .status-badge.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .status-badge.done{ background:rgba(255,255,255,0.06); color:var(--text-tertiary); }
   a.issue-link{ color:var(--blue); text-decoration:none; font-family:var(--mono); }
   a.issue-link:hover{ text-decoration:underline; }
   .title-cell{ max-width:420px; }
 
-  .empty, .loading{ color:var(--text-tertiary); font-size:14px; padding:20px 0; text-align:center; }
+  .empty, .loading{ color:var(--text-tertiary); font-size:16px; padding:20px 0; text-align:center; }
   .error-box{
     background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#fca5a5;
-    padding:12px 16px; border-radius:var(--radius-md); font-size:14px; margin-bottom:10px; flex:0 0 auto;
+    padding:12px 16px; border-radius:var(--radius-md); font-size:16px; margin-bottom:10px; flex:0 0 auto;
   }
 </style>
 </head>
@@ -193,74 +185,76 @@
 
   <div class="main-grid">
 
-  <div class="hero-grid" id="statRow">
+  <div class="stat-row" id="statRow">
     <div class="stat-card notdone"><div class="label">미처리</div><div class="value">&mdash;</div></div>
     <div class="stat-card done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
     <div class="stat-card total"><div class="label">전체 이슈</div><div class="value">&mdash;</div></div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
+  </div>
 
-    <div class="panel issues-panel">
-      <h2>
-        <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
-        <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
-      </h2>
-      <div class="issues-table-scroll">
+  <div class="panel issues-panel">
+    <h2>
+      <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
+      <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
+    </h2>
+    <div class="issues-table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:44px">번호</th>
+            <th style="width:80px">일감번호</th>
+            <th>분류</th>
+            <th>상태</th>
+            <th>제목</th>
+            <th>우선순위</th>
+            <th>담당자</th>
+            <th>작성시간</th>
+          </tr>
+        </thead>
+        <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="panels">
+      <div class="panel">
+        <h2 class="c-blue">담당자별 집계</h2>
         <table>
-          <thead>
-            <tr>
-              <th style="width:44px">번호</th>
-              <th style="width:80px">일감번호</th>
-              <th>분류</th>
-              <th>상태</th>
-              <th>제목</th>
-              <th>우선순위</th>
-              <th>담당자</th>
-              <th>작성시간</th>
-            </tr>
-          </thead>
-          <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
+          <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
+          <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2 class="c-purple">일감 추적 (분류별)</h2>
+        <table>
+          <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+          <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2 class="c-orange">상태별 집계</h2>
+        <table>
+          <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
+          <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2 class="c-green">우선순위별 집계</h2>
+        <table>
+          <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
+          <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
         </table>
       </div>
     </div>
-  </div>
 
-  <div class="panels">
-    <div class="panel">
-      <h2 class="c-blue">담당자별 집계</h2>
-      <table>
-        <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
-        <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
+    <div class="panel chart-panel">
+      <h2 class="c-blue">누적 이슈 발생 / 해결 추이</h2>
+      <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
     </div>
-
-    <div class="panel">
-      <h2 class="c-purple">일감 추적 (분류별)</h2>
-      <table>
-        <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
-        <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
-      <h2 class="c-orange">상태별 집계</h2>
-      <table>
-        <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
-        <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
-      <h2 class="c-green">우선순위별 집계</h2>
-      <table>
-        <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
-        <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="panel chart-panel">
-    <h2 class="c-blue">누적 이슈 발생 / 해결 추이</h2>
-    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
   </div>
 
   </div>
@@ -424,6 +418,11 @@
       chip.classList.remove('active');
     }
     renderIssues();
+
+    // 최상단으로 이동 (페이지 스크롤 + 이슈 목록 내부 스크롤 모두 초기화)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var scrollBox = document.querySelector('.issues-table-scroll');
+    if (scrollBox) scrollBox.scrollTop = 0;
   }
 
   function renderIssues(){
