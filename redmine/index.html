@@ -70,7 +70,7 @@
 
   /* 요약 패널 4개: 한 줄에 나란히, 스크롤 없이 전체 표시 */
   .panels{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
   }
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
@@ -231,7 +231,9 @@
         <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
+  </div>
 
+  <div class="panels">
     <div class="panel">
       <h2 class="c-green">우선순위별 집계</h2>
       <table>
@@ -239,9 +241,7 @@
         <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
-  </div>
 
-  <div class="panels">
     <div class="panel">
       <h2 class="c-blue">파트별 집계</h2>
       <table>
@@ -255,22 +255,6 @@
       <table>
         <thead><tr><th>접속유형</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
         <tbody id="connTypeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
-      <h2 class="c-orange">기능별 집계</h2>
-      <table>
-        <thead><tr><th>기능</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
-        <tbody id="featureBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
-      <h2 class="c-green">환경별 집계</h2>
-      <table>
-        <thead><tr><th>환경</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
-        <tbody id="envBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -527,8 +511,6 @@
     renderPriorities();
     renderPart();
     renderConnType();
-    renderFeature();
-    renderEnv();
     renderChart();
     renderIssues();
   }
@@ -619,14 +601,6 @@
 
   function renderConnType(){
     renderAggPanel('connTypeBody', aggregateGeneric(state.issues, '__connType', CLASSIFY_RULES.connType.order), 'conntype');
-  }
-
-  function renderFeature(){
-    renderAggPanel('featureBody', aggregateGeneric(state.issues, '__feature', CLASSIFY_RULES.feature.order), 'feature');
-  }
-
-  function renderEnv(){
-    renderAggPanel('envBody', aggregateGeneric(state.issues, '__env', CLASSIFY_RULES.env.order), 'env');
   }
 
   function bindFilterableRows(tbodyId){
