@@ -1,0 +1,397 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RC8 Lite · 일감 현황</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg: #0a0e14;
+    --panel-bg: #10161f;
+    --panel-border: #1e2733;
+    --card-bg: #131a24;
+    --text-primary: #eef2f7;
+    --text-secondary: #93a1b3;
+    --text-tertiary: #5b6b80;
+    --blue: #5b9dff;
+    --purple: #c084fc;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #ef4444;
+    --orange: #fb923c;
+    --radius-lg: 14px;
+    --radius-md: 10px;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Pretendard, sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0; background:var(--bg); color:var(--text-primary);
+    font-family:var(--sans); -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1400px; margin:0 auto; padding:28px 24px 60px; }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+    margin-bottom:26px;
+  }
+  .title-block h1{ margin:0; font-size:22px; font-weight:800; letter-spacing:-0.01em; }
+  .title-block p{ margin:4px 0 0; font-size:13px; color:var(--text-secondary); }
+  .title-block p span{ color:var(--green); font-family:var(--mono); }
+
+  .refresh-btn{
+    display:flex; align-items:center; gap:8px;
+    background:var(--blue); color:#04101f; border:none; border-radius:999px;
+    padding:11px 20px; font-size:14px; font-weight:700; cursor:pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 0 0 0 rgba(91,157,255,0.4);
+  }
+  .refresh-btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 18px rgba(91,157,255,0.25); }
+  .refresh-btn:disabled{ opacity:.6; cursor:wait; transform:none; }
+  .refresh-btn svg{ width:16px; height:16px; }
+  .refresh-btn.spinning svg{ animation: spin 0.9s linear infinite; }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+
+  .stat-row{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-bottom:22px; }
+  .stat-card{
+    background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
+    padding:16px 18px;
+  }
+  .stat-card .label{ font-size:12px; color:var(--text-secondary); margin-bottom:6px; }
+  .stat-card .value{ font-size:26px; font-weight:800; font-family:var(--mono); }
+  .stat-card.notdone .value{ color:var(--yellow); }
+  .stat-card.done .value{ color:var(--green); }
+  .stat-card.rate .value{ color:var(--blue); }
+
+  .panels{ display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; margin-bottom:20px; }
+  @media (max-width: 900px){ .panels{ grid-template-columns: 1fr; } .stat-row{ grid-template-columns: repeat(2,1fr);} }
+
+  .panel{
+    background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
+    padding:16px 18px;
+  }
+  .panel h2{ margin:0 0 12px; font-size:14px; font-weight:800; letter-spacing:0.01em; }
+  .panel h2.c-blue{ color:var(--blue); }
+  .panel h2.c-purple{ color:var(--purple); }
+  .panel h2.c-orange{ color:var(--orange); }
+  .panel h2.c-green{ color:var(--green); }
+
+  table{ width:100%; border-collapse:collapse; font-size:13px; }
+  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
+  td{ padding:7px 8px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  tr.total-row td{ font-weight:800; color:var(--text-primary); border-top:1px solid var(--panel-border); }
+  tr.clickable{ cursor:pointer; }
+  tr.clickable:hover td{ background:rgba(91,157,255,0.07); }
+  .pill{ display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-weight:700; }
+  .pill.done{ background:rgba(52,211,153,0.15); color:var(--green); }
+  .pill.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
+  .mono{ font-family:var(--mono); }
+  .num{ text-align:right; font-family:var(--mono); }
+
+  .chart-panel{ margin-bottom:20px; }
+  .chart-wrap{ height:300px; }
+
+  .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
+  .filter-chip{
+    display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
+    font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; cursor:pointer;
+  }
+  .filter-chip.active{ display:inline-flex; }
+  .filter-chip .x{ font-weight:900; }
+
+  .issues-table-scroll{ max-height:520px; overflow:auto; }
+  .issues-table-scroll table{ font-size:12.5px; }
+  .issues-table-scroll th{ position:sticky; top:0; background:var(--panel-bg); }
+  .status-badge{ font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; white-space:nowrap; }
+  .status-badge.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
+  .status-badge.done{ background:rgba(255,255,255,0.06); color:var(--text-tertiary); }
+  a.issue-link{ color:var(--blue); text-decoration:none; font-family:var(--mono); }
+  a.issue-link:hover{ text-decoration:underline; }
+  .title-cell{ max-width:480px; }
+
+  .empty, .loading{ color:var(--text-tertiary); font-size:13px; padding:20px 0; text-align:center; }
+  .error-box{
+    background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#fca5a5;
+    padding:14px 16px; border-radius:var(--radius-md); font-size:13px; margin-bottom:20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="title-block">
+      <h1>RC8 Lite &middot; 일감 현황</h1>
+      <p id="lastUpdated">불러오는 중&hellip;</p>
+    </div>
+    <button class="refresh-btn" id="refreshBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v6h-6"/></svg>
+      <span>새로고침</span>
+    </button>
+  </div>
+
+  <div id="errorBox"></div>
+
+  <div class="stat-row" id="statRow">
+    <div class="stat-card notdone"><div class="label">미처리</div><div class="value">&mdash;</div></div>
+    <div class="stat-card done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
+    <div class="stat-card"><div class="label">전체 이슈</div><div class="value">&mdash;</div></div>
+    <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
+  </div>
+
+  <div class="panels">
+    <div class="panel">
+      <h2 class="c-blue">담당자별 집계</h2>
+      <table>
+        <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
+        <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-purple">일감 추적 (분류별)</h2>
+      <table>
+        <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-orange">상태별 집계</h2>
+      <table>
+        <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
+        <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-green">우선순위별 집계</h2>
+      <table>
+        <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
+        <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel chart-panel">
+    <h2 class="c-blue">누적 이슈 발생 / 해결 추이</h2>
+    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+  </div>
+
+  <div class="panel issues-panel">
+    <h2>
+      <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
+      <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
+    </h2>
+    <div class="issues-table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:44px">번호</th>
+            <th style="width:80px">일감번호</th>
+            <th>분류</th>
+            <th>상태</th>
+            <th>제목</th>
+            <th>우선순위</th>
+            <th>담당자</th>
+            <th>작성시간</th>
+          </tr>
+        </thead>
+        <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var state = { issues: [], summary: null, filterAssignee: null };
+  var chart = null;
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+
+  function fmtTime(t){
+    if (!t) return '<span style="color:var(--text-tertiary)">&mdash;</span>';
+    var parts = t.split(' ');
+    return escapeHtml(parts[0]) + '<br><span style="color:var(--text-tertiary);font-size:11px">' + escapeHtml(parts[1] || '') + '</span>';
+  }
+
+  function isNotDoneStatus(s){
+    return ['신규','진행','피드백'].some(function(k){ return (s||'').indexOf(k) !== -1; });
+  }
+
+  async function loadData(){
+    var btn = document.getElementById('refreshBtn');
+    btn.disabled = true;
+    btn.classList.add('spinning');
+    document.getElementById('errorBox').innerHTML = '';
+
+    try {
+      var res = await fetch('/api/issues');
+      var data = await res.json();
+      if (!data.ok) throw new Error(data.error || '알 수 없는 오류');
+
+      state.issues = data.issues;
+      state.summary = data.summary;
+
+      renderAll();
+
+      var d = new Date(data.fetchedAt);
+      document.getElementById('lastUpdated').innerHTML =
+        '마지막 업데이트: <span>' + d.toLocaleString('ko-KR') + '</span> · 총 ' + data.count + '건';
+    } catch (err) {
+      document.getElementById('errorBox').innerHTML =
+        '<div class="error-box">데이터를 불러오지 못했습니다: ' + escapeHtml(err.message || err) + '</div>';
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('spinning');
+    }
+  }
+
+  function renderAll(){
+    renderStats();
+    renderAssignees();
+    renderTrackers();
+    renderStatuses();
+    renderPriorities();
+    renderChart();
+    renderIssues();
+  }
+
+  function renderStats(){
+    var c = state.summary.completion;
+    var rate = c.total === 0 ? 0 : Math.round((c.done / c.total) * 100);
+    var cards = document.querySelectorAll('.stat-card .value');
+    cards[0].textContent = c.notDone;
+    cards[1].textContent = c.done;
+    cards[2].textContent = c.total;
+    cards[3].textContent = rate + '%';
+  }
+
+  function renderAssignees(){
+    var rows = state.summary.assignees.map(function(a){
+      return '<tr class="clickable" data-assignee="' + escapeHtml(a.name) + '">' +
+        '<td>' + escapeHtml(a.name) + '</td>' +
+        '<td><span class="pill ' + (a.complete ? 'done' : 'notdone') + '">' + (a.complete ? '완료' : '미완료') + '</span></td>' +
+        '<td class="mono">' + a.total + '/' + a.done + '</td>' +
+        '<td class="num">' + a.rate + '%</td>' +
+      '</tr>';
+    }).join('');
+    document.getElementById('assigneeBody').innerHTML = rows || '<tr><td colspan="4" class="empty">데이터 없음</td></tr>';
+
+    document.querySelectorAll('#assigneeBody tr[data-assignee]').forEach(function(tr){
+      tr.addEventListener('click', function(){
+        setAssigneeFilter(tr.getAttribute('data-assignee'));
+      });
+    });
+  }
+
+  function renderTrackers(){
+    var t = state.summary.trackers;
+    var sumP = 0, sumD = 0, sumT = 0;
+    var rows = t.map(function(x){
+      sumP += x.progress; sumD += x.done; sumT += x.total;
+      return '<tr><td>' + escapeHtml(x.label) + '</td><td class="num">' + x.progress + '</td><td class="num">' + x.done + '</td><td class="num">' + x.total + '</td></tr>';
+    }).join('');
+    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sumP + '</td><td class="num">' + sumD + '</td><td class="num">' + sumT + '</td></tr>';
+    document.getElementById('trackerBody').innerHTML = rows;
+  }
+
+  function renderStatuses(){
+    var s = state.summary.statuses;
+    var sum = 0;
+    var rows = s.map(function(x){
+      sum += x.count;
+      return '<tr><td>' + escapeHtml(x.label) + '</td><td class="num">' + x.count + '</td></tr>';
+    }).join('');
+    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sum + '</td></tr>';
+    document.getElementById('statusBody').innerHTML = rows;
+  }
+
+  function renderPriorities(){
+    var p = state.summary.priorities;
+    var sum = 0;
+    var rows = p.map(function(x){
+      sum += x.count;
+      return '<tr><td>' + escapeHtml(x.label) + '</td><td class="num">' + x.count + '</td></tr>';
+    }).join('');
+    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sum + '</td></tr>';
+    document.getElementById('priorityBody').innerHTML = rows;
+  }
+
+  function renderChart(){
+    var tl = state.summary.timeline;
+    var ctx = document.getElementById('trendChart').getContext('2d');
+    var labels = tl.map(function(x){ return x.date; });
+    var cumIssue = tl.map(function(x){ return x.cumIssue; });
+    var cumDone = tl.map(function(x){ return x.cumDone; });
+
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: '누적 이슈', data: cumIssue, borderColor: '#5b9dff', backgroundColor: 'rgba(91,157,255,0.08)', tension: 0.25, fill: true, pointRadius: 2 },
+          { label: '누적 해결', data: cumDone, borderColor: '#34d399', backgroundColor: 'rgba(52,211,153,0.08)', tension: 0.25, fill: true, pointRadius: 2 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { labels: { color: '#93a1b3' } } },
+        scales: {
+          x: { ticks: { color: '#5b6b80' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: { ticks: { color: '#5b6b80' }, grid: { color: 'rgba(255,255,255,0.04)' } }
+        }
+      }
+    });
+  }
+
+  function setAssigneeFilter(name){
+    state.filterAssignee = (state.filterAssignee === name) ? null : name;
+    var chip = document.getElementById('filterChip');
+    if (state.filterAssignee){
+      chip.classList.add('active');
+      document.getElementById('filterLabel').textContent = state.filterAssignee + ' 님의 이슈만 보는 중';
+    } else {
+      chip.classList.remove('active');
+    }
+    renderIssues();
+  }
+
+  function renderIssues(){
+    var list = state.issues;
+    if (state.filterAssignee){
+      list = list.filter(function(it){ return it.담당자 === state.filterAssignee; });
+    }
+    document.getElementById('issueCount').textContent = list.length;
+
+    var rows = list.map(function(it, idx){
+      var notDone = isNotDoneStatus(it.상태);
+      return '<tr>' +
+        '<td>' + (idx + 1) + '</td>' +
+        '<td><a class="issue-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">#' + escapeHtml(it.일감번호) + '</a></td>' +
+        '<td>' + escapeHtml(it.분류) + '</td>' +
+        '<td><span class="status-badge ' + (notDone ? 'notdone' : 'done') + '">' + escapeHtml(it.상태) + '</span></td>' +
+        '<td class="title-cell">' + escapeHtml(it.제목) + '</td>' +
+        '<td>' + escapeHtml(it.우선순위) + '</td>' +
+        '<td>' + escapeHtml(it.담당자) + '</td>' +
+        '<td>' + fmtTime(it.created_on) + '</td>' +
+      '</tr>';
+    }).join('');
+    document.getElementById('issuesBody').innerHTML = rows || '<tr><td colspan="8" class="empty">해당 조건의 이슈가 없습니다</td></tr>';
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', loadData);
+  document.getElementById('filterChip').addEventListener('click', function(){ setAssigneeFilter(state.filterAssignee); });
+
+  loadData();
+</script>
+</body>
+</html>
