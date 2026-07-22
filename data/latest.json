@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T10:48:05.238891+00:00",
+  "fetchedAt": "2026-07-22T10:51:03.593992+00:00",
   "count": 163,
   "issues": [
     {
@@ -546,10 +546,10 @@
       "번호": 50,
       "일감번호": 274841,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 파일 전송 완료 후 공유함 팝업이 종료되지 않고 유지됨",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "created_on": "2026-07-21 08:34:53",
       "link": "https://projects.rsupport.com/issues/274841"
     },
@@ -1806,10 +1806,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 18,
+        "total": 17,
         "done": 7,
         "complete": false,
-        "rate": 38
+        "rate": 41
       },
       {
         "name": "김성식(kimss)",
@@ -1848,10 +1848,10 @@
       },
       {
         "name": "송건호",
-        "total": 41,
+        "total": 42,
         "done": 19,
         "complete": false,
-        "rate": 46
+        "rate": 45
       },
       {
         "name": "오세진",
@@ -1915,7 +1915,7 @@
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 12
       },
       {
         "label": "보류",
@@ -1927,7 +1927,7 @@
       },
       {
         "label": "피드백",
-        "count": 18
+        "count": 17
       },
       {
         "label": "완료성공",
