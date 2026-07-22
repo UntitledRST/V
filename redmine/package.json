@@ -1,0 +1,6 @@
+{
+  "name": "rc8-lite-issue-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RC8 Lite 일감 현황 대시보드 (Redmine 연동, Vercel 배포용)"
+}
