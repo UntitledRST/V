@@ -241,6 +241,40 @@
     </div>
   </div>
 
+  <div class="panels">
+    <div class="panel">
+      <h2 class="c-blue">파트별 집계</h2>
+      <table>
+        <thead><tr><th>파트</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="partBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-purple">접속유형별 집계</h2>
+      <table>
+        <thead><tr><th>접속유형</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="connTypeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-orange">기능별 집계</h2>
+      <table>
+        <thead><tr><th>기능</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="featureBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-green">환경별 집계</h2>
+      <table>
+        <thead><tr><th>환경</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="envBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="panel chart-panel">
     <h2 class="c-blue">누적 이슈 / 해결 추이</h2>
     <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
@@ -269,6 +303,141 @@
     return ['신규','진행','피드백'].some(function(k){ return (s||'').indexOf(k) !== -1; });
   }
 
+  // ====== 파트/접속유형/기능/환경 분류 규칙 ======
+  // 실제 데이터(API)에는 이 4가지가 별도 필드로 없어서, 제목(및 제목 속 [대괄호] 태그)에서
+  // 아래 키워드를 찾아 자동 분류합니다. 실데이터로 확인 후 안 맞으면 이 키워드 목록만 수정하면 됩니다.
+  var CLASSIFY_RULES = {
+    part: {
+      order: ['기획', '디자인', '개발', '기타'],
+      keywords: {
+        '기획': ['기획'],
+        '디자인': ['디자인', 'ui', 'ux'],
+        '개발': ['개발']
+      }
+    },
+    connType: {
+      // '뷰어 응용'을 '뷰어'보다 먼저 검사해야 오분류가 안 됩니다.
+      order: ['뷰어', '호스트', '에이전트', '뷰어 응용', '기타'],
+      checkOrder: ['뷰어 응용', '뷰어', '호스트', '에이전트'],
+      keywords: {
+        '뷰어 응용': ['뷰어응용', '뷰어 응용', '뷰어앱', '뷰어 app'],
+        '뷰어': ['뷰어'],
+        '호스트': ['호스트'],
+        '에이전트': ['에이전트']
+      }
+    },
+    env: {
+      order: ['Win', 'Mac', 'Android', 'IOS', '기타'],
+      keywords: {
+        'Win': ['win', 'windows', '윈도우', '윈도우즈'],
+        'Mac': ['mac', 'macos', '맥'],
+        'Android': ['android', '안드로이드'],
+        'IOS': ['ios', '아이폰', '아이패드', 'iphone', 'ipad']
+      }
+    },
+    // 기능별 집계에서 개별 항목으로 표시할 최대 개수 (그 외는 '기타'로 묶임)
+    featureTopN: 8
+  };
+
+  function parseTags(title){
+    var tags = [];
+    var re = /\[([^\[\]]+)\]/g;
+    var m;
+    while ((m = re.exec(title || '')) !== null){
+      tags.push(m[1].trim());
+    }
+    return tags;
+  }
+
+  function matchCategoryFromText(text, keywordMap, checkOrder){
+    if (!text) return null;
+    var lower = String(text).toLowerCase();
+    var keys = checkOrder || Object.keys(keywordMap);
+    for (var i = 0; i < keys.length; i++){
+      var label = keys[i];
+      var kws = keywordMap[label] || [];
+      for (var j = 0; j < kws.length; j++){
+        if (lower.indexOf(String(kws[j]).toLowerCase()) !== -1) return label;
+      }
+    }
+    return null;
+  }
+
+  function classifyIssues(issues){
+    var featureCandidates = [];
+
+    issues.forEach(function(it){
+      var tags = parseTags(it.제목);
+      var fullText = (it.분류 || '') + ' ' + tags.join(' ') + ' ' + (it.제목 || '');
+
+      it.__part = matchCategoryFromText(fullText, CLASSIFY_RULES.part.keywords) || '기타';
+      it.__connType = matchCategoryFromText(fullText, CLASSIFY_RULES.connType.keywords, CLASSIFY_RULES.connType.checkOrder) || '기타';
+      it.__env = matchCategoryFromText(fullText, CLASSIFY_RULES.env.keywords) || '기타';
+
+      // 파트/접속유형/환경 키워드와 매칭되지 않은 [대괄호] 태그를 '기능' 후보로 사용
+      var remaining = tags.filter(function(tag){
+        var matched =
+          matchCategoryFromText(tag, CLASSIFY_RULES.part.keywords) ||
+          matchCategoryFromText(tag, CLASSIFY_RULES.connType.keywords, CLASSIFY_RULES.connType.checkOrder) ||
+          matchCategoryFromText(tag, CLASSIFY_RULES.env.keywords);
+        return !matched;
+      });
+      it.__featureTag = remaining.length ? remaining[0] : null;
+      featureCandidates.push(it.__featureTag);
+    });
+
+    // 기능 태그 빈도 집계 → 상위 N개만 개별 라벨, 나머지는 '기타'
+    var freq = {};
+    featureCandidates.forEach(function(tag){
+      if (!tag) return;
+      freq[tag] = (freq[tag] || 0) + 1;
+    });
+    var topTags = Object.keys(freq)
+      .sort(function(a, b){ return freq[b] - freq[a]; })
+      .slice(0, CLASSIFY_RULES.featureTopN);
+
+    issues.forEach(function(it){
+      it.__feature = (it.__featureTag && topTags.indexOf(it.__featureTag) !== -1) ? it.__featureTag : '기타';
+    });
+  }
+
+  // 이슈 목록을 지정한 필드(keyField) 기준으로 진행중/완료됨/합계 집계
+  // order가 있으면 그 순서대로(마지막 '기타'는 미지정 항목까지 합산), 없으면 합계 내림차순('기타'는 항상 마지막)
+  function aggregateGeneric(list, keyField, order){
+    var map = {};
+    list.forEach(function(it){
+      var key = it[keyField] || '기타';
+      if (!map[key]) map[key] = { label: key, progress: 0, done: 0, total: 0 };
+      map[key].total++;
+      if (isNotDoneStatus(it.상태)) map[key].progress++; else map[key].done++;
+    });
+
+    if (order){
+      var known = order.filter(function(k){ return k !== '기타'; });
+      var rows = known.map(function(k){
+        return map[k] || { label: k, progress: 0, done: 0, total: 0 };
+      });
+      if (order.indexOf('기타') !== -1){
+        var etc = { label: '기타', progress: 0, done: 0, total: 0 };
+        Object.keys(map).forEach(function(k){
+          if (known.indexOf(k) === -1){
+            etc.progress += map[k].progress;
+            etc.done += map[k].done;
+            etc.total += map[k].total;
+          }
+        });
+        rows.push(etc);
+      }
+      return rows;
+    }
+
+    var keys = Object.keys(map).filter(function(k){ return k !== '기타'; });
+    keys.sort(function(a, b){ return map[b].total - map[a].total; });
+    var rows2 = keys.map(function(k){ return map[k]; });
+    if (map['기타']) rows2.push(map['기타']);
+    return rows2;
+  }
+
   async function loadData(){
     document.getElementById('errorBox').innerHTML = '';
 
@@ -279,6 +448,7 @@
 
       state.issues = data.issues;
       state.summary = data.summary;
+      classifyIssues(state.issues);
 
       renderAll();
 
@@ -297,6 +467,10 @@
     renderTrackers();
     renderStatuses();
     renderPriorities();
+    renderPart();
+    renderConnType();
+    renderFeature();
+    renderEnv();
     renderChart();
     renderIssues();
   }
@@ -369,6 +543,34 @@
     bindFilterableRows('priorityBody');
   }
 
+  function renderAggPanel(tbodyId, rows, filterType){
+    var sumP = 0, sumD = 0, sumT = 0;
+    var body = rows.map(function(r){
+      sumP += r.progress; sumD += r.done; sumT += r.total;
+      return '<tr class="clickable" data-filter-type="' + filterType + '" data-filter-value="' + escapeHtml(r.label) + '">' +
+        '<td>' + escapeHtml(r.label) + '</td><td class="num">' + r.progress + '</td><td class="num">' + r.done + '</td><td class="num">' + r.total + '</td></tr>';
+    }).join('');
+    body += '<tr class="total-row"><td>합계</td><td class="num">' + sumP + '</td><td class="num">' + sumD + '</td><td class="num">' + sumT + '</td></tr>';
+    document.getElementById(tbodyId).innerHTML = body || '<tr><td colspan="4" class="empty">데이터 없음</td></tr>';
+    bindFilterableRows(tbodyId);
+  }
+
+  function renderPart(){
+    renderAggPanel('partBody', aggregateGeneric(state.issues, '__part', CLASSIFY_RULES.part.order), 'part');
+  }
+
+  function renderConnType(){
+    renderAggPanel('connTypeBody', aggregateGeneric(state.issues, '__connType', CLASSIFY_RULES.connType.order), 'conntype');
+  }
+
+  function renderFeature(){
+    renderAggPanel('featureBody', aggregateGeneric(state.issues, '__feature', null), 'feature');
+  }
+
+  function renderEnv(){
+    renderAggPanel('envBody', aggregateGeneric(state.issues, '__env', CLASSIFY_RULES.env.order), 'env');
+  }
+
   function bindFilterableRows(tbodyId){
     var tbody = document.getElementById(tbodyId);
     if (!tbody) return;
@@ -431,7 +633,7 @@
     state.filter = isSame ? null : { type: type, value: value };
 
     var chip = document.getElementById('filterChip');
-    var labelMap = { assignee: '담당자', tracker: '분류', status: '상태', priority: '우선순위' };
+    var labelMap = { assignee: '담당자', tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경' };
     var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
@@ -469,6 +671,14 @@
         list = list.filter(function(it){ return (it.상태 || '').indexOf(f.value) !== -1; });
       } else if (f.type === 'priority'){
         list = list.filter(function(it){ return (it.우선순위 || '').indexOf(f.value) !== -1; });
+      } else if (f.type === 'part'){
+        list = list.filter(function(it){ return it.__part === f.value; });
+      } else if (f.type === 'conntype'){
+        list = list.filter(function(it){ return it.__connType === f.value; });
+      } else if (f.type === 'feature'){
+        list = list.filter(function(it){ return it.__feature === f.value; });
+      } else if (f.type === 'env'){
+        list = list.filter(function(it){ return it.__env === f.value; });
       } else if (f.type === 'quick'){
         if (f.value === 'notdone') list = list.filter(function(it){ return isNotDoneStatus(it.상태); });
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
