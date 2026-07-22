@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T10:58:27.924675+00:00",
+  "fetchedAt": "2026-07-22T11:01:03.480215+00:00",
   "count": 163,
   "issues": [
     {
@@ -326,7 +326,7 @@
       "번호": 30,
       "일감번호": 274939,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][파일전송] 파일 전송 수락/확인 팝업 공통 — 하단 여유 공간이 있음에도 파일 목록이 2개 높이로 제한되어 불필요한 스크롤 발생",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -348,7 +348,7 @@
       "번호": 32,
       "일감번호": 274925,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win11][멀티모니터] 혼합 DPI 듀얼 모니터(주 FHD + UHD 4K)에서 상담 중 '프로그램 공유' 재요청 시 프로그램 선택 팝업이 축소 렌더 — 목록 컬럼 잘림·판독 곤란",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -623,7 +623,7 @@
       "번호": 57,
       "일감번호": 274794,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 뷰어가 [프로그램 공유 버튼] 반복 클릭 시, 프로그램 선택 팝업이 중복 생성됨",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -964,7 +964,7 @@
       "번호": 88,
       "일감번호": 274384,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][VP] /vp/ 다이렉트 접근(접속코드 미지참) 시 처리 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1283,7 +1283,7 @@
       "번호": 117,
       "일감번호": 274049,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 멀티 모니터 환경에서 툴바 이동 시 위치·크기 비정상 동작 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1799,8 +1799,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 117,
-      "done": 46,
+      "notDone": 112,
+      "done": 51,
       "total": 163
     },
     "assignees": [
@@ -1856,9 +1856,9 @@
       {
         "name": "오세진",
         "total": 43,
-        "done": 6,
+        "done": 11,
         "complete": false,
-        "rate": 13
+        "rate": 25
       },
       {
         "name": "이경준",
@@ -1903,8 +1903,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 108,
-        "done": 40,
+        "progress": 103,
+        "done": 45,
         "total": 148
       }
     ],
@@ -1915,7 +1915,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 7
       },
       {
         "label": "보류",
@@ -1923,7 +1923,7 @@
       },
       {
         "label": "해결",
-        "count": 44
+        "count": 49
       },
       {
         "label": "피드백",
@@ -2000,66 +2000,66 @@
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 21,
-        "rate": 38,
+        "cumDone": 22,
+        "rate": 39,
         "newCount": 10,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 30,
-        "rate": 42,
+        "cumDone": 31,
+        "rate": 43,
         "newCount": 16,
         "doneCount": 9
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 32,
-        "rate": 41,
+        "cumDone": 34,
+        "rate": 43,
         "newCount": 7,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 35,
-        "rate": 41,
+        "cumDone": 37,
+        "rate": 44,
         "newCount": 6,
         "doneCount": 3
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 39,
-        "rate": 39,
+        "cumDone": 41,
+        "rate": 41,
         "newCount": 16,
         "doneCount": 4
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 42,
-        "rate": 37,
+        "cumDone": 45,
+        "rate": 40,
         "newCount": 12,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 44,
-        "rate": 33,
+        "cumDone": 48,
+        "rate": 36,
         "newCount": 19,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 46,
-        "rate": 28,
+        "cumDone": 51,
+        "rate": 31,
         "newCount": 31,
-        "doneCount": 2
+        "doneCount": 3
       }
     ]
   }
