@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T08:18:19.964790+00:00",
+  "fetchedAt": "2026-07-22T08:21:04.847826+00:00",
   "count": 159,
   "issues": [
     {
@@ -601,7 +601,7 @@
       "번호": 55,
       "일감번호": 274755,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][PIP] 카메라/마이크 권한 미허용 시 클릭해도 브라우저 권한 요청 미발생 (권한 획득 동선 부재)",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1755,8 +1755,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 116,
-      "done": 43,
+      "notDone": 115,
+      "done": 44,
       "total": 159
     },
     "assignees": [
@@ -1819,9 +1819,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 4,
+        "done": 5,
         "complete": false,
-        "rate": 23
+        "rate": 29
       },
       {
         "name": "장기중(Jay)",
@@ -1859,8 +1859,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 106,
-        "done": 38,
+        "progress": 105,
+        "done": 39,
         "total": 144
       }
     ],
@@ -1871,7 +1871,7 @@
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 10
       },
       {
         "label": "보류",
@@ -1879,7 +1879,7 @@
       },
       {
         "label": "해결",
-        "count": 41
+        "count": 42
       },
       {
         "label": "피드백",
@@ -1996,24 +1996,24 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 40,
-        "rate": 35,
+        "cumDone": 41,
+        "rate": 36,
         "newCount": 12,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 42,
-        "rate": 32,
+        "cumDone": 43,
+        "rate": 33,
         "newCount": 19,
         "doneCount": 2
       },
       {
         "date": "2026-07-22",
         "cumIssue": 159,
-        "cumDone": 43,
-        "rate": 27,
+        "cumDone": 44,
+        "rate": 28,
         "newCount": 27,
         "doneCount": 1
       }
