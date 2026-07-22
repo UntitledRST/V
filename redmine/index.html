@@ -31,13 +31,8 @@
     font-family:var(--sans); -webkit-font-smoothing:antialiased;
   }
   .wrap{
-    width:100%; margin:0; padding:20px 32px 40px;
+    width:100%; margin:0; padding:24px 32px 40px;
   }
-
-  .topbar{
-    margin-bottom:14px;
-  }
-  .topbar h1{ margin:0; font-size:30px; font-weight:800; letter-spacing:-0.01em; }
 
   #errorBox:empty{ display:none; }
 
@@ -54,8 +49,8 @@
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
     padding:16px 18px; display:flex; flex-direction:column; justify-content:center;
   }
-  .stat-card .label{ font-size:19px; color:var(--text-secondary); margin-bottom:6px; }
-  .stat-card .value{ font-size:42px; font-weight:800; font-family:var(--mono); }
+  .stat-card .label{ font-size:26px; color:var(--text-secondary); margin-bottom:6px; }
+  .stat-card .value{ font-size:64px; font-weight:800; font-family:var(--mono); }
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
@@ -64,24 +59,20 @@
   .issues-panel{
     display:flex; flex-direction:column;
   }
-  .issues-panel .issues-table-scroll{ max-height:48vh; overflow:auto; }
+  .issues-panel .issues-table-scroll{ max-height:42vh; overflow:auto; }
 
-  /* 하단: 왼쪽 2x2 요약 패널(스크롤 없이 전체 표시) + 오른쪽 차트 */
-  .bottom-section{
-    display:flex; gap:14px; align-items:flex-start;
-  }
+  /* 요약 패널 4개: 한 줄에 나란히, 스크롤 없이 전체 표시 */
   .panels{
-    flex:1 1 56%;
-    display:grid; grid-template-columns: repeat(2, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
   }
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
-  .chart-panel{ flex:1 1 44%; display:flex; flex-direction:column; height:460px; }
-  .chart-wrap{ flex:1 1 auto; min-height:0; position:relative; }
+  /* 누적 차트: 전체 폭 + 큰 높이로 추세가 잘 보이도록 */
+  .chart-panel{ display:flex; flex-direction:column; }
+  .chart-wrap{ position:relative; height:560px; }
 
   @media (max-width: 1100px){
-    .bottom-section{ flex-direction:column; }
-    .chart-panel{ width:100%; }
+    .panels{ grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 900px){
@@ -89,28 +80,27 @@
     .stat-row{ grid-template-columns: repeat(2, 1fr); }
     .stat-card{ min-height:70px; }
     .issues-panel .issues-table-scroll{ max-height:340px; }
-    .bottom-section{ flex-direction:column; }
-    .panels{ grid-template-columns: repeat(2, 1fr); }
-    .chart-panel{ height:280px; }
+    .panels{ grid-template-columns: 1fr; }
+    .chart-wrap{ height:340px; }
   }
 
   .panel{
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
-    padding:16px 18px;
+    padding:20px 22px;
   }
-  .panel h2{ margin:0 0 12px; font-size:21px; font-weight:800; letter-spacing:0.01em; flex:0 0 auto; }
+  .panel h2{ margin:0 0 16px; font-size:30px; font-weight:800; letter-spacing:0.01em; flex:0 0 auto; }
   .panel h2.c-blue{ color:var(--blue); }
   .panel h2.c-purple{ color:var(--purple); }
   .panel h2.c-orange{ color:var(--orange); }
   .panel h2.c-green{ color:var(--green); }
 
-  table{ width:100%; border-collapse:collapse; font-size:17px; }
-  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:16.5px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
-  td{ padding:10px 11px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  table{ width:100%; border-collapse:collapse; font-size:24px; }
+  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:21px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
+  td{ padding:13px 14px; border-bottom:1px solid rgba(255,255,255,0.04); }
   tr.total-row td{ font-weight:800; color:var(--text-primary); border-top:1px solid var(--panel-border); }
   tr.clickable{ cursor:pointer; }
   tr.clickable:hover td{ background:rgba(91,157,255,0.07); }
-  .pill{ display:inline-block; padding:5px 14px; border-radius:999px; font-size:17px; font-weight:700; }
+  .pill{ display:inline-block; padding:7px 18px; border-radius:999px; font-size:23px; font-weight:700; }
   .pill.done{ background:rgba(52,211,153,0.15); color:var(--green); }
   .pill.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .mono{ font-family:var(--mono); }
@@ -119,34 +109,30 @@
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
   .filter-chip{
     display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
-    font-size:18px; font-weight:700; padding:7px 16px; border-radius:999px; cursor:pointer;
+    font-size:24px; font-weight:700; padding:9px 20px; border-radius:999px; cursor:pointer;
   }
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
   .issues-table-scroll{ overflow:auto; }
-  .issues-table-scroll table{ font-size:16.5px; }
+  .issues-table-scroll table{ font-size:22px; }
   .issues-table-scroll th{ position:sticky; top:0; background:var(--panel-bg); }
-  .status-badge{ font-size:16px; font-weight:700; padding:5px 11px; border-radius:6px; white-space:nowrap; }
+  .status-badge{ font-size:21px; font-weight:700; padding:7px 14px; border-radius:6px; white-space:nowrap; }
   .status-badge.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .status-badge.done{ background:rgba(255,255,255,0.06); color:var(--text-tertiary); }
   a.issue-link{ color:var(--blue); text-decoration:none; font-family:var(--mono); }
   a.issue-link:hover{ text-decoration:underline; }
   .title-cell{ max-width:420px; }
 
-  .empty, .loading{ color:var(--text-tertiary); font-size:18px; padding:20px 0; text-align:center; }
+  .empty, .loading{ color:var(--text-tertiary); font-size:24px; padding:20px 0; text-align:center; }
   .error-box{
     background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#fca5a5;
-    padding:12px 16px; border-radius:var(--radius-md); font-size:18px; margin-bottom:10px;
+    padding:16px 20px; border-radius:var(--radius-md); font-size:24px; margin-bottom:10px;
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <div class="topbar">
-    <h1>RC8 Lite &middot; 일감 현황</h1>
-  </div>
 
   <div id="errorBox"></div>
 
@@ -183,45 +169,43 @@
     </div>
   </div>
 
-  <div class="bottom-section">
-    <div class="panels">
-      <div class="panel">
-        <h2 class="c-blue">담당자별 집계</h2>
-        <table>
-          <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
-          <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-        </table>
-      </div>
-
-      <div class="panel">
-        <h2 class="c-purple">일감 추적 (분류별)</h2>
-        <table>
-          <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
-          <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-        </table>
-      </div>
-
-      <div class="panel">
-        <h2 class="c-orange">상태별 집계</h2>
-        <table>
-          <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
-          <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
-        </table>
-      </div>
-
-      <div class="panel">
-        <h2 class="c-green">우선순위별 집계</h2>
-        <table>
-          <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
-          <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
-        </table>
-      </div>
+  <div class="panels">
+    <div class="panel">
+      <h2 class="c-blue">담당자별 집계</h2>
+      <table>
+        <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
+        <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
     </div>
 
-    <div class="panel chart-panel">
-      <h2 class="c-blue">누적 이슈 발생 / 해결 추이</h2>
-      <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    <div class="panel">
+      <h2 class="c-purple">일감 추적 (분류별)</h2>
+      <table>
+        <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
     </div>
+
+    <div class="panel">
+      <h2 class="c-orange">상태별 집계</h2>
+      <table>
+        <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
+        <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="c-green">우선순위별 집계</h2>
+      <table>
+        <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
+        <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel chart-panel">
+    <h2 class="c-blue">누적 이슈 발생 / 해결 추이</h2>
+    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
   </div>
 
   </div>
