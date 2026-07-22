@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-22T11:16:04.731837+00:00",
+  "fetchedAt": "2026-07-22T11:19:10.242763+00:00",
   "count": 163,
   "issues": [
     {
@@ -161,7 +161,7 @@
       "번호": 15,
       "일감번호": 274995,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Mac][트레이] 트레이 메뉴 '안내창 열기' 클릭 시 호스트 툴바가 호출(복원)되지 않음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1799,8 +1799,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 51,
+      "notDone": 111,
+      "done": 52,
       "total": 163
     },
     "assignees": [
@@ -1856,9 +1856,9 @@
       {
         "name": "오세진",
         "total": 43,
-        "done": 11,
+        "done": 12,
         "complete": false,
-        "rate": 25
+        "rate": 27
       },
       {
         "name": "이경준",
@@ -1903,15 +1903,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 103,
-        "done": 45,
+        "progress": 102,
+        "done": 46,
         "total": 148
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 88
+        "count": 87
       },
       {
         "label": "진행",
@@ -1923,7 +1923,7 @@
       },
       {
         "label": "해결",
-        "count": 49
+        "count": 50
       },
       {
         "label": "피드백",
@@ -2056,10 +2056,10 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 51,
-        "rate": 31,
+        "cumDone": 52,
+        "rate": 32,
         "newCount": 31,
-        "doneCount": 3
+        "doneCount": 4
       }
     ]
   }
