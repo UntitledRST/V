@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
@@ -36,14 +36,14 @@
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
     margin-bottom:26px;
   }
-  .title-block h1{ margin:0; font-size:22px; font-weight:800; letter-spacing:-0.01em; }
-  .title-block p{ margin:4px 0 0; font-size:13px; color:var(--text-secondary); }
+  .title-block h1{ margin:0; font-size:27px; font-weight:800; letter-spacing:-0.01em; }
+  .title-block p{ margin:6px 0 0; font-size:15px; color:var(--text-secondary); }
   .title-block p span{ color:var(--green); font-family:var(--mono); }
 
   .refresh-btn{
     display:flex; align-items:center; gap:8px;
     background:var(--blue); color:#04101f; border:none; border-radius:999px;
-    padding:11px 20px; font-size:14px; font-weight:700; cursor:pointer;
+    padding:12px 22px; font-size:16px; font-weight:700; cursor:pointer;
     transition: transform .15s ease, box-shadow .15s ease;
     box-shadow: 0 0 0 0 rgba(91,157,255,0.4);
   }
@@ -58,8 +58,8 @@
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
     padding:16px 18px;
   }
-  .stat-card .label{ font-size:12px; color:var(--text-secondary); margin-bottom:6px; }
-  .stat-card .value{ font-size:26px; font-weight:800; font-family:var(--mono); }
+  .stat-card .label{ font-size:14px; color:var(--text-secondary); margin-bottom:6px; }
+  .stat-card .value{ font-size:32px; font-weight:800; font-family:var(--mono); }
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
@@ -71,19 +71,19 @@
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
     padding:16px 18px;
   }
-  .panel h2{ margin:0 0 12px; font-size:14px; font-weight:800; letter-spacing:0.01em; }
+  .panel h2{ margin:0 0 14px; font-size:17px; font-weight:800; letter-spacing:0.01em; }
   .panel h2.c-blue{ color:var(--blue); }
   .panel h2.c-purple{ color:var(--purple); }
   .panel h2.c-orange{ color:var(--orange); }
   .panel h2.c-green{ color:var(--green); }
 
-  table{ width:100%; border-collapse:collapse; font-size:13px; }
-  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
-  td{ padding:7px 8px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  table{ width:100%; border-collapse:collapse; font-size:15.5px; }
+  th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.03em; padding:6px 8px; border-bottom:1px solid var(--panel-border); }
+  td{ padding:9px 10px; border-bottom:1px solid rgba(255,255,255,0.04); }
   tr.total-row td{ font-weight:800; color:var(--text-primary); border-top:1px solid var(--panel-border); }
   tr.clickable{ cursor:pointer; }
   tr.clickable:hover td{ background:rgba(91,157,255,0.07); }
-  .pill{ display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-weight:700; }
+  .pill{ display:inline-block; padding:3px 11px; border-radius:999px; font-size:13.5px; font-weight:700; }
   .pill.done{ background:rgba(52,211,153,0.15); color:var(--green); }
   .pill.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .mono{ font-family:var(--mono); }
@@ -95,25 +95,25 @@
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
   .filter-chip{
     display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
-    font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; cursor:pointer;
+    font-size:14px; font-weight:700; padding:5px 12px; border-radius:999px; cursor:pointer;
   }
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
   .issues-table-scroll{ max-height:520px; overflow:auto; }
-  .issues-table-scroll table{ font-size:12.5px; }
+  .issues-table-scroll table{ font-size:14.5px; }
   .issues-table-scroll th{ position:sticky; top:0; background:var(--panel-bg); }
-  .status-badge{ font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; white-space:nowrap; }
+  .status-badge{ font-size:12.5px; font-weight:700; padding:3px 9px; border-radius:6px; white-space:nowrap; }
   .status-badge.notdone{ background:rgba(251,191,36,0.15); color:var(--yellow); }
   .status-badge.done{ background:rgba(255,255,255,0.06); color:var(--text-tertiary); }
   a.issue-link{ color:var(--blue); text-decoration:none; font-family:var(--mono); }
   a.issue-link:hover{ text-decoration:underline; }
   .title-cell{ max-width:480px; }
 
-  .empty, .loading{ color:var(--text-tertiary); font-size:13px; padding:20px 0; text-align:center; }
+  .empty, .loading{ color:var(--text-tertiary); font-size:15px; padding:20px 0; text-align:center; }
   .error-box{
     background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#fca5a5;
-    padding:14px 16px; border-radius:var(--radius-md); font-size:13px; margin-bottom:20px;
+    padding:14px 16px; border-radius:var(--radius-md); font-size:15px; margin-bottom:20px;
   }
 </style>
 </head>
@@ -138,6 +138,30 @@
     <div class="stat-card done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
     <div class="stat-card"><div class="label">전체 이슈</div><div class="value">&mdash;</div></div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
+  </div>
+
+  <div class="panel issues-panel">
+    <h2>
+      <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
+      <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
+    </h2>
+    <div class="issues-table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:44px">번호</th>
+            <th style="width:80px">일감번호</th>
+            <th>분류</th>
+            <th>상태</th>
+            <th>제목</th>
+            <th>우선순위</th>
+            <th>담당자</th>
+            <th>작성시간</th>
+          </tr>
+        </thead>
+        <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
   </div>
 
   <div class="panels">
@@ -179,30 +203,6 @@
     <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
   </div>
 
-  <div class="panel issues-panel">
-    <h2>
-      <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
-      <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
-    </h2>
-    <div class="issues-table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:44px">번호</th>
-            <th style="width:80px">일감번호</th>
-            <th>분류</th>
-            <th>상태</th>
-            <th>제목</th>
-            <th>우선순위</th>
-            <th>담당자</th>
-            <th>작성시간</th>
-          </tr>
-        </thead>
-        <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
 </div>
 
 <script>
@@ -218,7 +218,7 @@
   function fmtTime(t){
     if (!t) return '<span style="color:var(--text-tertiary)">&mdash;</span>';
     var parts = t.split(' ');
-    return escapeHtml(parts[0]) + '<br><span style="color:var(--text-tertiary);font-size:11px">' + escapeHtml(parts[1] || '') + '</span>';
+    return escapeHtml(parts[0]) + '<br><span style="color:var(--text-tertiary);font-size:12.5px">' + escapeHtml(parts[1] || '') + '</span>';
   }
 
   function isNotDoneStatus(s){
