@@ -74,7 +74,7 @@ const SOURCES = [
     timeField: 'build_date', timeMode: 'utc' },
 ];
 
-const TIMEOUT_MS = 870; // 유일한 타임아웃 설정: 모든 곳에서 이 값(1초) 하나만 사용
+const TIMEOUT_MS = 890; // 유일한 타임아웃 설정: 모든 곳에서 이 값(1초) 하나만 사용
 
 // 소스별로 "마지막에 성공했던 결과"를 저장해두는 캐시.
 // cacheOnSuccess:true 인 소스가 조회에 실패하면, 에러 대신 이 캐시에 저장된 값을 그대로 보여줌.
