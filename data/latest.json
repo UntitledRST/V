@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T00:36:07.730353+00:00",
+  "fetchedAt": "2026-07-23T00:39:59.236977+00:00",
   "count": 165,
   "issues": [
     {
@@ -10,7 +10,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 공유함 파일 목록 '즐겨찾기(별)' 기능이 Figma 기획 대비 UI 미노출",
       "우선순위": "보통(Normal)",
-      "담당자": "김신혜",
+      "담당자": "김미령",
       "created_on": "2026-07-23 09:29:48",
       "link": "https://projects.rsupport.com/issues/275060"
     },
@@ -1828,10 +1828,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 18,
+        "total": 19,
         "done": 8,
         "complete": false,
-        "rate": 44
+        "rate": 42
       },
       {
         "name": "김성식(kimss)",
@@ -1842,10 +1842,10 @@
       },
       {
         "name": "김신혜",
-        "total": 7,
+        "total": 6,
         "done": 3,
         "complete": false,
-        "rate": 42
+        "rate": 50
       },
       {
         "name": "박승진",
