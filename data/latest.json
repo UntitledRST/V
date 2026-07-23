@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T08:17:32.574873+00:00",
+  "fetchedAt": "2026-07-23T08:21:07.272915+00:00",
   "count": 181,
   "issues": [
     {
@@ -755,7 +755,7 @@
       "번호": 69,
       "일감번호": 274827,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어] 상담원/고객 정보(카메라) 패널이 '카메라 기능 사용' 라이선스 옵션에 따라 노출/미노출되는 것이 맞는지 확정 요청",
       "우선순위": "높음(High)",
       "담당자": "김미령",
@@ -1997,17 +1997,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 104,
-      "done": 77,
+      "notDone": 103,
+      "done": 78,
       "total": 181
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 25,
-        "done": 18,
+        "done": 19,
         "complete": false,
-        "rate": 72
+        "rate": 76
       },
       {
         "name": "김성식(kimss)",
@@ -2089,8 +2089,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 11,
-        "done": 5,
+        "progress": 10,
+        "done": 6,
         "total": 16
       },
       {
@@ -2109,7 +2109,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 80
+        "count": 79
       },
       {
         "label": "진행",
@@ -2121,7 +2121,7 @@
       },
       {
         "label": "해결",
-        "count": 75
+        "count": 76
       },
       {
         "label": "피드백",
@@ -2238,15 +2238,15 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 55,
-        "rate": 49,
+        "cumDone": 56,
+        "rate": 50,
         "newCount": 12,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 63,
+        "cumDone": 64,
         "rate": 48,
         "newCount": 19,
         "doneCount": 8
@@ -2254,7 +2254,7 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 73,
+        "cumDone": 74,
         "rate": 45,
         "newCount": 31,
         "doneCount": 10
@@ -2262,7 +2262,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 181,
-        "cumDone": 77,
+        "cumDone": 78,
         "rate": 43,
         "newCount": 18,
         "doneCount": 4
