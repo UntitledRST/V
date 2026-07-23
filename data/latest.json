@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T03:01:08.167485+00:00",
+  "fetchedAt": "2026-07-23T03:05:28.850759+00:00",
   "count": 173,
   "issues": [
     {
@@ -923,7 +923,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] 이메일 전송 폼 '내용 입력' 필드 미구현 — 기획(최대 200자·그룹옵션 기본 문구)과 불일치, 주소 입력만 제공",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "created_on": "2026-07-16 13:19:46",
       "link": "https://projects.rsupport.com/issues/274622"
     },
@@ -1916,10 +1916,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 21,
+        "total": 20,
         "done": 10,
         "complete": false,
-        "rate": 47
+        "rate": 50
       },
       {
         "name": "김성식(kimss)",
@@ -1958,10 +1958,10 @@
       },
       {
         "name": "송건호",
-        "total": 46,
+        "total": 47,
         "done": 21,
         "complete": false,
-        "rate": 45
+        "rate": 44
       },
       {
         "name": "오세진",
