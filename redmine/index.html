@@ -70,13 +70,27 @@
 
   /* 요약 패널 4개: 한 줄에 나란히, 스크롤 없이 전체 표시 */
   .panels{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
   }
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
   /* 누적 차트: 전체 폭 + 큰 높이로 추세가 잘 보이도록 */
   .chart-panel{ display:flex; flex-direction:column; }
   .chart-wrap{ position:relative; height:340px; }
+
+  .chart-tooltip{
+    position:absolute; z-index:20; pointer-events:auto;
+    background:#161b26; border:1px solid rgba(255,255,255,0.1); border-radius:10px;
+    padding:8px; font-size:13px; color:#e6e9ef; opacity:0; transition:opacity 0.1s ease;
+    transform:translate(-50%, -110%); box-shadow:0 8px 24px rgba(0,0,0,0.4); min-width:150px;
+  }
+  .chart-tooltip-title{ font-weight:700; font-size:13.5px; padding:2px 6px 6px; color:#fff; }
+  .chart-tooltip-row{
+    display:flex; justify-content:space-between; gap:14px; padding:6px 8px; border-radius:6px; cursor:pointer;
+  }
+  .chart-tooltip-row:hover{ background:rgba(91,157,255,0.16); }
+  .chart-tooltip-row .chart-tooltip-value{ color:#93a1b3; font-weight:600; }
+  .chart-tooltip-row:hover .chart-tooltip-value{ color:#fff; }
 
   @media (max-width: 1100px){
     .panels{ grid-template-columns: repeat(2, 1fr); }
@@ -146,6 +160,14 @@
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
+  .top-bar{ display:flex; justify-content:flex-end; margin-bottom:10px; }
+  .site-switch-btn{
+    display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
+    font-size:14.5px; font-weight:700; padding:8px 16px; border-radius:999px; cursor:pointer;
+    border:1px solid rgba(91,157,255,0.3); font-family:inherit;
+  }
+  .site-switch-btn:hover{ background:rgba(91,157,255,0.24); }
+
   .issues-table-scroll{ overflow:auto; }
   .issues-table-scroll table{ font-size:16px; }
   .issues-table-scroll th{ position:sticky; top:0; background:var(--panel-bg); }
@@ -167,6 +189,10 @@
 </head>
 <body>
 <div class="wrap">
+
+  <div class="top-bar">
+    <button id="siteSwitchBtn" class="site-switch-btn" type="button">RC Version Check 바로가기 →</button>
+  </div>
 
   <p id="lastUpdated" class="last-updated">불러오는 중&hellip;</p>
 
@@ -217,28 +243,10 @@
     </div>
 
     <div class="panel">
-      <h2 class="c-purple">분류별 집계</h2>
-      <table>
-        <thead><tr><th>분류</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
-        <tbody id="trackerBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
       <h2 class="c-orange">상태별 집계</h2>
       <table>
         <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
         <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="panels">
-    <div class="panel">
-      <h2 class="c-green">우선순위별 집계</h2>
-      <table>
-        <thead><tr><th>우선순위</th><th style="text-align:right">개수</th></tr></thead>
-        <tbody id="priorityBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
 
@@ -506,9 +514,7 @@
   function renderAll(){
     renderStats();
     renderAssignees();
-    renderTrackers();
     renderStatuses();
-    renderPriorities();
     renderPart();
     renderConnType();
     renderChart();
@@ -544,19 +550,6 @@
     bindFilterableRows('assigneeBody');
   }
 
-  function renderTrackers(){
-    var t = state.summary.trackers;
-    var sumP = 0, sumD = 0, sumT = 0;
-    var rows = t.map(function(x){
-      sumP += x.progress; sumD += x.done; sumT += x.total;
-      return '<tr class="clickable" data-filter-type="tracker" data-filter-value="' + escapeHtml(x.label) + '">' +
-        '<td>' + escapeHtml(x.label) + '</td><td class="num">' + x.progress + '</td><td class="num">' + x.done + '</td><td class="num">' + x.total + '</td></tr>';
-    }).join('');
-    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sumP + '</td><td class="num">' + sumD + '</td><td class="num">' + sumT + '</td></tr>';
-    document.getElementById('trackerBody').innerHTML = rows;
-    bindFilterableRows('trackerBody');
-  }
-
   function renderStatuses(){
     var s = state.summary.statuses;
     var sum = 0;
@@ -568,19 +561,6 @@
     rows += '<tr class="total-row"><td>합계</td><td class="num">' + sum + '</td></tr>';
     document.getElementById('statusBody').innerHTML = rows;
     bindFilterableRows('statusBody');
-  }
-
-  function renderPriorities(){
-    var p = state.summary.priorities;
-    var sum = 0;
-    var rows = p.map(function(x){
-      sum += x.count;
-      return '<tr class="clickable" data-filter-type="priority" data-filter-value="' + escapeHtml(x.label) + '">' +
-        '<td>' + escapeHtml(x.label) + '</td><td class="num">' + x.count + '</td></tr>';
-    }).join('');
-    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sum + '</td></tr>';
-    document.getElementById('priorityBody').innerHTML = rows;
-    bindFilterableRows('priorityBody');
   }
 
   function renderAggPanel(tbodyId, rows, filterType){
@@ -638,18 +618,8 @@
             labels: { color: '#93a1b3', font: { size: 13, weight: '600' }, boxWidth: 14, padding: 12 }
           },
           tooltip: {
-            titleFont: { size: 15, weight: '700' },
-            bodyFont: { size: 13.5 },
-            padding: 10,
-            titleMarginBottom: 6,
-            callbacks: {
-              afterBody: function(items){
-                if (!items || !items.length) return '';
-                var idx = items[0].dataIndex;
-                var day = tl[idx];
-                return ['', '이 날 신규: ' + day.newCount + '건', '이 날 해결: ' + day.doneCount + '건'];
-              }
-            }
+            enabled: false,
+            external: chartTooltipHandler
           }
         },
         scales: {
@@ -658,6 +628,75 @@
         }
       }
     });
+  }
+
+  // 차트 위에 보이는 커스텀 클릭 가능 툴팁: 누적 이슈/누적 해결/이 날 신규/이 날 해결 각 줄을 클릭하면
+  // 해당 일자 기준으로 전체 이슈 목록을 필터링하고 최상단으로 이동
+  var DAY_KIND_LABEL = { cumIssue: '누적 이슈', cumDone: '누적 해결', newCount: '이 날 신규', doneCount: '이 날 해결' };
+
+  function chartTooltipHandler(context){
+    var wrap = document.querySelector('.chart-wrap');
+    var tooltipEl = document.getElementById('chartTooltip');
+    if (!tooltipEl){
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'chartTooltip';
+      tooltipEl.className = 'chart-tooltip';
+      wrap.appendChild(tooltipEl);
+    }
+
+    var tooltipModel = context.tooltip;
+    if (!tooltipModel || tooltipModel.opacity === 0){
+      tooltipEl.style.opacity = 0;
+      return;
+    }
+
+    var idx = (tooltipModel.dataPoints && tooltipModel.dataPoints.length) ? tooltipModel.dataPoints[0].dataIndex : null;
+    if (idx === null) { tooltipEl.style.opacity = 0; return; }
+    var day = state.summary.timeline[idx];
+    if (!day) { tooltipEl.style.opacity = 0; return; }
+
+    var rows = [
+      { kind: 'cumIssue', value: day.cumIssue },
+      { kind: 'cumDone', value: day.cumDone },
+      { kind: 'newCount', value: day.newCount },
+      { kind: 'doneCount', value: day.doneCount }
+    ];
+
+    var html = '<div class="chart-tooltip-title">' + escapeHtml(day.date) + '</div>';
+    html += rows.map(function(r){
+      return '<div class="chart-tooltip-row" data-day-kind="' + r.kind + '" data-day-date="' + escapeHtml(day.date) + '">' +
+        '<span>' + DAY_KIND_LABEL[r.kind] + '</span><span class="chart-tooltip-value">' + r.value + '건</span></div>';
+    }).join('');
+    tooltipEl.innerHTML = html;
+
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = tooltipModel.caretX + 'px';
+    tooltipEl.style.top = tooltipModel.caretY + 'px';
+
+    tooltipEl.querySelectorAll('.chart-tooltip-row').forEach(function(row){
+      row.addEventListener('click', function(){
+        setDayFilter(row.getAttribute('data-day-date'), row.getAttribute('data-day-kind'));
+      });
+    });
+  }
+
+  function setDayFilter(date, kind){
+    var isSame = state.filter && state.filter.type === 'day' && state.filter.date === date && state.filter.kind === kind;
+    state.filter = isSame ? null : { type: 'day', date: date, kind: kind };
+
+    var chip = document.getElementById('filterChip');
+    if (state.filter){
+      chip.classList.add('active');
+      document.getElementById('filterLabel').textContent =
+        state.filter.date + ' 기준 ' + DAY_KIND_LABEL[state.filter.kind] + ' 이슈만 보는 중';
+    } else {
+      chip.classList.remove('active');
+    }
+    renderIssues();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var scrollBox = document.querySelector('.issues-table-scroll');
+    if (scrollBox) scrollBox.scrollTop = 0;
   }
 
   function setFilter(type, value){
@@ -711,6 +750,18 @@
         list = list.filter(function(it){ return it.__feature === f.value; });
       } else if (f.type === 'env'){
         list = list.filter(function(it){ return it.__env === f.value; });
+      } else if (f.type === 'day'){
+        // 참고: 이슈 데이터에 '해결(완료)일'이 별도로 없어서, 완료 관련 항목은 작성일 기준으로 근사합니다.
+        var issueDateStr = function(it){ return (it.created_on || '').split(' ')[0]; };
+        if (f.kind === 'newCount'){
+          list = list.filter(function(it){ return issueDateStr(it) === f.date; });
+        } else if (f.kind === 'cumIssue'){
+          list = list.filter(function(it){ return issueDateStr(it) && issueDateStr(it) <= f.date; });
+        } else if (f.kind === 'doneCount'){
+          list = list.filter(function(it){ return !isNotDoneStatus(it.상태) && issueDateStr(it) === f.date; });
+        } else if (f.kind === 'cumDone'){
+          list = list.filter(function(it){ return !isNotDoneStatus(it.상태) && issueDateStr(it) && issueDateStr(it) <= f.date; });
+        }
       } else if (f.type === 'quick'){
         if (f.value === 'notdone') list = list.filter(function(it){ return isNotDoneStatus(it.상태); });
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
@@ -735,8 +786,46 @@
   }
 
   document.getElementById('filterChip').addEventListener('click', function(){
-    if (state.filter) setFilter(state.filter.type, state.filter.value); // 같은 값으로 다시 호출하면 토글되어 해제됨
+    if (!state.filter) return;
+    if (state.filter.type === 'day') {
+      setDayFilter(state.filter.date, state.filter.kind); // 같은 값으로 다시 호출하면 토글되어 해제됨
+    } else {
+      setFilter(state.filter.type, state.filter.value); // 같은 값으로 다시 호출하면 토글되어 해제됨
+    }
   });
+
+  // ====== 사이트 전환 버튼 (rc8qa ↔ rc-version-check) ======
+  // rc8qa.vercel.app과 rc-version-check.vercel.app은 서로 다른 도메인이라 localStorage를 공유할 수 없어서,
+  // 이동할 때 URL에 ?entry=rc8qa 같은 파라미터를 붙여 "어느 사이트에서 왔는지"를 전달하고,
+  // 그 값을 처음 한 번만 이 도메인의 localStorage에 저장해서 "최초 접속 사이트"로 기억합니다.
+  (function initSiteSwitch(){
+    var THIS_SITE = 'rc8qa';
+    var OTHER_SITE_URL = 'https://rc-version-check.vercel.app/';
+    var STORAGE_KEY = 'rcFirstSite';
+
+    var firstSite = localStorage.getItem(STORAGE_KEY);
+    if (!firstSite){
+      var params = new URLSearchParams(window.location.search);
+      var entry = params.get('entry');
+      firstSite = (entry === 'version-check') ? 'version-check' : THIS_SITE;
+      localStorage.setItem(STORAGE_KEY, firstSite);
+      if (entry){
+        // 주소창에서 entry 파라미터 제거 (깔끔하게)
+        params.delete('entry');
+        var newQuery = params.toString();
+        var newUrl = window.location.pathname + (newQuery ? '?' + newQuery : '') + window.location.hash;
+        window.history.replaceState({}, '', newUrl);
+      }
+    }
+
+    var btn = document.getElementById('siteSwitchBtn');
+    if (firstSite === THIS_SITE){
+      btn.style.display = 'inline-flex';
+      btn.addEventListener('click', function(){
+        window.location.href = OTHER_SITE_URL + '?entry=' + THIS_SITE;
+      });
+    }
+  })();
 
   loadData();
 </script>
