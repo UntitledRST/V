@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T00:06:06.383963+00:00",
+  "fetchedAt": "2026-07-23T00:08:48.370938+00:00",
   "count": 164,
   "issues": [
     {
@@ -348,7 +348,7 @@
       "번호": 32,
       "일감번호": 274936,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][상담원] 공유함 파일함·URL 등록 개수 제한 및 파일함 총 용량 제한 정책 정의 필요",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1810,17 +1810,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 111,
-      "done": 53,
+      "notDone": 112,
+      "done": 52,
       "total": 164
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 18,
-        "done": 8,
+        "done": 7,
         "complete": false,
-        "rate": 44
+        "rate": 38
       },
       {
         "name": "김성식(kimss)",
@@ -1902,8 +1902,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 7,
-        "done": 5,
+        "progress": 8,
+        "done": 4,
         "total": 12
       },
       {
@@ -1922,7 +1922,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 87
+        "count": 88
       },
       {
         "label": "진행",
@@ -1934,7 +1934,7 @@
       },
       {
         "label": "해결",
-        "count": 51
+        "count": 50
       },
       {
         "label": "피드백",
@@ -2067,15 +2067,15 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 53,
-        "rate": 33,
+        "cumDone": 52,
+        "rate": 32,
         "newCount": 31,
-        "doneCount": 5
+        "doneCount": 4
       },
       {
         "date": "2026-07-23",
         "cumIssue": 164,
-        "cumDone": 53,
+        "cumDone": 52,
         "rate": 32,
         "newCount": 1,
         "doneCount": 0
