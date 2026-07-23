@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T02:39:25.076063+00:00",
+  "fetchedAt": "2026-07-23T02:41:04.787704+00:00",
   "count": 172,
   "issues": [
     {
@@ -1085,10 +1085,10 @@
       "번호": 99,
       "일감번호": 274352,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [Mac Host] 고객 권한 설정 진행 상태가 상담원 화면에 표시되지 않아, 고객 지연 시 상담원이 무기한 대기함",
       "우선순위": "높음(High)",
-      "담당자": "박예지",
+      "담당자": "박승진",
       "created_on": "2026-07-14 10:57:04",
       "link": "https://projects.rsupport.com/issues/274352"
     },
@@ -1926,17 +1926,17 @@
       },
       {
         "name": "박승진",
-        "total": 2,
+        "total": 3,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
         "name": "박예지",
-        "total": 3,
+        "total": 2,
         "done": 1,
         "complete": false,
-        "rate": 33
+        "rate": 50
       },
       {
         "name": "변우영",
@@ -2010,7 +2010,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 91
+        "count": 92
       },
       {
         "label": "진행",
@@ -2026,7 +2026,7 @@
       },
       {
         "label": "피드백",
-        "count": 17
+        "count": 16
       },
       {
         "label": "완료성공",
