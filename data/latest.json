@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T04:22:53.934660+00:00",
+  "fetchedAt": "2026-07-23T04:26:06.210885+00:00",
   "count": 174,
   "issues": [
     {
@@ -832,7 +832,7 @@
       "번호": 76,
       "일감번호": 274690,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 상담 일지 미저장 상태로 종료 후 재실행 시, 입력 데이터가 유지됨",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1920,17 +1920,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 62,
+      "notDone": 111,
+      "done": 63,
       "total": 174
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 21,
-        "done": 11,
+        "done": 12,
         "complete": false,
-        "rate": 52
+        "rate": 57
       },
       {
         "name": "김성식(kimss)",
@@ -2024,8 +2024,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 101,
-        "done": 56,
+        "progress": 100,
+        "done": 57,
         "total": 157
       }
     ],
@@ -2044,11 +2044,11 @@
       },
       {
         "label": "해결",
-        "count": 60
+        "count": 61
       },
       {
         "label": "피드백",
-        "count": 15
+        "count": 14
       },
       {
         "label": "완료성공",
@@ -2153,39 +2153,39 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 46,
-        "rate": 46,
+        "cumDone": 47,
+        "rate": 47,
         "newCount": 16,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 50,
-        "rate": 44,
+        "cumDone": 51,
+        "rate": 45,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 56,
-        "rate": 42,
+        "cumDone": 57,
+        "rate": 43,
         "newCount": 19,
         "doneCount": 6
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 61,
-        "rate": 37,
+        "cumDone": 62,
+        "rate": 38,
         "newCount": 31,
         "doneCount": 5
       },
       {
         "date": "2026-07-23",
         "cumIssue": 174,
-        "cumDone": 62,
+        "cumDone": 63,
         "rate": 36,
         "newCount": 11,
         "doneCount": 1
