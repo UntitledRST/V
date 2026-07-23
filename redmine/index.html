@@ -160,13 +160,10 @@
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
-  .top-bar{ display:flex; justify-content:flex-end; margin-bottom:10px; }
-  .site-switch-btn{
-    display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
-    font-size:14.5px; font-weight:700; padding:8px 16px; border-radius:999px; cursor:pointer;
-    border:1px solid rgba(91,157,255,0.3); font-family:inherit;
+  .hidden-nav-btn{
+    position:fixed; top:0; right:0; width:64px; height:64px; z-index:999;
+    background:transparent; border:none; padding:0; margin:0; cursor:pointer;
   }
-  .site-switch-btn:hover{ background:rgba(91,157,255,0.24); }
 
   .issues-table-scroll{ overflow:auto; }
   .issues-table-scroll table{ font-size:16px; }
@@ -188,11 +185,8 @@
 </style>
 </head>
 <body>
+<button id="hiddenNavBtn" class="hidden-nav-btn" type="button" aria-hidden="true" tabindex="-1"></button>
 <div class="wrap">
-
-  <div class="top-bar">
-    <button id="siteSwitchBtn" class="site-switch-btn" type="button">RC Version Check 바로가기 →</button>
-  </div>
 
   <p id="lastUpdated" class="last-updated">불러오는 중&hellip;</p>
 
@@ -794,38 +788,9 @@
     }
   });
 
-  // ====== 사이트 전환 버튼 (rc8qa ↔ rc-version-check) ======
-  // rc8qa.vercel.app과 rc-version-check.vercel.app은 서로 다른 도메인이라 localStorage를 공유할 수 없어서,
-  // 이동할 때 URL에 ?entry=rc8qa 같은 파라미터를 붙여 "어느 사이트에서 왔는지"를 전달하고,
-  // 그 값을 처음 한 번만 이 도메인의 localStorage에 저장해서 "최초 접속 사이트"로 기억합니다.
-  (function initSiteSwitch(){
-    var THIS_SITE = 'rc8qa';
-    var OTHER_SITE_URL = 'https://rc-version-check.vercel.app/';
-    var STORAGE_KEY = 'rcFirstSite';
-
-    var firstSite = localStorage.getItem(STORAGE_KEY);
-    if (!firstSite){
-      var params = new URLSearchParams(window.location.search);
-      var entry = params.get('entry');
-      firstSite = (entry === 'version-check') ? 'version-check' : THIS_SITE;
-      localStorage.setItem(STORAGE_KEY, firstSite);
-      if (entry){
-        // 주소창에서 entry 파라미터 제거 (깔끔하게)
-        params.delete('entry');
-        var newQuery = params.toString();
-        var newUrl = window.location.pathname + (newQuery ? '?' + newQuery : '') + window.location.hash;
-        window.history.replaceState({}, '', newUrl);
-      }
-    }
-
-    var btn = document.getElementById('siteSwitchBtn');
-    if (firstSite === THIS_SITE){
-      btn.style.display = 'inline-flex';
-      btn.addEventListener('click', function(){
-        window.location.href = OTHER_SITE_URL + '?entry=' + THIS_SITE;
-      });
-    }
-  })();
+  document.getElementById('hiddenNavBtn').addEventListener('click', function(){
+    window.location.href = 'https://rc-version-check.vercel.app/';
+  });
 
   loadData();
 </script>
