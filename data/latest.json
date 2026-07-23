@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T05:41:34.282674+00:00",
+  "fetchedAt": "2026-07-23T05:46:07.254197+00:00",
   "count": 177,
   "issues": [
     {
@@ -249,7 +249,7 @@
       "번호": 23,
       "일감번호": 275015,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 뷰어 \"퀵 제어·퀵 메뉴\" 기능 실행 시, 호스트 앱 포그라운드 화면이 일시 노출됨 (사용 흐름 방해 우려) ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -997,7 +997,7 @@
       "번호": 91,
       "일감번호": 274587,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] 기획 제거된 '접속번호 입력' 탭 노출 잔존 — 클릭 시 미구현 \"준비 중입니다.\" 안내만 표시",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1953,8 +1953,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 110,
-      "done": 67,
+      "notDone": 109,
+      "done": 68,
       "total": 177
     },
     "assignees": [
@@ -2017,9 +2017,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 6,
+        "done": 7,
         "complete": false,
-        "rate": 35
+        "rate": 41
       },
       {
         "name": "장기중(Jay)",
@@ -2057,15 +2057,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 99,
-        "done": 60,
+        "progress": 98,
+        "done": 61,
         "total": 159
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 85
+        "count": 84
       },
       {
         "label": "진행",
@@ -2077,7 +2077,7 @@
       },
       {
         "label": "해결",
-        "count": 65
+        "count": 66
       },
       {
         "label": "피드백",
@@ -2186,31 +2186,31 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 47,
-        "rate": 47,
+        "cumDone": 48,
+        "rate": 48,
         "newCount": 16,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 51,
-        "rate": 45,
+        "cumDone": 52,
+        "rate": 46,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 58,
-        "rate": 44,
+        "cumDone": 59,
+        "rate": 45,
         "newCount": 19,
         "doneCount": 7
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 65,
+        "cumDone": 66,
         "rate": 40,
         "newCount": 31,
         "doneCount": 7
@@ -2218,7 +2218,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 177,
-        "cumDone": 67,
+        "cumDone": 68,
         "rate": 38,
         "newCount": 14,
         "doneCount": 2
