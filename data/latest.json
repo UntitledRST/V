@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T23:46:04.006645+00:00",
+  "fetchedAt": "2026-07-23T23:49:57.775295+00:00",
   "count": 183,
   "issues": [
     {
@@ -348,7 +348,7 @@
       "번호": 32,
       "일감번호": 275009,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [파일 전송] 공유함 내 페이지네이션 이동 시, 기존 선택 파일의 체크 상태가 해제됨 (사용성 저하 우려) ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -997,7 +997,7 @@
       "번호": 91,
       "일감번호": 274649,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [원격 커서 보이기] 토글 On/Off 시, 화면 Refresh 처리되어 선택 모니터 설정 초기화 ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2019,17 +2019,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 81,
+      "notDone": 100,
+      "done": 83,
       "total": 183
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 25,
-        "done": 20,
+        "done": 21,
         "complete": false,
-        "rate": 80
+        "rate": 84
       },
       {
         "name": "김성식(kimss)",
@@ -2069,9 +2069,9 @@
       {
         "name": "송건호",
         "total": 43,
-        "done": 22,
+        "done": 23,
         "complete": false,
-        "rate": 51
+        "rate": 53
       },
       {
         "name": "오세진",
@@ -2123,15 +2123,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 73,
+        "progress": 88,
+        "done": 75,
         "total": 163
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 78
+        "count": 77
       },
       {
         "label": "진행",
@@ -2143,11 +2143,11 @@
       },
       {
         "label": "해결",
-        "count": 79
+        "count": 81
       },
       {
         "label": "피드백",
-        "count": 16
+        "count": 15
       },
       {
         "label": "완료성공",
@@ -2252,23 +2252,23 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 50,
+        "cumDone": 51,
         "rate": 50,
         "newCount": 16,
-        "doneCount": 8
+        "doneCount": 9
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 55,
-        "rate": 49,
+        "cumDone": 56,
+        "rate": 50,
         "newCount": 12,
         "doneCount": 5
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 63,
+        "cumDone": 64,
         "rate": 48,
         "newCount": 19,
         "doneCount": 8
@@ -2276,16 +2276,16 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 76,
-        "rate": 47,
+        "cumDone": 78,
+        "rate": 48,
         "newCount": 31,
-        "doneCount": 13
+        "doneCount": 14
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 81,
-        "rate": 44,
+        "cumDone": 83,
+        "rate": 45,
         "newCount": 20,
         "doneCount": 5
       }
