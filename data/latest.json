@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T09:31:05.238698+00:00",
+  "fetchedAt": "2026-07-23T09:35:06.855789+00:00",
   "count": 182,
   "issues": [
     {
@@ -161,7 +161,7 @@
       "번호": 15,
       "일감번호": 275079,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 화면 캡쳐 목록 — 기획에서 삭제된 전체선택 체크박스/삭제/폴더 열기 버튼이 Windows 응용뷰어에 잔존",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -315,7 +315,7 @@
       "번호": 29,
       "일감번호": 275012,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [도구] 퀵 메뉴 내 \"백업 및 초기화\" 실행 시, 호출된 호스트 설정 화면 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2008,8 +2008,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 104,
-      "done": 78,
+      "notDone": 102,
+      "done": 80,
       "total": 182
     },
     "assignees": [
@@ -2072,9 +2072,9 @@
       {
         "name": "이경준",
         "total": 22,
-        "done": 10,
+        "done": 12,
         "complete": false,
-        "rate": 45
+        "rate": 54
       },
       {
         "name": "장기중(Jay)",
@@ -2112,8 +2112,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 92,
-        "done": 70,
+        "progress": 90,
+        "done": 72,
         "total": 162
       }
     ],
@@ -2124,7 +2124,7 @@
       },
       {
         "label": "진행",
-        "count": 10
+        "count": 8
       },
       {
         "label": "보류",
@@ -2132,7 +2132,7 @@
       },
       {
         "label": "해결",
-        "count": 76
+        "count": 78
       },
       {
         "label": "피드백",
@@ -2265,18 +2265,18 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 74,
-        "rate": 45,
+        "cumDone": 75,
+        "rate": 46,
         "newCount": 31,
-        "doneCount": 11
+        "doneCount": 12
       },
       {
         "date": "2026-07-23",
         "cumIssue": 182,
-        "cumDone": 78,
-        "rate": 43,
+        "cumDone": 80,
+        "rate": 44,
         "newCount": 19,
-        "doneCount": 4
+        "doneCount": 5
       }
     ]
   }
