@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T03:26:11.772384+00:00",
+  "fetchedAt": "2026-07-23T03:31:07.272690+00:00",
   "count": 174,
   "issues": [
     {
@@ -326,7 +326,7 @@
       "번호": 30,
       "일감번호": 274980,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 다수의 파일 선택으로 팝업 가용 영역 초과 시, 스크롤 기능 미제공 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1920,8 +1920,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 114,
-      "done": 60,
+      "notDone": 113,
+      "done": 61,
       "total": 174
     },
     "assignees": [
@@ -1977,9 +1977,9 @@
       {
         "name": "오세진",
         "total": 44,
-        "done": 14,
+        "done": 15,
         "complete": false,
-        "rate": 31
+        "rate": 34
       },
       {
         "name": "이경준",
@@ -2024,15 +2024,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 103,
-        "done": 54,
+        "progress": 102,
+        "done": 55,
         "total": 157
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 92
+        "count": 91
       },
       {
         "label": "진행",
@@ -2044,7 +2044,7 @@
       },
       {
         "label": "해결",
-        "count": 58
+        "count": 59
       },
       {
         "label": "피드백",
@@ -2177,16 +2177,16 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 59,
-        "rate": 36,
+        "cumDone": 60,
+        "rate": 37,
         "newCount": 31,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-23",
         "cumIssue": 174,
-        "cumDone": 60,
-        "rate": 34,
+        "cumDone": 61,
+        "rate": 35,
         "newCount": 11,
         "doneCount": 1
       }
