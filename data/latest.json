@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T00:41:08.799451+00:00",
+  "fetchedAt": "2026-07-23T00:45:08.821473+00:00",
   "count": 165,
   "issues": [
     {
       "번호": 1,
       "일감번호": 275060,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 공유함 파일 목록 '즐겨찾기(별)' 기능이 Figma 기획 대비 UI 미노출",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1821,17 +1821,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 111,
-      "done": 54,
+      "notDone": 110,
+      "done": 55,
       "total": 165
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 19,
-        "done": 8,
+        "done": 9,
         "complete": false,
-        "rate": 42
+        "rate": 47
       },
       {
         "name": "김성식(kimss)",
@@ -1925,15 +1925,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 102,
-        "done": 48,
+        "progress": 101,
+        "done": 49,
         "total": 150
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 88
+        "count": 87
       },
       {
         "label": "진행",
@@ -1945,7 +1945,7 @@
       },
       {
         "label": "해결",
-        "count": 52
+        "count": 53
       },
       {
         "label": "피드백",
@@ -2086,10 +2086,10 @@
       {
         "date": "2026-07-23",
         "cumIssue": 165,
-        "cumDone": 54,
+        "cumDone": 55,
         "rate": 33,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
