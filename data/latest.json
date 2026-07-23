@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T09:24:49.133172+00:00",
+  "fetchedAt": "2026-07-23T09:26:04.584405+00:00",
   "count": 182,
   "issues": [
     {
@@ -1789,7 +1789,7 @@
       "번호": 163,
       "일감번호": 273712,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] Win Host : Win Web to Win 연결 후 여러 동작 후 뷰어에서 창 닫아 연결 종료 했으나, Host에 상담원을 기다리는중 창에서 종료되지 않고, 연결종료 버튼도 반응 없는 상태",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2008,8 +2008,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 79,
+      "notDone": 104,
+      "done": 78,
       "total": 182
     },
     "assignees": [
@@ -2065,9 +2065,9 @@
       {
         "name": "오세진",
         "total": 45,
-        "done": 18,
+        "done": 17,
         "complete": false,
-        "rate": 40
+        "rate": 37
       },
       {
         "name": "이경준",
@@ -2112,8 +2112,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 91,
-        "done": 71,
+        "progress": 92,
+        "done": 70,
         "total": 162
       }
     ],
@@ -2124,7 +2124,7 @@
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 10
       },
       {
         "label": "보류",
@@ -2132,7 +2132,7 @@
       },
       {
         "label": "해결",
-        "count": 77
+        "count": 76
       },
       {
         "label": "피드백",
@@ -2185,63 +2185,63 @@
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 13,
-        "rate": 39,
+        "cumDone": 12,
+        "rate": 36,
         "newCount": 18,
-        "doneCount": 6
+        "doneCount": 5
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 13,
-        "rate": 33,
+        "cumDone": 12,
+        "rate": 31,
         "newCount": 6,
         "doneCount": 0
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 19,
-        "rate": 41,
+        "cumDone": 18,
+        "rate": 39,
         "newCount": 7,
         "doneCount": 6
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 24,
-        "rate": 43,
+        "cumDone": 23,
+        "rate": 41,
         "newCount": 10,
         "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 35,
-        "rate": 49,
+        "cumDone": 34,
+        "rate": 47,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 38,
-        "rate": 48,
+        "cumDone": 37,
+        "rate": 47,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 43,
-        "rate": 51,
+        "cumDone": 42,
+        "rate": 49,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 51,
+        "cumDone": 50,
         "rate": 50,
         "newCount": 16,
         "doneCount": 8
@@ -2249,15 +2249,15 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 56,
-        "rate": 50,
+        "cumDone": 55,
+        "rate": 49,
         "newCount": 12,
         "doneCount": 5
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 64,
+        "cumDone": 63,
         "rate": 48,
         "newCount": 19,
         "doneCount": 8
@@ -2265,15 +2265,15 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 75,
-        "rate": 46,
+        "cumDone": 74,
+        "rate": 45,
         "newCount": 31,
         "doneCount": 11
       },
       {
         "date": "2026-07-23",
         "cumIssue": 182,
-        "cumDone": 79,
+        "cumDone": 78,
         "rate": 43,
         "newCount": 19,
         "doneCount": 4
