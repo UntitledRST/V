@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T01:16:17.429493+00:00",
+  "fetchedAt": "2026-07-23T01:21:09.220357+00:00",
   "count": 167,
   "issues": [
     {
@@ -414,7 +414,7 @@
       "번호": 38,
       "일감번호": 274919,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][파일전송] 고객 받기 동의 대기 10초 초과 시 뷰어가 전송 자동 취소(기획 미정의) + 실패 채팅에 개발자용 raw 예외·0 B 노출",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1843,8 +1843,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 55,
+      "notDone": 111,
+      "done": 56,
       "total": 167
     },
     "assignees": [
@@ -1893,9 +1893,9 @@
       {
         "name": "송건호",
         "total": 43,
-        "done": 19,
+        "done": 20,
         "complete": false,
-        "rate": 44
+        "rate": 46
       },
       {
         "name": "오세진",
@@ -1947,15 +1947,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 103,
-        "done": 49,
+        "progress": 102,
+        "done": 50,
         "total": 152
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 89
+        "count": 88
       },
       {
         "label": "진행",
@@ -1967,7 +1967,7 @@
       },
       {
         "label": "해결",
-        "count": 53
+        "count": 54
       },
       {
         "label": "피드백",
@@ -2092,24 +2092,24 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 50,
-        "rate": 38,
+        "cumDone": 51,
+        "rate": 39,
         "newCount": 19,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 54,
-        "rate": 33,
+        "cumDone": 55,
+        "rate": 34,
         "newCount": 31,
         "doneCount": 4
       },
       {
         "date": "2026-07-23",
         "cumIssue": 167,
-        "cumDone": 55,
-        "rate": 33,
+        "cumDone": 56,
+        "rate": 34,
         "newCount": 4,
         "doneCount": 1
       }
