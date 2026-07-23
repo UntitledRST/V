@@ -153,6 +153,20 @@
   .num{ text-align:right; font-family:var(--mono); }
 
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
+
+  .search-bar{ display:flex; justify-content:center; align-items:center; gap:8px; margin:4px 0 14px; }
+  .search-input{
+    width:100%; max-width:420px; background:var(--panel-bg); border:1px solid var(--panel-border);
+    border-radius:999px; padding:9px 16px; color:var(--text-primary); font-size:14.5px; font-family:inherit;
+    outline:none; transition:border-color .12s ease;
+  }
+  .search-input:focus{ border-color:var(--blue); }
+  .search-input::placeholder{ color:var(--text-tertiary); }
+  .search-btn{
+    background:var(--blue); color:#fff; border:none; border-radius:999px; padding:9px 18px;
+    font-size:14.5px; font-weight:700; cursor:pointer; font-family:inherit; white-space:nowrap;
+  }
+  .search-btn:hover{ opacity:0.88; }
   .filter-chip{
     display:none; align-items:center; gap:6px; background:rgba(91,157,255,0.14); color:var(--blue);
     font-size:14.5px; font-weight:700; padding:5px 12px; border-radius:999px; cursor:pointer;
@@ -208,6 +222,10 @@
       <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
       <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
     </h2>
+    <div class="search-bar">
+      <input type="text" id="issueSearchInput" class="search-input" placeholder="제목·일감번호·담당자·분류 등으로 검색">
+      <button type="button" id="issueSearchBtn" class="search-btn">검색</button>
+    </div>
     <div class="issues-table-scroll">
       <table>
         <thead>
@@ -270,7 +288,7 @@
 </div>
 
 <script>
-  var state = { issues: [], summary: null, filter: { type: null, value: null } };
+  var state = { issues: [], summary: null, filter: { type: null, value: null }, searchText: '' };
   var chart = null;
 
   function escapeHtml(s){
@@ -628,6 +646,8 @@
   // 해당 일자 기준으로 전체 이슈 목록을 필터링하고 최상단으로 이동
   var DAY_KIND_LABEL = { cumIssue: '누적 이슈', cumDone: '누적 해결', newCount: '이 날 신규', doneCount: '이 날 해결' };
 
+  var chartTooltipState = { overTooltip: false };
+
   function chartTooltipHandler(context){
     var wrap = document.querySelector('.chart-wrap');
     var tooltipEl = document.getElementById('chartTooltip');
@@ -636,18 +656,28 @@
       tooltipEl.id = 'chartTooltip';
       tooltipEl.className = 'chart-tooltip';
       wrap.appendChild(tooltipEl);
+      // 툴팁 위에 마우스가 올라가 있는 동안은 안 꺼지도록, 벗어나면 바로 꺼지도록 상태 추적
+      tooltipEl.addEventListener('mouseenter', function(){
+        chartTooltipState.overTooltip = true;
+      });
+      tooltipEl.addEventListener('mouseleave', function(){
+        chartTooltipState.overTooltip = false;
+        tooltipEl.style.opacity = 0;
+      });
     }
 
     var tooltipModel = context.tooltip;
     if (!tooltipModel || tooltipModel.opacity === 0){
-      tooltipEl.style.opacity = 0;
+      if (!chartTooltipState.overTooltip){
+        tooltipEl.style.opacity = 0;
+      }
       return;
     }
 
     var idx = (tooltipModel.dataPoints && tooltipModel.dataPoints.length) ? tooltipModel.dataPoints[0].dataIndex : null;
-    if (idx === null) { tooltipEl.style.opacity = 0; return; }
+    if (idx === null) { if (!chartTooltipState.overTooltip) tooltipEl.style.opacity = 0; return; }
     var day = state.summary.timeline[idx];
-    if (!day) { tooltipEl.style.opacity = 0; return; }
+    if (!day) { if (!chartTooltipState.overTooltip) tooltipEl.style.opacity = 0; return; }
 
     var rows = [
       { kind: 'cumIssue', value: day.cumIssue },
@@ -761,6 +791,16 @@
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
       }
     }
+
+    var q = (state.searchText || '').trim().toLowerCase();
+    if (q){
+      list = list.filter(function(it){
+        var haystack = [it.제목, it.일감번호, it.담당자, it.분류, it.우선순위, it.상태]
+          .map(function(v){ return (v || '').toString().toLowerCase(); })
+          .join(' ');
+        return haystack.indexOf(q) !== -1;
+      });
+    }
     document.getElementById('issueCount').textContent = list.length;
 
     var rows = list.map(function(it, idx){
@@ -790,6 +830,15 @@
 
   document.getElementById('hiddenNavBtn').addEventListener('click', function(){
     window.location.href = 'https://rc-version-check.vercel.app/';
+  });
+
+  function runIssueSearch(){
+    state.searchText = document.getElementById('issueSearchInput').value;
+    renderIssues();
+  }
+  document.getElementById('issueSearchBtn').addEventListener('click', runIssueSearch);
+  document.getElementById('issueSearchInput').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') runIssueSearch();
   });
 
   loadData();
