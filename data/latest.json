@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T07:04:43.450954+00:00",
+  "fetchedAt": "2026-07-23T07:06:07.927701+00:00",
   "count": 178,
   "issues": [
     {
@@ -120,7 +120,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 화면 캡쳐 목록 — 기획에서 삭제된 전체선택 체크박스/삭제/폴더 열기 버튼이 Windows 응용뷰어에 잔존",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-23 10:33:34",
       "link": "https://projects.rsupport.com/issues/275079"
     },
@@ -274,7 +274,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [도구] 퀵 메뉴 내 \"백업 및 초기화\" 실행 시, 호출된 호스트 설정 화면 불일치 ",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-22 15:23:41",
       "link": "https://projects.rsupport.com/issues/275012"
     },
@@ -318,7 +318,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][접속페이지] 응용 에이전트 베타 서버 로그인 후, 뷰어 대기창 생성 시 세션 만료 팝업 or 알파 접속 URL 노출",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-22 14:49:07",
       "link": "https://projects.rsupport.com/issues/274997"
     },
@@ -340,7 +340,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][PIP][Edge] PIP 창 상단 바의 텍스트·메뉴가 검정으로 렌더되어 구분 불가 — 동일 기기 Chrome 은 정상 (Edge 150.0.4078.83)",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-22 14:27:39",
       "link": "https://projects.rsupport.com/issues/274987"
     },
@@ -483,7 +483,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][로그인] 세션 만료 시 대기 창만 종료되고 에이전트 홈은 로그인 유지 — 재대기 시 만료 팝업 반복 (RC7.6.7 은 확인 시 로그인 화면 이동)",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-22 10:19:53",
       "link": "https://projects.rsupport.com/issues/274942"
     },
@@ -854,7 +854,7 @@
       "번호": 78,
       "일감번호": 274708,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어] '항상 위(ON/Off)' 메뉴 미제공 — 로그인 전 화면에만 체크박스 존재, 로그인 후(홈·대기·상담) 설정 변경·확인 불가",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1964,8 +1964,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 76,
+      "notDone": 101,
+      "done": 77,
       "total": 178
     },
     "assignees": [
@@ -2013,10 +2013,10 @@
       },
       {
         "name": "송건호",
-        "total": 47,
-        "done": 21,
+        "total": 42,
+        "done": 22,
         "complete": false,
-        "rate": 44
+        "rate": 52
       },
       {
         "name": "오세진",
@@ -2027,10 +2027,10 @@
       },
       {
         "name": "이경준",
-        "total": 17,
+        "total": 22,
         "done": 10,
         "complete": false,
-        "rate": 58
+        "rate": 45
       },
       {
         "name": "장기중(Jay)",
@@ -2068,15 +2068,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 91,
-        "done": 69,
+        "progress": 90,
+        "done": 70,
         "total": 160
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 81
+        "count": 80
       },
       {
         "label": "진행",
@@ -2088,7 +2088,7 @@
       },
       {
         "label": "해결",
-        "count": 74
+        "count": 75
       },
       {
         "label": "피드백",
@@ -2197,39 +2197,39 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 50,
+        "cumDone": 51,
         "rate": 50,
         "newCount": 16,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 54,
-        "rate": 48,
+        "cumDone": 55,
+        "rate": 49,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 62,
-        "rate": 47,
+        "cumDone": 63,
+        "rate": 48,
         "newCount": 19,
         "doneCount": 8
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 72,
-        "rate": 44,
+        "cumDone": 73,
+        "rate": 45,
         "newCount": 31,
         "doneCount": 10
       },
       {
         "date": "2026-07-23",
         "cumIssue": 178,
-        "cumDone": 76,
+        "cumDone": 77,
         "rate": 43,
         "newCount": 15,
         "doneCount": 4
