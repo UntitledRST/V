@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T04:26:06.210885+00:00",
+  "fetchedAt": "2026-07-23T04:28:05.862021+00:00",
   "count": 174,
   "issues": [
     {
@@ -51,10 +51,10 @@
       "번호": 5,
       "일감번호": 275112,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [호스트]  상담원 장치 설정 팝업 내 카메라 설정 변경 시, 호스트 화면에 설정값 미반영 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-23 11:07:35",
       "link": "https://projects.rsupport.com/issues/275112"
     },
@@ -1927,10 +1927,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 21,
+        "total": 22,
         "done": 12,
         "complete": false,
-        "rate": 57
+        "rate": 54
       },
       {
         "name": "김성식(kimss)",
@@ -1976,7 +1976,7 @@
       },
       {
         "name": "오세진",
-        "total": 44,
+        "total": 43,
         "done": 15,
         "complete": false,
         "rate": 34
@@ -2032,7 +2032,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 90
+        "count": 89
       },
       {
         "label": "진행",
@@ -2048,7 +2048,7 @@
       },
       {
         "label": "피드백",
-        "count": 14
+        "count": 15
       },
       {
         "label": "완료성공",
