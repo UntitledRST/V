@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T05:06:05.450872+00:00",
+  "fetchedAt": "2026-07-23T05:25:56.626883+00:00",
   "count": 177,
   "issues": [
     {
@@ -150,7 +150,7 @@
       "번호": 14,
       "일감번호": 275059,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [일시정지] 호스트 상담 재개 시, 뷰어 요청 팝업 노출 정책 확인 필요 — 기획 (Figma) 결과 상충 ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -172,7 +172,7 @@
       "번호": 16,
       "일감번호": 275051,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Mac] 툴바 더보기(…) 메뉴 구성 — 기획(항상 위만) vs 실기(프로그램 공유·원격 프린터 설치 노출) 불일치, 지원 범위 기획 확정 필요",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1953,17 +1953,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 65,
+      "notDone": 110,
+      "done": 67,
       "total": 177
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 22,
-        "done": 14,
+        "done": 16,
         "complete": false,
-        "rate": 63
+        "rate": 72
       },
       {
         "name": "김성식(kimss)",
@@ -2057,15 +2057,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 101,
-        "done": 58,
+        "progress": 99,
+        "done": 60,
         "total": 159
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 87
+        "count": 85
       },
       {
         "label": "진행",
@@ -2077,7 +2077,7 @@
       },
       {
         "label": "해결",
-        "count": 63
+        "count": 65
       },
       {
         "label": "피드백",
@@ -2210,18 +2210,18 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 64,
-        "rate": 39,
+        "cumDone": 65,
+        "rate": 40,
         "newCount": 31,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-23",
         "cumIssue": 177,
-        "cumDone": 65,
-        "rate": 37,
+        "cumDone": 67,
+        "rate": 38,
         "newCount": 14,
-        "doneCount": 1
+        "doneCount": 2
       }
     ]
   }
