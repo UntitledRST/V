@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T00:13:58.592766+00:00",
+  "fetchedAt": "2026-07-23T00:16:04.214139+00:00",
   "count": 164,
   "issues": [
     {
@@ -725,7 +725,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 상담 일지 미저장 상태로 종료 후 재실행 시, 입력 데이터가 유지됨",
       "우선순위": "보통(Normal)",
-      "담당자": "김신혜",
+      "담당자": "김미령",
       "created_on": "2026-07-16 16:28:21",
       "link": "https://projects.rsupport.com/issues/274690"
     },
@@ -1817,10 +1817,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 18,
+        "total": 19,
         "done": 7,
         "complete": false,
-        "rate": 38
+        "rate": 36
       },
       {
         "name": "김성식(kimss)",
@@ -1831,10 +1831,10 @@
       },
       {
         "name": "김신혜",
-        "total": 7,
+        "total": 6,
         "done": 3,
         "complete": false,
-        "rate": 42
+        "rate": 50
       },
       {
         "name": "박승진",
