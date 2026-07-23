@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T06:51:05.407398+00:00",
+  "fetchedAt": "2026-07-23T06:56:12.767904+00:00",
   "count": 178,
   "issues": [
     {
@@ -667,7 +667,7 @@
       "번호": 61,
       "일감번호": 274859,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][툴바] 상담 중 툴바에 기획에 없는 '자동 스크린샷' 버튼 노출 — 개발용 임시 UI 상용 유출",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1964,8 +1964,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 75,
+      "notDone": 102,
+      "done": 76,
       "total": 178
     },
     "assignees": [
@@ -2028,9 +2028,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 9,
+        "done": 10,
         "complete": false,
-        "rate": 52
+        "rate": 58
       },
       {
         "name": "장기중(Jay)",
@@ -2068,8 +2068,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 92,
-        "done": 68,
+        "progress": 91,
+        "done": 69,
         "total": 160
       }
     ],
@@ -2080,7 +2080,7 @@
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 6
       },
       {
         "label": "보류",
@@ -2088,7 +2088,7 @@
       },
       {
         "label": "해결",
-        "count": 73
+        "count": 74
       },
       {
         "label": "피드백",
@@ -2213,15 +2213,15 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 61,
-        "rate": 46,
+        "cumDone": 62,
+        "rate": 47,
         "newCount": 19,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 71,
+        "cumDone": 72,
         "rate": 44,
         "newCount": 31,
         "doneCount": 10
@@ -2229,8 +2229,8 @@
       {
         "date": "2026-07-23",
         "cumIssue": 178,
-        "cumDone": 75,
-        "rate": 42,
+        "cumDone": 76,
+        "rate": 43,
         "newCount": 15,
         "doneCount": 4
       }
