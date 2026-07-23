@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T06:16:04.811031+00:00",
+  "fetchedAt": "2026-07-23T06:18:00.543514+00:00",
   "count": 177,
   "issues": [
     {
@@ -84,7 +84,7 @@
       "번호": 8,
       "일감번호": 275112,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트]  상담원 장치 설정 팝업 내 카메라 설정 변경 시, 호스트 화면에 설정값 미반영 ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -656,7 +656,7 @@
       "번호": 60,
       "일감번호": 274859,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][툴바] 상담 중 툴바에 기획에 없는 '자동 스크린샷' 버튼 노출 — 개발용 임시 UI 상용 유출",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1690,7 +1690,7 @@
       "번호": 154,
       "일감번호": 273731,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 필수 권한 (카메라/마이크) 누락 및 마이크/카메라 사용 요청 팝업 미노출 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1953,17 +1953,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 107,
-      "done": 70,
+      "notDone": 105,
+      "done": 72,
       "total": 177
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 22,
-        "done": 17,
+        "done": 18,
         "complete": false,
-        "rate": 77
+        "rate": 81
       },
       {
         "name": "김성식(kimss)",
@@ -2017,9 +2017,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 8,
+        "done": 9,
         "complete": false,
-        "rate": 47
+        "rate": 52
       },
       {
         "name": "장기중(Jay)",
@@ -2057,15 +2057,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 96,
-        "done": 63,
+        "progress": 94,
+        "done": 65,
         "total": 159
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 83
+        "count": 82
       },
       {
         "label": "진행",
@@ -2077,11 +2077,11 @@
       },
       {
         "label": "해결",
-        "count": 68
+        "count": 70
       },
       {
         "label": "피드백",
-        "count": 15
+        "count": 14
       },
       {
         "label": "완료성공",
@@ -2130,98 +2130,98 @@
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 12,
-        "rate": 36,
+        "cumDone": 13,
+        "rate": 39,
         "newCount": 18,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 12,
-        "rate": 31,
+        "cumDone": 13,
+        "rate": 33,
         "newCount": 6,
         "doneCount": 0
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 18,
-        "rate": 39,
+        "cumDone": 19,
+        "rate": 41,
         "newCount": 7,
         "doneCount": 6
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 23,
-        "rate": 41,
+        "cumDone": 24,
+        "rate": 43,
         "newCount": 10,
         "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 34,
-        "rate": 47,
+        "cumDone": 35,
+        "rate": 49,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 37,
-        "rate": 47,
+        "cumDone": 38,
+        "rate": 48,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 42,
-        "rate": 49,
+        "cumDone": 43,
+        "rate": 51,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 49,
-        "rate": 49,
+        "cumDone": 50,
+        "rate": 50,
         "newCount": 16,
         "doneCount": 7
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 53,
-        "rate": 47,
+        "cumDone": 54,
+        "rate": 48,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 60,
-        "rate": 45,
+        "cumDone": 61,
+        "rate": 46,
         "newCount": 19,
         "doneCount": 7
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 67,
-        "rate": 41,
+        "cumDone": 68,
+        "rate": 42,
         "newCount": 31,
         "doneCount": 7
       },
       {
         "date": "2026-07-23",
         "cumIssue": 177,
-        "cumDone": 70,
-        "rate": 40,
+        "cumDone": 72,
+        "rate": 41,
         "newCount": 14,
-        "doneCount": 3
+        "doneCount": 4
       }
     ]
   }
