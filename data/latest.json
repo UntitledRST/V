@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T04:33:17.569023+00:00",
+  "fetchedAt": "2026-07-23T04:36:05.518487+00:00",
   "count": 175,
   "issues": [
     {
@@ -747,7 +747,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][접속페이지] 대표 URL 직접 진입 시 기획에 없는 '시작하기' 화면 노출 — 기획 랜딩은 접속번호 입력 화면 직행",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-20 15:48:41",
       "link": "https://projects.rsupport.com/issues/274797"
     },
@@ -1938,10 +1938,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 22,
+        "total": 21,
         "done": 12,
         "complete": false,
-        "rate": 54
+        "rate": 57
       },
       {
         "name": "김성식(kimss)",
@@ -1987,10 +1987,10 @@
       },
       {
         "name": "오세진",
-        "total": 44,
+        "total": 45,
         "done": 15,
         "complete": false,
-        "rate": 34
+        "rate": 33
       },
       {
         "name": "이경준",
