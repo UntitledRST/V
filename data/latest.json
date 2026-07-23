@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T04:43:42.423841+00:00",
+  "fetchedAt": "2026-07-23T04:46:07.024290+00:00",
   "count": 175,
   "issues": [
     {
@@ -491,7 +491,7 @@
       "번호": 45,
       "일감번호": 274923,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win] 다운로드 exe 실행 시 UAC(관리자 권한)에서 [아니오] 선택 → 빈 로딩 화면만 무한 유지 — 오류 안내·재시도·종료 수단 전무(창 닫기 불가)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -535,7 +535,7 @@
       "번호": 49,
       "일감번호": 274903,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 단말 회전 지원 범위 및 회전 시 PIP 위치 처리 정책 확인 필요 (RC 7 기능 계승 여부 검토) ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1931,17 +1931,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 63,
+      "notDone": 111,
+      "done": 64,
       "total": 175
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 21,
-        "done": 12,
+        "done": 13,
         "complete": false,
-        "rate": 57
+        "rate": 61
       },
       {
         "name": "김성식(kimss)",
@@ -2035,19 +2035,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 101,
-        "done": 57,
+        "progress": 100,
+        "done": 58,
         "total": 158
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 88
+        "count": 86
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 10
       },
       {
         "label": "보류",
@@ -2055,7 +2055,7 @@
       },
       {
         "label": "해결",
-        "count": 61
+        "count": 62
       },
       {
         "label": "피드백",
@@ -2180,24 +2180,24 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 57,
-        "rate": 43,
+        "cumDone": 58,
+        "rate": 44,
         "newCount": 19,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 62,
-        "rate": 38,
+        "cumDone": 63,
+        "rate": 39,
         "newCount": 31,
         "doneCount": 5
       },
       {
         "date": "2026-07-23",
         "cumIssue": 175,
-        "cumDone": 63,
-        "rate": 36,
+        "cumDone": 64,
+        "rate": 37,
         "newCount": 12,
         "doneCount": 1
       }
