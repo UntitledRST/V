@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T00:31:06.033797+00:00",
+  "fetchedAt": "2026-07-23T00:34:47.107641+00:00",
   "count": 165,
   "issues": [
     {
@@ -502,10 +502,10 @@
       "번호": 46,
       "일감번호": 274881,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 공유함 파일 항목 별 단일 전송 기능이 기획(Figma)과 불일치 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "박예지",
       "created_on": "2026-07-21 14:04:16",
       "link": "https://projects.rsupport.com/issues/274881"
     },
@@ -1821,17 +1821,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 53,
+      "notDone": 111,
+      "done": 54,
       "total": 165
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 19,
+        "total": 18,
         "done": 8,
         "complete": false,
-        "rate": 42
+        "rate": 44
       },
       {
         "name": "김성식(kimss)",
@@ -1856,10 +1856,10 @@
       },
       {
         "name": "박예지",
-        "total": 1,
-        "done": 0,
+        "total": 2,
+        "done": 1,
         "complete": false,
-        "rate": 0
+        "rate": 50
       },
       {
         "name": "변우영",
@@ -1925,8 +1925,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 103,
-        "done": 47,
+        "progress": 102,
+        "done": 48,
         "total": 150
       }
     ],
@@ -1945,11 +1945,11 @@
       },
       {
         "label": "해결",
-        "count": 51
+        "count": 52
       },
       {
         "label": "피드백",
-        "count": 17
+        "count": 16
       },
       {
         "label": "완료성공",
@@ -2070,15 +2070,15 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 49,
-        "rate": 37,
+        "cumDone": 50,
+        "rate": 38,
         "newCount": 19,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 53,
+        "cumDone": 54,
         "rate": 33,
         "newCount": 31,
         "doneCount": 4
@@ -2086,8 +2086,8 @@
       {
         "date": "2026-07-23",
         "cumIssue": 165,
-        "cumDone": 53,
-        "rate": 32,
+        "cumDone": 54,
+        "rate": 33,
         "newCount": 2,
         "doneCount": 0
       }
