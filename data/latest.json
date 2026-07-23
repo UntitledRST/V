@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T05:46:43.306670+00:00",
+  "fetchedAt": "2026-07-23T05:51:06.675782+00:00",
   "count": 177,
   "issues": [
     {
@@ -128,7 +128,7 @@
       "번호": 12,
       "일감번호": 275070,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [네트워크 차단] 호스트·뷰어 네트워크 단절 시, 세션 상태 동기화 및 종료 정책 확인 필요",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1459,7 +1459,7 @@
       "번호": 133,
       "일감번호": 274003,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 상담 일지 팝업 이동 및 축소·확장 불가",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1953,17 +1953,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 68,
+      "notDone": 107,
+      "done": 70,
       "total": 177
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 22,
-        "done": 16,
+        "done": 17,
         "complete": false,
-        "rate": 72
+        "rate": 77
       },
       {
         "name": "김성식(kimss)",
@@ -2017,9 +2017,9 @@
       {
         "name": "이경준",
         "total": 17,
-        "done": 7,
+        "done": 8,
         "complete": false,
-        "rate": 41
+        "rate": 47
       },
       {
         "name": "장기중(Jay)",
@@ -2057,19 +2057,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 98,
-        "done": 61,
+        "progress": 96,
+        "done": 63,
         "total": 159
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 84
+        "count": 83
       },
       {
         "label": "진행",
-        "count": 10
+        "count": 9
       },
       {
         "label": "보류",
@@ -2077,7 +2077,7 @@
       },
       {
         "label": "해결",
-        "count": 66
+        "count": 68
       },
       {
         "label": "피드백",
@@ -2146,63 +2146,63 @@
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 17,
-        "rate": 37,
+        "cumDone": 18,
+        "rate": 39,
         "newCount": 7,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 22,
-        "rate": 39,
+        "cumDone": 23,
+        "rate": 41,
         "newCount": 10,
         "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 33,
-        "rate": 46,
+        "cumDone": 34,
+        "rate": 47,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 36,
-        "rate": 46,
+        "cumDone": 37,
+        "rate": 47,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 41,
-        "rate": 48,
+        "cumDone": 42,
+        "rate": 49,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 48,
-        "rate": 48,
+        "cumDone": 49,
+        "rate": 49,
         "newCount": 16,
         "doneCount": 7
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 52,
-        "rate": 46,
+        "cumDone": 53,
+        "rate": 47,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 59,
+        "cumDone": 60,
         "rate": 45,
         "newCount": 19,
         "doneCount": 7
@@ -2210,18 +2210,18 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 66,
-        "rate": 40,
+        "cumDone": 67,
+        "rate": 41,
         "newCount": 31,
         "doneCount": 7
       },
       {
         "date": "2026-07-23",
         "cumIssue": 177,
-        "cumDone": 68,
-        "rate": 38,
+        "cumDone": 70,
+        "rate": 40,
         "newCount": 14,
-        "doneCount": 2
+        "doneCount": 3
       }
     ]
   }
