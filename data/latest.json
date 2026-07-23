@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T02:28:57.308027+00:00",
+  "fetchedAt": "2026-07-23T02:31:05.559084+00:00",
   "count": 171,
   "issues": [
     {
@@ -546,7 +546,7 @@
       "번호": 50,
       "일감번호": 274888,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 접속 번호 입력란 복사/붙여넣기 기능 미동작 (RC 7 기능 계승 여부 확인 필요)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1195,7 +1195,7 @@
       "번호": 109,
       "일감번호": 274260,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] Android Host: 접속번호 입력화면 1자리만 입력해도 확인 선택가능. 에러 팝업에 불필요 메세지 표시됨",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1887,8 +1887,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 115,
-      "done": 56,
+      "notDone": 113,
+      "done": 58,
       "total": 171
     },
     "assignees": [
@@ -1944,9 +1944,9 @@
       {
         "name": "오세진",
         "total": 44,
-        "done": 12,
+        "done": 14,
         "complete": false,
-        "rate": 27
+        "rate": 31
       },
       {
         "name": "이경준",
@@ -1991,8 +1991,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 106,
-        "done": 50,
+        "progress": 104,
+        "done": 52,
         "total": 156
       }
     ],
@@ -2003,7 +2003,7 @@
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 6
       },
       {
         "label": "보류",
@@ -2011,7 +2011,7 @@
       },
       {
         "label": "해결",
-        "count": 54
+        "count": 56
       },
       {
         "label": "피드백",
@@ -2096,64 +2096,64 @@
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 32,
-        "rate": 44,
+        "cumDone": 33,
+        "rate": 46,
         "newCount": 16,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 35,
-        "rate": 44,
+        "cumDone": 36,
+        "rate": 46,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 38,
-        "rate": 45,
+        "cumDone": 39,
+        "rate": 46,
         "newCount": 6,
         "doneCount": 3
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 42,
-        "rate": 42,
+        "cumDone": 43,
+        "rate": 43,
         "newCount": 16,
         "doneCount": 4
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 46,
-        "rate": 41,
+        "cumDone": 47,
+        "rate": 42,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 51,
-        "rate": 39,
+        "cumDone": 53,
+        "rate": 40,
         "newCount": 19,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 55,
-        "rate": 34,
+        "cumDone": 57,
+        "rate": 35,
         "newCount": 31,
         "doneCount": 4
       },
       {
         "date": "2026-07-23",
         "cumIssue": 171,
-        "cumDone": 56,
-        "rate": 33,
+        "cumDone": 58,
+        "rate": 34,
         "newCount": 8,
         "doneCount": 1
       }
