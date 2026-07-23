@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-23T10:21:32.590728+00:00",
+  "fetchedAt": "2026-07-23T10:26:04.897840+00:00",
   "count": 183,
   "issues": [
     {
@@ -447,7 +447,7 @@
       "번호": 41,
       "일감번호": 274973,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Mac][선택공유] 프로그램 선택 공유 중 Mac 잠금 화면 진입이 뷰어에 미반영 — 선택 창 화면만 계속 표시되고 원격 입력은 잠금 화면으로 전달(blind input)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2019,8 +2019,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 80,
+      "notDone": 102,
+      "done": 81,
       "total": 183
     },
     "assignees": [
@@ -2076,9 +2076,9 @@
       {
         "name": "오세진",
         "total": 45,
-        "done": 17,
+        "done": 18,
         "complete": false,
-        "rate": 37
+        "rate": 40
       },
       {
         "name": "이경준",
@@ -2123,8 +2123,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 91,
-        "done": 72,
+        "progress": 90,
+        "done": 73,
         "total": 163
       }
     ],
@@ -2135,7 +2135,7 @@
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 8
       },
       {
         "label": "보류",
@@ -2143,7 +2143,7 @@
       },
       {
         "label": "해결",
-        "count": 78
+        "count": 79
       },
       {
         "label": "피드백",
@@ -2276,15 +2276,15 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 75,
-        "rate": 46,
+        "cumDone": 76,
+        "rate": 47,
         "newCount": 31,
-        "doneCount": 12
+        "doneCount": 13
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 80,
+        "cumDone": 81,
         "rate": 44,
         "newCount": 20,
         "doneCount": 5
