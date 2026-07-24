@@ -1,847 +1,331 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>빌드 업데이트 현황</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>페이지 방문 횟수 대시보드</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card-bg: #1a1d24;
+    --border: #2a2e38;
+    --accent: #6ee7b7;
+    --accent2: #93c5fd;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, sans-serif;
+    padding: 40px 20px;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .card .label { color: var(--muted); font-size: 13px; margin-bottom: 8px; word-break: break-all; }
+  .card .count { font-size: 36px; font-weight: 800; line-height: 1.1; }
+  .card.a .count { color: var(--accent); }
+  .card.b .count { color: var(--accent2); }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent2); }
+
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .chart-title { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .legend { display: flex; gap: 16px; font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot.a { background: var(--accent); }
+  .dot.b { background: var(--accent2); }
+
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 180px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 46px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .bar-pair {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 140px;
+  }
+  .bar {
+    width: 14px;
+    border-radius: 3px 3px 0 0;
+    background: var(--accent);
+    min-height: 2px;
+    transition: height 0.2s ease;
+  }
+  .bar.b { background: var(--accent2); }
+  .bar-label {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+    white-space: nowrap;
+  }
+
+  .actions { display: flex; gap: 10px; margin-bottom: 20px; }
+  button {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--accent2); }
+  .updated { color: var(--muted); font-size: 12px; }
+
+  .note {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .note code { background: #11141a; padding: 2px 6px; border-radius: 4px; color: var(--accent); }
+  .loading { color: var(--muted); font-size: 13px; padding: 20px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>페이지 방문 횟수</h1>
+  <div class="sub">rc8qa / rc-version-check · 일간·주간·월별 (IP 미수집)</div>
+
+  <div class="cards">
+    <div class="card a">
+      <div class="label">rc8qa.vercel.app (전체 누적)</div>
+      <div class="count" id="total-rc8qa">–</div>
+    </div>
+    <div class="card b">
+      <div class="label">rc-version-check.vercel.app (전체 누적)</div>
+      <div class="count" id="total-rcversion">–</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab" data-range="daily">일간 (최근 14일)</div>
+    <div class="tab" data-range="weekly">주간 (최근 12주)</div>
+    <div class="tab" data-range="monthly">월별 (최근 12개월)</div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title" id="chart-title">위 탭을 선택하면 기간별 그래프를 불러옵니다</div>
+    <div class="legend">
+      <span><span class="dot a"></span>rc8qa</span>
+      <span><span class="dot b"></span>rc-version-check</span>
+    </div>
+    <div class="bars" id="bars">
+      <div class="loading">일간 / 주간 / 월별 탭을 클릭하면 조회합니다</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button onclick="loadAll()">새로고침</button>
+  </div>
+  <div class="updated" id="updated-at"></div>
+
+  <div class="note">
+    <code>CountAPI 대체 서비스</code>(countapi.mileshilliard.com, 비공식 오픈소스)를 이용한 카운터입니다. IP나 개인 식별 정보는 저장하지 않고,
+    날짜별/주별/월별 "방문 횟수"만 누적됩니다. 각 사이트에 대응하는 카운트 증가 스크립트가
+    삽입되어 있어야 값이 올라갑니다.
+  </div>
+</div>
+
 <script>
-(function () {
   const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE = "rc-version-check";
-  const now = new Date();
+  const SITES = [
+    { key: "rc8qa", label: "rc8qa", cls: "a" },
+    { key: "rc-version-check", label: "rc-version-check", cls: "b" }
+  ];
+  // 스니펫을 실제로 배포한 날짜. 이보다 이전 기간은 데이터가 없는 게 확실하므로
+  // API 호출(및 404 콘솔 로그) 자체를 건너뜁니다. 배포일이 다르면 이 값을 바꿔주세요.
+  const START_DATE = new Date(2026, 6, 24); // 월(month)은 0부터 시작 → 6 = 7월
+  START_DATE.setHours(0, 0, 0, 0);
+  let currentRange = null;
+
   function pad(n) { return n.toString().padStart(2, "0"); }
+
   function isoWeek(d) {
     const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
     const dayNum = (date.getUTCDay() + 6) % 7;
     date.setUTCDate(date.getUTCDate() - dayNum + 3);
     const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
     const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-  const dKey = `${SITE}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const wKey = `${SITE}-w-${isoWeek(now)}`;
-  const mKey = `${SITE}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-  [dKey, wKey, mKey, SITE].forEach((k) => {
-    fetch(`https://countapi.mileshilliard.com/api/v1/hit/${NAMESPACE}-${k}`).catch(() => {});
-  });
-})();
-</script>
-<style>
-  :root{
-    --card-w: 138px;
-    --bg: #080b11;
-    --panel-bg: #0d131d;
-    --card-bg: #0f1622;
-    --card-border: #1d2635;
-    --panel-border: #1c2536;
-    --text-primary: #e9edf5;
-    --text-secondary: #8791a3;
-    --text-tertiary: #5b6478;
-    --teal: #2dd4bf;
-    --teal-soft: rgba(45,212,191,0.12);
-    --orange: #f5a524;
-    --orange-soft: rgba(245,165,36,0.12);
-    --blue: #5b9dff;
-    --purple: #c084fc;
-    --red: #ef4444;
-    --green: #34d399;
-    --radius-lg: 16px;
-    --radius-md: 12px;
-    --radius-sm: 8px;
+    return { year: date.getUTCFullYear(), week: weekNum };
   }
 
-  *{ box-sizing: border-box; }
-
-  html, body{
-    margin:0; padding:0;
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-
-  .num{
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-
-  .dashboard{
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
-    padding: 16px 24px 12px;
-    gap: 10px;
-  }
-
-  /* ---------------- Header ---------------- */
-  .topbar{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    gap: 14px 24px;
-  }
-
-  .brand-block{ min-width: 260px; }
-
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-
-  .brand .dot{
-    width:9px; height:9px; border-radius:50%;
-    background: var(--green);
-    box-shadow: 0 0 10px rgba(52,211,153,0.8);
-    flex-shrink:0;
-  }
-
-  .brand h1{
-    font-size: 22px;
-    font-weight: 800;
-    margin:0;
-    letter-spacing: -0.01em;
-  }
-
-  .subtitle{
-    margin: 6px 0 0 19px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .controls{
-    display:flex;
-    align-items:center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .last-refresh{
-    text-align:right;
-    line-height:1.3;
-  }
-  .last-refresh .label{
-    font-size: 12px;
-    color: var(--text-tertiary);
-  }
-  .last-refresh .value{
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-primary);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-
-  .auto-refresh-select{
-    appearance:none;
-    background: var(--panel-bg);
-    border: 1px solid var(--panel-border);
-    color: var(--text-primary);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 34px 10px 14px;
-    border-radius: 10px;
-    cursor:pointer;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238791a3' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
-    background-repeat:no-repeat;
-    background-position: right 10px center;
-    background-size: 16px;
-  }
-  .auto-refresh-select:focus{ outline: 2px solid var(--teal); }
-
-  .refresh-btn{
-    width: 46px; height: 46px;
-    border-radius: 12px;
-    border: 1px solid var(--panel-border);
-    background: var(--panel-bg);
-    color: var(--text-primary);
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    flex-shrink:0;
-    transition: transform .15s ease, border-color .15s ease;
-  }
-  .refresh-btn:hover{ border-color: var(--teal); }
-  .refresh-btn.spinning svg{ animation: spin .7s linear infinite; }
-  @keyframes spin{ to{ transform: rotate(360deg); } }
-
-  /* ---------------- Content / layout that avoids scroll on desktop ---------------- */
-  .content{
-    flex: 1 1 auto;
-    display:flex;
-    flex-direction:column;
-    gap: 10px;
-    min-height:0;
-  }
-
-  .channel{
-    display:flex;
-    flex-direction:column;
-    gap: 10px;
-    flex: 1 1 auto;
-  }
-
-  .channel-header{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-
-  .pill{
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-  .pill-alpha{ background: var(--teal-soft); color: var(--teal); border: 1px solid rgba(45,212,191,0.35); }
-  .pill-beta{ background: var(--orange-soft); color: var(--orange); border: 1px solid rgba(245,165,36,0.35); }
-
-  .channel-name{
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-secondary);
-  }
-
-  .panels{
-    display:flex;
-    gap: 6px;
-    flex: 1 1 auto;
-    overflow-x: auto; /* 좁은 데스크톱 창에서 카드가 과도하게 압축/클리핑되는 대신 가로 스크롤로 대체 */
-    overflow-y: hidden;
-  }
-
-  .panel{
-    background: var(--panel-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius-lg);
-    padding: 12px;
-    display:flex;
-    flex-direction:column;
-    gap: 8px;
-  }
-
-  .panel-app{ flex: 0 0 auto; }
-  .panel-app-outer{
-    flex: 6 6 0;
-    display:flex;
-    flex-direction:row;
-    gap: 6px;
-    min-width: 0;
-  }
-  .app-subpanel{
-    display:flex;
-    flex-direction:column;
-    gap: 8px;
-    background: var(--panel-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius-md);
-    padding: 8px;
-  }
-  .app-subpanel-host{ flex: 4 4 0; min-width: 0; }
-  .app-subpanel-viewer{ flex: 2 2 0; min-width: 0; }
-  .app-subpanel-title{
-    margin:0;
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--blue);
-    letter-spacing: 0.01em;
-  }
-  .app-subpanel .cards-grid{ flex: 1 1 auto; display:grid; gap:10px; grid-auto-rows:1fr; }
-  .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
-  .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
-  .panel-web{ flex: 4 4 0; min-width: 0; }
-
-  .panel-title{
-    margin:0;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 0.01em;
-  }
-  .panel-title.app{ color: var(--blue); }
-  .panel-title.web{ color: var(--purple); }
-
-  .cards-grid{
-    flex: 1 1 auto;
-    display:grid;
-    gap: 10px;
-    grid-auto-rows: 1fr;
-  }
-  /* App(Host)/Web은 4열, App(Viewer)는 2열(Windows/macOS만 존재).
-     패널 flex 비율(4:2:4)과 컬럼 수(4:2:4)를 비례시켜 모든 카드의 실제 크기(너비/높이)가 통일되도록 함 */
-  .panel-web .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
-
-  /* App(Host)와 App(Viewer) 서브그룹 사이 여백 + 구분선 */
-  .app-subgroup-gap{
-    display:flex;
-    flex-direction:column;
-    flex: 1 1 auto;
-    margin-top: 18px;
-    padding-top: 14px;
-    border-top: 1px dashed var(--panel-border);
-  }
-  .subgroup-title{
-    margin: 0 0 8px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: 0.02em;
-  }
-
-  /* ---------------- App(Host)/App(Viewer) 행(row) 목록: 여러 항목을 하나의 카드 안에 리스트로 표시 ---------------- */
-  .app-rows{
-    flex: 1 1 auto;
-    display:flex;
-    flex-direction:column;
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius-md);
-    overflow:hidden;
-  }
-  .app-row{
-    flex: 1 1 auto;
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    padding: 9px 12px;
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--card-border);
-    font-size: 13px;
-  }
-  .app-row:last-child{ border-bottom: none; }
-  .app-row.updated-today{ box-shadow: inset 0 0 0 1px rgba(239,68,68,0.35); }
-  .app-row .status-dot{ margin-left:0; }
-  .app-row-icon{ display:flex; align-items:center; flex-shrink:0; }
-  .app-row-icon svg{ width:15px; height:15px; color: var(--text-secondary); }
-  .app-row-name{
-    font-weight: 700;
-    color: var(--text-primary);
-    min-width: 84px;
-    flex-shrink:0;
-  }
-  .app-row-build{
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-weight: 700;
-    color: var(--text-primary);
-    min-width: 70px;
-    flex-shrink:0;
-  }
-  .app-row-build.na{ color: var(--text-tertiary); font-weight:600; font-size:12px; }
-  .app-row-update{
-    flex: 1 1 auto;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 12px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  .app-row-update.na{ color: var(--text-tertiary); }
-  .app-row-update.err{ color: var(--red); }
-  .app-row-download.download-btn{
-    flex-shrink:0;
-    width:auto;
-    margin-top:0;
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-
-  @media (max-width: 700px){
-    .app-row{ flex-wrap: wrap; }
-    .app-row-update{ white-space:normal; flex-basis:100%; order:5; }
-  }
-
-  /* ---------------- Card ---------------- */
-  .card{
-    position:relative;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius-md);
-    padding: 10px 9px 9px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    text-align:center;
-    min-height: 148px;
-    transition: border-color .2s ease;
-  }
-  .card > *{ flex-shrink: 0; }
-  .card-mid{ flex-shrink: 1; }
-  .card.updated-today{
-    border-color: var(--red);
-    box-shadow: 0 0 0 1px rgba(239,68,68,0.25) inset;
-  }
-
-  .card-top{
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    margin-bottom: 4px;
-  }
-  .card-name{
-    display:flex;
-    align-items:flex-start;
-    gap:5px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--text-primary);
-    min-width:0;
-    line-height: 1.25;
-    text-align:left;
-    overflow-wrap: break-word;
-  }
-  .card-name svg{ width:15px; height:15px; color: var(--text-secondary); flex-shrink:0; margin-top:1px; }
-
-  .status-dot{
-    width:8px; height:8px; border-radius:50%;
-    flex-shrink:0;
-    margin-left: 6px;
-  }
-  .status-dot.ok{ background: var(--green); box-shadow: 0 0 6px rgba(52,211,153,.8); }
-  .status-dot.err{ background: var(--red); box-shadow: 0 0 6px rgba(239,68,68,.8); }
-
-  .card-mid{
-    flex: 1 1 auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    gap: 1px;
-    padding: 2px 0 3px;
-  }
-
-  .build-number{
-    font-weight: 800;
-    line-height:1;
-    color: var(--text-primary);
-    font-size: clamp(18px, 2.1vw, 30px);
-    width:100%;
-    white-space: nowrap;
-    overflow-wrap: normal;
-  }
-  .build-number.na{ color: var(--text-tertiary); font-size: clamp(13px, 1.3vw, 16px); white-space: normal; }
-
-  .build-label{
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    margin-top: 1px;
-  }
-
-  .update-text{
-    font-size: clamp(10.5px, 1vw, 13px);
-    font-weight: 700;
-    color: var(--text-secondary);
-    margin-top: 5px;
-    line-height: 1.3;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-  .update-text.na{
-    color: var(--text-tertiary);
-    font-weight: 600;
-  }
-  .update-text.err{
-    color: var(--red);
-    font-weight: 600;
-  }
-
-  .diag-text{
-    font-size: 9.5px;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    margin-top: 4px;
-    line-height: 1.3;
-    font-family: 'Inter', sans-serif;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
-  }
-
-  .download-btn{
-    display:flex; align-items:center; justify-content:center; gap:6px;
-    width:100%;
-    margin-top: 6px;
-    padding: 7px 8px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--panel-border);
-    color: var(--text-primary);
-    text-decoration:none;
-    font-size: 13px;
-    font-weight: 700;
-    transition: background .15s ease, border-color .15s ease;
-  }
-  .download-btn:hover{ background: rgba(255,255,255,0.08); border-color: var(--teal); }
-  .download-btn.disabled{
-    opacity: .4;
-    pointer-events:none;
-  }
-  .download-btn svg{ width:14px; height:14px; }
-
-  /* Web 카드는 App 카드와 테두리 색으로 구분 (App(Host)/App(Viewer)는 서로 동일한 톤) */
-  .panel-web .card{ border-color: rgba(192,132,252,0.28); }
-  .panel-app .card{ border-color: rgba(91,157,255,0.22); }
-  .panel-web .card.updated-today,
-  .panel-app .card.updated-today{ border-color: var(--red); }
-
-
-  /* ---------------- Responsive ---------------- */
-  @media (min-width: 901px){
-    html, body{ overflow: hidden; height: 100%; }
-    .dashboard{ height: 100vh; }
-    .content{ overflow-y: auto; } /* 극단적으로 낮은 화면 높이에서도 겹치지 않고 스크롤로 안전하게 대체 */
-  }
-
-  @media (max-width: 900px){
-    html, body{ overflow-y:auto; }
-    .dashboard{ min-height: auto; padding: 18px 16px 24px; }
-    .content{ flex: none; }
-    .panels{ flex-direction: column; flex: none; overflow-x: visible; }
-    .panel-web .cards-grid{ grid-template-columns: repeat(2, 1fr); }
-    .panel-app-outer{ flex-direction: column; }
-    .app-subpanel-host .cards-grid{ grid-template-columns: repeat(2, 1fr); }
-    .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, 1fr); }
-    .cards-grid{ flex: none; grid-auto-rows: auto; }
-    .card{ min-height: 190px; }
-    .channel{ flex: none; }
-    .topbar{ flex-direction: column; align-items:flex-start; }
-    .controls{ width:100%; justify-content: space-between; }
-    .last-refresh{ text-align:left; }
-  }
-
-  @media (max-width: 520px){
-    .app-row-name{ min-width: 64px; }
-  }
-</style>
-</head>
-<body>
-
-<div class="dashboard">
-  <header class="topbar">
-    <div class="brand-block">
-      <div class="brand">
-        <span class="dot"></span>
-        <h1>빌드 업데이트 현황</h1>
-      </div>
-      <p class="subtitle">[알파 / 베타]<BR>- Service: Viewer (Web, Win, Mac) / Host (Web, Win, Mac, Android, iOS)<BR>- Admin: Partner, User</p>
-    </div>
-    <div class="controls">
-      <div class="last-refresh">
-        <div class="label">마지막 갱신</div>
-        <div class="value" id="lastRefresh">-</div>
-      </div>
-      <select id="autoRefreshSelect" class="auto-refresh-select" aria-label="자동 새로고침 간격"></select>
-      <button id="refreshBtn" class="refresh-btn" title="지금 새로고침" aria-label="새로고침">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-          <path d="M23 4v6h-6"></path>
-          <path d="M1 20v-6h6"></path>
-          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <main class="content" id="content">
-    <!-- JS로 채워짐 -->
-  </main>
-</div>
-
-<script>
-(function(){
-  "use strict";
-
-  var AUTO_OPTIONS = [0, 10, 20, 30, 40, 50, 60]; // 초 단위, 0 = 끄기
-
-  var ICONS = {
-    windows: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5.5 10.5 4.4V11H3zM11.5 4.3 21 3v8H11.5zM3 12h7.5v6.6L3 17.5zM11.5 12H21v8l-9.5-1.3z"/></svg>',
-    macos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.6-.9.9-1.7 1.2-2.5-3-1.1-3.6-2.3-3.6-4.1z"/><path d="M14.8 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>',
-    android: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16v-4a7 7 0 0 1 14 0v4"/><path d="M5 16h14v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M8 3l1.5 2M16 3l-1.5 2"/><circle cx="9" cy="11" r="0.6" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="0.6" fill="currentColor" stroke="none"/></svg>',
-    ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg>',
-    admin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>',
-    viewer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
-    relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>'
-  };
-
-  var CHANNEL_LABEL = { alpha: { pill: 'ALPHA', name: '알파 채널' }, beta: { pill: 'BETA', name: '베타 채널' } };
-  var CHANNEL_ORDER = ['alpha', 'beta'];
-
-  var contentEl = document.getElementById('content');
-  var lastRefreshEl = document.getElementById('lastRefresh');
-  var refreshBtn = document.getElementById('refreshBtn');
-  var autoSelect = document.getElementById('autoRefreshSelect');
-
-  var autoTimer = null;
-  var isFetching = false;
-
-  // ---------- 자동 새로고침 드롭다운 구성 ----------
-  AUTO_OPTIONS.forEach(function(sec){
-    var opt = document.createElement('option');
-    opt.value = String(sec);
-    opt.textContent = sec === 0 ? '자동 새로고침: 끄기' : '자동 새로고침: ' + sec + '초';
-    autoSelect.appendChild(opt);
-  });
-  autoSelect.value = '0';
-  autoSelect.addEventListener('change', function(){
-    setupAutoRefresh(Number(autoSelect.value));
-  });
-
-  function setupAutoRefresh(seconds){
-    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    if (seconds > 0){
-      autoTimer = setInterval(fetchAndRender, seconds * 1000);
-    }
-  }
-
-  refreshBtn.addEventListener('click', function(){ fetchAndRender(); });
-
-  // ---------- 카드 렌더링 ----------
-  function escapeHtml(str){
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function renderCard(item){
-    var card = document.createElement('div');
-    card.className = 'card';
-    if (item.isToday) card.classList.add('updated-today');
-
-
-    var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
-    var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
-
-    var updateHtml = '';
-    if (item.staticNote){
-      // 백엔드가 고정 문구를 내려준 경우, 계산된 상태와 무관하게 그 문구를 그대로 표시
-      updateHtml = '<div class="update-text">' + escapeHtml(item.staticNote) + '</div>';
-    } else if (item.ok && item.updateDateText){
-      var parts = item.updateDateText.split(' ');
-      var datePart = parts[0] || '';
-      var timePart = parts[1] || '';
-      updateHtml = '<div class="update-text">업데이트: ' + datePart + (timePart ? ('<br>' + timePart) : '') + '</div>';
-    } else if (item.ok){
-      // 응답은 정상(ok)이지만 업데이트 시간을 못 가져온 경우: 빈칸으로 두지 않고 원인을 알 수 있게 표시
-      updateHtml = '<div class="update-text na">업데이트: 정보 없음</div>';
-    } else {
-      // 조회 자체가 실패한 경우(네트워크 오류/타임아웃/HTTP 오류 등): 실패했다는 사실을 화면에 명시
-      updateHtml = '<div class="update-text err">업데이트: 조회 실패</div>';
-    }
-
-    // 백엔드가 내려준 진단 정보(_debug) 또는 실제 오류 메시지(error)를 확인할 수 있도록 노출
-    // 모바일 등 터치 환경에서는 마우스 hover(title 툴팁)가 동작하지 않으므로, 카드에 작은 글씨로도 직접 표시
-    var diagText = null;
-    if (item._debug && item._debug.reason) diagText = item._debug.reason;
-    else if (!item.ok && item.error) diagText = item.error;
-
-    if (diagText){
-      card.title = diagText;
-      updateHtml += '<div class="diag-text">' + escapeHtml(diagText) + '</div>';
-    }
-
-    var downloadHtml = '';
-    if (item.ok && item.downloadUrl){
-      downloadHtml = '<a class="download-btn" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
-        (item.downloadLabel || '다운로드') + '</a>';
-    } else {
-      downloadHtml = '<span class="download-btn disabled">이용 불가</span>';
-    }
-
-    var displayLabel = (item.label || '').replace(/([a-z0-9])([A-Z])/g, '$1<wbr>$2');
-    card.innerHTML =
-      '<div class="card-top">' +
-        '<div class="card-name">' + (ICONS[item.platform] || '') + '<span>' + displayLabel + '</span></div>' +
-        '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
-      '</div>' +
-      '<div class="card-mid">' +
-        '<div class="build-number' + (hasBuild ? '' : ' na') + '">' + buildText + '</div>' +
-        '<div class="build-label">현재 빌드</div>' +
-        updateHtml +
-      '</div>' +
-      downloadHtml;
-
-    return card;
-  }
-
-  // ---------- App(Host)/App(Viewer) 전용: 하나의 카드 안에 여러 항목을 행(row) 형태로 표시 ----------
-  function renderAppRow(item){
-    var row = document.createElement('div');
-    row.className = 'app-row';
-    if (item.isToday) row.classList.add('updated-today');
-
-    var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
-    var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
-
-    var updateText = '';
-    var updateClass = '';
-    if (item.staticNote){
-      updateText = escapeHtml(item.staticNote);
-    } else if (item.ok && item.updateDateText){
-      updateText = '업데이트: ' + escapeHtml(item.updateDateText);
-    } else if (item.ok){
-      updateText = '업데이트: 정보 없음';
-      updateClass = 'na';
-    } else {
-      updateText = '업데이트: 조회 실패';
-      updateClass = 'err';
-    }
-
-    var diagText = null;
-    if (item._debug && item._debug.reason) diagText = item._debug.reason;
-    else if (!item.ok && item.error) diagText = item.error;
-    if (diagText) row.title = diagText;
-
-    var downloadHtml = '';
-    if (item.ok && item.downloadUrl){
-      downloadHtml = '<a class="download-btn app-row-download" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
-        (item.downloadLabel || '다운로드') + '</a>';
-    } else {
-      downloadHtml = '<span class="download-btn app-row-download disabled">이용 불가</span>';
-    }
-
-    row.innerHTML =
-      '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
-      '<span class="app-row-icon">' + (ICONS[item.platform] || '') + '</span>' +
-      '<span class="app-row-name">' + escapeHtml(item.label || '') + '</span>' +
-      '<span class="app-row-build' + (hasBuild ? '' : ' na') + '">' + buildText + '</span>' +
-      '<span class="app-row-update ' + updateClass + '">' + updateText + '</span>' +
-      downloadHtml;
-
-    return row;
-  }
-
-  // ---------- 전체 렌더링 ----------
-  function render(items){
-    contentEl.innerHTML = '';
-
-    var byChannel = {};
-    items.forEach(function(it){
-      byChannel[it.channel] = byChannel[it.channel] || {};
-      byChannel[it.channel][it.group] = byChannel[it.channel][it.group] || [];
-      byChannel[it.channel][it.group].push(it);
-    });
-
-    CHANNEL_ORDER.forEach(function(ch){
-      if (!byChannel[ch]) return;
-      var section = document.createElement('section');
-      section.className = 'channel channel-' + ch;
-
-      var header = document.createElement('div');
-      header.className = 'channel-header';
-      header.innerHTML = '<span class="pill pill-' + ch + '">' + CHANNEL_LABEL[ch].pill + '</span>' +
-        '<span class="channel-name">' + CHANNEL_LABEL[ch].name + '</span>';
-      section.appendChild(header);
-
-      var panels = document.createElement('div');
-      panels.className = 'panels';
-
-      // ---- App 패널: 바깥 큰 박스 하나 안에 App(Host) 박스와 App(Viewer) 박스가 나란히 배치 ----
-      var hostList = byChannel[ch]['app-host'];
-      var viewerList = byChannel[ch]['app-viewer'];
-      if (hostList || viewerList) {
-        var appOuter = document.createElement('div');
-        appOuter.className = 'panel panel-app-outer';
-
-        if (hostList) {
-          var hostSub = document.createElement('div');
-          hostSub.className = 'app-subpanel app-subpanel-host';
-
-          var hostTitle = document.createElement('h3');
-          hostTitle.className = 'app-subpanel-title';
-          hostTitle.textContent = 'App(Host)';
-          hostSub.appendChild(hostTitle);
-
-          var hostGrid = document.createElement('div');
-          hostGrid.className = 'cards-grid';
-          hostList.forEach(function(item){ hostGrid.appendChild(renderCard(item)); });
-          hostSub.appendChild(hostGrid);
-
-          appOuter.appendChild(hostSub);
-        }
-
-        if (viewerList) {
-          var viewerSub = document.createElement('div');
-          viewerSub.className = 'app-subpanel app-subpanel-viewer';
-
-          var viewerTitle = document.createElement('h3');
-          viewerTitle.className = 'app-subpanel-title';
-          viewerTitle.textContent = 'App(Viewer)';
-          viewerSub.appendChild(viewerTitle);
-
-          var viewerGrid = document.createElement('div');
-          viewerGrid.className = 'cards-grid';
-          viewerList.forEach(function(item){ viewerGrid.appendChild(renderCard(item)); });
-          viewerSub.appendChild(viewerGrid);
-
-          appOuter.appendChild(viewerSub);
-        }
-
-        panels.appendChild(appOuter);
+  function buildPeriods(range) {
+    const periods = [];
+    const now = new Date();
+    if (range === "daily") {
+      for (let i = 13; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(now.getDate() - i);
+        d.setHours(0, 0, 0, 0);
+        const key = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+        periods.push({ apiKey: `d-${key}`, label: `${pad(d.getMonth() + 1)}/${pad(d.getDate())}`, skip: d < START_DATE });
       }
-
-      // ---- Web 패널: 기존 방식 그대로 ----
-      var webList = byChannel[ch]['web'];
-      if (webList) {
-        var webPanel = document.createElement('div');
-        webPanel.className = 'panel panel-web';
-
-        var webTitle = document.createElement('h2');
-        webTitle.className = 'panel-title web';
-        webTitle.textContent = 'Web';
-        webPanel.appendChild(webTitle);
-
-        var webGrid = document.createElement('div');
-        webGrid.className = 'cards-grid';
-        webList.forEach(function(item){ webGrid.appendChild(renderCard(item)); });
-        webPanel.appendChild(webGrid);
-
-        panels.appendChild(webPanel);
+    } else if (range === "weekly") {
+      for (let i = 11; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(now.getDate() - i * 7);
+        d.setHours(0, 0, 0, 0);
+        const { year, week } = isoWeek(d);
+        periods.push({ apiKey: `w-${year}-W${pad(week)}`, label: `W${pad(week)}`, skip: d < START_DATE });
       }
-
-      section.appendChild(panels);
-      contentEl.appendChild(section);
-    });
+    } else {
+      for (let i = 11; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const key = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
+        // 해당 월의 마지막 날짜 기준으로 비교 (배포일이 그 달 안에 있으면 skip하지 않음)
+        const monthEnd = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        periods.push({ apiKey: `m-${key}`, label: `${d.getFullYear().toString().slice(2)}/${pad(d.getMonth() + 1)}`, skip: monthEnd < START_DATE });
+      }
+    }
+    return periods;
   }
 
-  function setLastRefreshNow(){
-    var d = new Date();
-    var pad = function(n){ return String(n).padStart(2,'0'); };
-    var text = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + ' ' +
-      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
-    lastRefreshEl.textContent = text;
+  async function getCount(key) {
+    try {
+      const res = await fetch(`https://countapi.mileshilliard.com/api/v1/get/${NAMESPACE}-${key}`);
+      if (!res.ok) return 0;
+      const data = await res.json();
+      return Number(data.value) || 0;
+    } catch (e) {
+      return 0;
+    }
   }
 
-  function fetchAndRender(){
-    if (isFetching) return;
-    isFetching = true;
-    refreshBtn.classList.add('spinning');
+  async function loadTotals() {
+    for (const site of SITES) {
+      const val = await getCount(site.key);
+      const elId = site.key === "rc8qa" ? "total-rc8qa" : "total-rcversion";
+      document.getElementById(elId).textContent = val.toLocaleString();
+    }
+  }
 
-    fetch('/api/builds', { cache: 'no-store' })
-      .then(function(res){
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function(data){
-        render(data.items || []);
-        setLastRefreshNow();
-      })
-      .catch(function(err){
-        contentEl.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-secondary)">' +
-          '데이터를 불러오지 못했습니다. (' + (err && err.message ? err.message : err) + ')</div>';
-      })
-      .finally(function(){
-        isFetching = false;
-        refreshBtn.classList.remove('spinning');
+  async function loadChart(range) {
+    currentRange = range;
+    const barsEl = document.getElementById("bars");
+    barsEl.innerHTML = '<div class="loading">불러오는 중…</div>';
+
+    const titleMap = {
+      daily: "최근 14일 방문 횟수",
+      weekly: "최근 12주 방문 횟수",
+      monthly: "최근 12개월 방문 횟수"
+    };
+    document.getElementById("chart-title").textContent = titleMap[range];
+
+    const periods = buildPeriods(range);
+
+    const results = [];
+    for (const p of periods) {
+      const counts = {};
+      for (const site of SITES) {
+        counts[site.key] = p.skip ? 0 : await getCount(`${site.key}-${p.apiKey}`);
+      }
+      results.push({ label: p.label, counts });
+    }
+
+    const maxVal = Math.max(1, ...results.flatMap(r => SITES.map(s => r.counts[s.key])));
+
+    barsEl.innerHTML = "";
+    results.forEach(r => {
+      const group = document.createElement("div");
+      group.className = "bar-group";
+
+      const pair = document.createElement("div");
+      pair.className = "bar-pair";
+
+      SITES.forEach(site => {
+        const bar = document.createElement("div");
+        bar.className = "bar" + (site.cls === "b" ? " b" : "");
+        const h = Math.round((r.counts[site.key] / maxVal) * 140);
+        bar.style.height = h + "px";
+        bar.title = `${site.label}: ${r.counts[site.key]}`;
+        pair.appendChild(bar);
       });
+
+      const label = document.createElement("div");
+      label.className = "bar-label";
+      label.textContent = r.label;
+
+      group.appendChild(pair);
+      group.appendChild(label);
+      barsEl.appendChild(group);
+    });
   }
 
-  fetchAndRender();
-})();
+  async function loadAll() {
+    await loadTotals();
+    if (currentRange) {
+      await loadChart(currentRange);
+    }
+    document.getElementById("updated-at").textContent =
+      "마지막 업데이트: " + new Date().toLocaleString("ko-KR");
+  }
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      currentRange = tab.dataset.range;
+      loadChart(currentRange);
+    });
+  });
+
+  loadAll();
 </script>
 </body>
 </html>
