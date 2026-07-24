@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T00:15:44.884318+00:00",
+  "fetchedAt": "2026-07-24T00:16:04.048816+00:00",
   "count": 184,
   "issues": [
     {
@@ -18,7 +18,7 @@
       "번호": 2,
       "일감번호": 275237,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win] 8.0.1.345 PC 원격지원 시작 전 \"권한 확인\" 화면에서 카메라/마이크 권한 승인 불가 — Windows 권한 플러그인 부재로 [확인] 버튼 영구 비활성, 상담 진행 불가",
       "우선순위": "높음(High)",
       "담당자": "이경준",
@@ -2030,8 +2030,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 83,
+      "notDone": 100,
+      "done": 84,
       "total": 184
     },
     "assignees": [
@@ -2094,9 +2094,9 @@
       {
         "name": "이경준",
         "total": 23,
-        "done": 12,
+        "done": 13,
         "complete": false,
-        "rate": 52
+        "rate": 56
       },
       {
         "name": "장기중(Jay)",
@@ -2134,8 +2134,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 89,
-        "done": 75,
+        "progress": 88,
+        "done": 76,
         "total": 164
       }
     ],
@@ -2146,7 +2146,7 @@
       },
       {
         "label": "진행",
-        "count": 10
+        "count": 9
       },
       {
         "label": "보류",
@@ -2154,7 +2154,7 @@
       },
       {
         "label": "해결",
-        "count": 81
+        "count": 82
       },
       {
         "label": "피드백",
@@ -2295,16 +2295,16 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 83,
-        "rate": 45,
+        "cumDone": 84,
+        "rate": 46,
         "newCount": 20,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-24",
         "cumIssue": 184,
-        "cumDone": 83,
-        "rate": 45,
+        "cumDone": 84,
+        "rate": 46,
         "newCount": 1,
         "doneCount": 0
       }
