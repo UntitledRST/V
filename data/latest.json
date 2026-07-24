@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T05:48:04.579182+00:00",
+  "fetchedAt": "2026-07-24T05:51:04.275453+00:00",
   "count": 192,
   "issues": [
     {
@@ -43,7 +43,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [파일 전송] 파일 전송 확인 팝업 내 개별 파일 삭제 기능 추가 개선 검토 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-24 13:38:12",
       "link": "https://projects.rsupport.com/issues/275283"
     },
@@ -2125,10 +2125,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 25,
+        "total": 26,
         "done": 22,
         "complete": false,
-        "rate": 88
+        "rate": 84
       },
       {
         "name": "김성식(kimss)",
@@ -2174,10 +2174,10 @@
       },
       {
         "name": "오세진",
-        "total": 52,
+        "total": 51,
         "done": 21,
         "complete": false,
-        "rate": 40
+        "rate": 41
       },
       {
         "name": "이경준",
