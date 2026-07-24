@@ -61,7 +61,19 @@
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
-  .stat-card.urgent .value{ color:var(--red); }
+  .stat-card.dup .value{ color:var(--purple); }
+
+  .stat-card.split-card{ flex-direction:row; align-items:stretch; gap:12px; }
+  .total-main{ display:flex; flex-direction:column; justify-content:center; cursor:pointer; flex:1 1 0; min-width:0; }
+  .total-severity-list{ display:flex; flex-direction:column; gap:4px; justify-content:center; flex:1 1 0; min-width:0; }
+  .total-severity-item{
+    border:1px solid var(--panel-border); border-radius:8px; padding:4px 10px;
+    font-size:12.5px; font-weight:700; text-align:center; cursor:pointer;
+    background:rgba(255,255,255,0.03); transition: border-color .12s ease, transform .12s ease;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .total-severity-item:hover{ border-color:var(--blue); transform:translateY(-1px); }
+  .stat-card.notdone .total-severity-item{ color:var(--yellow); }
 
   .dup-badge{
     display:inline-block; background:rgba(239,68,68,0.16); color:var(--red);
@@ -244,11 +256,25 @@
   <div class="main-grid">
 
   <div class="stat-row" id="statRow">
-    <div class="stat-card notdone clickable" data-filter-type="quick" data-filter-value="notdone"><div class="label">미처리</div><div class="value">&mdash;</div></div>
+    <div class="stat-card notdone split-card">
+      <div class="total-main clickable" data-filter-type="quick" data-filter-value="notdone">
+        <div class="label">미처리</div>
+        <div class="value">&mdash;</div>
+      </div>
+      <div class="total-severity-list">
+        <div class="total-severity-item clickable" data-filter-type="quick" data-filter-value="notdone_high">우선순위 높음 <span id="notdoneHighValue">&mdash;</span>건</div>
+      </div>
+    </div>
     <div class="stat-card done clickable" data-filter-type="quick" data-filter-value="done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
-    <div class="stat-card total clickable" data-filter-type="quick" data-filter-value="all"><div class="label">전체 이슈</div><div class="value">&mdash;</div></div>
+    <div class="stat-card total split-card">
+      <div class="total-main clickable" data-filter-type="quick" data-filter-value="all">
+        <div class="label">전체 이슈</div>
+        <div class="value">&mdash;</div>
+      </div>
+      <div class="total-severity-list" id="totalSeverityList"></div>
+    </div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
-    <div class="stat-card urgent clickable" data-filter-type="quick" data-filter-value="notdone_high"><div class="label">미처리·우선순위 높음</div><div class="value">&mdash;</div></div>
+    <div class="stat-card dup clickable" data-filter-type="quick" data-filter-value="duplicate"><div class="label">중복</div><div class="value">&mdash;</div></div>
   </div>
 
   <div class="panel today-summary-panel">
@@ -704,15 +730,30 @@
     var c = state.summary.completion;
     var rate = c.total === 0 ? 0 : Math.round((c.done / c.total) * 100);
     var cards = document.querySelectorAll('.stat-card .value');
-    cards[0].textContent = c.notDone;
-    cards[1].textContent = c.done;
-    cards[2].textContent = c.total;
-    cards[3].textContent = rate + '%';
-    cards[4].textContent = state.issues.filter(function(it){
+    cards[0].textContent = c.notDone;   // 미처리 (NN)
+    cards[1].textContent = c.done;      // 처리완료
+    cards[2].textContent = c.total;     // 전체 이슈
+    cards[3].textContent = rate + '%';  // 처리율
+    cards[4].textContent = state.issues.filter(function(it){ return it.__isDuplicate; }).length; // 중복
+
+    // 미처리 카드 안의 "우선순위 높음 nn건" (미처리이면서 우선순위 높은 것만)
+    document.getElementById('notdoneHighValue').textContent = state.issues.filter(function(it){
       return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위);
     }).length;
 
-    document.querySelectorAll('.stat-card[data-filter-type]').forEach(function(card){
+    // 전체 이슈 카드 안의 치명적/중대함/경미함/낮음 세부 목록 (전체 이슈 기준, 날짜 무관)
+    var severityHtml = PRIORITY_TIERS.map(function(tier){
+      var count = state.issues.filter(function(it){ return tier.test(it.우선순위); }).length;
+      return '<div class="total-severity-item" data-tier="' + escapeHtml(tier.label) + '" style="color:' + tier.color + '">' + tier.label + ' ' + count + '건</div>';
+    }).join('');
+    document.getElementById('totalSeverityList').innerHTML = severityHtml;
+    document.querySelectorAll('#totalSeverityList .total-severity-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        setPriorityTierFilter(item.getAttribute('data-tier'));
+      });
+    });
+
+    document.querySelectorAll('#statRow [data-filter-type]').forEach(function(card){
       card.onclick = function(){
         setFilter(card.getAttribute('data-filter-type'), card.getAttribute('data-filter-value'));
       };
@@ -894,6 +935,24 @@
     if (scrollBox) scrollBox.scrollTop = 0;
   }
 
+  function setPriorityTierFilter(tier){
+    var isSame = state.filter && state.filter.type === 'priorityTier' && state.filter.tier === tier;
+    state.filter = isSame ? null : { type: 'priorityTier', tier: tier };
+
+    var chip = document.getElementById('filterChip');
+    if (state.filter){
+      chip.classList.add('active');
+      document.getElementById('filterLabel').textContent = state.filter.tier + ' 이슈만 보는 중';
+    } else {
+      chip.classList.remove('active');
+    }
+    renderIssues();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var scrollBox3 = document.querySelector('.issues-table-scroll');
+    if (scrollBox3) scrollBox3.scrollTop = 0;
+  }
+
   function setSeverityFilter(date, tier){
     var isSame = state.filter && state.filter.type === 'severity' && state.filter.date === date && state.filter.tier === tier;
     state.filter = isSame ? null : { type: 'severity', date: date, tier: tier };
@@ -920,7 +979,7 @@
 
     var chip = document.getElementById('filterChip');
     var labelMap = { assignee: '담당자', tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경' };
-    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음' };
+    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음', duplicate: '중복' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
         // 전체 이슈는 필터를 거는 게 아니라 그냥 전부 보여주는 것이므로, 칩은 숨김
@@ -983,10 +1042,14 @@
           var dateStr = (it.created_on || '').split(' ')[0];
           return dateStr === f.date && tierObj && tierObj.test(it.우선순위);
         });
+      } else if (f.type === 'priorityTier'){
+        var tierObj2 = PRIORITY_TIERS.filter(function(t){ return t.label === f.tier; })[0];
+        list = list.filter(function(it){ return tierObj2 && tierObj2.test(it.우선순위); });
       } else if (f.type === 'quick'){
         if (f.value === 'notdone') list = list.filter(function(it){ return isNotDoneStatus(it.상태); });
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
         else if (f.value === 'notdone_high') list = list.filter(function(it){ return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위); });
+        else if (f.value === 'duplicate') list = list.filter(function(it){ return it.__isDuplicate; });
       }
     }
 
@@ -1029,6 +1092,8 @@
       setDayFilter(state.filter.date, state.filter.kind); // 같은 값으로 다시 호출하면 토글되어 해제됨
     } else if (state.filter.type === 'severity') {
       setSeverityFilter(state.filter.date, state.filter.tier); // 같은 값으로 다시 호출하면 토글되어 해제됨
+    } else if (state.filter.type === 'priorityTier') {
+      setPriorityTierFilter(state.filter.tier); // 같은 값으로 다시 호출하면 토글되어 해제됨
     } else {
       setFilter(state.filter.type, state.filter.value); // 같은 값으로 다시 호출하면 토글되어 해제됨
     }
