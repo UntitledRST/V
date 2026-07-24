@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T04:01:03.849251+00:00",
+  "fetchedAt": "2026-07-24T04:04:42.627607+00:00",
   "count": 188,
   "issues": [
     {
@@ -1723,7 +1723,7 @@
       "번호": 157,
       "일감번호": 273798,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 화면 조절 팝업 오픈 상태 → 호스트 모니터 추가/제거 시 갱신 불가",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2074,8 +2074,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 86,
+      "notDone": 101,
+      "done": 87,
       "total": 188
     },
     "assignees": [
@@ -2124,9 +2124,9 @@
       {
         "name": "송건호",
         "total": 44,
-        "done": 23,
+        "done": 24,
         "complete": false,
-        "rate": 52
+        "rate": 54
       },
       {
         "name": "오세진",
@@ -2178,15 +2178,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 78,
+        "progress": 89,
+        "done": 79,
         "total": 168
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 80
+        "count": 79
       },
       {
         "label": "진행",
@@ -2198,7 +2198,7 @@
       },
       {
         "label": "해결",
-        "count": 84
+        "count": 85
       },
       {
         "label": "피드백",
@@ -2251,71 +2251,71 @@
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 12,
-        "rate": 36,
+        "cumDone": 13,
+        "rate": 39,
         "newCount": 18,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 12,
-        "rate": 31,
+        "cumDone": 13,
+        "rate": 33,
         "newCount": 6,
         "doneCount": 0
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 18,
-        "rate": 39,
+        "cumDone": 19,
+        "rate": 41,
         "newCount": 7,
         "doneCount": 6
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 23,
-        "rate": 41,
+        "cumDone": 24,
+        "rate": 43,
         "newCount": 10,
         "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 34,
-        "rate": 47,
+        "cumDone": 35,
+        "rate": 49,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 37,
-        "rate": 47,
+        "cumDone": 38,
+        "rate": 48,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 42,
-        "rate": 49,
+        "cumDone": 43,
+        "rate": 51,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 51,
-        "rate": 50,
+        "cumDone": 52,
+        "rate": 51,
         "newCount": 16,
         "doneCount": 9
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 56,
+        "cumDone": 57,
         "rate": 50,
         "newCount": 12,
         "doneCount": 5
@@ -2323,31 +2323,31 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 66,
-        "rate": 50,
+        "cumDone": 67,
+        "rate": 51,
         "newCount": 19,
         "doneCount": 10
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 80,
-        "rate": 49,
+        "cumDone": 81,
+        "rate": 50,
         "newCount": 31,
         "doneCount": 14
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 86,
-        "rate": 47,
+        "cumDone": 87,
+        "rate": 48,
         "newCount": 20,
         "doneCount": 6
       },
       {
         "date": "2026-07-24",
         "cumIssue": 188,
-        "cumDone": 86,
+        "cumDone": 87,
         "rate": 46,
         "newCount": 5,
         "doneCount": 0
