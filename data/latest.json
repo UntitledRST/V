@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T04:46:12.857161+00:00",
+  "fetchedAt": "2026-07-24T04:51:05.446502+00:00",
   "count": 189,
   "issues": [
     {
@@ -172,7 +172,7 @@
       "번호": 16,
       "일감번호": 275134,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어] 화면 조절 '사용자 조절' 배율 하한 확정 요청 — 기획 내 최소 25% vs 0% 병기, 구현은 50%",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2085,17 +2085,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 87,
+      "notDone": 101,
+      "done": 88,
       "total": 189
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 25,
-        "done": 21,
+        "done": 22,
         "complete": false,
-        "rate": 84
+        "rate": 88
       },
       {
         "name": "김성식(kimss)",
@@ -2177,8 +2177,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 12,
-        "done": 6,
+        "progress": 11,
+        "done": 7,
         "total": 18
       },
       {
@@ -2197,7 +2197,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 79
+        "count": 78
       },
       {
         "label": "진행",
@@ -2209,7 +2209,7 @@
       },
       {
         "label": "해결",
-        "count": 85
+        "count": 86
       },
       {
         "label": "피드백",
@@ -2350,16 +2350,16 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 87,
+        "cumDone": 88,
         "rate": 48,
         "newCount": 20,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-24",
         "cumIssue": 189,
-        "cumDone": 87,
-        "rate": 46,
+        "cumDone": 88,
+        "rate": 47,
         "newCount": 6,
         "doneCount": 0
       }
