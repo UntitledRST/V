@@ -551,7 +551,8 @@
   }
 
   function renderAssignees(){
-    var rows = state.summary.assignees.map(function(a){
+    var sorted = state.summary.assignees.slice().sort(function(a, b){ return b.total - a.total; });
+    var rows = sorted.map(function(a){
       return '<tr class="clickable" data-filter-type="assignee" data-filter-value="' + escapeHtml(a.name) + '">' +
         '<td>' + escapeHtml(a.name) + '</td>' +
         '<td><span class="pill ' + (a.complete ? 'done' : 'notdone') + '">' + (a.complete ? '완료' : '미완료') + '</span></td>' +
