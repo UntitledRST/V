@@ -233,7 +233,7 @@
       const res = await fetch(`https://countapi.mileshilliard.com/api/v1/get/${NAMESPACE}-${key}`);
       if (!res.ok) return 0;
       const data = await res.json();
-      return data.value || 0;
+      return Number(data.value) || 0;
     } catch (e) {
       return 0;
     }
