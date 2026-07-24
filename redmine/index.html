@@ -48,7 +48,7 @@
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
-    display:grid; grid-template-columns: repeat(5, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(6, 1fr); gap:14px;
   }
   .stat-card{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
@@ -180,20 +180,25 @@
 
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
 
-  .today-summary-panel{ display:flex; flex-direction:column; gap:12px; }
-  .today-summary-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
-  .today-summary-item{
-    background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
-    padding:14px 18px; cursor:pointer; transition: transform .12s ease, border-color .12s ease;
+  .stat-card.today-card{ display:flex; flex-direction:column; gap:6px; padding:10px 12px; }
+  .today-card-title{ font-size:12.5px; font-weight:800; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .today-card-body{ display:flex; gap:6px; align-items:stretch; flex:1; min-height:0; }
+  .today-card-left{ display:flex; flex-direction:column; gap:5px; flex:1 1 0; min-width:0; }
+  .today-main-box{
+    background:var(--card-bg); border:1px solid var(--panel-border); border-radius:8px;
+    padding:5px 6px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition: transform .12s ease, border-color .12s ease;
   }
-  .today-summary-item:hover{ transform: translateY(-2px); border-color: var(--blue); }
-  .today-summary-item .label{ font-size:15px; color:var(--text-secondary); margin-bottom:6px; }
-  .today-summary-item .value{ font-size:32px; font-weight:800; font-family:var(--mono); color:var(--blue); }
-  #todayDoneCard .value{ color:var(--green); }
-  .today-severity-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .today-main-box:hover{ transform: translateY(-2px); border-color: var(--blue); }
+  .today-main-label{ font-size:11px; color:var(--text-secondary); }
+  .today-main-value{ font-size:19px; font-weight:800; font-family:var(--mono); color:var(--blue); }
+  .today-done-box{ flex:0 0 64px; }
+  .today-done-box .today-main-value{ color:var(--green); }
+  .today-severity-row{ display:flex; gap:3px; }
   .today-severity-chip{
-    background:rgba(255,255,255,0.05); border:1px solid var(--panel-border); border-radius:999px;
-    padding:6px 14px; font-size:14px; font-weight:700;
+    flex:1 1 0; min-width:0; background:rgba(255,255,255,0.05); border:1px solid var(--panel-border);
+    border-radius:6px; padding:2px 2px; font-size:9.5px; font-weight:700; text-align:center;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   .today-severity-chip.clickable{ cursor:pointer; transition: transform .12s ease, border-color .12s ease; }
   .today-severity-chip.clickable:hover{ transform: translateY(-2px); border-color: var(--blue); }
@@ -275,21 +280,23 @@
     </div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
     <div class="stat-card dup clickable" data-filter-type="quick" data-filter-value="duplicate"><div class="label">중복</div><div class="value">&mdash;</div></div>
-  </div>
 
-  <div class="panel today-summary-panel">
-    <h2 class="c-blue">오늘의 요약 (<span id="todayDate">&mdash;</span>)</h2>
-    <div class="today-summary-grid">
-      <div class="today-summary-item clickable" id="todayNewCard">
-        <div class="label">오늘 등록</div>
-        <div class="value" id="todayNewCount">&mdash;</div>
-      </div>
-      <div class="today-summary-item clickable" id="todayDoneCard">
-        <div class="label">오늘 해결</div>
-        <div class="value" id="todayDoneCount">&mdash;</div>
+    <div class="stat-card today-card">
+      <div class="today-card-title">오늘의 요약(<span id="todayDate">&mdash;</span>)</div>
+      <div class="today-card-body">
+        <div class="today-card-left">
+          <div class="today-main-box clickable" id="todayNewCard">
+            <div class="today-main-label">등록</div>
+            <div class="today-main-value" id="todayNewCount">&mdash;</div>
+          </div>
+          <div class="today-severity-row" id="todaySeverityRow"></div>
+        </div>
+        <div class="today-main-box today-done-box clickable" id="todayDoneCard">
+          <div class="today-main-label">해결</div>
+          <div class="today-main-value" id="todayDoneCount">&mdash;</div>
+        </div>
       </div>
     </div>
-    <div class="today-severity-row" id="todaySeverityRow"></div>
   </div>
 
   <div class="panel issues-panel">
@@ -411,10 +418,10 @@
   }
 
   var PRIORITY_TIERS = [
-    { label: '치명적', test: isCriticalPriority, color: 'var(--red)' },
-    { label: '중대함', test: isMajorPriority, color: 'var(--orange)' },
-    { label: '경미함', test: isMinorPriority, color: 'var(--yellow)' },
-    { label: '낮음', test: isLowPriority, color: 'var(--text-tertiary)' }
+    { label: '치명적', shortLabel: '치명', test: isCriticalPriority, color: 'var(--red)' },
+    { label: '중대함', shortLabel: '중대', test: isMajorPriority, color: 'var(--orange)' },
+    { label: '경미함', shortLabel: '경미', test: isMinorPriority, color: 'var(--yellow)' },
+    { label: '낮음', shortLabel: '낮음', test: isLowPriority, color: 'var(--text-tertiary)' }
   ];
 
   // ====== 파트/접속유형/기능/환경 분류 규칙 ======
@@ -711,10 +718,9 @@
 
     var severityHtml = PRIORITY_TIERS.map(function(tier){
       var count = todaysNewIssues.filter(function(it){ return tier.test(it.우선순위); }).length;
-      return '<div class="today-severity-chip clickable" data-tier="' + escapeHtml(tier.label) + '" style="color:' + tier.color + '">' + tier.label + ' ' + count + '건</div>';
+      return '<div class="today-severity-chip clickable" data-tier="' + escapeHtml(tier.label) + '" style="color:' + tier.color + '" title="' + escapeHtml(tier.label) + ' ' + count + '건">' + tier.shortLabel + ' ' + count + '건</div>';
     }).join('');
-    document.getElementById('todaySeverityRow').innerHTML =
-      severityHtml || '<div class="today-severity-chip">오늘 등록된 이슈가 없습니다</div>';
+    document.getElementById('todaySeverityRow').innerHTML = severityHtml;
 
     document.querySelectorAll('#todaySeverityRow .today-severity-chip[data-tier]').forEach(function(chip){
       chip.addEventListener('click', function(){
