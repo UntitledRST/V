@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T05:58:20.578531+00:00",
+  "fetchedAt": "2026-07-24T06:01:04.683199+00:00",
   "count": 192,
   "issues": [
     {
@@ -920,7 +920,7 @@
       "번호": 84,
       "일감번호": 274799,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 멀티 모니터 환경의 Mac Host 연결 — 화면 조절/PIP 전환 시 모니터 화면 노출 비정상 (블랙아웃 유지) ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2118,8 +2118,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 91,
+      "notDone": 100,
+      "done": 92,
       "total": 192
     },
     "assignees": [
@@ -2168,9 +2168,9 @@
       {
         "name": "송건호",
         "total": 45,
-        "done": 24,
+        "done": 25,
         "complete": false,
-        "rate": 53
+        "rate": 55
       },
       {
         "name": "오세진",
@@ -2222,15 +2222,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 89,
-        "done": 82,
+        "progress": 88,
+        "done": 83,
         "total": 171
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 80
+        "count": 79
       },
       {
         "label": "진행",
@@ -2242,7 +2242,7 @@
       },
       {
         "label": "해결",
-        "count": 86
+        "count": 87
       },
       {
         "label": "피드백",
@@ -2359,23 +2359,23 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 59,
-        "rate": 52,
+        "cumDone": 60,
+        "rate": 53,
         "newCount": 12,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 69,
-        "rate": 52,
+        "cumDone": 70,
+        "rate": 53,
         "newCount": 19,
         "doneCount": 10
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 84,
+        "cumDone": 85,
         "rate": 52,
         "newCount": 31,
         "doneCount": 15
@@ -2383,7 +2383,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 91,
+        "cumDone": 92,
         "rate": 50,
         "newCount": 20,
         "doneCount": 7
@@ -2391,8 +2391,8 @@
       {
         "date": "2026-07-24",
         "cumIssue": 192,
-        "cumDone": 91,
-        "rate": 47,
+        "cumDone": 92,
+        "rate": 48,
         "newCount": 9,
         "doneCount": 0
       }
