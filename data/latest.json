@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T07:11:08.861521+00:00",
+  "fetchedAt": "2026-07-24T07:15:40.515634+00:00",
   "count": 194,
   "issues": [
     {
@@ -689,7 +689,7 @@
       "번호": 63,
       "일감번호": 274925,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win11][멀티모니터] 혼합 DPI 듀얼 모니터(주 FHD + UHD 4K)에서 상담 중 '프로그램 공유' 재요청 시 프로그램 선택 팝업이 축소 렌더 — 목록 컬럼 잘림·판독 곤란",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -942,7 +942,7 @@
       "번호": 86,
       "일감번호": 274799,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 멀티 모니터 환경의 Mac Host 연결 — 화면 조절/PIP 전환 시 모니터 화면 노출 비정상 (블랙아웃 유지) ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2140,8 +2140,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 91,
+      "notDone": 102,
+      "done": 92,
       "total": 194
     },
     "assignees": [
@@ -2190,9 +2190,9 @@
       {
         "name": "송건호",
         "total": 46,
-        "done": 24,
+        "done": 25,
         "complete": false,
-        "rate": 52
+        "rate": 54
       },
       {
         "name": "오세진",
@@ -2244,8 +2244,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 91,
-        "done": 82,
+        "progress": 90,
+        "done": 83,
         "total": 173
       }
     ],
@@ -2256,7 +2256,7 @@
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 5
       },
       {
         "label": "보류",
@@ -2272,7 +2272,7 @@
       },
       {
         "label": "완료성공",
-        "count": 3
+        "count": 4
       },
       {
         "label": "중단",
@@ -2381,23 +2381,23 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 59,
-        "rate": 52,
+        "cumDone": 60,
+        "rate": 53,
         "newCount": 12,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 69,
-        "rate": 52,
+        "cumDone": 70,
+        "rate": 53,
         "newCount": 19,
         "doneCount": 10
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 84,
+        "cumDone": 85,
         "rate": 52,
         "newCount": 31,
         "doneCount": 15
@@ -2405,7 +2405,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 91,
+        "cumDone": 92,
         "rate": 50,
         "newCount": 20,
         "doneCount": 7
@@ -2413,7 +2413,7 @@
       {
         "date": "2026-07-24",
         "cumIssue": 194,
-        "cumDone": 91,
+        "cumDone": 92,
         "rate": 47,
         "newCount": 11,
         "doneCount": 0
