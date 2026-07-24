@@ -48,7 +48,7 @@
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
-    display:grid; grid-template-columns: 1.2fr 0.5fr 1fr 0.5fr 0.5fr 2.3fr; gap:14px;
+    display:grid; grid-template-columns: 1.2fr 0.5fr 1fr 0.5fr 2.8fr; gap:14px;
   }
   .stat-card{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
@@ -61,7 +61,6 @@
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
-  .stat-card.dup .value{ color:var(--purple); }
 
   .stat-card.split-card{ flex-direction:row; align-items:stretch; gap:12px; }
   .total-main{ display:flex; flex-direction:column; justify-content:center; cursor:pointer; flex:1 1 0; min-width:0; }
@@ -75,18 +74,7 @@
   .total-severity-item:hover{ border-color:var(--blue); transform:translateY(-1px); }
   .stat-card.notdone .total-severity-item{ color:var(--yellow); }
 
-  .dup-badge{
-    display:inline-block; background:rgba(239,68,68,0.16); color:var(--red);
-    font-size:12px; font-weight:800; padding:2px 7px; border-radius:999px;
-    margin-right:6px; vertical-align:middle; white-space:nowrap;
-  }
-  .dup-list{ margin-top:4px; padding-left:2px; display:flex; flex-direction:column; gap:2px; }
-  .dup-item{
-    font-size:12.5px; color:var(--text-tertiary); text-decoration:none;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; display:block;
-  }
-  .dup-item:hover{ color:var(--blue); text-decoration:underline; }
-  .dup-item::before{ content:"↳ "; color:var(--red); }
+
 
   /* 중단: 전체 이슈 목록, 전체 폭 (내용이 많을 수 있으니 내부 스크롤 유지) */
   .issues-panel{
@@ -180,14 +168,13 @@
 
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
 
-  .stat-card.today-card{ display:flex; flex-direction:column; gap:6px; padding:10px 12px; }
-  .today-card-title{ font-size:12.5px; font-weight:800; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .today-card-body{ display:flex; gap:6px; align-items:stretch; flex:1; min-height:0; }
-  .today-card-left{ display:flex; flex-direction:column; gap:5px; flex:1 1 0; min-width:0; }
+  .stat-card.today-card{ display:flex; flex-direction:column; justify-content:center; gap:6px; padding:10px 12px; }
+  .today-card-title{ font-size:12.5px; font-weight:800; color:var(--blue); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .today-card-body{ display:flex; gap:6px; align-items:stretch; }
   .today-main-box{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:8px;
     padding:5px 6px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    transition: transform .12s ease, border-color .12s ease;
+    transition: transform .12s ease, border-color .12s ease; flex:1 1 0; min-width:0;
   }
   .today-main-box:hover{ transform: translateY(-2px); border-color: var(--blue); }
   .today-main-label{ font-size:11px; color:var(--text-secondary); }
@@ -279,23 +266,20 @@
       <div class="total-severity-list" id="totalSeverityList"></div>
     </div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
-    <div class="stat-card dup clickable" data-filter-type="quick" data-filter-value="duplicate"><div class="label">중복</div><div class="value">&mdash;</div></div>
 
     <div class="stat-card today-card">
       <div class="today-card-title">오늘의 요약(<span id="todayDate">&mdash;</span>)</div>
       <div class="today-card-body">
-        <div class="today-card-left">
-          <div class="today-main-box clickable" id="todayNewCard">
-            <div class="today-main-label">등록</div>
-            <div class="today-main-value" id="todayNewCount">&mdash;</div>
-          </div>
-          <div class="today-severity-row" id="todaySeverityRow"></div>
+        <div class="today-main-box clickable" id="todayNewCard">
+          <div class="today-main-label">등록</div>
+          <div class="today-main-value" id="todayNewCount">&mdash;</div>
         </div>
         <div class="today-main-box today-done-box clickable" id="todayDoneCard">
           <div class="today-main-label">해결</div>
           <div class="today-main-value" id="todayDoneCount">&mdash;</div>
         </div>
       </div>
+      <div class="today-severity-row" id="todaySeverityRow"></div>
     </div>
   </div>
 
@@ -517,57 +501,6 @@
     return null;
   }
 
-  // 제목 유사도 기반 중복 판정
-  // 1) 맨 앞 [프로젝트/버전] 태그 제거 + 소문자화 + 기호 제거 후 단어 단위로 쪼갠 뒤
-  // 2) 두 제목의 단어 집합 간 자카드 유사도(겹치는 단어 비율)를 계산해서 임계값 이상이면 "유사 중복"으로 표시
-  var DUP_SIMILARITY_THRESHOLD = 0.6; // 0~1, 높을수록 더 엄격하게(거의 똑같아야) 중복으로 판정
-
-  function tokenizeForSimilarity(title){
-    var t = (title || '');
-    t = t.replace(/^\s*\[[^\]]*\]\s*/, ''); // 맨 앞 프로젝트/버전 태그 제거
-    t = t.toLowerCase();
-    t = t.replace(/[\[\]\(\)\u2014\-·,.:;!?"'/\\]+/g, ' ');
-    return t.split(/\s+/).filter(Boolean);
-  }
-
-  function jaccardSimilarity(tokensA, tokensB){
-    if (!tokensA.length || !tokensB.length) return 0;
-    var setB = {};
-    tokensB.forEach(function(t){ setB[t] = true; });
-    var unionSet = {};
-    tokensA.forEach(function(t){ unionSet[t] = true; });
-    tokensB.forEach(function(t){ unionSet[t] = true; });
-    var intersectionCount = 0;
-    tokensA.forEach(function(t){ if (setB[t]) intersectionCount++; });
-    var unionCount = Object.keys(unionSet).length;
-    return unionCount === 0 ? 0 : intersectionCount / unionCount;
-  }
-
-  function markDuplicateIssues(issues){
-    var tokenSets = issues.map(function(it){ return tokenizeForSimilarity(it.제목); });
-    var matchIdx = issues.map(function(){ return []; }); // 각 이슈별로 유사 중복으로 잡힌 다른 이슈의 인덱스 목록
-
-    for (var i = 0; i < issues.length; i++){
-      if (!tokenSets[i].length) continue;
-      for (var j = i + 1; j < issues.length; j++){
-        if (!tokenSets[j].length) continue;
-        var sim = jaccardSimilarity(tokenSets[i], tokenSets[j]);
-        if (sim >= DUP_SIMILARITY_THRESHOLD){
-          matchIdx[i].push(j);
-          matchIdx[j].push(i);
-        }
-      }
-    }
-
-    issues.forEach(function(it, idx){
-      it.__dupMatches = matchIdx[idx].map(function(j){
-        return { 일감번호: issues[j].일감번호, 제목: issues[j].제목, link: issues[j].link };
-      });
-      it.__dupCount = it.__dupMatches.length + 1; // 자기 자신 포함
-      it.__isDuplicate = it.__dupMatches.length > 0;
-    });
-  }
-
   function classifyIssues(issues){
     issues.forEach(function(it){
       var allTags = parseTags(it.제목);
@@ -679,7 +612,6 @@
       state.issues = data.issues;
       state.summary = data.summary;
       classifyIssues(state.issues);
-      markDuplicateIssues(state.issues);
 
       renderAll();
 
@@ -740,7 +672,6 @@
     cards[1].textContent = c.done;      // 처리완료
     cards[2].textContent = c.total;     // 전체 이슈
     cards[3].textContent = rate + '%';  // 처리율
-    cards[4].textContent = state.issues.filter(function(it){ return it.__isDuplicate; }).length; // 중복
 
     // 미처리 카드 안의 "우선순위 높음 nn건" (미처리이면서 우선순위 높은 것만)
     document.getElementById('notdoneHighValue').textContent = state.issues.filter(function(it){
@@ -985,7 +916,7 @@
 
     var chip = document.getElementById('filterChip');
     var labelMap = { assignee: '담당자', tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경' };
-    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음', duplicate: '중복' };
+    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
         // 전체 이슈는 필터를 거는 게 아니라 그냥 전부 보여주는 것이므로, 칩은 숨김
@@ -1055,7 +986,6 @@
         if (f.value === 'notdone') list = list.filter(function(it){ return isNotDoneStatus(it.상태); });
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
         else if (f.value === 'notdone_high') list = list.filter(function(it){ return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위); });
-        else if (f.value === 'duplicate') list = list.filter(function(it){ return it.__isDuplicate; });
       }
     }
 
@@ -1078,11 +1008,7 @@
         '<td>' + escapeHtml(it.분류) + '</td>' +
         '<td><span class="status-badge ' + (notDone ? 'notdone' : 'done') + '">' + escapeHtml(it.상태) + '</span></td>' +
         '<td class="title-cell">' +
-          (it.__isDuplicate ? '<span class="dup-badge" title="제목이 유사한 이슈가 ' + it.__dupCount + '건 있습니다">중복 ' + it.__dupCount + '</span>' : '') +
           '<a class="title-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">' + escapeHtml(it.제목) + '</a>' +
-          (it.__isDuplicate ? '<div class="dup-list">' + it.__dupMatches.map(function(m){
-            return '<a class="dup-item" href="' + escapeHtml(m.link) + '" target="_blank" rel="noopener">#' + escapeHtml(m.일감번호) + ' ' + escapeHtml(m.제목) + '</a>';
-          }).join('') + '</div>' : '') +
         '</td>' +
         '<td>' + escapeHtml(it.우선순위) + '</td>' +
         '<td>' + escapeHtml(it.담당자) + '</td>' +
