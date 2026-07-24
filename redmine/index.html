@@ -48,7 +48,7 @@
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(5, 1fr); gap:14px;
   }
   .stat-card{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
@@ -61,6 +61,13 @@
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
+  .stat-card.urgent .value{ color:var(--red); }
+
+  .dup-badge{
+    display:inline-block; background:rgba(239,68,68,0.16); color:var(--red);
+    font-size:12px; font-weight:800; padding:2px 7px; border-radius:999px;
+    margin-right:6px; vertical-align:middle; white-space:nowrap;
+  }
 
   /* 중단: 전체 이슈 목록, 전체 폭 (내용이 많을 수 있으니 내부 스크롤 유지) */
   .issues-panel{
@@ -154,6 +161,22 @@
 
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
 
+  .today-summary-panel{ display:flex; flex-direction:column; gap:12px; }
+  .today-summary-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
+  .today-summary-item{
+    background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
+    padding:14px 18px; cursor:pointer; transition: transform .12s ease, border-color .12s ease;
+  }
+  .today-summary-item:hover{ transform: translateY(-2px); border-color: var(--blue); }
+  .today-summary-item .label{ font-size:15px; color:var(--text-secondary); margin-bottom:6px; }
+  .today-summary-item .value{ font-size:32px; font-weight:800; font-family:var(--mono); color:var(--blue); }
+  #todayDoneCard .value{ color:var(--green); }
+  .today-severity-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .today-severity-chip{
+    background:rgba(255,255,255,0.05); border:1px solid var(--panel-border); border-radius:999px;
+    padding:6px 14px; font-size:14px; font-weight:700;
+  }
+
   .search-bar{ display:flex; justify-content:center; align-items:center; gap:8px; margin:4px 0 14px; }
   .search-input{
     width:100%; max-width:420px; background:var(--panel-bg); border:1px solid var(--panel-border);
@@ -216,6 +239,22 @@
     <div class="stat-card done clickable" data-filter-type="quick" data-filter-value="done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
     <div class="stat-card total clickable" data-filter-type="quick" data-filter-value="all"><div class="label">전체 이슈</div><div class="value">&mdash;</div></div>
     <div class="stat-card rate"><div class="label">처리율</div><div class="value">&mdash;</div></div>
+    <div class="stat-card urgent clickable" data-filter-type="quick" data-filter-value="notdone_high"><div class="label">미처리·우선순위 높음</div><div class="value">&mdash;</div></div>
+  </div>
+
+  <div class="panel today-summary-panel">
+    <h2 class="c-blue">오늘의 요약 (<span id="todayDate">&mdash;</span>)</h2>
+    <div class="today-summary-grid">
+      <div class="today-summary-item clickable" id="todayNewCard">
+        <div class="label">오늘 등록</div>
+        <div class="value" id="todayNewCount">&mdash;</div>
+      </div>
+      <div class="today-summary-item clickable" id="todayDoneCard">
+        <div class="label">오늘 해결</div>
+        <div class="value" id="todayDoneCount">&mdash;</div>
+      </div>
+    </div>
+    <div class="today-severity-row" id="todaySeverityRow"></div>
   </div>
 
   <div class="panel issues-panel">
@@ -308,6 +347,41 @@
     return ['신규','진행','피드백'].some(function(k){ return (s||'').indexOf(k) !== -1; });
   }
 
+  // "우선순위 높음" = 치명적(Critical/Blocker) 또는 중대함(Major/High) 등급
+  // ====== 우선순위 4단계 판정 ======
+  // 1. 치명적 (Critical/Blocker)  2. 중대함 (Major/High)  3. 경미함 (Minor/Medium)  4. 낮음 (Low/Trivial/Cosmetic)
+  function isCriticalPriority(p){
+    return ['치명적', 'critical', 'blocker'].some(function(k){
+      return (p || '').toLowerCase().indexOf(k.toLowerCase()) !== -1;
+    });
+  }
+  function isMajorPriority(p){
+    return ['중대', 'major', 'high', '높음', '긴급'].some(function(k){
+      return (p || '').toLowerCase().indexOf(k.toLowerCase()) !== -1;
+    });
+  }
+  function isMinorPriority(p){
+    return ['경미', 'minor', 'medium', '보통'].some(function(k){
+      return (p || '').toLowerCase().indexOf(k.toLowerCase()) !== -1;
+    });
+  }
+  function isLowPriority(p){
+    return ['낮음', 'low', 'trivial', 'cosmetic'].some(function(k){
+      return (p || '').toLowerCase().indexOf(k.toLowerCase()) !== -1;
+    });
+  }
+  // "우선순위 높음" = 치명적 또는 중대함 등급 (기존 스탯카드/필터에서 계속 사용)
+  function isHighPriority(p){
+    return isCriticalPriority(p) || isMajorPriority(p);
+  }
+
+  var PRIORITY_TIERS = [
+    { label: '치명적', test: isCriticalPriority, color: 'var(--red)' },
+    { label: '중대함', test: isMajorPriority, color: 'var(--orange)' },
+    { label: '경미함', test: isMinorPriority, color: 'var(--yellow)' },
+    { label: '낮음', test: isLowPriority, color: 'var(--text-tertiary)' }
+  ];
+
   // ====== 파트/접속유형/기능/환경 분류 규칙 ======
   // 실제 데이터(API)에는 이 4가지가 별도 필드로 없어서, 제목(및 제목 속 [대괄호] 태그)에서
   // 아래 키워드를 찾아 자동 분류합니다. 실데이터로 확인 후 안 맞으면 이 키워드 목록만 수정하면 됩니다.
@@ -399,6 +473,54 @@
       }
     }
     return null;
+  }
+
+  // 제목 유사도 기반 중복 판정
+  // 1) 맨 앞 [프로젝트/버전] 태그 제거 + 소문자화 + 기호 제거 후 단어 단위로 쪼갠 뒤
+  // 2) 두 제목의 단어 집합 간 자카드 유사도(겹치는 단어 비율)를 계산해서 임계값 이상이면 "유사 중복"으로 표시
+  var DUP_SIMILARITY_THRESHOLD = 0.6; // 0~1, 높을수록 더 엄격하게(거의 똑같아야) 중복으로 판정
+
+  function tokenizeForSimilarity(title){
+    var t = (title || '');
+    t = t.replace(/^\s*\[[^\]]*\]\s*/, ''); // 맨 앞 프로젝트/버전 태그 제거
+    t = t.toLowerCase();
+    t = t.replace(/[\[\]\(\)\u2014\-·,.:;!?"'/\\]+/g, ' ');
+    return t.split(/\s+/).filter(Boolean);
+  }
+
+  function jaccardSimilarity(tokensA, tokensB){
+    if (!tokensA.length || !tokensB.length) return 0;
+    var setB = {};
+    tokensB.forEach(function(t){ setB[t] = true; });
+    var unionSet = {};
+    tokensA.forEach(function(t){ unionSet[t] = true; });
+    tokensB.forEach(function(t){ unionSet[t] = true; });
+    var intersectionCount = 0;
+    tokensA.forEach(function(t){ if (setB[t]) intersectionCount++; });
+    var unionCount = Object.keys(unionSet).length;
+    return unionCount === 0 ? 0 : intersectionCount / unionCount;
+  }
+
+  function markDuplicateIssues(issues){
+    var tokenSets = issues.map(function(it){ return tokenizeForSimilarity(it.제목); });
+    var dupCounts = issues.map(function(){ return 1; }); // 자기 자신 포함
+
+    for (var i = 0; i < issues.length; i++){
+      if (!tokenSets[i].length) continue;
+      for (var j = i + 1; j < issues.length; j++){
+        if (!tokenSets[j].length) continue;
+        var sim = jaccardSimilarity(tokenSets[i], tokenSets[j]);
+        if (sim >= DUP_SIMILARITY_THRESHOLD){
+          dupCounts[i]++;
+          dupCounts[j]++;
+        }
+      }
+    }
+
+    issues.forEach(function(it, idx){
+      it.__dupCount = dupCounts[idx];
+      it.__isDuplicate = dupCounts[idx] > 1;
+    });
   }
 
   function classifyIssues(issues){
@@ -512,6 +634,7 @@
       state.issues = data.issues;
       state.summary = data.summary;
       classifyIssues(state.issues);
+      markDuplicateIssues(state.issues);
 
       renderAll();
 
@@ -530,8 +653,33 @@
     renderStatuses();
     renderPart();
     renderConnType();
+    renderTodaySummary();
     renderChart();
     renderIssues();
+  }
+
+  function renderTodaySummary(){
+    var tl = state.summary.timeline;
+    if (!tl || !tl.length) return;
+    var today = tl[tl.length - 1]; // 타임라인의 마지막 날짜를 '오늘'로 간주
+
+    document.getElementById('todayDate').textContent = today.date;
+    document.getElementById('todayNewCount').textContent = today.newCount;
+    document.getElementById('todayDoneCount').textContent = today.doneCount;
+
+    var todaysNewIssues = state.issues.filter(function(it){
+      return (it.created_on || '').split(' ')[0] === today.date;
+    });
+
+    var severityHtml = PRIORITY_TIERS.map(function(tier){
+      var count = todaysNewIssues.filter(function(it){ return tier.test(it.우선순위); }).length;
+      return '<div class="today-severity-chip" style="color:' + tier.color + '">' + tier.label + ' ' + count + '건</div>';
+    }).join('');
+    document.getElementById('todaySeverityRow').innerHTML =
+      severityHtml || '<div class="today-severity-chip">오늘 등록된 이슈가 없습니다</div>';
+
+    document.getElementById('todayNewCard').onclick = function(){ setDayFilter(today.date, 'newCount'); };
+    document.getElementById('todayDoneCard').onclick = function(){ setDayFilter(today.date, 'doneCount'); };
   }
 
   function renderStats(){
@@ -542,6 +690,9 @@
     cards[1].textContent = c.done;
     cards[2].textContent = c.total;
     cards[3].textContent = rate + '%';
+    cards[4].textContent = state.issues.filter(function(it){
+      return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위);
+    }).length;
 
     document.querySelectorAll('.stat-card[data-filter-type]').forEach(function(card){
       card.onclick = function(){
@@ -731,7 +882,7 @@
 
     var chip = document.getElementById('filterChip');
     var labelMap = { assignee: '담당자', tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경' };
-    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈' };
+    var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
         // 전체 이슈는 필터를 거는 게 아니라 그냥 전부 보여주는 것이므로, 칩은 숨김
@@ -791,6 +942,7 @@
       } else if (f.type === 'quick'){
         if (f.value === 'notdone') list = list.filter(function(it){ return isNotDoneStatus(it.상태); });
         else if (f.value === 'done') list = list.filter(function(it){ return !isNotDoneStatus(it.상태); });
+        else if (f.value === 'notdone_high') list = list.filter(function(it){ return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위); });
       }
     }
 
@@ -812,7 +964,10 @@
         '<td><a class="issue-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">#' + escapeHtml(it.일감번호) + '</a></td>' +
         '<td>' + escapeHtml(it.분류) + '</td>' +
         '<td><span class="status-badge ' + (notDone ? 'notdone' : 'done') + '">' + escapeHtml(it.상태) + '</span></td>' +
-        '<td class="title-cell"><a class="title-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">' + escapeHtml(it.제목) + '</a></td>' +
+        '<td class="title-cell">' +
+          (it.__isDuplicate ? '<span class="dup-badge" title="제목이 동일한 이슈가 ' + it.__dupCount + '건 있습니다">중복 ' + it.__dupCount + '</span>' : '') +
+          '<a class="title-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">' + escapeHtml(it.제목) + '</a>' +
+        '</td>' +
         '<td>' + escapeHtml(it.우선순위) + '</td>' +
         '<td>' + escapeHtml(it.담당자) + '</td>' +
         '<td>' + fmtTime(it.created_on) + '</td>' +
