@@ -90,7 +90,7 @@
 
   /* 중단: 전체 이슈 목록, 전체 폭 (내용이 많을 수 있으니 내부 스크롤 유지) */
   .issues-panel{
-    display:flex; flex-direction:column;
+    display:flex; flex-direction:column; position:relative;
   }
   .issues-panel .issues-table-scroll{ max-height:30vh; overflow:auto; }
 
@@ -211,6 +211,15 @@
   .filter-chip.active{ display:inline-flex; }
   .filter-chip .x{ font-weight:900; }
 
+  .expand-handle{
+    position:absolute; left:50%; bottom:-14px; transform:translateX(-50%);
+    width:56px; height:26px; display:flex; align-items:center; justify-content:center;
+    background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:999px;
+    color:var(--text-secondary); cursor:pointer; z-index:5; font-size:14px;
+    transition: border-color .12s ease, color .12s ease, transform .12s ease;
+  }
+  .expand-handle:hover{ border-color:var(--blue); color:var(--blue); transform:translateX(-50%) translateY(2px); }
+
   .hidden-nav-btn{
     position:fixed; top:0; right:0; width:64px; height:64px; z-index:999;
     background:transparent; border:none; padding:0; margin:0; cursor:pointer;
@@ -284,7 +293,7 @@
       <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
       <span id="lastUpdated" class="last-updated">불러오는 중&hellip;</span>
     </h2>
-    <div class="issues-table-scroll">
+    <div class="issues-table-scroll" id="issuesTableScroll">
       <table>
         <thead>
           <tr>
@@ -301,11 +310,14 @@
         <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
+    <button type="button" id="expandIssuesBtn" class="expand-handle" aria-label="전체 이슈 목록 펼치기/접기">
+      <span id="expandIssuesArrow">&darr;</span>
+    </button>
   </div>
 
   <div class="panels">
     <div class="panel">
-      <h2 class="c-orange">상태별 집계</h2>
+      <h2 class="c-orange">상태별</h2>
       <table>
         <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
         <tbody id="statusBody"><tr><td colspan="2" class="loading">불러오는 중&hellip;</td></tr></tbody>
@@ -313,7 +325,7 @@
     </div>
 
     <div class="panel">
-      <h2 class="c-blue">파트별 집계</h2>
+      <h2 class="c-blue">파트별</h2>
       <table>
         <thead><tr><th>파트</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
         <tbody id="partBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
@@ -321,7 +333,7 @@
     </div>
 
     <div class="panel">
-      <h2 class="c-purple">접속유형별 집계</h2>
+      <h2 class="c-purple">접속유형별</h2>
       <table>
         <thead><tr><th>접속유형</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
         <tbody id="connTypeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
@@ -337,7 +349,7 @@
   </div>
 
   <div class="panel assignee-sidebar">
-    <h2 class="c-blue">담당자별 집계</h2>
+    <h2 class="c-blue">담당자별</h2>
     <div class="assignee-scroll">
       <table>
         <thead><tr><th>담당자</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
@@ -1029,6 +1041,37 @@
 
   document.getElementById('hiddenNavBtn').addEventListener('click', function(){
     window.location.href = 'https://rc-version-check.vercel.app/';
+  });
+
+  var issuesExpanded = false;
+
+  function applyIssuesExpandedHeight(){
+    var scrollBox = document.getElementById('issuesTableScroll');
+    var rect = scrollBox.getBoundingClientRect();
+    var newHeight = window.innerHeight - rect.top - 24; // 화면 하단에 약간의 여백만 남기고 채움
+    scrollBox.style.maxHeight = Math.max(newHeight, 200) + 'px';
+  }
+
+  function toggleIssuesExpand(){
+    var scrollBox = document.getElementById('issuesTableScroll');
+    var arrow = document.getElementById('expandIssuesArrow');
+    var panelsGrid = document.querySelector('.panels');
+    issuesExpanded = !issuesExpanded;
+
+    if (issuesExpanded){
+      applyIssuesExpandedHeight();
+      arrow.innerHTML = '&uarr;';
+      if (panelsGrid) panelsGrid.style.display = 'none';
+    } else {
+      scrollBox.style.maxHeight = '';
+      arrow.innerHTML = '&darr;';
+      if (panelsGrid) panelsGrid.style.display = '';
+    }
+  }
+
+  document.getElementById('expandIssuesBtn').addEventListener('click', toggleIssuesExpand);
+  window.addEventListener('resize', function(){
+    if (issuesExpanded) applyIssuesExpandedHeight();
   });
 
   loadData();
