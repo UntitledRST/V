@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T05:53:12.615424+00:00",
+  "fetchedAt": "2026-07-24T05:56:06.999861+00:00",
   "count": 192,
   "issues": [
     {
@@ -557,7 +557,7 @@
       "번호": 51,
       "일감번호": 274970,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 상담 일시정지 시 재개 안내 문구 개선 및 [상담 재개] 버튼 미구현 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2118,8 +2118,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 90,
+      "notDone": 101,
+      "done": 91,
       "total": 192
     },
     "assignees": [
@@ -2175,9 +2175,9 @@
       {
         "name": "오세진",
         "total": 51,
-        "done": 21,
+        "done": 22,
         "complete": false,
-        "rate": 41
+        "rate": 43
       },
       {
         "name": "이경준",
@@ -2222,8 +2222,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 81,
+        "progress": 89,
+        "done": 82,
         "total": 171
       }
     ],
@@ -2234,7 +2234,7 @@
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 5
       },
       {
         "label": "보류",
@@ -2242,7 +2242,7 @@
       },
       {
         "label": "해결",
-        "count": 85
+        "count": 86
       },
       {
         "label": "피드백",
@@ -2375,23 +2375,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 83,
-        "rate": 51,
+        "cumDone": 84,
+        "rate": 52,
         "newCount": 31,
-        "doneCount": 14
+        "doneCount": 15
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 90,
-        "rate": 49,
+        "cumDone": 91,
+        "rate": 50,
         "newCount": 20,
         "doneCount": 7
       },
       {
         "date": "2026-07-24",
         "cumIssue": 192,
-        "cumDone": 90,
+        "cumDone": 91,
         "rate": 47,
         "newCount": 9,
         "doneCount": 0
