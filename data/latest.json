@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-24T02:57:03.983263+00:00",
+  "fetchedAt": "2026-07-24T03:01:08.549933+00:00",
   "count": 188,
   "issues": [
     {
@@ -799,10 +799,10 @@
       "번호": 73,
       "일감번호": 274845,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [에이전트][상담이력] 지원 중 상담 내용 미작성 → 상담 상세에서 상담 내용 신규 작성·저장 시 404 Not Found 발생",
       "우선순위": "보통(Normal)",
-      "담당자": "이경준",
+      "담당자": "장기중(Jay)",
       "created_on": "2026-07-21 09:19:30",
       "link": "https://projects.rsupport.com/issues/274845"
     },
@@ -2137,17 +2137,17 @@
       },
       {
         "name": "이경준",
-        "total": 23,
+        "total": 22,
         "done": 13,
         "complete": false,
-        "rate": 56
+        "rate": 59
       },
       {
         "name": "장기중(Jay)",
-        "total": 1,
+        "total": 2,
         "done": 1,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 50
       },
       {
         "name": "전기호",
@@ -2190,7 +2190,7 @@
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 6
       },
       {
         "label": "보류",
@@ -2202,7 +2202,7 @@
       },
       {
         "label": "피드백",
-        "count": 15
+        "count": 16
       },
       {
         "label": "완료성공",
