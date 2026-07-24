@@ -36,9 +36,7 @@
   }
 
   #errorBox:empty{ display:none; }
-  .last-updated{ margin:0 0 12px; font-size:15px; color:var(--text-secondary); }
-  .last-updated span{ color:var(--green); font-family:var(--mono); }
-  .last-updated{ margin:0 0 14px; font-size:14px; color:var(--text-secondary); }
+  .last-updated{ margin:0; font-size:14px; font-weight:400; color:var(--text-secondary); }
   .last-updated span{ color:var(--green); font-family:var(--mono); }
 
   /* ---- 메인 영역: 자연스러운 세로 흐름 (필요하면 페이지 자체가 스크롤됨) ---- */
@@ -48,7 +46,7 @@
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
-    display:grid; grid-template-columns: 1.2fr 0.5fr 1fr 0.5fr 2.8fr; gap:14px;
+    display:grid; grid-template-columns: 0.6fr 0.5fr 1fr 0.5fr 3.4fr; gap:14px;
   }
   .stat-card{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:var(--radius-md);
@@ -72,8 +70,15 @@
     white-space:normal; line-height:1.35; word-break:keep-all;
   }
   .total-severity-item:hover{ border-color:var(--blue); transform:translateY(-1px); }
-  .stat-card.notdone .total-severity-item{ color:var(--yellow); }
 
+  .stat-card.stack-card{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+  .stack-sub-item{
+    display:inline-block; background:rgba(251,191,36,0.14); color:var(--yellow);
+    border:1px solid rgba(251,191,36,0.35); border-radius:999px; padding:4px 12px;
+    font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap;
+    transition: transform .12s ease, border-color .12s ease;
+  }
+  .stack-sub-item:hover{ transform:translateY(-2px); border-color:var(--blue); }
 
 
   /* 중단: 전체 이슈 목록, 전체 폭 (내용이 많을 수 있으니 내부 스크롤 유지) */
@@ -84,7 +89,7 @@
 
   /* 요약 패널 4개: 한 줄에 나란히, 스크롤 없이 전체 표시 */
   .panels{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
+    display:grid; grid-template-columns: repeat(5, 1fr); gap:14px;
   }
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
@@ -168,23 +173,23 @@
 
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
 
-  .stat-card.today-card{ display:flex; flex-direction:column; justify-content:center; gap:6px; padding:10px 12px; }
-  .today-card-title{ font-size:12.5px; font-weight:800; color:var(--blue); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .today-card-body{ display:flex; gap:6px; align-items:stretch; }
+  .stat-card.today-card{ display:flex; flex-direction:column; justify-content:center; gap:8px; padding:12px 16px; }
+  .today-card-title{ font-size:16px; font-weight:800; color:var(--blue); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .today-card-body{ display:flex; gap:10px; align-items:stretch; }
   .today-main-box{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:8px;
-    padding:5px 6px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:8px 10px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center;
     transition: transform .12s ease, border-color .12s ease; flex:1 1 0; min-width:0;
   }
   .today-main-box:hover{ transform: translateY(-2px); border-color: var(--blue); }
-  .today-main-label{ font-size:11px; color:var(--text-secondary); }
-  .today-main-value{ font-size:19px; font-weight:800; font-family:var(--mono); color:var(--blue); }
-  .today-done-box{ flex:0 0 64px; }
+  .today-main-label{ font-size:14px; color:var(--text-secondary); }
+  .today-main-value{ font-size:29px; font-weight:800; font-family:var(--mono); color:var(--blue); }
+  .today-done-box{ flex:0 0 96px; }
   .today-done-box .today-main-value{ color:var(--green); }
-  .today-severity-row{ display:flex; gap:3px; }
+  .today-severity-row{ display:flex; gap:6px; }
   .today-severity-chip{
     flex:1 1 0; min-width:0; background:rgba(255,255,255,0.05); border:1px solid var(--panel-border);
-    border-radius:6px; padding:2px 2px; font-size:9.5px; font-weight:700; text-align:center;
+    border-radius:6px; padding:4px 4px; font-size:13px; font-weight:700; text-align:center;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   .today-severity-chip.clickable{ cursor:pointer; transition: transform .12s ease, border-color .12s ease; }
@@ -239,23 +244,17 @@
 <button id="hiddenNavBtn" class="hidden-nav-btn" type="button" aria-hidden="true" tabindex="-1"></button>
 <div class="wrap">
 
-  <p id="lastUpdated" class="last-updated">불러오는 중&hellip;</p>
-
-  <p id="lastUpdated" class="last-updated"></p>
-
   <div id="errorBox"></div>
 
   <div class="main-grid">
 
   <div class="stat-row" id="statRow">
-    <div class="stat-card notdone split-card">
+    <div class="stat-card notdone stack-card">
       <div class="total-main clickable" data-filter-type="quick" data-filter-value="notdone">
         <div class="label">미처리</div>
         <div class="value">&mdash;</div>
       </div>
-      <div class="total-severity-list">
-        <div class="total-severity-item clickable" data-filter-type="quick" data-filter-value="notdone_high">우선순위 높음 <span id="notdoneHighValue">&mdash;</span>건</div>
-      </div>
+      <div class="stack-sub-item clickable" data-filter-type="quick" data-filter-value="notdone_high">우선순위 높음 <span id="notdoneHighValue">&mdash;</span>건</div>
     </div>
     <div class="stat-card done clickable" data-filter-type="quick" data-filter-value="done"><div class="label">처리완료</div><div class="value">&mdash;</div></div>
     <div class="stat-card total split-card">
@@ -287,6 +286,7 @@
     <h2>
       <span>전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
       <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
+      <span id="lastUpdated" class="last-updated">불러오는 중&hellip;</span>
     </h2>
     <div class="search-bar">
       <input type="text" id="issueSearchInput" class="search-input" placeholder="제목·일감번호·담당자·분류 등으로 검색">
@@ -343,11 +343,11 @@
         <tbody id="connTypeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
-  </div>
 
-  <div class="panel chart-panel">
-    <h2 class="c-blue">누적 이슈 / 해결 추이</h2>
-    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    <div class="panel chart-panel">
+      <h2 class="c-blue">누적 이슈 / 해결 추이</h2>
+      <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    </div>
   </div>
 
   </div>
