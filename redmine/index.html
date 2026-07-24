@@ -40,9 +40,14 @@
   .last-updated span{ color:var(--green); font-family:var(--mono); }
 
   /* ---- 메인 영역: 자연스러운 세로 흐름 (필요하면 페이지 자체가 스크롤됨) ---- */
-  .main-grid{
-    display:flex; flex-direction:column; gap:14px;
+  .page-grid{
+    display:grid; grid-template-columns: 1fr 300px; gap:14px; align-items:stretch;
   }
+  .main-grid{
+    display:flex; flex-direction:column; gap:14px; min-width:0;
+  }
+  .assignee-sidebar{ display:flex; flex-direction:column; height:100%; }
+  .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
@@ -59,9 +64,10 @@
   .stat-card.notdone .value{ color:var(--yellow); }
   .stat-card.done .value{ color:var(--green); }
   .stat-card.rate .value{ color:var(--blue); }
+  .stat-card.done, .stat-card.rate{ align-items:center; text-align:center; }
 
   .stat-card.split-card{ flex-direction:row; align-items:stretch; gap:12px; }
-  .total-main{ display:flex; flex-direction:column; justify-content:center; cursor:pointer; flex:1 1 0; min-width:0; }
+  .total-main{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; cursor:pointer; flex:1 1 0; min-width:0; }
   .total-severity-list{ display:flex; flex-direction:column; gap:4px; justify-content:center; flex:1 1 0; min-width:0; }
   .total-severity-item{
     border:1px solid var(--panel-border); border-radius:8px; padding:4px 10px;
@@ -89,7 +95,7 @@
 
   /* 요약 패널 4개: 한 줄에 나란히, 스크롤 없이 전체 표시 */
   .panels{
-    display:grid; grid-template-columns: 1fr 0.6fr 1fr 1fr 1.4fr; gap:14px;
+    display:grid; grid-template-columns: 0.6fr 1fr 1fr 2.4fr; gap:14px;
   }
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
@@ -133,6 +139,8 @@
 
     .issues-panel .issues-table-scroll{ max-height:280px; }
     .panels{ grid-template-columns: 1fr; gap:10px; }
+    .page-grid{ grid-template-columns: 1fr; }
+    .assignee-sidebar{ height:auto; }
     .chart-wrap{ height:300px; }
 
     /* 표 내용이 화면보다 넓으면 잘리지 않고 옆으로 스크롤되도록 함 */
@@ -232,6 +240,7 @@
 
   <div id="errorBox"></div>
 
+  <div class="page-grid">
   <div class="main-grid">
 
   <div class="stat-row" id="statRow">
@@ -295,14 +304,6 @@
 
   <div class="panels">
     <div class="panel">
-      <h2 class="c-blue">담당자별 집계</h2>
-      <table>
-        <thead><tr><th>담당자</th><th>완료여부</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
-        <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="panel">
       <h2 class="c-orange">상태별 집계</h2>
       <table>
         <thead><tr><th>상태</th><th style="text-align:right">개수</th></tr></thead>
@@ -329,6 +330,18 @@
     <div class="panel chart-panel">
       <h2 class="c-blue">누적 이슈 / 해결 추이</h2>
       <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="panel assignee-sidebar">
+    <h2 class="c-blue">담당자별 집계</h2>
+    <div class="assignee-scroll">
+      <table>
+        <thead><tr><th>담당자</th><th>할당/처리</th><th style="text-align:right">처리율</th></tr></thead>
+        <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
     </div>
   </div>
 
@@ -689,12 +702,11 @@
     var rows = sorted.map(function(a){
       return '<tr class="clickable" data-filter-type="assignee" data-filter-value="' + escapeHtml(a.name) + '">' +
         '<td>' + escapeHtml(a.name) + '</td>' +
-        '<td><span class="pill ' + (a.complete ? 'done' : 'notdone') + '">' + (a.complete ? '완료' : '미완료') + '</span></td>' +
         '<td class="mono">' + a.total + '/' + a.done + '</td>' +
         '<td class="num">' + a.rate + '%</td>' +
       '</tr>';
     }).join('');
-    document.getElementById('assigneeBody').innerHTML = rows || '<tr><td colspan="4" class="empty">데이터 없음</td></tr>';
+    document.getElementById('assigneeBody').innerHTML = rows || '<tr><td colspan="3" class="empty">데이터 없음</td></tr>';
     bindFilterableRows('assigneeBody');
   }
 
