@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T07:29:09.652934+00:00",
+  "fetchedAt": "2026-07-27T07:31:08.515827+00:00",
   "count": 217,
   "issues": [
     {
@@ -216,7 +216,7 @@
       "번호": 20,
       "일감번호": 275345,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] [일시정지] 상담 재개 요청 팝업 외 딤드 처리 영역 클릭 시 상담 재개 거절 처리 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2393,8 +2393,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 117,
+      "notDone": 97,
+      "done": 118,
       "total": 215
     },
     "assignees": [
@@ -2450,9 +2450,9 @@
       {
         "name": "오세진",
         "total": 54,
-        "done": 29,
+        "done": 30,
         "complete": false,
-        "rate": 53
+        "rate": 55
       },
       {
         "name": "이경준",
@@ -2497,8 +2497,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 83,
-        "done": 107,
+        "progress": 82,
+        "done": 108,
         "total": 190
       }
     ],
@@ -2509,7 +2509,7 @@
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 8
       },
       {
         "label": "보류",
@@ -2517,7 +2517,7 @@
       },
       {
         "label": "해결",
-        "count": 110
+        "count": 111
       },
       {
         "label": "피드백",
@@ -2674,10 +2674,10 @@
       {
         "date": "2026-07-27",
         "cumIssue": 217,
-        "cumDone": 117,
+        "cumDone": 118,
         "rate": 54,
         "newCount": 20,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
