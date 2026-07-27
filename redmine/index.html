@@ -27,6 +27,40 @@
   });
 })();
 </script>
+<script>
+(function () {
+  const EXCLUDE_KEY = "rc_visit_exclude";
+
+  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("exclude") === "1") {
+    localStorage.setItem(EXCLUDE_KEY, "1");
+  }
+  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
+  if (params.get("exclude") === "0") {
+    localStorage.removeItem(EXCLUDE_KEY);
+  }
+
+  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
+  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
+    return;
+  }
+
+  // 3) 여기서부터 기존 카운트 증가 로직 실행
+  const NAMESPACE = "rc-visit-tracker-2026";
+  const SITE_KEY = "rc8qa"; // rc-version-check 사이트에는 "rc-version-check"로 변경
+
+  function pad(n) { return n.toString().padStart(2, "0"); }
+
+  const now = new Date();
+  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  // 주간/월별 키도 필요하면 대시보드의 isoWeek()/월 로직과 동일하게 만들어서 추가
+
+  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${SITE_KEY}`).catch(() => {});
+  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${dailyKey}`).catch(() => {});
+  // 필요 시 주간/월별 hit 호출 추가
+})();
+</script>
 <style>
   :root{
     --bg: #0a0e14;
