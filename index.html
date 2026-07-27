@@ -7,53 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-<script>
-(function () {
-  const EXCLUDE_KEY = "rc_visit_exclude";
-
-  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("exclude") === "1") {
-    localStorage.setItem(EXCLUDE_KEY, "1");
-  }
-  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
-  if (params.get("exclude") === "0") {
-    localStorage.removeItem(EXCLUDE_KEY);
-  }
-
-  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
-  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
-    return;
-  }
-
-  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE_KEY = "rc-version-check"; // rc-version-check 사이트에는 "rc-version-check"로 변경
-
-  function pad(n) { return n.toString().padStart(2, "0"); }
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-
-  const now = new Date();
-  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
-  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-
-  // 대시보드는 api.countapi.xyz 를 "namespace/key" 형식으로 읽으므로 동일하게 맞춤
-  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
-    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
-  });
-})();
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>페이지 방문 횟수 대시보드</title>
 <style>
   :root{
     --card-w: 138px;
@@ -82,19 +35,7 @@
 
   html, body{
     margin:0; padding:0;
-  :root {
-    --bg: #0f1115;
-    --card-bg: #1a1d24;
-    --border: #2a2e38;
-    --accent: #6ee7b7;
-    --accent2: #93c5fd;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-background: var(--bg);
+    background: var(--bg);
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
@@ -256,31 +197,7 @@ background: var(--bg);
     display:flex;
     flex-direction:column;
     gap: 8px;
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, sans-serif;
-    padding: 40px 20px;
   }
-  .wrap { max-width: 820px; margin: 0 auto; }
-  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-}
-  .card .label { color: var(--muted); font-size: 13px; margin-bottom: 8px; word-break: break-all; }
-  .card .count { font-size: 36px; font-weight: 800; line-height: 1.1; }
-  .card.a .count { color: var(--accent); }
-  .card.b .count { color: var(--accent2); }
 
   .panel-app{ flex: 0 0 auto; }
   .panel-app-outer{
@@ -293,9 +210,7 @@ background: var(--bg);
   .app-subpanel{
     display:flex;
     flex-direction:column;
-  .tabs {
-    display: flex;
-gap: 8px;
+    gap: 8px;
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius-md);
@@ -342,23 +257,14 @@ gap: 8px;
     margin-top: 18px;
     padding-top: 14px;
     border-top: 1px dashed var(--panel-border);
-    margin-bottom: 18px;
-    border-bottom: 1px solid var(--border);
-}
+  }
   .subgroup-title{
     margin: 0 0 8px;
     font-size: 12.5px;
     font-weight: 700;
     color: var(--blue);
     letter-spacing: 0.02em;
-  .tab {
-    padding: 10px 16px;
-    font-size: 14px;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-}
-  .tab.active { color: var(--text); border-bottom-color: var(--accent2); }
+  }
 
   /* ---------------- App(Host)/App(Viewer) 행(row) 목록: 여러 항목을 하나의 카드 안에 리스트로 표시 ---------------- */
   .app-rows{
@@ -375,8 +281,7 @@ gap: 8px;
     align-items:center;
     gap: 10px;
     padding: 9px 12px;
-  .chart-card {
-background: var(--card-bg);
+    background: var(--card-bg);
     border-bottom: 1px solid var(--card-border);
     font-size: 13px;
   }
@@ -404,53 +309,7 @@ background: var(--card-bg);
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 12px;
     color: var(--text-secondary);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .chart-title { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
-  .legend { display: flex; gap: 16px; font-size: 12px; color: var(--muted); margin-bottom: 14px; }
-  .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-  .dot.a { background: var(--accent); }
-  .dot.b { background: var(--accent2); }
-
-  .bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    height: 180px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-  .bar-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 46px;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .bar-pair {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 140px;
-  }
-  .bar {
-    width: 14px;
-    border-radius: 3px 3px 0 0;
-    background: var(--accent);
-    min-height: 2px;
-    transition: height 0.2s ease;
-  }
-  .bar.b { background: var(--accent2); }
-  .bar-label {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 6px;
-white-space: nowrap;
+    white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
   }
@@ -462,7 +321,7 @@ white-space: nowrap;
     margin-top:0;
     padding: 5px 10px;
     font-size: 12px;
-}
+  }
 
   @media (max-width: 700px){
     .app-row{ flex-wrap: wrap; }
@@ -472,9 +331,7 @@ white-space: nowrap;
   /* ---------------- Card ---------------- */
   .card{
     position:relative;
-  .actions { display: flex; gap: 10px; margin-bottom: 20px; }
-  button {
-background: var(--card-bg);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: var(--radius-md);
     padding: 10px 9px 9px;
@@ -585,15 +442,12 @@ background: var(--card-bg);
     width:100%;
     margin-top: 6px;
     padding: 7px 8px;
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 10px 16px;
-border-radius: 10px;
+    border-radius: 10px;
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--panel-border);
     color: var(--text-primary);
     text-decoration:none;
-font-size: 13px;
+    font-size: 13px;
     font-weight: 700;
     transition: background .15s ease, border-color .15s ease;
   }
@@ -616,10 +470,7 @@ font-size: 13px;
     html, body{ overflow: hidden; height: 100%; }
     .dashboard{ height: 100vh; }
     .content{ overflow-y: auto; } /* 극단적으로 낮은 화면 높이에서도 겹치지 않고 스크롤로 안전하게 대체 */
-    cursor: pointer;
-}
-  button:hover { border-color: var(--accent2); }
-  .updated { color: var(--muted); font-size: 12px; }
+  }
 
   @media (max-width: 900px){
     html, body{ overflow-y:auto; }
@@ -640,18 +491,7 @@ font-size: 13px;
 
   @media (max-width: 520px){
     .app-row-name{ min-width: 64px; }
-  .note {
-    margin-top: 24px;
-    padding: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-}
-  .note code { background: #11141a; padding: 2px 6px; border-radius: 4px; color: var(--accent); }
-  .loading { color: var(--muted); font-size: 13px; padding: 20px 0; }
+  }
 </style>
 </head>
 <body>
@@ -661,18 +501,10 @@ font-size: 13px;
     <div class="brand-block">
       <div class="brand">
         <span class="dot"></span>
-        <h1>빌드 업데이트 현황</h1>
+        <h1>빌드 버전 업데이트 현황</h1>
       </div>
-      <p class="subtitle">[알파 / 베타]<BR>- Service: Viewer (Web, Win, Mac) / Host (Web, Win, Mac, Android, iOS)<BR>- Admin: Partner, User</p>
-<div class="wrap">
-  <h1>페이지 방문 횟수</h1>
-  <div class="sub">rc8qa / rc-version-check · 일간·주간·월별 (IP 미수집)</div>
-
-  <div class="cards">
-    <div class="card a">
-      <div class="label">rc8qa.vercel.app (전체 누적)</div>
-      <div class="count" id="total-rc8qa">–</div>
-</div>
+      <p class="subtitle">Alpha / Beta 채널 · App(Host: Windows·macOS·Android·iOS) / App(Viewer: Windows·macOS) · Web(Viewer·Relay·PartnerAdmin·UserAdmin)</p>
+    </div>
     <div class="controls">
       <div class="last-refresh">
         <div class="label">마지막 갱신</div>
@@ -686,44 +518,12 @@ font-size: 13px;
           <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
         </svg>
       </button>
-    <div class="card b">
-      <div class="label">rc-version-check.vercel.app (전체 누적)</div>
-      <div class="count" id="total-rcversion">–</div>
-</div>
+    </div>
   </header>
 
   <main class="content" id="content">
     <!-- JS로 채워짐 -->
   </main>
-  </div>
-
-  <div class="tabs">
-    <div class="tab" data-range="daily">일간 (최근 14일)</div>
-    <div class="tab" data-range="weekly">주간 (최근 12주)</div>
-    <div class="tab" data-range="monthly">월별 (최근 12개월)</div>
-  </div>
-
-  <div class="chart-card">
-    <div class="chart-title" id="chart-title">위 탭을 선택하면 기간별 그래프를 불러옵니다</div>
-    <div class="legend">
-      <span><span class="dot a"></span>rc8qa</span>
-      <span><span class="dot b"></span>rc-version-check</span>
-    </div>
-    <div class="bars" id="bars">
-      <div class="loading">일간 / 주간 / 월별 탭을 클릭하면 조회합니다</div>
-    </div>
-  </div>
-
-  <div class="actions">
-    <button onclick="loadAll()">새로고침</button>
-  </div>
-  <div class="updated" id="updated-at"></div>
-
-  <div class="note">
-    <code>CountAPI 대체 서비스</code>(countapi.mileshilliard.com, 비공식 오픈소스)를 이용한 카운터입니다. IP나 개인 식별 정보는 저장하지 않고,
-    날짜별/주별/월별 "방문 횟수"만 누적됩니다. 각 사이트에 대응하는 카운트 증가 스크립트가
-    삽입되어 있어야 값이 올라갑니다.
-  </div>
 </div>
 
 <script>
@@ -814,66 +614,20 @@ font-size: 13px;
     var diagText = null;
     if (item._debug && item._debug.reason) diagText = item._debug.reason;
     else if (!item.ok && item.error) diagText = item.error;
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITES = [
-    { key: "rc8qa", label: "rc8qa", cls: "a" },
-    { key: "rc-version-check", label: "rc-version-check", cls: "b" }
-  ];
-  // 스니펫을 실제로 배포한 날짜. 이보다 이전 기간은 데이터가 없는 게 확실하므로
-  // API 호출(및 404 콘솔 로그) 자체를 건너뜁니다. 배포일이 다르면 이 값을 바꿔주세요.
-  const START_DATE = new Date(2026, 6, 24); // 월(month)은 0부터 시작 → 6 = 7월
-  START_DATE.setHours(0, 0, 0, 0);
-  let currentRange = null;
 
     if (diagText){
       card.title = diagText;
       updateHtml += '<div class="diag-text">' + escapeHtml(diagText) + '</div>';
     }
-  function pad(n) { return n.toString().padStart(2, "0"); }
 
     var downloadHtml = '';
     if (item.ok && item.downloadUrl){
       downloadHtml = '<a class="download-btn" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
         (item.downloadLabel || '다운로드') + '</a>';
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return { year: date.getUTCFullYear(), week: weekNum };
-  }
-
-  function buildPeriods(range) {
-    const periods = [];
-    const now = new Date();
-    if (range === "daily") {
-      for (let i = 13; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(now.getDate() - i);
-        d.setHours(0, 0, 0, 0);
-        const key = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-        periods.push({ apiKey: `d-${key}`, label: `${pad(d.getMonth() + 1)}/${pad(d.getDate())}`, skip: d < START_DATE });
-      }
-    } else if (range === "weekly") {
-      for (let i = 11; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(now.getDate() - i * 7);
-        d.setHours(0, 0, 0, 0);
-        const { year, week } = isoWeek(d);
-        periods.push({ apiKey: `w-${year}-W${pad(week)}`, label: `W${pad(week)}`, skip: d < START_DATE });
-      }
-} else {
+    } else {
       downloadHtml = '<span class="download-btn disabled">이용 불가</span>';
-      for (let i = 11; i >= 0; i--) {
-        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-        const key = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
-        // 해당 월의 마지막 날짜 기준으로 비교 (배포일이 그 달 안에 있으면 skip하지 않음)
-        const monthEnd = new Date(d.getFullYear(), d.getMonth() + 1, 0);
-        periods.push({ apiKey: `m-${key}`, label: `${d.getFullYear().toString().slice(2)}/${pad(d.getMonth() + 1)}`, skip: monthEnd < START_DATE });
-      }
-}
+    }
 
     var displayLabel = (item.label || '').replace(/([a-z0-9])([A-Z])/g, '$1<wbr>$2');
     card.innerHTML =
@@ -889,8 +643,7 @@ font-size: 13px;
       downloadHtml;
 
     return card;
-    return periods;
-}
+  }
 
   // ---------- App(Host)/App(Viewer) 전용: 하나의 카드 안에 여러 항목을 행(row) 형태로 표시 ----------
   function renderAppRow(item){
@@ -913,16 +666,7 @@ font-size: 13px;
     } else {
       updateText = '업데이트: 조회 실패';
       updateClass = 'err';
-  async function getCount(key) {
-    try {
-      const res = await fetch(`https://countapi.mileshilliard.com/api/v1/get/${NAMESPACE}-${key}`);
-      if (!res.ok) return 0;
-      const data = await res.json();
-      return Number(data.value) || 0;
-    } catch (e) {
-      return 0;
-}
-  }
+    }
 
     var diagText = null;
     if (item._debug && item._debug.reason) diagText = item._debug.reason;
@@ -936,12 +680,7 @@ font-size: 13px;
         (item.downloadLabel || '다운로드') + '</a>';
     } else {
       downloadHtml = '<span class="download-btn app-row-download disabled">이용 불가</span>';
-  async function loadTotals() {
-    for (const site of SITES) {
-      const val = await getCount(site.key);
-      const elId = site.key === "rc8qa" ? "total-rc8qa" : "total-rcversion";
-      document.getElementById(elId).textContent = val.toLocaleString();
-}
+    }
 
     row.innerHTML =
       '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
@@ -952,7 +691,7 @@ font-size: 13px;
       downloadHtml;
 
     return row;
-}
+  }
 
   // ---------- 전체 렌더링 ----------
   function render(items){
@@ -1006,86 +745,46 @@ font-size: 13px;
         if (viewerList) {
           var viewerSub = document.createElement('div');
           viewerSub.className = 'app-subpanel app-subpanel-viewer';
-  async function loadChart(range) {
-    currentRange = range;
-    const barsEl = document.getElementById("bars");
-    barsEl.innerHTML = '<div class="loading">불러오는 중…</div>';
 
           var viewerTitle = document.createElement('h3');
           viewerTitle.className = 'app-subpanel-title';
           viewerTitle.textContent = 'App(Viewer)';
           viewerSub.appendChild(viewerTitle);
-    const titleMap = {
-      daily: "최근 14일 방문 횟수",
-      weekly: "최근 12주 방문 횟수",
-      monthly: "최근 12개월 방문 횟수"
-    };
-    document.getElementById("chart-title").textContent = titleMap[range];
 
           var viewerGrid = document.createElement('div');
           viewerGrid.className = 'cards-grid';
           viewerList.forEach(function(item){ viewerGrid.appendChild(renderCard(item)); });
           viewerSub.appendChild(viewerGrid);
-    const periods = buildPeriods(range);
 
           appOuter.appendChild(viewerSub);
         }
 
         panels.appendChild(appOuter);
-    const results = [];
-    for (const p of periods) {
-      const counts = {};
-      for (const site of SITES) {
-        counts[site.key] = p.skip ? 0 : await getCount(`${site.key}-${p.apiKey}`);
-}
-      results.push({ label: p.label, counts });
-    }
+      }
 
       // ---- Web 패널: 기존 방식 그대로 ----
       var webList = byChannel[ch]['web'];
       if (webList) {
         var webPanel = document.createElement('div');
         webPanel.className = 'panel panel-web';
-    const maxVal = Math.max(1, ...results.flatMap(r => SITES.map(s => r.counts[s.key])));
 
         var webTitle = document.createElement('h2');
         webTitle.className = 'panel-title web';
         webTitle.textContent = 'Web';
         webPanel.appendChild(webTitle);
-    barsEl.innerHTML = "";
-    results.forEach(r => {
-      const group = document.createElement("div");
-      group.className = "bar-group";
 
         var webGrid = document.createElement('div');
         webGrid.className = 'cards-grid';
         webList.forEach(function(item){ webGrid.appendChild(renderCard(item)); });
         webPanel.appendChild(webGrid);
-      const pair = document.createElement("div");
-      pair.className = "bar-pair";
 
         panels.appendChild(webPanel);
       }
-      SITES.forEach(site => {
-        const bar = document.createElement("div");
-        bar.className = "bar" + (site.cls === "b" ? " b" : "");
-        const h = Math.round((r.counts[site.key] / maxVal) * 140);
-        bar.style.height = h + "px";
-        bar.title = `${site.label}: ${r.counts[site.key]}`;
-        pair.appendChild(bar);
-      });
-
-      const label = document.createElement("div");
-      label.className = "bar-label";
-      label.textContent = r.label;
 
       section.appendChild(panels);
       contentEl.appendChild(section);
-      group.appendChild(pair);
-      group.appendChild(label);
-      barsEl.appendChild(group);
-});
-}
+    });
+  }
 
   function setLastRefreshNow(){
     var d = new Date();
@@ -1093,14 +792,7 @@ font-size: 13px;
     var text = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + ' ' +
       pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
     lastRefreshEl.textContent = text;
-  async function loadAll() {
-    await loadTotals();
-    if (currentRange) {
-      await loadChart(currentRange);
-    }
-    document.getElementById("updated-at").textContent =
-      "마지막 업데이트: " + new Date().toLocaleString("ko-KR");
-}
+  }
 
   function fetchAndRender(){
     if (isFetching) return;
@@ -1125,18 +817,9 @@ font-size: 13px;
         refreshBtn.classList.remove('spinning');
       });
   }
-  document.querySelectorAll(".tab").forEach(tab => {
-    tab.addEventListener("click", () => {
-      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      currentRange = tab.dataset.range;
-      loadChart(currentRange);
-    });
-  });
 
   fetchAndRender();
 })();
-  loadAll();
 </script>
 </body>
 </html>
