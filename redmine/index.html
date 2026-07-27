@@ -7,28 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
 (function () {
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE = "rc8qa";
-  const now = new Date();
-  function pad(n) { return n.toString().padStart(2, "0"); }
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-  const dKey = `${SITE}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const wKey = `${SITE}-w-${isoWeek(now)}`;
-  const mKey = `${SITE}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-  [dKey, wKey, mKey, SITE].forEach((k) => {
-    fetch(`https://countapi.mileshilliard.com/api/v1/hit/${NAMESPACE}-${k}`).catch(() => {});
-  });
-})();
-</script>
-<script>
-(function () {
   const EXCLUDE_KEY = "rc_visit_exclude";
 
   // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
@@ -46,19 +24,29 @@
     return;
   }
 
-  // 3) 여기서부터 기존 카운트 증가 로직 실행
+  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
   const NAMESPACE = "rc-visit-tracker-2026";
   const SITE_KEY = "rc8qa"; // rc-version-check 사이트에는 "rc-version-check"로 변경
 
   function pad(n) { return n.toString().padStart(2, "0"); }
+  function isoWeek(d) {
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = (date.getUTCDay() + 6) % 7;
+    date.setUTCDate(date.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
+    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
+  }
 
   const now = new Date();
   const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  // 주간/월별 키도 필요하면 대시보드의 isoWeek()/월 로직과 동일하게 만들어서 추가
+  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
+  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
 
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${SITE_KEY}`).catch(() => {});
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${dailyKey}`).catch(() => {});
-  // 필요 시 주간/월별 hit 호출 추가
+  // 대시보드는 api.countapi.xyz 를 "namespace/key" 형식으로 읽으므로 동일하게 맞춤
+  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
+    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
+  });
 })();
 </script>
 <style>
