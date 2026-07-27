@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T02:17:01.009246+00:00",
+  "fetchedAt": "2026-07-27T02:21:06.194100+00:00",
   "count": 204,
   "issues": [
     {
@@ -1319,7 +1319,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][원격제어] 원격 제어 중 뷰어 마우스 포인터 모양이 호스트 커서와 동기화되지 않음 (RC7.6.7 웹뷰어는 동기화 확인)",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "김성식(kimss)",
       "created_on": "2026-07-15 19:03:53",
       "link": "https://projects.rsupport.com/issues/274569"
     },
@@ -2257,17 +2257,17 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 33,
+        "total": 32,
         "done": 25,
         "complete": false,
-        "rate": 75
+        "rate": 78
       },
       {
         "name": "김성식(kimss)",
-        "total": 26,
+        "total": 27,
         "done": 6,
         "complete": false,
-        "rate": 23
+        "rate": 22
       },
       {
         "name": "김신혜",
