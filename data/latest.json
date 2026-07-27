@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T09:03:07.572078+00:00",
+  "fetchedAt": "2026-07-27T09:06:03.663716+00:00",
   "count": 218,
   "issues": [
     {
@@ -447,7 +447,7 @@
       "번호": 41,
       "일감번호": 275180,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 지원 종료 페이지 내 원격 지원 시작/종료 날짜 (YYYY-MM-DD) 미노출",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2404,8 +2404,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 97,
-      "done": 119,
+      "notDone": 96,
+      "done": 120,
       "total": 216
     },
     "assignees": [
@@ -2461,9 +2461,9 @@
       {
         "name": "오세진",
         "total": 54,
-        "done": 31,
+        "done": 32,
         "complete": false,
-        "rate": 57
+        "rate": 59
       },
       {
         "name": "이경준",
@@ -2508,15 +2508,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 109,
+        "progress": 81,
+        "done": 110,
         "total": 191
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 73
+        "count": 72
       },
       {
         "label": "진행",
@@ -2528,7 +2528,7 @@
       },
       {
         "label": "해결",
-        "count": 112
+        "count": 113
       },
       {
         "label": "피드백",
@@ -2669,15 +2669,15 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 115,
+        "cumDone": 116,
         "rate": 63,
         "newCount": 20,
-        "doneCount": 16
+        "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 118,
+        "cumDone": 119,
         "rate": 60,
         "newCount": 14,
         "doneCount": 3
@@ -2685,7 +2685,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 119,
+        "cumDone": 120,
         "rate": 55,
         "newCount": 21,
         "doneCount": 1
