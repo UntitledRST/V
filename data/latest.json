@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T05:56:08.771911+00:00",
+  "fetchedAt": "2026-07-27T06:00:48.452780+00:00",
   "count": 211,
   "issues": [
     {
@@ -54,7 +54,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] '원격 커서 표시' 토글 라벨/툴팁 개선 — 포인터 섹션 기능 혼동(IA/UX)",
       "우선순위": "보통(Normal)",
-      "담당자": "김신혜",
+      "담당자": "송건호",
       "created_on": "2026-07-27 11:58:34",
       "link": "https://projects.rsupport.com/issues/275388"
     },
@@ -2348,10 +2348,10 @@
       },
       {
         "name": "김신혜",
-        "total": 9,
+        "total": 8,
         "done": 3,
         "complete": false,
-        "rate": 33
+        "rate": 37
       },
       {
         "name": "박승진",
@@ -2376,10 +2376,10 @@
       },
       {
         "name": "송건호",
-        "total": 45,
+        "total": 46,
         "done": 33,
         "complete": false,
-        "rate": 73
+        "rate": 71
       },
       {
         "name": "오세진",
