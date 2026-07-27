@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T07:46:06.632746+00:00",
+  "fetchedAt": "2026-07-27T07:49:59.157682+00:00",
   "count": 217,
   "issues": [
     {
@@ -538,7 +538,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] '영상지원으로 시작하기' 토글 On 상태에서 모바일 지원으로 연결됨",
       "우선순위": "높음(High)",
-      "담당자": "오세진",
+      "담당자": "이경준",
       "created_on": "2026-07-23 10:50:57",
       "link": "https://projects.rsupport.com/issues/275110"
     },
@@ -2449,17 +2449,17 @@
       },
       {
         "name": "오세진",
-        "total": 55,
+        "total": 54,
         "done": 30,
         "complete": false,
-        "rate": 54
+        "rate": 55
       },
       {
         "name": "이경준",
-        "total": 30,
+        "total": 31,
         "done": 16,
         "complete": false,
-        "rate": 53
+        "rate": 51
       },
       {
         "name": "장기중(Jay)",
