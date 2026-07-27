@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T02:37:40.175495+00:00",
+  "fetchedAt": "2026-07-27T02:41:04.861752+00:00",
   "count": 205,
   "issues": [
     {
@@ -1206,7 +1206,7 @@
       "번호": 110,
       "일감번호": 274678,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][원격제어] 고객(호스트)이 Ctrl+Alt+Shift로 제어 차단 후 — 뷰어 버튼이 차단 상태로 전환되지 않고, 재클릭 시 고객 승인 없이 즉시 제어 재개됨",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2261,17 +2261,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 105,
+      "notDone": 97,
+      "done": 106,
       "total": 203
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 32,
-        "done": 25,
+        "done": 26,
         "complete": false,
-        "rate": 78
+        "rate": 81
       },
       {
         "name": "김성식(kimss)",
@@ -2365,8 +2365,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 86,
-        "done": 96,
+        "progress": 85,
+        "done": 97,
         "total": 182
       }
     ],
@@ -2385,11 +2385,11 @@
       },
       {
         "label": "해결",
-        "count": 98
+        "count": 99
       },
       {
         "label": "피드백",
-        "count": 18
+        "count": 17
       },
       {
         "label": "완료성공",
@@ -2494,31 +2494,31 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 55,
-        "rate": 54,
+        "cumDone": 56,
+        "rate": 55,
         "newCount": 16,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 61,
-        "rate": 54,
+        "cumDone": 62,
+        "rate": 55,
         "newCount": 12,
         "doneCount": 6
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 74,
-        "rate": 56,
+        "cumDone": 75,
+        "rate": 57,
         "newCount": 19,
         "doneCount": 13
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 91,
+        "cumDone": 92,
         "rate": 56,
         "newCount": 31,
         "doneCount": 17
@@ -2526,7 +2526,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 104,
+        "cumDone": 105,
         "rate": 57,
         "newCount": 20,
         "doneCount": 13
@@ -2534,16 +2534,16 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 105,
-        "rate": 53,
+        "cumDone": 106,
+        "rate": 54,
         "newCount": 14,
         "doneCount": 1
       },
       {
         "date": "2026-07-27",
         "cumIssue": 205,
-        "cumDone": 105,
-        "rate": 51,
+        "cumDone": 106,
+        "rate": 52,
         "newCount": 8,
         "doneCount": 0
       }
