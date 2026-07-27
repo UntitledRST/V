@@ -7,6 +7,49 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<script>
+(function () {
+  const EXCLUDE_KEY = "rc_visit_exclude";
+
+  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("exclude") === "1") {
+    localStorage.setItem(EXCLUDE_KEY, "1");
+  }
+  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
+  if (params.get("exclude") === "0") {
+    localStorage.removeItem(EXCLUDE_KEY);
+  }
+
+  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
+  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
+    return;
+  }
+
+  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
+  const NAMESPACE = "rc-visit-tracker-2026";
+  const SITE_KEY = "rc-version-check";
+
+  function pad(n) { return n.toString().padStart(2, "0"); }
+  function isoWeek(d) {
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = (date.getUTCDay() + 6) % 7;
+    date.setUTCDate(date.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
+    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
+  }
+
+  const now = new Date();
+  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
+  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
+
+  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
+    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
+  });
+})();
+</script>
 <style>
   :root{
     --card-w: 138px;
@@ -210,7 +253,6 @@
   .app-subpanel{
     display:flex;
     flex-direction:column;
-    gap: 8px;
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius-md);
@@ -257,6 +299,7 @@
     margin-top: 18px;
     padding-top: 14px;
     border-top: 1px dashed var(--panel-border);
+    margin-bottom: 18px;
   }
   .subgroup-title{
     margin: 0 0 8px;
@@ -281,7 +324,6 @@
     align-items:center;
     gap: 10px;
     padding: 9px 12px;
-    background: var(--card-bg);
     border-bottom: 1px solid var(--card-border);
     font-size: 13px;
   }
@@ -501,9 +543,9 @@
     <div class="brand-block">
       <div class="brand">
         <span class="dot"></span>
-        <h1>빌드 버전 업데이트 현황</h1>
+        <h1>빌드 업데이트 현황</h1>
       </div>
-      <p class="subtitle">Alpha / Beta 채널 · App(Host: Windows·macOS·Android·iOS) / App(Viewer: Windows·macOS) · Web(Viewer·Relay·PartnerAdmin·UserAdmin)</p>
+      <p class="subtitle">[알파 / 베타]<BR>- Service: Viewer (Web, Win, Mac) / Host (Web, Win, Mac, Android, iOS)<BR>- Admin: Partner, User</p>
     </div>
     <div class="controls">
       <div class="last-refresh">
@@ -588,13 +630,11 @@
     card.className = 'card';
     if (item.isToday) card.classList.add('updated-today');
 
-
     var hasBuild = item.ok && (typeof item.build === 'number' || typeof item.build === 'string') && String(item.build).trim() !== '';
     var buildText = hasBuild ? ('#' + item.build) : '정보 없음';
 
     var updateHtml = '';
     if (item.staticNote){
-      // 백엔드가 고정 문구를 내려준 경우, 계산된 상태와 무관하게 그 문구를 그대로 표시
       updateHtml = '<div class="update-text">' + escapeHtml(item.staticNote) + '</div>';
     } else if (item.ok && item.updateDateText){
       var parts = item.updateDateText.split(' ');
@@ -602,15 +642,11 @@
       var timePart = parts[1] || '';
       updateHtml = '<div class="update-text">업데이트: ' + datePart + (timePart ? ('<br>' + timePart) : '') + '</div>';
     } else if (item.ok){
-      // 응답은 정상(ok)이지만 업데이트 시간을 못 가져온 경우: 빈칸으로 두지 않고 원인을 알 수 있게 표시
       updateHtml = '<div class="update-text na">업데이트: 정보 없음</div>';
     } else {
-      // 조회 자체가 실패한 경우(네트워크 오류/타임아웃/HTTP 오류 등): 실패했다는 사실을 화면에 명시
       updateHtml = '<div class="update-text err">업데이트: 조회 실패</div>';
     }
 
-    // 백엔드가 내려준 진단 정보(_debug) 또는 실제 오류 메시지(error)를 확인할 수 있도록 노출
-    // 모바일 등 터치 환경에서는 마우스 hover(title 툴팁)가 동작하지 않으므로, 카드에 작은 글씨로도 직접 표시
     var diagText = null;
     if (item._debug && item._debug.reason) diagText = item._debug.reason;
     else if (!item.ok && item.error) diagText = item.error;
