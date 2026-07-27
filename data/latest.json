@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T06:47:32.025936+00:00",
+  "fetchedAt": "2026-07-27T06:51:05.897271+00:00",
   "count": 215,
   "issues": [
     {
@@ -282,7 +282,7 @@
       "번호": 26,
       "일감번호": 275286,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win] 저사양 Win10 원격지원 중 툴바 더보기(…) 반복 클릭 시 UI 무응답(hang)·프로세스 강제종료 불가 — 원격 프린터 상태조회가 UI 스레드를 동기 블로킹(RC7 대비 회귀)",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -2371,8 +2371,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 100,
-      "done": 113,
+      "notDone": 99,
+      "done": 114,
       "total": 213
     },
     "assignees": [
@@ -2428,9 +2428,9 @@
       {
         "name": "오세진",
         "total": 54,
-        "done": 28,
+        "done": 29,
         "complete": false,
-        "rate": 51
+        "rate": 53
       },
       {
         "name": "이경준",
@@ -2475,8 +2475,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 86,
-        "done": 103,
+        "progress": 85,
+        "done": 104,
         "total": 189
       }
     ],
@@ -2487,7 +2487,7 @@
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 7
       },
       {
         "label": "보류",
@@ -2495,7 +2495,7 @@
       },
       {
         "label": "해결",
-        "count": 106
+        "count": 107
       },
       {
         "label": "피드백",
@@ -2644,15 +2644,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 113,
-        "rate": 57,
+        "cumDone": 114,
+        "rate": 58,
         "newCount": 14,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-07-27",
         "cumIssue": 215,
-        "cumDone": 113,
+        "cumDone": 114,
         "rate": 53,
         "newCount": 18,
         "doneCount": 0
