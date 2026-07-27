@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T06:56:06.602181+00:00",
+  "fetchedAt": "2026-07-27T06:57:55.081880+00:00",
   "count": 215,
   "issues": [
     {
@@ -1382,7 +1382,7 @@
       "번호": 126,
       "일감번호": 274622,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] 이메일 전송 폼 '내용 입력' 필드 미구현 — 기획(최대 200자·그룹옵션 기본 문구)과 불일치, 주소 입력만 제공",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2371,8 +2371,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 99,
-      "done": 114,
+      "notDone": 98,
+      "done": 115,
       "total": 213
     },
     "assignees": [
@@ -2421,9 +2421,9 @@
       {
         "name": "송건호",
         "total": 48,
-        "done": 33,
+        "done": 34,
         "complete": false,
-        "rate": 68
+        "rate": 70
       },
       {
         "name": "오세진",
@@ -2475,8 +2475,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 104,
+        "progress": 84,
+        "done": 105,
         "total": 189
       }
     ],
@@ -2495,11 +2495,11 @@
       },
       {
         "label": "해결",
-        "count": 107
+        "count": 108
       },
       {
         "label": "피드백",
-        "count": 17
+        "count": 16
       },
       {
         "label": "완료성공",
@@ -2604,23 +2604,23 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 55,
-        "rate": 54,
+        "cumDone": 56,
+        "rate": 55,
         "newCount": 16,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 63,
-        "rate": 56,
+        "cumDone": 64,
+        "rate": 57,
         "newCount": 12,
         "doneCount": 8
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 76,
+        "cumDone": 77,
         "rate": 58,
         "newCount": 19,
         "doneCount": 13
@@ -2628,7 +2628,7 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 97,
+        "cumDone": 98,
         "rate": 60,
         "newCount": 31,
         "doneCount": 21
@@ -2636,7 +2636,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 111,
+        "cumDone": 112,
         "rate": 61,
         "newCount": 20,
         "doneCount": 14
@@ -2644,7 +2644,7 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 114,
+        "cumDone": 115,
         "rate": 58,
         "newCount": 14,
         "doneCount": 3
@@ -2652,7 +2652,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 215,
-        "cumDone": 114,
+        "cumDone": 115,
         "rate": 53,
         "newCount": 18,
         "doneCount": 0
