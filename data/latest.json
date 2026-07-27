@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T02:32:30.497799+00:00",
+  "fetchedAt": "2026-07-27T02:36:08.893445+00:00",
   "count": 204,
   "issues": [
     {
@@ -84,7 +84,7 @@
       "번호": 8,
       "일감번호": 275337,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][연결 종료] 호스트 장애로 세션 종료 시 뷰어에 \"네트워크가 불안정 합니다\" 표시 — 상대(호스트) 끊김을 상담원 네트워크 문제로 오귀인",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2250,8 +2250,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 104,
+      "notDone": 97,
+      "done": 105,
       "total": 202
     },
     "assignees": [
@@ -2300,9 +2300,9 @@
       {
         "name": "송건호",
         "total": 47,
-        "done": 31,
+        "done": 32,
         "complete": false,
-        "rate": 65
+        "rate": 68
       },
       {
         "name": "오세진",
@@ -2354,15 +2354,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 86,
-        "done": 95,
+        "progress": 85,
+        "done": 96,
         "total": 181
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 71
+        "count": 70
       },
       {
         "label": "진행",
@@ -2374,7 +2374,7 @@
       },
       {
         "label": "해결",
-        "count": 97
+        "count": 98
       },
       {
         "label": "피드백",
@@ -2523,15 +2523,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 104,
+        "cumDone": 105,
         "rate": 53,
         "newCount": 14,
-        "doneCount": 0
+        "doneCount": 1
       },
       {
         "date": "2026-07-27",
         "cumIssue": 204,
-        "cumDone": 104,
+        "cumDone": 105,
         "rate": 51,
         "newCount": 7,
         "doneCount": 0
