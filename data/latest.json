@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T02:11:48.209611+00:00",
+  "fetchedAt": "2026-07-27T02:16:06.962258+00:00",
   "count": 204,
   "issues": [
     {
@@ -513,7 +513,7 @@
       "번호": 47,
       "일감번호": 275031,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][상담이력] 이력 카드 hover 시 상세 미리보기 패널이 올라오다 말고 계속 깜빡임 — hover 상태 반복 토글로 슬라이드 애니메이션 진동 (사용성)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2250,8 +2250,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 99,
-      "done": 103,
+      "notDone": 98,
+      "done": 104,
       "total": 202
     },
     "assignees": [
@@ -2300,9 +2300,9 @@
       {
         "name": "송건호",
         "total": 47,
-        "done": 30,
+        "done": 31,
         "complete": false,
-        "rate": 63
+        "rate": 65
       },
       {
         "name": "오세진",
@@ -2354,8 +2354,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 87,
-        "done": 94,
+        "progress": 86,
+        "done": 95,
         "total": 181
       }
     ],
@@ -2366,7 +2366,7 @@
       },
       {
         "label": "진행",
-        "count": 10
+        "count": 9
       },
       {
         "label": "보류",
@@ -2374,7 +2374,7 @@
       },
       {
         "label": "해결",
-        "count": 96
+        "count": 97
       },
       {
         "label": "피드백",
@@ -2507,32 +2507,32 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 90,
-        "rate": 55,
+        "cumDone": 91,
+        "rate": 56,
         "newCount": 31,
-        "doneCount": 16
+        "doneCount": 17
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 103,
-        "rate": 56,
+        "cumDone": 104,
+        "rate": 57,
         "newCount": 20,
         "doneCount": 13
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 103,
-        "rate": 52,
+        "cumDone": 104,
+        "rate": 53,
         "newCount": 14,
         "doneCount": 0
       },
       {
         "date": "2026-07-27",
         "cumIssue": 204,
-        "cumDone": 103,
-        "rate": 50,
+        "cumDone": 104,
+        "rate": 51,
         "newCount": 7,
         "doneCount": 0
       }
