@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T05:36:07.944435+00:00",
+  "fetchedAt": "2026-07-27T05:39:55.074337+00:00",
   "count": 211,
   "issues": [
     {
@@ -1096,7 +1096,7 @@
       "번호": 100,
       "일감번호": 274809,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 그리기 툴이 기획(Figma)과 다르게 노출되어 기능 제공 확정 필요 (Mac Host의 경우 UI 사용성 개선 필요) ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1107,7 +1107,7 @@
       "번호": 101,
       "일감번호": 274806,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 그리기 상태 변경 창 및 관련 기능 (실행 취소/다시 실행/전체 지우기) 미구현 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2327,8 +2327,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 108,
+      "notDone": 99,
+      "done": 110,
       "total": 209
     },
     "assignees": [
@@ -2384,9 +2384,9 @@
       {
         "name": "오세진",
         "total": 52,
-        "done": 23,
+        "done": 25,
         "complete": false,
-        "rate": 44
+        "rate": 48
       },
       {
         "name": "이경준",
@@ -2431,8 +2431,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 87,
-        "done": 98,
+        "progress": 85,
+        "done": 100,
         "total": 185
       }
     ],
@@ -2443,7 +2443,7 @@
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 9
       },
       {
         "label": "보류",
@@ -2451,7 +2451,7 @@
       },
       {
         "label": "해결",
-        "count": 101
+        "count": 103
       },
       {
         "label": "피드백",
@@ -2568,48 +2568,48 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 62,
-        "rate": 55,
+        "cumDone": 64,
+        "rate": 57,
         "newCount": 12,
-        "doneCount": 6
+        "doneCount": 8
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 75,
-        "rate": 57,
+        "cumDone": 77,
+        "rate": 58,
         "newCount": 19,
         "doneCount": 13
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 93,
-        "rate": 57,
+        "cumDone": 95,
+        "rate": 58,
         "newCount": 31,
         "doneCount": 18
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 107,
-        "rate": 58,
+        "cumDone": 109,
+        "rate": 60,
         "newCount": 20,
         "doneCount": 14
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 108,
-        "rate": 55,
+        "cumDone": 110,
+        "rate": 56,
         "newCount": 14,
         "doneCount": 1
       },
       {
         "date": "2026-07-27",
         "cumIssue": 211,
-        "cumDone": 108,
-        "rate": 51,
+        "cumDone": 110,
+        "rate": 52,
         "newCount": 14,
         "doneCount": 0
       }
