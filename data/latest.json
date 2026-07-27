@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T06:01:06.251979+00:00",
+  "fetchedAt": "2026-07-27T06:05:59.670268+00:00",
   "count": 211,
   "issues": [
     {
@@ -535,7 +535,7 @@
       "번호": 49,
       "일감번호": 275053,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][파일전송] 수신 파일 저장 경로 기획 불일치 — 기획(공용문서\rsupport\remotecall\received files\\날짜폴더) vs 실기(내 문서\\RemoteCall\\ReceivedFiles·날짜 폴더 없음, Win/Mac 공통)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -667,7 +667,7 @@
       "번호": 61,
       "일감번호": 274999,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [파일 전송] 다중 파일 전송 (전송 시간 지연) 시, Progress Bar 진행률 실시간 미반영",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -711,7 +711,7 @@
       "번호": 65,
       "일감번호": 274985,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [파일 전송] 전송 중 취소 시, 취소된 파일이 채팅 영역에 미노출됨 — 상태값을 반영하여 노출은 필요 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2327,8 +2327,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 99,
-      "done": 110,
+      "notDone": 96,
+      "done": 113,
       "total": 209
     },
     "assignees": [
@@ -2384,9 +2384,9 @@
       {
         "name": "오세진",
         "total": 52,
-        "done": 25,
+        "done": 28,
         "complete": false,
-        "rate": 48
+        "rate": 53
       },
       {
         "name": "이경준",
@@ -2431,8 +2431,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 100,
+        "progress": 82,
+        "done": 103,
         "total": 185
       }
     ],
@@ -2443,7 +2443,7 @@
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 6
       },
       {
         "label": "보류",
@@ -2451,7 +2451,7 @@
       },
       {
         "label": "해결",
-        "count": 103
+        "count": 106
       },
       {
         "label": "피드백",
@@ -2584,32 +2584,32 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 95,
-        "rate": 58,
+        "cumDone": 98,
+        "rate": 60,
         "newCount": 31,
-        "doneCount": 18
+        "doneCount": 21
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 109,
-        "rate": 60,
+        "cumDone": 112,
+        "rate": 61,
         "newCount": 20,
         "doneCount": 14
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 110,
-        "rate": 56,
+        "cumDone": 113,
+        "rate": 57,
         "newCount": 14,
         "doneCount": 1
       },
       {
         "date": "2026-07-27",
         "cumIssue": 211,
-        "cumDone": 110,
-        "rate": 52,
+        "cumDone": 113,
+        "rate": 54,
         "newCount": 14,
         "doneCount": 0
       }
