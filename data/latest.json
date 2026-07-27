@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T07:06:09.337972+00:00",
+  "fetchedAt": "2026-07-27T07:08:20.617765+00:00",
   "count": 215,
   "issues": [
     {
@@ -307,7 +307,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [일시정지] 앱 백그라운드 상태에서 상담 재개 요청 및 일시정지 상태 안내 미노출 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-24 11:39:43",
       "link": "https://projects.rsupport.com/issues/275266"
     },
@@ -2378,10 +2378,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 35,
+        "total": 36,
         "done": 27,
         "complete": false,
-        "rate": 77
+        "rate": 75
       },
       {
         "name": "김성식(kimss)",
@@ -2427,10 +2427,10 @@
       },
       {
         "name": "오세진",
-        "total": 53,
+        "total": 52,
         "done": 29,
         "complete": false,
-        "rate": 54
+        "rate": 55
       },
       {
         "name": "이경준",
