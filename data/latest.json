@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T03:11:06.870646+00:00",
+  "fetchedAt": "2026-07-27T03:14:09.013285+00:00",
   "count": 208,
   "issues": [
     {
@@ -252,7 +252,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [그리기] 뷰어에서 실행한 그리기·텍스트·스티커 오브젝트 미노출 — iOS Host 그리기 연동 문제 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-24 10:51:02",
       "link": "https://projects.rsupport.com/issues/275261"
     },
@@ -2301,10 +2301,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 33,
+        "total": 32,
         "done": 27,
         "complete": false,
-        "rate": 81
+        "rate": 84
       },
       {
         "name": "김성식(kimss)",
@@ -2350,10 +2350,10 @@
       },
       {
         "name": "오세진",
-        "total": 52,
+        "total": 53,
         "done": 23,
         "complete": false,
-        "rate": 44
+        "rate": 43
       },
       {
         "name": "이경준",
