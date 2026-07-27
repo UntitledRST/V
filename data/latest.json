@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-27T07:16:06.407091+00:00",
+  "fetchedAt": "2026-07-27T07:18:47.411820+00:00",
   "count": 215,
   "issues": [
     {
@@ -293,10 +293,10 @@
       "번호": 27,
       "일감번호": 275283,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [파일 전송] 파일 전송 확인 팝업 내 개별 파일 삭제 기능 추가 개선 검토 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-24 13:38:12",
       "link": "https://projects.rsupport.com/issues/275283"
     },
@@ -307,7 +307,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [일시정지] 앱 백그라운드 상태에서 상담 재개 요청 및 일시정지 상태 안내 미노출 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-24 11:39:43",
       "link": "https://projects.rsupport.com/issues/275266"
     },
@@ -447,7 +447,7 @@
       "번호": 41,
       "일감번호": 275142,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 단말 설정 화면 진입 시 뷰어 PiP 노출 범위 상이 ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2371,17 +2371,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 115,
+      "notDone": 97,
+      "done": 116,
       "total": 213
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 36,
-        "done": 27,
+        "total": 34,
+        "done": 28,
         "complete": false,
-        "rate": 75
+        "rate": 82
       },
       {
         "name": "김성식(kimss)",
@@ -2427,10 +2427,10 @@
       },
       {
         "name": "오세진",
-        "total": 52,
+        "total": 54,
         "done": 29,
         "complete": false,
-        "rate": 55
+        "rate": 53
       },
       {
         "name": "이경준",
@@ -2475,19 +2475,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 84,
-        "done": 105,
+        "progress": 83,
+        "done": 106,
         "total": 189
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 74
+        "count": 72
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 9
       },
       {
         "label": "보류",
@@ -2495,7 +2495,7 @@
       },
       {
         "label": "해결",
-        "count": 108
+        "count": 109
       },
       {
         "label": "피드백",
@@ -2636,24 +2636,24 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 112,
-        "rate": 61,
+        "cumDone": 113,
+        "rate": 62,
         "newCount": 20,
-        "doneCount": 14
+        "doneCount": 15
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 115,
-        "rate": 58,
+        "cumDone": 116,
+        "rate": 59,
         "newCount": 14,
         "doneCount": 3
       },
       {
         "date": "2026-07-27",
         "cumIssue": 215,
-        "cumDone": 115,
-        "rate": 53,
+        "cumDone": 116,
+        "rate": 54,
         "newCount": 18,
         "doneCount": 0
       }
