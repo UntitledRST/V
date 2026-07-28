@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T05:01:49.037267+00:00",
+  "fetchedAt": "2026-07-28T05:06:06.507771+00:00",
   "count": 224,
   "issues": [
     {
@@ -131,7 +131,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [Agent] [상담이력] 상담이력 상세의 파일 전송 내역에 내부 데이터·내부 필드(JSON)가 그대로 노출됨  ",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이경준",
       "created_on": "2026-07-27 15:25:45",
       "link": "https://projects.rsupport.com/issues/275425"
     },
@@ -2512,10 +2512,10 @@
       },
       {
         "name": "송건호",
-        "total": 49,
+        "total": 48,
         "done": 35,
         "complete": false,
-        "rate": 71
+        "rate": 72
       },
       {
         "name": "오세진",
@@ -2526,10 +2526,10 @@
       },
       {
         "name": "이경준",
-        "total": 36,
+        "total": 37,
         "done": 16,
         "complete": false,
-        "rate": 44
+        "rate": 43
       },
       {
         "name": "장기중(Jay)",
