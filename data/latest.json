@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T08:11:09.825120+00:00",
+  "fetchedAt": "2026-07-28T08:14:37.545120+00:00",
   "count": 227,
   "issues": [
     {
@@ -1173,7 +1173,7 @@
       "번호": 107,
       "일감번호": 274883,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 퀵 제어 [문구 숨김] 기능 아이콘이 마우스 오버하지 않은 상태에서도 Default 하이라이트 처리되어 노출됨 (사용자 혼란) ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2503,8 +2503,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 94,
-      "done": 131,
+      "notDone": 93,
+      "done": 132,
       "total": 225
     },
     "assignees": [
@@ -2553,9 +2553,9 @@
       {
         "name": "송건호",
         "total": 49,
-        "done": 36,
+        "done": 37,
         "complete": false,
-        "rate": 73
+        "rate": 75
       },
       {
         "name": "오세진",
@@ -2607,15 +2607,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 80,
-        "done": 118,
+        "progress": 79,
+        "done": 119,
         "total": 198
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 61
+        "count": 60
       },
       {
         "label": "진행",
@@ -2627,7 +2627,7 @@
       },
       {
         "label": "해결",
-        "count": 97
+        "count": 98
       },
       {
         "label": "피드백",
@@ -2752,23 +2752,23 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 81,
-        "rate": 61,
+        "cumDone": 82,
+        "rate": 62,
         "newCount": 19,
-        "doneCount": 14
+        "doneCount": 15
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 103,
-        "rate": 63,
+        "cumDone": 104,
+        "rate": 64,
         "newCount": 31,
         "doneCount": 22
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 120,
+        "cumDone": 121,
         "rate": 66,
         "newCount": 20,
         "doneCount": 17
@@ -2776,23 +2776,23 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 125,
-        "rate": 63,
+        "cumDone": 126,
+        "rate": 64,
         "newCount": 14,
         "doneCount": 5
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 131,
-        "rate": 60,
+        "cumDone": 132,
+        "rate": 61,
         "newCount": 21,
         "doneCount": 6
       },
       {
         "date": "2026-07-28",
         "cumIssue": 227,
-        "cumDone": 131,
+        "cumDone": 132,
         "rate": 58,
         "newCount": 9,
         "doneCount": 0
