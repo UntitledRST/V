@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T08:30:16.808088+00:00",
+  "fetchedAt": "2026-07-28T08:31:04.854026+00:00",
   "count": 228,
   "issues": [
     {
@@ -436,7 +436,7 @@
       "번호": 40,
       "일감번호": 275283,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [파일 전송] 파일 전송 확인 팝업 내 개별 파일 삭제 기능 추가 개선 검토 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2514,8 +2514,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 94,
-      "done": 132,
+      "notDone": 93,
+      "done": 133,
       "total": 226
     },
     "assignees": [
@@ -2571,9 +2571,9 @@
       {
         "name": "오세진",
         "total": 55,
-        "done": 35,
+        "done": 36,
         "complete": false,
-        "rate": 63
+        "rate": 65
       },
       {
         "name": "이경준",
@@ -2606,8 +2606,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 13,
-        "done": 13,
+        "progress": 12,
+        "done": 14,
         "total": 26
       },
       {
@@ -2630,7 +2630,7 @@
       },
       {
         "label": "진행",
-        "count": 14
+        "count": 13
       },
       {
         "label": "보류",
@@ -2638,7 +2638,7 @@
       },
       {
         "label": "해결",
-        "count": 98
+        "count": 99
       },
       {
         "label": "피드백",
@@ -2787,15 +2787,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 126,
+        "cumDone": 127,
         "rate": 64,
         "newCount": 14,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 132,
+        "cumDone": 133,
         "rate": 61,
         "newCount": 21,
         "doneCount": 6
@@ -2803,7 +2803,7 @@
       {
         "date": "2026-07-28",
         "cumIssue": 228,
-        "cumDone": 132,
+        "cumDone": 133,
         "rate": 58,
         "newCount": 10,
         "doneCount": 0
