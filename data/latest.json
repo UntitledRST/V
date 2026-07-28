@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T07:43:30.580607+00:00",
+  "fetchedAt": "2026-07-28T07:46:10.604239+00:00",
   "count": 227,
   "issues": [
     {
@@ -920,7 +920,7 @@
       "번호": 84,
       "일감번호": 274978,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][파일전송] 파일 전송 안내 팝업 기획 확정(#273643: OS 상이 시에만 노출) 미반영 — 동일 OS 간에도 계속 노출 + '다시 보지 않기' 체크박스 미동작",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2503,8 +2503,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 95,
-      "done": 130,
+      "notDone": 94,
+      "done": 131,
       "total": 225
     },
     "assignees": [
@@ -2553,9 +2553,9 @@
       {
         "name": "송건호",
         "total": 49,
-        "done": 35,
+        "done": 36,
         "complete": false,
-        "rate": 71
+        "rate": 73
       },
       {
         "name": "오세진",
@@ -2607,15 +2607,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 81,
-        "done": 117,
+        "progress": 80,
+        "done": 118,
         "total": 198
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 63
+        "count": 62
       },
       {
         "label": "진행",
@@ -2627,7 +2627,7 @@
       },
       {
         "label": "해결",
-        "count": 96
+        "count": 97
       },
       {
         "label": "피드백",
@@ -2760,23 +2760,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 102,
+        "cumDone": 103,
         "rate": 63,
         "newCount": 31,
-        "doneCount": 21
+        "doneCount": 22
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 119,
-        "rate": 65,
+        "cumDone": 120,
+        "rate": 66,
         "newCount": 20,
         "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 124,
+        "cumDone": 125,
         "rate": 63,
         "newCount": 14,
         "doneCount": 5
@@ -2784,7 +2784,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 130,
+        "cumDone": 131,
         "rate": 60,
         "newCount": 21,
         "doneCount": 6
@@ -2792,8 +2792,8 @@
       {
         "date": "2026-07-28",
         "cumIssue": 227,
-        "cumDone": 130,
-        "rate": 57,
+        "cumDone": 131,
+        "rate": 58,
         "newCount": 9,
         "doneCount": 0
       }
