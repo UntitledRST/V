@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T05:53:36.356108+00:00",
+  "fetchedAt": "2026-07-28T05:56:05.405955+00:00",
   "count": 226,
   "issues": [
     {
@@ -175,7 +175,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [URL] 백그라운드 및 기존 URL 실행 상태에서 추가 전송 시, URL 이동 불가  ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-27 14:26:56",
       "link": "https://projects.rsupport.com/issues/275407"
     },
@@ -2499,10 +2499,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
+        "total": 39,
         "done": 31,
         "complete": false,
-        "rate": 77
+        "rate": 79
       },
       {
         "name": "김성식(kimss)",
@@ -2548,10 +2548,10 @@
       },
       {
         "name": "오세진",
-        "total": 54,
+        "total": 55,
         "done": 34,
         "complete": false,
-        "rate": 62
+        "rate": 61
       },
       {
         "name": "이경준",
