@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:09:07.391944+00:00",
+  "fetchedAt": "2026-07-28T06:11:04.092088+00:00",
   "count": 226,
   "issues": [
     {
@@ -1374,7 +1374,7 @@
       "상태": "중단(Stop)",
       "제목": "[SaaS_8.0.1_QA] 접속번호 입력 후 PC/Android Host 연결 비정상 동작 ",
       "우선순위": "높음(High)",
-      "담당자": "오세진",
+      "담당자": "박예지",
       "created_on": "2026-07-20 08:58:51",
       "link": "https://projects.rsupport.com/issues/274732"
     },
@@ -2527,10 +2527,10 @@
       },
       {
         "name": "박예지",
-        "total": 6,
-        "done": 1,
+        "total": 7,
+        "done": 2,
         "complete": false,
-        "rate": 16
+        "rate": 28
       },
       {
         "name": "변우영",
@@ -2548,8 +2548,8 @@
       },
       {
         "name": "오세진",
-        "total": 54,
-        "done": 35,
+        "total": 53,
+        "done": 34,
         "complete": false,
         "rate": 64
       },
