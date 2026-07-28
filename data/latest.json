@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T08:09:25.457259+00:00",
+  "fetchedAt": "2026-07-28T08:11:09.825120+00:00",
   "count": 227,
   "issues": [
     {
@@ -2449,10 +2449,10 @@
       "번호": 223,
       "일감번호": 273623,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] win host : 연결 중 프로그램 선택 단계에서 host 연결 progress 화면 빈화면 표시",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-06 12:07:46",
       "link": "https://projects.rsupport.com/issues/273623"
     },
@@ -2510,10 +2510,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 38,
+        "total": 37,
         "done": 31,
         "complete": false,
-        "rate": 81
+        "rate": 83
       },
       {
         "name": "김성식(kimss)",
@@ -2559,10 +2559,10 @@
       },
       {
         "name": "오세진",
-        "total": 53,
+        "total": 54,
         "done": 35,
         "complete": false,
-        "rate": 66
+        "rate": 64
       },
       {
         "name": "이경준",
@@ -2615,11 +2615,11 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 62
+        "count": 61
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 13
       },
       {
         "label": "보류",
