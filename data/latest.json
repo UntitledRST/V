@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:01:11.681304+00:00",
+  "fetchedAt": "2026-07-28T06:03:57.191298+00:00",
   "count": 226,
   "issues": [
     {
@@ -989,7 +989,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 중계 페이지 — Host 접속 후 필수 권한 설정 및 원격지원 동의 안내 플로우 미구현",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "박예지",
       "created_on": "2026-07-22 10:41:53",
       "link": "https://projects.rsupport.com/issues/274952"
     },
@@ -2527,10 +2527,10 @@
       },
       {
         "name": "박예지",
-        "total": 4,
+        "total": 5,
         "done": 1,
         "complete": false,
-        "rate": 25
+        "rate": 20
       },
       {
         "name": "변우영",
@@ -2548,10 +2548,10 @@
       },
       {
         "name": "오세진",
-        "total": 55,
+        "total": 54,
         "done": 34,
         "complete": false,
-        "rate": 61
+        "rate": 62
       },
       {
         "name": "이경준",
