@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:36:05.908041+00:00",
+  "fetchedAt": "2026-07-28T06:40:32.148896+00:00",
   "count": 227,
   "issues": [
     {
@@ -1503,7 +1503,7 @@
       "번호": 137,
       "일감번호": 274638,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] 최초 실행 시 카메라/마이크 브라우저 권한 요청 미발생 — 클립보드 권한만 요청됨 (기획: 네이티브 권한 팝업 표시)",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2503,8 +2503,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 96,
-      "done": 129,
+      "notDone": 95,
+      "done": 130,
       "total": 225
     },
     "assignees": [
@@ -2567,9 +2567,9 @@
       {
         "name": "이경준",
         "total": 34,
-        "done": 16,
+        "done": 17,
         "complete": false,
-        "rate": 47
+        "rate": 50
       },
       {
         "name": "장기중(Jay)",
@@ -2607,15 +2607,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 116,
+        "progress": 81,
+        "done": 117,
         "total": 198
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 65
+        "count": 64
       },
       {
         "label": "진행",
@@ -2627,7 +2627,7 @@
       },
       {
         "label": "해결",
-        "count": 95
+        "count": 96
       },
       {
         "label": "피드백",
@@ -2736,23 +2736,23 @@
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 56,
-        "rate": 55,
+        "cumDone": 57,
+        "rate": 56,
         "newCount": 16,
-        "doneCount": 11
+        "doneCount": 12
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 66,
-        "rate": 58,
+        "cumDone": 67,
+        "rate": 59,
         "newCount": 12,
         "doneCount": 10
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 80,
+        "cumDone": 81,
         "rate": 61,
         "newCount": 19,
         "doneCount": 14
@@ -2760,39 +2760,39 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 101,
-        "rate": 62,
+        "cumDone": 102,
+        "rate": 63,
         "newCount": 31,
         "doneCount": 21
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 118,
-        "rate": 64,
+        "cumDone": 119,
+        "rate": 65,
         "newCount": 20,
         "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 123,
-        "rate": 62,
+        "cumDone": 124,
+        "rate": 63,
         "newCount": 14,
         "doneCount": 5
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 129,
-        "rate": 59,
+        "cumDone": 130,
+        "rate": 60,
         "newCount": 21,
         "doneCount": 6
       },
       {
         "date": "2026-07-28",
         "cumIssue": 227,
-        "cumDone": 129,
+        "cumDone": 130,
         "rate": 57,
         "newCount": 9,
         "doneCount": 0
