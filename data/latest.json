@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T04:46:18.046535+00:00",
+  "fetchedAt": "2026-07-28T04:51:12.229908+00:00",
   "count": 224,
   "issues": [
     {
@@ -65,7 +65,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [접속페이지][사전동의] 고객이 동의하지 않은(미체크) 항목도 세션 중 재요청 없이 무조건 허용 — 동의 선택 결과가 어디에도 전달·보존되지 않음(제어·파일·캡처·녹화·카메라·상담공유 전 항목)",
       "우선순위": "높음(High)",
-      "담당자": "오세진",
+      "담당자": "김성식(kimss)",
       "created_on": "2026-07-28 08:24:58",
       "link": "https://projects.rsupport.com/issues/275466"
     },
@@ -945,7 +945,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 서비스 동의 안내의 미체크 항목이 자동 동의 처리되어 다음 단계로 이동함 — 권한 동의 정책과 실제 동작 간 불일치",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김성식(kimss)",
       "created_on": "2026-07-22 11:25:21",
       "link": "https://projects.rsupport.com/issues/274959"
     },
@@ -1855,7 +1855,7 @@
       "번호": 169,
       "일감번호": 274141,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 원격 제어 Off 상태에서 특수키 영역 활성화 유지 (클릭·반영은 불가)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1899,7 +1899,7 @@
       "번호": 173,
       "일감번호": 274091,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] 영상 지원 → [화면 조절] 팝업 내 버튼 노출 여부가 기획과 상이 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2470,8 +2470,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 96,
-      "done": 126,
+      "notDone": 97,
+      "done": 125,
       "total": 222
     },
     "assignees": [
@@ -2484,10 +2484,10 @@
       },
       {
         "name": "김성식(kimss)",
-        "total": 27,
+        "total": 29,
         "done": 6,
         "complete": false,
-        "rate": 22
+        "rate": 20
       },
       {
         "name": "김신혜",
@@ -2519,17 +2519,17 @@
       },
       {
         "name": "오세진",
-        "total": 55,
+        "total": 53,
         "done": 34,
         "complete": false,
-        "rate": 61
+        "rate": 64
       },
       {
         "name": "이경준",
         "total": 35,
-        "done": 17,
+        "done": 16,
         "complete": false,
-        "rate": 48
+        "rate": 45
       },
       {
         "name": "장기중(Jay)",
@@ -2567,8 +2567,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 113,
+        "progress": 83,
+        "done": 112,
         "total": 195
       }
     ],
@@ -2587,15 +2587,15 @@
       },
       {
         "label": "해결",
-        "count": 96
+        "count": 94
       },
       {
         "label": "피드백",
-        "count": 18
+        "count": 19
       },
       {
         "label": "완료성공",
-        "count": 28
+        "count": 29
       },
       {
         "label": "중단",
@@ -2664,63 +2664,63 @@
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 26,
-        "rate": 46,
+        "cumDone": 25,
+        "rate": 45,
         "newCount": 10,
-        "doneCount": 5
+        "doneCount": 4
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 37,
-        "rate": 51,
+        "cumDone": 36,
+        "rate": 50,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 40,
-        "rate": 51,
+        "cumDone": 39,
+        "rate": 49,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 45,
-        "rate": 53,
+        "cumDone": 44,
+        "rate": 52,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 56,
-        "rate": 55,
+        "cumDone": 55,
+        "rate": 54,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 65,
-        "rate": 58,
+        "cumDone": 64,
+        "rate": 57,
         "newCount": 12,
         "doneCount": 9
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 79,
-        "rate": 60,
+        "cumDone": 78,
+        "rate": 59,
         "newCount": 19,
         "doneCount": 14
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 100,
+        "cumDone": 99,
         "rate": 61,
         "newCount": 31,
         "doneCount": 21
@@ -2728,15 +2728,15 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 117,
-        "rate": 64,
+        "cumDone": 116,
+        "rate": 63,
         "newCount": 20,
         "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 121,
+        "cumDone": 120,
         "rate": 61,
         "newCount": 14,
         "doneCount": 4
@@ -2744,15 +2744,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 126,
-        "rate": 58,
+        "cumDone": 125,
+        "rate": 57,
         "newCount": 21,
         "doneCount": 5
       },
       {
         "date": "2026-07-28",
         "cumIssue": 224,
-        "cumDone": 126,
+        "cumDone": 125,
         "rate": 56,
         "newCount": 6,
         "doneCount": 0
