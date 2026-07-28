@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:51:22.204304+00:00",
+  "fetchedAt": "2026-07-28T07:22:50.111738+00:00",
   "count": 227,
   "issues": [
     {
@@ -2199,7 +2199,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] GNB 설정 버튼 클릭 시 환경설정 기본 진입 화면 기획 불일치 (코드: 장치 설정 / 기획: 기본 정보·기능 설정 상호 모순)",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식(kimss)",
+      "담당자": "김미령",
       "created_on": "2026-07-07 12:40:06",
       "link": "https://projects.rsupport.com/issues/273752"
     },
@@ -2210,7 +2210,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] 뷰어 '클립보드 보기' 버튼 무반응 — ClipboardCubit 생성 실패(DI 미등록)로 클립보드 동기화 기능군 전체 미동작",
       "우선순위": "높음(High)",
-      "담당자": "김성식(kimss)",
+      "담당자": "이경준",
       "created_on": "2026-07-07 11:53:29",
       "link": "https://projects.rsupport.com/issues/273749"
     },
@@ -2510,17 +2510,17 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 38,
+        "total": 39,
         "done": 31,
         "complete": false,
-        "rate": 81
+        "rate": 79
       },
       {
         "name": "김성식(kimss)",
-        "total": 29,
+        "total": 27,
         "done": 6,
         "complete": false,
-        "rate": 20
+        "rate": 22
       },
       {
         "name": "김신혜",
@@ -2566,10 +2566,10 @@
       },
       {
         "name": "이경준",
-        "total": 34,
+        "total": 35,
         "done": 17,
         "complete": false,
-        "rate": 50
+        "rate": 48
       },
       {
         "name": "장기중(Jay)",
