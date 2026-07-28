@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:26:10.229153+00:00",
+  "fetchedAt": "2026-07-28T06:30:03.187791+00:00",
   "count": 226,
   "issues": [
     {
@@ -337,7 +337,7 @@
       "번호": 31,
       "일감번호": 275333,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win·Mac 공통] 네트워크 순간 장애 후 '연결 끊김' 팝업에서 [다시연결] 클릭 시 재접속 실패 — 대기 시 자동 재연결은 성공(MQTT faulted 상태 즉시 재연결)",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -2492,8 +2492,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 96,
-      "done": 128,
+      "notDone": 95,
+      "done": 129,
       "total": 224
     },
     "assignees": [
@@ -2549,9 +2549,9 @@
       {
         "name": "오세진",
         "total": 53,
-        "done": 34,
+        "done": 35,
         "complete": false,
-        "rate": 64
+        "rate": 66
       },
       {
         "name": "이경준",
@@ -2596,8 +2596,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 115,
+        "progress": 81,
+        "done": 116,
         "total": 197
       }
     ],
@@ -2608,7 +2608,7 @@
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 12
       },
       {
         "label": "보류",
@@ -2616,7 +2616,7 @@
       },
       {
         "label": "해결",
-        "count": 94
+        "count": 95
       },
       {
         "label": "피드백",
@@ -2765,15 +2765,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 122,
+        "cumDone": 123,
         "rate": 62,
         "newCount": 14,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 128,
+        "cumDone": 129,
         "rate": 59,
         "newCount": 21,
         "doneCount": 6
@@ -2781,7 +2781,7 @@
       {
         "date": "2026-07-28",
         "cumIssue": 226,
-        "cumDone": 128,
+        "cumDone": 129,
         "rate": 57,
         "newCount": 8,
         "doneCount": 0
