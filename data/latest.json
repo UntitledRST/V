@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T07:28:04.194641+00:00",
+  "fetchedAt": "2026-07-28T07:31:04.816211+00:00",
   "count": 227,
   "issues": [
     {
@@ -2254,7 +2254,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] 뷰어 전송 메뉴 '파일 가져오기' 버튼 클릭 무반응 (기능 미구현)",
       "우선순위": "높음(High)",
-      "담당자": "김성식(kimss)",
+      "담당자": "이경준",
       "created_on": "2026-07-07 10:49:45",
       "link": "https://projects.rsupport.com/issues/273722"
     },
@@ -2276,7 +2276,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] 웹뷰어 채팅 '메모장으로 복사' 버튼 클릭 무반응 (버튼은 노출되나 미동작)",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식(kimss)",
+      "담당자": "이경준",
       "created_on": "2026-07-07 10:16:15",
       "link": "https://projects.rsupport.com/issues/273713"
     },
@@ -2331,7 +2331,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][바코드] OCR 인식 기능과 동일 반영 및 바코드 인식 불가",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식(kimss)",
+      "담당자": "오세진",
       "created_on": "2026-07-07 09:06:29",
       "link": "https://projects.rsupport.com/issues/273698"
     },
@@ -2386,7 +2386,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 공유함에 등록한 파일 확장자와 아이콘 불일치",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식(kimss)",
+      "담당자": "이경준",
       "created_on": "2026-07-06 15:55:20",
       "link": "https://projects.rsupport.com/issues/273649"
     },
@@ -2517,10 +2517,10 @@
       },
       {
         "name": "김성식(kimss)",
-        "total": 27,
+        "total": 23,
         "done": 6,
         "complete": false,
-        "rate": 22
+        "rate": 26
       },
       {
         "name": "김신혜",
@@ -2559,17 +2559,17 @@
       },
       {
         "name": "오세진",
-        "total": 52,
+        "total": 53,
         "done": 35,
         "complete": false,
-        "rate": 67
+        "rate": 66
       },
       {
         "name": "이경준",
-        "total": 35,
+        "total": 38,
         "done": 17,
         "complete": false,
-        "rate": 48
+        "rate": 44
       },
       {
         "name": "장기중(Jay)",
