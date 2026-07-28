@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T04:36:05.858416+00:00",
+  "fetchedAt": "2026-07-28T04:41:07.809274+00:00",
   "count": 224,
   "issues": [
     {
@@ -205,10 +205,10 @@
       "번호": 19,
       "일감번호": 275385,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 세션 공유/세션 전달 팝업 내, '상담 대기/상담 중'인 상담원인 경우 리스트 조회 불가",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-27 11:50:01",
       "link": "https://projects.rsupport.com/issues/275385"
     },
@@ -1921,7 +1921,7 @@
       "번호": 175,
       "일감번호": 274080,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [새 연결 시작하기] → 뷰어 툴바의 지원 시간 Timer 초기화 불가 및 상담 이력 내 지원 시간 오류 ",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -2470,15 +2470,15 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 124,
+      "notDone": 97,
+      "done": 125,
       "total": 222
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
-        "done": 28,
+        "total": 41,
+        "done": 29,
         "complete": false,
         "rate": 70
       },
@@ -2519,10 +2519,10 @@
       },
       {
         "name": "오세진",
-        "total": 56,
+        "total": 55,
         "done": 34,
         "complete": false,
-        "rate": 60
+        "rate": 61
       },
       {
         "name": "이경준",
@@ -2555,8 +2555,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 15,
-        "done": 11,
+        "progress": 14,
+        "done": 12,
         "total": 26
       },
       {
@@ -2579,7 +2579,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -2595,7 +2595,7 @@
       },
       {
         "label": "완료성공",
-        "count": 26
+        "count": 27
       },
       {
         "label": "중단",
@@ -2744,16 +2744,16 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 124,
+        "cumDone": 125,
         "rate": 57,
         "newCount": 21,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-28",
         "cumIssue": 224,
-        "cumDone": 124,
-        "rate": 55,
+        "cumDone": 125,
+        "rate": 56,
         "newCount": 6,
         "doneCount": 0
       }
