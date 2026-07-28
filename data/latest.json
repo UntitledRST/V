@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:06:03.809227+00:00",
+  "fetchedAt": "2026-07-28T06:09:07.391944+00:00",
   "count": 226,
   "issues": [
     {
@@ -183,10 +183,10 @@
       "번호": 17,
       "일감번호": 275403,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [세션 공유] 방장 뷰어의 공유 상담원 상태 확인 및 페이지네이션 동작 — 기획 문언 확인 요청",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "박예지",
       "created_on": "2026-07-27 14:10:42",
       "link": "https://projects.rsupport.com/issues/275403"
     },
@@ -1371,7 +1371,7 @@
       "번호": 125,
       "일감번호": 274732,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "중단(Stop)",
       "제목": "[SaaS_8.0.1_QA] 접속번호 입력 후 PC/Android Host 연결 비정상 동작 ",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -2492,17 +2492,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 96,
-      "done": 128,
+      "notDone": 95,
+      "done": 129,
       "total": 224
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 39,
+        "total": 38,
         "done": 31,
         "complete": false,
-        "rate": 79
+        "rate": 81
       },
       {
         "name": "김성식(kimss)",
@@ -2527,10 +2527,10 @@
       },
       {
         "name": "박예지",
-        "total": 5,
+        "total": 6,
         "done": 1,
         "complete": false,
-        "rate": 20
+        "rate": 16
       },
       {
         "name": "변우영",
@@ -2549,9 +2549,9 @@
       {
         "name": "오세진",
         "total": 54,
-        "done": 34,
+        "done": 35,
         "complete": false,
-        "rate": 62
+        "rate": 64
       },
       {
         "name": "이경준",
@@ -2596,19 +2596,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 115,
+        "progress": 81,
+        "done": 116,
         "total": 197
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 66
+        "count": 64
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 13
       },
       {
         "label": "보류",
@@ -2628,7 +2628,7 @@
       },
       {
         "label": "중단",
-        "count": 3
+        "count": 4
       },
       {
         "label": "완료실패",
@@ -2733,15 +2733,15 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 66,
-        "rate": 58,
+        "cumDone": 67,
+        "rate": 59,
         "newCount": 12,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 80,
+        "cumDone": 81,
         "rate": 61,
         "newCount": 19,
         "doneCount": 14
@@ -2749,23 +2749,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 101,
-        "rate": 62,
+        "cumDone": 102,
+        "rate": 63,
         "newCount": 31,
         "doneCount": 21
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 118,
-        "rate": 64,
+        "cumDone": 119,
+        "rate": 65,
         "newCount": 20,
         "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 122,
+        "cumDone": 123,
         "rate": 62,
         "newCount": 14,
         "doneCount": 4
@@ -2773,7 +2773,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 128,
+        "cumDone": 129,
         "rate": 59,
         "newCount": 21,
         "doneCount": 6
@@ -2781,7 +2781,7 @@
       {
         "date": "2026-07-28",
         "cumIssue": 226,
-        "cumDone": 128,
+        "cumDone": 129,
         "rate": 57,
         "newCount": 8,
         "doneCount": 0
