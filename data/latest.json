@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T02:01:04.522679+00:00",
+  "fetchedAt": "2026-07-28T02:05:30.765829+00:00",
   "count": 221,
   "issues": [
     {
@@ -1847,7 +1847,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][그리기] 생성 완료된 호스트 오브젝트 삭제/복원 불가 및 뷰어 키보드 키 동작 반응 없음 ",
       "우선순위": "보통(Normal)",
-      "담당자": "박승진",
+      "담당자": "김미령",
       "created_on": "2026-07-10 14:29:23",
       "link": "https://projects.rsupport.com/issues/274111"
     },
@@ -2444,10 +2444,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 37,
+        "total": 38,
         "done": 28,
         "complete": false,
-        "rate": 75
+        "rate": 73
       },
       {
         "name": "김성식(kimss)",
@@ -2462,13 +2462,6 @@
         "done": 3,
         "complete": false,
         "rate": 37
-      },
-      {
-        "name": "박승진",
-        "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
       },
       {
         "name": "박예지",
