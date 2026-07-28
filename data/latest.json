@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T10:01:06.449726+00:00",
+  "fetchedAt": "2026-07-28T10:03:20.152699+00:00",
   "count": 232,
   "issues": [
     {
@@ -527,7 +527,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [제어] iOS Host 대상 제어 패널 내 기능 미구현 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식(kimss)",
+      "담당자": "이경준",
       "created_on": "2026-07-24 09:51:03",
       "link": "https://projects.rsupport.com/issues/275255"
     },
@@ -2572,10 +2572,10 @@
       },
       {
         "name": "김성식(kimss)",
-        "total": 26,
+        "total": 25,
         "done": 6,
         "complete": false,
-        "rate": 23
+        "rate": 24
       },
       {
         "name": "김신혜",
@@ -2621,10 +2621,10 @@
       },
       {
         "name": "이경준",
-        "total": 38,
+        "total": 39,
         "done": 19,
         "complete": false,
-        "rate": 50
+        "rate": 48
       },
       {
         "name": "장기중(Jay)",
