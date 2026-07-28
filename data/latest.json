@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T09:01:21.688803+00:00",
+  "fetchedAt": "2026-07-28T09:06:04.585507+00:00",
   "count": 230,
   "issues": [
     {
@@ -293,7 +293,7 @@
       "번호": 27,
       "일감번호": 275375,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 포인터(레이저/스팟) 사용 중 '제어 일시중단' 인지 UI 부재 — 안내 표시 신규",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1976,7 +1976,7 @@
       "번호": 180,
       "일감번호": 274090,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 영상 지원 → 뷰어 화면에 포인터 (포인터, 레이저, 스팟라이트) 미노출 및 반응 없음",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2306,7 +2306,7 @@
       "번호": 210,
       "일감번호": 273713,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] 웹뷰어 채팅 '메모장으로 복사' 버튼 클릭 무반응 (버튼은 노출되나 미동작)",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2536,8 +2536,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 95,
-      "done": 133,
+      "notDone": 93,
+      "done": 135,
       "total": 228
     },
     "assignees": [
@@ -2600,9 +2600,9 @@
       {
         "name": "이경준",
         "total": 38,
-        "done": 17,
+        "done": 19,
         "complete": false,
-        "rate": 44
+        "rate": 50
       },
       {
         "name": "장기중(Jay)",
@@ -2628,8 +2628,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 13,
-        "done": 14,
+        "progress": 12,
+        "done": 15,
         "total": 27
       },
       {
@@ -2640,19 +2640,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 81,
-        "done": 119,
+        "progress": 80,
+        "done": 120,
         "total": 200
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 58
+        "count": 57
       },
       {
         "label": "진행",
-        "count": 19
+        "count": 18
       },
       {
         "label": "보류",
@@ -2660,7 +2660,7 @@
       },
       {
         "label": "해결",
-        "count": 99
+        "count": 101
       },
       {
         "label": "피드백",
@@ -2737,63 +2737,63 @@
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 26,
-        "rate": 46,
+        "cumDone": 27,
+        "rate": 48,
         "newCount": 10,
-        "doneCount": 4
+        "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 37,
-        "rate": 51,
+        "cumDone": 38,
+        "rate": 53,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 40,
-        "rate": 51,
+        "cumDone": 41,
+        "rate": 52,
         "newCount": 7,
         "doneCount": 3
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 45,
-        "rate": 53,
+        "cumDone": 46,
+        "rate": 54,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 57,
-        "rate": 56,
+        "cumDone": 58,
+        "rate": 57,
         "newCount": 16,
         "doneCount": 12
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 67,
-        "rate": 59,
+        "cumDone": 68,
+        "rate": 60,
         "newCount": 12,
         "doneCount": 10
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 82,
-        "rate": 62,
+        "cumDone": 83,
+        "rate": 63,
         "newCount": 19,
         "doneCount": 15
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 104,
+        "cumDone": 105,
         "rate": 64,
         "newCount": 31,
         "doneCount": 22
@@ -2801,32 +2801,32 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 121,
-        "rate": 66,
+        "cumDone": 122,
+        "rate": 67,
         "newCount": 20,
         "doneCount": 17
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 127,
-        "rate": 64,
+        "cumDone": 128,
+        "rate": 65,
         "newCount": 14,
         "doneCount": 6
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 133,
-        "rate": 61,
+        "cumDone": 135,
+        "rate": 62,
         "newCount": 21,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-28",
         "cumIssue": 230,
-        "cumDone": 133,
-        "rate": 58,
+        "cumDone": 135,
+        "rate": 59,
         "newCount": 12,
         "doneCount": 0
       }
