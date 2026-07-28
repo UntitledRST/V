@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T01:19:04.203991+00:00",
+  "fetchedAt": "2026-07-28T01:21:08.231268+00:00",
   "count": 221,
   "issues": [
     {
@@ -439,7 +439,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][설치] Windows 에이전트 설치 경로가 per-user(%LOCALAPPDATA%)로 전환됨 — B2B 배포 모델 변경에 대한 기획 협의 및 기술지원·영업 공유 필요 (RC7.6.7 은 Program Files per-machine)",
       "우선순위": "보통(Normal)",
-      "담당자": "박승진",
+      "담당자": "송건호",
       "created_on": "2026-07-23 17:36:38",
       "link": "https://projects.rsupport.com/issues/275228"
     },
@@ -2465,7 +2465,7 @@
       },
       {
         "name": "박승진",
-        "total": 5,
+        "total": 4,
         "done": 0,
         "complete": false,
         "rate": 0
@@ -2486,10 +2486,10 @@
       },
       {
         "name": "송건호",
-        "total": 50,
+        "total": 51,
         "done": 35,
         "complete": false,
-        "rate": 70
+        "rate": 68
       },
       {
         "name": "오세진",
