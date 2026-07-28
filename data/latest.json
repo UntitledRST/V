@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-28T06:41:13.920412+00:00",
+  "fetchedAt": "2026-07-28T06:46:00.447283+00:00",
   "count": 227,
   "issues": [
     {
@@ -205,10 +205,10 @@
       "번호": 19,
       "일감번호": 275402,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [전송] 세션 공유 종료 후, 공유 이력 존재하는 대상 뷰어는 상담원 리스트 내 갱신 불가   ",
       "우선순위": "보통(Normal)",
-      "담당자": "장기중(Jay)",
+      "담당자": "김신혜",
       "created_on": "2026-07-27 13:48:54",
       "link": "https://projects.rsupport.com/issues/275402"
     },
@@ -2524,10 +2524,10 @@
       },
       {
         "name": "김신혜",
-        "total": 8,
+        "total": 9,
         "done": 5,
         "complete": false,
-        "rate": 62
+        "rate": 55
       },
       {
         "name": "박승진",
@@ -2573,10 +2573,10 @@
       },
       {
         "name": "장기중(Jay)",
-        "total": 2,
+        "total": 1,
         "done": 1,
-        "complete": false,
-        "rate": 50
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "전기호",
@@ -2615,7 +2615,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 64
+        "count": 63
       },
       {
         "label": "진행",
@@ -2631,7 +2631,7 @@
       },
       {
         "label": "피드백",
-        "count": 19
+        "count": 20
       },
       {
         "label": "완료성공",
