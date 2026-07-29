@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-29T07:16:06.454077+00:00",
+  "fetchedAt": "2026-07-29T07:20:30.940403+00:00",
   "count": 246,
   "issues": [
     {
@@ -1910,7 +1910,7 @@
       "번호": 174,
       "일감번호": 274343,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] mac host : win(web) viewer - mac host(intel os26) 마우스 제어, 레이저포인터 등 좌표 안맞는 문제",
       "우선순위": "높음(High)",
       "담당자": "김성식",
@@ -2712,8 +2712,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
-      "done": 142,
+      "notDone": 101,
+      "done": 143,
       "total": 244
     },
     "assignees": [
@@ -2727,9 +2727,9 @@
       {
         "name": "김성식",
         "total": 26,
-        "done": 8,
+        "done": 9,
         "complete": false,
-        "rate": 30
+        "rate": 34
       },
       {
         "name": "김신혜",
@@ -2816,8 +2816,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 88,
-        "done": 126,
+        "progress": 87,
+        "done": 127,
         "total": 214
       }
     ],
@@ -2828,7 +2828,7 @@
       },
       {
         "label": "진행",
-        "count": 24
+        "count": 23
       },
       {
         "label": "보류",
@@ -2836,7 +2836,7 @@
       },
       {
         "label": "해결",
-        "count": 108
+        "count": 109
       },
       {
         "label": "피드백",
@@ -2929,47 +2929,47 @@
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 43,
-        "rate": 54,
+        "cumDone": 44,
+        "rate": 56,
         "newCount": 7,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 48,
-        "rate": 56,
+        "cumDone": 49,
+        "rate": 58,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 60,
-        "rate": 59,
+        "cumDone": 61,
+        "rate": 60,
         "newCount": 16,
         "doneCount": 12
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 70,
-        "rate": 62,
+        "cumDone": 71,
+        "rate": 63,
         "newCount": 12,
         "doneCount": 10
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 86,
-        "rate": 65,
+        "cumDone": 87,
+        "rate": 66,
         "newCount": 19,
         "doneCount": 16
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 109,
+        "cumDone": 110,
         "rate": 67,
         "newCount": 31,
         "doneCount": 23
@@ -2977,15 +2977,15 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 127,
-        "rate": 69,
+        "cumDone": 128,
+        "rate": 70,
         "newCount": 20,
         "doneCount": 18
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 133,
+        "cumDone": 134,
         "rate": 68,
         "newCount": 14,
         "doneCount": 6
@@ -2993,23 +2993,23 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 140,
-        "rate": 64,
+        "cumDone": 141,
+        "rate": 65,
         "newCount": 21,
         "doneCount": 7
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 142,
-        "rate": 61,
+        "cumDone": 143,
+        "rate": 62,
         "newCount": 14,
         "doneCount": 2
       },
       {
         "date": "2026-07-29",
         "cumIssue": 246,
-        "cumDone": 142,
+        "cumDone": 143,
         "rate": 58,
         "newCount": 14,
         "doneCount": 0
