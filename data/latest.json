@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-29T09:56:07.566608+00:00",
+  "fetchedAt": "2026-07-29T09:59:38.875161+00:00",
   "count": 250,
   "issues": [
     {
       "번호": 1,
       "일감번호": 275668,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "중단(Stop)",
       "제목": "[SaaS_8.0.1_QA] [에이전트][장치 설정] 저장 실패 팝업 본문 문구가 3개 언어 모두 비정상 — ko \"어- 저장 실패다.\" / en \"Uh-save failed.\" / ja 문장 앞 \"語 - \" 잔존",
       "우선순위": "보통(Normal)",
       "담당자": "김신혜",
@@ -2756,8 +2756,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 105,
-      "done": 143,
+      "notDone": 104,
+      "done": 144,
       "total": 248
     },
     "assignees": [
@@ -2778,9 +2778,9 @@
       {
         "name": "김신혜",
         "total": 10,
-        "done": 5,
+        "done": 6,
         "complete": false,
-        "rate": 50
+        "rate": 60
       },
       {
         "name": "박승진",
@@ -2860,15 +2860,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 127,
+        "progress": 89,
+        "done": 128,
         "total": 217
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 64
+        "count": 63
       },
       {
         "label": "진행",
@@ -2892,7 +2892,7 @@
       },
       {
         "label": "중단",
-        "count": 3
+        "count": 4
       },
       {
         "label": "완료실패",
@@ -3053,10 +3053,10 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 143,
-        "rate": 57,
+        "cumDone": 144,
+        "rate": 58,
         "newCount": 18,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
