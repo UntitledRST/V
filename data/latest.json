@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-29T10:46:18.790959+00:00",
+  "fetchedAt": "2026-07-29T10:51:05.869903+00:00",
   "count": 250,
   "issues": [
     {
@@ -436,7 +436,7 @@
       "번호": 40,
       "일감번호": 275407,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] [URL] 백그라운드 및 기존 URL 실행 상태에서 추가 전송 시, URL 이동 불가  ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -634,7 +634,7 @@
       "번호": 58,
       "일감번호": 275295,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] 백그라운드 상태에서 원격 지원 종료 시, PiP 미종료 및 종료 페이지 미전환 — 호스트가 지원 종료 상태임을 알 수 없음 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -689,7 +689,7 @@
       "번호": 63,
       "일감번호": 275266,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [일시정지] 앱 백그라운드 상태에서 상담 재개 요청 및 일시정지 상태 안내 미노출 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2756,8 +2756,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 104,
-      "done": 144,
+      "notDone": 101,
+      "done": 147,
       "total": 248
     },
     "assignees": [
@@ -2813,9 +2813,9 @@
       {
         "name": "오세진",
         "total": 63,
-        "done": 37,
+        "done": 40,
         "complete": false,
-        "rate": 58
+        "rate": 63
       },
       {
         "name": "이경준",
@@ -2860,8 +2860,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 89,
-        "done": 128,
+        "progress": 86,
+        "done": 131,
         "total": 217
       }
     ],
@@ -2872,7 +2872,7 @@
       },
       {
         "label": "진행",
-        "count": 24
+        "count": 21
       },
       {
         "label": "보류",
@@ -2880,7 +2880,7 @@
       },
       {
         "label": "해결",
-        "count": 109
+        "count": 112
       },
       {
         "label": "피드백",
@@ -3029,32 +3029,32 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 134,
-        "rate": 68,
+        "cumDone": 136,
+        "rate": 69,
         "newCount": 14,
-        "doneCount": 6
+        "doneCount": 8
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 141,
-        "rate": 65,
+        "cumDone": 144,
+        "rate": 66,
         "newCount": 21,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 143,
-        "rate": 62,
+        "cumDone": 146,
+        "rate": 63,
         "newCount": 14,
         "doneCount": 2
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 144,
-        "rate": 58,
+        "cumDone": 147,
+        "rate": 59,
         "newCount": 18,
         "doneCount": 1
       }
