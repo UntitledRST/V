@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T08:58:56.577493+00:00",
+  "fetchedAt": "2026-07-30T09:04:13.732861+00:00",
   "count": 266,
   "issues": [
     {
@@ -1924,7 +1924,7 @@
       "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] Mac Host 압축 폴더·모듈 누적 개선 및 문의 ",
       "우선순위": "높음(High)",
-      "담당자": "김미령",
+      "담당자": "오세진",
       "created_on": "2026-07-16 14:03:02",
       "link": "https://projects.rsupport.com/issues/274642"
     },
@@ -2939,10 +2939,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 38,
+        "total": 37,
         "done": 34,
         "complete": false,
-        "rate": 89
+        "rate": 91
       },
       {
         "name": "김성식",
@@ -2988,10 +2988,10 @@
       },
       {
         "name": "오세진",
-        "total": 63,
+        "total": 64,
         "done": 43,
         "complete": false,
-        "rate": 68
+        "rate": 67
       },
       {
         "name": "이경준",
