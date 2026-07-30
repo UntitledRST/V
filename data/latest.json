@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T02:16:34.430451+00:00",
+  "fetchedAt": "2026-07-30T02:21:45.158015+00:00",
   "count": 255,
   "issues": [
     {
@@ -1671,7 +1671,7 @@
       "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [호스트][영상지원/모바일지원] 접속번호 입력 후 '이용약관 동의' 화면 미노출 (PC·Android)",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김신혜",
       "created_on": "2026-07-20 09:44:01",
       "link": "https://projects.rsupport.com/issues/274742"
     },
@@ -2832,10 +2832,10 @@
       },
       {
         "name": "김신혜",
-        "total": 10,
+        "total": 11,
         "done": 6,
         "complete": false,
-        "rate": 60
+        "rate": 54
       },
       {
         "name": "박승진",
@@ -2867,10 +2867,10 @@
       },
       {
         "name": "오세진",
-        "total": 61,
+        "total": 60,
         "done": 42,
         "complete": false,
-        "rate": 68
+        "rate": 70
       },
       {
         "name": "이경준",
