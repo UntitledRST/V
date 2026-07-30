@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T04:47:57.019953+00:00",
+  "fetchedAt": "2026-07-30T04:53:17.257062+00:00",
   "count": 257,
   "issues": [
     {
@@ -194,7 +194,7 @@
       "번호": 18,
       "일감번호": 275599,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 채팅 영역 분리 기능 미제공 - 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2833,17 +2833,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 154,
+      "notDone": 100,
+      "done": 155,
       "total": 255
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 38,
-        "done": 32,
+        "done": 33,
         "complete": false,
-        "rate": 84
+        "rate": 86
       },
       {
         "name": "김성식",
@@ -2937,15 +2937,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 138,
+        "progress": 84,
+        "done": 139,
         "total": 223
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 66
+        "count": 65
       },
       {
         "label": "진행",
@@ -2957,7 +2957,7 @@
       },
       {
         "label": "해결",
-        "count": 119
+        "count": 120
       },
       {
         "label": "피드백",
@@ -3130,15 +3130,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 154,
+        "cumDone": 155,
         "rate": 62,
         "newCount": 18,
-        "doneCount": 1
+        "doneCount": 2
       },
       {
         "date": "2026-07-30",
         "cumIssue": 257,
-        "cumDone": 154,
+        "cumDone": 155,
         "rate": 60,
         "newCount": 7,
         "doneCount": 0
