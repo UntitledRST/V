@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T08:53:44.991454+00:00",
+  "fetchedAt": "2026-07-30T08:58:56.577493+00:00",
   "count": 266,
   "issues": [
     {
@@ -65,7 +65,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [기획 요청] [뷰어] 파일 전송·URL 전송 \"공유함\" 의 상충되는 전송 후 UX 정책 통일 여부 확인 ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "박예지",
       "created_on": "2026-07-30 15:39:39",
       "link": "https://projects.rsupport.com/issues/275737"
     },
@@ -2939,10 +2939,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 39,
+        "total": 38,
         "done": 34,
         "complete": false,
-        "rate": 87
+        "rate": 89
       },
       {
         "name": "김성식",
@@ -2967,10 +2967,10 @@
       },
       {
         "name": "박예지",
-        "total": 9,
+        "total": 10,
         "done": 1,
         "complete": false,
-        "rate": 11
+        "rate": 10
       },
       {
         "name": "변우영",
