@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T01:40:15.945226+00:00",
+  "fetchedAt": "2026-07-30T01:45:27.294743+00:00",
   "count": 254,
   "issues": [
     {
@@ -274,7 +274,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [호스트][채팅] 채팅 입력창 동작 뷰어 대비 비대칭 — ①개행 입력 불가(1행 고정, 뷰어는 여러 줄 지원) ②앞뒤 공백 제거 없이 원문 전송(뷰어는 trim 후 전송)",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-28 17:46:04",
       "link": "https://projects.rsupport.com/issues/275551"
     },
@@ -447,7 +447,7 @@
       "번호": 41,
       "일감번호": 275429,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [Agent] [상담이력] 스크롤 영역 중첩으로 채팅 내역 스크롤 바 직접 조작 불가 — UI/UX 탐색성 저하",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -458,7 +458,7 @@
       "번호": 42,
       "일감번호": 275425,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [Agent] [상담이력] 상담이력 상세의 파일 전송 내역에 내부 데이터·내부 필드(JSON)가 그대로 노출됨  ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2800,17 +2800,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 151,
+      "notDone": 99,
+      "done": 153,
       "total": 252
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 35,
+        "total": 36,
         "done": 32,
         "complete": false,
-        "rate": 91
+        "rate": 88
       },
       {
         "name": "김성식",
@@ -2856,17 +2856,17 @@
       },
       {
         "name": "오세진",
-        "total": 62,
+        "total": 61,
         "done": 41,
         "complete": false,
-        "rate": 66
+        "rate": 67
       },
       {
         "name": "이경준",
         "total": 40,
-        "done": 23,
+        "done": 25,
         "complete": false,
-        "rate": 57
+        "rate": 62
       },
       {
         "name": "장기중(Jay)",
@@ -2904,8 +2904,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 135,
+        "progress": 83,
+        "done": 137,
         "total": 220
       }
     ],
@@ -2916,7 +2916,7 @@
       },
       {
         "label": "진행",
-        "count": 18
+        "count": 16
       },
       {
         "label": "보류",
@@ -2924,7 +2924,7 @@
       },
       {
         "label": "해결",
-        "count": 116
+        "count": 118
       },
       {
         "label": "피드백",
@@ -3081,32 +3081,32 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 148,
-        "rate": 68,
+        "cumDone": 150,
+        "rate": 69,
         "newCount": 21,
-        "doneCount": 8
+        "doneCount": 10
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 150,
-        "rate": 65,
+        "cumDone": 152,
+        "rate": 66,
         "newCount": 14,
         "doneCount": 2
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 151,
-        "rate": 60,
+        "cumDone": 153,
+        "rate": 61,
         "newCount": 18,
         "doneCount": 1
       },
       {
         "date": "2026-07-30",
         "cumIssue": 254,
-        "cumDone": 151,
-        "rate": 59,
+        "cumDone": 153,
+        "rate": 60,
         "newCount": 4,
         "doneCount": 0
       }
