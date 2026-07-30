@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T07:35:24.755355+00:00",
+  "fetchedAt": "2026-07-30T07:40:42.071422+00:00",
   "count": 263,
   "issues": [
     {
@@ -524,7 +524,7 @@
       "번호": 48,
       "일감번호": 275434,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [도구] 모바일 지원 세션에서 OCR·바코드 기능 노출 — 영상 지원 세션에서만 제공 필요 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2603,7 +2603,7 @@
       "번호": 237,
       "일감번호": 273749,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 뷰어 '클립보드 보기' 버튼 무반응 — ClipboardCubit 생성 실패(DI 미등록)로 클립보드 동기화 기능군 전체 미동작",
       "우선순위": "높음(High)",
       "담당자": "이경준",
@@ -2899,8 +2899,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 105,
-      "done": 156,
+      "notDone": 103,
+      "done": 158,
       "total": 261
     },
     "assignees": [
@@ -2963,9 +2963,9 @@
       {
         "name": "이경준",
         "total": 39,
-        "done": 25,
+        "done": 27,
         "complete": false,
-        "rate": 64
+        "rate": 69
       },
       {
         "name": "장기중(Jay)",
@@ -3003,8 +3003,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 86,
-        "done": 140,
+        "progress": 84,
+        "done": 142,
         "total": 226
       }
     ],
@@ -3015,7 +3015,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 14
       },
       {
         "label": "보류",
@@ -3023,7 +3023,7 @@
       },
       {
         "label": "해결",
-        "count": 118
+        "count": 120
       },
       {
         "label": "피드백",
@@ -3076,103 +3076,103 @@
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 18,
-        "rate": 55,
+        "cumDone": 19,
+        "rate": 58,
         "newCount": 18,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 19,
-        "rate": 49,
+        "cumDone": 20,
+        "rate": 51,
         "newCount": 6,
         "doneCount": 1
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 25,
-        "rate": 54,
+        "cumDone": 26,
+        "rate": 57,
         "newCount": 7,
         "doneCount": 6
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 30,
-        "rate": 54,
+        "cumDone": 31,
+        "rate": 55,
         "newCount": 10,
         "doneCount": 5
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 41,
-        "rate": 57,
+        "cumDone": 42,
+        "rate": 58,
         "newCount": 16,
         "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 45,
-        "rate": 57,
+        "cumDone": 46,
+        "rate": 58,
         "newCount": 7,
         "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 50,
-        "rate": 59,
+        "cumDone": 51,
+        "rate": 60,
         "newCount": 6,
         "doneCount": 5
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 62,
-        "rate": 61,
+        "cumDone": 63,
+        "rate": 62,
         "newCount": 16,
         "doneCount": 12
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 72,
-        "rate": 64,
+        "cumDone": 73,
+        "rate": 65,
         "newCount": 12,
         "doneCount": 10
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 89,
-        "rate": 67,
+        "cumDone": 90,
+        "rate": 68,
         "newCount": 19,
         "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 113,
-        "rate": 69,
+        "cumDone": 114,
+        "rate": 70,
         "newCount": 31,
         "doneCount": 24
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 132,
-        "rate": 72,
+        "cumDone": 133,
+        "rate": 73,
         "newCount": 20,
         "doneCount": 19
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 141,
+        "cumDone": 142,
         "rate": 72,
         "newCount": 14,
         "doneCount": 9
@@ -3180,32 +3180,32 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 152,
-        "rate": 70,
+        "cumDone": 154,
+        "rate": 71,
         "newCount": 21,
-        "doneCount": 11
+        "doneCount": 12
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 154,
-        "rate": 66,
+        "cumDone": 156,
+        "rate": 67,
         "newCount": 14,
         "doneCount": 2
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 156,
-        "rate": 62,
+        "cumDone": 158,
+        "rate": 63,
         "newCount": 18,
         "doneCount": 2
       },
       {
         "date": "2026-07-30",
         "cumIssue": 263,
-        "cumDone": 156,
-        "rate": 59,
+        "cumDone": 158,
+        "rate": 60,
         "newCount": 13,
         "doneCount": 0
       }
