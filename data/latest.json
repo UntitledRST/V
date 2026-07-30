@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T01:35:06.047118+00:00",
+  "fetchedAt": "2026-07-30T01:40:15.945226+00:00",
   "count": 254,
   "issues": [
     {
@@ -164,7 +164,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 채팅 영역 분리 기능 미제공 - 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-29 11:23:35",
       "link": "https://projects.rsupport.com/issues/275599"
     },
@@ -2807,10 +2807,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 34,
+        "total": 35,
         "done": 32,
         "complete": false,
-        "rate": 94
+        "rate": 91
       },
       {
         "name": "김성식",
@@ -2856,10 +2856,10 @@
       },
       {
         "name": "오세진",
-        "total": 63,
+        "total": 62,
         "done": 41,
         "complete": false,
-        "rate": 65
+        "rate": 66
       },
       {
         "name": "이경준",
