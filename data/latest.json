@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T05:35:04.661779+00:00",
+  "fetchedAt": "2026-07-30T05:40:18.335368+00:00",
   "count": 260,
   "issues": [
     {
@@ -843,7 +843,7 @@
       "번호": 77,
       "일감번호": 275250,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] [iOS] OS 버전에 따른 RemoteCall+ 앱 설치 동작 상이 — 지원 범위 미만 OS 설치 가능 · 지원 범위 내 특정 단말 설치 불가 ",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -1228,7 +1228,7 @@
       "번호": 112,
       "일감번호": 274995,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Mac][트레이] 트레이 메뉴 '안내창 열기' 클릭 시 호스트 툴바가 호출(복원)되지 않음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2866,8 +2866,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 155,
+      "notDone": 102,
+      "done": 156,
       "total": 258
     },
     "assignees": [
@@ -2923,9 +2923,9 @@
       {
         "name": "오세진",
         "total": 60,
-        "done": 42,
+        "done": 43,
         "complete": false,
-        "rate": 70
+        "rate": 71
       },
       {
         "name": "이경준",
@@ -2970,15 +2970,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 139,
+        "progress": 84,
+        "done": 140,
         "total": 224
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 68
+        "count": 67
       },
       {
         "label": "진행",
@@ -2998,7 +2998,7 @@
       },
       {
         "label": "완료성공",
-        "count": 31
+        "count": 32
       },
       {
         "label": "중단",
@@ -3139,23 +3139,23 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 140,
-        "rate": 71,
+        "cumDone": 141,
+        "rate": 72,
         "newCount": 14,
-        "doneCount": 8
+        "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 151,
-        "rate": 69,
+        "cumDone": 152,
+        "rate": 70,
         "newCount": 21,
         "doneCount": 11
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 153,
+        "cumDone": 154,
         "rate": 66,
         "newCount": 14,
         "doneCount": 2
@@ -3163,7 +3163,7 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 155,
+        "cumDone": 156,
         "rate": 62,
         "newCount": 18,
         "doneCount": 2
@@ -3171,7 +3171,7 @@
       {
         "date": "2026-07-30",
         "cumIssue": 260,
-        "cumDone": 155,
+        "cumDone": 156,
         "rate": 60,
         "newCount": 10,
         "doneCount": 0
