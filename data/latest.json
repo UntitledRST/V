@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T09:35:32.996104+00:00",
+  "fetchedAt": "2026-07-30T09:40:43.674878+00:00",
   "count": 266,
   "issues": [
     {
@@ -84,7 +84,7 @@
       "번호": 8,
       "일감번호": 275727,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [기획 요청][뷰어] 로컬 녹화 산출물 정책 정의 요청 — 웹뷰어(WebM·1280x720)와 응용뷰어(MP4·원본 해상도) 규격 상이, 파일명 정책 삭제 후 정의 공백",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2932,17 +2932,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 105,
-      "done": 159,
+      "notDone": 106,
+      "done": 158,
       "total": 264
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 36,
-        "done": 34,
+        "done": 33,
         "complete": false,
-        "rate": 94
+        "rate": 91
       },
       {
         "name": "김성식",
@@ -3024,8 +3024,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 16,
-        "done": 17,
+        "progress": 17,
+        "done": 16,
         "total": 33
       },
       {
@@ -3048,7 +3048,7 @@
       },
       {
         "label": "진행",
-        "count": 14
+        "count": 15
       },
       {
         "label": "보류",
@@ -3056,7 +3056,7 @@
       },
       {
         "label": "해결",
-        "count": 121
+        "count": 120
       },
       {
         "label": "피드백",
@@ -3237,10 +3237,10 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 159,
-        "rate": 60,
+        "cumDone": 158,
+        "rate": 59,
         "newCount": 16,
-        "doneCount": 1
+        "doneCount": 0
       }
     ]
   }
