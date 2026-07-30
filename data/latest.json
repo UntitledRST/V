@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-30T02:11:23.596848+00:00",
+  "fetchedAt": "2026-07-30T02:16:34.430451+00:00",
   "count": 255,
   "issues": [
     {
@@ -524,7 +524,7 @@
       "번호": 48,
       "일감번호": 275391,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][채팅] 보낸 파일 클릭 시 파일 대신 기본 폴더 열림(Win 내 문서/Mac 홈) — 송신 메시지에 원본 경로 미기록·빈 경로 클릭 가드 부재, 받은 파일(정상 실행)과 동작 비대칭",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2811,8 +2811,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 100,
-      "done": 153,
+      "notDone": 99,
+      "done": 154,
       "total": 253
     },
     "assignees": [
@@ -2868,9 +2868,9 @@
       {
         "name": "오세진",
         "total": 61,
-        "done": 41,
+        "done": 42,
         "complete": false,
-        "rate": 67
+        "rate": 68
       },
       {
         "name": "이경준",
@@ -2915,8 +2915,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 84,
-        "done": 137,
+        "progress": 83,
+        "done": 138,
         "total": 221
       }
     ],
@@ -2927,7 +2927,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 15
       },
       {
         "label": "보류",
@@ -2935,7 +2935,7 @@
       },
       {
         "label": "해결",
-        "count": 118
+        "count": 119
       },
       {
         "label": "피드백",
@@ -3092,15 +3092,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 150,
+        "cumDone": 151,
         "rate": 69,
         "newCount": 21,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 152,
+        "cumDone": 153,
         "rate": 66,
         "newCount": 14,
         "doneCount": 2
@@ -3108,15 +3108,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 153,
-        "rate": 61,
+        "cumDone": 154,
+        "rate": 62,
         "newCount": 18,
         "doneCount": 1
       },
       {
         "date": "2026-07-30",
         "cumIssue": 255,
-        "cumDone": 153,
+        "cumDone": 154,
         "rate": 60,
         "newCount": 5,
         "doneCount": 0
