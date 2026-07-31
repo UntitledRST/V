@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-07-31T05:46:08.954318+00:00",
+  "fetchedAt": "2026-07-31T05:49:30.029188+00:00",
   "count": 267,
   "issues": [
     {
@@ -1382,7 +1382,7 @@
       "번호": 126,
       "일감번호": 274970,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 상담 일시정지 시 재개 안내 문구 개선 및 [상담 재개] 버튼 미구현 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2943,8 +2943,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 107,
-      "done": 158,
+      "notDone": 108,
+      "done": 157,
       "total": 265
     },
     "assignees": [
@@ -3000,9 +3000,9 @@
       {
         "name": "오세진",
         "total": 65,
-        "done": 44,
+        "done": 43,
         "complete": false,
-        "rate": 67
+        "rate": 66
       },
       {
         "name": "이경준",
@@ -3047,8 +3047,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 88,
-        "done": 142,
+        "progress": 89,
+        "done": 141,
         "total": 230
       }
     ],
@@ -3067,11 +3067,11 @@
       },
       {
         "label": "해결",
-        "count": 111
+        "count": 110
       },
       {
         "label": "피드백",
-        "count": 21
+        "count": 22
       },
       {
         "label": "완료성공",
@@ -3200,23 +3200,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 113,
+        "cumDone": 112,
         "rate": 69,
         "newCount": 31,
-        "doneCount": 24
+        "doneCount": 23
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 131,
-        "rate": 72,
+        "cumDone": 130,
+        "rate": 71,
         "newCount": 20,
         "doneCount": 18
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 140,
+        "cumDone": 139,
         "rate": 71,
         "newCount": 14,
         "doneCount": 9
@@ -3224,15 +3224,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 152,
-        "rate": 70,
+        "cumDone": 151,
+        "rate": 69,
         "newCount": 21,
         "doneCount": 12
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 154,
+        "cumDone": 153,
         "rate": 66,
         "newCount": 14,
         "doneCount": 2
@@ -3240,15 +3240,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 157,
-        "rate": 63,
+        "cumDone": 156,
+        "rate": 62,
         "newCount": 18,
         "doneCount": 3
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 158,
+        "cumDone": 157,
         "rate": 59,
         "newCount": 16,
         "doneCount": 1
@@ -3256,7 +3256,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 158,
+        "cumDone": 157,
         "rate": 59,
         "newCount": 1,
         "doneCount": 0
