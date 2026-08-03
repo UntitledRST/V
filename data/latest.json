@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T03:10:33.172647+00:00",
+  "fetchedAt": "2026-08-03T03:16:01.405114+00:00",
   "count": 271,
   "issues": [
     {
@@ -29,7 +29,7 @@
       "번호": 3,
       "일감번호": 275977,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][지원이력] 상담이력 엑셀 다운로드 파일의 내용(컬럼 구성) 기획 정의 확인 요청 — 기획서에는 \"엑셀 다운로드 가능\"만 있고 내용 정의 없음",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -3268,17 +3268,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 108,
-      "done": 161,
+      "notDone": 107,
+      "done": 162,
       "total": 269
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 40,
-        "done": 34,
+        "done": 35,
         "complete": false,
-        "rate": 85
+        "rate": 87
       },
       {
         "name": "김성식",
@@ -3360,8 +3360,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 17,
-        "done": 18,
+        "progress": 16,
+        "done": 19,
         "total": 35
       },
       {
@@ -3380,7 +3380,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 67
+        "count": 66
       },
       {
         "label": "진행",
@@ -3392,7 +3392,7 @@
       },
       {
         "label": "해결",
-        "count": 114
+        "count": 115
       },
       {
         "label": "피드백",
@@ -3589,10 +3589,10 @@
       {
         "date": "2026-08-03",
         "cumIssue": 271,
-        "cumDone": 161,
-        "rate": 59,
+        "cumDone": 162,
+        "rate": 60,
         "newCount": 4,
-        "doneCount": 1
+        "doneCount": 2
       }
     ]
   }
