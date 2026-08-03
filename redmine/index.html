@@ -5,50 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RC8 일감 현황</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<script>
-(function () {
-  const EXCLUDE_KEY = "rc_visit_exclude";
-
-  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("exclude") === "1") {
-    localStorage.setItem(EXCLUDE_KEY, "1");
-  }
-  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
-  if (params.get("exclude") === "0") {
-    localStorage.removeItem(EXCLUDE_KEY);
-  }
-
-  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
-  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
-    return;
-  }
-
-  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE_KEY = "rc8qa"; // rc-version-check 사이트에는 "rc-version-check"로 변경
-
-  function pad(n) { return n.toString().padStart(2, "0"); }
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-
-  const now = new Date();
-  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
-  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-
-  // 대시보드는 api.countapi.xyz 를 "namespace/key" 형식으로 읽으므로 동일하게 맞춤
-  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
-    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
-  });
-})();
-</script>
 <style>
   :root{
     --bg: #0a0e14;
@@ -105,7 +61,7 @@
   .feedback-panel > table{ flex:0 0 auto; font-size:19px; }
   .feedback-team-row td{ cursor:pointer; padding:8px 10px; }
   .feedback-team-row.active td{ background:rgba(91,157,255,0.14); }
-  .feedback-detail{ margin-top:6px; overflow:auto; flex:1 1 auto; min-height:0; }
+  .feedback-detail{ margin-top:6px; overflow:auto; flex:1 1 auto; min-height:0; overscroll-behavior:contain; }
   .feedback-detail-title{ font-size:24px; font-weight:800; margin:8px 0 12px; color:var(--text-primary); text-align:center; }
   .feedback-section{ margin-bottom:18px; }
   .feedback-section-title{ font-size:19px; font-weight:700; color:var(--text-secondary); margin:10px 0 6px; }
@@ -888,11 +844,9 @@
     var rate = totalAll === 0 ? 0 : Math.round((c.done / totalAll) * 100);
     document.getElementById('headerRateBadge').textContent = '완료율 ' + rate + '%';
 
-    var notDoneCount = state.issues.filter(function(it){ return isNotDoneStatus(it.상태); }).length;
     var highCount = state.issues.filter(function(it){
       return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위);
     }).length;
-    document.getElementById('headerNotdoneValue').textContent = notDoneCount;
     document.getElementById('headerHighValue').textContent = highCount;
 
     document.getElementById('headerNotdoneCard').onclick = function(){ setFilter('quick', 'notdone'); };
@@ -920,7 +874,7 @@
       return '<tr class="clickable" data-filter-type="status" data-filter-value="' + escapeHtml(x.label) + '">' +
         '<td>' + escapeHtml(x.label) + '</td><td class="num">' + x.count + '</td></tr>';
     }).join('');
-    rows += '<tr class="total-row"><td>합계</td><td class="num">' + sum + '</td></tr>';
+    rows += '<tr class="total-row clickable" data-filter-type="quick" data-filter-value="all"><td>합계</td><td class="num">' + sum + '</td></tr>';
     document.getElementById('statusBody').innerHTML = rows;
     bindFilterableRows('statusBody');
   }
@@ -932,7 +886,7 @@
       return '<tr class="clickable" data-filter-type="' + filterType + '" data-filter-value="' + escapeHtml(r.label) + '">' +
         '<td>' + escapeHtml(r.label) + '</td><td class="num">' + r.progress + '</td><td class="num">' + r.done + '</td><td class="num">' + r.total + '</td></tr>';
     }).join('');
-    body += '<tr class="total-row"><td>합계</td><td class="num">' + sumP + '</td><td class="num">' + sumD + '</td><td class="num">' + sumT + '</td></tr>';
+    body += '<tr class="total-row clickable" data-filter-type="quick" data-filter-value="all"><td>합계</td><td class="num">' + sumP + '</td><td class="num">' + sumD + '</td><td class="num">' + sumT + '</td></tr>';
     document.getElementById(tbodyId).innerHTML = body || '<tr><td colspan="4" class="empty">데이터 없음</td></tr>';
     bindFilterableRows(tbodyId);
   }
@@ -1142,9 +1096,25 @@
     if (scrollBox) scrollBox.scrollTop = 0;
   }
 
+  function updateHeaderNotdoneButton(){
+    var el = document.getElementById('headerNotdoneCard');
+    var valueEl = document.getElementById('headerNotdoneValue');
+    if (!el || !valueEl) return;
+    var f = state.filter;
+    var isNotdoneActive = f && f.type === 'quick' && f.value === 'notdone';
+    if (isNotdoneActive){
+      el.firstChild.textContent = '전체 ';
+      valueEl.textContent = state.issues.length;
+    } else {
+      el.firstChild.textContent = '미처리 ';
+      valueEl.textContent = state.issues.filter(function(it){ return isNotDoneStatus(it.상태); }).length;
+    }
+  }
+
   function renderIssues(){
     var list = state.issues;
     var f = state.filter;
+    updateHeaderNotdoneButton();
     if (f){
       if (f.type === 'assignee'){
         list = list.filter(function(it){ return it.담당자 === f.value; });
