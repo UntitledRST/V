@@ -193,6 +193,19 @@
   .chart-tooltip-row .chart-tooltip-value{ color:#93a1b3; font-weight:600; }
   .chart-tooltip-row:hover .chart-tooltip-value{ color:#fff; }
 
+  /* 화면 높이가 낮은 경우(노트북 등) 세로 여백/요소 크기를 더 압축해서 한 화면에 맞춤 */
+  @media (max-height: 800px){
+    .issues-panel .issues-table-scroll{ max-height:16vh; }
+    .chart-wrap{ height:120px; }
+    .dashboard-grid{ gap:6px; }
+    .panel{ padding:8px 12px; }
+    .panel h2{ margin-bottom:4px; font-size:17px; }
+  }
+  @media (max-height: 650px){
+    .issues-panel .issues-table-scroll{ max-height:13vh; }
+    .chart-wrap{ height:90px; }
+  }
+
   @media (max-width: 1100px){
     .panels{ grid-template-columns: repeat(2, 1fr); }
     .dashboard-grid{
@@ -272,7 +285,8 @@
 
   table{ width:100%; border-collapse:collapse; font-size:15px; }
   th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.03em; padding:4px 8px; border-bottom:1px solid var(--panel-border); }
-  td{ padding:5px 9px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  td{ padding:5px 9px; border-bottom:1px solid rgba(255,255,255,0.04); white-space:nowrap; }
+  td.title-cell{ white-space:normal; }
   tr.total-row td{ font-weight:800; color:var(--text-primary); border-top:1px solid var(--panel-border); }
   tr.clickable{ cursor:pointer; }
   tr.clickable:hover td{ background:rgba(91,157,255,0.07); }
@@ -1298,6 +1312,11 @@
     window.addEventListener('touchmove', onPointerMove, { passive: false });
     window.addEventListener('mouseup', onPointerUp);
     window.addEventListener('touchend', onPointerUp);
+
+    // 창 크기가 바뀌면 드래그로 고정했던 높이값을 지워서, 새 창 크기에 맞는 기본값(19vh)으로 되돌림
+    window.addEventListener('resize', function(){
+      scrollBox.style.maxHeight = '';
+    });
   })();
 
   loadData();
