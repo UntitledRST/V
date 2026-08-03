@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T00:53:50.608753+00:00",
+  "fetchedAt": "2026-08-03T00:56:07.392183+00:00",
   "count": 267,
   "issues": [
     {
@@ -722,7 +722,7 @@
       "번호": 66,
       "일감번호": 275366,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [URL] 뷰어·호스트 간 URL 전송 정보 및 시스템 기록 노출 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2943,8 +2943,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 108,
-      "done": 157,
+      "notDone": 107,
+      "done": 158,
       "total": 265
     },
     "assignees": [
@@ -2993,9 +2993,9 @@
       {
         "name": "송건호",
         "total": 67,
-        "done": 37,
+        "done": 38,
         "complete": false,
-        "rate": 55
+        "rate": 56
       },
       {
         "name": "오세진",
@@ -3047,15 +3047,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 89,
-        "done": 141,
+        "progress": 88,
+        "done": 142,
         "total": 230
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 67
+        "count": 66
       },
       {
         "label": "진행",
@@ -3067,7 +3067,7 @@
       },
       {
         "label": "해결",
-        "count": 110
+        "count": 111
       },
       {
         "label": "피드백",
@@ -3224,15 +3224,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 151,
-        "rate": 69,
+        "cumDone": 152,
+        "rate": 70,
         "newCount": 21,
-        "doneCount": 12
+        "doneCount": 13
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 153,
+        "cumDone": 154,
         "rate": 66,
         "newCount": 14,
         "doneCount": 2
@@ -3240,15 +3240,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 156,
-        "rate": 62,
+        "cumDone": 157,
+        "rate": 63,
         "newCount": 18,
         "doneCount": 3
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 157,
+        "cumDone": 158,
         "rate": 59,
         "newCount": 16,
         "doneCount": 1
@@ -3256,7 +3256,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 157,
+        "cumDone": 158,
         "rate": 59,
         "newCount": 1,
         "doneCount": 0
