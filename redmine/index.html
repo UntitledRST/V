@@ -85,13 +85,28 @@
 
   /* ---- 메인 영역: 자연스러운 세로 흐름 (필요하면 페이지 자체가 스크롤됨) ---- */
   .page-grid{
-    display:grid; grid-template-columns: 1fr 300px; gap:8px; align-items:stretch;
+    display:grid; grid-template-columns: 1fr 340px; gap:8px; align-items:stretch;
   }
   .main-grid{
     display:flex; flex-direction:column; gap:8px; min-width:0;
   }
-  .assignee-sidebar{ display:flex; flex-direction:column; height:100%; }
+  .right-col{ display:flex; flex-direction:column; gap:8px; min-width:0; height:100%; }
+  .assignee-sidebar{ display:flex; flex-direction:column; flex:1 1 38%; min-height:0; }
   .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
+
+  .feedback-panel{ display:flex; flex-direction:column; flex:1 1 62%; min-height:0; }
+  .feedback-panel > table{ flex:0 0 auto; }
+  .feedback-team-row td{ cursor:pointer; }
+  .feedback-team-row.active td{ background:rgba(91,157,255,0.14); }
+  .feedback-detail{ margin-top:6px; overflow:auto; flex:1 1 auto; min-height:0; }
+  .feedback-detail-title{ font-size:14px; font-weight:800; margin:4px 0 6px; color:var(--text-primary); text-align:center; }
+  .feedback-section{ margin-bottom:10px; }
+  .feedback-section-title{ font-size:12.5px; font-weight:700; color:var(--text-secondary); margin:6px 0 3px; }
+  .feedback-detail table{ font-size:12px; table-layout:fixed; }
+  .feedback-detail th:nth-child(1), .feedback-detail td:nth-child(1){ width:58px; }
+  .feedback-detail th:nth-child(2), .feedback-detail td:nth-child(2){ width:60px; }
+  .feedback-detail td{ vertical-align:top; word-break:keep-all; overflow-wrap:break-word; }
+  .feedback-empty-hint{ color:var(--text-tertiary); font-size:13px; text-align:center; padding:16px 8px; }
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
@@ -185,7 +200,10 @@
     .issues-panel .issues-table-scroll{ max-height:280px; }
     .panels{ grid-template-columns: 1fr; gap:10px; }
     .page-grid{ grid-template-columns: 1fr; }
-    .assignee-sidebar{ height:auto; }
+    .right-col{ height:auto; }
+    .assignee-sidebar{ height:auto; flex:none; }
+    .feedback-panel{ flex:none; }
+    .feedback-detail{ max-height:340px; }
     .chart-wrap{ height:300px; }
 
     /* 표 내용이 화면보다 넓으면 잘리지 않고 옆으로 스크롤되도록 함 */
@@ -393,6 +411,19 @@
 
   </div>
 
+  <div class="right-col">
+
+  <div class="panel feedback-panel">
+    <h2 class="c-orange">피드백 (<span id="feedbackTotalCount">0</span>건)</h2>
+    <table>
+      <thead><tr><th>담당주체</th><th style="text-align:right">건수</th><th style="text-align:right">비중</th></tr></thead>
+      <tbody id="feedbackTeamBody"></tbody>
+    </table>
+    <div id="feedbackDetailArea" class="feedback-detail">
+      <div class="feedback-empty-hint">담당주체를 클릭하면 세부 내용이 표시됩니다</div>
+    </div>
+  </div>
+
   <div class="panel assignee-sidebar">
     <h2 class="c-blue">담당자별</h2>
     <div class="assignee-scroll">
@@ -403,6 +434,7 @@
     </div>
   </div>
 
+  </div>
   </div>
 </div>
 
@@ -464,6 +496,43 @@
   // ====== 파트/접속유형/기능/환경 분류 규칙 ======
   // 실제 데이터(API)에는 이 4가지가 별도 필드로 없어서, 제목(및 제목 속 [대괄호] 태그)에서
   // 아래 키워드를 찾아 자동 분류합니다. 실데이터로 확인 후 안 맞으면 이 키워드 목록만 수정하면 됩니다.
+  // ====== 피드백 코멘트 분석 결과 (수동 분석, 정적 데이터) ======
+  // 주의: 이 목록은 2026-08-03 기준 피드백 23건의 실제 댓글을 읽고 사람이 직접 분류한 결과입니다.
+  // 새 피드백 이슈가 생기거나 댓글이 추가되면 이 배열도 함께 갱신해야 최신 상태를 반영합니다.
+  var FEEDBACK_TEAM_ORDER = ['QA', '기획', '디자인', '개발'];
+  var FEEDBACK_ANALYSIS = [
+    // ---- QA팀 (7건) ----
+    { id: 275402, team: 'QA', section: 1, sectionTitle: '재현 여부 재확인 필요', assignee: '김신혜', desc: '세션 공유 리스트 갱신 불가 — 개발(장기중)이 재현 안 된다고 회신, 재현 조건 재확인 필요' },
+    { id: 274732, team: 'QA', section: 1, sectionTitle: '재현 여부 재확인 필요', assignee: '박예지', desc: 'Host 연결 비정상 — 개발(김성식)이 "이미 해결된 것으로 판단", 재현 여부 회신 필요' },
+    { id: 274897, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', assignee: '박예지', desc: '모바일↔영상지원 전환 — 개발+기획 모두 "결함 아님" 결론, 최신 빌드 재검증만 남음' },
+    { id: 274049, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', assignee: '박예지', desc: '툴바 위치·크기 — 남은 현상도 "의도된 동작"이라고 개발이 확인함' },
+    { id: 273963, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', assignee: '김신혜', desc: 'Welcome 지원방식 카드 — 정책·문서 정리 완료, 최종 확인만 필요' },
+    { id: 273841, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', assignee: '김신혜', desc: '환경설정 필수값 정책 — 정책·Figma 반영 완료, 최종 검증만 필요' },
+    { id: 274295, team: 'QA', section: 3, sectionTitle: '정보 부족 — 진행상황 확인 필요', assignee: '박예지', desc: '그리기 도구 상태 초기화 누락 — 스크린샷만 있고 텍스트 코멘트 없어 상태 파악 불가' },
+
+    // ---- 기획팀 (4건) ----
+    { id: 274970, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '오세진', desc: '상담 재개 안내 — 토스트 문구 누락(2번째 문장) 반영 여부 판단 필요' },
+    { id: 274546, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김신혜', desc: '지원시간 KST 고정 — 디바이스 타임존 정책과 상충 여부, 서버팀과 재협의 필요' },
+    { id: 274306, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김신혜', desc: '상담 재개 흐름 — 버튼·토스트 문구 2건 최종 확정 필요 (#274970과 연동)' },
+    { id: 274809, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김미령', desc: '그리기 툴 — 기능은 완성, Figma 문서 갱신 필요' },
+
+    // ---- 디자인팀 (3건) ----
+    { id: 274112, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', assignee: '변우영', desc: '그리기 패널 버튼 UI·위치 상이 — 기능 누락 아니면 문제없다는 방침 이미 확정' },
+    { id: 273741, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', assignee: '변우영', desc: '채팅 영역 버튼 UI·위치 상이 — 동일 방침 적용' },
+    { id: 273615, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', assignee: '변우영', desc: 'windows app viewer 메뉴·디자인 정리 — 동일 방침 적용' },
+
+    // ---- 개발팀 (9건) ----
+    { id: 275145, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', assignee: '오세진', desc: '스크롤 방향이 반대로 동작 — 방향 로직 수정 필요' },
+    { id: 274980, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', assignee: '오세진', desc: '호스트 단에서 동일 스크롤 버그 재발 — 호스트 쪽 추가 수정 필요' },
+    { id: 274091, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', assignee: '이경준', desc: 'Mobile Host에서 버튼 미노출 처리가 안 됨 — 모바일 케이스 추가 수정 필요' },
+    { id: 274569, team: '개발', section: 2, sectionTitle: '우선순위/일정 확정 대기', assignee: '김성식→송건호', desc: '커서 동기화 — 버그로 확정됐으나 8월 일정 배정만 남음' },
+    { id: 274252, team: '개발', section: 2, sectionTitle: '우선순위/일정 확정 대기', assignee: '송건호', desc: '취소/다시 버튼 조건 — 단순 버그는 수정 가능하나 개선안은 일정 조율 필요' },
+    { id: 273719, team: '개발', section: 3, sectionTitle: '타당성 검토·구현현황 회신 대기', assignee: '이경준', desc: '마이크 On/Off 동기화 — 기획 의도는 설명됐으나 개발의 구현현황 회신 필요' },
+    { id: 273703, team: '개발', section: 3, sectionTitle: '타당성 검토·구현현황 회신 대기', assignee: '김성식', desc: '채팅 메시지 개별 복사 — 개발 가능 여부·인터랙션 방식 회신 필요' },
+    { id: 274111, team: '개발', section: 4, sectionTitle: '이미 결정되어 별도 조치 불필요', assignee: '박승진', desc: '크로스사이드 undo/redo — 다음 릴리즈로 공식 이관 확정' },
+    { id: 273661, team: '개발', section: 4, sectionTitle: '이미 결정되어 별도 조치 불필요', assignee: '김성식', desc: 'Janus 토글 노출 — 서버녹화 기능 완료 후 정리 예정' }
+  ];
+
   var CLASSIFY_RULES = {
     part: {
       order: ['기획', '디자인', '개발'],
@@ -686,6 +755,59 @@
     renderTodaySummary();
     renderChart();
     renderIssues();
+    renderFeedbackPanel();
+  }
+
+  function renderFeedbackPanel(){
+    var counts = {};
+    FEEDBACK_TEAM_ORDER.forEach(function(t){ counts[t] = 0; });
+    FEEDBACK_ANALYSIS.forEach(function(item){ counts[item.team] = (counts[item.team] || 0) + 1; });
+    var total = FEEDBACK_ANALYSIS.length;
+    document.getElementById('feedbackTotalCount').textContent = total;
+
+    var rows = FEEDBACK_TEAM_ORDER.map(function(team){
+      var c = counts[team] || 0;
+      var pct = total === 0 ? 0 : Math.round((c / total) * 100);
+      return '<tr class="clickable feedback-team-row" data-team="' + escapeHtml(team) + '">' +
+        '<td>' + escapeHtml(team) + '</td><td class="num">' + c + '건</td><td class="num">' + pct + '%</td></tr>';
+    }).join('');
+    document.getElementById('feedbackTeamBody').innerHTML = rows;
+
+    document.querySelectorAll('#feedbackTeamBody tr[data-team]').forEach(function(tr){
+      tr.addEventListener('click', function(){
+        showFeedbackDetail(tr.getAttribute('data-team'));
+        document.querySelectorAll('#feedbackTeamBody tr[data-team]').forEach(function(r){ r.classList.remove('active'); });
+        tr.classList.add('active');
+      });
+    });
+  }
+
+  function showFeedbackDetail(team){
+    var items = FEEDBACK_ANALYSIS.filter(function(x){ return x.team === team; });
+    var bySection = {};
+    items.forEach(function(it){
+      if (!bySection[it.section]) bySection[it.section] = { title: it.sectionTitle, list: [] };
+      bySection[it.section].list.push(it);
+    });
+    var sectionKeys = Object.keys(bySection).sort(function(a, b){ return Number(a) - Number(b); });
+
+    var html = '<div class="feedback-detail-title">' + escapeHtml(team) + '팀이 처리해야 하는 건 (' + items.length + '건)</div>';
+    sectionKeys.forEach(function(key){
+      var sec = bySection[key];
+      html += '<div class="feedback-section">';
+      html += '<div class="feedback-section-title">' + key + ') ' + escapeHtml(sec.title) + '</div>';
+      html += '<table><thead><tr><th>일감번호</th><th>담당</th><th>내용</th></tr></thead><tbody>';
+      sec.list.forEach(function(it){
+        html += '<tr>' +
+          '<td><a class="issue-link" href="https://projects.rsupport.com/issues/' + it.id + '" target="_blank" rel="noopener">#' + it.id + '</a></td>' +
+          '<td>' + escapeHtml(it.assignee) + '</td>' +
+          '<td>' + escapeHtml(it.desc) + '</td>' +
+        '</tr>';
+      });
+      html += '</tbody></table></div>';
+    });
+
+    document.getElementById('feedbackDetailArea').innerHTML = html;
   }
 
   function renderTodaySummary(){
