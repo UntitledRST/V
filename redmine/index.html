@@ -53,11 +53,11 @@
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
     padding:10px 14px;
   }
-  .right-col{ display:flex; flex-direction:column; gap:8px; min-width:0; height:100%; }
+  .right-col{ display:flex; flex-direction:column; gap:8px; min-width:0; height:100%; min-height:0; overflow:hidden; }
   .assignee-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; }
   .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
 
-  .feedback-panel{ display:flex; flex-direction:column; min-height:0; height:100%; }
+  .feedback-panel{ display:flex; flex-direction:column; min-height:0; height:100%; overflow:hidden; }
   .feedback-panel > table{ flex:0 0 auto; font-size:19px; }
   .feedback-team-row td{ cursor:pointer; padding:8px 10px; }
   .feedback-team-row.active td{ background:rgba(91,157,255,0.14); }
