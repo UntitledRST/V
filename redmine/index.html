@@ -532,10 +532,9 @@
     { id: 273841, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', assignee: '김신혜', desc: '환경설정 필수값 정책 — 정책·Figma 반영 완료, 최종 검증만 필요' },
     { id: 274295, team: 'QA', section: 3, sectionTitle: '정보 부족 — 진행상황 확인 필요', assignee: '박예지', desc: '그리기 도구 상태 초기화 누락 — 스크린샷만 있고 텍스트 코멘트 없어 상태 파악 불가' },
 
-    // ---- 기획팀 (4건) ----
-    { id: 274970, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '오세진', desc: '상담 재개 안내 — 토스트 문구 누락(2번째 문장) 반영 여부 판단 필요' },
+    // ---- 기획팀 (3건) ----
     { id: 274546, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김신혜', desc: '지원시간 KST 고정 — 디바이스 타임존 정책과 상충 여부, 서버팀과 재협의 필요' },
-    { id: 274306, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김신혜', desc: '상담 재개 흐름 — 버튼·토스트 문구 2건 최종 확정 필요 (#274970과 연동)' },
+    { id: 274306, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김신혜', desc: '상담 재개 흐름 — 버튼·토스트 문구 최종 확정 필요' },
     { id: 274809, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', assignee: '김미령', desc: '그리기 툴 — 기능은 완성, Figma 문서 갱신 필요' },
 
     // ---- 디자인팀 (3건) ----
@@ -801,6 +800,13 @@
         document.querySelectorAll('#feedbackTeamBody tr[data-team]').forEach(function(r){ r.classList.remove('active'); });
         tr.classList.add('active');
       });
+    });
+
+    // 기본값: 개발팀이 처리해야 하는 건을 먼저 보여줌
+    var defaultTeam = '개발';
+    showFeedbackDetail(defaultTeam);
+    document.querySelectorAll('#feedbackTeamBody tr[data-team]').forEach(function(r){
+      r.classList.toggle('active', r.getAttribute('data-team') === defaultTeam);
     });
   }
 
