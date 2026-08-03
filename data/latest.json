@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T01:31:11.119122+00:00",
+  "fetchedAt": "2026-08-03T01:35:43.582751+00:00",
   "count": 270,
   "issues": [
     {
@@ -975,7 +975,7 @@
       "번호": 89,
       "일감번호": 275228,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][설치] Windows 에이전트 설치 경로가 per-user(%LOCALAPPDATA%)로 전환됨 — B2B 배포 모델 변경에 대한 기획 협의 및 기술지원·영업 공유 필요 (RC7.6.7 은 Program Files per-machine)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2976,8 +2976,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 110,
-      "done": 158,
+      "notDone": 109,
+      "done": 159,
       "total": 268
     },
     "assignees": [
@@ -3026,9 +3026,9 @@
       {
         "name": "송건호",
         "total": 68,
-        "done": 38,
+        "done": 39,
         "complete": false,
-        "rate": 55
+        "rate": 57
       },
       {
         "name": "오세진",
@@ -3068,8 +3068,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 19,
-        "done": 16,
+        "progress": 18,
+        "done": 17,
         "total": 35
       },
       {
@@ -3088,7 +3088,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 69
+        "count": 68
       },
       {
         "label": "진행",
@@ -3100,7 +3100,7 @@
       },
       {
         "label": "해결",
-        "count": 111
+        "count": 112
       },
       {
         "label": "피드백",
@@ -3241,15 +3241,15 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 130,
-        "rate": 71,
+        "cumDone": 131,
+        "rate": 72,
         "newCount": 20,
-        "doneCount": 18
+        "doneCount": 19
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 139,
+        "cumDone": 140,
         "rate": 71,
         "newCount": 14,
         "doneCount": 9
@@ -3257,7 +3257,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 152,
+        "cumDone": 153,
         "rate": 70,
         "newCount": 21,
         "doneCount": 13
@@ -3265,15 +3265,15 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 154,
-        "rate": 66,
+        "cumDone": 155,
+        "rate": 67,
         "newCount": 14,
         "doneCount": 2
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 157,
+        "cumDone": 158,
         "rate": 63,
         "newCount": 18,
         "doneCount": 3
@@ -3281,23 +3281,23 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 158,
-        "rate": 59,
+        "cumDone": 159,
+        "rate": 60,
         "newCount": 16,
         "doneCount": 1
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 158,
-        "rate": 59,
+        "cumDone": 159,
+        "rate": 60,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 270,
-        "cumDone": 158,
+        "cumDone": 159,
         "rate": 59,
         "newCount": 3,
         "doneCount": 0
