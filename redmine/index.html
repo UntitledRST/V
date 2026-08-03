@@ -5,50 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RC8 일감 현황</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<script>
-(function () {
-  const EXCLUDE_KEY = "rc_visit_exclude";
-
-  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("exclude") === "1") {
-    localStorage.setItem(EXCLUDE_KEY, "1");
-  }
-  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
-  if (params.get("exclude") === "0") {
-    localStorage.removeItem(EXCLUDE_KEY);
-  }
-
-  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
-  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
-    return;
-  }
-
-  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE_KEY = "rc8qa"; // rc-version-check 사이트에는 "rc-version-check"로 변경
-
-  function pad(n) { return n.toString().padStart(2, "0"); }
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-
-  const now = new Date();
-  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
-  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-
-  // 대시보드는 api.countapi.xyz 를 "namespace/key" 형식으로 읽으므로 동일하게 맞춤
-  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
-    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
-  });
-})();
-</script>
 <style>
   :root{
     --bg: #0a0e14;
@@ -413,6 +369,7 @@
         <span class="mini-stat rate-badge" id="headerRateBadge">완료율 &mdash;</span>
         <span class="mini-stat mini-clickable" id="headerHighCard">우선순위 높음 <span id="headerHighValue">&mdash;</span>건</span>
         <span class="mini-stat mini-clickable" id="headerNotdoneCard">미처리 <span id="headerNotdoneValue">&mdash;</span>건</span>
+        <span class="mini-stat mini-clickable" id="headerTodayNewCard">금일 등록 <span id="headerTodayNewValue">&mdash;</span>건</span>
       </span>
       <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
       <span id="lastUpdated" class="last-updated">불러오는 중&hellip;</span>
@@ -884,8 +841,12 @@
   }
 
   function renderTodaySummary(){
-    // 오늘 신규/해결 카드는 삭제되어 화면에 표시하지 않습니다.
-    // (데이터 자체는 state.summary.timeline에서 필요시 계속 조회 가능)
+    var tl = state.summary.timeline;
+    if (!tl || !tl.length) return;
+    var today = tl[tl.length - 1]; // 타임라인의 마지막 날짜를 '오늘'로 간주
+
+    document.getElementById('headerTodayNewValue').textContent = today.newCount;
+    document.getElementById('headerTodayNewCard').onclick = function(){ setDayFilter(today.date, 'newCount'); };
   }
 
   function renderStats(){
