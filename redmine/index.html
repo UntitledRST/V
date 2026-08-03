@@ -73,55 +73,59 @@
   html, body{
     margin:0; padding:0; background:var(--bg); color:var(--text-primary);
     font-family:var(--sans); -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:hidden; height:100%;
   }
   .wrap{
-    width:100%; margin:0; padding:10px 20px 14px;
+    width:100%; margin:0; padding:8px 20px 8px;
+    height:100vh; box-sizing:border-box; display:flex; flex-direction:column; overflow:hidden;
   }
+  #errorBox{ flex:0 0 auto; }
+  .issues-panel{ flex:0 0 auto; }
 
   #errorBox:empty{ display:none; }
   .last-updated{ margin:0; font-size:13px; font-weight:400; color:var(--text-secondary); }
   .last-updated span{ color:var(--green); font-family:var(--mono); }
 
-  /* ---- 메인 영역: 자연스러운 세로 흐름 (필요하면 페이지 자체가 스크롤됨) ---- */
+  /* ---- 메인 영역: 뷰포트 남은 높이를 꽉 채우고, 넘치면 내부에서만 스크롤 ---- */
   .page-grid{
     display:grid; grid-template-columns: 1fr 1fr; gap:8px; align-items:stretch;
+    flex:1 1 auto; min-height:0;
   }
   .main-grid{
+    overflow:visible; min-height:0;
     display:flex; flex-direction:column; gap:8px; min-width:0; height:100%;
+    background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
+    padding:10px 14px;
   }
   .right-col{ display:flex; flex-direction:column; gap:8px; min-width:0; height:100%; }
   .assignee-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; }
   .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
 
   .feedback-panel{ display:flex; flex-direction:column; min-height:0; height:100%; }
-  .feedback-panel > table{ flex:0 0 auto; }
-  .feedback-team-row td{ cursor:pointer; }
+  .feedback-panel > table{ flex:0 0 auto; font-size:19px; }
+  .feedback-team-row td{ cursor:pointer; padding:8px 10px; }
   .feedback-team-row.active td{ background:rgba(91,157,255,0.14); }
   .feedback-detail{ margin-top:6px; overflow:auto; flex:1 1 auto; min-height:0; }
-  .feedback-detail-title{ font-size:14px; font-weight:800; margin:4px 0 6px; color:var(--text-primary); text-align:center; }
-  .feedback-section{ margin-bottom:10px; }
-  .feedback-section-title{ font-size:12.5px; font-weight:700; color:var(--text-secondary); margin:6px 0 3px; }
-  .feedback-detail table{ font-size:12px; table-layout:fixed; }
-  .feedback-detail th:nth-child(1), .feedback-detail td:nth-child(1){ width:58px; }
-  .feedback-detail th:nth-child(2), .feedback-detail td:nth-child(2){ width:60px; }
-  .feedback-detail td{ vertical-align:top; word-break:keep-all; overflow-wrap:break-word; }
-  .feedback-empty-hint{ color:var(--text-tertiary); font-size:13px; text-align:center; padding:16px 8px; }
+  .feedback-detail-title{ font-size:24px; font-weight:800; margin:8px 0 12px; color:var(--text-primary); text-align:center; }
+  .feedback-section{ margin-bottom:18px; }
+  .feedback-section-title{ font-size:19px; font-weight:700; color:var(--text-secondary); margin:10px 0 6px; }
+  .feedback-detail table{ font-size:18px; table-layout:fixed; }
+  .feedback-detail th:nth-child(1), .feedback-detail td:nth-child(1){ width:86px; }
+  .feedback-detail th:nth-child(2), .feedback-detail td:nth-child(2){ width:88px; }
+  .feedback-detail td{ vertical-align:top; word-break:keep-all; overflow-wrap:break-word; padding:9px 9px; }
+  .feedback-empty-hint{ color:var(--text-tertiary); font-size:16px; text-align:center; padding:16px 8px; }
 
   /* ---- 대시보드 카드 배치 (그리드 영역) ---- */
   .dashboard-grid{
     display:grid;
     grid-template-columns: 1fr 1fr 1.3fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
-      "total   today    assignee"
       "status  part     assignee"
       "status  conn     assignee"
       "chart   chart    chart";
     gap:8px;
   }
-  .grid-total{ grid-area: total; }
-  .grid-today{ grid-area: today; }
   .grid-assignee{ grid-area: assignee; }
   .grid-status{ grid-area: status; }
   .grid-part{ grid-area: part; }
@@ -145,6 +149,24 @@
   .total-sub-box.done .total-sub-value{ color:var(--green); }
   .total-sub-label{ font-size:13.5px; color:var(--text-secondary); }
   .total-sub-value{ font-size:26px; font-weight:800; font-family:var(--mono); }
+
+  .stat-card.total-banner-card{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    padding:2px 16px; min-height:0; height:26px;
+  }
+  .banner-item{ display:flex; align-items:center; gap:6px; cursor:pointer; }
+  .banner-divider{ width:1px; height:16px; background:var(--panel-border); }
+  .total-banner-card .label{ font-size:12px; color:var(--text-secondary); }
+  .total-banner-card .value{ font-size:15px; font-weight:800; font-family:var(--mono); color:var(--text-primary); }
+  .total-banner-card .rate-badge{ font-size:11px; padding:1px 6px; border-radius:6px; }
+  .banner-sub-label{ font-size:11px; color:var(--text-secondary); }
+  .banner-sub-value{ font-size:14px; font-weight:800; font-family:var(--mono); color:var(--blue); }
+  #todayDoneCard .banner-sub-value{ color:var(--green); }
+
+  .stat-card.total-banner-card{ display:flex; align-items:center; justify-content:center; gap:10px; padding:0 16px; min-height:0; }
+  .total-banner-card .label{ font-size:13px; color:var(--text-secondary); }
+  .total-banner-card .value{ font-size:18px; font-weight:800; font-family:var(--mono); color:var(--text-primary); }
+  .total-banner-card .rate-badge{ font-size:13px; padding:2px 8px; }
 
   /* 상단: 통계 카드 4개 한 줄 */
   .stat-row{
@@ -199,7 +221,7 @@
 
   /* 누적 차트: 전체 폭 + 큰 높이로 추세가 잘 보이도록 */
   .chart-panel{ display:flex; flex-direction:column; }
-  .chart-wrap{ position:relative; height:220px; }
+  .chart-wrap{ position:relative; height:170px; }
 
   .chart-tooltip{
     position:absolute; z-index:20; pointer-events:auto;
@@ -220,7 +242,6 @@
     .dashboard-grid{
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
-        "total   today"
         "status  part"
         "status  conn"
         "assignee assignee"
@@ -229,7 +250,11 @@
   }
 
   @media (max-width: 900px){
-    .wrap{ padding:16px 14px 32px; }
+    html, body{ height:auto; }
+    .wrap{ padding:16px 14px 32px; height:auto; overflow:visible; }
+    .page-grid{ flex:none; }
+    .main-grid{ overflow:visible; }
+    .issues-panel{ flex:none; }
     .stat-row{ grid-template-columns: repeat(2, 1fr); gap:10px; }
     .stat-card{ min-height:64px; padding:12px 14px; }
     .stat-card .label{ font-size:18px; }
@@ -256,8 +281,6 @@
     .dashboard-grid{
       grid-template-columns: 1fr;
       grid-template-areas:
-        "total"
-        "today"
         "status"
         "part"
         "conn"
@@ -303,11 +326,19 @@
   .mono{ font-family:var(--mono); }
   .num{ text-align:right; font-family:var(--mono); }
 
-  .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; }
+  .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
   .issues-panel h2 .issues-title{ flex:1; text-align:center; }
+  .issues-mini-stats{ display:flex; align-items:center; gap:8px; }
+  .mini-stat{
+    font-size:13px; font-weight:700; padding:3px 10px; border-radius:999px;
+    background:rgba(255,255,255,0.04); border:1px solid var(--panel-border); white-space:nowrap;
+  }
+  .mini-stat.rate-badge{ color:var(--blue); }
+  .mini-stat.mini-clickable{ cursor:pointer; color:var(--yellow); transition: transform .12s ease, border-color .12s ease; }
+  .mini-stat.mini-clickable:hover{ transform:translateY(-1px); border-color:var(--blue); }
 
   .stat-card.today-card{ display:flex; flex-direction:column; justify-content:center; gap:6px; padding:6px 16px; }
-  .today-card-title{ font-size:24px; font-weight:800; color:var(--blue); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .today-card-title{ font-size:14px; font-weight:800; color:var(--blue); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .today-card-body{ display:flex; gap:12px; align-items:stretch; }
   .today-main-box{
     background:var(--card-bg); border:1px solid var(--panel-border); border-radius:8px;
@@ -315,8 +346,8 @@
     transition: transform .12s ease, border-color .12s ease; flex:1 1 0; min-width:0;
   }
   .today-main-box:hover{ transform: translateY(-2px); border-color: var(--blue); }
-  .today-main-label{ font-size:19px; color:var(--text-secondary); }
-  .today-main-value{ font-size:44px; font-weight:800; font-family:var(--mono); color:var(--blue); }
+  .today-main-label{ font-size:12px; color:var(--text-secondary); }
+  .today-main-value{ font-size:24px; font-weight:800; font-family:var(--mono); color:var(--blue); }
   .today-done-box{ flex:0 0 130px; }
   .today-done-box .today-main-value{ color:var(--green); }
   .today-severity-row{ display:flex; gap:8px; }
@@ -339,10 +370,11 @@
     position:absolute; left:50%; bottom:-14px; transform:translateX(-50%);
     width:56px; height:26px; display:flex; align-items:center; justify-content:center;
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:999px;
-    color:var(--text-secondary); cursor:pointer; z-index:5; font-size:14px;
-    transition: border-color .12s ease, color .12s ease, transform .12s ease;
+    color:var(--text-secondary); cursor:ns-resize; z-index:5; font-size:14px;
+    transition: border-color .12s ease, color .12s ease;
+    touch-action:none;
   }
-  .expand-handle:hover{ border-color:var(--blue); color:var(--blue); transform:translateX(-50%) translateY(2px); }
+  .expand-handle:hover{ border-color:var(--blue); color:var(--blue); }
 
   .hidden-nav-btn{
     position:fixed; top:0; right:0; width:64px; height:64px; z-index:999;
@@ -377,6 +409,11 @@
   <div class="panel issues-panel">
     <h2>
       <span class="issues-title">전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
+      <span class="issues-mini-stats">
+        <span class="mini-stat rate-badge" id="headerRateBadge">완료율 &mdash;</span>
+        <span class="mini-stat mini-clickable" id="headerHighCard">우선순위 높음 <span id="headerHighValue">&mdash;</span>건</span>
+        <span class="mini-stat mini-clickable" id="headerNotdoneCard">미처리 <span id="headerNotdoneValue">&mdash;</span>건</span>
+      </span>
       <span class="filter-chip" id="filterChip"><span id="filterLabel"></span><span class="x">&times;</span></span>
       <span id="lastUpdated" class="last-updated">불러오는 중&hellip;</span>
     </h2>
@@ -397,8 +434,8 @@
         <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
       </table>
     </div>
-    <button type="button" id="expandIssuesBtn" class="expand-handle" aria-label="전체 이슈 목록 펼치기/접기">
-      <span id="expandIssuesArrow">&darr;</span>
+    <button type="button" id="expandIssuesBtn" class="expand-handle" aria-label="드래그해서 전체 이슈 목록 높이 조절">
+      <span id="expandIssuesArrow">&#8597;</span>
     </button>
   </div>
 
@@ -406,43 +443,6 @@
   <div class="main-grid">
 
   <div class="dashboard-grid" id="statRow">
-
-    <div class="stat-card total-card grid-total">
-      <div class="total-header">
-        <div class="total-main clickable" data-filter-type="quick" data-filter-value="all">
-          <div class="label">전체 이슈</div>
-          <div class="value" id="totalValue">&mdash;</div>
-        </div>
-        <div class="rate-badge" id="rateBadge">&mdash;</div>
-      </div>
-      <div class="total-sub-row">
-        <div class="total-sub-box notdone clickable" data-filter-type="quick" data-filter-value="notdone">
-          <div class="total-sub-label">미처리</div>
-          <div class="total-sub-value" id="notdoneValue">&mdash;</div>
-        </div>
-        <div class="total-sub-box done clickable" data-filter-type="quick" data-filter-value="done">
-          <div class="total-sub-label">처리완료</div>
-          <div class="total-sub-value" id="doneValue">&mdash;</div>
-        </div>
-      </div>
-      <div class="stack-sub-item clickable" data-filter-type="quick" data-filter-value="notdone_high" style="align-self:center;">우선순위 높음 <span id="notdoneHighValue">&mdash;</span>건</div>
-      <div class="total-severity-list" id="totalSeverityList"></div>
-    </div>
-
-    <div class="stat-card today-card grid-today">
-      <div class="today-card-title">오늘의 요약(<span id="todayDate">&mdash;</span>)</div>
-      <div class="today-card-body">
-        <div class="today-main-box clickable" id="todayNewCard">
-          <div class="today-main-label">등록</div>
-          <div class="today-main-value" id="todayNewCount">&mdash;</div>
-        </div>
-        <div class="today-main-box today-done-box clickable" id="todayDoneCard">
-          <div class="today-main-label">해결</div>
-          <div class="today-main-value" id="todayDoneCount">&mdash;</div>
-        </div>
-      </div>
-      <div class="today-severity-row" id="todaySeverityRow"></div>
-    </div>
 
     <div class="panel assignee-sidebar grid-assignee">
       <h2 class="c-blue">담당자별</h2>
@@ -877,69 +877,26 @@
   }
 
   function renderTodaySummary(){
-    var tl = state.summary.timeline;
-    if (!tl || !tl.length) return;
-    var today = tl[tl.length - 1]; // 타임라인의 마지막 날짜를 '오늘'로 간주
-
-    document.getElementById('todayDate').textContent = today.date;
-    document.getElementById('todayNewCount').textContent = today.newCount;
-    document.getElementById('todayDoneCount').textContent = today.doneCount;
-
-    var todaysNewIssues = state.issues.filter(function(it){
-      return (it.created_on || '').split(' ')[0] === today.date;
-    });
-
-    var severityHtml = PRIORITY_TIERS.map(function(tier){
-      var count = todaysNewIssues.filter(function(it){ return tier.test(it.우선순위); }).length;
-      return '<div class="today-severity-chip clickable" data-tier="' + escapeHtml(tier.label) + '" style="color:' + tier.color + '" title="' + escapeHtml(tier.label) + ' ' + count + '건">' + tier.shortLabel + ' ' + count + '건</div>';
-    }).join('');
-    document.getElementById('todaySeverityRow').innerHTML = severityHtml;
-
-    document.querySelectorAll('#todaySeverityRow .today-severity-chip[data-tier]').forEach(function(chip){
-      chip.addEventListener('click', function(){
-        setSeverityFilter(today.date, chip.getAttribute('data-tier'));
-      });
-    });
-
-    document.getElementById('todayNewCard').onclick = function(){ setDayFilter(today.date, 'newCount'); };
-    document.getElementById('todayDoneCard').onclick = function(){ setDayFilter(today.date, 'doneCount'); };
+    // 오늘 신규/해결 카드는 삭제되어 화면에 표시하지 않습니다.
+    // (데이터 자체는 state.summary.timeline에서 필요시 계속 조회 가능)
   }
 
   function renderStats(){
     var c = state.summary.completion;
-    var rate = c.total === 0 ? 0 : Math.round((c.done / c.total) * 100);
-    document.getElementById('notdoneValue').textContent = c.notDone;
-    document.getElementById('doneValue').textContent = c.done;
-    document.getElementById('totalValue').textContent = c.total;
-    document.getElementById('rateBadge').textContent = rate + '%';
+    // 전체 이슈 건수는 상태와 무관하게 전체 이슈 목록 기준(보류 포함)으로 계산
+    var totalAll = state.issues.length;
+    var rate = totalAll === 0 ? 0 : Math.round((c.done / totalAll) * 100);
+    document.getElementById('headerRateBadge').textContent = '완료율 ' + rate + '%';
 
-    // 미처리 카드 안의 "우선순위 높음 nn건" (미처리이면서 우선순위 높은 것만)
-    document.getElementById('notdoneHighValue').textContent = state.issues.filter(function(it){
+    var notDoneCount = state.issues.filter(function(it){ return isNotDoneStatus(it.상태); }).length;
+    var highCount = state.issues.filter(function(it){
       return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위);
     }).length;
+    document.getElementById('headerNotdoneValue').textContent = notDoneCount;
+    document.getElementById('headerHighValue').textContent = highCount;
 
-    // 전체 이슈 카드 안의 치명적/중대함/경미함 세부 목록 (전체 이슈 기준, 날짜 무관)
-    // '낮음'은 별도 항목으로 표시하지 않고 '경미함' 건수에 합산합니다.
-    var totalTierDisplay = [
-      { label: '치명적', count: state.issues.filter(function(it){ return isCriticalPriority(it.우선순위); }).length, color: 'var(--red)' },
-      { label: '중대함', count: state.issues.filter(function(it){ return isMajorPriority(it.우선순위); }).length, color: 'var(--orange)' },
-      { label: '경미함', count: state.issues.filter(function(it){ return isMinorPriority(it.우선순위) || isLowPriority(it.우선순위); }).length, color: 'var(--yellow)' }
-    ];
-    var severityHtml = totalTierDisplay.map(function(tier){
-      return '<div class="total-severity-item" data-tier="' + escapeHtml(tier.label) + '" style="color:' + tier.color + '">' + tier.label + ' ' + tier.count + '건</div>';
-    }).join('');
-    document.getElementById('totalSeverityList').innerHTML = severityHtml;
-    document.querySelectorAll('#totalSeverityList .total-severity-item').forEach(function(item){
-      item.addEventListener('click', function(){
-        setPriorityTierFilter(item.getAttribute('data-tier'));
-      });
-    });
-
-    document.querySelectorAll('#statRow [data-filter-type]').forEach(function(card){
-      card.onclick = function(){
-        setFilter(card.getAttribute('data-filter-type'), card.getAttribute('data-filter-value'));
-      };
-    });
+    document.getElementById('headerNotdoneCard').onclick = function(){ setFilter('quick', 'notdone'); };
+    document.getElementById('headerHighCard').onclick = function(){ setFilter('quick', 'notdone_high'); };
   }
 
   function renderAssignees(){
@@ -1275,36 +1232,57 @@
     window.location.href = 'https://rc-version-check.vercel.app/';
   });
 
-  var issuesExpanded = false;
-
-  function applyIssuesExpandedHeight(){
+  (function initIssuesResizeHandle(){
+    var handle = document.getElementById('expandIssuesBtn');
     var scrollBox = document.getElementById('issuesTableScroll');
-    var rect = scrollBox.getBoundingClientRect();
-    var newHeight = window.innerHeight - rect.top - 24; // 화면 하단에 약간의 여백만 남기고 채움
-    scrollBox.style.maxHeight = Math.max(newHeight, 200) + 'px';
-  }
+    if (!handle || !scrollBox) return;
 
-  function toggleIssuesExpand(){
-    var scrollBox = document.getElementById('issuesTableScroll');
-    var arrow = document.getElementById('expandIssuesArrow');
-    var panelsGrid = document.querySelector('.panels');
-    issuesExpanded = !issuesExpanded;
+    var dragging = false;
+    var startY = 0;
+    var startHeight = 0;
 
-    if (issuesExpanded){
-      applyIssuesExpandedHeight();
-      arrow.innerHTML = '&uarr;';
-      if (panelsGrid) panelsGrid.style.display = 'none';
-    } else {
-      scrollBox.style.maxHeight = '';
-      arrow.innerHTML = '&darr;';
-      if (panelsGrid) panelsGrid.style.display = '';
+    function currentHeight(){
+      return scrollBox.getBoundingClientRect().height;
     }
-  }
 
-  document.getElementById('expandIssuesBtn').addEventListener('click', toggleIssuesExpand);
-  window.addEventListener('resize', function(){
-    if (issuesExpanded) applyIssuesExpandedHeight();
-  });
+    function clampHeight(h){
+      var minH = 120;
+      var maxH = window.innerHeight - scrollBox.getBoundingClientRect().top - 16;
+      return Math.max(minH, Math.min(h, maxH));
+    }
+
+    function pointerY(e){
+      return e.touches && e.touches.length ? e.touches[0].clientY : e.clientY;
+    }
+
+    function onPointerDown(e){
+      dragging = true;
+      startY = pointerY(e);
+      startHeight = currentHeight();
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    }
+
+    function onPointerMove(e){
+      if (!dragging) return;
+      var delta = pointerY(e) - startY;
+      scrollBox.style.maxHeight = clampHeight(startHeight + delta) + 'px';
+      e.preventDefault();
+    }
+
+    function onPointerUp(){
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+    }
+
+    handle.addEventListener('mousedown', onPointerDown);
+    handle.addEventListener('touchstart', onPointerDown, { passive: false });
+    window.addEventListener('mousemove', onPointerMove, { passive: false });
+    window.addEventListener('touchmove', onPointerMove, { passive: false });
+    window.addEventListener('mouseup', onPointerUp);
+    window.addEventListener('touchend', onPointerUp);
+  })();
 
   loadData();
 </script>
