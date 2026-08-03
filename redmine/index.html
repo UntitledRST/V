@@ -5,6 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>RC8 일감 현황</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+(function () {
+  const EXCLUDE_KEY = "rc_visit_exclude";
+
+  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("exclude") === "1") {
+    localStorage.setItem(EXCLUDE_KEY, "1");
+  }
+  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
+  if (params.get("exclude") === "0") {
+    localStorage.removeItem(EXCLUDE_KEY);
+  }
+
+  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
+  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
+    return;
+  }
+
+  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
+  const NAMESPACE = "rc-visit-tracker-2026";
+  const SITE_KEY = "rc8qa"; // rc-version-check 사이트에는 "rc-version-check"로 변경
+
+  function pad(n) { return n.toString().padStart(2, "0"); }
+  function isoWeek(d) {
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = (date.getUTCDay() + 6) % 7;
+    date.setUTCDate(date.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
+    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
+  }
+
+  const now = new Date();
+  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
+  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
+
+  // 대시보드는 api.countapi.xyz 를 "namespace/key" 형식으로 읽으므로 동일하게 맞춤
+  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
+    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
+  });
+})();
+</script>
 <style>
   :root{
     --bg: #0a0e14;
@@ -48,13 +92,13 @@
     flex:1 1 auto; min-height:0;
   }
   .main-grid{
-    overflow:visible; min-height:0;
+    overflow:auto; min-height:0;
     display:flex; flex-direction:column; gap:8px; min-width:0; height:100%;
     background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:var(--radius-lg);
     padding:10px 14px;
   }
   .right-col{ display:flex; flex-direction:column; gap:8px; min-width:0; height:100%; min-height:0; overflow:hidden; }
-  .assignee-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; }
+  .assignee-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; position:relative; }
   .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
 
   .feedback-panel{ display:flex; flex-direction:column; min-height:0; height:100%; overflow:hidden; }
@@ -408,6 +452,7 @@
           <tbody id="assigneeBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
         </table>
       </div>
+      <div class="chart-tooltip" id="assigneeTooltip"></div>
     </div>
 
     <div class="panel grid-status">
@@ -870,6 +915,40 @@
     }).join('');
     document.getElementById('assigneeBody').innerHTML = rows || '<tr><td colspan="3" class="empty">데이터 없음</td></tr>';
     bindFilterableRows('assigneeBody');
+    bindAssigneeTooltip();
+  }
+
+  function bindAssigneeTooltip(){
+    var tooltip = document.getElementById('assigneeTooltip');
+    var container = document.querySelector('.assignee-sidebar');
+    if (!tooltip || !container) return;
+
+    document.querySelectorAll('#assigneeBody tr[data-filter-value]').forEach(function(tr){
+      tr.addEventListener('mouseenter', function(){
+        var name = tr.getAttribute('data-filter-value');
+        var statusCounts = {};
+        state.issues.filter(function(it){ return it.담당자 === name; }).forEach(function(it){
+          var s = it.상태 || '(미상)';
+          statusCounts[s] = (statusCounts[s] || 0) + 1;
+        });
+        var statusKeys = Object.keys(statusCounts).sort(function(a, b){ return statusCounts[b] - statusCounts[a]; });
+        var rowsHtml = statusKeys.map(function(s){
+          return '<div class="chart-tooltip-row"><span>' + escapeHtml(s) + '</span><span class="chart-tooltip-value">' + statusCounts[s] + '건</span></div>';
+        }).join('');
+        tooltip.innerHTML = '<div class="chart-tooltip-title">' + escapeHtml(name) + ' &middot; 상태별 할당</div>' + rowsHtml;
+
+        var containerRect = container.getBoundingClientRect();
+        var trRect = tr.getBoundingClientRect();
+        var top = trRect.top - containerRect.top;
+        var left = trRect.left - containerRect.left + trRect.width / 2;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+        tooltip.style.opacity = '1';
+      });
+      tr.addEventListener('mouseleave', function(){
+        tooltip.style.opacity = '0';
+      });
+    });
   }
 
   function renderStatuses(){
