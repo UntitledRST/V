@@ -61,14 +61,14 @@
   .feedback-panel > table{ flex:0 0 auto; font-size:19px; }
   .feedback-team-row td{ cursor:pointer; padding:8px 10px; }
   .feedback-team-row.active td{ background:rgba(91,157,255,0.14); }
-  .feedback-detail{ margin-top:6px; overflow:auto; flex:1 1 auto; min-height:0; overscroll-behavior:contain; }
+  .feedback-detail{ margin-top:6px; overflow-y:auto; overflow-x:hidden; flex:1 1 auto; min-height:0; overscroll-behavior:contain; }
   .feedback-detail-title{ font-size:24px; font-weight:800; margin:8px 0 12px; color:var(--text-primary); text-align:center; }
   .feedback-section{ margin-bottom:18px; }
   .feedback-section-title{ font-size:19px; font-weight:700; color:var(--text-secondary); margin:10px 0 6px; }
   .feedback-detail table{ font-size:18px; table-layout:fixed; }
   .feedback-detail th:nth-child(1), .feedback-detail td:nth-child(1){ width:86px; }
   .feedback-detail th:nth-child(2), .feedback-detail td:nth-child(2){ width:88px; }
-  .feedback-detail td{ vertical-align:top; word-break:keep-all; overflow-wrap:break-word; padding:9px 9px; }
+  .feedback-detail td{ vertical-align:top; word-break:break-all; overflow-wrap:anywhere; padding:9px 9px; max-width:0; }
   .feedback-empty-hint{ color:var(--text-tertiary); font-size:16px; text-align:center; padding:16px 8px; }
 
   /* ---- 대시보드 카드 배치 (그리드 영역) ---- */
@@ -82,10 +82,10 @@
       "chart   chart    chart";
     gap:8px;
   }
-  .grid-assignee{ grid-area: assignee; }
-  .grid-status{ grid-area: status; }
-  .grid-part{ grid-area: part; }
-  .grid-conn{ grid-area: conn; }
+  .grid-assignee{ grid-area: assignee; min-width:0; }
+  .grid-status{ grid-area: status; min-width:0; }
+  .grid-part{ grid-area: part; min-width:0; }
+  .grid-conn{ grid-area: conn; min-width:0; }
   .grid-chart{ grid-area: chart; }
 
   .total-card{ display:flex; flex-direction:column; gap:6px; }
@@ -176,8 +176,9 @@
   .panels .panel{ display:flex; flex-direction:column; overflow:visible; }
 
   /* 누적 차트: 전체 폭 + 큰 높이로 추세가 잘 보이도록 */
-  .chart-panel{ display:flex; flex-direction:column; }
-  .chart-wrap{ position:relative; height:170px; }
+  .chart-panel{ display:flex; flex-direction:column; min-width:0; overflow:hidden; }
+  .chart-wrap{ position:relative; height:170px; overflow:hidden; min-width:0; }
+  .chart-wrap canvas{ max-width:100%; }
 
   .chart-tooltip{
     position:absolute; z-index:20; pointer-events:auto;
@@ -284,6 +285,9 @@
   .panel h2.c-green{ color:var(--green); }
 
   table{ width:100%; border-collapse:collapse; font-size:15px; }
+  .dashboard-grid .panel table{ font-size:13px; }
+  .dashboard-grid .panel th{ font-size:11.5px; padding:3px 6px; }
+  .dashboard-grid .panel td{ padding:3px 6px; }
   th{ text-align:left; color:var(--text-secondary); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.03em; padding:4px 8px; border-bottom:1px solid var(--panel-border); }
   td{ padding:5px 9px; border-bottom:1px solid rgba(255,255,255,0.04); white-space:nowrap; }
   td.title-cell{ white-space:normal; }
@@ -914,11 +918,40 @@
 
         var containerRect = container.getBoundingClientRect();
         var trRect = tr.getBoundingClientRect();
-        var top = trRect.top - containerRect.top;
+        var topAnchor = trRect.top - containerRect.top;       // 행 위쪽 기준 (위로 띄울 때)
+        var bottomAnchor = trRect.bottom - containerRect.top; // 행 아래쪽 기준 (아래로 띄울 때)
         var left = trRect.left - containerRect.left + trRect.width / 2;
+        var pad = 8;
+
+        tooltip.style.transform = 'translate(-50%, -110%)';
         tooltip.style.left = left + 'px';
-        tooltip.style.top = top + 'px';
+        tooltip.style.top = topAnchor + 'px';
         tooltip.style.opacity = '1';
+
+        // 화면 위쪽 경계를 벗어나면 행 아래쪽에 표시하도록 반전
+        var tRect = tooltip.getBoundingClientRect();
+        if (tRect.top < pad){
+          tooltip.style.top = bottomAnchor + 'px';
+          tooltip.style.transform = 'translate(-50%, 6px)';
+          tRect = tooltip.getBoundingClientRect();
+        }
+        // 화면 좌우 경계를 벗어나면 좌우로 밀어줌
+        if (tRect.right > window.innerWidth - pad){
+          left -= (tRect.right - (window.innerWidth - pad));
+          tooltip.style.left = left + 'px';
+          tRect = tooltip.getBoundingClientRect();
+        }
+        if (tRect.left < pad){
+          left += (pad - tRect.left);
+          tooltip.style.left = left + 'px';
+          tRect = tooltip.getBoundingClientRect();
+        }
+        // 마지막 안전장치: 그래도 아래쪽이 화면을 벗어나면 위로 당김
+        if (tRect.bottom > window.innerHeight - pad){
+          var curTop = parseFloat(tooltip.style.top) || 0;
+          var adjust = tRect.bottom - (window.innerHeight - pad);
+          tooltip.style.top = (curTop - adjust) + 'px';
+        }
       });
       tr.addEventListener('mouseleave', function(){
         tooltip.style.opacity = '0';
