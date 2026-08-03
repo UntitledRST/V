@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T02:53:51.806498+00:00",
+  "fetchedAt": "2026-08-03T02:56:07.777140+00:00",
   "count": 271,
   "issues": [
     {
@@ -40,7 +40,7 @@
       "번호": 4,
       "일감번호": 275976,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 요청][응용뷰어] 파일 다운로드 계열(상담 로그·지원이력 엑셀·수신 파일)의 저장 위치 기획 정의 없음 — 무언 저장 + 안내에 경로·파일명 부재로 사용자가 저장 위치를 인지할 수 없음",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -2987,17 +2987,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 160,
+      "notDone": 108,
+      "done": 161,
       "total": 269
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 40,
-        "done": 33,
+        "done": 34,
         "complete": false,
-        "rate": 82
+        "rate": 85
       },
       {
         "name": "김성식",
@@ -3079,8 +3079,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 18,
-        "done": 17,
+        "progress": 17,
+        "done": 18,
         "total": 35
       },
       {
@@ -3099,7 +3099,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 68
+        "count": 67
       },
       {
         "label": "진행",
@@ -3111,7 +3111,7 @@
       },
       {
         "label": "해결",
-        "count": 113
+        "count": 114
       },
       {
         "label": "피드백",
@@ -3308,10 +3308,10 @@
       {
         "date": "2026-08-03",
         "cumIssue": 271,
-        "cumDone": 160,
+        "cumDone": 161,
         "rate": 59,
         "newCount": 4,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
