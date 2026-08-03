@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T05:06:00.627635+00:00",
+  "fetchedAt": "2026-08-03T05:11:24.833895+00:00",
   "count": 274,
   "issues": [
     {
@@ -194,7 +194,7 @@
       "번호": 18,
       "일감번호": 275713,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][연결 종료] 상담 중(제어 창) X·Alt+F4 종료 시 종료 확인 팝업 미표시 — [원격 종료] 버튼과 달리 확인 없이 즉시 종료되어 녹화 파일 손상·고객에게 재접속 대기 화면 오표시 (홈·대기창은 팝업 정상)",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -3284,8 +3284,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 163,
+      "notDone": 108,
+      "done": 164,
       "total": 272
     },
     "assignees": [
@@ -3334,9 +3334,9 @@
       {
         "name": "송건호",
         "total": 70,
-        "done": 41,
+        "done": 42,
         "complete": false,
-        "rate": 58
+        "rate": 60
       },
       {
         "name": "오세진",
@@ -3388,8 +3388,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 144,
+        "progress": 89,
+        "done": 145,
         "total": 234
       }
     ],
@@ -3400,7 +3400,7 @@
       },
       {
         "label": "진행",
-        "count": 20
+        "count": 19
       },
       {
         "label": "보류",
@@ -3408,7 +3408,7 @@
       },
       {
         "label": "해결",
-        "count": 116
+        "count": 117
       },
       {
         "label": "피드백",
@@ -3589,24 +3589,24 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 161,
+        "cumDone": 162,
         "rate": 61,
         "newCount": 16,
-        "doneCount": 1
+        "doneCount": 2
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 161,
-        "rate": 60,
+        "cumDone": 162,
+        "rate": 61,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 274,
-        "cumDone": 163,
-        "rate": 59,
+        "cumDone": 164,
+        "rate": 60,
         "newCount": 7,
         "doneCount": 2
       }
