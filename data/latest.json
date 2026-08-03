@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T01:36:14.055208+00:00",
+  "fetchedAt": "2026-08-03T01:40:54.510957+00:00",
   "count": 270,
   "issues": [
     {
@@ -535,7 +535,7 @@
       "번호": 49,
       "일감번호": 275507,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][상태바] 하단 상태바 연결방식이 기획 표기(P2P/Gateway)와 다른 개발 용어(direct 등)로 표시 — 판정 불가 시 항목 자체가 사라짐",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2976,8 +2976,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 159,
+      "notDone": 108,
+      "done": 160,
       "total": 268
     },
     "assignees": [
@@ -3026,9 +3026,9 @@
       {
         "name": "송건호",
         "total": 68,
-        "done": 39,
+        "done": 40,
         "complete": false,
-        "rate": 57
+        "rate": 58
       },
       {
         "name": "오세진",
@@ -3080,15 +3080,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 89,
-        "done": 142,
+        "progress": 88,
+        "done": 143,
         "total": 231
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 68
+        "count": 67
       },
       {
         "label": "진행",
@@ -3100,7 +3100,7 @@
       },
       {
         "label": "해결",
-        "count": 112
+        "count": 113
       },
       {
         "label": "피드백",
@@ -3265,23 +3265,23 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 155,
+        "cumDone": 156,
         "rate": 67,
         "newCount": 14,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 158,
-        "rate": 63,
+        "cumDone": 159,
+        "rate": 64,
         "newCount": 18,
         "doneCount": 3
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 159,
+        "cumDone": 160,
         "rate": 60,
         "newCount": 16,
         "doneCount": 1
@@ -3289,7 +3289,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 159,
+        "cumDone": 160,
         "rate": 60,
         "newCount": 1,
         "doneCount": 0
@@ -3297,7 +3297,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 270,
-        "cumDone": 159,
+        "cumDone": 160,
         "rate": 59,
         "newCount": 3,
         "doneCount": 0
