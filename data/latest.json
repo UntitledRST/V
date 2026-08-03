@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-03T01:21:14.005376+00:00",
+  "fetchedAt": "2026-08-03T01:25:10.759836+00:00",
   "count": 270,
   "issues": [
     {
@@ -1748,7 +1748,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 그리기 툴이 기획(Figma)과 다르게 노출되어 기능 제공 확정 필요 (Mac Host의 경우 UI 사용성 개선 필요) ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-20 16:29:00",
       "link": "https://projects.rsupport.com/issues/274809"
     },
@@ -2983,10 +2983,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 39,
+        "total": 40,
         "done": 33,
         "complete": false,
-        "rate": 84
+        "rate": 82
       },
       {
         "name": "김성식",
@@ -3032,10 +3032,10 @@
       },
       {
         "name": "오세진",
-        "total": 64,
+        "total": 63,
         "done": 42,
         "complete": false,
-        "rate": 65
+        "rate": 66
       },
       {
         "name": "이경준",
