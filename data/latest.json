@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T08:07:30.696043+00:00",
+  "fetchedAt": "2026-08-04T08:13:03.627592+00:00",
   "count": 283,
   "issues": [
     {
@@ -604,7 +604,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][채팅] 채팅 메시지 길이·문자 허용 정책 정본(SSoT) 확인 요청 — 클라이언트 전 계층 무제한(1만자+·이모지 전송 확인) vs 서버 저장·유저 어드민 상담이력 정합 협의 여부",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식",
+      "담당자": "김미령",
       "created_on": "2026-07-28 17:34:34",
       "link": "https://projects.rsupport.com/issues/275550"
     },
@@ -3417,17 +3417,17 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
+        "total": 41,
         "done": 35,
         "complete": false,
-        "rate": 87
+        "rate": 85
       },
       {
         "name": "김성식",
-        "total": 27,
+        "total": 26,
         "done": 10,
         "complete": false,
-        "rate": 37
+        "rate": 38
       },
       {
         "name": "김신혜",
