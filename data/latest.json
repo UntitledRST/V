@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T04:47:50.381708+00:00",
+  "fetchedAt": "2026-08-04T04:53:11.798845+00:00",
   "count": 280,
   "issues": [
     {
@@ -249,7 +249,7 @@
       "번호": 23,
       "일감번호": 275721,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][화면 표시] Intel Mac(macOS 26.5.2) Safari 로 Windows 호스트 연결 시 원격 화면이 전체 녹색으로 표시 — 동일 장비 Chrome·Apple Silicon Mac Safari 는 정상(3/3 재현)",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -1163,24 +1163,12 @@
       "번호": 105,
       "일감번호": 275145,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [제어] 마우스 휠 및 트랙패드 동작을 통한 호스트 화면 스크롤 불가 (RC7 기능 계승 여부 확인 필요)  ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-23 13:48:15",
-      "link": "https://projects.rsupport.com/issues/275145",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-07-27T17:45:00+09:00",
-          "note": "RC7 스크롤 기능 계승으로 처리하여 MR !1158 에서 반영했습니다.\n\n*처리 내용*\n- 기존에 무시되던 wheel 이벤트를 yDelta 비례 세로 플링 스와이프로 변환\n- delta 누적 후 80ms 주기 펌프로 dispatchGesture 연속 발사(스와이프 폭주·삼킴 방지)\n- 스크롤 앵커는 마지막 커서 위치 사용, 드래그 중에는 스크롤 억제(제스처 채널 충돌 방지)\n\n*검증*\n- 실기기(Galaxy S10e / Android 12, 뷰어 세션): 마우스 휠·트랙패드 스크롤 정상, 방향·커서 위치 정상, 드래그 중 스크롤 충돌 없음\n\n*반영*\n- MR: https://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1158\n- 커밋: 962088294 (input_control 스크롤 지원)\n- 머지: develop, 30801d07908475791ef806752026b616fa38142c"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-07-31T08:44:06+09:00",
-          "note": "마우스 휠·트랙패드 스크롤 동작 및 드래그 중 스크롤 충돌이 없는 점은 확인하였습니다.\n다만 방향·커서 위치 검증 시, \"마우스 휠을 위로 스크롤하면 호스트 화면은 아래로 이동하고, 아래로 스크롤하면 위로 이동하는 현상\" 이 확인되었습니다.\n이는 사용자 입장에서는 입력 방향과 실제 스크롤 방향이 반대로 동작하는 것으로 인식될 수 있습니다. \n\nRC 7.6.5에서도 동일한 이슈(#255387)가 발생하여 개선된 이력이 있으며, 현재 RC7에서는 마우스 휠 방향과 호스트 스크롤 방향이 일치하는 것으로 확인됩니다.\n따라서 RC8 뷰어의 마우스 휠·트랙패드 입력 방향과 호스트의 실제 스크롤 방향이 일치하도록 개선 요청드리며, 피드백 상태로 변경하겠습니다.\n\n[검증 환경]\n- Viewer/Host: 8.0.1.411"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/275145"
     },
     {
       "번호": 106,
@@ -2715,24 +2703,12 @@
       "번호": 229,
       "일감번호": 274091,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] 영상 지원 → [화면 조절] 팝업 내 버튼 노출 여부가 기획과 상이 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
       "created_on": "2026-07-10 13:42:37",
-      "link": "https://projects.rsupport.com/issues/274091",
-      "comments": [
-        {
-          "author": "이경준",
-          "created_on": "2026-07-22T11:52:46+09:00",
-          "note": "MR !1102 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1102\nmerge commit: 305ea558a9"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-07-28T13:47:36+09:00",
-          "note": "PC Host의 경우 [실제 크기] 버튼 미노출 확인 완료.\r\n그러나 Mobile Host의 경우 [실제 크기] 버튼이 활성화된 상태로 노출되며, 버튼 클릭을 통한 기능 실행도 가능한 현상이 확인됩니다.  \r\n모바일 영상 전용인 상태에는 처리 내용이 미적용 된 것으로 보여 피드백 및 재확인 요청드립니다. \r\n\r\n[재현 환경]\r\n- 8.0.1.350"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/274091"
     },
     {
       "번호": 230,
@@ -3396,8 +3372,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 176,
+      "notDone": 100,
+      "done": 177,
       "total": 277
     },
     "assignees": [
@@ -3453,9 +3429,9 @@
       {
         "name": "오세진",
         "total": 65,
-        "done": 45,
+        "done": 46,
         "complete": false,
-        "rate": 69
+        "rate": 70
       },
       {
         "name": "이경준",
@@ -3500,19 +3476,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 83,
-        "done": 156,
+        "progress": 82,
+        "done": 157,
         "total": 239
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 63
+        "count": 62
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 15
       },
       {
         "label": "보류",
@@ -3520,11 +3496,11 @@
       },
       {
         "label": "해결",
-        "count": 125
+        "count": 126
       },
       {
         "label": "피드백",
-        "count": 25
+        "count": 23
       },
       {
         "label": "완료성공",
@@ -3661,15 +3637,15 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 132,
-        "rate": 72,
+        "cumDone": 133,
+        "rate": 73,
         "newCount": 20,
-        "doneCount": 19
+        "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 141,
+        "cumDone": 142,
         "rate": 72,
         "newCount": 14,
         "doneCount": 9
@@ -3677,15 +3653,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 155,
-        "rate": 71,
+        "cumDone": 156,
+        "rate": 72,
         "newCount": 21,
         "doneCount": 14
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 162,
+        "cumDone": 163,
         "rate": 70,
         "newCount": 14,
         "doneCount": 7
@@ -3693,23 +3669,23 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 168,
-        "rate": 67,
+        "cumDone": 169,
+        "rate": 68,
         "newCount": 18,
         "doneCount": 6
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 171,
-        "rate": 64,
+        "cumDone": 172,
+        "rate": 65,
         "newCount": 16,
         "doneCount": 3
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 171,
+        "cumDone": 172,
         "rate": 64,
         "newCount": 1,
         "doneCount": 0
@@ -3717,7 +3693,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 174,
+        "cumDone": 175,
         "rate": 63,
         "newCount": 10,
         "doneCount": 3
@@ -3725,7 +3701,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 280,
-        "cumDone": 176,
+        "cumDone": 177,
         "rate": 63,
         "newCount": 3,
         "doneCount": 2
