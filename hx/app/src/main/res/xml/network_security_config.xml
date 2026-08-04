@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  KIS 실시간 웹소켓은 ws:// (평문) 로 접속합니다.
+  Android 9(API 28)부터 평문 트래픽이 기본 차단되므로 해당 호스트만 예외 처리합니다.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">ops.koreainvestment.com</domain>
+    </domain-config>
+</network-security-config>
