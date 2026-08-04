@@ -1,10 +1,21 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T04:58:37.661348+00:00",
-  "count": 280,
+  "fetchedAt": "2026-08-04T06:56:26.417936+00:00",
+  "count": 281,
   "issues": [
     {
       "번호": 1,
+      "일감번호": 276132,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.1_QA] [뷰어][그리기] 호스트 네트워크 순단 재연결 후 뷰어 신규 그리기·레이저 포인터가 고객 화면에 미반영 — 그리기는 상담원 화면에 정상 표시되어 인지 불가(무음 유실), 원격제어는 정상",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "created_on": "2026-08-04 15:35:37",
+      "link": "https://projects.rsupport.com/issues/276132"
+    },
+    {
+      "번호": 2,
       "일감번호": 276112,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -15,7 +26,7 @@
       "link": "https://projects.rsupport.com/issues/276112"
     },
     {
-      "번호": 2,
+      "번호": 3,
       "일감번호": 276072,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -26,7 +37,7 @@
       "link": "https://projects.rsupport.com/issues/276072"
     },
     {
-      "번호": 3,
+      "번호": 4,
       "일감번호": 276066,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -37,7 +48,7 @@
       "link": "https://projects.rsupport.com/issues/276066"
     },
     {
-      "번호": 4,
+      "번호": 5,
       "일감번호": 276040,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -48,7 +59,7 @@
       "link": "https://projects.rsupport.com/issues/276040"
     },
     {
-      "번호": 5,
+      "번호": 6,
       "일감번호": 276036,
       "분류": "개선(Improving)",
       "상태": "신규(New)",
@@ -59,7 +70,7 @@
       "link": "https://projects.rsupport.com/issues/276036"
     },
     {
-      "번호": 6,
+      "번호": 7,
       "일감번호": 276021,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -70,10 +81,10 @@
       "link": "https://projects.rsupport.com/issues/276021"
     },
     {
-      "번호": 7,
+      "번호": 8,
       "일감번호": 276008,
       "분류": "개선(Improving)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [개선][호스트][채팅] 시스템 메시지 호스트 재현지화 — 그리기·캡처·녹화 5종(#2~#6)이 고객 채팅에 미표시(S8 편측 부재, #275437 QA 실증 확증), 로컬 생성 선례(#1 상담 시작·#7 URL 공유) 확장",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -81,7 +92,7 @@
       "link": "https://projects.rsupport.com/issues/276008"
     },
     {
-      "번호": 8,
+      "번호": 9,
       "일감번호": 276003,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -92,7 +103,7 @@
       "link": "https://projects.rsupport.com/issues/276003"
     },
     {
-      "번호": 9,
+      "번호": 10,
       "일감번호": 276002,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -103,10 +114,10 @@
       "link": "https://projects.rsupport.com/issues/276002"
     },
     {
-      "번호": 10,
+      "번호": 11,
       "일감번호": 275989,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][채팅] 네트워크 장애 재연결 후 채팅 이력 표시 소실·'상담 시작' 시스템 메시지 재생성 — 세션 내 재연결이 이력 복원(resume) 경로를 타지 않음(서버 이력은 정상 보존)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -114,7 +125,7 @@
       "link": "https://projects.rsupport.com/issues/275989"
     },
     {
-      "번호": 11,
+      "번호": 12,
       "일감번호": 275978,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -125,7 +136,7 @@
       "link": "https://projects.rsupport.com/issues/275978"
     },
     {
-      "번호": 12,
+      "번호": 13,
       "일감번호": 275977,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -136,7 +147,7 @@
       "link": "https://projects.rsupport.com/issues/275977"
     },
     {
-      "번호": 13,
+      "번호": 14,
       "일감번호": 275976,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -147,7 +158,7 @@
       "link": "https://projects.rsupport.com/issues/275976"
     },
     {
-      "번호": 14,
+      "번호": 15,
       "일감번호": 275844,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -158,7 +169,7 @@
       "link": "https://projects.rsupport.com/issues/275844"
     },
     {
-      "번호": 15,
+      "번호": 16,
       "일감번호": 275760,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -169,7 +180,7 @@
       "link": "https://projects.rsupport.com/issues/275760"
     },
     {
-      "번호": 16,
+      "번호": 17,
       "일감번호": 275757,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -180,7 +191,7 @@
       "link": "https://projects.rsupport.com/issues/275757"
     },
     {
-      "번호": 17,
+      "번호": 18,
       "일감번호": 275755,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -191,7 +202,7 @@
       "link": "https://projects.rsupport.com/issues/275755"
     },
     {
-      "번호": 18,
+      "번호": 19,
       "일감번호": 275744,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -202,7 +213,7 @@
       "link": "https://projects.rsupport.com/issues/275744"
     },
     {
-      "번호": 19,
+      "번호": 20,
       "일감번호": 275743,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -213,7 +224,7 @@
       "link": "https://projects.rsupport.com/issues/275743"
     },
     {
-      "번호": 20,
+      "번호": 21,
       "일감번호": 275737,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -224,7 +235,7 @@
       "link": "https://projects.rsupport.com/issues/275737"
     },
     {
-      "번호": 21,
+      "번호": 22,
       "일감번호": 275731,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -235,7 +246,7 @@
       "link": "https://projects.rsupport.com/issues/275731"
     },
     {
-      "번호": 22,
+      "번호": 23,
       "일감번호": 275727,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -246,10 +257,10 @@
       "link": "https://projects.rsupport.com/issues/275727"
     },
     {
-      "번호": 23,
+      "번호": 24,
       "일감번호": 275721,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][화면 표시] Intel Mac(macOS 26.5.2) Safari 로 Windows 호스트 연결 시 원격 화면이 전체 녹색으로 표시 — 동일 장비 Chrome·Apple Silicon Mac Safari 는 정상(3/3 재현)",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -257,7 +268,7 @@
       "link": "https://projects.rsupport.com/issues/275721"
     },
     {
-      "번호": 24,
+      "번호": 25,
       "일감번호": 275713,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -268,7 +279,7 @@
       "link": "https://projects.rsupport.com/issues/275713"
     },
     {
-      "번호": 25,
+      "번호": 26,
       "일감번호": 275707,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -279,7 +290,7 @@
       "link": "https://projects.rsupport.com/issues/275707"
     },
     {
-      "번호": 26,
+      "번호": 27,
       "일감번호": 275697,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -290,7 +301,7 @@
       "link": "https://projects.rsupport.com/issues/275697"
     },
     {
-      "번호": 27,
+      "번호": 28,
       "일감번호": 275690,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -301,7 +312,7 @@
       "link": "https://projects.rsupport.com/issues/275690"
     },
     {
-      "번호": 28,
+      "번호": 29,
       "일감번호": 275689,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -312,7 +323,7 @@
       "link": "https://projects.rsupport.com/issues/275689"
     },
     {
-      "번호": 29,
+      "번호": 30,
       "일감번호": 275680,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -323,7 +334,7 @@
       "link": "https://projects.rsupport.com/issues/275680"
     },
     {
-      "번호": 30,
+      "번호": 31,
       "일감번호": 275679,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -334,7 +345,7 @@
       "link": "https://projects.rsupport.com/issues/275679"
     },
     {
-      "번호": 31,
+      "번호": 32,
       "일감번호": 275668,
       "분류": "결함(Serverity)",
       "상태": "중단(Stop)",
@@ -345,7 +356,7 @@
       "link": "https://projects.rsupport.com/issues/275668"
     },
     {
-      "번호": 32,
+      "번호": 33,
       "일감번호": 275667,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -356,7 +367,7 @@
       "link": "https://projects.rsupport.com/issues/275667"
     },
     {
-      "번호": 33,
+      "번호": 34,
       "일감번호": 275646,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -367,7 +378,7 @@
       "link": "https://projects.rsupport.com/issues/275646"
     },
     {
-      "번호": 34,
+      "번호": 35,
       "일감번호": 275641,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -378,7 +389,7 @@
       "link": "https://projects.rsupport.com/issues/275641"
     },
     {
-      "번호": 35,
+      "번호": 36,
       "일감번호": 275625,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -389,7 +400,7 @@
       "link": "https://projects.rsupport.com/issues/275625"
     },
     {
-      "번호": 36,
+      "번호": 37,
       "일감번호": 275621,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -400,7 +411,7 @@
       "link": "https://projects.rsupport.com/issues/275621"
     },
     {
-      "번호": 37,
+      "번호": 38,
       "일감번호": 275618,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -411,7 +422,7 @@
       "link": "https://projects.rsupport.com/issues/275618"
     },
     {
-      "번호": 38,
+      "번호": 39,
       "일감번호": 275614,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -422,7 +433,7 @@
       "link": "https://projects.rsupport.com/issues/275614"
     },
     {
-      "번호": 39,
+      "번호": 40,
       "일감번호": 275606,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -433,7 +444,7 @@
       "link": "https://projects.rsupport.com/issues/275606"
     },
     {
-      "번호": 40,
+      "번호": 41,
       "일감번호": 275605,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -444,7 +455,7 @@
       "link": "https://projects.rsupport.com/issues/275605"
     },
     {
-      "번호": 41,
+      "번호": 42,
       "일감번호": 275599,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -455,7 +466,7 @@
       "link": "https://projects.rsupport.com/issues/275599"
     },
     {
-      "번호": 42,
+      "번호": 43,
       "일감번호": 275585,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -466,7 +477,7 @@
       "link": "https://projects.rsupport.com/issues/275585"
     },
     {
-      "번호": 43,
+      "번호": 44,
       "일감번호": 275583,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -477,7 +488,7 @@
       "link": "https://projects.rsupport.com/issues/275583"
     },
     {
-      "번호": 44,
+      "번호": 45,
       "일감번호": 275582,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -488,7 +499,7 @@
       "link": "https://projects.rsupport.com/issues/275582"
     },
     {
-      "번호": 45,
+      "번호": 46,
       "일감번호": 275581,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -499,7 +510,7 @@
       "link": "https://projects.rsupport.com/issues/275581"
     },
     {
-      "번호": 46,
+      "번호": 47,
       "일감번호": 275575,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -510,7 +521,7 @@
       "link": "https://projects.rsupport.com/issues/275575"
     },
     {
-      "번호": 47,
+      "번호": 48,
       "일감번호": 275573,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -521,7 +532,7 @@
       "link": "https://projects.rsupport.com/issues/275573"
     },
     {
-      "번호": 48,
+      "번호": 49,
       "일감번호": 275572,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -532,7 +543,7 @@
       "link": "https://projects.rsupport.com/issues/275572"
     },
     {
-      "번호": 49,
+      "번호": 50,
       "일감번호": 275557,
       "분류": "개선(Improving)",
       "상태": "신규(New)",
@@ -543,7 +554,7 @@
       "link": "https://projects.rsupport.com/issues/275557"
     },
     {
-      "번호": 50,
+      "번호": 51,
       "일감번호": 275555,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -554,7 +565,7 @@
       "link": "https://projects.rsupport.com/issues/275555"
     },
     {
-      "번호": 51,
+      "번호": 52,
       "일감번호": 275551,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -565,7 +576,7 @@
       "link": "https://projects.rsupport.com/issues/275551"
     },
     {
-      "번호": 52,
+      "번호": 53,
       "일감번호": 275550,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -576,7 +587,7 @@
       "link": "https://projects.rsupport.com/issues/275550"
     },
     {
-      "번호": 53,
+      "번호": 54,
       "일감번호": 275545,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -587,7 +598,7 @@
       "link": "https://projects.rsupport.com/issues/275545"
     },
     {
-      "번호": 54,
+      "번호": 55,
       "일감번호": 275530,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -598,7 +609,7 @@
       "link": "https://projects.rsupport.com/issues/275530"
     },
     {
-      "번호": 55,
+      "번호": 56,
       "일감번호": 275522,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -609,7 +620,7 @@
       "link": "https://projects.rsupport.com/issues/275522"
     },
     {
-      "번호": 56,
+      "번호": 57,
       "일감번호": 275517,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -620,7 +631,7 @@
       "link": "https://projects.rsupport.com/issues/275517"
     },
     {
-      "번호": 57,
+      "번호": 58,
       "일감번호": 275510,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -631,7 +642,7 @@
       "link": "https://projects.rsupport.com/issues/275510"
     },
     {
-      "번호": 58,
+      "번호": 59,
       "일감번호": 275508,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -642,7 +653,7 @@
       "link": "https://projects.rsupport.com/issues/275508"
     },
     {
-      "번호": 59,
+      "번호": 60,
       "일감번호": 275507,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -653,7 +664,7 @@
       "link": "https://projects.rsupport.com/issues/275507"
     },
     {
-      "번호": 60,
+      "번호": 61,
       "일감번호": 275474,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -664,7 +675,7 @@
       "link": "https://projects.rsupport.com/issues/275474"
     },
     {
-      "번호": 61,
+      "번호": 62,
       "일감번호": 275468,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -675,7 +686,7 @@
       "link": "https://projects.rsupport.com/issues/275468"
     },
     {
-      "번호": 62,
+      "번호": 63,
       "일감번호": 275466,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -686,7 +697,7 @@
       "link": "https://projects.rsupport.com/issues/275466"
     },
     {
-      "번호": 63,
+      "번호": 64,
       "일감번호": 275446,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -697,7 +708,7 @@
       "link": "https://projects.rsupport.com/issues/275446"
     },
     {
-      "번호": 64,
+      "번호": 65,
       "일감번호": 275437,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -708,7 +719,7 @@
       "link": "https://projects.rsupport.com/issues/275437"
     },
     {
-      "번호": 65,
+      "번호": 66,
       "일감번호": 275434,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -719,7 +730,7 @@
       "link": "https://projects.rsupport.com/issues/275434"
     },
     {
-      "번호": 66,
+      "번호": 67,
       "일감번호": 275430,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -730,7 +741,7 @@
       "link": "https://projects.rsupport.com/issues/275430"
     },
     {
-      "번호": 67,
+      "번호": 68,
       "일감번호": 275429,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -741,7 +752,7 @@
       "link": "https://projects.rsupport.com/issues/275429"
     },
     {
-      "번호": 68,
+      "번호": 69,
       "일감번호": 275425,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -752,7 +763,7 @@
       "link": "https://projects.rsupport.com/issues/275425"
     },
     {
-      "번호": 69,
+      "번호": 70,
       "일감번호": 275421,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -763,7 +774,7 @@
       "link": "https://projects.rsupport.com/issues/275421"
     },
     {
-      "번호": 70,
+      "번호": 71,
       "일감번호": 275407,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -774,7 +785,7 @@
       "link": "https://projects.rsupport.com/issues/275407"
     },
     {
-      "번호": 71,
+      "번호": 72,
       "일감번호": 275403,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -785,7 +796,7 @@
       "link": "https://projects.rsupport.com/issues/275403"
     },
     {
-      "번호": 72,
+      "번호": 73,
       "일감번호": 275402,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -808,7 +819,7 @@
       ]
     },
     {
-      "번호": 73,
+      "번호": 74,
       "일감번호": 275391,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -819,7 +830,7 @@
       "link": "https://projects.rsupport.com/issues/275391"
     },
     {
-      "번호": 74,
+      "번호": 75,
       "일감번호": 275388,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -830,7 +841,7 @@
       "link": "https://projects.rsupport.com/issues/275388"
     },
     {
-      "번호": 75,
+      "번호": 76,
       "일감번호": 275385,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -841,7 +852,7 @@
       "link": "https://projects.rsupport.com/issues/275385"
     },
     {
-      "번호": 76,
+      "번호": 77,
       "일감번호": 275383,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -852,7 +863,7 @@
       "link": "https://projects.rsupport.com/issues/275383"
     },
     {
-      "번호": 77,
+      "번호": 78,
       "일감번호": 275375,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -863,7 +874,7 @@
       "link": "https://projects.rsupport.com/issues/275375"
     },
     {
-      "번호": 78,
+      "번호": 79,
       "일감번호": 275371,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -874,7 +885,7 @@
       "link": "https://projects.rsupport.com/issues/275371"
     },
     {
-      "번호": 79,
+      "번호": 80,
       "일감번호": 275366,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -885,7 +896,7 @@
       "link": "https://projects.rsupport.com/issues/275366"
     },
     {
-      "번호": 80,
+      "번호": 81,
       "일감번호": 275365,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -896,7 +907,7 @@
       "link": "https://projects.rsupport.com/issues/275365"
     },
     {
-      "번호": 81,
+      "번호": 82,
       "일감번호": 275350,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -907,7 +918,7 @@
       "link": "https://projects.rsupport.com/issues/275350"
     },
     {
-      "번호": 82,
+      "번호": 83,
       "일감번호": 275347,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -918,7 +929,7 @@
       "link": "https://projects.rsupport.com/issues/275347"
     },
     {
-      "번호": 83,
+      "번호": 84,
       "일감번호": 275345,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -929,7 +940,7 @@
       "link": "https://projects.rsupport.com/issues/275345"
     },
     {
-      "번호": 84,
+      "번호": 85,
       "일감번호": 275337,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -940,7 +951,7 @@
       "link": "https://projects.rsupport.com/issues/275337"
     },
     {
-      "번호": 85,
+      "번호": 86,
       "일감번호": 275333,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -951,7 +962,7 @@
       "link": "https://projects.rsupport.com/issues/275333"
     },
     {
-      "번호": 86,
+      "번호": 87,
       "일감번호": 275325,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -962,7 +973,7 @@
       "link": "https://projects.rsupport.com/issues/275325"
     },
     {
-      "번호": 87,
+      "번호": 88,
       "일감번호": 275301,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -973,7 +984,7 @@
       "link": "https://projects.rsupport.com/issues/275301"
     },
     {
-      "번호": 88,
+      "번호": 89,
       "일감번호": 275295,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -984,7 +995,7 @@
       "link": "https://projects.rsupport.com/issues/275295"
     },
     {
-      "번호": 89,
+      "번호": 90,
       "일감번호": 275292,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -995,7 +1006,7 @@
       "link": "https://projects.rsupport.com/issues/275292"
     },
     {
-      "번호": 90,
+      "번호": 91,
       "일감번호": 275289,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1006,7 +1017,7 @@
       "link": "https://projects.rsupport.com/issues/275289"
     },
     {
-      "번호": 91,
+      "번호": 92,
       "일감번호": 275286,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1017,7 +1028,7 @@
       "link": "https://projects.rsupport.com/issues/275286"
     },
     {
-      "번호": 92,
+      "번호": 93,
       "일감번호": 275283,
       "분류": "기능(Function)",
       "상태": "완료성공(End/Success)",
@@ -1028,7 +1039,7 @@
       "link": "https://projects.rsupport.com/issues/275283"
     },
     {
-      "번호": 93,
+      "번호": 94,
       "일감번호": 275266,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1039,7 +1050,7 @@
       "link": "https://projects.rsupport.com/issues/275266"
     },
     {
-      "번호": 94,
+      "번호": 95,
       "일감번호": 275265,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1050,7 +1061,7 @@
       "link": "https://projects.rsupport.com/issues/275265"
     },
     {
-      "번호": 95,
+      "번호": 96,
       "일감번호": 275261,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1061,7 +1072,7 @@
       "link": "https://projects.rsupport.com/issues/275261"
     },
     {
-      "번호": 96,
+      "번호": 97,
       "일감번호": 275255,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1072,7 +1083,7 @@
       "link": "https://projects.rsupport.com/issues/275255"
     },
     {
-      "번호": 97,
+      "번호": 98,
       "일감번호": 275250,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1083,7 +1094,7 @@
       "link": "https://projects.rsupport.com/issues/275250"
     },
     {
-      "번호": 98,
+      "번호": 99,
       "일감번호": 275237,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1094,7 +1105,7 @@
       "link": "https://projects.rsupport.com/issues/275237"
     },
     {
-      "번호": 99,
+      "번호": 100,
       "일감번호": 275228,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1105,7 +1116,7 @@
       "link": "https://projects.rsupport.com/issues/275228"
     },
     {
-      "번호": 100,
+      "번호": 101,
       "일감번호": 275222,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1116,7 +1127,7 @@
       "link": "https://projects.rsupport.com/issues/275222"
     },
     {
-      "번호": 101,
+      "번호": 102,
       "일감번호": 275201,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1127,7 +1138,7 @@
       "link": "https://projects.rsupport.com/issues/275201"
     },
     {
-      "번호": 102,
+      "번호": 103,
       "일감번호": 275196,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1138,7 +1149,7 @@
       "link": "https://projects.rsupport.com/issues/275196"
     },
     {
-      "번호": 103,
+      "번호": 104,
       "일감번호": 275180,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1149,7 +1160,7 @@
       "link": "https://projects.rsupport.com/issues/275180"
     },
     {
-      "번호": 104,
+      "번호": 105,
       "일감번호": 275146,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1160,7 +1171,7 @@
       "link": "https://projects.rsupport.com/issues/275146"
     },
     {
-      "번호": 105,
+      "번호": 106,
       "일감번호": 275145,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1171,7 +1182,7 @@
       "link": "https://projects.rsupport.com/issues/275145"
     },
     {
-      "번호": 106,
+      "번호": 107,
       "일감번호": 275142,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1182,7 +1193,7 @@
       "link": "https://projects.rsupport.com/issues/275142"
     },
     {
-      "번호": 107,
+      "번호": 108,
       "일감번호": 275134,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1193,7 +1204,7 @@
       "link": "https://projects.rsupport.com/issues/275134"
     },
     {
-      "번호": 108,
+      "번호": 109,
       "일감번호": 275130,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1204,7 +1215,7 @@
       "link": "https://projects.rsupport.com/issues/275130"
     },
     {
-      "번호": 109,
+      "번호": 110,
       "일감번호": 275121,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1215,7 +1226,7 @@
       "link": "https://projects.rsupport.com/issues/275121"
     },
     {
-      "번호": 110,
+      "번호": 111,
       "일감번호": 275114,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1226,7 +1237,7 @@
       "link": "https://projects.rsupport.com/issues/275114"
     },
     {
-      "번호": 111,
+      "번호": 112,
       "일감번호": 275112,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1237,7 +1248,7 @@
       "link": "https://projects.rsupport.com/issues/275112"
     },
     {
-      "번호": 112,
+      "번호": 113,
       "일감번호": 275110,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1248,7 +1259,7 @@
       "link": "https://projects.rsupport.com/issues/275110"
     },
     {
-      "번호": 113,
+      "번호": 114,
       "일감번호": 275079,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1259,7 +1270,7 @@
       "link": "https://projects.rsupport.com/issues/275079"
     },
     {
-      "번호": 114,
+      "번호": 115,
       "일감번호": 275072,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1270,7 +1281,7 @@
       "link": "https://projects.rsupport.com/issues/275072"
     },
     {
-      "번호": 115,
+      "번호": 116,
       "일감번호": 275070,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1281,7 +1292,7 @@
       "link": "https://projects.rsupport.com/issues/275070"
     },
     {
-      "번호": 116,
+      "번호": 117,
       "일감번호": 275060,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1292,7 +1303,7 @@
       "link": "https://projects.rsupport.com/issues/275060"
     },
     {
-      "번호": 117,
+      "번호": 118,
       "일감번호": 275059,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1303,7 +1314,7 @@
       "link": "https://projects.rsupport.com/issues/275059"
     },
     {
-      "번호": 118,
+      "번호": 119,
       "일감번호": 275053,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1314,7 +1325,7 @@
       "link": "https://projects.rsupport.com/issues/275053"
     },
     {
-      "번호": 119,
+      "번호": 120,
       "일감번호": 275051,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1325,7 +1336,7 @@
       "link": "https://projects.rsupport.com/issues/275051"
     },
     {
-      "번호": 120,
+      "번호": 121,
       "일감번호": 275048,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1336,7 +1347,7 @@
       "link": "https://projects.rsupport.com/issues/275048"
     },
     {
-      "번호": 121,
+      "번호": 122,
       "일감번호": 275046,
       "분류": "결함(Serverity)",
       "상태": "보류(Pause)",
@@ -1347,7 +1358,7 @@
       "link": "https://projects.rsupport.com/issues/275046"
     },
     {
-      "번호": 122,
+      "번호": 123,
       "일감번호": 275038,
       "분류": "결함(Serverity)",
       "상태": "보류(Pause)",
@@ -1358,7 +1369,7 @@
       "link": "https://projects.rsupport.com/issues/275038"
     },
     {
-      "번호": 123,
+      "번호": 124,
       "일감번호": 275031,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1369,7 +1380,7 @@
       "link": "https://projects.rsupport.com/issues/275031"
     },
     {
-      "번호": 124,
+      "번호": 125,
       "일감번호": 275029,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1380,7 +1391,7 @@
       "link": "https://projects.rsupport.com/issues/275029"
     },
     {
-      "번호": 125,
+      "번호": 126,
       "일감번호": 275020,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1391,7 +1402,7 @@
       "link": "https://projects.rsupport.com/issues/275020"
     },
     {
-      "번호": 126,
+      "번호": 127,
       "일감번호": 275015,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1402,7 +1413,7 @@
       "link": "https://projects.rsupport.com/issues/275015"
     },
     {
-      "번호": 127,
+      "번호": 128,
       "일감번호": 275012,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1413,10 +1424,10 @@
       "link": "https://projects.rsupport.com/issues/275012"
     },
     {
-      "번호": 128,
+      "번호": 129,
       "일감번호": 275011,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 고객(Mac)이 시스템 공유 중단 시 뷰어에 중단 상태 미표시 — 중단 시점 화면으로 정지된 채 제어 메뉴 활성 유지·입력 동작 (기획: \"중단된 상태로 표시\")",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1424,7 +1435,7 @@
       "link": "https://projects.rsupport.com/issues/275011"
     },
     {
-      "번호": 129,
+      "번호": 130,
       "일감번호": 275009,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1435,7 +1446,7 @@
       "link": "https://projects.rsupport.com/issues/275009"
     },
     {
-      "번호": 130,
+      "번호": 131,
       "일감번호": 274999,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1446,7 +1457,7 @@
       "link": "https://projects.rsupport.com/issues/274999"
     },
     {
-      "번호": 131,
+      "번호": 132,
       "일감번호": 274997,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1457,7 +1468,7 @@
       "link": "https://projects.rsupport.com/issues/274997"
     },
     {
-      "번호": 132,
+      "번호": 133,
       "일감번호": 274995,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1468,7 +1479,7 @@
       "link": "https://projects.rsupport.com/issues/274995"
     },
     {
-      "번호": 133,
+      "번호": 134,
       "일감번호": 274987,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1479,7 +1490,7 @@
       "link": "https://projects.rsupport.com/issues/274987"
     },
     {
-      "번호": 134,
+      "번호": 135,
       "일감번호": 274985,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1490,7 +1501,7 @@
       "link": "https://projects.rsupport.com/issues/274985"
     },
     {
-      "번호": 135,
+      "번호": 136,
       "일감번호": 274981,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1501,13 +1512,13 @@
       "link": "https://projects.rsupport.com/issues/274981"
     },
     {
-      "번호": 136,
+      "번호": 137,
       "일감번호": 274980,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 다수의 파일 선택으로 팝업 가용 영역 초과 시, 스크롤 기능 미제공 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "박예지",
       "created_on": "2026-07-22 13:44:54",
       "link": "https://projects.rsupport.com/issues/274980",
       "comments": [
@@ -1525,11 +1536,16 @@
           "author": "박예지",
           "created_on": "2026-07-28T13:34:52+09:00",
           "note": "호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n재확인 및 수정 요청드립니다.\r\n\r\n[재현 환경]\r\n- 8.0.1.350"
+        },
+        {
+          "author": "오세진",
+          "created_on": "2026-08-04T15:44:40+09:00",
+          "note": "박예지의 댓글 (#note-6):\r\n> 호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n> 재확인 및 수정 요청드립니다.\r\n> \r\n> [재현 환경]\r\n> - 8.0.1.350\r\n\r\n\r\n\r\n박예지의 댓글 (#note-6):\r\n> 호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n> 재확인 및 수정 요청드립니다.\r\n> \r\n> [재현 환경]\r\n> - 8.0.1.350\r\n\r\n\r\n안녕하세요 @yjpark 님!\r\n코멘트 주셨던 호스트 단말 내 다수의 파일 선택으로 ' _파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상_ ' 동일내용 관련하여\r\n제가 가진 기기, 명찬님 기기에서는 다 제대로 동작하고 있어서요!\r\n혹시 최신 테스트 빌드(베타)인 8.0.1.411 버전에서도 같은 증상인지 한번 확인 부탁드립니다."
         }
       ]
     },
     {
-      "번호": 137,
+      "번호": 138,
       "일감번호": 274978,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1540,7 +1556,7 @@
       "link": "https://projects.rsupport.com/issues/274978"
     },
     {
-      "번호": 138,
+      "번호": 139,
       "일감번호": 274973,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1551,7 +1567,7 @@
       "link": "https://projects.rsupport.com/issues/274973"
     },
     {
-      "번호": 139,
+      "번호": 140,
       "일감번호": 274970,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1562,7 +1578,7 @@
       "link": "https://projects.rsupport.com/issues/274970"
     },
     {
-      "번호": 140,
+      "번호": 141,
       "일감번호": 274966,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1573,7 +1589,7 @@
       "link": "https://projects.rsupport.com/issues/274966"
     },
     {
-      "번호": 141,
+      "번호": 142,
       "일감번호": 274961,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1584,7 +1600,7 @@
       "link": "https://projects.rsupport.com/issues/274961"
     },
     {
-      "번호": 142,
+      "번호": 143,
       "일감번호": 274959,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1595,7 +1611,7 @@
       "link": "https://projects.rsupport.com/issues/274959"
     },
     {
-      "번호": 143,
+      "번호": 144,
       "일감번호": 274957,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1606,7 +1622,7 @@
       "link": "https://projects.rsupport.com/issues/274957"
     },
     {
-      "번호": 144,
+      "번호": 145,
       "일감번호": 274952,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1617,7 +1633,7 @@
       "link": "https://projects.rsupport.com/issues/274952"
     },
     {
-      "번호": 145,
+      "번호": 146,
       "일감번호": 274943,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1628,7 +1644,7 @@
       "link": "https://projects.rsupport.com/issues/274943"
     },
     {
-      "번호": 146,
+      "번호": 147,
       "일감번호": 274942,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1639,7 +1655,7 @@
       "link": "https://projects.rsupport.com/issues/274942"
     },
     {
-      "번호": 147,
+      "번호": 148,
       "일감번호": 274939,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1650,7 +1666,7 @@
       "link": "https://projects.rsupport.com/issues/274939"
     },
     {
-      "번호": 148,
+      "번호": 149,
       "일감번호": 274936,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1661,7 +1677,7 @@
       "link": "https://projects.rsupport.com/issues/274936"
     },
     {
-      "번호": 149,
+      "번호": 150,
       "일감번호": 274925,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1672,7 +1688,7 @@
       "link": "https://projects.rsupport.com/issues/274925"
     },
     {
-      "번호": 150,
+      "번호": 151,
       "일감번호": 274923,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1683,7 +1699,7 @@
       "link": "https://projects.rsupport.com/issues/274923"
     },
     {
-      "번호": 151,
+      "번호": 152,
       "일감번호": 274919,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1694,7 +1710,7 @@
       "link": "https://projects.rsupport.com/issues/274919"
     },
     {
-      "번호": 152,
+      "번호": 153,
       "일감번호": 274913,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1705,7 +1721,7 @@
       "link": "https://projects.rsupport.com/issues/274913"
     },
     {
-      "번호": 153,
+      "번호": 154,
       "일감번호": 274906,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1716,7 +1732,7 @@
       "link": "https://projects.rsupport.com/issues/274906"
     },
     {
-      "번호": 154,
+      "번호": 155,
       "일감번호": 274903,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1727,7 +1743,7 @@
       "link": "https://projects.rsupport.com/issues/274903"
     },
     {
-      "번호": 155,
+      "번호": 156,
       "일감번호": 274902,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1738,7 +1754,7 @@
       "link": "https://projects.rsupport.com/issues/274902"
     },
     {
-      "번호": 156,
+      "번호": 157,
       "일감번호": 274897,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -1761,7 +1777,7 @@
       ]
     },
     {
-      "번호": 157,
+      "번호": 158,
       "일감번호": 274893,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1772,7 +1788,7 @@
       "link": "https://projects.rsupport.com/issues/274893"
     },
     {
-      "번호": 158,
+      "번호": 159,
       "일감번호": 274892,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1783,7 +1799,7 @@
       "link": "https://projects.rsupport.com/issues/274892"
     },
     {
-      "번호": 159,
+      "번호": 160,
       "일감번호": 274888,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1794,7 +1810,7 @@
       "link": "https://projects.rsupport.com/issues/274888"
     },
     {
-      "번호": 160,
+      "번호": 161,
       "일감번호": 274883,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1805,7 +1821,7 @@
       "link": "https://projects.rsupport.com/issues/274883"
     },
     {
-      "번호": 161,
+      "번호": 162,
       "일감번호": 274881,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1816,7 +1832,7 @@
       "link": "https://projects.rsupport.com/issues/274881"
     },
     {
-      "번호": 162,
+      "번호": 163,
       "일감번호": 274877,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1827,7 +1843,7 @@
       "link": "https://projects.rsupport.com/issues/274877"
     },
     {
-      "번호": 163,
+      "번호": 164,
       "일감번호": 274859,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1838,7 +1854,7 @@
       "link": "https://projects.rsupport.com/issues/274859"
     },
     {
-      "번호": 164,
+      "번호": 165,
       "일감번호": 274852,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1849,7 +1865,7 @@
       "link": "https://projects.rsupport.com/issues/274852"
     },
     {
-      "번호": 165,
+      "번호": 166,
       "일감번호": 274845,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1860,7 +1876,7 @@
       "link": "https://projects.rsupport.com/issues/274845"
     },
     {
-      "번호": 166,
+      "번호": 167,
       "일감번호": 274843,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1871,7 +1887,7 @@
       "link": "https://projects.rsupport.com/issues/274843"
     },
     {
-      "번호": 167,
+      "번호": 168,
       "일감번호": 274841,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1882,7 +1898,7 @@
       "link": "https://projects.rsupport.com/issues/274841"
     },
     {
-      "번호": 168,
+      "번호": 169,
       "일감번호": 274827,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1893,7 +1909,7 @@
       "link": "https://projects.rsupport.com/issues/274827"
     },
     {
-      "번호": 169,
+      "번호": 170,
       "일감번호": 274809,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -1916,7 +1932,7 @@
       ]
     },
     {
-      "번호": 170,
+      "번호": 171,
       "일감번호": 274806,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -1939,7 +1955,7 @@
       ]
     },
     {
-      "번호": 171,
+      "번호": 172,
       "일감번호": 274805,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1950,7 +1966,7 @@
       "link": "https://projects.rsupport.com/issues/274805"
     },
     {
-      "번호": 172,
+      "번호": 173,
       "일감번호": 274799,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1961,7 +1977,7 @@
       "link": "https://projects.rsupport.com/issues/274799"
     },
     {
-      "번호": 173,
+      "번호": 174,
       "일감번호": 274797,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1972,7 +1988,7 @@
       "link": "https://projects.rsupport.com/issues/274797"
     },
     {
-      "번호": 174,
+      "번호": 175,
       "일감번호": 274794,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1983,7 +1999,7 @@
       "link": "https://projects.rsupport.com/issues/274794"
     },
     {
-      "번호": 175,
+      "번호": 176,
       "일감번호": 274792,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1994,7 +2010,7 @@
       "link": "https://projects.rsupport.com/issues/274792"
     },
     {
-      "번호": 176,
+      "번호": 177,
       "일감번호": 274755,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2005,7 +2021,7 @@
       "link": "https://projects.rsupport.com/issues/274755"
     },
     {
-      "번호": 177,
+      "번호": 178,
       "일감번호": 274742,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -2016,7 +2032,7 @@
       "link": "https://projects.rsupport.com/issues/274742"
     },
     {
-      "번호": 178,
+      "번호": 179,
       "일감번호": 274737,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2027,7 +2043,7 @@
       "link": "https://projects.rsupport.com/issues/274737"
     },
     {
-      "번호": 179,
+      "번호": 180,
       "일감번호": 274732,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2045,7 +2061,7 @@
       ]
     },
     {
-      "번호": 180,
+      "번호": 181,
       "일감번호": 274708,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2056,7 +2072,7 @@
       "link": "https://projects.rsupport.com/issues/274708"
     },
     {
-      "번호": 181,
+      "번호": 182,
       "일감번호": 274703,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2067,7 +2083,7 @@
       "link": "https://projects.rsupport.com/issues/274703"
     },
     {
-      "번호": 182,
+      "번호": 183,
       "일감번호": 274690,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2078,7 +2094,7 @@
       "link": "https://projects.rsupport.com/issues/274690"
     },
     {
-      "번호": 183,
+      "번호": 184,
       "일감번호": 274684,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2089,7 +2105,7 @@
       "link": "https://projects.rsupport.com/issues/274684"
     },
     {
-      "번호": 184,
+      "번호": 185,
       "일감번호": 274681,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2100,7 +2116,7 @@
       "link": "https://projects.rsupport.com/issues/274681"
     },
     {
-      "번호": 185,
+      "번호": 186,
       "일감번호": 274678,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -2111,7 +2127,7 @@
       "link": "https://projects.rsupport.com/issues/274678"
     },
     {
-      "번호": 186,
+      "번호": 187,
       "일감번호": 274670,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2122,7 +2138,7 @@
       "link": "https://projects.rsupport.com/issues/274670"
     },
     {
-      "번호": 187,
+      "번호": 188,
       "일감번호": 274658,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2133,7 +2149,7 @@
       "link": "https://projects.rsupport.com/issues/274658"
     },
     {
-      "번호": 188,
+      "번호": 189,
       "일감번호": 274649,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2144,7 +2160,7 @@
       "link": "https://projects.rsupport.com/issues/274649"
     },
     {
-      "번호": 189,
+      "번호": 190,
       "일감번호": 274642,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2155,7 +2171,7 @@
       "link": "https://projects.rsupport.com/issues/274642"
     },
     {
-      "번호": 190,
+      "번호": 191,
       "일감번호": 274638,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2166,7 +2182,7 @@
       "link": "https://projects.rsupport.com/issues/274638"
     },
     {
-      "번호": 191,
+      "번호": 192,
       "일감번호": 274622,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2177,7 +2193,7 @@
       "link": "https://projects.rsupport.com/issues/274622"
     },
     {
-      "번호": 192,
+      "번호": 193,
       "일감번호": 274596,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2188,7 +2204,7 @@
       "link": "https://projects.rsupport.com/issues/274596"
     },
     {
-      "번호": 193,
+      "번호": 194,
       "일감번호": 274590,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2199,7 +2215,7 @@
       "link": "https://projects.rsupport.com/issues/274590"
     },
     {
-      "번호": 194,
+      "번호": 195,
       "일감번호": 274587,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2210,7 +2226,7 @@
       "link": "https://projects.rsupport.com/issues/274587"
     },
     {
-      "번호": 195,
+      "번호": 196,
       "일감번호": 274576,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2221,7 +2237,7 @@
       "link": "https://projects.rsupport.com/issues/274576"
     },
     {
-      "번호": 196,
+      "번호": 197,
       "일감번호": 274569,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2249,7 +2265,7 @@
       ]
     },
     {
-      "번호": 197,
+      "번호": 198,
       "일감번호": 274562,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2260,7 +2276,7 @@
       "link": "https://projects.rsupport.com/issues/274562"
     },
     {
-      "번호": 198,
+      "번호": 199,
       "일감번호": 274546,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2293,7 +2309,7 @@
       ]
     },
     {
-      "번호": 199,
+      "번호": 200,
       "일감번호": 274535,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2304,7 +2320,7 @@
       "link": "https://projects.rsupport.com/issues/274535"
     },
     {
-      "번호": 200,
+      "번호": 201,
       "일감번호": 274534,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2315,7 +2331,7 @@
       "link": "https://projects.rsupport.com/issues/274534"
     },
     {
-      "번호": 201,
+      "번호": 202,
       "일감번호": 274483,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2326,7 +2342,7 @@
       "link": "https://projects.rsupport.com/issues/274483"
     },
     {
-      "번호": 202,
+      "번호": 203,
       "일감번호": 274406,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -2337,7 +2353,7 @@
       "link": "https://projects.rsupport.com/issues/274406"
     },
     {
-      "번호": 203,
+      "번호": 204,
       "일감번호": 274396,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -2348,7 +2364,7 @@
       "link": "https://projects.rsupport.com/issues/274396"
     },
     {
-      "번호": 204,
+      "번호": 205,
       "일감번호": 274387,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2359,7 +2375,7 @@
       "link": "https://projects.rsupport.com/issues/274387"
     },
     {
-      "번호": 205,
+      "번호": 206,
       "일감번호": 274384,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2370,7 +2386,7 @@
       "link": "https://projects.rsupport.com/issues/274384"
     },
     {
-      "번호": 206,
+      "번호": 207,
       "일감번호": 274355,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2381,7 +2397,7 @@
       "link": "https://projects.rsupport.com/issues/274355"
     },
     {
-      "번호": 207,
+      "번호": 208,
       "일감번호": 274352,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -2392,7 +2408,7 @@
       "link": "https://projects.rsupport.com/issues/274352"
     },
     {
-      "번호": 208,
+      "번호": 209,
       "일감번호": 274343,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2403,7 +2419,7 @@
       "link": "https://projects.rsupport.com/issues/274343"
     },
     {
-      "번호": 209,
+      "번호": 210,
       "일감번호": 274329,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2414,7 +2430,7 @@
       "link": "https://projects.rsupport.com/issues/274329"
     },
     {
-      "번호": 210,
+      "번호": 211,
       "일감번호": 274324,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2425,7 +2441,7 @@
       "link": "https://projects.rsupport.com/issues/274324"
     },
     {
-      "번호": 211,
+      "번호": 212,
       "일감번호": 274319,
       "분류": "업무(Job)",
       "상태": "해결(Complete)",
@@ -2436,7 +2452,7 @@
       "link": "https://projects.rsupport.com/issues/274319"
     },
     {
-      "번호": 212,
+      "번호": 213,
       "일감번호": 274310,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2464,7 +2480,7 @@
       ]
     },
     {
-      "번호": 213,
+      "번호": 214,
       "일감번호": 274306,
       "분류": "기능(Function)",
       "상태": "피드백(Feedback)",
@@ -2497,7 +2513,7 @@
       ]
     },
     {
-      "번호": 214,
+      "번호": 215,
       "일감번호": 274298,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2508,7 +2524,7 @@
       "link": "https://projects.rsupport.com/issues/274298"
     },
     {
-      "번호": 215,
+      "번호": 216,
       "일감번호": 274295,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2526,7 +2542,7 @@
       ]
     },
     {
-      "번호": 216,
+      "번호": 217,
       "일감번호": 274286,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2537,7 +2553,7 @@
       "link": "https://projects.rsupport.com/issues/274286"
     },
     {
-      "번호": 217,
+      "번호": 218,
       "일감번호": 274262,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2548,7 +2564,7 @@
       "link": "https://projects.rsupport.com/issues/274262"
     },
     {
-      "번호": 218,
+      "번호": 219,
       "일감번호": 274260,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2559,7 +2575,7 @@
       "link": "https://projects.rsupport.com/issues/274260"
     },
     {
-      "번호": 219,
+      "번호": 220,
       "일감번호": 274258,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2570,7 +2586,7 @@
       "link": "https://projects.rsupport.com/issues/274258"
     },
     {
-      "번호": 220,
+      "번호": 221,
       "일감번호": 274254,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2581,7 +2597,7 @@
       "link": "https://projects.rsupport.com/issues/274254"
     },
     {
-      "번호": 221,
+      "번호": 222,
       "일감번호": 274252,
       "분류": "기능(Function)",
       "상태": "피드백(Feedback)",
@@ -2604,7 +2620,7 @@
       ]
     },
     {
-      "번호": 222,
+      "번호": 223,
       "일감번호": 274227,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2615,7 +2631,7 @@
       "link": "https://projects.rsupport.com/issues/274227"
     },
     {
-      "번호": 223,
+      "번호": 224,
       "일감번호": 274210,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2626,7 +2642,7 @@
       "link": "https://projects.rsupport.com/issues/274210"
     },
     {
-      "번호": 224,
+      "번호": 225,
       "일감번호": 274177,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2637,7 +2653,7 @@
       "link": "https://projects.rsupport.com/issues/274177"
     },
     {
-      "번호": 225,
+      "번호": 226,
       "일감번호": 274141,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2648,7 +2664,7 @@
       "link": "https://projects.rsupport.com/issues/274141"
     },
     {
-      "번호": 226,
+      "번호": 227,
       "일감번호": 274112,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2666,7 +2682,7 @@
       ]
     },
     {
-      "번호": 227,
+      "번호": 228,
       "일감번호": 274111,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2689,7 +2705,7 @@
       ]
     },
     {
-      "번호": 228,
+      "번호": 229,
       "일감번호": 274101,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2700,10 +2716,10 @@
       "link": "https://projects.rsupport.com/issues/274101"
     },
     {
-      "번호": 229,
+      "번호": 230,
       "일감번호": 274091,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 영상 지원 → [화면 조절] 팝업 내 버튼 노출 여부가 기획과 상이 ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2711,7 +2727,7 @@
       "link": "https://projects.rsupport.com/issues/274091"
     },
     {
-      "번호": 230,
+      "번호": 231,
       "일감번호": 274090,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2722,7 +2738,7 @@
       "link": "https://projects.rsupport.com/issues/274090"
     },
     {
-      "번호": 231,
+      "번호": 232,
       "일감번호": 274080,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2733,7 +2749,7 @@
       "link": "https://projects.rsupport.com/issues/274080"
     },
     {
-      "번호": 232,
+      "번호": 233,
       "일감번호": 274068,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2744,7 +2760,7 @@
       "link": "https://projects.rsupport.com/issues/274068"
     },
     {
-      "번호": 233,
+      "번호": 234,
       "일감번호": 274052,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2772,7 +2788,7 @@
       ]
     },
     {
-      "번호": 234,
+      "번호": 235,
       "일감번호": 274049,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -2805,7 +2821,7 @@
       ]
     },
     {
-      "번호": 235,
+      "번호": 236,
       "일감번호": 274013,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2816,7 +2832,7 @@
       "link": "https://projects.rsupport.com/issues/274013"
     },
     {
-      "번호": 236,
+      "번호": 237,
       "일감번호": 274003,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2827,7 +2843,7 @@
       "link": "https://projects.rsupport.com/issues/274003"
     },
     {
-      "번호": 237,
+      "번호": 238,
       "일감번호": 273990,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2838,7 +2854,7 @@
       "link": "https://projects.rsupport.com/issues/273990"
     },
     {
-      "번호": 238,
+      "번호": 239,
       "일감번호": 273983,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2849,7 +2865,7 @@
       "link": "https://projects.rsupport.com/issues/273983"
     },
     {
-      "번호": 239,
+      "번호": 240,
       "일감번호": 273967,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2860,7 +2876,7 @@
       "link": "https://projects.rsupport.com/issues/273967"
     },
     {
-      "번호": 240,
+      "번호": 241,
       "일감번호": 273963,
       "분류": "기능(Function)",
       "상태": "피드백(Feedback)",
@@ -2888,7 +2904,7 @@
       ]
     },
     {
-      "번호": 241,
+      "번호": 242,
       "일감번호": 273932,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2899,7 +2915,7 @@
       "link": "https://projects.rsupport.com/issues/273932"
     },
     {
-      "번호": 242,
+      "번호": 243,
       "일감번호": 273905,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2910,7 +2926,7 @@
       "link": "https://projects.rsupport.com/issues/273905"
     },
     {
-      "번호": 243,
+      "번호": 244,
       "일감번호": 273867,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -2921,7 +2937,7 @@
       "link": "https://projects.rsupport.com/issues/273867"
     },
     {
-      "번호": 244,
+      "번호": 245,
       "일감번호": 273853,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2932,7 +2948,7 @@
       "link": "https://projects.rsupport.com/issues/273853"
     },
     {
-      "번호": 245,
+      "번호": 246,
       "일감번호": 273841,
       "분류": "기능(Function)",
       "상태": "피드백(Feedback)",
@@ -2950,7 +2966,7 @@
       ]
     },
     {
-      "번호": 246,
+      "번호": 247,
       "일감번호": 273829,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2961,7 +2977,7 @@
       "link": "https://projects.rsupport.com/issues/273829"
     },
     {
-      "번호": 247,
+      "번호": 248,
       "일감번호": 273827,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2972,7 +2988,7 @@
       "link": "https://projects.rsupport.com/issues/273827"
     },
     {
-      "번호": 248,
+      "번호": 249,
       "일감번호": 273821,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -2983,7 +2999,7 @@
       "link": "https://projects.rsupport.com/issues/273821"
     },
     {
-      "번호": 249,
+      "번호": 250,
       "일감번호": 273798,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -2994,7 +3010,7 @@
       "link": "https://projects.rsupport.com/issues/273798"
     },
     {
-      "번호": 250,
+      "번호": 251,
       "일감번호": 273786,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -3005,7 +3021,7 @@
       "link": "https://projects.rsupport.com/issues/273786"
     },
     {
-      "번호": 251,
+      "번호": 252,
       "일감번호": 273775,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -3016,7 +3032,7 @@
       "link": "https://projects.rsupport.com/issues/273775"
     },
     {
-      "번호": 252,
+      "번호": 253,
       "일감번호": 273771,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3027,7 +3043,7 @@
       "link": "https://projects.rsupport.com/issues/273771"
     },
     {
-      "번호": 253,
+      "번호": 254,
       "일감번호": 273752,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -3038,7 +3054,7 @@
       "link": "https://projects.rsupport.com/issues/273752"
     },
     {
-      "번호": 254,
+      "번호": 255,
       "일감번호": 273749,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3049,7 +3065,7 @@
       "link": "https://projects.rsupport.com/issues/273749"
     },
     {
-      "번호": 255,
+      "번호": 256,
       "일감번호": 273746,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3060,7 +3076,7 @@
       "link": "https://projects.rsupport.com/issues/273746"
     },
     {
-      "번호": 256,
+      "번호": 257,
       "일감번호": 273741,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -3078,7 +3094,7 @@
       ]
     },
     {
-      "번호": 257,
+      "번호": 258,
       "일감번호": 273731,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3089,7 +3105,7 @@
       "link": "https://projects.rsupport.com/issues/273731"
     },
     {
-      "번호": 258,
+      "번호": 259,
       "일감번호": 273722,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3100,7 +3116,7 @@
       "link": "https://projects.rsupport.com/issues/273722"
     },
     {
-      "번호": 259,
+      "번호": 260,
       "일감번호": 273719,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -3118,7 +3134,7 @@
       ]
     },
     {
-      "번호": 260,
+      "번호": 261,
       "일감번호": 273713,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3129,7 +3145,7 @@
       "link": "https://projects.rsupport.com/issues/273713"
     },
     {
-      "번호": 261,
+      "번호": 262,
       "일감번호": 273712,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -3140,7 +3156,7 @@
       "link": "https://projects.rsupport.com/issues/273712"
     },
     {
-      "번호": 262,
+      "번호": 263,
       "일감번호": 273711,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3151,7 +3167,7 @@
       "link": "https://projects.rsupport.com/issues/273711"
     },
     {
-      "번호": 263,
+      "번호": 264,
       "일감번호": 273705,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -3162,7 +3178,7 @@
       "link": "https://projects.rsupport.com/issues/273705"
     },
     {
-      "번호": 264,
+      "번호": 265,
       "일감번호": 273703,
       "분류": "개선(Improving)",
       "상태": "피드백(Feedback)",
@@ -3180,7 +3196,7 @@
       ]
     },
     {
-      "번호": 265,
+      "번호": 266,
       "일감번호": 273698,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -3191,7 +3207,7 @@
       "link": "https://projects.rsupport.com/issues/273698"
     },
     {
-      "번호": 266,
+      "번호": 267,
       "일감번호": 273669,
       "분류": "결함(Serverity)",
       "상태": "중단(Stop)",
@@ -3202,7 +3218,7 @@
       "link": "https://projects.rsupport.com/issues/273669"
     },
     {
-      "번호": 267,
+      "번호": 268,
       "일감번호": 273665,
       "분류": "개선(Improving)",
       "상태": "해결(Complete)",
@@ -3213,7 +3229,7 @@
       "link": "https://projects.rsupport.com/issues/273665"
     },
     {
-      "번호": 268,
+      "번호": 269,
       "일감번호": 273661,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -3231,7 +3247,7 @@
       ]
     },
     {
-      "번호": 269,
+      "번호": 270,
       "일감번호": 273653,
       "분류": "결함(Serverity)",
       "상태": "중단(Stop)",
@@ -3242,7 +3258,7 @@
       "link": "https://projects.rsupport.com/issues/273653"
     },
     {
-      "번호": 270,
+      "번호": 271,
       "일감번호": 273649,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -3253,7 +3269,7 @@
       "link": "https://projects.rsupport.com/issues/273649"
     },
     {
-      "번호": 271,
+      "번호": 272,
       "일감번호": 273647,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3264,7 +3280,7 @@
       "link": "https://projects.rsupport.com/issues/273647"
     },
     {
-      "번호": 272,
+      "번호": 273,
       "일감번호": 273643,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3275,7 +3291,7 @@
       "link": "https://projects.rsupport.com/issues/273643"
     },
     {
-      "번호": 273,
+      "번호": 274,
       "일감번호": 273638,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3286,7 +3302,7 @@
       "link": "https://projects.rsupport.com/issues/273638"
     },
     {
-      "번호": 274,
+      "번호": 275,
       "일감번호": 273632,
       "분류": "결함(Serverity)",
       "상태": "보류(Pause)",
@@ -3297,7 +3313,7 @@
       "link": "https://projects.rsupport.com/issues/273632"
     },
     {
-      "번호": 275,
+      "번호": 276,
       "일감번호": 273627,
       "분류": "기능(Function)",
       "상태": "완료성공(End/Success)",
@@ -3308,7 +3324,7 @@
       "link": "https://projects.rsupport.com/issues/273627"
     },
     {
-      "번호": 276,
+      "번호": 277,
       "일감번호": 273623,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3319,7 +3335,7 @@
       "link": "https://projects.rsupport.com/issues/273623"
     },
     {
-      "번호": 277,
+      "번호": 278,
       "일감번호": 273615,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -3337,7 +3353,7 @@
       ]
     },
     {
-      "번호": 278,
+      "번호": 279,
       "일감번호": 273611,
       "분류": "결함(Serverity)",
       "상태": "중단(Stop)",
@@ -3348,7 +3364,7 @@
       "link": "https://projects.rsupport.com/issues/273611"
     },
     {
-      "번호": 279,
+      "번호": 280,
       "일감번호": 273594,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -3359,7 +3375,7 @@
       "link": "https://projects.rsupport.com/issues/273594"
     },
     {
-      "번호": 280,
+      "번호": 281,
       "일감번호": 273581,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -3372,9 +3388,9 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 100,
-      "done": 177,
-      "total": 277
+      "notDone": 96,
+      "done": 182,
+      "total": 278
     },
     "assignees": [
       {
@@ -3407,10 +3423,10 @@
       },
       {
         "name": "박예지",
-        "total": 12,
+        "total": 13,
         "done": 1,
         "complete": false,
-        "rate": 8
+        "rate": 7
       },
       {
         "name": "변우영",
@@ -3421,24 +3437,24 @@
       },
       {
         "name": "송건호",
-        "total": 73,
-        "done": 51,
+        "total": 74,
+        "done": 54,
         "complete": false,
-        "rate": 69
+        "rate": 72
       },
       {
         "name": "오세진",
-        "total": 65,
-        "done": 46,
+        "total": 64,
+        "done": 47,
         "complete": false,
-        "rate": 70
+        "rate": 73
       },
       {
         "name": "이경준",
         "total": 43,
-        "done": 29,
+        "done": 30,
         "complete": false,
-        "rate": 67
+        "rate": 69
       },
       {
         "name": "장기중(Jay)",
@@ -3470,25 +3486,25 @@
       },
       {
         "label": "개선(Improving)",
-        "progress": 4,
-        "done": 1,
+        "progress": 3,
+        "done": 2,
         "total": 5
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 157,
-        "total": 239
+        "progress": 79,
+        "done": 161,
+        "total": 240
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 62
+        "count": 63
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 10
       },
       {
         "label": "보류",
@@ -3496,7 +3512,7 @@
       },
       {
         "label": "해결",
-        "count": 126
+        "count": 131
       },
       {
         "label": "피드백",
@@ -3522,7 +3538,7 @@
       },
       {
         "label": "보통",
-        "count": 241
+        "count": 242
       },
       {
         "label": "높음",
@@ -3573,87 +3589,87 @@
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 32,
-        "rate": 57,
+        "cumDone": 33,
+        "rate": 59,
         "newCount": 10,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 42,
-        "rate": 58,
+        "cumDone": 43,
+        "rate": 60,
         "newCount": 16,
         "doneCount": 10
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 46,
-        "rate": 58,
+        "cumDone": 47,
+        "rate": 59,
         "newCount": 7,
         "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 50,
-        "rate": 59,
+        "cumDone": 51,
+        "rate": 60,
         "newCount": 6,
         "doneCount": 4
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 64,
-        "rate": 63,
+        "cumDone": 65,
+        "rate": 64,
         "newCount": 16,
         "doneCount": 14
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 72,
-        "rate": 64,
+        "cumDone": 73,
+        "rate": 65,
         "newCount": 12,
         "doneCount": 8
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 89,
-        "rate": 67,
+        "cumDone": 90,
+        "rate": 68,
         "newCount": 19,
         "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 113,
-        "rate": 69,
+        "cumDone": 115,
+        "rate": 71,
         "newCount": 31,
-        "doneCount": 24
+        "doneCount": 25
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 133,
-        "rate": 73,
+        "cumDone": 135,
+        "rate": 74,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 142,
-        "rate": 72,
+        "cumDone": 144,
+        "rate": 73,
         "newCount": 14,
         "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 156,
+        "cumDone": 158,
         "rate": 72,
         "newCount": 21,
         "doneCount": 14
@@ -3661,15 +3677,15 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 163,
-        "rate": 70,
+        "cumDone": 165,
+        "rate": 71,
         "newCount": 14,
         "doneCount": 7
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 169,
+        "cumDone": 171,
         "rate": 68,
         "newCount": 18,
         "doneCount": 6
@@ -3677,33 +3693,33 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 172,
-        "rate": 65,
+        "cumDone": 175,
+        "rate": 66,
         "newCount": 16,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 172,
-        "rate": 64,
+        "cumDone": 175,
+        "rate": 66,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 175,
-        "rate": 63,
+        "cumDone": 180,
+        "rate": 65,
         "newCount": 10,
-        "doneCount": 3
+        "doneCount": 5
       },
       {
         "date": "2026-08-04",
-        "cumIssue": 280,
-        "cumDone": 177,
-        "rate": 63,
-        "newCount": 3,
+        "cumIssue": 281,
+        "cumDone": 182,
+        "rate": 65,
+        "newCount": 4,
         "doneCount": 2
       }
     ]
