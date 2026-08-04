@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T08:56:58.843170+00:00",
+  "fetchedAt": "2026-08-04T09:02:25.777298+00:00",
   "count": 283,
   "issues": [
     {
@@ -29,7 +29,7 @@
       "번호": 3,
       "일감번호": 276132,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][그리기] 호스트 네트워크 순단 재연결 후 뷰어 신규 그리기·레이저 포인터가 고객 화면에 미반영 — 그리기는 상담원 화면에 정상 표시되어 인지 불가(무음 유실), 원격제어는 정상",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -318,7 +318,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [접속대기] 영상 지원 연결 대기 상태에서 [재연결 요청하기] 동작 미수행 및 종료 후 재연결 팝업 오노출 ",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "이경준",
       "created_on": "2026-07-30 10:57:23",
       "link": "https://projects.rsupport.com/issues/275697"
     },
@@ -3393,8 +3393,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 97,
-      "done": 183,
+      "notDone": 96,
+      "done": 184,
       "total": 280
     },
     "assignees": [
@@ -3443,23 +3443,23 @@
       {
         "name": "송건호",
         "total": 67,
-        "done": 54,
+        "done": 55,
         "complete": false,
-        "rate": 80
+        "rate": 82
       },
       {
         "name": "오세진",
-        "total": 63,
+        "total": 62,
         "done": 47,
         "complete": false,
-        "rate": 74
+        "rate": 75
       },
       {
         "name": "이경준",
-        "total": 48,
+        "total": 49,
         "done": 30,
         "complete": false,
-        "rate": 62
+        "rate": 61
       },
       {
         "name": "이명찬",
@@ -3504,8 +3504,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 81,
-        "done": 161,
+        "progress": 80,
+        "done": 162,
         "total": 242
       }
     ],
@@ -3516,7 +3516,7 @@
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 14
       },
       {
         "label": "보류",
@@ -3524,7 +3524,7 @@
       },
       {
         "label": "해결",
-        "count": 131
+        "count": 132
       },
       {
         "label": "피드백",
@@ -3729,10 +3729,10 @@
       {
         "date": "2026-08-04",
         "cumIssue": 283,
-        "cumDone": 183,
+        "cumDone": 184,
         "rate": 65,
         "newCount": 6,
-        "doneCount": 2
+        "doneCount": 3
       }
     ]
   }
