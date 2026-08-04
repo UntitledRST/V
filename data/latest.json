@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T02:57:27.661979+00:00",
+  "fetchedAt": "2026-08-04T03:02:48.936631+00:00",
   "count": 279,
   "issues": [
     {
       "번호": 1,
       "일감번호": 276072,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][그리기] 네트워크 순단 재연결 후 고객 화면에 남은 그리기를 [전체 지우기]로 제거 불가 — 버튼 비활성(#274227 수정 전에는 제거 가능, 회귀)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3385,8 +3385,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 175,
+      "notDone": 100,
+      "done": 176,
       "total": 276
     },
     "assignees": [
@@ -3435,9 +3435,9 @@
       {
         "name": "송건호",
         "total": 71,
-        "done": 50,
+        "done": 51,
         "complete": false,
-        "rate": 70
+        "rate": 71
       },
       {
         "name": "오세진",
@@ -3489,8 +3489,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 83,
-        "done": 155,
+        "progress": 82,
+        "done": 156,
         "total": 238
       }
     ],
@@ -3501,7 +3501,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -3509,7 +3509,7 @@
       },
       {
         "label": "해결",
-        "count": 124
+        "count": 125
       },
       {
         "label": "피드백",
@@ -3714,10 +3714,10 @@
       {
         "date": "2026-08-04",
         "cumIssue": 279,
-        "cumDone": 175,
+        "cumDone": 176,
         "rate": 63,
         "newCount": 2,
-        "doneCount": 1
+        "doneCount": 2
       }
     ]
   }
