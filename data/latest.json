@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T02:19:47.136706+00:00",
+  "fetchedAt": "2026-08-04T02:25:07.296251+00:00",
   "count": 279,
   "issues": [
     {
@@ -18,7 +18,7 @@
       "번호": 2,
       "일감번호": 276066,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][그리기] 텍스트 개별 삭제 후 [취소] 클릭 시 호스트 화면에만 텍스트 부활 — 뷰어는 빈 화면에 [전체 지우기] 비활성, 부활 오브젝트 제거 수단 없음",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3385,8 +3385,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 104,
-      "done": 172,
+      "notDone": 103,
+      "done": 173,
       "total": 276
     },
     "assignees": [
@@ -3435,9 +3435,9 @@
       {
         "name": "송건호",
         "total": 71,
-        "done": 48,
+        "done": 49,
         "complete": false,
-        "rate": 67
+        "rate": 69
       },
       {
         "name": "오세진",
@@ -3489,8 +3489,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 86,
-        "done": 152,
+        "progress": 85,
+        "done": 153,
         "total": 238
       }
     ],
@@ -3501,7 +3501,7 @@
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 14
       },
       {
         "label": "보류",
@@ -3509,7 +3509,7 @@
       },
       {
         "label": "해결",
-        "count": 121
+        "count": 122
       },
       {
         "label": "피드백",
@@ -3714,10 +3714,10 @@
       {
         "date": "2026-08-04",
         "cumIssue": 279,
-        "cumDone": 172,
+        "cumDone": 173,
         "rate": 62,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
