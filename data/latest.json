@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T02:35:58.047614+00:00",
+  "fetchedAt": "2026-08-04T02:41:23.804899+00:00",
   "count": 279,
   "issues": [
     {
@@ -73,7 +73,7 @@
       "번호": 7,
       "일감번호": 276003,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][원격제어·특수키] 제어 Off 되어도 토글 특수키(Ctrl 등) 활성 상태가 해제되지 않고 잔존 — 제어 재개 후 물리 키 입력에 잊힌 조합키가 합성 전송",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1555,7 +1555,7 @@
       "번호": 138,
       "일감번호": 274970,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 상담 일시정지 시 재개 안내 문구 개선 및 [상담 재개] 버튼 미구현 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3385,8 +3385,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 173,
+      "notDone": 101,
+      "done": 175,
       "total": 276
     },
     "assignees": [
@@ -3435,16 +3435,16 @@
       {
         "name": "송건호",
         "total": 71,
-        "done": 49,
+        "done": 50,
         "complete": false,
-        "rate": 69
+        "rate": 70
       },
       {
         "name": "오세진",
         "total": 66,
-        "done": 44,
+        "done": 45,
         "complete": false,
-        "rate": 66
+        "rate": 68
       },
       {
         "name": "이경준",
@@ -3489,8 +3489,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 85,
-        "done": 153,
+        "progress": 83,
+        "done": 155,
         "total": 238
       }
     ],
@@ -3501,7 +3501,7 @@
       },
       {
         "label": "진행",
-        "count": 14
+        "count": 12
       },
       {
         "label": "보류",
@@ -3509,7 +3509,7 @@
       },
       {
         "label": "해결",
-        "count": 122
+        "count": 124
       },
       {
         "label": "피드백",
@@ -3642,15 +3642,15 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 112,
+        "cumDone": 113,
         "rate": 69,
         "newCount": 31,
-        "doneCount": 23
+        "doneCount": 24
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 131,
+        "cumDone": 132,
         "rate": 72,
         "newCount": 20,
         "doneCount": 19
@@ -3658,15 +3658,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 140,
-        "rate": 71,
+        "cumDone": 141,
+        "rate": 72,
         "newCount": 14,
         "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 154,
+        "cumDone": 155,
         "rate": 71,
         "newCount": 21,
         "doneCount": 14
@@ -3674,15 +3674,15 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 161,
-        "rate": 69,
+        "cumDone": 162,
+        "rate": 70,
         "newCount": 14,
         "doneCount": 7
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 167,
+        "cumDone": 168,
         "rate": 67,
         "newCount": 18,
         "doneCount": 6
@@ -3690,7 +3690,7 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 170,
+        "cumDone": 171,
         "rate": 64,
         "newCount": 16,
         "doneCount": 3
@@ -3698,7 +3698,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 170,
+        "cumDone": 171,
         "rate": 64,
         "newCount": 1,
         "doneCount": 0
@@ -3706,16 +3706,16 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 172,
-        "rate": 62,
+        "cumDone": 174,
+        "rate": 63,
         "newCount": 10,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-08-04",
         "cumIssue": 279,
-        "cumDone": 173,
-        "rate": 62,
+        "cumDone": 175,
+        "rate": 63,
         "newCount": 2,
         "doneCount": 1
       }
