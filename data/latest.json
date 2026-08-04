@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-04T08:40:25.116408+00:00",
+  "fetchedAt": "2026-08-04T08:45:57.390842+00:00",
   "count": 283,
   "issues": [
     {
@@ -186,7 +186,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트] [URL] 로컬 알림·포그라운드 복귀 후 URL 실행 시 네트워크 불안정으로 인식 → 세션 종료됨 ",
       "우선순위": "높음(High)",
-      "담당자": "오세진",
+      "담당자": "이명찬",
       "created_on": "2026-07-31 12:03:00",
       "link": "https://projects.rsupport.com/issues/275844"
     },
@@ -3466,10 +3466,10 @@
       },
       {
         "name": "오세진",
-        "total": 64,
+        "total": 63,
         "done": 47,
         "complete": false,
-        "rate": 73
+        "rate": 74
       },
       {
         "name": "이경준",
@@ -3480,7 +3480,7 @@
       },
       {
         "name": "이명찬",
-        "total": 1,
+        "total": 2,
         "done": 0,
         "complete": false,
         "rate": 0
