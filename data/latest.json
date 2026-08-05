@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T05:22:50.021650+00:00",
+  "fetchedAt": "2026-08-05T05:26:31.111670+00:00",
   "count": 292,
   "issues": [
     {
@@ -106,7 +106,7 @@
       "번호": 10,
       "일감번호": 276141,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][연결] 연결 진행 화면 단계 문구 전환 시 이전·새 문구가 겹쳐 판독 불가 문자열로 표시 — 동시 페이드 중첩, mac 실기('엔진 초기화 중'+'피어 연결 대기' 겹침)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3485,8 +3485,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 97,
-      "done": 191,
+      "notDone": 96,
+      "done": 192,
       "total": 288
     },
     "assignees": [
@@ -3542,9 +3542,9 @@
       {
         "name": "오세진",
         "total": 65,
-        "done": 49,
+        "done": 50,
         "complete": false,
-        "rate": 75
+        "rate": 76
       },
       {
         "name": "이경준",
@@ -3596,15 +3596,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 77,
-        "done": 170,
+        "progress": 76,
+        "done": 171,
         "total": 247
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 61
+        "count": 60
       },
       {
         "label": "진행",
@@ -3616,7 +3616,7 @@
       },
       {
         "label": "해결",
-        "count": 135
+        "count": 136
       },
       {
         "label": "피드백",
@@ -3821,16 +3821,16 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 191,
-        "rate": 66,
+        "cumDone": 192,
+        "rate": 67,
         "newCount": 11,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-08-05",
         "cumIssue": 292,
-        "cumDone": 191,
-        "rate": 65,
+        "cumDone": 192,
+        "rate": 66,
         "newCount": 4,
         "doneCount": 0
       }
