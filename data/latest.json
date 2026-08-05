@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T06:59:19.258715+00:00",
+  "fetchedAt": "2026-08-05T07:03:40.832295+00:00",
   "count": 299,
   "issues": [
     {
@@ -421,7 +421,7 @@
       "번호": 38,
       "일감번호": 275743,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][VP] 접속코드 미지참 /vp 접근 시 대표 URL 이동까지 약 7초 소요 — 리다이렉트 판정이 Dart runApp 직전이라 15MB 호스트 앱을 전부 받은 뒤에야 이동 (#274384 후속)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -2653,29 +2653,12 @@
       "번호": 231,
       "일감번호": 274310,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 영상 지원 중 카메라 제거 시, 화면 공유 연결 실패 후 세션이 종료되는 현상 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-13 16:42:42",
-      "link": "https://projects.rsupport.com/issues/274310",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-07-16T10:33:30+09:00",
-          "note": "MR !1004 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1004\nmerge commit: f1ed916468"
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-07-23T18:27:38+09:00",
-          "note": "QA 검수 요청 (개발 완료 및 해결 처리)"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-08-04T10:07:26+09:00",
-          "note": "처리 내용 상 새로고침(F5) 시 기존 세션 자동 복구 및 세션 상태 복원이 적용된 것으로 판단됨. \r\n\r\n1. 그러나 카메라 장치 제거 상태에서 새로고침 시,\r\n- 뷰어: 재연결 시도 후 연결 실패 팝업이 노출되며, [다시 시도] 클릭 시 접속번호 공유 페이지로 이동. \r\n- 호스트: \"Unable to getUserMedia: NotFoundError\" 오류 페이지가 노출되며, [연결 종료] 클릭 시 툴바만 종료되고 '상담원과 연결되었습니다.' 화면 유지.\r\n- 또한 카메라 제거 상태에서도 뷰어의 제어 및 그리기 기능은 계속 동작하며, 호스트의 블랙아웃 화면에도 그리기 내용이 반영되는 현상이 확인됨.  \r\n\r\n2. 반면, 카메라를 다시 연결한 후 새로고침하는 경우에는 화면 공유가 정상적으로 재개되며 세션 복구가 확인됨. \r\n\r\n처리 내용만으로는 카메라 제거 상태에서의 새로고침 동작까지 포함한 것인지, 카메라 재연결 이후의 세션 복구만을 대상으로 한 것인지 적용 범위가 명확하지 않아 \r\n카메라 재연결 이전/이후 새로고침 시의 명확한 현상 정의가 필요한 것으로 확인됩니다. \r\n따라서 처리 내용과 실제 동작 일치 조건을 확인 요청드리며, 재검토를 위해 피드백으로 전환합니다.     \r\n\r\n[재현 환경]\r\n- 8.0.1.411"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/274310"
     },
     {
       "번호": 232,
@@ -3569,8 +3552,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 104,
-      "done": 192,
+      "notDone": 102,
+      "done": 194,
       "total": 296
     },
     "assignees": [
@@ -3626,9 +3609,9 @@
       {
         "name": "오세진",
         "total": 65,
-        "done": 50,
+        "done": 52,
         "complete": false,
-        "rate": 76
+        "rate": 80
       },
       {
         "name": "이경준",
@@ -3680,15 +3663,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 83,
-        "done": 170,
+        "progress": 81,
+        "done": 172,
         "total": 253
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 65
+        "count": 64
       },
       {
         "label": "진행",
@@ -3700,11 +3683,11 @@
       },
       {
         "label": "해결",
-        "count": 136
+        "count": 138
       },
       {
         "label": "피드백",
-        "count": 22
+        "count": 21
       },
       {
         "label": "완료성공",
@@ -3785,87 +3768,87 @@
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 46,
-        "rate": 64,
+        "cumDone": 47,
+        "rate": 65,
         "newCount": 16,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 50,
-        "rate": 63,
+        "cumDone": 51,
+        "rate": 65,
         "newCount": 7,
         "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 54,
-        "rate": 64,
+        "cumDone": 55,
+        "rate": 65,
         "newCount": 6,
         "doneCount": 4
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 68,
-        "rate": 67,
+        "cumDone": 69,
+        "rate": 68,
         "newCount": 16,
         "doneCount": 14
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 77,
-        "rate": 68,
+        "cumDone": 78,
+        "rate": 69,
         "newCount": 12,
         "doneCount": 9
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 94,
-        "rate": 71,
+        "cumDone": 95,
+        "rate": 72,
         "newCount": 19,
         "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 119,
-        "rate": 73,
+        "cumDone": 120,
+        "rate": 74,
         "newCount": 31,
         "doneCount": 25
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 139,
-        "rate": 76,
+        "cumDone": 140,
+        "rate": 77,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 148,
-        "rate": 75,
+        "cumDone": 149,
+        "rate": 76,
         "newCount": 14,
         "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 162,
-        "rate": 74,
+        "cumDone": 163,
+        "rate": 75,
         "newCount": 21,
         "doneCount": 14
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 169,
+        "cumDone": 170,
         "rate": 73,
         "newCount": 14,
         "doneCount": 7
@@ -3873,39 +3856,39 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 176,
-        "rate": 70,
+        "cumDone": 177,
+        "rate": 71,
         "newCount": 18,
         "doneCount": 7
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 181,
-        "rate": 68,
+        "cumDone": 183,
+        "rate": 69,
         "newCount": 16,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 181,
-        "rate": 68,
+        "cumDone": 183,
+        "rate": 69,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 188,
-        "rate": 68,
+        "cumDone": 190,
+        "rate": 69,
         "newCount": 10,
         "doneCount": 7
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 192,
+        "cumDone": 194,
         "rate": 67,
         "newCount": 11,
         "doneCount": 4
@@ -3913,8 +3896,8 @@
       {
         "date": "2026-08-05",
         "cumIssue": 299,
-        "cumDone": 192,
-        "rate": 64,
+        "cumDone": 194,
+        "rate": 65,
         "newCount": 11,
         "doneCount": 0
       }
