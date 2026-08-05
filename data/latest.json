@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T00:59:13.199298+00:00",
+  "fetchedAt": "2026-08-05T01:04:58.035358+00:00",
   "count": 289,
   "issues": [
     {
@@ -3229,7 +3229,7 @@
       "번호": 272,
       "일감번호": 273705,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] 채팅 메시지 입력창 이미지 복사 붙여넣기(Ctrl+V) 미구현",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3447,8 +3447,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 100,
-      "done": 186,
+      "notDone": 99,
+      "done": 187,
       "total": 286
     },
     "assignees": [
@@ -3497,9 +3497,9 @@
       {
         "name": "송건호",
         "total": 69,
-        "done": 55,
+        "done": 56,
         "complete": false,
-        "rate": 79
+        "rate": 81
       },
       {
         "name": "오세진",
@@ -3558,8 +3558,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 81,
-        "done": 164,
+        "progress": 80,
+        "done": 165,
         "total": 245
       }
     ],
@@ -3570,7 +3570,7 @@
       },
       {
         "label": "진행",
-        "count": 17
+        "count": 16
       },
       {
         "label": "보류",
@@ -3578,7 +3578,7 @@
       },
       {
         "label": "해결",
-        "count": 131
+        "count": 132
       },
       {
         "label": "피드백",
@@ -3631,79 +3631,79 @@
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 20,
-        "rate": 61,
+        "cumDone": 21,
+        "rate": 64,
         "newCount": 18,
-        "doneCount": 9
+        "doneCount": 10
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 21,
-        "rate": 54,
+        "cumDone": 22,
+        "rate": 56,
         "newCount": 6,
         "doneCount": 1
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 28,
-        "rate": 61,
+        "cumDone": 29,
+        "rate": 63,
         "newCount": 7,
         "doneCount": 7
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 34,
-        "rate": 61,
+        "cumDone": 35,
+        "rate": 62,
         "newCount": 10,
         "doneCount": 6
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 44,
-        "rate": 61,
+        "cumDone": 45,
+        "rate": 62,
         "newCount": 16,
         "doneCount": 10
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 48,
-        "rate": 61,
+        "cumDone": 49,
+        "rate": 62,
         "newCount": 7,
         "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 52,
-        "rate": 61,
+        "cumDone": 53,
+        "rate": 62,
         "newCount": 6,
         "doneCount": 4
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 66,
-        "rate": 65,
+        "cumDone": 67,
+        "rate": 66,
         "newCount": 16,
         "doneCount": 14
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 75,
-        "rate": 66,
+        "cumDone": 76,
+        "rate": 67,
         "newCount": 12,
         "doneCount": 9
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 92,
+        "cumDone": 93,
         "rate": 70,
         "newCount": 19,
         "doneCount": 17
@@ -3711,7 +3711,7 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 117,
+        "cumDone": 118,
         "rate": 72,
         "newCount": 31,
         "doneCount": 25
@@ -3719,7 +3719,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 137,
+        "cumDone": 138,
         "rate": 75,
         "newCount": 20,
         "doneCount": 20
@@ -3727,23 +3727,23 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 146,
-        "rate": 74,
+        "cumDone": 147,
+        "rate": 75,
         "newCount": 14,
         "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 160,
-        "rate": 73,
+        "cumDone": 161,
+        "rate": 74,
         "newCount": 21,
         "doneCount": 14
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 167,
+        "cumDone": 168,
         "rate": 72,
         "newCount": 14,
         "doneCount": 7
@@ -3751,15 +3751,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 173,
-        "rate": 69,
+        "cumDone": 174,
+        "rate": 70,
         "newCount": 18,
         "doneCount": 6
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 177,
+        "cumDone": 178,
         "rate": 67,
         "newCount": 16,
         "doneCount": 4
@@ -3767,15 +3767,15 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 177,
-        "rate": 66,
+        "cumDone": 178,
+        "rate": 67,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 183,
+        "cumDone": 184,
         "rate": 66,
         "newCount": 10,
         "doneCount": 6
@@ -3783,7 +3783,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 186,
+        "cumDone": 187,
         "rate": 65,
         "newCount": 11,
         "doneCount": 3
@@ -3791,8 +3791,8 @@
       {
         "date": "2026-08-05",
         "cumIssue": 289,
-        "cumDone": 186,
-        "rate": 64,
+        "cumDone": 187,
+        "rate": 65,
         "newCount": 1,
         "doneCount": 0
       }
