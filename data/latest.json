@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T07:14:40.968479+00:00",
+  "fetchedAt": "2026-08-05T07:16:45.784450+00:00",
   "count": 299,
   "issues": [
     {
@@ -182,7 +182,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [기획 요청][공통] 프록시 네트워크 지원 - 지원 범위·인증 방식·호스트 설정 화면 정의 필요 (응용 뷰어/호스트, 모바일 호스트)",
       "우선순위": "높음(High)",
-      "담당자": "김미령",
+      "담당자": "김성식",
       "created_on": "2026-08-04 18:04:33",
       "link": "https://projects.rsupport.com/issues/276155"
     },
@@ -3559,17 +3559,17 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
+        "total": 39,
         "done": 36,
         "complete": false,
-        "rate": 90
+        "rate": 92
       },
       {
         "name": "김성식",
-        "total": 31,
+        "total": 32,
         "done": 9,
         "complete": false,
-        "rate": 29
+        "rate": 28
       },
       {
         "name": "김신혜",
