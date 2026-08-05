@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T04:38:07.877426+00:00",
+  "fetchedAt": "2026-08-05T04:40:42.366707+00:00",
   "count": 290,
   "issues": [
     {
@@ -172,7 +172,7 @@
       "번호": 16,
       "일감번호": 276021,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트][파일 전송] 뷰어 '파일 가져오기' 요청 시 파일 소스 선택 메뉴가 화면 밖에 표시되어 무반응 — 화면 터치 시 안내 없이 거절 처리(무음), Android·iOS 공통",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -3458,8 +3458,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 98,
-      "done": 188,
+      "notDone": 97,
+      "done": 189,
       "total": 286
     },
     "assignees": [
@@ -3515,9 +3515,9 @@
       {
         "name": "오세진",
         "total": 65,
-        "done": 47,
+        "done": 48,
         "complete": false,
-        "rate": 72
+        "rate": 73
       },
       {
         "name": "이경준",
@@ -3569,8 +3569,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 79,
-        "done": 167,
+        "progress": 78,
+        "done": 168,
         "total": 246
       }
     ],
@@ -3581,7 +3581,7 @@
       },
       {
         "label": "진행",
-        "count": 17
+        "count": 16
       },
       {
         "label": "보류",
@@ -3589,7 +3589,7 @@
       },
       {
         "label": "해결",
-        "count": 132
+        "count": 133
       },
       {
         "label": "피드백",
@@ -3786,23 +3786,23 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 185,
+        "cumDone": 186,
         "rate": 67,
         "newCount": 10,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 188,
-        "rate": 65,
+        "cumDone": 189,
+        "rate": 66,
         "newCount": 11,
         "doneCount": 3
       },
       {
         "date": "2026-08-05",
         "cumIssue": 290,
-        "cumDone": 188,
+        "cumDone": 189,
         "rate": 65,
         "newCount": 2,
         "doneCount": 0
