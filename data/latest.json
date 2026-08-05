@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-05T08:45:30.913468+00:00",
+  "fetchedAt": "2026-08-05T08:50:37.847543+00:00",
   "count": 300,
   "issues": [
     {
@@ -531,7 +531,7 @@
       "번호": 48,
       "일감번호": 275689,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win][작업 표시줄] 아이콘 우클릭 > 앱 이름 > [열기] 클릭 시 호스트가 새 프로세스로 재실행되어 \"세션 정보 조회에 실패했습니다 / 이미 다른 사용자가 참여 중인 세션입니다\" 팝업 노출 — 상담 중 중복 실행 방지(단일 인스턴스) 부재",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3563,8 +3563,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 103,
-      "done": 194,
+      "notDone": 102,
+      "done": 195,
       "total": 297
     },
     "assignees": [
@@ -3620,9 +3620,9 @@
       {
         "name": "오세진",
         "total": 64,
-        "done": 52,
+        "done": 53,
         "complete": false,
-        "rate": 81
+        "rate": 82
       },
       {
         "name": "이경준",
@@ -3674,8 +3674,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 82,
-        "done": 172,
+        "progress": 81,
+        "done": 173,
         "total": 254
       }
     ],
@@ -3686,7 +3686,7 @@
       },
       {
         "label": "진행",
-        "count": 17
+        "count": 16
       },
       {
         "label": "보류",
@@ -3694,7 +3694,7 @@
       },
       {
         "label": "해결",
-        "count": 136
+        "count": 137
       },
       {
         "label": "피드백",
@@ -3875,15 +3875,15 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 183,
+        "cumDone": 184,
         "rate": 69,
         "newCount": 16,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 183,
+        "cumDone": 184,
         "rate": 69,
         "newCount": 1,
         "doneCount": 0
@@ -3891,7 +3891,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 190,
+        "cumDone": 191,
         "rate": 69,
         "newCount": 10,
         "doneCount": 7
@@ -3899,15 +3899,15 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 194,
-        "rate": 67,
+        "cumDone": 195,
+        "rate": 68,
         "newCount": 11,
         "doneCount": 4
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 194,
+        "cumDone": 195,
         "rate": 65,
         "newCount": 12,
         "doneCount": 0
