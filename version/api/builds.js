@@ -64,25 +64,32 @@ const SOURCES = [
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
     url: 'https://stbtnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
+    // 정상 조회되면 version.txt 의 buildNumber / time 을 그대로 사용하고,
+    // 1초 안에 못 받거나 조회에 실패하면 아래 fallback 값을 대신 표시한다.
     timeField: 'time', timeMode: 'utc',
-    // 0.8초 안에 응답이 오면 version.txt의 buildNumber / time 값을 그대로 사용하고,
-    // 0.8초를 넘기거나 조회에 실패하면 아래 fallback 값(빌드 6 / 2026-07-30T08:39:30.406Z)을 대신 표시함
-    timeoutMs: 800,
+    allowNodeHttpsFallback: true,
     fallback: { build: '6', time: '2026-07-30T08:39:30.406Z' },
+    // 서버리스 IP가 차단되어 직접 조회가 안 되면 아래 주석을 풀고 Worker 주소를 넣으세요.
+    // (version-proxy-worker.js 를 Cloudflare Workers 에 배포한 뒤 그 주소)
+    // proxyUrl: 'https://version-proxy.<계정>.workers.dev',
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
-    timeField: 'build_date', timeMode: 'utc' },
+    // Spring Boot actuator 형식(build.time / build.buildNumber)까지 함께 탐색
+    timeField: 'time', timeMode: 'utc',
+    allowNodeHttpsFallback: true },
 ];
 
-const TIMEOUT_MS = 1000; // 유일한 타임아웃 설정: 모든 곳에서 이 값(1초) 하나만 사용
+// 유일한 타임아웃 설정: 모든 소스가 이 값(1초) 하나만 사용한다.
+// 1초 안에 응답이 없으면 그 소스는 값 없이 넘어간다.
+const TIMEOUT_MS = 1000;
 
-// 소스에 fallback이 지정되어 있으면, 조회 실패(타임아웃 포함) 시 에러 대신 이 고정값을 표시함.
-// 메모리 캐시가 아니라 코드에 명시된 값이므로 함수 재시작(cold start)과 무관하게 항상 동일하게 동작함.
+// 소스에 fallback 이 지정되어 있으면, 조회 실패(타임아웃 포함) 시 이 고정값을 대신 표시한다.
+// 코드에 명시된 값이라 함수 재시작(cold start)과 무관하게 항상 동일하게 동작한다.
 function buildFallbackResult(src) {
   const date = parseAsUTCDate(src.fallback.time);
-  const text = formatKST(date); // UTC -> Asia/Seoul 변환
+  const text = formatKST(date);
   const compare = text ? text.slice(0, 10) : null;
   return {
     key: src.key,
@@ -94,7 +101,7 @@ function buildFallbackResult(src) {
     build: src.fallback.build,
     updateDateText: text,
     isToday: !!compare && compare === todayKSTDateStr(),
-    isFallback: true, // 실제 조회값이 아니라 고정 폴백값임을 표시
+    isFallback: true, // 실제 조회값이 아니라 고정값임을 표시 (화면에는 영향 없음)
     downloadUrl: src.siteUrl || src.url || null,
     downloadLabel: '바로가기',
   };
@@ -379,9 +386,37 @@ function parseKeyValueText(text) {
 
 async function fetchAdminTxt(src) {
   const timeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
-  const res = await fetchWithTimeout(src.url, { headers: { Accept: 'application/json, text/plain, */*' } }, { timeoutMs });
-  if (!res.ok) throw httpStatusError(res.status);
-  const text = await res.text();
+  // 원본 서버나 CDN이 예전 응답을 돌려주지 않도록 매 요청마다 값을 바꿔 붙인다
+  const bustedUrl = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
+
+  let text;
+  if (src.proxyUrl) {
+    // 원본 서버가 서버리스 IP를 차단할 때: Cloudflare Worker 등 다른 대역을 거쳐서 가져옴
+    // Worker 응답 형식: { ok: true, status: 200, body: "<version.txt 원문>" }
+    const proxied = src.proxyUrl + (src.proxyUrl.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(bustedUrl);
+    const res = await fetchWithTimeout(
+      proxied,
+      { headers: src.proxyKey ? { 'x-proxy-key': src.proxyKey } : {} },
+      { timeoutMs, maxRetries: 0, allowNodeHttpsFallback: false }
+    );
+    if (!res.ok) throw httpStatusError(res.status, '프록시 HTTP');
+    const payload = await res.json();
+    if (!payload || payload.ok === false) {
+      throw new Error(`프록시 오류: ${(payload && payload.error) || '알 수 없음'}`);
+    }
+    if (typeof payload.status === 'number' && (payload.status < 200 || payload.status >= 300)) {
+      throw httpStatusError(payload.status);
+    }
+    text = String(payload.body != null ? payload.body : '');
+  } else {
+    const res = await fetchWithTimeout(
+      bustedUrl,
+      { headers: { Accept: 'application/json, text/plain, */*', 'Cache-Control': 'no-cache', Pragma: 'no-cache' } },
+      { timeoutMs, allowNodeHttpsFallback: src.allowNodeHttpsFallback === true }
+    );
+    if (!res.ok) throw httpStatusError(res.status);
+    text = await res.text();
+  }
   let j = null;
   try {
     j = JSON.parse(text);
@@ -465,11 +500,13 @@ async function fetchAdminTxt(src) {
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
   };
-  // build 필드는 이 API에 애초에 존재하지 않는 경우가 많아 정상 상황이므로 진단 메시지에서 제외하고,
-  // 실제 문제인 "시간 필드를 못 찾은 경우"만 진단 정보를 내려줌
-  if (updateDateText === null) {
+  // 값을 못 찾았을 때는 원본 응답 일부를 함께 내려줘서 원인을 바로 확인할 수 있게 함
+  if (updateDateText === null || build === null) {
+    const missing = [];
+    if (build === null) missing.push('buildNumber');
+    if (updateDateText === null) missing.push(timeField);
     result._debug = {
-      reason: `시간 필드(${timeField}) 후보를 찾지 못함`,
+      reason: `${missing.join(', ')} 값을 찾지 못함`,
       topLevelKeys: Object.keys(j),
       rawSnippet: text.slice(0, 500),
     };
@@ -662,17 +699,17 @@ async function fetchOne(src) {
 
     return out;
   } catch (err) {
+    // fallback 이 지정된 소스는 에러 대신 고정값을 표시
+    if (src.fallback) {
+      return buildFallbackResult(src);
+    }
+
     const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
     const effectiveTimeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
     const errorMessage = isAbort
       ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
 
-    // fallback이 지정된 소스가 실패(타임아웃 포함)한 경우: 에러 대신 고정 폴백값을 표시
-    // (베타 PartnerAdmin: 0.8초 안에 응답이 없으면 빌드 6 / 2026-07-30T08:39:30.406Z(KST 변환))
-    if (src.fallback) {
-      return buildFallbackResult(src);
-    }
 
     // 실패 원인이 "게이트웨이/원본서버 응답 없음" 계열 상태코드이거나, 연결이 끊기는 네트워크 오류이거나,
     // 타임아웃(응답 자체가 없음)인 경우 -> 완전한 장애라기보다 "빌드 업데이트로 서버가 재시작 중"일 가능성이 높음
@@ -707,11 +744,11 @@ async function fetchOne(src) {
 // 하드 데드라인(TIMEOUT_MS)을 넘긴 소스에 대해 내려줄 결과.
 // 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
 function buildHardDeadlineResult(src) {
-  // fallback이 지정된 소스는 전역 하드 데드라인에 걸리더라도 동일하게 고정 폴백값을 표시
-  // (개별 timeoutMs(0.8초)가 하드 데드라인(1초)보다 짧아 보통은 이 경로를 타지 않지만 방어적으로 처리)
+  // fallback 이 지정된 소스는 하드 데드라인에 걸려도 동일하게 고정값을 표시
   if (src.fallback) {
     return buildFallbackResult(src);
   }
+
 
   return {
     key: src.key,
@@ -732,8 +769,76 @@ function buildHardDeadlineResult(src) {
   };
 }
 
+// 진단 모드: /api/builds?debug=beta-web-partneradmin
+// 해당 소스를 넉넉한 시간(기본 8초)으로 한 번 조회해서 상태코드, 소요 시간, 응답 원문 앞부분을 그대로 보여준다.
+// "1초 안에 못 받는 것"인지 "아예 막혀 있는 것"인지 구분하기 위한 용도.
+async function runDiagnostic(key, timeoutMs) {
+  const src = SOURCES.find((s) => s.key === key);
+  if (!src) {
+    return { ok: false, error: `알 수 없는 소스: ${key}`, available: SOURCES.map((s) => s.key) };
+  }
+
+  const url = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
+  const started = Date.now();
+  const attempt = async (label, useNodeHttps) => {
+    const t0 = Date.now();
+    try {
+      const res = useNodeHttps
+        ? await fetchViaNodeHttps(url, {}, timeoutMs)
+        : await fetchOnce(url, { headers: { Accept: 'application/json, text/plain, */*' } }, timeoutMs);
+      const text = await res.text();
+      return {
+        방식: label,
+        결과: res.ok ? '성공' : '실패',
+        상태코드: res.status,
+        소요시간ms: Date.now() - t0,
+        응답길이: text.length,
+        응답앞부분: text.slice(0, 500),
+      };
+    } catch (err) {
+      const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
+      return {
+        방식: label,
+        결과: isAbort ? `타임아웃(${timeoutMs}ms 안에 응답 없음)` : '오류',
+        소요시간ms: Date.now() - t0,
+        오류: String(err && err.message ? err.message : err),
+        오류코드: (err && (err.code || (err.cause && err.cause.code))) || null,
+      };
+    }
+  };
+
+  const attempts = [await attempt('일반 요청(HTTP/2 협상)', false)];
+  if (attempts[0].결과 !== '성공') {
+    attempts.push(await attempt('HTTP/1.1 강제', true));
+  }
+
+  const success = attempts.find((a) => a.결과 === '성공');
+  return {
+    ok: true,
+    소스: key,
+    주소: src.url,
+    대시보드_타임아웃ms: TIMEOUT_MS,
+    전체소요ms: Date.now() - started,
+    판정: !success
+      ? '응답을 받지 못했습니다. 서버가 막고 있거나 도달할 수 없는 상태입니다.'
+      : (success.소요시간ms > TIMEOUT_MS
+          ? `응답은 오지만 ${success.소요시간ms}ms 가 걸려 대시보드 제한(${TIMEOUT_MS}ms)을 넘습니다.`
+          : '정상입니다. 대시보드 제한 안에서 응답합니다.'),
+    시도: attempts,
+  };
+}
+
 module.exports = async (req, res) => {
   try {
+    // 진단 모드 먼저 처리
+    const debugKey = req.query && req.query.debug;
+    if (debugKey) {
+      const timeoutMs = Number((req.query && req.query.timeout) || 8000);
+      const result = await runDiagnostic(String(debugKey), timeoutMs);
+      res.setHeader('Cache-Control', 'no-store, max-age=0');
+      return res.status(200).json(result);
+    }
+
     // 소스 하나하나에 TIMEOUT_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
     // /api/builds 응답 자체는 절대 TIMEOUT_MS(1초)를 넘기지 않음
     const results = await Promise.all(
