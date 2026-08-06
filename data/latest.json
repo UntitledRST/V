@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T04:43:12.645936+00:00",
+  "fetchedAt": "2026-08-06T04:48:50.873616+00:00",
   "count": 301,
   "issues": [
     {
@@ -40,7 +40,7 @@
       "번호": 4,
       "일감번호": 276253,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] SMS ↔ E-mail 채널 전환 시 입력 정보 초기화됨 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3509,8 +3509,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 89,
-      "done": 209,
+      "notDone": 88,
+      "done": 210,
       "total": 298
     },
     "assignees": [
@@ -3559,9 +3559,9 @@
       {
         "name": "송건호",
         "total": 78,
-        "done": 59,
+        "done": 60,
         "complete": false,
-        "rate": 75
+        "rate": 76
       },
       {
         "name": "오세진",
@@ -3613,8 +3613,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 71,
-        "done": 184,
+        "progress": 70,
+        "done": 185,
         "total": 255
       }
     ],
@@ -3625,7 +3625,7 @@
       },
       {
         "label": "진행",
-        "count": 22
+        "count": 21
       },
       {
         "label": "보류",
@@ -3633,7 +3633,7 @@
       },
       {
         "label": "해결",
-        "count": 145
+        "count": 146
       },
       {
         "label": "피드백",
@@ -3846,16 +3846,16 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 208,
-        "rate": 69,
+        "cumDone": 209,
+        "rate": 70,
         "newCount": 12,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-08-06",
         "cumIssue": 301,
-        "cumDone": 209,
-        "rate": 69,
+        "cumDone": 210,
+        "rate": 70,
         "newCount": 1,
         "doneCount": 1
       }
