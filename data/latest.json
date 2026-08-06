@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T07:48:03.310848+00:00",
+  "fetchedAt": "2026-08-06T07:53:34.623738+00:00",
   "count": 302,
   "issues": [
     {
@@ -10,7 +10,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [에이전트][환경설정] 실시간 저장 피드백·파괴적 변경 정책 확정 — 개발 확인 4건 회신 요청",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "김미령",
       "created_on": "2026-08-06 16:39:01",
       "link": "https://projects.rsupport.com/issues/276400"
     },
@@ -3528,10 +3528,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 41,
+        "total": 42,
         "done": 37,
         "complete": false,
-        "rate": 90
+        "rate": 88
       },
       {
         "name": "김성식",
@@ -3570,10 +3570,10 @@
       },
       {
         "name": "송건호",
-        "total": 80,
+        "total": 79,
         "done": 61,
         "complete": false,
-        "rate": 76
+        "rate": 77
       },
       {
         "name": "오세진",
