@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T07:08:53.848184+00:00",
+  "fetchedAt": "2026-08-06T07:14:32.443258+00:00",
   "count": 301,
   "issues": [
     {
@@ -83,7 +83,7 @@
       "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [접속대기] E-mail 전송 내용 입력 150자 초과 시 전송 불가 및 전송 실패 토스트 말줄임표 노출됨 — 기획 (Figma) 최대 200자 불일치   ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "created_on": "2026-08-05 14:48:31",
       "link": "https://projects.rsupport.com/issues/276227"
     },
@@ -3507,10 +3507,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 43,
+        "total": 42,
         "done": 37,
         "complete": false,
-        "rate": 86
+        "rate": 88
       },
       {
         "name": "김성식",
@@ -3549,10 +3549,10 @@
       },
       {
         "name": "송건호",
-        "total": 77,
+        "total": 78,
         "done": 61,
         "complete": false,
-        "rate": 79
+        "rate": 78
       },
       {
         "name": "오세진",
