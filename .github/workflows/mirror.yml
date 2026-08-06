@@ -1,0 +1,32 @@
+name: mirror-version
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # 30분마다 (UTC 기준)
+  workflow_dispatch:          # 수동 실행 버튼
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch version.txt
+        run: |
+          curl -fsSL \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" \
+            -o mirror/version.txt \
+            --create-dirs \
+            https://stbtnpartners.startsupport.com/version.txt
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "mirror-bot"
+          git config user.email "mirror-bot@users.noreply.github.com"
+          git add mirror/version.txt
+          git diff --staged --quiet || \
+            git commit -m "sync version.txt ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git push
