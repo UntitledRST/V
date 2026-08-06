@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T08:04:39.146335+00:00",
+  "fetchedAt": "2026-08-06T08:10:09.509048+00:00",
   "count": 302,
   "issues": [
     {
@@ -3327,7 +3327,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA][개선] 채팅 수신 메시지 개별 복사 기능 부재 — 기획 정의 필요",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식",
+      "담당자": "김미령",
       "created_on": "2026-07-07 09:31:41",
       "link": "https://projects.rsupport.com/issues/273703",
       "comments": [
@@ -3335,6 +3335,11 @@
           "author": "강승아",
           "created_on": "2026-07-08T11:43:46+09:00",
           "note": "안녕하세요 성식님, 검증팀에서 채팅 메시지 복사 관련해서 개선 요청을 하셨는데요 이번에 아래와 같이 요청하신 부분 개발 가능한지 검토 후 피드백 주시면 기획 대응하겠습니다~!\r\n\r\n**[검증팀 제안 / 결정 요청 사항]**\r\n1. 채팅 수신(및 발신) 메시지 개별 복사 제공 여부 기획 결정\r\n2. 제공 시 상호작용 방식 정의 필요:\r\n- PC: 텍스트 드래그 선택 + Ctrl+C, 또는 말풍선 우클릭/호버 메뉴 → 복사\r\n- 모바일(호스트): 말풍선 길게 누르기 → 복사\r\n3. 미제공 결정 시에도 정책으로 명문화하여 QA 판정 기준 확보"
+        },
+        {
+          "author": "김성식",
+          "created_on": "2026-08-06T17:08:26+09:00",
+          "note": "기획 검토 부탁드립니다.\n\nSelectableText, copy IconButton 등, 제안하신 기능 모두 처리 가능합니다."
         }
       ]
     },
@@ -3375,19 +3380,12 @@
       "번호": 290,
       "일감번호": 273661,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][대기화면] 개발용 'Janus 사용' 토글이 운영 빌드 대기화면에 게이트 없이 노출 (Figma 미표기·SFU/mesh 전환·ON 시 세션 중단 리스크)",
       "우선순위": "보통(Normal)",
-      "담당자": "김성식",
+      "담당자": "송건호",
       "created_on": "2026-07-06 17:36:58",
-      "link": "https://projects.rsupport.com/issues/273661",
-      "comments": [
-        {
-          "author": "김성식",
-          "created_on": "2026-07-08T20:18:51+09:00",
-          "note": "서버녹화 구현 후, 정리될 예정입니다."
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/273661"
     },
     {
       "번호": 291,
@@ -3531,24 +3529,24 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 87,
-      "done": 212,
+      "notDone": 86,
+      "done": 213,
       "total": 299
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 42,
+        "total": 43,
         "done": 37,
         "complete": false,
-        "rate": 88
+        "rate": 86
       },
       {
         "name": "김성식",
-        "total": 30,
+        "total": 28,
         "done": 9,
         "complete": false,
-        "rate": 30
+        "rate": 32
       },
       {
         "name": "김신혜",
@@ -3580,8 +3578,8 @@
       },
       {
         "name": "송건호",
-        "total": 81,
-        "done": 61,
+        "total": 82,
+        "done": 62,
         "complete": false,
         "rate": 75
       },
@@ -3635,8 +3633,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 68,
-        "done": 187,
+        "progress": 67,
+        "done": 188,
         "total": 255
       }
     ],
@@ -3655,11 +3653,11 @@
       },
       {
         "label": "해결",
-        "count": 148
+        "count": 149
       },
       {
         "label": "피드백",
-        "count": 14
+        "count": 13
       },
       {
         "label": "완료성공",
@@ -3700,95 +3698,95 @@
       {
         "date": "2026-07-06",
         "cumIssue": 15,
-        "cumDone": 11,
-        "rate": 73,
+        "cumDone": 12,
+        "rate": 80,
         "newCount": 15,
-        "doneCount": 11
+        "doneCount": 12
       },
       {
         "date": "2026-07-07",
         "cumIssue": 33,
-        "cumDone": 22,
-        "rate": 67,
+        "cumDone": 23,
+        "rate": 70,
         "newCount": 18,
         "doneCount": 11
       },
       {
         "date": "2026-07-08",
         "cumIssue": 39,
-        "cumDone": 23,
-        "rate": 59,
+        "cumDone": 24,
+        "rate": 62,
         "newCount": 6,
         "doneCount": 1
       },
       {
         "date": "2026-07-09",
         "cumIssue": 46,
-        "cumDone": 30,
-        "rate": 65,
+        "cumDone": 31,
+        "rate": 67,
         "newCount": 7,
         "doneCount": 7
       },
       {
         "date": "2026-07-10",
         "cumIssue": 56,
-        "cumDone": 38,
-        "rate": 68,
+        "cumDone": 39,
+        "rate": 70,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 51,
-        "rate": 71,
+        "cumDone": 52,
+        "rate": 72,
         "newCount": 16,
         "doneCount": 13
       },
       {
         "date": "2026-07-14",
         "cumIssue": 79,
-        "cumDone": 55,
-        "rate": 70,
+        "cumDone": 56,
+        "rate": 71,
         "newCount": 7,
         "doneCount": 4
       },
       {
         "date": "2026-07-15",
         "cumIssue": 85,
-        "cumDone": 59,
-        "rate": 69,
+        "cumDone": 60,
+        "rate": 71,
         "newCount": 6,
         "doneCount": 4
       },
       {
         "date": "2026-07-16",
         "cumIssue": 101,
-        "cumDone": 73,
-        "rate": 72,
+        "cumDone": 74,
+        "rate": 73,
         "newCount": 16,
         "doneCount": 14
       },
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 85,
-        "rate": 75,
+        "cumDone": 86,
+        "rate": 76,
         "newCount": 12,
         "doneCount": 12
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 102,
-        "rate": 77,
+        "cumDone": 103,
+        "rate": 78,
         "newCount": 19,
         "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 128,
+        "cumDone": 129,
         "rate": 79,
         "newCount": 31,
         "doneCount": 26
@@ -3796,7 +3794,7 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 148,
+        "cumDone": 149,
         "rate": 81,
         "newCount": 20,
         "doneCount": 20
@@ -3804,7 +3802,7 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 157,
+        "cumDone": 158,
         "rate": 80,
         "newCount": 14,
         "doneCount": 9
@@ -3812,15 +3810,15 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 171,
-        "rate": 78,
+        "cumDone": 172,
+        "rate": 79,
         "newCount": 21,
         "doneCount": 14
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 178,
+        "cumDone": 179,
         "rate": 77,
         "newCount": 14,
         "doneCount": 7
@@ -3828,7 +3826,7 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 185,
+        "cumDone": 186,
         "rate": 74,
         "newCount": 18,
         "doneCount": 7
@@ -3836,15 +3834,15 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 192,
-        "rate": 72,
+        "cumDone": 193,
+        "rate": 73,
         "newCount": 16,
         "doneCount": 7
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 192,
+        "cumDone": 193,
         "rate": 72,
         "newCount": 1,
         "doneCount": 0
@@ -3852,15 +3850,15 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 200,
-        "rate": 72,
+        "cumDone": 201,
+        "rate": 73,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 207,
+        "cumDone": 208,
         "rate": 72,
         "newCount": 11,
         "doneCount": 7
@@ -3868,16 +3866,16 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 211,
-        "rate": 70,
+        "cumDone": 212,
+        "rate": 71,
         "newCount": 12,
         "doneCount": 4
       },
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 212,
-        "rate": 70,
+        "cumDone": 213,
+        "rate": 71,
         "newCount": 2,
         "doneCount": 1
       }
