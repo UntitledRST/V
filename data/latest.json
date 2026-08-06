@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T02:15:24.549626+00:00",
+  "fetchedAt": "2026-08-06T02:16:42.908615+00:00",
   "count": 301,
   "issues": [
     {
@@ -102,7 +102,7 @@
       "번호": 9,
       "일감번호": 276222,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][상담이력] 엑셀 저장 파일 데이터 4종 결함 — 상담코드 전 행 공란·상담시간(초) 전 행 0·시각 UTC 표기(고객사 타임존 미적용)·고객대기시간 단위 오류 추정(ms)",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2172,34 +2172,12 @@
       "번호": 191,
       "일감번호": 274806,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트] 그리기 상태 변경 창 및 관련 기능 (실행 취소/다시 실행/전체 지우기) 미구현 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-20 16:18:01",
-      "link": "https://projects.rsupport.com/issues/274806",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-07-27T14:36:52+09:00",
-          "note": "MR 머지 완료 (develop)\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1235\nmerge commit: 9670fcd18c8a70009ee44e4bd5aeec0d99b1a59e"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-08-04T08:44:27+09:00",
-          "note": "1. [그리기 상태 변경 창] 이 열린 상태에서 \r\n- 뷰어 [고객 그리기 해제] 클릭 \r\n- 호스트 [Esc] 키 클릭 \r\n→ 그리기 기능은 정상적으로 종료되나, [그리기 상태 변경 창]은 열린 상태로 유지됨.  \r\n\r\n2. 호스트가 [그리기 상태 변경 창] 내의 [실행 취소] / [다시 실행] / [전체 지우기] 기능을 실행할 때마다 상태 변경 창이 자동으로 닫힘. \r\n→ 사용자가 여러 기능을 연속으로 사용할 경우, 매번 상태 변경 창을 다시 열어야 하므로 사용성이 저하.\r\n\r\n따라서 해당 일감을 피드백으로 전환하며, 위 동작에 대해 확인 및 재검토 요청드립니다. \r\n\r\n[재현 환경]\r\n- 8.0.1.411"
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-08-05T18:13:43+09:00",
-          "note": "안녕하세요 @mrkim 팀장님!\r\n\r\n우선, 그리기를 종료했을 때 팝오버가 제거되지 않는 이슈는 등록된 리포트 내용대로 정상적으로 수정할 예정입니다..!\r\n\r\n다만\r\n_2. 호스트가 [그리기 상태 변경 창] 내의 [실행 취소] / [다시 실행] / [전체 지우기] 기능을 실행할 때마다 상태 변경 창이 자동으로 닫힘. \r\n→ 사용자가 여러 기능을 연속으로 사용할 경우, 매번 상태 변경 창을 다시 열어야 하므로 사용성이 저하._\r\n\r\n건에 대하여 호스트는 항목을 클릭하면 창이 바로 닫히는 공통 컴포넌트 동작을 따르고 있습니다.\r\n따라 한 번 클릭하면 닫히는 기존 공통 컴포넌트 동작을 그대로 유지하는 것이 전체적인 일관성 측면에서 더 낫다고 판단되어 검토 요청드립니다..!"
-        },
-        {
-          "author": "김미령",
-          "created_on": "2026-08-06T09:25:01+09:00",
-          "note": "안녕하세요, 기획 확인 결과 회신드립니다.\n\n**1. 그리기 종료 시 [그리기 상태 변경 창]이 열린 채 남는 건** — 결함이 맞고, 수정하겠다고 해주신 방향에 동의합니다. 기획서에도 \"그리기 종료 시(고객 그리기 해제·Esc 등 모든 종료 동선) 팝오버 메뉴와 펼침(∨) 아이콘을 즉시 제거\"로 명문화했습니다.\n\n**2. 항목 클릭 시마다 창이 자동으로 닫히는 건** — 검토 요청 주신 의견에 동의합니다. 공통 컴포넌트 동작 그대로 유지가 맞고, 결함이 아닙니다. 실행 취소·다시 실행을 연속으로 쓰고 싶은 경우는 화면 상단의 그리기 오버레이 툴바(기획서 1-4, #274809 등재)가 담당하므로, 팝오버가 매번 닫혀도 연속 조작 동선은 확보되어 있습니다. 이 내용도 기획서에 \"항목 클릭 시 해당 기능 실행 후 자동 닫힘(연속 조작은 오버레이 툴바 이용)\"으로 명시했습니다.\n\n**기획서 반영 내역** — 기존 1-1·1-2 정의가 폐기된 옛 설계(\"하단 상시 창 + 접기/펴기\")로 남아 있던 것을 현재 구현(그리기 버튼 우측 ∨ 아이콘 클릭 시 팝오버 메뉴) 기준으로 개정했습니다. Document History v0.3.9.\n- 1-1 그리기(활성화 상태): https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz?node-id=967-2698\n- 1-2 그리기 상태 변경 창: https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz?node-id=967-2704\n\n정리하면, 1번만 수정해 주시면 되고 2번은 현행 유지입니다. 확인 부탁드립니다."
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/274806"
     },
     {
       "번호": 192,
@@ -3558,8 +3536,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 91,
-      "done": 207,
+      "notDone": 90,
+      "done": 208,
       "total": 298
     },
     "assignees": [
@@ -3615,9 +3593,9 @@
       {
         "name": "오세진",
         "total": 67,
-        "done": 56,
+        "done": 57,
         "complete": false,
-        "rate": 83
+        "rate": 85
       },
       {
         "name": "이경준",
@@ -3669,19 +3647,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 73,
-        "done": 182,
+        "progress": 72,
+        "done": 183,
         "total": 255
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 58
+        "count": 57
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 16
       },
       {
         "label": "보류",
@@ -3689,11 +3667,11 @@
       },
       {
         "label": "해결",
-        "count": 144
+        "count": 145
       },
       {
         "label": "피드백",
-        "count": 18
+        "count": 17
       },
       {
         "label": "완료성공",
@@ -3806,23 +3784,23 @@
       {
         "date": "2026-07-20",
         "cumIssue": 113,
-        "cumDone": 83,
-        "rate": 73,
+        "cumDone": 84,
+        "rate": 74,
         "newCount": 12,
-        "doneCount": 11
+        "doneCount": 12
       },
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 100,
-        "rate": 76,
+        "cumDone": 101,
+        "rate": 77,
         "newCount": 19,
         "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 125,
+        "cumDone": 126,
         "rate": 77,
         "newCount": 31,
         "doneCount": 25
@@ -3830,39 +3808,39 @@
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 145,
-        "rate": 79,
+        "cumDone": 146,
+        "rate": 80,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 154,
-        "rate": 78,
+        "cumDone": 155,
+        "rate": 79,
         "newCount": 14,
         "doneCount": 9
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 168,
-        "rate": 77,
+        "cumDone": 169,
+        "rate": 78,
         "newCount": 21,
         "doneCount": 14
       },
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 175,
-        "rate": 75,
+        "cumDone": 176,
+        "rate": 76,
         "newCount": 14,
         "doneCount": 7
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 182,
+        "cumDone": 183,
         "rate": 73,
         "newCount": 18,
         "doneCount": 7
@@ -3870,7 +3848,7 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 189,
+        "cumDone": 190,
         "rate": 71,
         "newCount": 16,
         "doneCount": 7
@@ -3878,7 +3856,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 189,
+        "cumDone": 190,
         "rate": 71,
         "newCount": 1,
         "doneCount": 0
@@ -3886,7 +3864,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 197,
+        "cumDone": 198,
         "rate": 71,
         "newCount": 10,
         "doneCount": 8
@@ -3894,7 +3872,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 204,
+        "cumDone": 205,
         "rate": 71,
         "newCount": 11,
         "doneCount": 7
@@ -3902,7 +3880,7 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 206,
+        "cumDone": 207,
         "rate": 69,
         "newCount": 12,
         "doneCount": 2
@@ -3910,7 +3888,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 301,
-        "cumDone": 207,
+        "cumDone": 208,
         "rate": 69,
         "newCount": 1,
         "doneCount": 1
