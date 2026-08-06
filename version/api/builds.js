@@ -65,8 +65,10 @@ const SOURCES = [
     url: 'https://stbtnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
-    // 응답이 없으면 실패 처리하고, 마지막으로 성공했던 값을 대신 표시함(아래 LAST_GOOD_CACHE 참고)
-    cacheOnSuccess: true,
+    // 0.8초 안에 응답이 오면 version.txt의 buildNumber / time 값을 그대로 사용하고,
+    // 0.8초를 넘기거나 조회에 실패하면 아래 fallback 값(빌드 6 / 2026-07-30T08:39:30.406Z)을 대신 표시함
+    timeoutMs: 800,
+    fallback: { build: '6', time: '2026-07-30T08:39:30.406Z' },
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
@@ -76,26 +78,28 @@ const SOURCES = [
 
 const TIMEOUT_MS = 1000; // 유일한 타임아웃 설정: 모든 곳에서 이 값(1초) 하나만 사용
 
-// 소스별로 "마지막에 성공했던 결과"를 저장해두는 캐시.
-// cacheOnSuccess:true 인 소스가 조회에 실패하면, 에러 대신 이 캐시에 저장된 값을 그대로 보여줌.
-// 주의: 서버리스 함수 특성상 이 캐시는 함수 인스턴스가 재시작(cold start)되면 초기화됨(메모리 전용, 영구 저장 아님).
-const LAST_GOOD_CACHE = new Map();
-
-// 최초 배포 시점에는 아직 한 번도 조회에 성공한 적이 없어 캐시가 비어있으므로,
-// 사용자가 직접 확인한 실제 값(2026-07-16T08:02:16.335Z, buildNumber 4)으로 미리 시드해둠.
-// 이후 실제 조회가 1초 안에 성공하면 이 값은 최신 조회 결과로 자동 갱신됨.
-(function seedBetaPartnerAdminCache() {
-  const seedDate = parseAsUTCDate('2026-07-16T08:02:16.335Z');
-  const seedText = formatKST(seedDate);
-  LAST_GOOD_CACHE.set('beta-web-partneradmin', {
-    build: '4',
-    updateDateText: seedText,
-    updateDateForCompare: seedText ? seedText.slice(0, 10) : null,
-    downloadUrl: 'https://stbtnpartners.startsupport.com',
+// 소스에 fallback이 지정되어 있으면, 조회 실패(타임아웃 포함) 시 에러 대신 이 고정값을 표시함.
+// 메모리 캐시가 아니라 코드에 명시된 값이므로 함수 재시작(cold start)과 무관하게 항상 동일하게 동작함.
+function buildFallbackResult(src) {
+  const date = parseAsUTCDate(src.fallback.time);
+  const text = formatKST(date); // UTC -> Asia/Seoul 변환
+  const compare = text ? text.slice(0, 10) : null;
+  return {
+    key: src.key,
+    channel: src.channel,
+    group: src.group,
+    platform: src.platform,
+    label: src.label,
+    ok: true,
+    build: src.fallback.build,
+    updateDateText: text,
+    isToday: !!compare && compare === todayKSTDateStr(),
+    isFallback: true, // 실제 조회값이 아니라 고정 폴백값임을 표시
+    downloadUrl: src.siteUrl || src.url || null,
     downloadLabel: '바로가기',
-    cachedAt: Date.now(),
-  });
-})();
+  };
+}
+
 const FETCH_MAX_RETRIES = 0; // 재시도 없이 바로 실패 처리
 
 // promise가 ms 안에 끝나지 않으면, 원래 처리 결과를 기다리지 않고 즉시 fallbackFactory()의
@@ -656,18 +660,6 @@ async function fetchOne(src) {
     };
     if (data._debug) out._debug = data._debug; // 진단 정보가 있으면 항상 응답에 포함시킴
 
-    // 이번 조회가 성공했으니, 다음에 실패할 경우를 대비해 결과를 캐시에 저장해둠
-    if (src.cacheOnSuccess) {
-      LAST_GOOD_CACHE.set(src.key, {
-        build: data.build,
-        updateDateText: data.updateDateText,
-        updateDateForCompare: data.updateDateForCompare,
-        downloadUrl: data.downloadUrl,
-        downloadLabel: data.downloadLabel,
-        cachedAt: Date.now(),
-      });
-    }
-
     return out;
   } catch (err) {
     const isAbort = err && (err.name === 'AbortError' || /aborted/i.test(String(err.message || err)));
@@ -676,25 +668,10 @@ async function fetchOne(src) {
       ? `타임아웃: ${effectiveTimeoutMs / 1000}초 응답 없음`
       : String(err && err.message ? err.message : err);
 
-    // cacheOnSuccess 소스가 실패(타임아웃 포함)한 경우: 에러를 보여주는 대신
-    // 마지막으로 성공했던 값을 그대로 유지해서 보여줌 ("1초 안에 안 들어가면 기존 값 유지" 동작)
-    if (src.cacheOnSuccess && LAST_GOOD_CACHE.has(src.key)) {
-      const cached = LAST_GOOD_CACHE.get(src.key);
-      const todayKST = todayKSTDateStr();
-      const isToday = !!cached.updateDateForCompare && cached.updateDateForCompare === todayKST;
-      return {
-        key: src.key,
-        channel: src.channel,
-        group: src.group,
-        platform: src.platform,
-        label: src.label,
-        ok: true,
-        build: cached.build,
-        updateDateText: cached.updateDateText,
-        isToday,
-        downloadUrl: cached.downloadUrl,
-        downloadLabel: cached.downloadLabel,
-      };
+    // fallback이 지정된 소스가 실패(타임아웃 포함)한 경우: 에러 대신 고정 폴백값을 표시
+    // (베타 PartnerAdmin: 0.8초 안에 응답이 없으면 빌드 6 / 2026-07-30T08:39:30.406Z(KST 변환))
+    if (src.fallback) {
+      return buildFallbackResult(src);
     }
 
     // 실패 원인이 "게이트웨이/원본서버 응답 없음" 계열 상태코드이거나, 연결이 끊기는 네트워크 오류이거나,
@@ -730,25 +707,10 @@ async function fetchOne(src) {
 // 하드 데드라인(TIMEOUT_MS)을 넘긴 소스에 대해 내려줄 결과.
 // 일반 실패(ok:false)와 형태는 같지만, 사유가 "우리 쪽에서 강제로 끊음"이라는 걸 명확히 구분해서 표시.
 function buildHardDeadlineResult(src) {
-  // cacheOnSuccess 소스는 전역 하드 데드라인에 걸리더라도 마지막 성공값을 유지 (개별 timeoutMs가 하드 데드라인보다
-  // 짧게 설정되어 있어 보통은 이 경로를 타지 않지만, 방어적으로 동일하게 처리)
-  if (src.cacheOnSuccess && LAST_GOOD_CACHE.has(src.key)) {
-    const cached = LAST_GOOD_CACHE.get(src.key);
-    const todayKST = todayKSTDateStr();
-    const isToday = !!cached.updateDateForCompare && cached.updateDateForCompare === todayKST;
-    return {
-      key: src.key,
-      channel: src.channel,
-      group: src.group,
-      platform: src.platform,
-      label: src.label,
-      ok: true,
-      build: cached.build,
-      updateDateText: cached.updateDateText,
-      isToday,
-      downloadUrl: cached.downloadUrl,
-      downloadLabel: cached.downloadLabel,
-    };
+  // fallback이 지정된 소스는 전역 하드 데드라인에 걸리더라도 동일하게 고정 폴백값을 표시
+  // (개별 timeoutMs(0.8초)가 하드 데드라인(1초)보다 짧아 보통은 이 경로를 타지 않지만 방어적으로 처리)
+  if (src.fallback) {
+    return buildFallbackResult(src);
   }
 
   return {
