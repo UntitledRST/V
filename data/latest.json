@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T01:59:47.099677+00:00",
+  "fetchedAt": "2026-08-06T02:04:18.296097+00:00",
   "count": 301,
   "issues": [
     {
       "번호": 1,
       "일감번호": 276290,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][일시정지] 상담 재개 안내 문구가 기획 정본과 다르게 축약 표기 — 기획 \"상담 재개 버튼\" vs 구현 \"재개버튼\"(띄어쓰기 오류), 전 지원 유형 채팅 안내 카드·영상지원 화면 오버레이 공통",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3558,8 +3558,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 92,
-      "done": 206,
+      "notDone": 91,
+      "done": 207,
       "total": 298
     },
     "assignees": [
@@ -3615,9 +3615,9 @@
       {
         "name": "오세진",
         "total": 67,
-        "done": 55,
+        "done": 56,
         "complete": false,
-        "rate": 82
+        "rate": 83
       },
       {
         "name": "이경준",
@@ -3669,15 +3669,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 74,
-        "done": 181,
+        "progress": 73,
+        "done": 182,
         "total": 255
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 59
+        "count": 58
       },
       {
         "label": "진행",
@@ -3689,7 +3689,7 @@
       },
       {
         "label": "해결",
-        "count": 143
+        "count": 144
       },
       {
         "label": "피드백",
@@ -3910,10 +3910,10 @@
       {
         "date": "2026-08-06",
         "cumIssue": 301,
-        "cumDone": 206,
-        "rate": 68,
+        "cumDone": 207,
+        "rate": 69,
         "newCount": 1,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
