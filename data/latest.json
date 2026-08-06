@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T05:33:43.490966+00:00",
+  "fetchedAt": "2026-08-06T05:39:16.813699+00:00",
   "count": 301,
   "issues": [
     {
@@ -149,7 +149,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][업데이트] 강제 업데이트(mandatoryBuild) 오설정 시 [나중에] 없는 무한 트랩 + 이전 버전 롤백 배포 수단 부재 — 판정이 목표 빌드 정확일치를 모름(roll-forward only)",
       "우선순위": "보통(Normal)",
-      "담당자": "김신혜",
+      "담당자": "김미령",
       "created_on": "2026-08-05 09:41:56",
       "link": "https://projects.rsupport.com/issues/276181"
     },
@@ -3502,10 +3502,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
+        "total": 41,
         "done": 37,
         "complete": false,
-        "rate": 92
+        "rate": 90
       },
       {
         "name": "김성식",
@@ -3516,10 +3516,10 @@
       },
       {
         "name": "김신혜",
-        "total": 13,
+        "total": 12,
         "done": 9,
         "complete": false,
-        "rate": 69
+        "rate": 75
       },
       {
         "name": "박승진",
