@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-06T05:05:36.418750+00:00",
+  "fetchedAt": "2026-08-06T05:11:09.651214+00:00",
   "count": 301,
   "issues": [
     {
@@ -29,7 +29,7 @@
       "번호": 3,
       "일감번호": 276257,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] SMS/E-mail 전송 시 필수 입력값 미기입 상태에서도 [전송하기] 버튼 활성화 처리됨 ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -113,19 +113,12 @@
       "번호": 10,
       "일감번호": 276218,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] [접속대기] 접속 정보 고객 전달 방법 →  SMS 전송 시 이모지(Emoji) 문자가 '?'로 치환되어 전달됨  ",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "created_on": "2026-08-05 14:18:14",
-      "link": "https://projects.rsupport.com/issues/276218",
-      "comments": [
-        {
-          "author": "송건호",
-          "created_on": "2026-08-06T11:45:10+09:00",
-          "note": "@mrkim \n이모지 전송 되어야하는거죠?\n이모지도 전송이 되야하는거라면... 담당자를 백엔드 담당자로 변경부탁드립니다.\n\n\n클라이언트에서는 utf8로 이모지를 포함해서 전달하는데..실제 sms발송시 단문형식이 euckr(이모지미지원)로 전송되고있느것 같습니다"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/276218"
     },
     {
       "번호": 11,
@@ -3502,17 +3495,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 88,
-      "done": 210,
+      "notDone": 87,
+      "done": 211,
       "total": 298
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 41,
+        "total": 40,
         "done": 37,
         "complete": false,
-        "rate": 90
+        "rate": 92
       },
       {
         "name": "김성식",
@@ -3551,10 +3544,10 @@
       },
       {
         "name": "송건호",
-        "total": 78,
-        "done": 60,
+        "total": 79,
+        "done": 61,
         "complete": false,
-        "rate": 76
+        "rate": 77
       },
       {
         "name": "오세진",
@@ -3606,8 +3599,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 70,
-        "done": 185,
+        "progress": 69,
+        "done": 186,
         "total": 255
       }
     ],
@@ -3626,11 +3619,11 @@
       },
       {
         "label": "해결",
-        "count": 146
+        "count": 147
       },
       {
         "label": "피드백",
-        "count": 15
+        "count": 14
       },
       {
         "label": "완료성공",
@@ -3839,15 +3832,15 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 209,
+        "cumDone": 210,
         "rate": 70,
         "newCount": 12,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-08-06",
         "cumIssue": 301,
-        "cumDone": 210,
+        "cumDone": 211,
         "rate": 70,
         "newCount": 1,
         "doneCount": 1
