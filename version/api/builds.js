@@ -68,7 +68,7 @@ const SOURCES = [
     // 1초 안에 못 받거나 조회에 실패하면 아래 fallback 값을 대신 표시한다.
     timeField: 'time', timeMode: 'utc',
     allowNodeHttpsFallback: true,
-    fallback: { build: '6', time: '2026-07-30T08:39:30.406Z' },
+    fallback: { build: '7', time: '2026-08-06T07:05:40.207Z' },
     // 서버리스 IP가 차단되어 직접 조회가 안 되면 아래 주석을 풀고 Worker 주소를 넣으세요.
     // (version-proxy-worker.js 를 Cloudflare Workers 에 배포한 뒤 그 주소)
     // proxyUrl: 'https://version-proxy.<계정>.workers.dev',
