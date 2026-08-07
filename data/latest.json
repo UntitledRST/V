@@ -1,16 +1,16 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T03:09:12.051650+00:00",
+  "fetchedAt": "2026-08-07T03:12:24.729613+00:00",
   "count": 304,
   "issues": [
     {
       "번호": 1,
       "일감번호": 276534,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][호스트][Win] 어드민 그룹옵션 '다운로드 모듈 삭제'가 호스트 동작에 반영되지 않음 — RC7 대비 모듈 폴더 구조(단일→세션별) 변경과 삭제 정책 단일화가 의도인지 확인 필요",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "김성식",
       "created_on": "2026-08-07 11:10:09",
       "link": "https://projects.rsupport.com/issues/276534"
     },
@@ -3554,24 +3554,24 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 84,
-      "done": 217,
+      "notDone": 83,
+      "done": 218,
       "total": 301
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 40,
+        "total": 39,
         "done": 38,
         "complete": false,
-        "rate": 95
+        "rate": 97
       },
       {
         "name": "김성식",
-        "total": 29,
-        "done": 9,
+        "total": 30,
+        "done": 10,
         "complete": false,
-        "rate": 31
+        "rate": 33
       },
       {
         "name": "김신혜",
@@ -3653,8 +3653,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 15,
-        "done": 26,
+        "progress": 14,
+        "done": 27,
         "total": 41
       },
       {
@@ -3673,7 +3673,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 56
+        "count": 55
       },
       {
         "label": "진행",
@@ -3685,7 +3685,7 @@
       },
       {
         "label": "해결",
-        "count": 149
+        "count": 150
       },
       {
         "label": "피드백",
@@ -3914,10 +3914,10 @@
       {
         "date": "2026-08-07",
         "cumIssue": 304,
-        "cumDone": 217,
-        "rate": 71,
+        "cumDone": 218,
+        "rate": 72,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
