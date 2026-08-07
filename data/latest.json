@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T07:42:26.747962+00:00",
+  "fetchedAt": "2026-08-07T07:48:04.938274+00:00",
   "count": 307,
   "issues": [
     {
@@ -3499,7 +3499,7 @@
       "번호": 301,
       "일감번호": 273632,
       "분류": "결함(Serverity)",
-      "상태": "보류(Pause)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA][개선] win web to win 연결 직 후 화질 개선 필요",
       "우선순위": "높음(High)",
       "담당자": "김성식",
@@ -3582,9 +3582,9 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 80,
+      "notDone": 81,
       "done": 224,
-      "total": 304
+      "total": 305
     },
     "assignees": [
       {
@@ -3597,9 +3597,9 @@
       {
         "name": "김성식",
         "total": 30,
-        "done": 10,
+        "done": 9,
         "complete": false,
-        "rate": 33
+        "rate": 30
       },
       {
         "name": "김신혜",
@@ -3693,8 +3693,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 62,
-        "done": 194,
+        "progress": 63,
+        "done": 193,
         "total": 256
       }
     ],
@@ -3705,11 +3705,11 @@
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 14
       },
       {
         "label": "보류",
-        "count": 3
+        "count": 2
       },
       {
         "label": "해결",
