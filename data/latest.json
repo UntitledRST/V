@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T04:33:50.600677+00:00",
+  "fetchedAt": "2026-08-07T04:38:04.042229+00:00",
   "count": 304,
   "issues": [
     {
@@ -18,19 +18,46 @@
       "번호": 2,
       "일감번호": 276458,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] 환경 별 로그인 및 원격 지원 연결 실패 (Win11/ Win10 / Mac 15.6) ",
       "우선순위": "높음(High)",
-      "담당자": "장기중(Jay)",
+      "담당자": "이경준",
       "created_on": "2026-08-07 10:08:16",
-      "link": "https://projects.rsupport.com/issues/276458"
+      "link": "https://projects.rsupport.com/issues/276458",
+      "comments": [
+        {
+          "author": "김성식",
+          "created_on": "2026-08-07T11:54:13+09:00",
+          "note": "macos viewer 과거 버전들 제거했습니다."
+        },
+        {
+          "author": "이경준",
+          "created_on": "2026-08-07T12:55:38+09:00",
+          "note": "@jwkim 님 베타 호스트에서 아래와 같은 오류가 간헐적으로 발생하는데 확인부탁드립니다.\r\n\r\n연결 실패: Bad state: Session PNS connection failed"
+        },
+        {
+          "author": "장기중(Jay)",
+          "created_on": "2026-08-07T13:15:56+09:00",
+          "note": "@sinhyekim 님 테스트 계정 정보도 기입 부탁드립니다."
+        },
+        {
+          "author": "김신혜",
+          "created_on": "2026-08-07T13:18:00+09:00",
+          "note": "testuser36 / 11111111\r\ntestuser37 / 11111111\r\ntestuser39 / 11111111"
+        },
+        {
+          "author": "장기중(Jay)",
+          "created_on": "2026-08-07T13:34:25+09:00",
+          "note": "@leegj 님 특정 os 에서 pns 인증 토큰 발급 안하고 있는거 같은데, 로그라도 심어서 확인이 필요해보입니다.\r\n\r\n[2026-08-07 04:28:38.931] [epollEventLoopGroup-4-3]  INFO HTTPDecoder - SinglePort Connected [/220.85.141.109:54492]\r\n[2026-08-07 04:28:38.951] [epollEventLoopGroup-4-3]  INFO NettyInitializer - /220.85.141.109:54492 - TLS Handshake completed: Protocol=TLSv1.3, CipherSuite=TLS_AES_128_GCM_SHA256\r\n[2026-08-07 04:28:38.951] [epollEventLoopGroup-4-3]  INFO MqttWebsocketHandler - WSS Connected [/220.85.141.109:54492]\r\n[2026-08-07 04:28:38.951] [epollEventLoopGroup-4-3]  INFO MqttHandler - /220.85.141.109:54492 - WSS  Connected\r\n[2026-08-07 04:28:38.959] [Thread-2]  INFO JWTAuthenticator - username = null\r\n[2026-08-07 04:28:38.959] [Thread-2] ERROR JWTAuthenticator - password(jwt token) is null or empty\r\n[2026-08-07 04:28:38.959] [Thread-2]  WARN ProtocolProcessor - 0ac98f1f-9fd0-10b6-819f-d0c0238b0189 - authentication error(NOT_AUTHORIZED)"
+        }
+      ]
     },
     {
       "번호": 3,
       "일감번호": 276400,
       "분류": "기능(Function)",
       "상태": "신규(New)",
-      "제목": "[SaaS_8.0.1_QA] [에이전트][환경설정] 실시간 저장 피드백·파괴적 변경 정책 확정 — 개발 확인 4건 회신 요청",
+      "제목": "[SaaS_8.0.1_QA][개선] [에이전트][환경설정] 실시간 저장 피드백·파괴적 변경 정책 확정 — 개발 확인 4건 회신 요청",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
       "created_on": "2026-08-06 16:39:01",
@@ -180,7 +207,7 @@
       "일감번호": 276181,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
-      "제목": "[SaaS_8.0.1_QA] [응용뷰어][업데이트] 강제 업데이트(mandatoryBuild) 오설정 시 [나중에] 없는 무한 트랩 + 이전 버전 롤백 배포 수단 부재 — 판정이 목표 빌드 정확일치를 모름(roll-forward only)",
+      "제목": "[SaaS_8.0.1_QA][개선] [응용뷰어][업데이트] 강제 업데이트(mandatoryBuild) 오설정 시 [나중에] 없는 무한 트랩 + 이전 버전 롤백 배포 수단 부재 — 판정이 목표 빌드 정확일치를 모름(roll-forward only)",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
       "created_on": "2026-08-05 09:41:56",
@@ -829,7 +856,7 @@
       "일감번호": 275551,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
-      "제목": "[SaaS_8.0.1_QA][결함] [호스트][채팅] 채팅 입력창 동작 뷰어 대비 비대칭 — ①개행 입력 불가(1행 고정, 뷰어는 여러 줄 지원) ②앞뒤 공백 제거 없이 원문 전송(뷰어는 trim 후 전송)",
+      "제목": "[SaaS_8.0.1_QA][개선] [호스트][채팅] 채팅 입력창 동작 뷰어 대비 비대칭 — ①개행 입력 불가(1행 고정, 뷰어는 여러 줄 지원) ②앞뒤 공백 제거 없이 원문 전송(뷰어는 trim 후 전송)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-28 17:46:04",
@@ -2352,7 +2379,7 @@
       "일감번호": 274678,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
-      "제목": "[SaaS_8.0.1_QA] [뷰어][원격제어] 고객(호스트)이 Ctrl+Alt+Shift로 제어 차단 후 — 뷰어 버튼이 차단 상태로 전환되지 않고, 재클릭 시 고객 승인 없이 즉시 제어 재개됨",
+      "제목": "[SaaS_8.0.1_QA][결함] [뷰어][원격제어] 고객(호스트)이 Ctrl+Alt+Shift로 제어 차단 후 — 뷰어 버튼이 차단 상태로 전환되지 않고, 재클릭 시 고객 승인 없이 즉시 제어 재개됨",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
       "created_on": "2026-07-16 15:55:07",
@@ -2512,7 +2539,7 @@
       "일감번호": 274546,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
-      "제목": "[SaaS_8.0.1_QA] [뷰어] [정보 및 설정] 지원 시간 노출 형식 통일 필요 (UTC/KST) 및 메모장으로 복사·핑거프린트 값 노출 기능 미구현 ",
+      "제목": "[SaaS_8.0.1_QA][미구현] [뷰어] [정보 및 설정] 지원 시간 노출 형식 통일 필요 (UTC/KST) 및 메모장으로 복사·핑거프린트 값 노출 기능 미구현 ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
       "created_on": "2026-07-15 16:47:10",
@@ -3624,17 +3651,17 @@
       },
       {
         "name": "이경준",
-        "total": 49,
+        "total": 50,
         "done": 36,
         "complete": false,
-        "rate": 73
+        "rate": 72
       },
       {
         "name": "장기중(Jay)",
-        "total": 3,
+        "total": 2,
         "done": 1,
         "complete": false,
-        "rate": 33
+        "rate": 50
       },
       {
         "name": "전기호",
@@ -3677,7 +3704,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 15
       },
       {
         "label": "보류",
@@ -3689,7 +3716,7 @@
       },
       {
         "label": "피드백",
-        "count": 12
+        "count": 13
       },
       {
         "label": "완료성공",
