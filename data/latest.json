@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T07:03:27.553422+00:00",
+  "fetchedAt": "2026-08-07T07:09:11.522986+00:00",
   "count": 307,
   "issues": [
     {
@@ -288,7 +288,7 @@
       "번호": 23,
       "일감번호": 276156,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "중단(Stop)",
       "제목": "[SaaS_8.0.1_QA][기획대기] [PM 요청][공통] 프록시 네트워크 지원 - 일정·리소스 배정 및 서버/인프라/검증환경 선행 확인",
       "우선순위": "높음(High)",
       "담당자": "박승진",
@@ -3570,8 +3570,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 81,
-      "done": 223,
+      "notDone": 80,
+      "done": 224,
       "total": 304
     },
     "assignees": [
@@ -3606,9 +3606,9 @@
       {
         "name": "박승진",
         "total": 4,
-        "done": 0,
+        "done": 1,
         "complete": false,
-        "rate": 0
+        "rate": 25
       },
       {
         "name": "박예지",
@@ -3669,8 +3669,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 16,
-        "done": 28,
+        "progress": 15,
+        "done": 29,
         "total": 44
       },
       {
@@ -3689,7 +3689,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 56
+        "count": 55
       },
       {
         "label": "진행",
@@ -3713,7 +3713,7 @@
       },
       {
         "label": "중단",
-        "count": 6
+        "count": 7
       },
       {
         "label": "완료실패",
@@ -3906,15 +3906,15 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 216,
+        "cumDone": 217,
         "rate": 75,
         "newCount": 11,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 221,
+        "cumDone": 222,
         "rate": 74,
         "newCount": 12,
         "doneCount": 5
@@ -3922,7 +3922,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 222,
+        "cumDone": 223,
         "rate": 74,
         "newCount": 2,
         "doneCount": 1
@@ -3930,7 +3930,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 223,
+        "cumDone": 224,
         "rate": 73,
         "newCount": 5,
         "doneCount": 1
