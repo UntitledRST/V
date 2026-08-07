@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T03:58:59.112237+00:00",
+  "fetchedAt": "2026-08-07T04:01:20.686135+00:00",
   "count": 304,
   "issues": [
     {
@@ -751,7 +751,7 @@
       "번호": 68,
       "일감번호": 275582,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [호스트] 영상 지원 시작 시 화면 공유 영역 안내 문구 미노출 — 기획 (Figma) 불일치  ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3554,8 +3554,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 83,
-      "done": 218,
+      "notDone": 82,
+      "done": 219,
       "total": 301
     },
     "assignees": [
@@ -3618,9 +3618,9 @@
       {
         "name": "오세진",
         "total": 69,
-        "done": 59,
+        "done": 60,
         "complete": false,
-        "rate": 85
+        "rate": 86
       },
       {
         "name": "이경준",
@@ -3665,8 +3665,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 66,
-        "done": 190,
+        "progress": 65,
+        "done": 191,
         "total": 256
       }
     ],
@@ -3677,7 +3677,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 15
       },
       {
         "label": "보류",
@@ -3685,7 +3685,7 @@
       },
       {
         "label": "해결",
-        "count": 150
+        "count": 151
       },
       {
         "label": "피드백",
@@ -3858,15 +3858,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 189,
+        "cumDone": 190,
         "rate": 76,
         "newCount": 18,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 196,
+        "cumDone": 197,
         "rate": 74,
         "newCount": 16,
         "doneCount": 7
@@ -3874,15 +3874,15 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 196,
-        "rate": 73,
+        "cumDone": 197,
+        "rate": 74,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 204,
+        "cumDone": 205,
         "rate": 74,
         "newCount": 10,
         "doneCount": 8
@@ -3890,15 +3890,15 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 211,
-        "rate": 73,
+        "cumDone": 212,
+        "rate": 74,
         "newCount": 11,
         "doneCount": 7
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 216,
+        "cumDone": 217,
         "rate": 72,
         "newCount": 12,
         "doneCount": 5
@@ -3906,7 +3906,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 217,
+        "cumDone": 218,
         "rate": 72,
         "newCount": 2,
         "doneCount": 1
@@ -3914,7 +3914,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 304,
-        "cumDone": 218,
+        "cumDone": 219,
         "rate": 72,
         "newCount": 2,
         "doneCount": 1
