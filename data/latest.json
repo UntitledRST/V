@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T06:07:26.200000+00:00",
+  "fetchedAt": "2026-08-07T06:13:01.042725+00:00",
   "count": 307,
   "issues": [
     {
@@ -893,7 +893,7 @@
       "번호": 78,
       "일감번호": 275551,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][개선] [호스트][채팅] 채팅 입력창 동작 뷰어 대비 비대칭 — ①개행 입력 불가(1행 고정, 뷰어는 여러 줄 지원) ②앞뒤 공백 제거 없이 원문 전송(뷰어는 trim 후 전송)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -915,7 +915,7 @@
       "번호": 80,
       "일감번호": 275545,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [호스트][채팅] 상담원 메시지 수신 시 채팅 영역 자동 확장·최상위 창 표시·3초 후 축소 복귀 미구현 — 축소 상태에서는 메시지 도착을 인지할 수단 없음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3607,8 +3607,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 84,
-      "done": 220,
+      "notDone": 82,
+      "done": 222,
       "total": 304
     },
     "assignees": [
@@ -3671,9 +3671,9 @@
       {
         "name": "오세진",
         "total": 69,
-        "done": 60,
+        "done": 62,
         "complete": false,
-        "rate": 86
+        "rate": 89
       },
       {
         "name": "이경준",
@@ -3718,8 +3718,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 65,
-        "done": 191,
+        "progress": 63,
+        "done": 193,
         "total": 256
       }
     ],
@@ -3730,7 +3730,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 14
       },
       {
         "label": "보류",
@@ -3738,7 +3738,7 @@
       },
       {
         "label": "해결",
-        "count": 152
+        "count": 154
       },
       {
         "label": "피드백",
@@ -3903,55 +3903,55 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 183,
-        "rate": 79,
+        "cumDone": 185,
+        "rate": 80,
         "newCount": 14,
-        "doneCount": 8
+        "doneCount": 10
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 191,
-        "rate": 76,
+        "cumDone": 193,
+        "rate": 77,
         "newCount": 18,
         "doneCount": 8
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 198,
-        "rate": 74,
+        "cumDone": 200,
+        "rate": 75,
         "newCount": 16,
         "doneCount": 7
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 198,
-        "rate": 74,
+        "cumDone": 200,
+        "rate": 75,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 206,
-        "rate": 74,
+        "cumDone": 208,
+        "rate": 75,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 213,
-        "rate": 74,
+        "cumDone": 215,
+        "rate": 75,
         "newCount": 11,
         "doneCount": 7
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 218,
+        "cumDone": 220,
         "rate": 73,
         "newCount": 12,
         "doneCount": 5
@@ -3959,7 +3959,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 219,
+        "cumDone": 221,
         "rate": 73,
         "newCount": 2,
         "doneCount": 1
@@ -3967,7 +3967,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 220,
+        "cumDone": 222,
         "rate": 72,
         "newCount": 5,
         "doneCount": 1
