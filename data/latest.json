@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T04:17:48.270469+00:00",
+  "fetchedAt": "2026-08-07T04:21:13.140638+00:00",
   "count": 304,
   "issues": [
     {
@@ -18,29 +18,12 @@
       "번호": 2,
       "일감번호": 276458,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] 환경 별 로그인 및 원격 지원 연결 실패 (Win11/ Win10 / Mac 15.6) ",
       "우선순위": "높음(High)",
-      "담당자": "김신혜",
+      "담당자": "장기중(Jay)",
       "created_on": "2026-08-07 10:08:16",
-      "link": "https://projects.rsupport.com/issues/276458",
-      "comments": [
-        {
-          "author": "김성식",
-          "created_on": "2026-08-07T11:54:13+09:00",
-          "note": "macos viewer 과거 버전들 제거했습니다."
-        },
-        {
-          "author": "이경준",
-          "created_on": "2026-08-07T12:55:38+09:00",
-          "note": "@jwkim 님 베타 호스트에서 아래와 같은 오류가 간헐적으로 발생하는데 확인부탁드립니다.\r\n\r\n연결 실패: Bad state: Session PNS connection failed"
-        },
-        {
-          "author": "장기중(Jay)",
-          "created_on": "2026-08-07T13:15:56+09:00",
-          "note": "@sinhyekim 님 테스트 계정 정보도 기입 부탁드립니다."
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/276458"
     },
     {
       "번호": 3,
@@ -3592,10 +3575,10 @@
       },
       {
         "name": "김신혜",
-        "total": 13,
+        "total": 12,
         "done": 9,
         "complete": false,
-        "rate": 69
+        "rate": 75
       },
       {
         "name": "김재원",
@@ -3648,10 +3631,10 @@
       },
       {
         "name": "장기중(Jay)",
-        "total": 2,
+        "total": 3,
         "done": 1,
         "complete": false,
-        "rate": 50
+        "rate": 33
       },
       {
         "name": "전기호",
@@ -3694,7 +3677,7 @@
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 16
       },
       {
         "label": "보류",
@@ -3706,7 +3689,7 @@
       },
       {
         "label": "피드백",
-        "count": 13
+        "count": 12
       },
       {
         "label": "완료성공",
