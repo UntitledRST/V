@@ -481,7 +481,7 @@
 </div>
 
 <script>
-  var state = { issues: [], summary: null, filter: { type: null, value: null } };
+  var state = { issues: [], summary: null, filter: null, feedbackItems: [] };
   var chart = null;
 
   function escapeHtml(s){
@@ -538,12 +538,15 @@
   // ====== 파트/접속유형/기능/환경 분류 규칙 ======
   // 실제 데이터(API)에는 이 4가지가 별도 필드로 없어서, 제목(및 제목 속 [대괄호] 태그)에서
   // 아래 키워드를 찾아 자동 분류합니다. 실데이터로 확인 후 안 맞으면 이 키워드 목록만 수정하면 됩니다.
-  // ====== 피드백 코멘트 분석 결과 (수동 분석, 정적 데이터) ======
-  // 주의: 이 목록은 2026-08-03 기준 피드백 23건의 실제 댓글을 읽고 사람이 직접 분류한 결과입니다.
-  // 새 피드백 이슈가 생기거나 댓글이 추가되면 이 배열도 함께 갱신해야 최신 상태를 반영합니다.
+
+  // ====== 피드백 코멘트 분석 메모 (수동 분석, 정적 데이터) ======
+  // 주의: 이 목록은 '건수의 근거'가 아니라, 각 피드백 이슈에 담당주체/설명을 붙여주는 참고 메모입니다.
+  //       실제 피드백 건수는 항상 실시간 데이터(state.issues 중 상태='피드백')에서 계산되므로,
+  //       이 배열이 최신이 아니어도 좌측 '상태별' 패널과 숫자가 어긋나지 않습니다.
+  //       (메모가 없는 신규 피드백 이슈는 '분석 메모 없음' 섹션에 제목과 함께 자동 표시됩니다.)
   var FEEDBACK_TEAM_ORDER = ['QA', '기획', '디자인', '개발'];
   var FEEDBACK_ANALYSIS = [
-    // ---- QA팀 (7건) ----
+    // ---- QA팀 ----
     { id: 275402, team: 'QA', section: 1, sectionTitle: '재현 여부 재확인 필요', desc: '세션 공유 리스트 갱신 불가 — 개발(장기중)이 재현 안 된다고 회신, 재현 조건 재확인 필요' },
     { id: 274732, team: 'QA', section: 1, sectionTitle: '재현 여부 재확인 필요', desc: 'Host 연결 비정상 — 개발(김성식)이 "이미 해결된 것으로 판단", 재현 여부 회신 필요' },
     { id: 274897, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', desc: '모바일↔영상지원 전환 — 개발+기획 모두 "결함 아님" 결론, 최신 빌드 재검증만 남음' },
@@ -552,17 +555,17 @@
     { id: 273841, team: 'QA', section: 2, sectionTitle: '개발 완료 — 최종 검증만 남음', desc: '환경설정 필수값 정책 — 정책·Figma 반영 완료, 최종 검증만 필요' },
     { id: 274295, team: 'QA', section: 3, sectionTitle: '정보 부족 — 진행상황 확인 필요', desc: '그리기 도구 상태 초기화 누락 — 스크린샷만 있고 텍스트 코멘트 없어 상태 파악 불가' },
 
-    // ---- 기획팀 (3건) ----
+    // ---- 기획팀 ----
     { id: 274546, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', desc: '지원시간 KST 고정 — 디바이스 타임존 정책과 상충 여부, 서버팀과 재협의 필요' },
     { id: 274306, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', desc: '상담 재개 흐름 — 버튼·토스트 문구 최종 확정 필요' },
     { id: 274809, team: '기획', section: 1, sectionTitle: '정책·문구 확정 대기', desc: '그리기 툴 — 기능은 완성, Figma 문서 갱신 필요' },
 
-    // ---- 디자인팀 (3건) ----
+    // ---- 디자인팀 ----
     { id: 274112, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', desc: '그리기 패널 버튼 UI·위치 상이 — 기능 누락 아니면 문제없다는 방침 이미 확정' },
     { id: 273741, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', desc: '채팅 영역 버튼 UI·위치 상이 — 동일 방침 적용' },
     { id: 273615, team: '디자인', section: 1, sectionTitle: '"이슈 아님" 방침 확정 — 상태 정리만 필요', desc: 'windows app viewer 메뉴·디자인 정리 — 동일 방침 적용' },
 
-    // ---- 개발팀 (9건) ----
+    // ---- 개발팀 ----
     { id: 275145, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', desc: '스크롤 방향이 반대로 동작 — 방향 로직 수정 필요' },
     { id: 274980, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', desc: '호스트 단에서 동일 스크롤 버그 재발 — 호스트 쪽 추가 수정 필요' },
     { id: 274091, team: '개발', section: 1, sectionTitle: '재수정 필요 — 버그가 새로 발견됨', desc: 'Mobile Host에서 버튼 미노출 처리가 안 됨 — 모바일 케이스 추가 수정 필요' },
@@ -799,14 +802,63 @@
     renderFeedbackPanel();
   }
 
+  // ====== 피드백 집계: 좌측 '상태별' 패널과 항상 동일한 소스(state.issues)를 사용 ======
+  // 우측 피드백 패널도 실시간 이슈 목록에서 상태가 '피드백'인 건만 뽑아서 셉니다.
+  // FEEDBACK_ANALYSIS는 '건수의 근거'가 아니라, 각 이슈에 담당주체/설명 메모를 붙여주는 참고 자료로만 사용합니다.
+  function isFeedbackStatus(s){
+    return (s || '').indexOf('피드백') !== -1;
+  }
+
+  function getFeedbackAnalysisMap(){
+    var map = {};
+    FEEDBACK_ANALYSIS.forEach(function(x){ map[String(x.id)] = x; });
+    return map;
+  }
+
+  // 분석 메모가 아직 없는 신규 피드백 이슈는 파트 분류(__part) 기준으로 담당주체를 임시 배정하고,
+  // '분석 메모 없음' 섹션에 제목과 함께 표시해서 누락되지 않도록 합니다.
+  function buildFeedbackItems(){
+    var map = getFeedbackAnalysisMap();
+    return state.issues
+      .filter(function(it){ return isFeedbackStatus(it.상태); })
+      .map(function(it){
+        var memo = map[String(it.일감번호)];
+        if (memo){
+          return {
+            id: it.일감번호,
+            team: memo.team,
+            section: memo.section,
+            sectionTitle: memo.sectionTitle,
+            desc: memo.desc
+          };
+        }
+        var team = ['기획', '디자인', '개발'].indexOf(it.__part) !== -1 ? it.__part : '개발';
+        return {
+          id: it.일감번호,
+          team: team,
+          section: 99,
+          sectionTitle: '분석 메모 없음 — 내용 확인 필요',
+          desc: it.제목 || ''
+        };
+      });
+  }
+
   function renderFeedbackPanel(){
+    var items = buildFeedbackItems();
+    state.feedbackItems = items;
+
     var counts = {};
     FEEDBACK_TEAM_ORDER.forEach(function(t){ counts[t] = 0; });
-    FEEDBACK_ANALYSIS.forEach(function(item){ counts[item.team] = (counts[item.team] || 0) + 1; });
-    var total = FEEDBACK_ANALYSIS.length;
+    items.forEach(function(item){ counts[item.team] = (counts[item.team] || 0) + 1; });
+
+    // FEEDBACK_TEAM_ORDER에 없는 담당주체가 생겨도 표에서 누락되지 않도록 뒤에 붙여줌
+    var teams = FEEDBACK_TEAM_ORDER.slice();
+    Object.keys(counts).forEach(function(t){ if (teams.indexOf(t) === -1) teams.push(t); });
+
+    var total = items.length;   // ← 좌측 '상태별' 패널의 피드백 건수와 항상 동일
     document.getElementById('feedbackTotalCount').textContent = total;
 
-    var rows = FEEDBACK_TEAM_ORDER.map(function(team){
+    var rows = teams.map(function(team){
       var c = counts[team] || 0;
       var pct = total === 0 ? 0 : Math.round((c / total) * 100);
       return '<tr class="clickable feedback-team-row" data-team="' + escapeHtml(team) + '">' +
@@ -822,8 +874,10 @@
       });
     });
 
-    // 기본값: 개발팀이 처리해야 하는 건을 먼저 보여줌
-    var defaultTeam = '개발';
+    // 기본값: 개발팀이 처리해야 하는 건을 먼저 보여줌. 개발팀이 0건이면 건수가 있는 첫 담당주체를 선택
+    var defaultTeam = (counts['개발'] > 0)
+      ? '개발'
+      : (teams.filter(function(t){ return (counts[t] || 0) > 0; })[0] || '개발');
     showFeedbackDetail(defaultTeam);
     document.querySelectorAll('#feedbackTeamBody tr[data-team]').forEach(function(r){
       r.classList.toggle('active', r.getAttribute('data-team') === defaultTeam);
@@ -838,7 +892,15 @@
   }
 
   function showFeedbackDetail(team){
-    var items = FEEDBACK_ANALYSIS.filter(function(x){ return x.team === team; });
+    var items = (state.feedbackItems || []).filter(function(x){ return x.team === team; });
+
+    if (!items.length){
+      document.getElementById('feedbackDetailArea').innerHTML =
+        '<div class="feedback-detail-title">' + escapeHtml(team) + '팀이 처리해야 하는 건 (0건)</div>' +
+        '<div class="feedback-empty-hint">현재 이 담당주체에 배정된 피드백 이슈가 없습니다</div>';
+      return;
+    }
+
     var bySection = {};
     items.forEach(function(it){
       if (!bySection[it.section]) bySection[it.section] = { title: it.sectionTitle, list: [] };
@@ -847,14 +909,14 @@
     var sectionKeys = Object.keys(bySection).sort(function(a, b){ return Number(a) - Number(b); });
 
     var html = '<div class="feedback-detail-title">' + escapeHtml(team) + '팀이 처리해야 하는 건 (' + items.length + '건)</div>';
-    sectionKeys.forEach(function(key){
+    sectionKeys.forEach(function(key, i){
       var sec = bySection[key];
       html += '<div class="feedback-section">';
-      html += '<div class="feedback-section-title">' + key + ') ' + escapeHtml(sec.title) + '</div>';
+      html += '<div class="feedback-section-title">' + (i + 1) + ') ' + escapeHtml(sec.title) + '</div>';
       html += '<table><thead><tr><th>일감번호</th><th>담당</th><th>내용</th></tr></thead><tbody>';
       sec.list.forEach(function(it){
         html += '<tr>' +
-          '<td><a class="issue-link" href="https://projects.rsupport.com/issues/' + it.id + '" target="_blank" rel="noopener">#' + it.id + '</a></td>' +
+          '<td><a class="issue-link" href="https://projects.rsupport.com/issues/' + it.id + '" target="_blank" rel="noopener">#' + escapeHtml(it.id) + '</a></td>' +
           '<td>' + escapeHtml(lookupCurrentAssignee(it.id)) + '</td>' +
           '<td>' + escapeHtml(it.desc) + '</td>' +
         '</tr>';
