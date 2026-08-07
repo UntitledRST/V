@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-07T03:53:19.385084+00:00",
+  "fetchedAt": "2026-08-07T03:56:00.029433+00:00",
   "count": 304,
   "issues": [
     {
@@ -21,7 +21,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] 환경 별 로그인 및 원격 지원 연결 실패 (Win11/ Win10 / Mac 15.6) ",
       "우선순위": "높음(High)",
-      "담당자": "송건호",
+      "담당자": "김재원",
       "created_on": "2026-08-07 10:08:16",
       "link": "https://projects.rsupport.com/issues/276458"
     },
@@ -3582,7 +3582,7 @@
       },
       {
         "name": "김재원",
-        "total": 2,
+        "total": 3,
         "done": 0,
         "complete": false,
         "rate": 0
@@ -3610,10 +3610,10 @@
       },
       {
         "name": "송건호",
-        "total": 85,
+        "total": 84,
         "done": 64,
         "complete": false,
-        "rate": 75
+        "rate": 76
       },
       {
         "name": "오세진",
