@@ -67,7 +67,23 @@ const SOURCES = [
     // 정상 조회되면 version.txt 의 buildNumber / time 을 그대로 사용하고,
     // 1초 안에 못 받거나 조회에 실패하면 아래 fallback 값을 대신 표시한다.
     timeField: 'time', timeMode: 'utc',
-    allowNodeHttpsFallback: true,
+    // 경로를 여러 개 시도하므로 이 소스만 제한 시간을 늘린다(다른 소스는 1초 그대로).
+    timeoutMs: 2500,
+    // 원본 서버가 서버리스 요청을 막으므로 여러 경로를 순서대로 시도한다.
+    // 쓰지 않을 경로는 줄을 지우거나 주석 처리하면 건너뛴다.
+    sources: [
+      // 1) 원본에 직접 요청
+      { type: 'direct' },
+      // 2) HTTP/1.1 강제 (HTTP/2 협상이나 TLS 특징으로 막는 WAF 우회 시도)
+      { type: 'direct-http1' },
+      // 3) GitHub Actions 가 주기적으로 받아 저장소에 커밋해 둔 스냅샷 (version-collect.yml)
+      //    배포에 함께 올라가므로 디스크에서 바로 읽는다. 네트워크를 타지 않아 가장 빠르고 확실하다.
+      { type: 'file', path: 'version-cache/beta-partneradmin.json' },
+      // 4) 위 파일을 디스크에서 못 읽는 경우를 대비해 같은 파일을 HTTP 로도 읽어본다
+      { type: 'mirror', url: 'https://rc-version-check.vercel.app/version-cache/beta-partneradmin.json' },
+      // 5) Cloudflare Worker 중계가 필요하면 주석을 푸세요 (version-proxy-worker.js)
+      // { type: 'proxy', url: 'https://version-proxy.<계정>.workers.dev' },
+    ],
     fallback: { build: '7', time: '2026-08-06T07:05:40.207Z' },
     // 서버리스 IP가 차단되어 직접 조회가 안 되면 아래 주석을 풀고 Worker 주소를 넣으세요.
     // (version-proxy-worker.js 를 Cloudflare Workers 에 배포한 뒤 그 주소)
@@ -198,6 +214,15 @@ function fetchViaNodeHttps(url, opts, timeoutMs) {
       ...((opts && opts.headers) || {}),
     };
 
+    let settled = false;
+    let hardTimer = null;
+    const finish = (fn, arg) => {
+      if (settled) return;
+      settled = true;
+      if (hardTimer) clearTimeout(hardTimer);
+      fn(arg);
+    };
+
     const req = https.request({
       hostname: u.hostname,
       path: u.pathname + u.search,
@@ -211,7 +236,7 @@ function fetchViaNodeHttps(url, opts, timeoutMs) {
       res.on('data', (c) => chunks.push(c));
       res.on('end', () => {
         const body = Buffer.concat(chunks).toString('utf8');
-        resolve({
+        finish(resolve, {
           ok: res.statusCode >= 200 && res.statusCode < 300,
           status: res.statusCode,
           headers: { get: (name) => res.headers[String(name).toLowerCase()] || null },
@@ -222,9 +247,16 @@ function fetchViaNodeHttps(url, opts, timeoutMs) {
     });
     req.on('timeout', () => {
       req.destroy();
-      reject(Object.assign(new Error('This operation was aborted'), { name: 'AbortError' }));
+      finish(reject, Object.assign(new Error('This operation was aborted'), { name: 'AbortError' }));
     });
-    req.on('error', reject);
+    req.on('error', (err) => finish(reject, err));
+
+    // TLS 핸드셰이크 단계에서 멈추는 경우까지 확실히 끊기 위한 보조 타이머
+    hardTimer = setTimeout(() => {
+      req.destroy();
+      finish(reject, Object.assign(new Error('This operation was aborted'), { name: 'AbortError' }));
+    }, timeoutMs);
+
     req.end();
   });
 }
@@ -384,13 +416,99 @@ function parseKeyValueText(text) {
   return matched ? obj : null;
 }
 
+// 원본 서버가 서버리스 요청을 막을 때를 대비해 여러 경로를 순서대로 시도한다.
+//   direct : 원본 서버에 바로 요청
+//   mirror : 다른 곳에서 미리 받아 저장해둔 스냅샷({ body, fetchedAt })을 읽음 (GitHub Actions 등)
+//   proxy  : Cloudflare Worker 같은 중계기를 거쳐 요청
+async function fetchViaChain(src, bustedUrl, timeoutMs) {
+  const errors = [];
+  // 전체 소요 시간이 timeoutMs 를 넘지 않도록 경로 수로 시간을 균등하게 나눠 쓴다.
+  const share = Math.floor(timeoutMs / src.sources.length);
+  const started = Date.now();
+
+  for (const route of src.sources) {
+    const remaining = timeoutMs - (Date.now() - started);
+    if (remaining <= 200) {
+      errors.push(`${route.type}: 남은 시간이 없어 건너뜀`);
+      continue;
+    }
+    const slice = Math.max(250, Math.min(share, remaining - 100));
+
+    try {
+      // direct      : 일반 요청 (HTTP/2 협상)
+      // direct-http1 : HTTP/1.1 을 강제한 요청 (HTTP/2 나 TLS 특징으로 막는 WAF 우회용)
+      if (route.type === 'direct' || route.type === 'direct-http1') {
+        const headers = { Accept: 'application/json, text/plain, */*', 'Cache-Control': 'no-cache', Pragma: 'no-cache' };
+        const res = route.type === 'direct-http1'
+          ? await fetchViaNodeHttps(bustedUrl, { headers }, slice)
+          : await fetchWithTimeout(bustedUrl, { headers }, { timeoutMs: slice, allowNodeHttpsFallback: false });
+        if (!res.ok) throw httpStatusError(res.status);
+        return await res.text();
+      }
+
+      // file : 이 배포에 함께 올라간 스냅샷 파일을 디스크에서 바로 읽는다(네트워크 없음).
+      if (route.type === 'file') {
+        const fs = require('fs');
+        const path = require('path');
+        const target = path.join(process.cwd(), route.path);
+        const snap = JSON.parse(fs.readFileSync(target, 'utf8'));
+        if (!snap || snap.body == null) throw new Error('스냅샷에 body 가 없음');
+        return String(snap.body);
+      }
+
+      if (route.type === 'mirror') {
+        const url = route.url + (route.url.includes('?') ? '&' : '?') + '_=' + Date.now();
+        const res = await fetchWithTimeout(url, {}, { timeoutMs: slice });
+        if (!res.ok) throw httpStatusError(res.status, '미러 HTTP');
+        const snap = await res.json();
+        if (!snap || snap.body == null) throw new Error('미러에 body 가 없음');
+        if (route.maxAgeMinutes) {
+          const age = (Date.now() - new Date(snap.fetchedAt).getTime()) / 60000;
+          if (isFinite(age) && age > route.maxAgeMinutes) {
+            throw new Error(`미러가 ${Math.round(age)}분 전 값이라 사용하지 않음`);
+          }
+        }
+        return String(snap.body);
+      }
+
+      if (route.type === 'proxy') {
+        const proxied = route.url + (route.url.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(bustedUrl);
+        const res = await fetchWithTimeout(
+          proxied,
+          { headers: route.key ? { 'x-proxy-key': route.key } : {} },
+          { timeoutMs: slice }
+        );
+        if (!res.ok) throw httpStatusError(res.status, '프록시 HTTP');
+        const payload = await res.json();
+        if (!payload || payload.ok === false) throw new Error(`프록시 오류: ${(payload && payload.error) || '알 수 없음'}`);
+        if (typeof payload.status === 'number' && (payload.status < 200 || payload.status >= 300)) {
+          throw httpStatusError(payload.status);
+        }
+        return String(payload.body != null ? payload.body : '');
+      }
+
+      throw new Error(`알 수 없는 경로 타입: ${route.type}`);
+    } catch (err) {
+      errors.push(`${route.type}: ${err && err.message ? err.message : err}`);
+    }
+  }
+
+  const e = new Error(`모든 경로 실패 (${errors.join(' / ')})`);
+  e.chainErrors = errors;
+  throw e;
+}
+
+
 async function fetchAdminTxt(src) {
   const timeoutMs = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
   // 원본 서버나 CDN이 예전 응답을 돌려주지 않도록 매 요청마다 값을 바꿔 붙인다
   const bustedUrl = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
 
   let text;
-  if (src.proxyUrl) {
+  if (src.sources && src.sources.length) {
+    // 경로를 순서대로 시도해서 처음 성공한 값을 쓴다
+    text = await fetchViaChain(src, bustedUrl, timeoutMs);
+  } else if (src.proxyUrl) {
     // 원본 서버가 서버리스 IP를 차단할 때: Cloudflare Worker 등 다른 대역을 거쳐서 가져옴
     // Worker 응답 형식: { ok: true, status: 200, body: "<version.txt 원문>" }
     const proxied = src.proxyUrl + (src.proxyUrl.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(bustedUrl);
@@ -757,7 +875,7 @@ function buildHardDeadlineResult(src) {
     platform: src.platform,
     label: src.label,
     ok: false,
-    error: `응답 지연으로 강제 종료(${TIMEOUT_MS}ms 초과)`,
+    error: `응답 지연으로 강제 종료(${src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS}ms 초과)`,
     statusCode: null,
     networkErrorCode: null,
     possibleDeployIssue: true, // 응답이 이례적으로 느린 것도 재배포/재시작 정황일 가능성이 높아 동일하게 취급
@@ -772,6 +890,64 @@ function buildHardDeadlineResult(src) {
 // 진단 모드: /api/builds?debug=beta-web-partneradmin
 // 해당 소스를 넉넉한 시간(기본 8초)으로 한 번 조회해서 상태코드, 소요 시간, 응답 원문 앞부분을 그대로 보여준다.
 // "1초 안에 못 받는 것"인지 "아예 막혀 있는 것"인지 구분하기 위한 용도.
+// Vercel 리전 코드 -> 사람이 읽을 수 있는 이름 (자주 쓰는 것만)
+const REGION_NAMES = {
+  icn1: '서울', hnd1: '도쿄', sin1: '싱가포르', syd1: '시드니', bom1: '뭄바이',
+  iad1: '미국 버지니아', sfo1: '미국 샌프란시스코', cle1: '미국 클리블랜드', pdx1: '미국 오리건',
+  fra1: '독일 프랑크푸르트', cdg1: '프랑스 파리', arn1: '스웨덴 스톡홀름', dub1: '아일랜드 더블린',
+  lhr1: '영국 런던', gru1: '브라질 상파울루', hkg1: '홍콩', kix1: '오사카',
+};
+
+// 이 함수가 밖으로 나갈 때 쓰는 IP 를 확인한다. 리전이 실제로 바뀌었는지 판단하는 근거가 된다.
+async function checkEgress() {
+  try {
+    const res = await fetchOnce('https://ipinfo.io/json', { headers: { Accept: 'application/json' } }, 2500);
+    if (!res.ok) return { 확인: `조회 실패 (HTTP ${res.status})` };
+    const j = await res.json();
+    return {
+      나가는IP: j.ip || null,
+      국가: j.country || null,
+      도시: [j.city, j.region].filter(Boolean).join(', ') || null,
+      회선: j.org || null,
+    };
+  } catch (err) {
+    return { 확인: `조회 실패 (${err && err.message ? err.message : err})` };
+  }
+}
+
+// 스냅샷 파일(version-cache/*.json)을 실제로 읽을 수 있는지 확인한다.
+// 로컬 수집 스크립트가 파일을 올바른 위치에 올렸는지 판단하는 근거.
+function checkSnapshot(src) {
+  const route = (src.sources || []).find((r) => r.type === 'file');
+  if (!route) return { 사용: '이 소스는 스냅샷 경로를 쓰지 않습니다.' };
+
+  const fs = require('fs');
+  const path = require('path');
+  const target = path.join(process.cwd(), route.path);
+
+  try {
+    const snap = JSON.parse(fs.readFileSync(target, 'utf8'));
+    return {
+      경로: route.path,
+      배포루트: process.cwd(),
+      읽기: '성공',
+      수집시각: snap.fetchedAt || null,
+      원문길이: snap.body ? String(snap.body).length : 0,
+      원문앞부분: snap.body ? String(snap.body).slice(0, 200) : null,
+    };
+  } catch (err) {
+    let 폴더목록 = null;
+    try { 폴더목록 = fs.readdirSync(process.cwd()); } catch (e) { /* 무시 */ }
+    return {
+      경로: route.path,
+      배포루트: process.cwd(),
+      읽기: `실패 (${err && err.message ? err.message : err})`,
+      배포루트_안의_항목: 폴더목록,
+      안내: 'version-cache 폴더가 배포 루트 안에 있는지 확인하세요. Vercel Root Directory 설정과 파일 위치가 맞아야 합니다.',
+    };
+  }
+}
+
 async function runDiagnostic(key, timeoutMs) {
   const src = SOURCES.find((s) => s.key === key);
   if (!src) {
@@ -813,10 +989,20 @@ async function runDiagnostic(key, timeoutMs) {
   }
 
   const success = attempts.find((a) => a.결과 === '성공');
+  const region = process.env.VERCEL_REGION || null;
+
   return {
     ok: true,
     소스: key,
     주소: src.url,
+    실행리전: region
+      ? `${region} (${REGION_NAMES[region] || '알 수 없는 지역'})`
+      : '알 수 없음 (Vercel 환경이 아님)',
+    리전설정확인: region === 'icn1'
+      ? '서울 리전이 적용되어 있습니다.'
+      : `서울(icn1)이 아닙니다. vercel.json 의 regions 설정과 재배포 여부를 확인하세요.`,
+    나가는곳: await checkEgress(),
+    스냅샷파일: checkSnapshot(src),
     대시보드_타임아웃ms: TIMEOUT_MS,
     전체소요ms: Date.now() - started,
     판정: !success
@@ -842,7 +1028,12 @@ module.exports = async (req, res) => {
     // 소스 하나하나에 TIMEOUT_MS 강제 컷오프를 적용 -> 무엇이 얼마나 느려지든
     // /api/builds 응답 자체는 절대 TIMEOUT_MS(1초)를 넘기지 않음
     const results = await Promise.all(
-      SOURCES.map((src) => withHardDeadline(fetchOne(src), TIMEOUT_MS, () => buildHardDeadlineResult(src)))
+      SOURCES.map((src) => {
+        const eff = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
+        // 경로를 여러 개 시도하는 소스는 마지막 경로가 끝날 여유를 조금 더 준다
+        const deadline = src.sources && src.sources.length ? eff + 800 : eff;
+        return withHardDeadline(fetchOne(src), deadline, () => buildHardDeadlineResult(src));
+      })
     );
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.status(200).json({
