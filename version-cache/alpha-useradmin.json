@@ -1,0 +1,5 @@
+﻿{
+    "fetchedAt":  "2026-08-07T01:30:00Z",
+    "status":  200,
+    "body":  "{\"app\":{\"name\":\"RC8 Admin\",\"version\":\"8.0.1\"},\"build\":{\"artifact\":\"admin\",\"name\":\"admin\",\"time\":\"2026-08-06T10:28:41.190Z\",\"version\":\"8.0.1\",\"buildNumber\":\"235\"}}"
+}
