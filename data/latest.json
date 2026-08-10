@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-10T05:14:54.253366+00:00",
+  "fetchedAt": "2026-08-10T05:20:35.963697+00:00",
   "count": 307,
   "issues": [
     {
@@ -1879,49 +1879,12 @@
       "번호": 163,
       "일감번호": 274980,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 다수의 파일 선택으로 팝업 가용 영역 초과 시, 스크롤 기능 미제공 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-22 13:44:54",
-      "link": "https://projects.rsupport.com/issues/274980",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-07-23T12:29:57+09:00",
-          "note": "파일 목록 스크롤 처리 MR !272 (merged)\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/272\nmerge commit: f8f17156b4"
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-07-23T18:27:37+09:00",
-          "note": "QA 검수 요청 (개발 완료 및 해결 처리)"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-07-28T13:34:52+09:00",
-          "note": "호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n재확인 및 수정 요청드립니다.\r\n\r\n[재현 환경]\r\n- 8.0.1.350"
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-08-04T15:44:40+09:00",
-          "note": "박예지의 댓글 (#note-6):\r\n> 호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n> 재확인 및 수정 요청드립니다.\r\n> \r\n> [재현 환경]\r\n> - 8.0.1.350\r\n\r\n\r\n\r\n박예지의 댓글 (#note-6):\r\n> 호스트 단말 내 다수의 파일 선택으로 '파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상' 동일하여 피드백 드립니다. \r\n> 재확인 및 수정 요청드립니다.\r\n> \r\n> [재현 환경]\r\n> - 8.0.1.350\r\n\r\n\r\n안녕하세요 @yjpark 님!\r\n코멘트 주셨던 호스트 단말 내 다수의 파일 선택으로 ' _파일 목록이 팝업 가용 영역을 초과하는 경우에도 스크롤이 제공되지 않는 현상_ ' 동일내용 관련하여\r\n제가 가진 기기, 명찬님 기기에서는 다 제대로 동작하고 있어서요!\r\n혹시 최신 테스트 빌드(베타)인 8.0.1.411 버전에서도 같은 증상인지 한번 확인 부탁드립니다."
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-08-06T10:03:04+09:00",
-          "note": "안녕하세요, @ohsj 님.\r\n혼선이 있는 것 같아 현상 정정하여 전달드립니다.\r\n스크롤 기능 자체는 동작하나, 스크롤 바(UI)가 노출되지 않는 현상으로 피드백드린 내용입니다.\r\n \r\n해당 UI 결함 건은 최신 테스트 빌드(베타)인 8.0.1.411 버전에서도 Android/iOS 모두 동일하며, 재확인 및 수정 부탁드립니다."
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-08-06T15:52:24+09:00",
-          "note": "MR !1467 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1467\nmerge commit: 21d4d7d830"
-        },
-        {
-          "author": "박예지",
-          "created_on": "2026-08-10T11:18:16+09:00",
-          "note": "개발 수정 내용 기준, 모바일 환경에서 HostScrollbar 컴포넌트를 통해 스크롤바 UI가 노출되도록 수정된 것으로 확인되나,\r\n현 버전(8.0.1.463)에서 재검증한 결과, Android/iOS 모두 스크롤바 UI가 미노출되고 있습니다. \r\n따라서 스크롤 후 페이드아웃 내용 역시 확인 불가합니다. \r\n\r\n개발 코멘트의 수정 내용과 실제 동작이 일치하지 않는 것으로 확인되어 피드백으로 전환하며,\r\nAndroid/iOS 환경에서 스크롤바 UI 노출 여부 재확인 요청드립니다.\r\n\r\n[검증 환경]\r\n- 8.0.1.463"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/274980"
     },
     {
       "번호": 164,
@@ -3661,8 +3624,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 81,
-      "done": 224,
+      "notDone": 80,
+      "done": 225,
       "total": 305
     },
     "assignees": [
@@ -3732,9 +3695,9 @@
       {
         "name": "오세진",
         "total": 68,
-        "done": 59,
+        "done": 60,
         "complete": false,
-        "rate": 86
+        "rate": 88
       },
       {
         "name": "이경준",
@@ -3779,8 +3742,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 63,
-        "done": 193,
+        "progress": 62,
+        "done": 194,
         "total": 256
       }
     ],
@@ -3799,11 +3762,11 @@
       },
       {
         "label": "해결",
-        "count": 154
+        "count": 155
       },
       {
         "label": "피드백",
-        "count": 14
+        "count": 13
       },
       {
         "label": "완료성공",
@@ -3932,23 +3895,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 130,
+        "cumDone": 131,
         "rate": 80,
         "newCount": 31,
-        "doneCount": 24
+        "doneCount": 25
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 150,
-        "rate": 82,
+        "cumDone": 151,
+        "rate": 83,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 161,
+        "cumDone": 162,
         "rate": 82,
         "newCount": 14,
         "doneCount": 11
@@ -3956,7 +3919,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 176,
+        "cumDone": 177,
         "rate": 81,
         "newCount": 21,
         "doneCount": 15
@@ -3964,15 +3927,15 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 186,
-        "rate": 80,
+        "cumDone": 187,
+        "rate": 81,
         "newCount": 14,
         "doneCount": 10
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 195,
+        "cumDone": 196,
         "rate": 78,
         "newCount": 18,
         "doneCount": 9
@@ -3980,7 +3943,7 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 201,
+        "cumDone": 202,
         "rate": 76,
         "newCount": 16,
         "doneCount": 6
@@ -3988,31 +3951,31 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 201,
-        "rate": 75,
+        "cumDone": 202,
+        "rate": 76,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 209,
-        "rate": 75,
+        "cumDone": 210,
+        "rate": 76,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 217,
-        "rate": 75,
+        "cumDone": 218,
+        "rate": 76,
         "newCount": 11,
         "doneCount": 8
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 222,
+        "cumDone": 223,
         "rate": 74,
         "newCount": 12,
         "doneCount": 5
@@ -4020,7 +3983,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 223,
+        "cumDone": 224,
         "rate": 74,
         "newCount": 2,
         "doneCount": 1
@@ -4028,7 +3991,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 224,
+        "cumDone": 225,
         "rate": 73,
         "newCount": 5,
         "doneCount": 1
