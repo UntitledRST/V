@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-10T09:04:46.177158+00:00",
+  "fetchedAt": "2026-08-10T09:10:18.213410+00:00",
   "count": 310,
   "issues": [
     {
@@ -519,7 +519,7 @@
       "번호": 44,
       "일감번호": 275844,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [iOS 호스트] [URL] 로컬 알림·포그라운드 복귀 후 URL 실행 시 네트워크 불안정으로 인식 → 세션 종료됨 ",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -3581,8 +3581,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 79,
-      "done": 229,
+      "notDone": 78,
+      "done": 230,
       "total": 308
     },
     "assignees": [
@@ -3652,9 +3652,9 @@
       {
         "name": "오세진",
         "total": 70,
-        "done": 64,
+        "done": 65,
         "complete": false,
-        "rate": 91
+        "rate": 92
       },
       {
         "name": "이경준",
@@ -3699,15 +3699,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 61,
-        "done": 198,
+        "progress": 60,
+        "done": 199,
         "total": 259
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 54
+        "count": 53
       },
       {
         "label": "진행",
@@ -3719,7 +3719,7 @@
       },
       {
         "label": "해결",
-        "count": 158
+        "count": 159
       },
       {
         "label": "피드백",
@@ -3908,15 +3908,15 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 205,
+        "cumDone": 206,
         "rate": 77,
         "newCount": 1,
-        "doneCount": 0
+        "doneCount": 1
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 213,
+        "cumDone": 214,
         "rate": 77,
         "newCount": 10,
         "doneCount": 8
@@ -3924,7 +3924,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 221,
+        "cumDone": 222,
         "rate": 77,
         "newCount": 11,
         "doneCount": 8
@@ -3932,15 +3932,15 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 226,
-        "rate": 75,
+        "cumDone": 227,
+        "rate": 76,
         "newCount": 12,
         "doneCount": 5
       },
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 227,
+        "cumDone": 228,
         "rate": 75,
         "newCount": 2,
         "doneCount": 1
@@ -3948,15 +3948,15 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 228,
-        "rate": 74,
+        "cumDone": 229,
+        "rate": 75,
         "newCount": 5,
         "doneCount": 1
       },
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 229,
+        "cumDone": 230,
         "rate": 74,
         "newCount": 3,
         "doneCount": 1
