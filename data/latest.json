@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-10T02:28:45.777036+00:00",
+  "fetchedAt": "2026-08-10T02:34:31.603959+00:00",
   "count": 307,
   "issues": [
     {
@@ -1949,12 +1949,44 @@
       "번호": 166,
       "일감번호": 274970,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트] 상담 일시정지 시 재개 안내 문구 개선 및 [상담 재개] 버튼 미구현 — 기획 (Figma) 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-22 13:15:51",
-      "link": "https://projects.rsupport.com/issues/274970"
+      "link": "https://projects.rsupport.com/issues/274970",
+      "comments": [
+        {
+          "author": "오세진",
+          "created_on": "2026-07-24T13:33:31+09:00",
+          "note": "기획 Figma 참고 링크 (일시정지):\n\n* [호스트(PC/Mac)] PC원격지원 > 일시정지\nhttps://www.figma.com/design/MMnk1m5xeIQm2UHMRFmZU3/-RC--8.0-%EB%94%94%EC%9E%90%EC%9D%B8-%EA%B0%9C%EB%B0%9C%EC%A0%84%EB%8B%AC%EC%9A%A9?node-id=14220-23506\n\n* [호스트(모바일앱)] 일시정지\nhttps://www.figma.com/design/MMnk1m5xeIQm2UHMRFmZU3/-RC--8.0-%EB%94%94%EC%9E%90%EC%9D%B8-%EA%B0%9C%EB%B0%9C%EC%A0%84%EB%8B%AC%EC%9A%A9?node-id=14205-20280\n\n* [호스트(모바일웹)] 일시정지\nhttps://www.figma.com/design/MMnk1m5xeIQm2UHMRFmZU3/-RC--8.0-%EB%94%94%EC%9E%90%EC%9D%B8-%EA%B0%9C%EB%B0%9C%EC%A0%84%EB%8B%AC%EC%9A%A9?node-id=14221-20731"
+        },
+        {
+          "author": "오세진",
+          "created_on": "2026-07-24T14:53:14+09:00",
+          "note": "MR !1198 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1198\nmerge commit: 832707e41d"
+        },
+        {
+          "author": "박예지",
+          "created_on": "2026-07-31T14:47:28+09:00",
+          "note": "- 호스트 화면 중앙: 일시정지 안내 카드 및 [상담 재개] 버튼 제공 확인.\r\n\r\n그러나 호스트 측 토스트 메시지 확인 시, \"상담이 일시정지 되었습니다.\" 만 노출되고 있으며, \"상담원 요청 시 상담 재개를 허용해주세요.\" 문구는 미노출되고 있습니다. (node-id=3496-95319)\r\n해당 문구는 상담 재개 요청 주체(상담원)와 고객의 필요 동작(허용)을 명확히 안내하는 UX 요소로 판단되어, 기획 반영 여부 재검토 요청드립니다.\r\n\r\n[검증 환경]\r\n- 8.0.1.411"
+        },
+        {
+          "author": "오세진",
+          "created_on": "2026-08-04T11:29:01+09:00",
+          "note": "MR !1383 올렸습니다. QA 반려(토스트 재개 안내 문구 미노출) 재수정입니다.\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1383\n\n*처리 내역*\n\n- toast_session_paused 를 기획(node-id=3496-95319)이 정의한 두 줄로 갱신했습니다.\n- 토스트 본문이 maxLines 2 + 말줄임이라 어느 한 줄이 접히면 세 번째 줄이 생겨 재개 안내가 잘립니다. 그래서 한국어 외 5개 언어(en·ja·fr·es·pt)의 둘째 줄을 한국어 길이 이하로 줄였습니다. zh-CN·zh-TW 는 이미 들어가 그대로 뒀습니다.\n- 같은 문구가 iOS 백그라운드 알림 제목으로도 나가고 있었습니다. 알림 제목은 한 줄만 렌더되어 개행 뒤가 버려지므로 알림 전용 키로 분리했고, 같은 제약이 걸린 알림 제목 4곳(재개·세션 종료·URL 공유·재개 요청)도 함께 정리했습니다.\n\n*확인 요청*\n\n프랑스어 등 문구가 긴 언어에서 토스트 두 줄이 온전히 보이는지, iOS 백그라운드 알림 제목이 한 줄로 잘리지 않는지 함께 봐주시면 좋겠습니다. 길이 계약은 문자 폭 환산으로 테스트에 고정했으나 실제 글리프 폭과는 차이가 있을 수 있습니다."
+        },
+        {
+          "author": "오세진",
+          "created_on": "2026-08-04T11:39:52+09:00",
+          "note": "MR !1383 머지 완료되었습니다.\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1383\n(머지 커밋 5662dc68f / 소스 팁 809fb9003, develop 반영)"
+        },
+        {
+          "author": "박예지",
+          "created_on": "2026-08-10T11:32:31+09:00",
+          "note": "■ 처리 내역\r\n- toast_session_paused 를 기획(node-id=3496-95319)이 정의한 두 줄로 갱신.\r\n- 토스트 본문: 한국어 외 5개 언어(en·ja·fr·es·pt)의 둘째 줄을 한국어 길이 이하로 줄임. (zh-CN·zh-TW 는 기적용되어 제외)\r\n\r\n■ 재검증 결과 \r\n- 프랑스어·포르투갈어 2개 언어를 제외한 나머지 6개 언어 모두 토스트 본문이 말줄임표(...)로 처리됨. \r\n따라서 확인 요청 건의 기대결과와 부합하지 않는 것으로 확인되어 피드백으로 전환합니다. \r\n\r\n[검증 환경] \r\n- 8.0.1.463"
+        }
+      ]
     },
     {
       "번호": 167,
@@ -3629,8 +3661,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 80,
-      "done": 225,
+      "notDone": 81,
+      "done": 224,
       "total": 305
     },
     "assignees": [
@@ -3700,9 +3732,9 @@
       {
         "name": "오세진",
         "total": 69,
-        "done": 60,
+        "done": 59,
         "complete": false,
-        "rate": 86
+        "rate": 85
       },
       {
         "name": "이경준",
@@ -3747,8 +3779,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 62,
-        "done": 194,
+        "progress": 63,
+        "done": 193,
         "total": 256
       }
     ],
@@ -3767,11 +3799,11 @@
       },
       {
         "label": "해결",
-        "count": 155
+        "count": 154
       },
       {
         "label": "피드백",
-        "count": 13
+        "count": 14
       },
       {
         "label": "완료성공",
@@ -3900,23 +3932,23 @@
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 131,
+        "cumDone": 130,
         "rate": 80,
         "newCount": 31,
-        "doneCount": 25
+        "doneCount": 24
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 151,
-        "rate": 83,
+        "cumDone": 150,
+        "rate": 82,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 162,
+        "cumDone": 161,
         "rate": 82,
         "newCount": 14,
         "doneCount": 11
@@ -3924,7 +3956,7 @@
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 177,
+        "cumDone": 176,
         "rate": 81,
         "newCount": 21,
         "doneCount": 15
@@ -3932,15 +3964,15 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 187,
-        "rate": 81,
+        "cumDone": 186,
+        "rate": 80,
         "newCount": 14,
         "doneCount": 10
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 196,
+        "cumDone": 195,
         "rate": 78,
         "newCount": 18,
         "doneCount": 9
@@ -3948,7 +3980,7 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 202,
+        "cumDone": 201,
         "rate": 76,
         "newCount": 16,
         "doneCount": 6
@@ -3956,31 +3988,31 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 202,
-        "rate": 76,
+        "cumDone": 201,
+        "rate": 75,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 210,
-        "rate": 76,
+        "cumDone": 209,
+        "rate": 75,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 218,
-        "rate": 76,
+        "cumDone": 217,
+        "rate": 75,
         "newCount": 11,
         "doneCount": 8
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 223,
+        "cumDone": 222,
         "rate": 74,
         "newCount": 12,
         "doneCount": 5
@@ -3988,7 +4020,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 224,
+        "cumDone": 223,
         "rate": 74,
         "newCount": 2,
         "doneCount": 1
@@ -3996,7 +4028,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 225,
+        "cumDone": 224,
         "rate": 73,
         "newCount": 5,
         "doneCount": 1
