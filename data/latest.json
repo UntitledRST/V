@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-10T06:47:07.815929+00:00",
+  "fetchedAt": "2026-08-10T06:52:47.932013+00:00",
   "count": 309,
   "issues": [
     {
@@ -18,7 +18,7 @@
       "번호": 2,
       "일감번호": 276705,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][PiP] 연결 직후 상담원 이름 미노출 또는 오표기 — 뷰어 장치 설정 조작 후 정상 표기 ",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3646,8 +3646,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 82,
-      "done": 225,
+      "notDone": 81,
+      "done": 226,
       "total": 307
     },
     "assignees": [
@@ -3717,9 +3717,9 @@
       {
         "name": "오세진",
         "total": 69,
-        "done": 60,
+        "done": 61,
         "complete": false,
-        "rate": 86
+        "rate": 88
       },
       {
         "name": "이경준",
@@ -3764,15 +3764,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 64,
-        "done": 194,
+        "progress": 63,
+        "done": 195,
         "total": 258
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 55
+        "count": 54
       },
       {
         "label": "진행",
@@ -3784,7 +3784,7 @@
       },
       {
         "label": "해결",
-        "count": 155
+        "count": 156
       },
       {
         "label": "피드백",
@@ -4021,10 +4021,10 @@
       {
         "date": "2026-08-10",
         "cumIssue": 309,
-        "cumDone": 225,
+        "cumDone": 226,
         "rate": 73,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
