@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-10T04:09:38.567736+00:00",
+  "fetchedAt": "2026-08-10T04:20:52.848613+00:00",
   "count": 307,
   "issues": [
     {
@@ -3472,7 +3472,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][바코드] OCR 인식 기능과 동일 반영 및 바코드 인식 불가",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-07-07 09:06:29",
       "link": "https://projects.rsupport.com/issues/273698"
     },
@@ -3668,10 +3668,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 39,
+        "total": 40,
         "done": 38,
         "complete": false,
-        "rate": 97
+        "rate": 95
       },
       {
         "name": "김성식",
@@ -3731,10 +3731,10 @@
       },
       {
         "name": "오세진",
-        "total": 69,
+        "total": 68,
         "done": 59,
         "complete": false,
-        "rate": 85
+        "rate": 86
       },
       {
         "name": "이경준",
