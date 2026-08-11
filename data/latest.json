@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-11T07:07:58.619622+00:00",
+  "fetchedAt": "2026-08-11T07:13:28.081607+00:00",
   "count": 312,
   "issues": [
     {
@@ -40,7 +40,7 @@
       "번호": 4,
       "일감번호": 276751,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [BE] [접속대기] E-mail 전송 내용 입력 150자 초과 시 전송 불가 및 전송 실패 토스트 말줄임표 노출됨 — 기획 (Figma) 최대 200자 불일치   ",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -3618,8 +3618,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 73,
-      "done": 237,
+      "notDone": 72,
+      "done": 238,
       "total": 310
     },
     "assignees": [
@@ -3647,9 +3647,9 @@
       {
         "name": "김재원",
         "total": 3,
-        "done": 0,
+        "done": 1,
         "complete": false,
-        "rate": 0
+        "rate": 33
       },
       {
         "name": "라경연",
@@ -3736,8 +3736,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 56,
-        "done": 204,
+        "progress": 55,
+        "done": 205,
         "total": 260
       }
     ],
@@ -3748,7 +3748,7 @@
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 12
       },
       {
         "label": "보류",
@@ -3756,7 +3756,7 @@
       },
       {
         "label": "해결",
-        "count": 166
+        "count": 167
       },
       {
         "label": "피드백",
@@ -3993,15 +3993,15 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 236,
+        "cumDone": 237,
         "rate": 76,
         "newCount": 3,
-        "doneCount": 1
+        "doneCount": 2
       },
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 237,
+        "cumDone": 238,
         "rate": 76,
         "newCount": 2,
         "doneCount": 1
