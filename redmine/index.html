@@ -303,6 +303,23 @@
   .issues-panel h2{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
   .issues-panel h2 .issues-title{ flex:1; text-align:center; }
   .issues-mini-stats{ display:flex; align-items:center; gap:8px; }
+
+  /* ---- 스쿼드 선택 드롭다운 (헤더 우측 영역의 가장 왼쪽) ---- */
+  .squad-picker{ display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .squad-picker-label{ font-size:12px; font-weight:700; color:var(--text-tertiary); letter-spacing:0.04em; text-transform:uppercase; }
+  .squad-select{
+    background:var(--card-bg); color:var(--text-primary);
+    border:1px solid var(--panel-border); border-radius:999px;
+    font-family:var(--sans); font-size:13px; font-weight:700;
+    padding:4px 30px 4px 12px; cursor:pointer; outline:none;
+    -webkit-appearance:none; appearance:none;
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5 10 4.5' fill='none' stroke='%235b9dff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 10px center; background-size:11px;
+    transition: border-color .12s ease, color .12s ease;
+  }
+  .squad-select:hover, .squad-select:focus{ border-color:var(--blue); color:var(--blue); }
+  .squad-select:disabled{ opacity:0.55; cursor:progress; }
+  .squad-select option{ background:var(--card-bg); color:var(--text-primary); font-weight:600; }
   .mini-stat{
     font-size:13px; font-weight:700; padding:3px 10px; border-radius:999px;
     background:rgba(255,255,255,0.04); border:1px solid var(--panel-border); white-space:nowrap;
@@ -383,6 +400,10 @@
   <div class="panel issues-panel">
     <h2>
       <span class="issues-title">전체 이슈 목록 (<span id="issueCount">0</span>건)</span>
+      <span class="squad-picker">
+        <span class="squad-picker-label">Squad</span>
+        <select id="squadSelect" class="squad-select" aria-label="스쿼드 선택"></select>
+      </span>
       <span class="issues-mini-stats">
         <span class="mini-stat rate-badge" id="headerRateBadge">완료율 &mdash;</span>
         <span class="mini-stat mini-clickable" id="headerHighCard">우선순위 높음 <span id="headerHighValue">&mdash;</span>건</span>
@@ -481,8 +502,40 @@
 </div>
 
 <script>
-  var state = { issues: [], summary: null, filter: null, feedbackItems: [] };
+  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null };
   var chart = null;
+
+  // ====== 스쿼드 목록 ======
+  // 스쿼드가 늘어나면 아래 배열에 한 줄만 추가하면 됩니다. (api/issues.js는 수정 불필요)
+  //   id    : 상위 일감번호. 사내망 PC가 GitHub에 올리는 파일명과 일치해야 함 → data/<id>.json
+  //   label : 드롭다운에 보이는 이름
+  var SQUADS = [
+    { id: '275677', label: 'Squad1' }
+    // { id: '000000', label: 'Squad2' },
+    // { id: '000000', label: 'Squad3' },
+  ];
+
+  function findSquad(id){
+    return SQUADS.filter(function(s){ return String(s.id) === String(id); })[0] || null;
+  }
+
+  // 마지막에 본 스쿼드를 기억해서 다음 방문 때 그대로 열어줌 (실패해도 무시)
+  var SQUAD_STORAGE_KEY = 'rc8qa.lastSquad';
+  function readSavedSquad(){
+    try { return localStorage.getItem(SQUAD_STORAGE_KEY); } catch (e) { return null; }
+  }
+  function saveSquad(id){
+    try { localStorage.setItem(SQUAD_STORAGE_KEY, id); } catch (e) { /* 무시 */ }
+  }
+
+  // 우선순위: URL 쿼리(?squad=) > 마지막 선택값 > 목록의 첫 번째
+  function resolveInitialSquad(){
+    var fromUrl = new URLSearchParams(location.search).get('squad');
+    if (findSquad(fromUrl)) return String(fromUrl);
+    var saved = readSavedSquad();
+    if (findSquad(saved)) return String(saved);
+    return SQUADS.length ? String(SQUADS[0].id) : null;
+  }
 
   function escapeHtml(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -767,30 +820,73 @@
     return rows2;
   }
 
-  async function loadData(){
+  async function loadData(squadId){
+    var sel = document.getElementById('squadSelect');
+    var squad = findSquad(squadId) || findSquad(state.squad);
+    if (!squad){
+      document.getElementById('errorBox').innerHTML =
+        '<div class="error-box">스쿼드 목록이 비어 있습니다. index.html 상단의 SQUADS 배열을 확인해주세요.</div>';
+      return;
+    }
+
+    state.squad = String(squad.id);
+    saveSquad(state.squad);
+    if (sel){ sel.value = state.squad; sel.disabled = true; }
+
     document.getElementById('errorBox').innerHTML = '';
+    document.getElementById('lastUpdated').textContent = squad.label + ' 불러오는 중…';
 
     try {
-      var res = await fetch('/api/issues');
+      var res = await fetch('/api/issues?squad=' + encodeURIComponent(state.squad), { cache: 'no-store' });
       var data = await res.json();
       if (!data.ok) throw new Error(data.error || '알 수 없는 오류');
 
-      state.issues = data.issues;
+      // 응답이 늦게 도착했는데 그 사이 사용자가 다른 스쿼드를 골랐다면, 화면을 덮어쓰지 않고 버림
+      if (String(state.squad) !== String(squad.id)) return;
+
+      state.issues = data.issues || [];
       state.summary = data.summary;
+      state.filter = null;   // 스쿼드가 바뀌면 이전 필터는 의미가 없으므로 해제
+      document.getElementById('filterChip').classList.remove('active');
       classifyIssues(state.issues);
 
       renderAll();
 
       var d = new Date(data.fetchedAt);
       document.getElementById('lastUpdated').innerHTML =
-        '마지막 업데이트: <span>' + d.toLocaleString('ko-KR') + '</span> · 총 ' + data.count + '건';
+        escapeHtml(squad.label) + ' · 마지막 업데이트: <span>' + d.toLocaleString('ko-KR') + '</span> · 총 ' + (data.count != null ? data.count : state.issues.length) + '건';
     } catch (err) {
+      document.getElementById('lastUpdated').textContent = '';
       document.getElementById('errorBox').innerHTML =
-        '<div class="error-box">데이터를 불러오지 못했습니다: ' + escapeHtml(err.message || err) + '</div>';
+        '<div class="error-box">' + escapeHtml(squad.label) + ' 데이터를 불러오지 못했습니다: ' + escapeHtml(err.message || err) + '</div>';
+    } finally {
+      if (sel) sel.disabled = false;
     }
   }
 
+  function initSquadPicker(){
+    var sel = document.getElementById('squadSelect');
+    if (!sel) return;
+
+    sel.innerHTML = SQUADS.map(function(s){
+      return '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(s.label) + '</option>';
+    }).join('');
+
+    sel.addEventListener('change', function(){
+      // 새로고침해도 같은 스쿼드가 열리도록 주소창의 ?squad= 값도 같이 갱신 (페이지 이동은 없음)
+      var url = new URL(location.href);
+      url.searchParams.set('squad', sel.value);
+      history.replaceState(null, '', url);
+      loadData(sel.value);
+    });
+  }
+
   function renderAll(){
+    if (!state.summary){
+      document.getElementById('errorBox').innerHTML =
+        '<div class="error-box">데이터 파일에 summary 정보가 없습니다. 릴레이 스크립트가 최신 버전인지 확인해주세요.</div>';
+      return;
+    }
     renderStats();
     renderAssignees();
     renderStatuses();
@@ -1421,7 +1517,8 @@
     });
   })();
 
-  loadData();
+  initSquadPicker();
+  loadData(resolveInitialSquad());
 </script>
 </body>
 </html>
