@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-11T07:13:28.081607+00:00",
+  "fetchedAt": "2026-08-11T07:18:56.383037+00:00",
   "count": 312,
   "issues": [
     {
@@ -277,7 +277,7 @@
       "번호": 20,
       "일감번호": 276222,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][상담이력] 엑셀 저장 파일 데이터 4종 결함 — 상담코드 전 행 공란·상담시간(초) 전 행 0·시각 UTC 표기(고객사 타임존 미적용)·고객대기시간 단위 오류 추정(ms)",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -3618,8 +3618,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 72,
-      "done": 238,
+      "notDone": 71,
+      "done": 239,
       "total": 310
     },
     "assignees": [
@@ -3647,9 +3647,9 @@
       {
         "name": "김재원",
         "total": 3,
-        "done": 1,
+        "done": 2,
         "complete": false,
-        "rate": 33
+        "rate": 66
       },
       {
         "name": "라경연",
@@ -3736,8 +3736,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 55,
-        "done": 205,
+        "progress": 54,
+        "done": 206,
         "total": 260
       }
     ],
@@ -3748,7 +3748,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -3756,7 +3756,7 @@
       },
       {
         "label": "해결",
-        "count": 167
+        "count": 168
       },
       {
         "label": "피드백",
@@ -3969,23 +3969,23 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 232,
-        "rate": 77,
+        "cumDone": 233,
+        "rate": 78,
         "newCount": 12,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 234,
-        "rate": 77,
+        "cumDone": 235,
+        "rate": 78,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 235,
+        "cumDone": 236,
         "rate": 77,
         "newCount": 5,
         "doneCount": 1
@@ -3993,16 +3993,16 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 237,
-        "rate": 76,
+        "cumDone": 238,
+        "rate": 77,
         "newCount": 3,
         "doneCount": 2
       },
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 238,
-        "rate": 76,
+        "cumDone": 239,
+        "rate": 77,
         "newCount": 2,
         "doneCount": 1
       }
