@@ -507,12 +507,14 @@
 
   // ====== 스쿼드 목록 ======
   // 스쿼드가 늘어나면 아래 배열에 한 줄만 추가하면 됩니다. (api/issues.js는 수정 불필요)
-  //   id    : 상위 일감번호. 사내망 PC가 GitHub에 올리는 파일명과 일치해야 함 → data/<id>.json
+  //   id    : 'latest' 이거나 상위 일감번호.
+  //           'latest'        → data/latest.json  (제목 prefix 기준 기존 전체 목록)
+  //           상위 일감번호     → data/<id>.json    (해당 상위 일감의 하위 일감)
   //   label : 드롭다운에 보이는 이름
   var SQUADS = [
-    { id: '275677', label: 'Squad1' }
-    // { id: '000000', label: 'Squad2' },
-    // { id: '000000', label: 'Squad3' },
+    { id: 'latest', label: 'SaaS 8.0.1 QA' },
+    { id: '275677', label: 'Squad1_275677' }
+    // { id: '000000', label: 'Squad2_000000' },
   ];
 
   function findSquad(id){
