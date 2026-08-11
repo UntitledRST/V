@@ -57,6 +57,13 @@
   .assignee-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; position:relative; }
   .assignee-scroll{ flex:1; overflow:auto; min-height:0; }
 
+  /* ---- 작성자별 패널 (담당자별 바로 아래) ---- */
+  .author-sidebar{ display:flex; flex-direction:column; min-height:0; height:100%; position:relative; }
+  .author-scroll{ flex:1; overflow:auto; min-height:0; }
+  /* 3열 데스크톱 레이아웃에서는 두 패널이 한 화면에 같이 들어오도록 높이를 나눠 가짐 */
+  .dashboard-grid:not(.no-author) .assignee-scroll{ max-height:26vh; }
+  .dashboard-grid:not(.no-author) .author-scroll{ max-height:20vh; }
+
   .feedback-panel{ display:flex; flex-direction:column; min-height:0; height:100%; overflow:hidden; }
   .feedback-panel > table{ flex:0 0 auto; font-size:19px; }
   .feedback-team-row td{ cursor:pointer; padding:8px 10px; }
@@ -78,11 +85,19 @@
     grid-template-rows: auto auto auto;
     grid-template-areas:
       "status  part     assignee"
-      "status  conn     assignee"
+      "status  conn     author"
       "chart   chart    chart";
     gap:8px;
   }
+  /* 작성자별을 쓰지 않는 스쿼드(RC 8.0.1 QA)는 기존 레이아웃 그대로 유지 */
+  .dashboard-grid.no-author{
+    grid-template-areas:
+      "status  part     assignee"
+      "status  conn     assignee"
+      "chart   chart    chart";
+  }
   .grid-assignee{ grid-area: assignee; min-width:0; }
+  .grid-author{ grid-area: author; min-width:0; }
   .grid-status{ grid-area: status; min-width:0; }
   .grid-part{ grid-area: part; min-width:0; }
   .grid-conn{ grid-area: conn; min-width:0; }
@@ -204,10 +219,14 @@
     .dashboard-grid{ gap:6px; }
     .panel{ padding:8px 12px; }
     .panel h2{ margin-bottom:4px; font-size:17px; }
+    .dashboard-grid:not(.no-author) .assignee-scroll{ max-height:22vh; }
+    .dashboard-grid:not(.no-author) .author-scroll{ max-height:17vh; }
   }
   @media (max-height: 650px){
     .issues-panel .issues-table-scroll{ max-height:13vh; }
     .chart-wrap{ height:90px; }
+    .dashboard-grid:not(.no-author) .assignee-scroll{ max-height:19vh; }
+    .dashboard-grid:not(.no-author) .author-scroll{ max-height:15vh; }
   }
 
   @media (max-width: 1100px){
@@ -218,8 +237,18 @@
         "status  part"
         "status  conn"
         "assignee assignee"
+        "author  author"
         "chart   chart";
     }
+    .dashboard-grid.no-author{
+      grid-template-areas:
+        "status  part"
+        "status  conn"
+        "assignee assignee"
+        "chart   chart";
+    }
+    .dashboard-grid:not(.no-author) .assignee-scroll,
+    .dashboard-grid:not(.no-author) .author-scroll{ max-height:240px; }
   }
 
   @media (max-width: 900px){
@@ -247,6 +276,7 @@
     .page-grid{ grid-template-columns: 1fr; }
     .right-col{ height:auto; }
     .assignee-sidebar{ height:auto; }
+    .author-sidebar{ height:auto; }
     .feedback-panel{ height:auto; }
     .feedback-detail{ max-height:340px; }
     .chart-wrap{ height:300px; }
@@ -258,8 +288,20 @@
         "part"
         "conn"
         "assignee"
+        "author"
         "chart";
     }
+    .dashboard-grid.no-author{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "status"
+        "part"
+        "conn"
+        "assignee"
+        "chart";
+    }
+    .dashboard-grid:not(.no-author) .assignee-scroll,
+    .dashboard-grid:not(.no-author) .author-scroll{ max-height:none; }
     .total-sub-row{ flex-direction:row; }
     .total-sub-value{ font-size:22px; }
 
@@ -454,6 +496,17 @@
       <div class="chart-tooltip" id="assigneeTooltip"></div>
     </div>
 
+    <div class="panel author-sidebar grid-author" id="authorPanel">
+      <h2 class="c-green">작성자별</h2>
+      <div class="author-scroll">
+        <table>
+          <thead><tr><th>작성자</th><th>등록/완료</th><th style="text-align:right">완료율</th></tr></thead>
+          <tbody id="authorBody"><tr><td colspan="3" class="loading">불러오는 중&hellip;</td></tr></tbody>
+        </table>
+      </div>
+      <div class="chart-tooltip" id="authorTooltip"></div>
+    </div>
+
     <div class="panel grid-status">
       <h2 class="c-orange">상태별</h2>
       <table>
@@ -520,6 +573,15 @@
     // { id: '000000', label: 'Squad2_000000' },
   ];
 
+  // ====== 작성자별 패널 노출 대상 ======
+  // 여기에 적힌 스쿼드에서는 '작성자별' 패널을 감춥니다. (RC 8.0.1 QA = 'latest')
+  // 새 스쿼드가 추가되면 별도 설정 없이 자동으로 표시됩니다.
+  var AUTHOR_PANEL_EXCLUDE_SQUADS = ['latest'];
+
+  function isAuthorPanelEnabled(){
+    return AUTHOR_PANEL_EXCLUDE_SQUADS.indexOf(String(state.squad)) === -1;
+  }
+
   function findSquad(id){
     return SQUADS.filter(function(s){ return String(s.id) === String(id); })[0] || null;
   }
@@ -556,6 +618,14 @@
 
   function isNotDoneStatus(s){
     return ['신규','진행','피드백'].some(function(k){ return (s||'').indexOf(k) !== -1; });
+  }
+
+  // 데이터 파일(data/<스쿼드>.json)의 작성자 필드명이 릴레이 스크립트 버전에 따라 다를 수 있어,
+  // 가능한 키를 순서대로 찾습니다. 어느 것도 없으면 빈 문자열이 되고 패널에 안내 문구가 표시됩니다.
+  function getAuthor(it){
+    var v = it.작성자 || it.등록자 || it.author_name ||
+            (it.author && (it.author.name || it.author)) || '';
+    return String(v).trim();
   }
 
   // "우선순위 높음" = 치명적(Critical/Blocker) 또는 중대함(Major/High) 등급
@@ -942,6 +1012,7 @@
     }
     renderStats();
     renderAssignees();
+    renderAuthors();
     renderStatuses();
     renderPart();
     renderConnType();
@@ -1132,6 +1203,52 @@
     bindAssigneeTooltip();
   }
 
+  // ====== 작성자별 ======
+  // RC 8.0.1 QA(latest)에서는 패널을 숨기고, 그리드도 기존 2행 담당자별 레이아웃으로 되돌립니다.
+  function renderAuthors(){
+    var panel = document.getElementById('authorPanel');
+    var grid = document.getElementById('statRow');
+    if (!panel || !grid) return;
+
+    if (!isAuthorPanelEnabled()){
+      panel.style.display = 'none';
+      grid.classList.add('no-author');
+      return;
+    }
+    panel.style.display = '';
+    grid.classList.remove('no-author');
+
+    var map = {};
+    state.issues.forEach(function(it){
+      var name = getAuthor(it);
+      if (!name) return;
+      if (!map[name]) map[name] = { name: name, total: 0, done: 0 };
+      map[name].total++;
+      if (!isNotDoneStatus(it.상태)) map[name].done++;
+    });
+
+    var rows = Object.keys(map).map(function(k){ return map[k]; })
+      .sort(function(a, b){ return b.total - a.total; });
+
+    var body = document.getElementById('authorBody');
+    if (!rows.length){
+      body.innerHTML = '<tr><td colspan="3" class="empty">작성자 정보가 없습니다 &mdash; 데이터 파일에 작성자 필드를 추가해주세요</td></tr>';
+      return;
+    }
+
+    body.innerHTML = rows.map(function(a){
+      var rate = a.total === 0 ? 0 : Math.round((a.done / a.total) * 100);
+      return '<tr class="clickable" data-filter-type="author" data-filter-value="' + escapeHtml(a.name) + '">' +
+        '<td>' + escapeHtml(a.name) + '</td>' +
+        '<td class="mono">' + a.total + '/' + a.done + '</td>' +
+        '<td class="num">' + rate + '%</td>' +
+      '</tr>';
+    }).join('');
+
+    bindFilterableRows('authorBody');
+    bindAuthorTooltip();
+  }
+
   // ====== 툴팁 공통 배치 ======
   // 툴팁을 body 직속으로 옮기고 position:fixed 로 띄워, 어떤 패널의 overflow에도 잘리지 않게 합니다.
   // 화면 밖으로 나가려 하면 위/아래를 뒤집고 좌우를 밀어서 항상 보이는 영역 안에 들어오도록 보정합니다.
@@ -1185,6 +1302,33 @@
           return '<div class="chart-tooltip-row"><span>' + escapeHtml(s) + '</span><span class="chart-tooltip-value">' + statusCounts[s] + '건</span></div>';
         }).join('');
         tooltip.innerHTML = '<div class="chart-tooltip-title">' + escapeHtml(name) + ' &middot; 상태별 할당</div>' + rowsHtml;
+
+        placeTooltip(tooltip, tr.getBoundingClientRect());
+      });
+      tr.addEventListener('mouseleave', function(){
+        tooltip.style.opacity = '0';
+      });
+    });
+  }
+
+  function bindAuthorTooltip(){
+    var tooltip = document.getElementById('authorTooltip');
+    if (!tooltip) return;
+    detachTooltip(tooltip);
+
+    document.querySelectorAll('#authorBody tr[data-filter-value]').forEach(function(tr){
+      tr.addEventListener('mouseenter', function(){
+        var name = tr.getAttribute('data-filter-value');
+        var statusCounts = {};
+        state.issues.filter(function(it){ return getAuthor(it) === name; }).forEach(function(it){
+          var s = it.상태 || '(미상)';
+          statusCounts[s] = (statusCounts[s] || 0) + 1;
+        });
+        var statusKeys = Object.keys(statusCounts).sort(function(a, b){ return statusCounts[b] - statusCounts[a]; });
+        var rowsHtml = statusKeys.map(function(s){
+          return '<div class="chart-tooltip-row"><span>' + escapeHtml(s) + '</span><span class="chart-tooltip-value">' + statusCounts[s] + '건</span></div>';
+        }).join('');
+        tooltip.innerHTML = '<div class="chart-tooltip-title">' + escapeHtml(name) + ' &middot; 상태별 등록</div>' + rowsHtml;
 
         placeTooltip(tooltip, tr.getBoundingClientRect());
       });
@@ -1402,7 +1546,7 @@
     state.filter = isSame ? null : { type: type, value: value };
 
     var chip = document.getElementById('filterChip');
-    var labelMap = { tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경' };
+    var labelMap = { tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경', author: '작성자' };
     var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
@@ -1450,6 +1594,8 @@
     if (f){
       if (f.type === 'assignee'){
         list = list.filter(function(it){ return it.담당자 === f.value; });
+      } else if (f.type === 'author'){
+        list = list.filter(function(it){ return getAuthor(it) === f.value; });
       } else if (f.type === 'tracker'){
         list = list.filter(function(it){ return it.분류 === f.value; });
       } else if (f.type === 'status'){
@@ -1593,7 +1739,7 @@
 
   // position:fixed 툴팁은 스크롤을 따라오지 않으므로, 스크롤/리사이즈 시 숨깁니다.
   function hideAllTooltips(){
-    ['assigneeTooltip', 'chartTooltip'].forEach(function(id){
+    ['assigneeTooltip', 'authorTooltip', 'chartTooltip'].forEach(function(id){
       var el = document.getElementById(id);
       if (el) el.style.opacity = '0';
     });
