@@ -852,9 +852,11 @@
       document.getElementById('filterChip').classList.remove('active');
       classifyIssues(state.issues);
 
+      var d = new Date(data.fetchedAt);
+      // '오늘'의 기준은 브라우저 시계가 아니라 데이터가 수집된 시각(KST)으로 잡습니다.
+      state.today = isNaN(d) ? kstDateStr(new Date()) : kstDateStr(d);
       renderAll();
 
-      var d = new Date(data.fetchedAt);
       document.getElementById('lastUpdated').innerHTML =
         escapeHtml(squad.label) + ' · 마지막 업데이트: <span>' + d.toLocaleString('ko-KR') + '</span> · 총 ' + (data.count != null ? data.count : state.issues.length) + '건';
     } catch (err) {
@@ -1025,13 +1027,30 @@
     document.getElementById('feedbackDetailArea').innerHTML = html;
   }
 
-  function renderTodaySummary(){
-    var tl = state.summary.timeline;
-    if (!tl || !tl.length) return;
-    var today = tl[tl.length - 1]; // 타임라인의 마지막 날짜를 '오늘'로 간주
+  // ISO 시각을 KST 기준 'YYYY-MM-DD' 문자열로 변환
+  // (이슈의 created_on이 KST 문자열이라, 브라우저 로컬 타임존과 무관하게 KST로 맞춰야 함)
+  function kstDateStr(d){
+    var kst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+    var p = function(n){ return String(n).padStart(2, '0'); };
+    return kst.getUTCFullYear() + '-' + p(kst.getUTCMonth() + 1) + '-' + p(kst.getUTCDate());
+  }
 
-    document.getElementById('headerTodayNewValue').textContent = today.newCount;
-    document.getElementById('headerTodayNewCard').onclick = function(){ setDayFilter(today.date, 'newCount'); };
+  function renderTodaySummary(){
+    // 주의: 예전에는 timeline의 마지막 행을 '오늘'로 간주했는데,
+    //       timeline은 이슈가 등록된 날짜만 행으로 만들기 때문에
+    //       오늘 등록 건이 0건이면 마지막 행이 '어제'가 되어 잘못된 날짜가 표시됐습니다.
+    //       그래서 실제 날짜를 기준으로 직접 세도록 변경했습니다.
+    //       기준 시각은 브라우저 시계가 아니라 데이터가 수집된 시각(fetchedAt)을 씁니다.
+    var today = state.today || kstDateStr(new Date());
+
+    var count = state.issues.filter(function(it){
+      return (it.created_on || '').slice(0, 10) === today;
+    }).length;
+
+    var card = document.getElementById('headerTodayNewCard');
+    document.getElementById('headerTodayNewValue').textContent = count;
+    card.title = today + ' 등록 ' + count + '건';
+    card.onclick = function(){ setDayFilter(today, 'newCount'); };
   }
 
   function renderStats(){
