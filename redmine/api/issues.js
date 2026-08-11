@@ -20,10 +20,11 @@ const GITHUB_DATA_DIR = 'data';
 
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_DATA_DIR}`;
 
-// 경로 조작(../ 등)을 막기 위해 숫자로만 이루어진 일감번호만 허용합니다.
+// 경로 조작(../ 등)을 막기 위해 'latest' 또는 숫자로만 이루어진 일감번호만 허용합니다.
 function resolveFileName(squad) {
   if (squad == null || squad === '') return 'latest.json';
   const id = String(squad).trim();
+  if (id === 'latest') return 'latest.json';
   if (!/^\d{1,12}$/.test(id)) return null;
   return `${id}.json`;
 }
@@ -49,7 +50,8 @@ module.exports = async (req, res) => {
     if (response.status === 404) {
       throw new Error(
         `${GITHUB_DATA_DIR}/${fileName} 파일이 아직 없습니다. ` +
-        `사내망 PC의 릴레이 스크립트가 이 상위 일감(${squad || 'latest'})을 수집 대상에 포함하고 있는지 확인해주세요.`
+        `사내망 PC의 릴레이 스크립트가 이 항목(${squad || 'latest'})을 수집 대상에 포함하고 있는지 확인해주세요.` +
+        (fileName === 'latest.json' ? ' (relay_to_github.py의 UPLOAD_LEGACY_LATEST가 True인지 확인)' : '')
       );
     }
     if (!response.ok) {
