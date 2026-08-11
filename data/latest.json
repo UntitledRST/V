@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-11T07:18:56.383037+00:00",
+  "fetchedAt": "2026-08-11T07:24:26.685079+00:00",
   "count": 312,
   "issues": [
     {
@@ -1014,7 +1014,7 @@
       "번호": 87,
       "일감번호": 275522,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어] 원격 지원 종료 페이지 내 지원 이력 정보와 상담 로그 간 시작·종료 시각 타임존 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -3618,8 +3618,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 71,
-      "done": 239,
+      "notDone": 70,
+      "done": 240,
       "total": 310
     },
     "assignees": [
@@ -3647,9 +3647,9 @@
       {
         "name": "김재원",
         "total": 3,
-        "done": 2,
-        "complete": false,
-        "rate": 66
+        "done": 3,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "라경연",
@@ -3736,8 +3736,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 54,
-        "done": 206,
+        "progress": 53,
+        "done": 207,
         "total": 260
       }
     ],
@@ -3748,7 +3748,7 @@
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 10
       },
       {
         "label": "보류",
@@ -3756,7 +3756,7 @@
       },
       {
         "label": "해결",
-        "count": 168
+        "count": 169
       },
       {
         "label": "피드백",
@@ -3921,23 +3921,23 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 194,
+        "cumDone": 195,
         "rate": 84,
         "newCount": 14,
-        "doneCount": 10
+        "doneCount": 11
       },
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 203,
-        "rate": 81,
+        "cumDone": 204,
+        "rate": 82,
         "newCount": 18,
         "doneCount": 9
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 210,
+        "cumDone": 211,
         "rate": 79,
         "newCount": 16,
         "doneCount": 7
@@ -3945,7 +3945,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 211,
+        "cumDone": 212,
         "rate": 79,
         "newCount": 1,
         "doneCount": 1
@@ -3953,7 +3953,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 219,
+        "cumDone": 220,
         "rate": 79,
         "newCount": 10,
         "doneCount": 8
@@ -3961,7 +3961,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 227,
+        "cumDone": 228,
         "rate": 79,
         "newCount": 11,
         "doneCount": 8
@@ -3969,7 +3969,7 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 233,
+        "cumDone": 234,
         "rate": 78,
         "newCount": 12,
         "doneCount": 6
@@ -3977,7 +3977,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 235,
+        "cumDone": 236,
         "rate": 78,
         "newCount": 2,
         "doneCount": 2
@@ -3985,7 +3985,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 236,
+        "cumDone": 237,
         "rate": 77,
         "newCount": 5,
         "doneCount": 1
@@ -3993,7 +3993,7 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 238,
+        "cumDone": 239,
         "rate": 77,
         "newCount": 3,
         "doneCount": 2
@@ -4001,7 +4001,7 @@
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 239,
+        "cumDone": 240,
         "rate": 77,
         "newCount": 2,
         "doneCount": 1
