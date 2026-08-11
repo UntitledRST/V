@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-11T02:02:46.046648+00:00",
-  "count": 93,
+  "fetchedAt": "2026-08-11T05:57:41.867439+00:00",
+  "count": 97,
   "issues": [
     {
       "번호": 1,
@@ -117,7 +117,7 @@
       "번호": 11,
       "일감번호": 275780,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] 그룹 관리자가 그룹 목록 화면에서 조회 권한 부족으로 목록을 볼 수 없는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -491,7 +491,7 @@
       "번호": 45,
       "일감번호": 275921,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[메일] 이메일 인증·가려진 정보 보기 인증번호 메일이 2단계 인증용 템플릿으로 발송되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -667,7 +667,7 @@
       "번호": 61,
       "일감번호": 275937,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 상담 이력 목록에 기획서가 정의한 회사 아이디·회사 이름 컬럼과 회사 검색이 없는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -681,7 +681,7 @@
       "상태": "진행(Doing)",
       "제목": "[파트너 어드민] 상담 이력 목록의 고객명·지원 시간이 응답에서 빈 값으로 내려와 표시되지 않는 이슈",
       "우선순위": "보통(Normal)",
-      "담당자": "이혁(Eden)",
+      "담당자": "윤종익",
       "created_on": "2026-08-01 21:42:42",
       "link": "https://projects.rsupport.com/issues/275938"
     },
@@ -766,7 +766,7 @@
       "번호": 70,
       "일감번호": 276035,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] 그룹 상세 사용자 할당 모달의 라이선스 열이 회사 사용자 조회 응답에 라이선스가 없어 항상 비는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -810,7 +810,7 @@
       "번호": 74,
       "일감번호": 276339,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] AI 어시스턴트 응답 테스트 스트리밍에서 답변(delta)·인용(citation) 이벤트 미처리로 답변이 표시되지 않는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -876,7 +876,7 @@
       "번호": 80,
       "일감번호": 276398,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] 내정보 이메일 변경 인증 메일이 '로그인 2단계 인증' 템플릿으로 발송되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -934,7 +934,7 @@
       "상태": "신규(New)",
       "제목": "[파트너 어드민] APK 파일추가 모달에 불필요한 가로 스크롤바 발생 및 내용 잘림",
       "우선순위": "보통(Normal)",
-      "담당자": "윤종익",
+      "담당자": "심현수",
       "created_on": "2026-08-07 14:35:50",
       "link": "https://projects.rsupport.com/issues/276561"
     },
@@ -942,10 +942,10 @@
       "번호": 86,
       "일감번호": 276582,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] APK 파일 등록 시 비APK 파일 선택 시, 검증 오류 메세지 미출력",
       "우선순위": "보통(Normal)",
-      "담당자": "윤종익",
+      "담당자": "심현수",
       "created_on": "2026-08-07 16:00:01",
       "link": "https://projects.rsupport.com/issues/276582"
     },
@@ -1011,7 +1011,7 @@
       "상태": "신규(New)",
       "제목": "[파트너 어드민] 만료 상태 사용자 로그인 시, 로그인 실패 및 만료 팝업 미노출",
       "우선순위": "보통(Normal)",
-      "담당자": "윤종익",
+      "담당자": "권정희",
       "created_on": "2026-08-10 17:05:06",
       "link": "https://projects.rsupport.com/issues/276790"
     },
@@ -1022,38 +1022,89 @@
       "상태": "신규(New)",
       "제목": "[유저 어드민] 만료 상태 사용자 로그인 시, 로그인 실패 및 만료 팝업 미노출",
       "우선순위": "보통(Normal)",
-      "담당자": "윤종익",
+      "담당자": "권정희",
       "created_on": "2026-08-10 18:58:37",
       "link": "https://projects.rsupport.com/issues/276820"
+    },
+    {
+      "번호": 94,
+      "일감번호": 276864,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 파트너사 상세 > 주소 및 방화벽 타입 변경 실패",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "created_on": "2026-08-11 11:49:56",
+      "link": "https://projects.rsupport.com/issues/276864"
+    },
+    {
+      "번호": 95,
+      "일감번호": 276868,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 파트너사 상세 > 상위 파트너사를 자기 자신 저장 > 계층 경로 순환 표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "created_on": "2026-08-11 12:04:11",
+      "link": "https://projects.rsupport.com/issues/276868"
+    },
+    {
+      "번호": 96,
+      "일감번호": 276869,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 고객사 상세 > 주소 수정 실패",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "created_on": "2026-08-11 12:13:13",
+      "link": "https://projects.rsupport.com/issues/276869"
+    },
+    {
+      "번호": 97,
+      "일감번호": 276898,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 라이선스 갱신 저장 시 만료 30일임에도 갱신 불가 오류 발생",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "created_on": "2026-08-11 14:50:25",
+      "link": "https://projects.rsupport.com/issues/276898"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 69,
-      "done": 23,
-      "total": 92
+      "notDone": 66,
+      "done": 30,
+      "total": 96
     },
     "assignees": [
       {
         "name": "권정희",
-        "total": 23,
+        "total": 26,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
+        "name": "심현수",
+        "total": 2,
+        "done": 1,
+        "complete": false,
+        "rate": 50
+      },
+      {
         "name": "윤종익",
-        "total": 49,
+        "total": 48,
         "done": 22,
         "complete": false,
-        "rate": 44
+        "rate": 45
       },
       {
         "name": "이혁(Eden)",
         "total": 21,
-        "done": 2,
+        "done": 8,
         "complete": false,
-        "rate": 9
+        "rate": 38
       }
     ],
     "trackers": [
@@ -1071,19 +1122,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 67,
-        "done": 21,
-        "total": 88
+        "progress": 64,
+        "done": 28,
+        "total": 92
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 61
+        "count": 63
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 2
       },
       {
         "label": "보류",
@@ -1091,7 +1142,7 @@
       },
       {
         "label": "해결",
-        "count": 11
+        "count": 18
       },
       {
         "label": "피드백",
@@ -1117,7 +1168,7 @@
       },
       {
         "label": "보통",
-        "count": 93
+        "count": 97
       },
       {
         "label": "높음",
@@ -1136,58 +1187,66 @@
       {
         "date": "2026-07-30",
         "newCount": 20,
-        "doneCount": 9,
+        "doneCount": 10,
         "cumIssue": 20,
-        "cumDone": 9,
-        "rate": 45
+        "cumDone": 10,
+        "rate": 50
       },
       {
         "date": "2026-07-31",
         "newCount": 22,
         "doneCount": 4,
         "cumIssue": 42,
-        "cumDone": 13,
-        "rate": 31
+        "cumDone": 14,
+        "rate": 33
       },
       {
         "date": "2026-08-01",
         "newCount": 21,
-        "doneCount": 4,
+        "doneCount": 6,
         "cumIssue": 63,
-        "cumDone": 17,
-        "rate": 27
+        "cumDone": 20,
+        "rate": 32
       },
       {
         "date": "2026-08-03",
         "newCount": 7,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 70,
-        "cumDone": 18,
-        "rate": 26
+        "cumDone": 22,
+        "rate": 31
       },
       {
         "date": "2026-08-06",
         "newCount": 13,
-        "doneCount": 5,
+        "doneCount": 7,
         "cumIssue": 83,
-        "cumDone": 23,
-        "rate": 28
+        "cumDone": 29,
+        "rate": 35
       },
       {
         "date": "2026-08-07",
         "newCount": 8,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 91,
-        "cumDone": 23,
-        "rate": 25
+        "cumDone": 30,
+        "rate": 33
       },
       {
         "date": "2026-08-10",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 93,
-        "cumDone": 23,
-        "rate": 25
+        "cumDone": 30,
+        "rate": 32
+      },
+      {
+        "date": "2026-08-11",
+        "newCount": 4,
+        "doneCount": 0,
+        "cumIssue": 97,
+        "cumDone": 30,
+        "rate": 31
       }
     ]
   },
