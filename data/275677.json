@@ -1,0 +1,78 @@
+{
+  "ok": true,
+  "fetchedAt": "2026-08-11T01:59:45.203647+00:00",
+  "count": 0,
+  "issues": [],
+  "summary": {
+    "completion": {
+      "notDone": 0,
+      "done": 0,
+      "total": 0
+    },
+    "assignees": [],
+    "trackers": [],
+    "statuses": [
+      {
+        "label": "신규",
+        "count": 0
+      },
+      {
+        "label": "진행",
+        "count": 0
+      },
+      {
+        "label": "보류",
+        "count": 0
+      },
+      {
+        "label": "해결",
+        "count": 0
+      },
+      {
+        "label": "피드백",
+        "count": 0
+      },
+      {
+        "label": "완료성공",
+        "count": 0
+      },
+      {
+        "label": "중단",
+        "count": 0
+      },
+      {
+        "label": "완료실패",
+        "count": 0
+      }
+    ],
+    "priorities": [
+      {
+        "label": "낮음",
+        "count": 0
+      },
+      {
+        "label": "보통",
+        "count": 0
+      },
+      {
+        "label": "높음",
+        "count": 0
+      },
+      {
+        "label": "긴급",
+        "count": 0
+      },
+      {
+        "label": "즉시",
+        "count": 0
+      }
+    ],
+    "timeline": []
+  },
+  "squad": "275677",
+  "squadLabel": "Squad1",
+  "parent": {
+    "id": "275677",
+    "link": "https://projects.rsupport.com/issues/275677"
+  }
+}
