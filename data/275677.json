@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-12T07:09:08.819391+00:00",
-  "count": 127,
+  "fetchedAt": "2026-08-12T07:16:58.652409+00:00",
+  "count": 128,
   "issues": [
     {
       "번호": 1,
@@ -1526,13 +1526,25 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 16:05:59",
       "link": "https://projects.rsupport.com/issues/277104"
+    },
+    {
+      "번호": 128,
+      "일감번호": 277106,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 라이선스 현황과 라이선스 목록 건수 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 16:16:29",
+      "link": "https://projects.rsupport.com/issues/277106"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 88,
+      "notDone": 89,
       "done": 38,
-      "total": 126
+      "total": 127
     },
     "assignees": [
       {
@@ -1572,7 +1584,7 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 29,
+        "total": 30,
         "done": 6,
         "complete": false,
         "rate": 20
@@ -1588,7 +1600,7 @@
       },
       {
         "name": "이명찬",
-        "total": 32,
+        "total": 33,
         "done": 5,
         "complete": false,
         "rate": 15
@@ -1616,15 +1628,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 70,
+        "progress": 71,
         "done": 36,
-        "total": 106
+        "total": 107
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 79
+        "count": 80
       },
       {
         "label": "진행",
@@ -1662,7 +1674,7 @@
       },
       {
         "label": "보통",
-        "count": 127
+        "count": 128
       },
       {
         "label": "높음",
@@ -1744,9 +1756,9 @@
       },
       {
         "date": "2026-08-12",
-        "newCount": 28,
+        "newCount": 29,
         "doneCount": 3,
-        "cumIssue": 127,
+        "cumIssue": 128,
         "cumDone": 38,
         "rate": 30
       }
