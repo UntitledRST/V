@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-12T07:56:35.804607+00:00",
+  "fetchedAt": "2026-08-12T08:02:04.100172+00:00",
   "count": 316,
   "issues": [
     {
@@ -32,7 +32,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [호스트][세션 GNB] 언어 설정 영어 시 상단 바 마이크 파형이 일시정지 버튼 위에 겹쳐 표시 — 문구 오버플로 미처리(fr·pt 동일 위험, ja·ko·zh 미발생)",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "김미령",
       "created_on": "2026-08-12 11:54:12",
       "link": "https://projects.rsupport.com/issues/276974"
     },
@@ -3669,10 +3669,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 41,
+        "total": 42,
         "done": 39,
         "complete": false,
-        "rate": 95
+        "rate": 92
       },
       {
         "name": "김성식",
@@ -3732,10 +3732,10 @@
       },
       {
         "name": "오세진",
-        "total": 72,
+        "total": 71,
         "done": 65,
         "complete": false,
-        "rate": 90
+        "rate": 91
       },
       {
         "name": "이경준",
