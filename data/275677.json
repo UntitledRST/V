@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-12T06:50:29.747793+00:00",
-  "count": 123,
+  "fetchedAt": "2026-08-12T07:09:08.819391+00:00",
+  "count": 127,
   "issues": [
     {
       "번호": 1,
@@ -1478,18 +1478,66 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:48:24",
       "link": "https://projects.rsupport.com/issues/277094"
+    },
+    {
+      "번호": 124,
+      "일감번호": 277098,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 고객사별 상담 건수 순위 상담 건수와 제품 사용 통계 지원 건수 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 15:55:42",
+      "link": "https://projects.rsupport.com/issues/277098"
+    },
+    {
+      "번호": 125,
+      "일감번호": 277099,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[그룹 옵션(유저 어드민)] 옵션 UI 유형이 명세의 숫자 입력·라디오와 달리 드롭다운으로 구현돼 명세 개정이 필요한 이슈",
+      "우선순위": "보통(Normal)",
+      "담당자": "",
+      "작성자": "윤종익",
+      "created_on": "2026-08-12 15:56:08",
+      "link": "https://projects.rsupport.com/issues/277099"
+    },
+    {
+      "번호": 126,
+      "일감번호": 277100,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 이달 상담 건수와 상담 이력 당월 조회 건수가  불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 15:58:32",
+      "link": "https://projects.rsupport.com/issues/277100"
+    },
+    {
+      "번호": 127,
+      "일감번호": 277104,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 고객사 현황 수와 고객사 목록 검색 결과 건수가  불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 16:05:59",
+      "link": "https://projects.rsupport.com/issues/277104"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 84,
+      "notDone": 88,
       "done": 38,
-      "total": 122
+      "total": 126
     },
     "assignees": [
       {
         "name": "(미배정)",
-        "total": 10,
+        "total": 11,
         "done": 0,
         "complete": false,
         "rate": 0
@@ -1524,26 +1572,26 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 26,
+        "total": 29,
         "done": 6,
         "complete": false,
-        "rate": 23
+        "rate": 20
       }
     ],
     "authors": [
       {
         "name": "윤종익",
-        "total": 86,
+        "total": 87,
         "done": 27,
         "complete": false,
         "rate": 31
       },
       {
         "name": "이명찬",
-        "total": 29,
+        "total": 32,
         "done": 5,
         "complete": false,
-        "rate": 17
+        "rate": 15
       },
       {
         "name": "이혁(Eden)",
@@ -1556,9 +1604,9 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 15,
+        "progress": 16,
         "done": 1,
-        "total": 16
+        "total": 17
       },
       {
         "label": "개선(Improving)",
@@ -1568,15 +1616,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 67,
+        "progress": 70,
         "done": 36,
-        "total": 103
+        "total": 106
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 75
+        "count": 79
       },
       {
         "label": "진행",
@@ -1614,7 +1662,7 @@
       },
       {
         "label": "보통",
-        "count": 123
+        "count": 127
       },
       {
         "label": "높음",
@@ -1696,11 +1744,11 @@
       },
       {
         "date": "2026-08-12",
-        "newCount": 24,
+        "newCount": 28,
         "doneCount": 3,
-        "cumIssue": 123,
+        "cumIssue": 127,
         "cumDone": 38,
-        "rate": 31
+        "rate": 30
       }
     ]
   },
