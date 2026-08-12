@@ -198,12 +198,18 @@
   /* 툴팁은 body 직속으로 옮겨 position:fixed 로 띄웁니다.
      (패널들이 overflow:hidden/auto 라서 안에 두면 잘리기 때문) */
   .chart-tooltip{
-    position:fixed; z-index:99999; pointer-events:auto;
+    position:fixed; z-index:99999; pointer-events:none;   /* 표시될 때 JS가 auto 로 바꿈 */
     background:#161b26; border:1px solid rgba(255,255,255,0.1); border-radius:10px;
     padding:8px; font-size:13px; color:#e6e9ef; opacity:0; transition:opacity 0.1s ease;
     box-shadow:0 8px 24px rgba(0,0,0,0.4); min-width:150px; max-width:min(360px, 92vw);
     left:0; top:0;
   }
+  /* 정렬 가능한 표 머리글 (작성시간) */
+  th.sortable{ cursor:pointer; user-select:none; white-space:nowrap; }
+  th.sortable:hover{ color:#fff; }
+  th.sortable .sort-arrow{ margin-left:4px; font-size:11px; opacity:0.45; }
+  th.sortable.active .sort-arrow{ opacity:1; color:var(--blue); }
+
   .chart-tooltip-title{ font-weight:700; font-size:13.5px; padding:2px 6px 6px; color:#fff; }
   .chart-tooltip-row{
     display:flex; justify-content:space-between; gap:14px; padding:6px 8px; border-radius:6px; cursor:pointer;
@@ -469,7 +475,7 @@
             <th>제목</th>
             <th>우선순위</th>
             <th>담당자</th>
-            <th>작성시간</th>
+            <th id="sortCreatedTh" class="sortable" title="클릭하면 작성시간 오름차순/내림차순이 전환됩니다">작성시간<span class="sort-arrow" id="sortCreatedArrow">&#8597;</span></th>
           </tr>
         </thead>
         <tbody id="issuesBody"><tr><td colspan="8" class="loading">불러오는 중&hellip;</td></tr></tbody>
@@ -558,8 +564,18 @@
 </div>
 
 <script>
-  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null };
+  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null };
   var chart = null;
+
+  // ====== 전체 이슈 목록 기본 정렬 ======
+  // 여기에 적힌 스쿼드는 첫 화면부터 '작성시간 최신순(내림차순)'으로 정렬됩니다.
+  // 목록에 없는 스쿼드는 기존처럼 데이터 원본 순서로 표시됩니다.
+  // (작성시간 머리글 클릭으로 오름/내림 전환하는 기능은 모든 스쿼드에서 동작합니다.)
+  var DEFAULT_DESC_SORT_SQUADS = ['275677'];
+
+  function defaultSortDirFor(squadId){
+    return DEFAULT_DESC_SORT_SQUADS.indexOf(String(squadId)) !== -1 ? 'desc' : null;
+  }
 
   // ====== 스쿼드 목록 ======
   // 스쿼드가 늘어나면 아래 배열에 한 줄만 추가하면 됩니다. (api/issues.js는 수정 불필요)
@@ -968,6 +984,8 @@
       state.issues = data.issues || [];
       state.summary = data.summary;
       state.filter = null;   // 스쿼드가 바뀌면 이전 필터는 의미가 없으므로 해제
+      state.sortDir = defaultSortDirFor(state.squad);  // 스쿼드별 기본 정렬로 초기화
+      updateSortHeader();
       document.getElementById('filterChip').classList.remove('active');
       classifyIssues(state.issues);
 
@@ -1254,9 +1272,66 @@
   // 화면 밖으로 나가려 하면 위/아래를 뒤집고 좌우를 밀어서 항상 보이는 영역 안에 들어오도록 보정합니다.
   var TOOLTIP_PAD = 8;
 
+  // ====== 툴팁 유지 거리 ======
+  // 마우스가 툴팁(또는 툴팁을 띄운 원래 행/지점)에서 이 거리(px) 이상 멀어질 때만 닫습니다.
+  // 덕분에 툴팁 경계를 살짝 벗어나거나 행↔툴팁 사이 빈 공간을 지나가도 닫히지 않고,
+  // 툴팁 안의 항목/링크를 편하게 클릭할 수 있습니다. 너무 오래 남아 있으면 값을 줄이세요.
+  var TOOLTIP_GRACE = 160;
+
+  // 현재 열려 있는 툴팁 하나만 추적합니다. (동시에 여러 개가 뜨지 않도록)
+  var tooltipTracker = { el: null, anchor: null };
+
   function detachTooltip(el){
     if (el && el.parentNode !== document.body) document.body.appendChild(el);
   }
+
+  // 사각형과 한 점 사이의 최단 거리 (점이 사각형 안이면 0)
+  function rectDistance(rect, x, y){
+    var dx = Math.max(rect.left - x, 0, x - rect.right);
+    var dy = Math.max(rect.top - y, 0, y - rect.bottom);
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function isTooltipVisible(el){
+    return !!el && el.style.opacity !== '0' && el.style.opacity !== '';
+  }
+
+  function showTooltip(el, anchorRect){
+    if (tooltipTracker.el && tooltipTracker.el !== el) hideTooltip(tooltipTracker.el);
+    placeTooltip(el, anchorRect);            // 내부에서 opacity=1 로 올림
+    el.style.pointerEvents = 'auto';
+    tooltipTracker.el = el;
+    tooltipTracker.anchor = {
+      left: anchorRect.left, top: anchorRect.top,
+      right: anchorRect.right, bottom: anchorRect.bottom
+    };
+  }
+
+  function hideTooltip(el){
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.pointerEvents = 'none';   // 안 보일 때 클릭을 가로채지 않도록
+    if (tooltipTracker.el === el){ tooltipTracker.el = null; tooltipTracker.anchor = null; }
+  }
+
+  // 마우스가 충분히 멀어졌는지 계속 감시. 툴팁과 원래 앵커 중 '가까운 쪽' 기준이라
+  // 툴팁 쪽으로 가다 빈 공간을 지나도, 원래 행으로 되돌아가도 유지됩니다.
+  document.addEventListener('mousemove', function(e){
+    var el = tooltipTracker.el;
+    if (!isTooltipVisible(el)) return;
+    var dist = rectDistance(el.getBoundingClientRect(), e.clientX, e.clientY);
+    if (tooltipTracker.anchor){
+      dist = Math.min(dist, rectDistance(tooltipTracker.anchor, e.clientX, e.clientY));
+    }
+    if (dist > TOOLTIP_GRACE) hideTooltip(el);
+  }, true);
+
+  // 툴팁 바깥을 클릭하면 닫음 (툴팁 안 클릭은 그대로 통과시켜 링크/항목 클릭 가능)
+  document.addEventListener('mousedown', function(e){
+    var el = tooltipTracker.el;
+    if (!isTooltipVisible(el)) return;
+    if (!el.contains(e.target)) hideTooltip(el);
+  }, true);
 
   function placeTooltip(el, anchorRect){
     // 크기를 재려면 먼저 보이게 해야 하므로, 위치 계산 전에 opacity를 올립니다.
@@ -1303,11 +1378,10 @@
         }).join('');
         tooltip.innerHTML = '<div class="chart-tooltip-title">' + escapeHtml(name) + ' &middot; 상태별 할당</div>' + rowsHtml;
 
-        placeTooltip(tooltip, tr.getBoundingClientRect());
+        showTooltip(tooltip, tr.getBoundingClientRect());
       });
-      tr.addEventListener('mouseleave', function(){
-        tooltip.style.opacity = '0';
-      });
+      // mouseleave 로 즉시 닫지 않습니다. 위의 전역 mousemove 감시가
+      // 충분히 멀어졌을 때만 닫아주므로, 툴팁 위로 마우스를 옮길 여유가 생깁니다.
     });
   }
 
@@ -1330,11 +1404,9 @@
         }).join('');
         tooltip.innerHTML = '<div class="chart-tooltip-title">' + escapeHtml(name) + ' &middot; 상태별 등록</div>' + rowsHtml;
 
-        placeTooltip(tooltip, tr.getBoundingClientRect());
+        showTooltip(tooltip, tr.getBoundingClientRect());
       });
-      tr.addEventListener('mouseleave', function(){
-        tooltip.style.opacity = '0';
-      });
+      // 담당자별과 동일하게, 멀어졌을 때만 전역 감시 로직이 닫습니다.
     });
   }
 
@@ -1424,8 +1496,6 @@
   // 해당 일자 기준으로 전체 이슈 목록을 필터링하고 최상단으로 이동
   var DAY_KIND_LABEL = { cumIssue: '누적 이슈', cumDone: '누적 해결', newCount: '이 날 신규', doneCount: '이 날 해결' };
 
-  var chartTooltipState = { overTooltip: false };
-
   function chartTooltipHandler(context){
     var tooltipEl = document.getElementById('chartTooltip');
     if (!tooltipEl){
@@ -1434,28 +1504,19 @@
       tooltipEl.className = 'chart-tooltip';
       // 차트 컨테이너가 overflow:hidden 이라 안에 두면 잘림 → body 직속으로 붙임
       document.body.appendChild(tooltipEl);
-      // 툴팁 위에 마우스가 올라가 있는 동안은 안 꺼지도록, 벗어나면 바로 꺼지도록 상태 추적
-      tooltipEl.addEventListener('mouseenter', function(){
-        chartTooltipState.overTooltip = true;
-      });
-      tooltipEl.addEventListener('mouseleave', function(){
-        chartTooltipState.overTooltip = false;
-        tooltipEl.style.opacity = 0;
-      });
+      tooltipEl.style.pointerEvents = 'none';
     }
 
+    // 차트 밖으로 마우스가 나가면 Chart.js가 opacity 0 으로 알려주지만,
+    // 여기서 바로 닫지 않습니다. 툴팁 안의 '이 날 신규/이 날 해결'을 클릭하러
+    // 이동하는 중일 수 있으므로, 전역 mousemove 감시가 충분히 멀어졌을 때만 닫습니다.
     var tooltipModel = context.tooltip;
-    if (!tooltipModel || tooltipModel.opacity === 0){
-      if (!chartTooltipState.overTooltip){
-        tooltipEl.style.opacity = 0;
-      }
-      return;
-    }
+    if (!tooltipModel || tooltipModel.opacity === 0) return;
 
     var idx = (tooltipModel.dataPoints && tooltipModel.dataPoints.length) ? tooltipModel.dataPoints[0].dataIndex : null;
-    if (idx === null) { if (!chartTooltipState.overTooltip) tooltipEl.style.opacity = 0; return; }
+    if (idx === null) return;
     var day = state.summary.timeline[idx];
-    if (!day) { if (!chartTooltipState.overTooltip) tooltipEl.style.opacity = 0; return; }
+    if (!day) return;
 
     var rows = [
       { kind: 'cumIssue', value: day.cumIssue },
@@ -1475,7 +1536,7 @@
     var canvasRect = context.chart.canvas.getBoundingClientRect();
     var x = canvasRect.left + tooltipModel.caretX;
     var y = canvasRect.top + tooltipModel.caretY;
-    placeTooltip(tooltipEl, { left: x, top: y, right: x, bottom: y, width: 0, height: 0 });
+    showTooltip(tooltipEl, { left: x, top: y, right: x, bottom: y, width: 0, height: 0 });
 
     tooltipEl.querySelectorAll('.chart-tooltip-row').forEach(function(row){
       row.addEventListener('click', function(){
@@ -1587,6 +1648,62 @@
     }
   }
 
+  // ====== 작성시간 정렬 ======
+  // created_on 은 'YYYY-MM-DD HH:MM:SS' 형태의 KST 문자열이라 문자열 비교만으로 시간순이 맞습니다.
+  // 작성시간이 비어 있는 이슈는 정렬 방향과 무관하게 항상 맨 아래로 보냅니다.
+  function createdKey(it){
+    return String((it && it.created_on) || '');
+  }
+
+  function sortIssueList(list){
+    if (!state.sortDir) return list;               // null 이면 원본(데이터) 순서 유지
+    var dir = state.sortDir === 'asc' ? 1 : -1;
+    return list.slice().sort(function(a, b){
+      var ka = createdKey(a), kb = createdKey(b);
+      if (!ka && !kb) return 0;
+      if (!ka) return 1;
+      if (!kb) return -1;
+      if (ka !== kb) return ka < kb ? -1 * dir : 1 * dir;
+      // 작성시간이 같으면 일감번호로 안정적으로 갈라줌 (정렬 방향 동일 적용)
+      var na = Number(a.일감번호) || 0, nb = Number(b.일감번호) || 0;
+      return (na - nb) * dir;
+    });
+  }
+
+  function updateSortHeader(){
+    var th = document.getElementById('sortCreatedTh');
+    var arrow = document.getElementById('sortCreatedArrow');
+    if (!th || !arrow) return;
+    if (state.sortDir === 'desc'){
+      th.classList.add('active');
+      arrow.innerHTML = '&#9660;';                 // ▼ 최신순
+      th.title = '작성시간 최신순 (클릭하면 오래된순)';
+    } else if (state.sortDir === 'asc'){
+      th.classList.add('active');
+      arrow.innerHTML = '&#9650;';                 // ▲ 오래된순
+      th.title = '작성시간 오래된순 (클릭하면 최신순)';
+    } else {
+      th.classList.remove('active');
+      arrow.innerHTML = '&#8597;';
+      th.title = '클릭하면 작성시간 최신순으로 정렬됩니다';
+    }
+  }
+
+  function toggleCreatedSort(){
+    // 정렬 안 된 상태 → 최신순 → 오래된순 → 최신순 … 으로 전환
+    state.sortDir = (state.sortDir === 'desc') ? 'asc' : 'desc';
+    updateSortHeader();
+    renderIssues();
+    var scrollBox = document.getElementById('issuesTableScroll');
+    if (scrollBox) scrollBox.scrollTop = 0;
+  }
+
+  (function initCreatedSortHeader(){
+    var th = document.getElementById('sortCreatedTh');
+    if (th) th.addEventListener('click', toggleCreatedSort);
+    updateSortHeader();
+  })();
+
   function renderIssues(){
     var list = state.issues;
     var f = state.filter;
@@ -1644,6 +1761,8 @@
     }
 
     document.getElementById('issueCount').textContent = list.length;
+
+    list = sortIssueList(list);
 
     var rows = list.map(function(it, idx){
       var notDone = isNotDoneStatus(it.상태);
@@ -1740,10 +1859,8 @@
   // position:fixed 툴팁은 스크롤을 따라오지 않으므로, 스크롤/리사이즈 시 숨깁니다.
   function hideAllTooltips(){
     ['assigneeTooltip', 'authorTooltip', 'chartTooltip'].forEach(function(id){
-      var el = document.getElementById(id);
-      if (el) el.style.opacity = '0';
+      hideTooltip(document.getElementById(id));
     });
-    chartTooltipState.overTooltip = false;
   }
   window.addEventListener('scroll', hideAllTooltips, true);  // true: 내부 스크롤 영역까지 감지
   window.addEventListener('resize', hideAllTooltips);
