@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-12T06:25:53.025043+00:00",
-  "count": 118,
+  "fetchedAt": "2026-08-12T06:50:29.747793+00:00",
+  "count": 123,
   "issues": [
     {
       "번호": 1,
@@ -1402,7 +1402,7 @@
       "상태": "신규(New)",
       "제목": "[파트너 어드민] 대시보드(신규 고객사 등록 추이: 202607) 수치와 7월 등록된 고객사 수치와 상이",
       "우선순위": "보통(Normal)",
-      "담당자": "심현수",
+      "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:13:20",
       "link": "https://projects.rsupport.com/issues/277083"
@@ -1414,22 +1414,82 @@
       "상태": "신규(New)",
       "제목": "[파트너 어드민] 대시보드 상담 건수 추이와 상담 이력 조회 건수 불일치",
       "우선순위": "보통(Normal)",
-      "담당자": "심현수",
+      "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:24:15",
       "link": "https://projects.rsupport.com/issues/277086"
+    },
+    {
+      "번호": 119,
+      "일감번호": 277088,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드의 상담 유형별 분포와 상담 이력 간 PC 상담 건수 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 15:33:03",
+      "link": "https://projects.rsupport.com/issues/277088"
+    },
+    {
+      "번호": 120,
+      "일감번호": 277089,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[대시보드(파트너)] 이달 상담 건수 KPI 카드와 상담 유형별 분포 도넛의 총계가 다른 이슈",
+      "우선순위": "보통(Normal)",
+      "담당자": "",
+      "작성자": "윤종익",
+      "created_on": "2026-08-12 15:35:30",
+      "link": "https://projects.rsupport.com/issues/277089"
+    },
+    {
+      "번호": 121,
+      "일감번호": 277092,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 라이선스 상태 분포 수치와 라이선스 목록 검색 건수 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 15:41:12",
+      "link": "https://projects.rsupport.com/issues/277092"
+    },
+    {
+      "번호": 122,
+      "일감번호": 277093,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[라이선스 옵션(파트너)] 하단 버튼 영역에 변경 이력 보기 버튼이 없는 이슈",
+      "우선순위": "보통(Normal)",
+      "담당자": "",
+      "작성자": "윤종익",
+      "created_on": "2026-08-12 15:41:23",
+      "link": "https://projects.rsupport.com/issues/277093"
+    },
+    {
+      "번호": 123,
+      "일감번호": 277094,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 대시보드 제품별 라이선스 수와 라이선스 목록 검색 건수 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-12 15:48:24",
+      "link": "https://projects.rsupport.com/issues/277094"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 79,
+      "notDone": 84,
       "done": 38,
-      "total": 117
+      "total": 122
     },
     "assignees": [
       {
         "name": "(미배정)",
-        "total": 8,
+        "total": 10,
         "done": 0,
         "complete": false,
         "rate": 0
@@ -1443,10 +1503,10 @@
       },
       {
         "name": "심현수",
-        "total": 7,
+        "total": 5,
         "done": 4,
         "complete": false,
-        "rate": 57
+        "rate": 80
       },
       {
         "name": "윤종익",
@@ -1464,26 +1524,26 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 21,
+        "total": 26,
         "done": 6,
         "complete": false,
-        "rate": 28
+        "rate": 23
       }
     ],
     "authors": [
       {
         "name": "윤종익",
-        "total": 84,
+        "total": 86,
         "done": 27,
         "complete": false,
-        "rate": 32
+        "rate": 31
       },
       {
         "name": "이명찬",
-        "total": 26,
+        "total": 29,
         "done": 5,
         "complete": false,
-        "rate": 19
+        "rate": 17
       },
       {
         "name": "이혁(Eden)",
@@ -1496,9 +1556,9 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 13,
+        "progress": 15,
         "done": 1,
-        "total": 14
+        "total": 16
       },
       {
         "label": "개선(Improving)",
@@ -1508,15 +1568,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 64,
+        "progress": 67,
         "done": 36,
-        "total": 100
+        "total": 103
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 70
+        "count": 75
       },
       {
         "label": "진행",
@@ -1554,7 +1614,7 @@
       },
       {
         "label": "보통",
-        "count": 118
+        "count": 123
       },
       {
         "label": "높음",
@@ -1636,11 +1696,11 @@
       },
       {
         "date": "2026-08-12",
-        "newCount": 19,
+        "newCount": 24,
         "doneCount": 3,
-        "cumIssue": 118,
+        "cumIssue": 123,
         "cumDone": 38,
-        "rate": 32
+        "rate": 31
       }
     ]
   },
