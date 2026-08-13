@@ -10,10 +10,10 @@
 export const config = { runtime: 'edge' };
 
 // 오픈 프록시가 되는 것을 막기 위한 화이트리스트. 반드시 유지할 것.
+// 현재 중계를 사용하는 항목은 베타 App(Viewer) macOS 하나뿐이므로 해당 호스트만 허용한다.
+// 다른 항목도 중계를 태우려면 여기에 호스트를 추가하고
+// index.html 의 PROXY_DOWNLOAD_KEYS 에 소스 key 를 넣으면 된다.
 const ALLOWED_HOSTS = [
-  'stapn.113366.com',
-  'stbtn.113366.com',
-  'stapn.startsupport.com',
   'stbtn.startsupport.com',
 ];
 
