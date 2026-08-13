@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-13T09:14:38.500107+00:00",
+  "fetchedAt": "2026-08-13T09:20:12.818821+00:00",
   "count": 323,
   "issues": [
     {
@@ -2204,12 +2204,24 @@
       "번호": 193,
       "일감번호": 274923,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win] 다운로드 exe 실행 시 UAC(관리자 권한)에서 [아니오] 선택 → 빈 로딩 화면만 무한 유지 — 오류 안내·재시도·종료 수단 전무(창 닫기 불가)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-21 18:12:49",
-      "link": "https://projects.rsupport.com/issues/274923"
+      "link": "https://projects.rsupport.com/issues/274923",
+      "comments": [
+        {
+          "author": "오세진",
+          "created_on": "2026-07-24T11:27:12+09:00",
+          "note": "MR !1183 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1183\nmerge commit: c61b1e4ea3"
+        },
+        {
+          "author": "김신혜",
+          "created_on": "2026-08-13T18:15:17+09:00",
+          "note": "8.0.1.517 실기 검수 — 원 결함(빈 무한 로딩)은 해소 확인했으나, 잔존 1건으로 피드백 전환합니다.\n\n[해소 확인]\n- UAC [아니오] 시 오류 화면·문구 노출 확인 (첨부 캡처).\n\n[잔존] 오류 화면의 [연결 종료] 버튼 무동작 — 화면이 사라지지 않고 영구 잔존\n- 원인: 버튼의 close()가 커널 gRPC 왕복에만 의존. sendEvent 실패를 catch 후 그대로 반환하고(app_module_impl.dart:396-400), 화면 정리는 커널이 되돌려주는 closed 상태 수신(rc_session_receiver.dart:67)에서만 수행 — 서비스 설치 실패 상태에선 커널이 없어 closed가 오지 않음.\n- 수신 방향(에러 표면화)은 emitSessionError로 합성했으나 송신 방향(종료)은 실커널 의존으로 남은 비대칭. sendEvent 실패 시 closed 로컬 합성 또는 직접 terminate 폴백 검토 요청.\n\n[부수 2건]\n- UAC 거부인데 문구가 기타 실패(error_common_service_install_failed)로 표시됨. RCService.exe가 실행된 뒤 exit code로 실패하는 경로는 권한 분류 없이 generic으로 귀결(service_module_windows.dart:166-167) — 권한 문구(error_common_service_permission) 매핑 검토.\n- 재시도 버튼은 현행 오류 화면에 없음(연결 종료·오류 복사만) — 처리내용 기재와 상이."
+        }
+      ]
     },
     {
       "번호": 194,
@@ -3739,8 +3751,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 74,
-      "done": 247,
+      "notDone": 75,
+      "done": 246,
       "total": 321
     },
     "assignees": [
@@ -3810,9 +3822,9 @@
       {
         "name": "오세진",
         "total": 73,
-        "done": 68,
+        "done": 67,
         "complete": false,
-        "rate": 93
+        "rate": 91
       },
       {
         "name": "이경준",
@@ -3857,8 +3869,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 57,
-        "done": 210,
+        "progress": 58,
+        "done": 209,
         "total": 267
       }
     ],
@@ -3877,11 +3889,11 @@
       },
       {
         "label": "해결",
-        "count": 170
+        "count": 169
       },
       {
         "label": "피드백",
-        "count": 10
+        "count": 11
       },
       {
         "label": "완료성공",
@@ -4002,23 +4014,23 @@
       {
         "date": "2026-07-21",
         "cumIssue": 132,
-        "cumDone": 111,
-        "rate": 84,
+        "cumDone": 110,
+        "rate": 83,
         "newCount": 19,
-        "doneCount": 18
+        "doneCount": 17
       },
       {
         "date": "2026-07-22",
         "cumIssue": 163,
-        "cumDone": 138,
-        "rate": 85,
+        "cumDone": 137,
+        "rate": 84,
         "newCount": 31,
         "doneCount": 27
       },
       {
         "date": "2026-07-23",
         "cumIssue": 183,
-        "cumDone": 158,
+        "cumDone": 157,
         "rate": 86,
         "newCount": 20,
         "doneCount": 20
@@ -4026,15 +4038,15 @@
       {
         "date": "2026-07-24",
         "cumIssue": 197,
-        "cumDone": 169,
-        "rate": 86,
+        "cumDone": 168,
+        "rate": 85,
         "newCount": 14,
         "doneCount": 11
       },
       {
         "date": "2026-07-27",
         "cumIssue": 218,
-        "cumDone": 184,
+        "cumDone": 183,
         "rate": 84,
         "newCount": 21,
         "doneCount": 15
@@ -4042,7 +4054,7 @@
       {
         "date": "2026-07-28",
         "cumIssue": 232,
-        "cumDone": 195,
+        "cumDone": 194,
         "rate": 84,
         "newCount": 14,
         "doneCount": 11
@@ -4050,39 +4062,39 @@
       {
         "date": "2026-07-29",
         "cumIssue": 250,
-        "cumDone": 204,
-        "rate": 82,
+        "cumDone": 203,
+        "rate": 81,
         "newCount": 18,
         "doneCount": 9
       },
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 212,
-        "rate": 80,
+        "cumDone": 211,
+        "rate": 79,
         "newCount": 16,
         "doneCount": 8
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 213,
-        "rate": 80,
+        "cumDone": 212,
+        "rate": 79,
         "newCount": 1,
         "doneCount": 1
       },
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 221,
-        "rate": 80,
+        "cumDone": 220,
+        "rate": 79,
         "newCount": 10,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 230,
+        "cumDone": 229,
         "rate": 80,
         "newCount": 11,
         "doneCount": 9
@@ -4090,23 +4102,23 @@
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 236,
-        "rate": 79,
+        "cumDone": 235,
+        "rate": 78,
         "newCount": 12,
         "doneCount": 6
       },
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 238,
-        "rate": 79,
+        "cumDone": 237,
+        "rate": 78,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 239,
+        "cumDone": 238,
         "rate": 78,
         "newCount": 5,
         "doneCount": 1
@@ -4114,23 +4126,23 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 241,
-        "rate": 78,
+        "cumDone": 240,
+        "rate": 77,
         "newCount": 3,
         "doneCount": 2
       },
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 242,
-        "rate": 78,
+        "cumDone": 241,
+        "rate": 77,
         "newCount": 2,
         "doneCount": 1
       },
       {
         "date": "2026-08-12",
         "cumIssue": 318,
-        "cumDone": 245,
+        "cumDone": 244,
         "rate": 77,
         "newCount": 6,
         "doneCount": 3
@@ -4138,7 +4150,7 @@
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 247,
+        "cumDone": 246,
         "rate": 76,
         "newCount": 5,
         "doneCount": 2
