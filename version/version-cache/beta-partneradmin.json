@@ -1,5 +1,5 @@
 ﻿{
-    "fetchedAt":  "2026-08-13T07:16:37Z",
+    "fetchedAt":  "2026-08-13T07:30:44Z",
     "status":  200,
     "body":  "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.1\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-08-13T06:41:29.728Z\",\"version\":\"8.0.1\",\"buildNumber\":\"10\"}}"
 }
