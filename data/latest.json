@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-13T06:54:54.493386+00:00",
+  "fetchedAt": "2026-08-13T07:00:38.873749+00:00",
   "count": 320,
   "issues": [
     {
       "번호": 1,
       "일감번호": 277242,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][대시보드] 상담 이력 시각 표기 기준·카드 디자인 검토 요청 — 기록물 축(고객사 타임존+UTC 오프셋 병기, #274546 확정) 적용 시 카드/목록/상세 레이아웃 변경 필요",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -3718,17 +3718,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 73,
-      "done": 245,
+      "notDone": 72,
+      "done": 246,
       "total": 318
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 43,
-        "done": 41,
+        "done": 42,
         "complete": false,
-        "rate": 95
+        "rate": 97
       },
       {
         "name": "김성식",
@@ -3824,8 +3824,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 15,
-        "done": 34,
+        "progress": 14,
+        "done": 35,
         "total": 49
       },
       {
@@ -3844,7 +3844,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 52
+        "count": 51
       },
       {
         "label": "진행",
@@ -3856,7 +3856,7 @@
       },
       {
         "label": "해결",
-        "count": 170
+        "count": 171
       },
       {
         "label": "피드백",
@@ -4117,10 +4117,10 @@
       {
         "date": "2026-08-13",
         "cumIssue": 320,
-        "cumDone": 245,
+        "cumDone": 246,
         "rate": 77,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
