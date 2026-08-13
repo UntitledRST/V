@@ -625,6 +625,23 @@
       .replace(/"/g, '&quot;');
   }
 
+  // ---------- 다운로드 링크 처리 ----------
+  // 설치 파일(라벨이 '다운로드')은 /api/download 중계를 거치게 한다.
+  // 원본 서버가 Content-Disposition 을 주지 않아 브라우저가 .dmg/.exe 를
+  // 저장하지 않고 화면에 텍스트로 렌더링해버리는 문제를 막기 위함이다.
+  // 링크가 같은 오리진이 되므로 download 속성도 정상 동작한다.
+  // 웹 사이트 링크(라벨이 '바로가기')는 기존처럼 새 탭으로 연다.
+  function downloadAttrs(item){
+    var isFile = item.downloadLabel === '다운로드';
+    var href = isFile
+      ? '/api/download?url=' + encodeURIComponent(item.downloadUrl)
+      : item.downloadUrl;
+    return 'href="' + escapeHtml(href) + '"' +
+      (isFile ? ' download' : ' target="_blank" rel="noopener noreferrer"');
+  }
+
+  var DOWNLOAD_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>';
+
   function renderCard(item){
     var card = document.createElement('div');
     card.className = 'card';
@@ -658,8 +675,8 @@
 
     var downloadHtml = '';
     if (item.ok && item.downloadUrl){
-      downloadHtml = '<a class="download-btn" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
+      downloadHtml = '<a class="download-btn" ' + downloadAttrs(item) + '>' +
+        DOWNLOAD_ICON_SVG +
         (item.downloadLabel || '다운로드') + '</a>';
     } else {
       downloadHtml = '<span class="download-btn disabled">이용 불가</span>';
@@ -711,8 +728,8 @@
 
     var downloadHtml = '';
     if (item.ok && item.downloadUrl){
-      downloadHtml = '<a class="download-btn app-row-download" href="' + item.downloadUrl + '" target="_blank" rel="noopener noreferrer">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>' +
+      downloadHtml = '<a class="download-btn app-row-download" ' + downloadAttrs(item) + '>' +
+        DOWNLOAD_ICON_SVG +
         (item.downloadLabel || '다운로드') + '</a>';
     } else {
       downloadHtml = '<span class="download-btn app-row-download disabled">이용 불가</span>';
