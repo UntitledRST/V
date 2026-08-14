@@ -94,13 +94,13 @@ const SOURCES = [
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
     allowNodeHttpsFallback: true },
-];
 
   // ---------------- BETA / API SERVER ----------------
   { key: 'beta-api-server', channel: 'beta', group: 'api-server', platform: 'server', label: 'Service',
     url: 'https://stbtn.startsupport.com/version.txt',
     type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
+];
 
 // 유일한 타임아웃 설정: 모든 소스가 이 값(1초) 하나만 사용한다.
 const TIMEOUT_MS = 1000;
