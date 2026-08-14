@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-13T10:03:45.324827+00:00",
-  "count": 145,
+  "fetchedAt": "2026-08-14T00:47:22.848167+00:00",
+  "count": 146,
   "issues": [
     {
       "번호": 1,
@@ -1742,13 +1742,25 @@
       "작성자": "이명찬",
       "created_on": "2026-08-13 18:57:11",
       "link": "https://projects.rsupport.com/issues/277283"
+    },
+    {
+      "번호": 146,
+      "일감번호": 277284,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 사용자 권한 해제 저장 후 재진입 시 권한 복원",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-13 19:06:17",
+      "link": "https://projects.rsupport.com/issues/277284"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 102,
+      "notDone": 103,
       "done": 42,
-      "total": 144
+      "total": 145
     },
     "assignees": [
       {
@@ -1760,10 +1772,10 @@
       },
       {
         "name": "심현수",
-        "total": 6,
+        "total": 7,
         "done": 5,
         "complete": false,
-        "rate": 83
+        "rate": 71
       },
       {
         "name": "윤종익",
@@ -1797,10 +1809,10 @@
       },
       {
         "name": "이명찬",
-        "total": 43,
+        "total": 44,
         "done": 7,
         "complete": false,
-        "rate": 16
+        "rate": 15
       },
       {
         "name": "이혁(Eden)",
@@ -1825,15 +1837,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 80,
+        "progress": 81,
         "done": 38,
-        "total": 118
+        "total": 119
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 93
+        "count": 94
       },
       {
         "label": "진행",
@@ -1871,7 +1883,7 @@
       },
       {
         "label": "보통",
-        "count": 144
+        "count": 145
       },
       {
         "label": "높음",
@@ -1961,9 +1973,9 @@
       },
       {
         "date": "2026-08-13",
-        "newCount": 11,
+        "newCount": 12,
         "doneCount": 3,
-        "cumIssue": 145,
+        "cumIssue": 146,
         "cumDone": 42,
         "rate": 29
       }
