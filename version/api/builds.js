@@ -39,10 +39,16 @@ const SOURCES = [
 
 
   // ---------------- ALPHA / API SERVER ----------------
-  { key: 'alpha-api-server', channel: 'alpha', group: 'api-server', platform: 'server', label: 'Service',
+  { key: 'alpha-api-server', channel: 'alpha', group: 'api-server', platform: 'server', label: 'Viewer',
     url: 'https://stapn.startsupport.com/version.txt',
     type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
+  // ---------------- ALPHA / API RELAY ----------------
+  { key: 'alpha-api-relay', channel: 'alpha', group: 'api-server', platform: 'relay', label: 'Relay',
+    url: 'https://stapn.113366.com/version.txt',
+    type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
+
   // ---------------- BETA / APP (Host) ----------------
   { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Win',
     url: 'https://stbtn.113366.com/pub/windows/version.json', type: 'app-json' },
@@ -96,8 +102,14 @@ const SOURCES = [
     allowNodeHttpsFallback: true },
 
   // ---------------- BETA / API SERVER ----------------
-  { key: 'beta-api-server', channel: 'beta', group: 'api-server', platform: 'server', label: 'Service',
+  { key: 'beta-api-server', channel: 'beta', group: 'api-server', platform: 'server', label: 'Viewer',
     url: 'https://stbtn.startsupport.com/version.txt',
+    type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
+
+  // ---------------- BETA / API RELAY ----------------
+  { key: 'beta-api-relay', channel: 'beta', group: 'api-server', platform: 'relay', label: 'Relay',
+    url: 'https://stbtn.113366.com/version.txt',
     type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
 ];
