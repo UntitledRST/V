@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-14T01:19:20.032085+00:00",
+  "fetchedAt": "2026-08-14T01:25:34.806449+00:00",
   "count": 323,
   "issues": [
     {
@@ -62,7 +62,7 @@
       "번호": 6,
       "일감번호": 277139,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][웹/vp] 연결 오류·상태 화면 공통 로고 픽셀 깨짐 — 래스터 로고 회전 렌더로 계단 현상 (기획·디자인 미정의 화면)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3788,8 +3788,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 76,
-      "done": 245,
+      "notDone": 75,
+      "done": 246,
       "total": 321
     },
     "assignees": [
@@ -3859,9 +3859,9 @@
       {
         "name": "오세진",
         "total": 73,
-        "done": 67,
+        "done": 68,
         "complete": false,
-        "rate": 91
+        "rate": 93
       },
       {
         "name": "이경준",
@@ -3906,15 +3906,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 59,
-        "done": 208,
+        "progress": 58,
+        "done": 209,
         "total": 267
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 53
+        "count": 52
       },
       {
         "label": "진행",
@@ -3926,7 +3926,7 @@
       },
       {
         "label": "해결",
-        "count": 166
+        "count": 167
       },
       {
         "label": "피드백",
@@ -4179,15 +4179,15 @@
       {
         "date": "2026-08-12",
         "cumIssue": 318,
-        "cumDone": 243,
-        "rate": 76,
+        "cumDone": 244,
+        "rate": 77,
         "newCount": 6,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 245,
+        "cumDone": 246,
         "rate": 76,
         "newCount": 5,
         "doneCount": 2
