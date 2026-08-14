@@ -5,7 +5,7 @@
 
 const SOURCES = [
   // ---------------- ALPHA / APP (Host) ----------------
-  { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Windows',
+  { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Win',
     url: 'https://stapn.113366.com/pub/windows/version.json', type: 'app-json',
     downloadUrl: 'https://stapn.113366.com/pub/windows/remotecall-host.exe' },
   { key: 'alpha-app-macos', channel: 'alpha', group: 'app-host', platform: 'macos', label: 'macOS',
@@ -16,7 +16,7 @@ const SOURCES = [
     url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
 
   // ---------------- ALPHA / APP (Viewer) ----------------
-  { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Windows',
+  { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Win',
     url: 'http://stapn.startsupport.com/pub/windows/version.json', type: 'app-json' },
   { key: 'alpha-appviewer-macos', channel: 'alpha', group: 'app-viewer', platform: 'macos', label: 'macOS',
     url: 'http://stapn.startsupport.com/pub/macos/version.json', type: 'app-json' },
@@ -28,17 +28,23 @@ const SOURCES = [
   { key: 'alpha-web-relay', channel: 'alpha', group: 'web', platform: 'relay', label: 'Relay',
     url: 'https://stapn.113366.com/version.json',
     pageUrl: 'https://stapn.113366.com', type: 'web-relay' },
-  { key: 'alpha-web-partneradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'PartnerAdmin',
+  { key: 'alpha-web-partneradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'Partner\nAdmin',
     url: 'https://stapnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stapnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
-  { key: 'alpha-web-useradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'UserAdmin',
+  { key: 'alpha-web-useradmin', channel: 'alpha', group: 'web', platform: 'admin', label: 'User\nAdmin',
     url: 'https://stapnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stapnadmin.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
 
+
+  // ---------------- ALPHA / API SERVER ----------------
+  { key: 'alpha-api-server', channel: 'alpha', group: 'api-server', platform: 'server', label: 'Service',
+    url: 'https://stapn.startsupport.com/version.txt',
+    type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
   // ---------------- BETA / APP (Host) ----------------
-  { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Windows',
+  { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Win',
     url: 'https://stbtn.113366.com/pub/windows/version.json', type: 'app-json' },
   { key: 'beta-app-macos', channel: 'beta', group: 'app-host', platform: 'macos', label: 'macOS',
     url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
@@ -48,7 +54,7 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
 
   // ---------------- BETA / APP (Viewer) ----------------
-  { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Windows',
+  { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Win',
     url: 'http://stbtn.startsupport.com/pub/windows/version.json', type: 'app-json' },
   { key: 'beta-appviewer-macos', channel: 'beta', group: 'app-viewer', platform: 'macos', label: 'macOS',
     url: 'http://stbtn.startsupport.com/pub/macos/version.json', type: 'app-json' },
@@ -60,13 +66,15 @@ const SOURCES = [
   { key: 'beta-web-relay', channel: 'beta', group: 'web', platform: 'relay', label: 'Relay',
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
-  { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'PartnerAdmin',
+  { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'Partner\nAdmin',
     url: 'https://stbtnpartners.startsupport.com/version.txt',
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
     timeoutMs: 2500,
     sources: [
-      // 1) 원본에 직접 요청
+      // 0) version.json 에서 직접 불러오기 (1순위)
+      { type: 'direct', url: 'https://stbtnpartners.startsupport.com/version.json' },
+      // 1) 원본 version.txt 에 직접 요청
       { type: 'direct' },
       // 2) HTTP/1.1 강제
       { type: 'direct-http1' },
@@ -81,12 +89,18 @@ const SOURCES = [
     // ↓ fallback 값 최신으로 업데이트
     fallback: { build: '10', time: '2026-08-13T06:41:29.728Z' },
   },
-  { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'UserAdmin',
+  { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'User\nAdmin',
     url: 'https://stbtnadmin.startsupport.com/version.txt',
     siteUrl: 'https://stbtnadmin.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
     allowNodeHttpsFallback: true },
 ];
+
+  // ---------------- BETA / API SERVER ----------------
+  { key: 'beta-api-server', channel: 'beta', group: 'api-server', platform: 'server', label: 'Service',
+    url: 'https://stbtn.startsupport.com/version.txt',
+    type: 'admin-txt',
+    timeField: 'time', timeMode: 'utc' },
 
 // 유일한 타임아웃 설정: 모든 소스가 이 값(1초) 하나만 사용한다.
 const TIMEOUT_MS = 1000;
