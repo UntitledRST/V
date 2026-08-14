@@ -229,7 +229,8 @@
   .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
   .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
   .panel-web{ flex: 4 4 0; min-width: 0; }
-  .panel-api{ flex: 0 0 130px; }
+  .panel-api{ flex: 2 2 0; min-width: 0; }
+  .panel-api .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
   .panel-title.api{ color: var(--green-accent); }
   .app-subpanel .card{ border-color: rgba(91,157,255,0.22); }
   .panel-api .card{ border-color: rgba(74,222,128,0.22); }
@@ -780,7 +781,7 @@
         panels.appendChild(appOuter);
       }
 
-      // ---- Web 패널: 기존 방식 그대로 ----
+      // ---- Web 패널 ----
       var webList = byChannel[ch]['web'];
       if (webList) {
         var webPanel = document.createElement('div');
@@ -799,8 +800,7 @@
         panels.appendChild(webPanel);
       }
 
-
-      // ---- API Server 패널 ----
+      // ---- API Server 패널 (Web 오른쪽) ----
       var apiList = byChannel[ch]['api-server'];
       if (apiList) {
         var apiPanel = document.createElement('div');
