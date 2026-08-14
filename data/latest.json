@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-14T05:21:39.116754+00:00",
+  "fetchedAt": "2026-08-14T05:27:16.480282+00:00",
   "count": 324,
   "issues": [
     {
@@ -2268,6 +2268,11 @@
           "author": "김신혜",
           "created_on": "2026-08-13T18:15:17+09:00",
           "note": "8.0.1.517 실기 검수 — 원 결함(빈 무한 로딩)은 해소 확인했으나, 잔존 1건으로 피드백 전환합니다.\n\n[해소 확인]\n- UAC [아니오] 시 오류 화면·문구 노출 확인 (첨부 캡처).\n\n[잔존] 오류 화면의 [연결 종료] 버튼 무동작 — 화면이 사라지지 않고 영구 잔존\n- 원인: 버튼의 close()가 커널 gRPC 왕복에만 의존. sendEvent 실패를 catch 후 그대로 반환하고(app_module_impl.dart:396-400), 화면 정리는 커널이 되돌려주는 closed 상태 수신(rc_session_receiver.dart:67)에서만 수행 — 서비스 설치 실패 상태에선 커널이 없어 closed가 오지 않음.\n- 수신 방향(에러 표면화)은 emitSessionError로 합성했으나 송신 방향(종료)은 실커널 의존으로 남은 비대칭. sendEvent 실패 시 closed 로컬 합성 또는 직접 terminate 폴백 검토 요청.\n\n[부수 2건]\n- UAC 거부인데 문구가 기타 실패(error_common_service_install_failed)로 표시됨. RCService.exe가 실행된 뒤 exit code로 실패하는 경로는 권한 분류 없이 generic으로 귀결(service_module_windows.dart:166-167) — 권한 문구(error_common_service_permission) 매핑 검토.\n- 재시도 버튼은 현행 오류 화면에 없음(연결 종료·오류 복사만) — 처리내용 기재와 상이."
+        },
+        {
+          "author": "오세진",
+          "created_on": "2026-08-14T14:24:25+09:00",
+          "note": "UAC 거부 시 기타 실패(error_common_service_install_failed) 문구 표시 확인했습니다..!\n\nRCService.exe 실행 단계에서 실패하는 경로라 해당 건은 별개 일감으로 처리하겠습니다."
         }
       ]
     },
