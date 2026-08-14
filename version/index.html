@@ -7,49 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-<script>
-(function () {
-  const EXCLUDE_KEY = "rc_visit_exclude";
-
-  // 1) ?exclude=1 로 접속하면 이 브라우저를 영구 제외 처리
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("exclude") === "1") {
-    localStorage.setItem(EXCLUDE_KEY, "1");
-  }
-  // 제외 해제하고 싶을 때는 ?exclude=0 으로 접속
-  if (params.get("exclude") === "0") {
-    localStorage.removeItem(EXCLUDE_KEY);
-  }
-
-  // 2) 제외 플래그가 있으면 카운트 증가를 아예 실행하지 않고 종료
-  if (localStorage.getItem(EXCLUDE_KEY) === "1") {
-    return;
-  }
-
-  // 3) 카운트 증가 로직 (대시보드가 읽는 키 형식과 동일하게 통일)
-  const NAMESPACE = "rc-visit-tracker-2026";
-  const SITE_KEY = "rc-version-check";
-
-  function pad(n) { return n.toString().padStart(2, "0"); }
-  function isoWeek(d) {
-    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    const dayNum = (date.getUTCDay() + 6) % 7;
-    date.setUTCDate(date.getUTCDate() - dayNum + 3);
-    const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-    const weekNum = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-    return `${date.getUTCFullYear()}-W${pad(weekNum)}`;
-  }
-
-  const now = new Date();
-  const dailyKey = `${SITE_KEY}-d-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const weeklyKey = `${SITE_KEY}-w-${isoWeek(now)}`;
-  const monthlyKey = `${SITE_KEY}-m-${now.getFullYear()}-${pad(now.getMonth() + 1)}`;
-
-  [SITE_KEY, dailyKey, weeklyKey, monthlyKey].forEach((k) => {
-    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${k}`).catch(() => {});
-  });
-})();
-</script>
 <style>
   :root{
     --card-w: 138px;
@@ -69,6 +26,7 @@
     --purple: #c084fc;
     --red: #ef4444;
     --green: #34d399;
+    --green-accent: #4ade80;
     --radius-lg: 16px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -271,6 +229,12 @@
   .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
   .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
   .panel-web{ flex: 4 4 0; min-width: 0; }
+  .panel-api{ flex: 0 0 130px; }
+  .panel-title.api{ color: var(--green-accent); }
+  .app-subpanel .card{ border-color: rgba(91,157,255,0.22); }
+  .panel-api .card{ border-color: rgba(74,222,128,0.22); }
+  .panel-api .card.updated-today{ border-color: var(--red); }
+
 
   .panel-title{
     margin:0;
@@ -410,6 +374,7 @@
     line-height: 1.25;
     text-align:left;
     overflow-wrap: break-word;
+    flex: 1 1 0;
   }
   .card-name svg{ width:15px; height:15px; color: var(--text-secondary); flex-shrink:0; margin-top:1px; }
 
@@ -581,7 +546,8 @@
     ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg>',
     admin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>',
     viewer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
-    relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>'
+    relay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><path d="M7 6h.01M7 18h.01"/></svg>',
+    server: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>'
   };
 
   var CHANNEL_LABEL = { alpha: { pill: 'ALPHA', name: '알파 채널' }, beta: { pill: 'BETA', name: '베타 채널' } };
@@ -679,11 +645,9 @@
       downloadHtml = '<a class="download-btn" ' + downloadAttrs(item) + '>' +
         DOWNLOAD_ICON_SVG +
         (item.downloadLabel || '다운로드') + '</a>';
-    } else {
-      downloadHtml = '<span class="download-btn disabled">이용 불가</span>';
     }
 
-    var displayLabel = (item.label || '').replace(/([a-z0-9])([A-Z])/g, '$1<wbr>$2');
+    var displayLabel = (item.label || '').replace(/\n/g, '<br>');
     card.innerHTML =
       '<div class="card-top">' +
         '<div class="card-name">' + (ICONS[item.platform] || '') + '<span>' + displayLabel + '</span></div>' +
@@ -835,6 +799,25 @@
         panels.appendChild(webPanel);
       }
 
+
+      // ---- API Server 패널 ----
+      var apiList = byChannel[ch]['api-server'];
+      if (apiList) {
+        var apiPanel = document.createElement('div');
+        apiPanel.className = 'panel panel-api';
+
+        var apiTitle = document.createElement('h2');
+        apiTitle.className = 'panel-title api';
+        apiTitle.textContent = 'API';
+        apiPanel.appendChild(apiTitle);
+
+        var apiGrid = document.createElement('div');
+        apiGrid.className = 'cards-grid';
+        apiList.forEach(function(item){ apiGrid.appendChild(renderCard(item)); });
+        apiPanel.appendChild(apiGrid);
+
+        panels.appendChild(apiPanel);
+      }
       section.appendChild(panels);
       contentEl.appendChild(section);
     });
