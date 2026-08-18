@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-14T06:53:46.094349+00:00",
+  "fetchedAt": "2026-08-18T04:06:54.785596+00:00",
   "count": 152,
   "issues": [
     {
@@ -283,7 +283,7 @@
       "번호": 24,
       "일감번호": 275797,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 동시 상담 현황 목록 응답에 회사 담당자 계정 아이디가 없어 회사 아이디 컬럼에 UUID가 표시되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1774,7 +1774,7 @@
       "상태": "신규(New)",
       "제목": "[파트너 어드민] 네트워크 관리 > 서버 :  초기 진입 시, 각 컬럼 정렬 결과가 기대와 상이",
       "우선순위": "보통(Normal)",
-      "담당자": "심현수",
+      "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-14 11:41:12",
       "link": "https://projects.rsupport.com/issues/277343"
@@ -1783,7 +1783,7 @@
       "번호": 149,
       "일감번호": 277348,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] 회사 정보 담당자 성·이름이 저장 후 유지되지 않음",
       "우선순위": "보통(Normal)",
       "담당자": "심현수",
@@ -1830,8 +1830,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 42,
+      "notDone": 107,
+      "done": 44,
       "total": 151
     },
     "assignees": [
@@ -1844,17 +1844,17 @@
       },
       {
         "name": "심현수",
-        "total": 10,
-        "done": 5,
+        "total": 9,
+        "done": 6,
         "complete": false,
-        "rate": 50
+        "rate": 66
       },
       {
         "name": "윤종익",
         "total": 71,
-        "done": 30,
+        "done": 31,
         "complete": false,
-        "rate": 42
+        "rate": 43
       },
       {
         "name": "이명찬",
@@ -1865,26 +1865,26 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 40,
+        "total": 41,
         "done": 6,
         "complete": false,
-        "rate": 15
+        "rate": 14
       }
     ],
     "authors": [
       {
         "name": "윤종익",
         "total": 94,
-        "done": 29,
+        "done": 30,
         "complete": false,
-        "rate": 30
+        "rate": 31
       },
       {
         "name": "이명찬",
         "total": 50,
-        "done": 7,
+        "done": 8,
         "complete": false,
-        "rate": 14
+        "rate": 16
       },
       {
         "name": "이혁(Eden)",
@@ -1909,15 +1909,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 87,
-        "done": 38,
+        "progress": 85,
+        "done": 40,
         "total": 125
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 100
+        "count": 98
       },
       {
         "label": "진행",
@@ -1929,7 +1929,7 @@
       },
       {
         "label": "해결",
-        "count": 20
+        "count": 22
       },
       {
         "label": "피드백",
@@ -1982,82 +1982,82 @@
       {
         "date": "2026-07-31",
         "newCount": 22,
-        "doneCount": 6,
+        "doneCount": 7,
         "cumIssue": 42,
-        "cumDone": 17,
-        "rate": 40
+        "cumDone": 18,
+        "rate": 43
       },
       {
         "date": "2026-08-01",
         "newCount": 21,
         "doneCount": 6,
         "cumIssue": 63,
-        "cumDone": 23,
-        "rate": 37
+        "cumDone": 24,
+        "rate": 38
       },
       {
         "date": "2026-08-03",
         "newCount": 7,
         "doneCount": 3,
         "cumIssue": 70,
-        "cumDone": 26,
-        "rate": 37
+        "cumDone": 27,
+        "rate": 39
       },
       {
         "date": "2026-08-06",
         "newCount": 13,
         "doneCount": 8,
         "cumIssue": 83,
-        "cumDone": 34,
-        "rate": 41
+        "cumDone": 35,
+        "rate": 42
       },
       {
         "date": "2026-08-07",
         "newCount": 8,
         "doneCount": 1,
         "cumIssue": 91,
-        "cumDone": 35,
-        "rate": 38
+        "cumDone": 36,
+        "rate": 40
       },
       {
         "date": "2026-08-10",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 93,
-        "cumDone": 35,
-        "rate": 38
+        "cumDone": 36,
+        "rate": 39
       },
       {
         "date": "2026-08-11",
         "newCount": 6,
         "doneCount": 0,
         "cumIssue": 99,
-        "cumDone": 35,
-        "rate": 35
+        "cumDone": 36,
+        "rate": 36
       },
       {
         "date": "2026-08-12",
         "newCount": 35,
         "doneCount": 4,
         "cumIssue": 134,
-        "cumDone": 39,
-        "rate": 29
+        "cumDone": 40,
+        "rate": 30
       },
       {
         "date": "2026-08-13",
         "newCount": 12,
         "doneCount": 3,
         "cumIssue": 146,
-        "cumDone": 42,
+        "cumDone": 43,
         "rate": 29
       },
       {
         "date": "2026-08-14",
         "newCount": 6,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 152,
-        "cumDone": 42,
-        "rate": 28
+        "cumDone": 44,
+        "rate": 29
       }
     ]
   },
