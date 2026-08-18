@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-18T04:06:54.785596+00:00",
+  "fetchedAt": "2026-08-18T07:09:00.310013+00:00",
   "count": 152,
   "issues": [
     {
@@ -895,10 +895,10 @@
       "번호": 75,
       "일감번호": 276381,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 라이선스 옵션 탭 조회 시 500 오류로 조회 실패",
       "우선순위": "보통(Normal)",
-      "담당자": "이명찬",
+      "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-06 15:38:07",
       "link": "https://projects.rsupport.com/issues/276381"
@@ -1858,17 +1858,17 @@
       },
       {
         "name": "이명찬",
-        "total": 2,
-        "done": 2,
+        "total": 1,
+        "done": 1,
         "complete": true,
         "rate": 100
       },
       {
         "name": "이혁(Eden)",
-        "total": 41,
-        "done": 6,
+        "total": 42,
+        "done": 7,
         "complete": false,
-        "rate": 14
+        "rate": 16
       }
     ],
     "authors": [
@@ -1929,7 +1929,7 @@
       },
       {
         "label": "해결",
-        "count": 22
+        "count": 21
       },
       {
         "label": "피드백",
@@ -1937,7 +1937,7 @@
       },
       {
         "label": "완료성공",
-        "count": 22
+        "count": 23
       },
       {
         "label": "중단",
