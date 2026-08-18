@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-18T06:05:16.585856+00:00",
+  "fetchedAt": "2026-08-18T06:16:26.446701+00:00",
   "count": 329,
   "issues": [
     {
@@ -183,7 +183,7 @@
       "번호": 17,
       "일감번호": 276952,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][상담원][공유함] 그룹 설정 URL 필터에서 URL 추가 시 추가 항목 미노출 — 추가 결과 안내·필터 전환 정책 무정의로 저장 실패 오인 유발",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -2175,7 +2175,7 @@
       "번호": 187,
       "일감번호": 274973,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Mac][선택공유] 프로그램 선택 공유 중 Mac 잠금 화면 진입이 뷰어에 미반영 — 선택 창 화면만 계속 표시되고 원격 입력은 잠금 화면으로 전달(blind input)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3879,8 +3879,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 79,
-      "done": 248,
+      "notDone": 78,
+      "done": 249,
       "total": 327
     },
     "assignees": [
@@ -3943,9 +3943,9 @@
       {
         "name": "송건호",
         "total": 93,
-        "done": 75,
+        "done": 76,
         "complete": false,
-        "rate": 80
+        "rate": 81
       },
       {
         "name": "오세진",
@@ -3985,8 +3985,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 16,
-        "done": 36,
+        "progress": 15,
+        "done": 37,
         "total": 52
       },
       {
@@ -4009,7 +4009,7 @@
       },
       {
         "label": "진행",
-        "count": 14
+        "count": 13
       },
       {
         "label": "보류",
@@ -4025,7 +4025,7 @@
       },
       {
         "label": "완료성공",
-        "count": 81
+        "count": 82
       },
       {
         "label": "중단",
@@ -4270,23 +4270,23 @@
       {
         "date": "2026-08-12",
         "cumIssue": 318,
-        "cumDone": 245,
+        "cumDone": 246,
         "rate": 77,
         "newCount": 6,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 247,
-        "rate": 76,
+        "cumDone": 248,
+        "rate": 77,
         "newCount": 5,
         "doneCount": 2
       },
       {
         "date": "2026-08-14",
         "cumIssue": 327,
-        "cumDone": 248,
+        "cumDone": 249,
         "rate": 76,
         "newCount": 4,
         "doneCount": 1
@@ -4294,8 +4294,8 @@
       {
         "date": "2026-08-18",
         "cumIssue": 329,
-        "cumDone": 248,
-        "rate": 75,
+        "cumDone": 249,
+        "rate": 76,
         "newCount": 2,
         "doneCount": 0
       }
