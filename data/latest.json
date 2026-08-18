@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-18T09:05:33.081640+00:00",
+  "fetchedAt": "2026-08-18T09:11:05.681386+00:00",
   "count": 331,
   "issues": [
     {
@@ -106,7 +106,7 @@
       "번호": 10,
       "일감번호": 277272,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][화면 캡쳐] 고객 동의 무응답 30초 시 \"고객이 화면 캡처에 동의하지 않았습니다\" 오표기·캡쳐 취소 — 이후 고객이 [수락]해도 캡쳐되지 않음(늦은 수락 무음 유실)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3901,8 +3901,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 79,
-      "done": 251,
+      "notDone": 78,
+      "done": 252,
       "total": 330
     },
     "assignees": [
@@ -3965,9 +3965,9 @@
       {
         "name": "송건호",
         "total": 94,
-        "done": 77,
+        "done": 78,
         "complete": false,
-        "rate": 81
+        "rate": 82
       },
       {
         "name": "오세진",
@@ -4019,8 +4019,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 61,
-        "done": 210,
+        "progress": 60,
+        "done": 211,
         "total": 271
       }
     ],
@@ -4031,7 +4031,7 @@
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 15
       },
       {
         "label": "보류",
@@ -4039,7 +4039,7 @@
       },
       {
         "label": "해결",
-        "count": 161
+        "count": 162
       },
       {
         "label": "피드백",
@@ -4300,15 +4300,15 @@
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 249,
+        "cumDone": 250,
         "rate": 77,
         "newCount": 5,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-08-14",
         "cumIssue": 327,
-        "cumDone": 251,
+        "cumDone": 252,
         "rate": 77,
         "newCount": 4,
         "doneCount": 2
@@ -4316,7 +4316,7 @@
       {
         "date": "2026-08-18",
         "cumIssue": 331,
-        "cumDone": 251,
+        "cumDone": 252,
         "rate": 76,
         "newCount": 4,
         "doneCount": 0
