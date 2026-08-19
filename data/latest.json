@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-19T07:51:38.910216+00:00",
+  "fetchedAt": "2026-08-19T07:57:08.399904+00:00",
   "count": 333,
   "issues": [
     {
@@ -65,7 +65,7 @@
       "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어·호스트][그리기] 그리기 모드 정책 확인 요청 — 모드 독립성·종료 연동·전체 지우기/실행취소 동작 규칙 (#274806/#274809 파생)",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "송건호",
       "created_on": "2026-08-18 13:19:04",
       "link": "https://projects.rsupport.com/issues/277492"
     },
@@ -1515,7 +1515,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA][기획대기] [뷰어] [URL]  공유함 내 목록 정렬 필터 및 URL 전송 방식이 기획(Figma)과 불일치 — 기획 확인 및 수정 필요 ",
       "우선순위": "보통(Normal)",
-      "담당자": "변우영",
+      "담당자": "김미령",
       "created_on": "2026-07-27 10:33:57",
       "link": "https://projects.rsupport.com/issues/275365"
     },
@@ -3824,10 +3824,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 43,
+        "total": 44,
         "done": 42,
         "complete": false,
-        "rate": 97
+        "rate": 95
       },
       {
         "name": "김성식",
@@ -3873,24 +3873,24 @@
       },
       {
         "name": "변우영",
-        "total": 2,
+        "total": 1,
         "done": 1,
-        "complete": false,
-        "rate": 50
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "송건호",
-        "total": 96,
+        "total": 97,
         "done": 81,
         "complete": false,
-        "rate": 84
+        "rate": 83
       },
       {
         "name": "오세진",
-        "total": 78,
+        "total": 77,
         "done": 69,
         "complete": false,
-        "rate": 88
+        "rate": 89
       },
       {
         "name": "이경준",
