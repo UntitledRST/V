@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-19T02:27:39.921683+00:00",
+  "fetchedAt": "2026-08-19T02:33:10.249757+00:00",
   "count": 331,
   "issues": [
     {
@@ -963,7 +963,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA][미구현] [뷰어] 파일 공유 모드에서 툴바 및 상태·채팅 UI/UX 기획 미반영 ",
       "우선순위": "보통(Normal)",
-      "담당자": "변우영",
+      "담당자": "김미령",
       "created_on": "2026-07-29 16:24:58",
       "link": "https://projects.rsupport.com/issues/275641"
     },
@@ -3876,10 +3876,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 44,
+        "total": 45,
         "done": 41,
         "complete": false,
-        "rate": 93
+        "rate": 91
       },
       {
         "name": "김성식",
@@ -3925,10 +3925,10 @@
       },
       {
         "name": "변우영",
-        "total": 3,
+        "total": 2,
         "done": 1,
         "complete": false,
-        "rate": 33
+        "rate": 50
       },
       {
         "name": "송건호",
