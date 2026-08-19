@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-19T07:01:52.691347+00:00",
+  "fetchedAt": "2026-08-19T07:07:22.166380+00:00",
   "count": 333,
   "issues": [
     {
@@ -40,7 +40,7 @@
       "번호": 4,
       "일감번호": 277551,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][연결 종료] Windows 앱뷰어 — Mac 호스트 세션 종료 화면 [확인] 클릭 시 뷰어 프로세스 응답 없음(hang)",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -3817,8 +3817,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 72,
-      "done": 260,
+      "notDone": 71,
+      "done": 261,
       "total": 332
     },
     "assignees": [
@@ -3881,9 +3881,9 @@
       {
         "name": "송건호",
         "total": 96,
-        "done": 80,
+        "done": 81,
         "complete": false,
-        "rate": 83
+        "rate": 84
       },
       {
         "name": "오세진",
@@ -3935,15 +3935,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 55,
-        "done": 218,
+        "progress": 54,
+        "done": 219,
         "total": 273
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 47
+        "count": 46
       },
       {
         "label": "진행",
@@ -3955,7 +3955,7 @@
       },
       {
         "label": "해결",
-        "count": 167
+        "count": 168
       },
       {
         "label": "피드백",
@@ -4232,15 +4232,15 @@
       {
         "date": "2026-08-18",
         "cumIssue": 331,
-        "cumDone": 260,
+        "cumDone": 261,
         "rate": 79,
         "newCount": 4,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-08-19",
         "cumIssue": 333,
-        "cumDone": 260,
+        "cumDone": 261,
         "rate": 78,
         "newCount": 2,
         "doneCount": 0
