@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-19T01:02:31.247730+00:00",
-  "count": 160,
+  "fetchedAt": "2026-08-19T06:41:51.409743+00:00",
+  "count": 161,
   "issues": [
     {
       "번호": 1,
@@ -1922,13 +1922,25 @@
       "작성자": "이명찬",
       "created_on": "2026-08-18 18:23:40",
       "link": "https://projects.rsupport.com/issues/277570"
+    },
+    {
+      "번호": 161,
+      "일감번호": 277626,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 그룹 옵션에서 공인IP 등록 후 저장 시 추가된 IP가 사라짐",
+      "우선순위": "높음(High)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-19 13:41:09",
+      "link": "https://projects.rsupport.com/issues/277626"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 113,
+      "notDone": 114,
       "done": 46,
-      "total": 159
+      "total": 160
     },
     "assignees": [
       {
@@ -1961,7 +1973,7 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 42,
+        "total": 43,
         "done": 7,
         "complete": false,
         "rate": 16
@@ -1977,10 +1989,10 @@
       },
       {
         "name": "이명찬",
-        "total": 58,
+        "total": 59,
         "done": 10,
         "complete": false,
-        "rate": 17
+        "rate": 16
       },
       {
         "name": "이혁(Eden)",
@@ -2005,15 +2017,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 91,
+        "progress": 92,
         "done": 42,
-        "total": 133
+        "total": 134
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 104
+        "count": 105
       },
       {
         "label": "진행",
@@ -2055,7 +2067,7 @@
       },
       {
         "label": "높음",
-        "count": 3
+        "count": 4
       },
       {
         "label": "긴급",
@@ -2160,6 +2172,14 @@
         "newCount": 8,
         "doneCount": 2,
         "cumIssue": 160,
+        "cumDone": 46,
+        "rate": 29
+      },
+      {
+        "date": "2026-08-19",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 161,
         "cumDone": 46,
         "rate": 29
       }
