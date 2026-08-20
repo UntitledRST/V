@@ -43,7 +43,7 @@ BASE = "https://cube.rsup.io"
 NOTIN_PAGE = f"{BASE}/hr/notin/list"
 
 HERE = Path(__file__).resolve().parent
-PROFILE_DIR = Path(os.environ.get("CUBE_PROFILE", HERE.parent / "cube_profile"))
+PROFILE_DIR = Path(os.environ.get("CUBE_PROFILE", HERE / "cube_profile"))
 
 BOARD_URL = os.environ.get("BOARD_URL", "").rstrip("/")
 INGEST_TOKEN = os.environ.get("INGEST_TOKEN", "")
