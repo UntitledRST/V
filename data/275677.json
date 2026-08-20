@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-20T04:42:27.718764+00:00",
-  "count": 163,
+  "fetchedAt": "2026-08-20T05:29:59.044330+00:00",
+  "count": 166,
   "issues": [
     {
       "번호": 1,
@@ -1954,17 +1954,53 @@
       "상태": "신규(New)",
       "제목": "[유저 어드민] 그룹 옵션 >허용된 사설 IP에서 서비스 로그인 시, 차단됨",
       "우선순위": "높음(High)",
-      "담당자": "심현수",
+      "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-20 11:11:13",
       "link": "https://projects.rsupport.com/issues/277737"
+    },
+    {
+      "번호": 164,
+      "일감번호": 277776,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 그룹 옵션 > 접근허용 IP에 옥탯앞에 숫자0을 넣을 경우, 저장 실패",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-20 14:07:56",
+      "link": "https://projects.rsupport.com/issues/277776"
+    },
+    {
+      "번호": 165,
+      "일감번호": 277780,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 그룹 옵션 공인IP 허용 목록 중복 저장",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-20 14:13:08",
+      "link": "https://projects.rsupport.com/issues/277780"
+    },
+    {
+      "번호": 166,
+      "일감번호": 277788,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 그룹 옵션 > IP 접근허용 > 사설IP 선택 상태에서 공인 IP 구간이 유효성 검증 없이 등록됨",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-20 14:28:25",
+      "link": "https://projects.rsupport.com/issues/277788"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 114,
+      "notDone": 117,
       "done": 46,
-      "total": 160
+      "total": 163
     },
     "assignees": [
       {
@@ -1976,10 +2012,10 @@
       },
       {
         "name": "심현수",
-        "total": 18,
+        "total": 20,
         "done": 10,
         "complete": false,
-        "rate": 55
+        "rate": 50
       },
       {
         "name": "윤종익",
@@ -1997,10 +2033,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 43,
+        "total": 44,
         "done": 7,
         "complete": false,
-        "rate": 16
+        "rate": 15
       }
     ],
     "authors": [
@@ -2013,10 +2049,10 @@
       },
       {
         "name": "이명찬",
-        "total": 61,
+        "total": 64,
         "done": 12,
         "complete": false,
-        "rate": 19
+        "rate": 18
       },
       {
         "name": "이혁(Eden)",
@@ -2041,15 +2077,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 92,
+        "progress": 95,
         "done": 44,
-        "total": 136
+        "total": 139
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 105
+        "count": 108
       },
       {
         "label": "진행",
@@ -2087,7 +2123,7 @@
       },
       {
         "label": "보통",
-        "count": 157
+        "count": 160
       },
       {
         "label": "높음",
@@ -2209,9 +2245,9 @@
       },
       {
         "date": "2026-08-20",
-        "newCount": 2,
+        "newCount": 5,
         "doneCount": 0,
-        "cumIssue": 163,
+        "cumIssue": 166,
         "cumDone": 46,
         "rate": 28
       }
