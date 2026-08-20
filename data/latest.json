@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-20T08:31:08.359899+00:00",
+  "fetchedAt": "2026-08-20T08:36:36.083381+00:00",
   "count": 338,
   "issues": [
     {
@@ -960,7 +960,7 @@
       "번호": 85,
       "일감번호": 275690,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어] [접속대기] 카메라/마이크 권한 허용 플로우 미동작 및 새로고침 후 재연결 불가 — 기획 불일치, 권한 전환 후 동작 정의 확인 필요  ",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -3872,8 +3872,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 62,
-      "done": 275,
+      "notDone": 61,
+      "done": 276,
       "total": 337
     },
     "assignees": [
@@ -3950,9 +3950,9 @@
       {
         "name": "이경준",
         "total": 54,
-        "done": 43,
+        "done": 44,
         "complete": false,
-        "rate": 79
+        "rate": 81
       },
       {
         "name": "장기중(Jay)",
@@ -3990,8 +3990,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 47,
-        "done": 230,
+        "progress": 46,
+        "done": 231,
         "total": 277
       }
     ],
@@ -4002,7 +4002,7 @@
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 12
       },
       {
         "label": "보류",
@@ -4010,7 +4010,7 @@
       },
       {
         "label": "해결",
-        "count": 177
+        "count": 178
       },
       {
         "label": "피드백",
@@ -4191,15 +4191,15 @@
       {
         "date": "2026-07-30",
         "cumIssue": 266,
-        "cumDone": 218,
+        "cumDone": 219,
         "rate": 82,
         "newCount": 16,
-        "doneCount": 8
+        "doneCount": 9
       },
       {
         "date": "2026-07-31",
         "cumIssue": 267,
-        "cumDone": 219,
+        "cumDone": 220,
         "rate": 82,
         "newCount": 1,
         "doneCount": 1
@@ -4207,39 +4207,39 @@
       {
         "date": "2026-08-03",
         "cumIssue": 277,
-        "cumDone": 228,
-        "rate": 82,
+        "cumDone": 229,
+        "rate": 83,
         "newCount": 10,
         "doneCount": 9
       },
       {
         "date": "2026-08-04",
         "cumIssue": 288,
-        "cumDone": 237,
-        "rate": 82,
+        "cumDone": 238,
+        "rate": 83,
         "newCount": 11,
         "doneCount": 9
       },
       {
         "date": "2026-08-05",
         "cumIssue": 300,
-        "cumDone": 244,
-        "rate": 81,
+        "cumDone": 245,
+        "rate": 82,
         "newCount": 12,
         "doneCount": 7
       },
       {
         "date": "2026-08-06",
         "cumIssue": 302,
-        "cumDone": 246,
-        "rate": 81,
+        "cumDone": 247,
+        "rate": 82,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-07",
         "cumIssue": 307,
-        "cumDone": 249,
+        "cumDone": 250,
         "rate": 81,
         "newCount": 5,
         "doneCount": 3
@@ -4247,7 +4247,7 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 251,
+        "cumDone": 252,
         "rate": 81,
         "newCount": 3,
         "doneCount": 2
@@ -4255,7 +4255,7 @@
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 253,
+        "cumDone": 254,
         "rate": 81,
         "newCount": 2,
         "doneCount": 2
@@ -4263,15 +4263,15 @@
       {
         "date": "2026-08-12",
         "cumIssue": 318,
-        "cumDone": 259,
-        "rate": 81,
+        "cumDone": 260,
+        "rate": 82,
         "newCount": 6,
         "doneCount": 6
       },
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 264,
+        "cumDone": 265,
         "rate": 82,
         "newCount": 5,
         "doneCount": 5
@@ -4279,7 +4279,7 @@
       {
         "date": "2026-08-14",
         "cumIssue": 327,
-        "cumDone": 267,
+        "cumDone": 268,
         "rate": 82,
         "newCount": 4,
         "doneCount": 3
@@ -4287,7 +4287,7 @@
       {
         "date": "2026-08-18",
         "cumIssue": 331,
-        "cumDone": 270,
+        "cumDone": 271,
         "rate": 82,
         "newCount": 4,
         "doneCount": 3
@@ -4295,16 +4295,16 @@
       {
         "date": "2026-08-19",
         "cumIssue": 335,
-        "cumDone": 273,
-        "rate": 81,
+        "cumDone": 274,
+        "rate": 82,
         "newCount": 4,
         "doneCount": 3
       },
       {
         "date": "2026-08-20",
         "cumIssue": 338,
-        "cumDone": 275,
-        "rate": 81,
+        "cumDone": 276,
+        "rate": 82,
         "newCount": 3,
         "doneCount": 2
       }
