@@ -1,0 +1,10 @@
+{
+  "name": "absence-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cube 부재자 현황을 달력으로 보고, 정한 시간에 메일로 받는 보드",
+  "engines": {
+    "node": ">=20"
+  }
+}

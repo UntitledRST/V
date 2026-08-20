@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>부재자 보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #14212e;
+    --paper: #e9edf1;
+    --surface: #ffffff;
+    --rule: #d5dce3;
+    --rule-soft: #e7ecf1;
+    --muted: #77848f;
+    --annual: #2f6f5f;
+    --half: #b4762a;
+    --field: #3b5ba5;
+    --remote: #5d6ba8;
+    --etc: #8a93a0;
+    --focus: #14212e;
+    --shadow: 0 1px 2px rgba(20, 33, 46, .06), 0 8px 24px rgba(20, 33, 46, .05);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans KR", -apple-system, "Apple SD Gothic Neo", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 20px 72px; }
+
+  /* ---------- 오늘 보드 ---------- */
+  .board {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 4px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .board-top {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255,255,255,.16);
+    padding-bottom: 14px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .board h1 {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 900; font-size: clamp(24px, 4vw, 34px);
+    margin: 2px 0 0; letter-spacing: -.02em;
+  }
+  .clock {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px; color: rgba(255,255,255,.75); text-align: right;
+  }
+  .clock b { display: block; font-size: 20px; font-weight: 500; color: #fff; }
+
+  .plates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; min-height: 34px; }
+  .plate {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.08);
+    border-left: 3px solid var(--kind, #fff);
+    padding: 6px 12px 6px 10px; border-radius: 2px;
+  }
+  .plate strong { font-weight: 600; font-size: 14px; }
+  .plate span { font-size: 11px; color: rgba(255,255,255,.6); font-family: "IBM Plex Mono", monospace; }
+  .plates .empty { color: rgba(255,255,255,.55); font-size: 13px; padding: 6px 0; }
+
+  /* ---------- 공통 카드 ---------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin-top: 18px;
+  }
+  .card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+    padding: 14px 18px; border-bottom: 1px solid var(--rule-soft);
+  }
+  .card-head h2 {
+    font-family: "Gothic A1", sans-serif; font-weight: 700;
+    font-size: 15px; margin: 0; letter-spacing: -.01em;
+  }
+  .card-body { padding: 18px; }
+  .hint { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
+
+  /* ---------- 컨트롤 ---------- */
+  .month-nav { display: flex; align-items: center; gap: 6px; }
+  .month-label {
+    font-family: "IBM Plex Mono", monospace; font-size: 17px; font-weight: 500;
+    min-width: 108px; text-align: center;
+  }
+  button {
+    font: inherit; cursor: pointer;
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 3px;
+    padding: 6px 12px;
+    transition: background .12s, border-color .12s;
+  }
+  button:hover { background: #f3f6f9; border-color: #bcc7d1; }
+  button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .icon-btn { padding: 6px 11px; font-family: "IBM Plex Mono", monospace; }
+  .primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .primary:hover { background: #23364a; border-color: #23364a; }
+  .ghost { border-color: transparent; color: var(--muted); padding: 4px 8px; }
+  .ghost:hover { color: var(--ink); background: #f1f4f7; }
+
+  input[type="text"], input[type="email"], input[type="time"] {
+    font: inherit; color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 3px;
+    padding: 8px 10px; background: #fff; width: 100%;
+  }
+  input:focus { outline: 2px solid var(--focus); outline-offset: -1px; border-color: var(--ink); }
+  label.field { display: block; }
+  label.field > span {
+    display: block; font-size: 12px; color: var(--muted);
+    margin-bottom: 5px; letter-spacing: .02em;
+  }
+
+  /* 종류 토글 */
+  .kinds { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kind-toggle {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 5px 13px 5px 10px; font-size: 13px;
+    background: #fff; color: var(--muted);
+  }
+  .kind-toggle .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--kind); opacity: .35; }
+  .kind-toggle[aria-pressed="true"] { color: var(--ink); border-color: #b9c4ce; background: #f4f7f9; }
+  .kind-toggle[aria-pressed="true"] .dot { opacity: 1; }
+
+  /* 사람 필터 */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f1f4f7; border: 1px solid var(--rule);
+    border-radius: 2px; padding: 4px 6px 4px 10px; font-size: 13px;
+  }
+  .chip button { border: 0; background: none; color: var(--muted); padding: 0 3px; line-height: 1; font-size: 15px; }
+  .chip button:hover { color: #b13b3b; background: none; }
+  .filter-row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+  .filter-row .grow { flex: 1 1 260px; }
+
+  /* ---------- 달력 ---------- */
+  .weekhead {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--rule);
+  }
+  .weekhead div {
+    padding: 8px 10px; font-size: 11px; letter-spacing: .12em;
+    color: var(--muted); font-family: "IBM Plex Mono", monospace;
+  }
+  .weekhead div:first-child { color: #b1595e; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+  .cell {
+    border: 0;
+    border-right: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    min-height: 112px; padding: 0 0 8px; position: relative;
+    background: #fff; text-align: left; border-radius: 0;
+    display: flex; flex-direction: column; align-items: stretch;
+  }
+  .cell:nth-child(7n) { border-right: 0; }
+  .cell:hover { background: #f7f9fb; }
+  .cell.other { background: #f4f6f8; color: #aab4bd; }
+  .cell.today { box-shadow: inset 0 0 0 2px var(--ink); }
+  .cell.selected { background: #eef2f6; }
+
+  /* 밀도 바 — 그날 부재 인원을 종류별로 쌓아 보여줍니다 */
+  .density { display: flex; height: 3px; width: 100%; background: var(--rule-soft); }
+  .density i { display: block; height: 100%; background: var(--kind); }
+
+  .daynum {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    padding: 7px 10px 4px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .daynum .count { color: var(--muted); font-size: 11px; }
+  .cell.sun .daynum { color: #b1595e; }
+  .entries { padding: 0 7px; display: flex; flex-direction: column; gap: 3px; }
+  .entry {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; padding: 2px 5px; border-radius: 2px;
+    background: #f2f5f8; border-left: 3px solid var(--kind);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .entry em { font-style: normal; color: var(--muted); font-size: 10.5px; }
+  .more { font-size: 11px; color: var(--muted); padding: 1px 8px; }
+
+  /* 선택한 날 상세 */
+  .detail { border-top: 1px solid var(--rule); padding: 16px 18px; background: #fbfcfd; }
+  .detail h3 { font-family: "Gothic A1", sans-serif; font-size: 14px; margin: 0 0 10px; }
+  .detail ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .detail li { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .detail .bar { width: 3px; height: 15px; background: var(--kind); border-radius: 2px; }
+  .detail .dept, .detail .when { color: var(--muted); font-size: 12px; }
+  .detail .when { margin-left: auto; font-family: "IBM Plex Mono", monospace; }
+
+  /* ---------- 알림 ---------- */
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .sub-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
+  .sub-list li {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    border: 1px solid var(--rule-soft); border-radius: 3px;
+    padding: 10px 12px; background: #fbfcfd; font-size: 13px;
+  }
+  .sub-list .time { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 15px; }
+  .sub-list .scope { color: var(--muted); font-size: 12px; }
+  .sub-list li > :last-child { margin-left: auto; }
+
+  .notice {
+    display: none; margin-top: 12px; padding: 10px 12px;
+    border-radius: 3px; font-size: 13px;
+    border: 1px solid var(--rule); background: #f4f7f9;
+  }
+  .notice.show { display: block; }
+  .notice.bad { border-color: #e0bcbc; background: #fbf2f2; color: #8c3a3a; }
+  .notice.good { border-color: #b9d5cb; background: #f1f8f5; color: #24604f; }
+
+  .source-tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px;
+    color: var(--muted); border: 1px solid var(--rule);
+    border-radius: 2px; padding: 2px 7px;
+  }
+  .source-tag.warn { color: #8c6a2f; border-color: #e2cfa6; background: #fdf8ec; }
+
+  footer { margin-top: 26px; color: var(--muted); font-size: 12px; }
+  footer code { font-family: "IBM Plex Mono", monospace; background: #dfe5eb; padding: 1px 5px; border-radius: 2px; }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 16px 12px 56px; }
+    .cell { min-height: 76px; }
+    .entries { display: none; }
+    .daynum { font-size: 13px; }
+    .board { padding: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 오늘 보드 -->
+  <header class="board">
+    <div class="board-top">
+      <div>
+        <p class="eyebrow">Absence board</p>
+        <h1 id="todayHeadline">오늘 나간 사람</h1>
+      </div>
+      <div class="clock">
+        <b id="clockDate">—</b>
+        <span id="clockTime">—</span>
+      </div>
+    </div>
+    <div class="plates" id="todayPlates"><span class="empty">불러오는 중…</span></div>
+  </header>
+
+  <!-- 달력 -->
+  <section class="card">
+    <div class="card-head">
+      <div class="month-nav">
+        <button class="icon-btn" id="prevMonth" aria-label="이전 달">←</button>
+        <span class="month-label" id="monthLabel">—</span>
+        <button class="icon-btn" id="nextMonth" aria-label="다음 달">→</button>
+        <button class="ghost" id="goToday">오늘</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="source-tag" id="sourceTag">—</span>
+        <div class="kinds" id="kindFilters"></div>
+      </div>
+    </div>
+
+    <div class="card-body" style="padding-bottom:14px;">
+      <div class="filter-row">
+        <label class="field grow">
+          <span>확인할 사람 — 이름을 넣으면 그 사람들만 보입니다. 비우면 전체</span>
+          <input type="text" id="personInput" list="nameOptions" placeholder="예: 이명찬, 박지호  (쉼표 또는 Enter)" autocomplete="off" />
+        </label>
+        <button id="addPerson">추가</button>
+        <button class="ghost" id="clearPeople">전체 보기</button>
+      </div>
+      <datalist id="nameOptions"></datalist>
+      <div class="chips" id="personChips"></div>
+    </div>
+
+    <div class="weekhead">
+      <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+    </div>
+    <div class="grid" id="calendar"></div>
+    <div class="detail" id="dayDetail" hidden></div>
+  </section>
+
+  <!-- 메일 알림 -->
+  <section class="card">
+    <div class="card-head">
+      <h2>메일 알림</h2>
+      <span class="hint" style="margin:0;">정한 시간에 그날 부재인 사람을 정리해 보냅니다.</span>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+        <label class="field">
+          <span>받을 메일 주소</span>
+          <input type="email" id="mailAddress" placeholder="name@rsupport.com" />
+        </label>
+        <label class="field">
+          <span>보낼 시간 (KST)</span>
+          <input type="time" id="mailTime" value="09:00" />
+        </label>
+        <label class="field">
+          <span>확인 대상</span>
+          <select id="mailScope" style="font:inherit;width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:3px;background:#fff;">
+            <option value="list">위에서 지정한 사람만</option>
+            <option value="all">전사 전체</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>주말</span>
+          <select id="mailWeekday" style="font:inherit;width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:3px;background:#fff;">
+            <option value="weekday">평일에만 보내기</option>
+            <option value="all">매일 보내기</option>
+          </select>
+        </label>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+        <button class="primary" id="saveSub">알림 저장</button>
+        <button id="testSub">지금 한 통 보내보기</button>
+        <button class="ghost" id="loadSubs">내 알림 불러오기</button>
+      </div>
+
+      <p class="hint">메일에 담기는 부재 종류는 위 달력에서 켜둔 종류를 그대로 따릅니다.</p>
+      <div class="notice" id="mailNotice"></div>
+      <ul class="sub-list" id="subList"></ul>
+    </div>
+  </section>
+
+  <footer>
+    데이터 출처: Cube 부재자 현황 · 갱신은 <code>/api/absences</code>, 알림 발송은 <code>/api/notify</code> 가 맡습니다.
+  </footer>
+</div>
+
+<script>
+const KINDS = [
+  { key: 'annual', label: '연차',      color: '#2f6f5f' },
+  { key: 'half',   label: '반차',      color: '#b4762a' },
+  { key: 'field',  label: '외근·출장', color: '#3b5ba5' },
+  { key: 'remote', label: '재택',      color: '#5d6ba8' },
+  { key: 'etc',    label: '기타',      color: '#8a93a0' },
+];
+const COLOR = Object.fromEntries(KINDS.map(k => [k.key, k.color]));
+const WEEKDAY = ['일','월','화','수','목','금','토'];
+
+const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+    catch { return fallback; }
+  },
+  set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} },
+};
+
+const state = {
+  cursor: startOfMonth(new Date()),
+  items: [],
+  names: store.get('absence.names', []),
+  kinds: new Set(store.get('absence.kinds', KINDS.map(k => k.key))),
+  selected: null,
+  source: '',
+};
+
+// ---------- 날짜 유틸 ----------
+function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
+function iso(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function addDays(d, n) { const c = new Date(d); c.setDate(c.getDate() + n); return c; }
+function todayISO() { return iso(new Date()); }
+
+// ---------- 데이터 ----------
+async function load() {
+  const first = startOfMonth(state.cursor);
+  const start = iso(addDays(first, -7));
+  const end = iso(addDays(new Date(first.getFullYear(), first.getMonth()+1, 0), 7));
+  try {
+    const res = await fetch(`/api/absences?start=${start}&end=${end}`);
+    const data = await res.json();
+    state.items = data.items || [];
+    state.source = data.source;
+    paintSource(data);
+  } catch (err) {
+    state.items = [];
+    paintSource({ source: 'error', warning: err.message });
+  }
+  render();
+}
+
+function paintSource(data) {
+  const tag = document.getElementById('sourceTag');
+  const map = {
+    cube: ['Cube 실시간', false],
+    snapshot: [`수집본 ${(data.fetchedAt || '').slice(5,16).replace('T',' ')}`, false],
+    demo: ['예시 데이터', true],
+    error: ['불러오기 실패', true],
+  };
+  const [text, warn] = map[data.source] || [data.source, true];
+  tag.textContent = text;
+  tag.classList.toggle('warn', warn);
+  tag.title = data.warning || '';
+}
+
+// ---------- 필터 ----------
+function normalizeName(n) { return String(n).replace(/\s/g, ''); }
+
+function visibleItems() {
+  const wanted = new Set(state.names.map(normalizeName));
+  return state.items.filter(it => {
+    if (!state.kinds.has(it.kind)) return false;
+    if (wanted.size && !wanted.has(normalizeName(it.name))) return false;
+    return true;
+  });
+}
+
+function itemsOn(isoDate, list) {
+  return (list || visibleItems()).filter(it => it.start <= isoDate && isoDate <= it.end);
+}
+
+// ---------- 렌더 ----------
+function render() {
+  renderToday();
+  renderKinds();
+  renderChips();
+  renderNameOptions();
+  renderCalendar();
+  renderDetail();
+}
+
+function renderToday() {
+  const t = new Date();
+  document.getElementById('clockDate').textContent = `${iso(t).replace(/-/g,'.')} (${WEEKDAY[t.getDay()]})`;
+  document.getElementById('clockTime').textContent =
+    `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')} KST`;
+
+  const list = itemsOn(todayISO());
+  document.getElementById('todayHeadline').textContent =
+    list.length ? `오늘 나간 사람 ${list.length}명` : '오늘은 모두 자리에 있습니다';
+
+  const box = document.getElementById('todayPlates');
+  box.innerHTML = '';
+  if (!list.length) {
+    box.innerHTML = `<span class="empty">${state.names.length ? '지정한 사람 중에는 없습니다.' : '부재 기록이 없습니다.'}</span>`;
+    return;
+  }
+  for (const it of list) {
+    const el = document.createElement('div');
+    el.className = 'plate';
+    el.style.setProperty('--kind', COLOR[it.kind]);
+    el.innerHTML = `<strong></strong><span></span>`;
+    el.querySelector('strong').textContent = it.name;
+    el.querySelector('span').textContent = it.part && it.part !== '종일' ? `${it.label} · ${it.part}` : it.label;
+    box.appendChild(el);
+  }
+}
+
+function renderKinds() {
+  const box = document.getElementById('kindFilters');
+  if (box.childElementCount) {
+    [...box.children].forEach(btn => btn.setAttribute('aria-pressed', state.kinds.has(btn.dataset.kind)));
+    return;
+  }
+  for (const kind of KINDS) {
+    const btn = document.createElement('button');
+    btn.className = 'kind-toggle';
+    btn.dataset.kind = kind.key;
+    btn.style.setProperty('--kind', kind.color);
+    btn.setAttribute('aria-pressed', state.kinds.has(kind.key));
+    btn.innerHTML = `<span class="dot"></span>${kind.label}`;
+    btn.addEventListener('click', () => {
+      state.kinds.has(kind.key) ? state.kinds.delete(kind.key) : state.kinds.add(kind.key);
+      if (!state.kinds.size) state.kinds.add(kind.key); // 전부 끄지는 않습니다
+      store.set('absence.kinds', [...state.kinds]);
+      render();
+    });
+    box.appendChild(btn);
+  }
+}
+
+function renderChips() {
+  const box = document.getElementById('personChips');
+  box.innerHTML = '';
+  if (!state.names.length) {
+    box.innerHTML = `<span class="hint" style="margin:0;">지금은 전체 인원을 보고 있습니다.</span>`;
+    return;
+  }
+  state.names.forEach((name, index) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.innerHTML = `<span></span><button aria-label="${name} 빼기">×</button>`;
+    chip.querySelector('span').textContent = name;
+    chip.querySelector('button').addEventListener('click', () => {
+      state.names.splice(index, 1);
+      store.set('absence.names', state.names);
+      render();
+    });
+    box.appendChild(chip);
+  });
+}
+
+function renderNameOptions() {
+  const names = [...new Set(state.items.map(it => it.name))].sort((a,b) => a.localeCompare(b,'ko'));
+  const list = document.getElementById('nameOptions');
+  list.innerHTML = '';
+  for (const name of names) {
+    const opt = document.createElement('option');
+    opt.value = name;
+    list.appendChild(opt);
+  }
+}
+
+function renderCalendar() {
+  const cursor = state.cursor;
+  document.getElementById('monthLabel').textContent =
+    `${cursor.getFullYear()}.${String(cursor.getMonth()+1).padStart(2,'0')}`;
+
+  const first = startOfMonth(cursor);
+  const gridStart = addDays(first, -first.getDay());
+  const filtered = visibleItems();
+  const grid = document.getElementById('calendar');
+  grid.innerHTML = '';
+
+  for (let i = 0; i < 42; i++) {
+    const day = addDays(gridStart, i);
+    const key = iso(day);
+    const inMonth = day.getMonth() === cursor.getMonth();
+    if (i >= 35 && !inMonth) break;
+
+    const list = itemsOn(key, filtered);
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'cell'
+      + (inMonth ? '' : ' other')
+      + (key === todayISO() ? ' today' : '')
+      + (key === state.selected ? ' selected' : '')
+      + (day.getDay() === 0 ? ' sun' : '');
+
+    // 밀도 바 — 종류별 인원 비율
+    const density = document.createElement('div');
+    density.className = 'density';
+    for (const kind of KINDS) {
+      const n = list.filter(it => it.kind === kind.key).length;
+      if (!n) continue;
+      const seg = document.createElement('i');
+      seg.style.setProperty('--kind', kind.color);
+      seg.style.flex = String(n);
+      density.appendChild(seg);
+    }
+    cell.appendChild(density);
+
+    const head = document.createElement('div');
+    head.className = 'daynum';
+    head.innerHTML = `<span>${day.getDate()}</span>` + (list.length ? `<span class="count">${list.length}</span>` : '');
+    cell.appendChild(head);
+
+    const entries = document.createElement('div');
+    entries.className = 'entries';
+    list.slice(0, 3).forEach(it => {
+      const row = document.createElement('div');
+      row.className = 'entry';
+      row.style.setProperty('--kind', COLOR[it.kind]);
+      row.innerHTML = `<span></span><em></em>`;
+      row.querySelector('span').textContent = it.name;
+      row.querySelector('em').textContent = it.part && it.part !== '종일' ? it.part : '';
+      entries.appendChild(row);
+    });
+    if (list.length > 3) {
+      const more = document.createElement('div');
+      more.className = 'more';
+      more.textContent = `+${list.length - 3}명`;
+      entries.appendChild(more);
+    }
+    cell.appendChild(entries);
+
+    cell.addEventListener('click', () => {
+      state.selected = state.selected === key ? null : key;
+      render();
+    });
+    grid.appendChild(cell);
+  }
+}
+
+function renderDetail() {
+  const box = document.getElementById('dayDetail');
+  if (!state.selected) { box.hidden = true; return; }
+  const day = new Date(`${state.selected}T00:00:00`);
+  const list = itemsOn(state.selected);
+  box.hidden = false;
+  box.innerHTML = `<h3>${state.selected.replace(/-/g,'.')} (${WEEKDAY[day.getDay()]}) · ${list.length}명</h3>`;
+  if (!list.length) {
+    box.insertAdjacentHTML('beforeend', `<p class="hint" style="margin:0;">이날은 부재 기록이 없습니다.</p>`);
+    return;
+  }
+  const ul = document.createElement('ul');
+  for (const it of list) {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="bar"></span><strong></strong><span class="dept"></span><span class="when"></span>`;
+    li.querySelector('.bar').style.setProperty('--kind', COLOR[it.kind]);
+    li.querySelector('strong').textContent = it.name;
+    li.querySelector('.dept').textContent = [it.dept, it.label, it.part !== '종일' ? it.part : ''].filter(Boolean).join(' · ');
+    li.querySelector('.when').textContent = it.start === it.end ? it.start : `${it.start} ~ ${it.end}`;
+    ul.appendChild(li);
+  }
+  box.appendChild(ul);
+}
+
+// ---------- 사람 입력 ----------
+function addNames(raw) {
+  const parts = String(raw).split(/[,\n;/]+/).map(s => s.trim()).filter(Boolean);
+  let added = 0;
+  for (const name of parts) {
+    if (!state.names.some(n => normalizeName(n) === normalizeName(name))) {
+      state.names.push(name);
+      added++;
+    }
+  }
+  if (added) { store.set('absence.names', state.names); render(); }
+}
+
+document.getElementById('addPerson').addEventListener('click', () => {
+  const input = document.getElementById('personInput');
+  addNames(input.value); input.value = ''; input.focus();
+});
+document.getElementById('personInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('addPerson').click(); }
+});
+document.getElementById('clearPeople').addEventListener('click', () => {
+  state.names = []; store.set('absence.names', []); render();
+});
+
+// ---------- 달 이동 ----------
+document.getElementById('prevMonth').addEventListener('click', () => {
+  state.cursor = new Date(state.cursor.getFullYear(), state.cursor.getMonth()-1, 1); load();
+});
+document.getElementById('nextMonth').addEventListener('click', () => {
+  state.cursor = new Date(state.cursor.getFullYear(), state.cursor.getMonth()+1, 1); load();
+});
+document.getElementById('goToday').addEventListener('click', () => {
+  state.cursor = startOfMonth(new Date()); state.selected = todayISO(); load();
+});
+
+// ---------- 알림 ----------
+const notice = document.getElementById('mailNotice');
+function say(message, tone) {
+  notice.textContent = message;
+  notice.className = `notice show ${tone || ''}`;
+}
+
+function mailPayload() {
+  return {
+    email: document.getElementById('mailAddress').value.trim(),
+    time: document.getElementById('mailTime').value,
+    names: document.getElementById('mailScope').value === 'all' ? [] : state.names,
+    kinds: [...state.kinds],
+    weekdaysOnly: document.getElementById('mailWeekday').value === 'weekday',
+  };
+}
+
+document.getElementById('saveSub').addEventListener('click', async () => {
+  const payload = mailPayload();
+  say('저장하는 중…');
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!data.ok) return say(data.error, 'bad');
+    store.set('absence.email', payload.email);
+    say(`${payload.time} 알림을 저장했습니다.` + (data.persistent ? '' : ' (KV 미연결 상태라 재배포 시 사라집니다)'), 'good');
+    loadSubs();
+  } catch (err) { say(err.message, 'bad'); }
+});
+
+document.getElementById('testSub').addEventListener('click', async () => {
+  const payload = mailPayload();
+  say('보내는 중…');
+  try {
+    const res = await fetch('/api/notify', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    say(data.ok ? `보냈습니다. 오늘 부재 ${data.count}명 기준입니다.` : data.error, data.ok ? 'good' : 'bad');
+  } catch (err) { say(err.message, 'bad'); }
+});
+
+async function loadSubs() {
+  const email = document.getElementById('mailAddress').value.trim();
+  if (!email) return say('주소를 넣으면 저장된 알림을 찾아 드립니다.', 'bad');
+  const res = await fetch(`/api/subscribe?email=${encodeURIComponent(email)}`);
+  const data = await res.json();
+  const ul = document.getElementById('subList');
+  ul.innerHTML = '';
+  if (!data.subscriptions?.length) {
+    ul.innerHTML = `<li><span class="scope">이 주소로 저장된 알림이 없습니다.</span></li>`;
+    return;
+  }
+  for (const sub of data.subscriptions) {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="time"></span><span class="scope"></span><button class="ghost">삭제</button>`;
+    li.querySelector('.time').textContent = sub.time;
+    li.querySelector('.scope').textContent =
+      (sub.names.length ? `${sub.names.length}명 지정 (${sub.names.slice(0,4).join(', ')}${sub.names.length>4?' 외':''})` : '전사 전체')
+      + ' · ' + sub.kinds.map(k => KINDS.find(x => x.key===k)?.label || k).join(', ')
+      + (sub.weekdaysOnly ? ' · 평일만' : ' · 매일');
+    li.querySelector('button').addEventListener('click', async () => {
+      await fetch(`/api/subscribe?id=${encodeURIComponent(sub.id)}`, { method: 'DELETE' });
+      loadSubs();
+    });
+    ul.appendChild(li);
+  }
+}
+document.getElementById('loadSubs').addEventListener('click', loadSubs);
+
+// ---------- 시작 ----------
+document.getElementById('mailAddress').value = store.get('absence.email', '');
+state.selected = todayISO();
+load();
+setInterval(renderToday, 30000);
+</script>
+</body>
+</html>
