@@ -85,9 +85,9 @@ export default async function handler(req, res) {
   for (const sub of subs) {
     const [hh, mm] = sub.time.split(':').map(Number);
     const target = hh * 60 + mm;
-    // 예약 시각을 지났고, 아직 오늘 안 보냈고, 70분 이내면 발송합니다.
-    const due = nowMinutes >= target && nowMinutes - target <= 70;
-    if (!due) continue;
+    // 예약 시각이 지났고 오늘 아직 안 보냈으면 발송합니다.
+    // 창(window)을 두지 않으므로 하루 한 번만 도는 크론에서도 놓치지 않습니다.
+    if (nowMinutes < target) continue;
     if (sub.weekdaysOnly && isWeekend) continue;
     if (log[sub.id] === todayISO) continue;
 
