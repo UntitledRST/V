@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-21T04:46:35.459403+00:00",
+  "fetchedAt": "2026-08-21T04:52:05.936927+00:00",
   "count": 338,
   "issues": [
     {
@@ -315,7 +315,7 @@
       "번호": 29,
       "일감번호": 276779,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][화면조절] 영상 지원 연결 후 동영상 모드 전환 시 '원격 모니터 선택' 영역이 추가 노출됨 — 기획 (Figma) 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3877,8 +3877,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 60,
-      "done": 277,
+      "notDone": 59,
+      "done": 278,
       "total": 337
     },
     "assignees": [
@@ -3941,9 +3941,9 @@
       {
         "name": "송건호",
         "total": 98,
-        "done": 84,
+        "done": 85,
         "complete": false,
-        "rate": 85
+        "rate": 86
       },
       {
         "name": "오세진",
@@ -3995,8 +3995,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 45,
-        "done": 232,
+        "progress": 44,
+        "done": 233,
         "total": 277
       }
     ],
@@ -4007,7 +4007,7 @@
       },
       {
         "label": "진행",
-        "count": 15
+        "count": 14
       },
       {
         "label": "보류",
@@ -4015,7 +4015,7 @@
       },
       {
         "label": "해결",
-        "count": 175
+        "count": 176
       },
       {
         "label": "피드백",
@@ -4252,15 +4252,15 @@
       {
         "date": "2026-08-10",
         "cumIssue": 310,
-        "cumDone": 253,
+        "cumDone": 254,
         "rate": 82,
         "newCount": 3,
-        "doneCount": 2
+        "doneCount": 3
       },
       {
         "date": "2026-08-11",
         "cumIssue": 312,
-        "cumDone": 255,
+        "cumDone": 256,
         "rate": 82,
         "newCount": 2,
         "doneCount": 2
@@ -4268,7 +4268,7 @@
       {
         "date": "2026-08-12",
         "cumIssue": 318,
-        "cumDone": 261,
+        "cumDone": 262,
         "rate": 82,
         "newCount": 6,
         "doneCount": 6
@@ -4276,23 +4276,23 @@
       {
         "date": "2026-08-13",
         "cumIssue": 323,
-        "cumDone": 266,
-        "rate": 82,
+        "cumDone": 267,
+        "rate": 83,
         "newCount": 5,
         "doneCount": 5
       },
       {
         "date": "2026-08-14",
         "cumIssue": 327,
-        "cumDone": 269,
-        "rate": 82,
+        "cumDone": 270,
+        "rate": 83,
         "newCount": 4,
         "doneCount": 3
       },
       {
         "date": "2026-08-18",
         "cumIssue": 331,
-        "cumDone": 272,
+        "cumDone": 273,
         "rate": 82,
         "newCount": 4,
         "doneCount": 3
@@ -4300,7 +4300,7 @@
       {
         "date": "2026-08-19",
         "cumIssue": 335,
-        "cumDone": 275,
+        "cumDone": 276,
         "rate": 82,
         "newCount": 4,
         "doneCount": 3
@@ -4308,7 +4308,7 @@
       {
         "date": "2026-08-20",
         "cumIssue": 338,
-        "cumDone": 277,
+        "cumDone": 278,
         "rate": 82,
         "newCount": 3,
         "doneCount": 2
