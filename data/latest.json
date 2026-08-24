@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-21T08:02:16.434338+00:00",
+  "fetchedAt": "2026-08-24T01:02:57.125560+00:00",
   "count": 338,
   "issues": [
     {
@@ -2899,7 +2899,7 @@
       "번호": 242,
       "일감번호": 275606,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [에이전트][기능 설정] 캡쳐·녹화 저장 경로를 지정해도 어떤 폴더로 지정했는지 화면에서 확인할 수 없음 — 버튼 라벨이 '내 PC에 저장' 으로 고정되고 현재 경로·기본 경로 모두 미표시",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -3139,7 +3139,7 @@
       "번호": 262,
       "일감번호": 275743,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][VP] 접속코드 미지참 /vp 접근 시 대표 URL 이동까지 약 7초 소요 — 리다이렉트 판정이 Dart runApp 직전이라 15MB 호스트 앱을 전부 받은 뒤에야 이동 (#274384 후속)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4051,7 +4051,7 @@
       "번호": 338,
       "일감번호": 277822,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][채팅] 채팅 URL 링크에 꼬리 문장부호·괄호·한글 조사가 포함되어 클릭 시 깨진 링크 열림 — 호스트(#275430 해소)와 비대칭 + 링크 색상 노랑 고정으로 수신 버블 시인성 저하",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4062,8 +4062,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 57,
-      "done": 280,
+      "notDone": 55,
+      "done": 282,
       "total": 337
     },
     "assignees": [
@@ -4126,9 +4126,9 @@
       {
         "name": "송건호",
         "total": 98,
-        "done": 86,
+        "done": 87,
         "complete": false,
-        "rate": 87
+        "rate": 88
       },
       {
         "name": "오세진",
@@ -4140,9 +4140,9 @@
       {
         "name": "이경준",
         "total": 53,
-        "done": 45,
+        "done": 46,
         "complete": false,
-        "rate": 84
+        "rate": 86
       },
       {
         "name": "장기중(Jay)",
@@ -4177,9 +4177,9 @@
       {
         "name": "김신혜",
         "total": 186,
-        "done": 151,
+        "done": 153,
         "complete": false,
-        "rate": 81
+        "rate": 82
       },
       {
         "name": "박예지",
@@ -4231,19 +4231,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 43,
-        "done": 234,
+        "progress": 41,
+        "done": 236,
         "total": 277
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 36
+        "count": 35
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -4251,7 +4251,7 @@
       },
       {
         "label": "해결",
-        "count": 178
+        "count": 179
       },
       {
         "label": "피드백",
@@ -4259,7 +4259,7 @@
       },
       {
         "label": "완료성공",
-        "count": 95
+        "count": 96
       },
       {
         "label": "중단",
@@ -4424,25 +4424,25 @@
       {
         "date": "2026-07-29",
         "newCount": 18,
-        "doneCount": 12,
+        "doneCount": 13,
         "cumIssue": 250,
-        "cumDone": 213,
-        "rate": 85
+        "cumDone": 214,
+        "rate": 86
       },
       {
         "date": "2026-07-30",
         "newCount": 16,
         "doneCount": 9,
         "cumIssue": 266,
-        "cumDone": 222,
-        "rate": 83
+        "cumDone": 223,
+        "rate": 84
       },
       {
         "date": "2026-07-31",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 267,
-        "cumDone": 223,
+        "cumDone": 224,
         "rate": 84
       },
       {
@@ -4450,7 +4450,7 @@
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 277,
-        "cumDone": 232,
+        "cumDone": 233,
         "rate": 84
       },
       {
@@ -4458,7 +4458,7 @@
         "newCount": 11,
         "doneCount": 9,
         "cumIssue": 288,
-        "cumDone": 241,
+        "cumDone": 242,
         "rate": 84
       },
       {
@@ -4466,7 +4466,7 @@
         "newCount": 12,
         "doneCount": 7,
         "cumIssue": 300,
-        "cumDone": 248,
+        "cumDone": 249,
         "rate": 83
       },
       {
@@ -4474,7 +4474,7 @@
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 302,
-        "cumDone": 250,
+        "cumDone": 251,
         "rate": 83
       },
       {
@@ -4482,15 +4482,15 @@
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 307,
-        "cumDone": 253,
-        "rate": 82
+        "cumDone": 254,
+        "rate": 83
       },
       {
         "date": "2026-08-10",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 310,
-        "cumDone": 256,
+        "cumDone": 257,
         "rate": 83
       },
       {
@@ -4498,7 +4498,7 @@
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 312,
-        "cumDone": 258,
+        "cumDone": 259,
         "rate": 83
       },
       {
@@ -4506,7 +4506,7 @@
         "newCount": 6,
         "doneCount": 6,
         "cumIssue": 318,
-        "cumDone": 264,
+        "cumDone": 265,
         "rate": 83
       },
       {
@@ -4514,15 +4514,15 @@
         "newCount": 5,
         "doneCount": 5,
         "cumIssue": 323,
-        "cumDone": 269,
-        "rate": 83
+        "cumDone": 270,
+        "rate": 84
       },
       {
         "date": "2026-08-14",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 327,
-        "cumDone": 272,
+        "cumDone": 273,
         "rate": 83
       },
       {
@@ -4530,7 +4530,7 @@
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 331,
-        "cumDone": 275,
+        "cumDone": 276,
         "rate": 83
       },
       {
@@ -4538,15 +4538,15 @@
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 335,
-        "cumDone": 278,
+        "cumDone": 279,
         "rate": 83
       },
       {
         "date": "2026-08-20",
         "newCount": 3,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 338,
-        "cumDone": 280,
+        "cumDone": 282,
         "rate": 83
       }
     ]
