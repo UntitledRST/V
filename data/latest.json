@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-24T08:21:23.957913+00:00",
+  "fetchedAt": "2026-08-25T01:01:14.440958+00:00",
   "count": 340,
   "issues": [
     {
@@ -1195,7 +1195,7 @@
       "번호": 100,
       "일감번호": 274703,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][뷰어잠금] 잠금 해제 실패 안내가 기획(팝업)과 다름 — 5회 초과 시 'n분 n초 후 재시도' 팝업 대신 하단 인라인 '관리자 문의' 문구 표시",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -2743,7 +2743,7 @@
       "번호": 229,
       "일감번호": 275550,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA][기획대기] [기획 확인][채팅] 채팅 메시지 길이·문자 허용 정책 정본(SSoT) 확인 요청 — 클라이언트 전 계층 무제한(1만자+·이모지 전송 확인) vs 서버 저장·유저 어드민 상담이력 정합 협의 여부",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -3295,7 +3295,7 @@
       "번호": 275,
       "일감번호": 276021,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [모바일 호스트][파일 전송] 뷰어 '파일 가져오기' 요청 시 파일 소스 선택 메뉴가 화면 밖에 표시되어 무반응 — 화면 터치 시 안내 없이 거절 처리(무음), Android·iOS 공통",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -3475,7 +3475,7 @@
       "번호": 290,
       "일감번호": 276201,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][연결] 소멸 세션 [다시 시도] 진행 중 화면이 신규 대기화면으로 표출 — 종료된 세션의 접속코드 재노출·재연결 진행 표시 부재·약 20초 후 무통지 종료 화면 전환",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -4015,7 +4015,7 @@
       "번호": 335,
       "일감번호": 277697,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][일시정지] 화면 일시정지 해제 후 원격 화면이 회색으로 남고 복구되지 않음 — 호스트/뷰어 어느 쪽에서 해제해도 동일, 웹뷰어 정상",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4063,7 +4063,7 @@
       "번호": 339,
       "일감번호": 278065,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트][화면공유] 화면공유 중 단말 잠금(전원 버튼) 시 약 10초 후 뷰어 재연결 진입 → 세션 종료 — RC7 은 화면공유 안내 표시 후 연결 유지 대기(회귀)",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -4075,7 +4075,7 @@
       "번호": 340,
       "일감번호": 278086,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][채팅] 호스트 네트워크 장애 재연결 후 호스트가 보낸 채팅이 2건씩 중복 표시 — 재연결 복구 시 1회성(이후 신규 수신은 정상) (#275989 후속)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4086,8 +4086,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 55,
-      "done": 284,
+      "notDone": 51,
+      "done": 288,
       "total": 339
     },
     "assignees": [
@@ -4150,9 +4150,9 @@
       {
         "name": "송건호",
         "total": 99,
-        "done": 89,
+        "done": 91,
         "complete": false,
-        "rate": 89
+        "rate": 91
       },
       {
         "name": "오세진",
@@ -4164,9 +4164,9 @@
       {
         "name": "이경준",
         "total": 53,
-        "done": 46,
+        "done": 48,
         "complete": false,
-        "rate": 86
+        "rate": 90
       },
       {
         "name": "장기중(Jay)",
@@ -4201,9 +4201,9 @@
       {
         "name": "김신혜",
         "total": 188,
-        "done": 155,
+        "done": 159,
         "complete": false,
-        "rate": 82
+        "rate": 84
       },
       {
         "name": "박예지",
@@ -4255,15 +4255,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 41,
-        "done": 238,
+        "progress": 37,
+        "done": 242,
         "total": 279
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 33
+        "count": 29
       },
       {
         "label": "진행",
@@ -4275,7 +4275,7 @@
       },
       {
         "label": "해결",
-        "count": 175
+        "count": 178
       },
       {
         "label": "피드백",
@@ -4283,7 +4283,7 @@
       },
       {
         "label": "완료성공",
-        "count": 102
+        "count": 103
       },
       {
         "label": "중단",
@@ -4384,33 +4384,33 @@
       {
         "date": "2026-07-16",
         "newCount": 16,
-        "doneCount": 15,
+        "doneCount": 16,
         "cumIssue": 101,
-        "cumDone": 83,
-        "rate": 82
+        "cumDone": 84,
+        "rate": 83
       },
       {
         "date": "2026-07-20",
         "newCount": 12,
         "doneCount": 12,
         "cumIssue": 113,
-        "cumDone": 95,
-        "rate": 84
+        "cumDone": 96,
+        "rate": 85
       },
       {
         "date": "2026-07-21",
         "newCount": 19,
         "doneCount": 19,
         "cumIssue": 132,
-        "cumDone": 114,
-        "rate": 86
+        "cumDone": 115,
+        "rate": 87
       },
       {
         "date": "2026-07-22",
         "newCount": 31,
         "doneCount": 27,
         "cumIssue": 163,
-        "cumDone": 141,
+        "cumDone": 142,
         "rate": 87
       },
       {
@@ -4418,15 +4418,15 @@
         "newCount": 20,
         "doneCount": 20,
         "cumIssue": 183,
-        "cumDone": 161,
-        "rate": 88
+        "cumDone": 162,
+        "rate": 89
       },
       {
         "date": "2026-07-24",
         "newCount": 14,
         "doneCount": 12,
         "cumIssue": 197,
-        "cumDone": 173,
+        "cumDone": 174,
         "rate": 88
       },
       {
@@ -4434,7 +4434,7 @@
         "newCount": 21,
         "doneCount": 16,
         "cumIssue": 218,
-        "cumDone": 189,
+        "cumDone": 190,
         "rate": 87
       },
       {
@@ -4442,7 +4442,7 @@
         "newCount": 14,
         "doneCount": 12,
         "cumIssue": 232,
-        "cumDone": 201,
+        "cumDone": 202,
         "rate": 87
       },
       {
@@ -4450,7 +4450,7 @@
         "newCount": 18,
         "doneCount": 13,
         "cumIssue": 250,
-        "cumDone": 214,
+        "cumDone": 215,
         "rate": 86
       },
       {
@@ -4458,7 +4458,7 @@
         "newCount": 16,
         "doneCount": 11,
         "cumIssue": 266,
-        "cumDone": 225,
+        "cumDone": 226,
         "rate": 85
       },
       {
@@ -4466,7 +4466,7 @@
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 267,
-        "cumDone": 226,
+        "cumDone": 227,
         "rate": 85
       },
       {
@@ -4474,7 +4474,7 @@
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 277,
-        "cumDone": 235,
+        "cumDone": 236,
         "rate": 85
       },
       {
@@ -4482,15 +4482,15 @@
         "newCount": 11,
         "doneCount": 9,
         "cumIssue": 288,
-        "cumDone": 244,
+        "cumDone": 245,
         "rate": 85
       },
       {
         "date": "2026-08-05",
         "newCount": 12,
-        "doneCount": 7,
+        "doneCount": 8,
         "cumIssue": 300,
-        "cumDone": 251,
+        "cumDone": 253,
         "rate": 84
       },
       {
@@ -4498,7 +4498,7 @@
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 302,
-        "cumDone": 253,
+        "cumDone": 255,
         "rate": 84
       },
       {
@@ -4506,15 +4506,15 @@
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 307,
-        "cumDone": 256,
-        "rate": 83
+        "cumDone": 258,
+        "rate": 84
       },
       {
         "date": "2026-08-10",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 310,
-        "cumDone": 259,
+        "cumDone": 261,
         "rate": 84
       },
       {
@@ -4522,7 +4522,7 @@
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 312,
-        "cumDone": 261,
+        "cumDone": 263,
         "rate": 84
       },
       {
@@ -4530,56 +4530,56 @@
         "newCount": 6,
         "doneCount": 6,
         "cumIssue": 318,
-        "cumDone": 267,
-        "rate": 84
+        "cumDone": 269,
+        "rate": 85
       },
       {
         "date": "2026-08-13",
         "newCount": 5,
         "doneCount": 5,
         "cumIssue": 323,
-        "cumDone": 272,
-        "rate": 84
+        "cumDone": 274,
+        "rate": 85
       },
       {
         "date": "2026-08-14",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 327,
-        "cumDone": 275,
-        "rate": 84
+        "cumDone": 277,
+        "rate": 85
       },
       {
         "date": "2026-08-18",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 331,
-        "cumDone": 278,
-        "rate": 84
+        "cumDone": 280,
+        "rate": 85
       },
       {
         "date": "2026-08-19",
         "newCount": 4,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 335,
-        "cumDone": 281,
-        "rate": 84
+        "cumDone": 284,
+        "rate": 85
       },
       {
         "date": "2026-08-20",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 338,
-        "cumDone": 284,
-        "rate": 84
+        "cumDone": 287,
+        "rate": 85
       },
       {
         "date": "2026-08-24",
         "newCount": 2,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 340,
-        "cumDone": 284,
-        "rate": 84
+        "cumDone": 288,
+        "rate": 85
       }
     ]
   }
