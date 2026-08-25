@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-25T10:14:31.445407+00:00",
+  "fetchedAt": "2026-08-25T10:20:04.422359+00:00",
   "count": 343,
   "issues": [
     {
@@ -21,7 +21,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][접속대기] 다른 방법으로 전달하기(E-mail·SMS) 발송 문구 정본·다국어 정책 확인 — E-mail 제목 '[RemoteCall]인증번호 안내'·본문 '연결 URL' 한국어 하드코딩, SMS는 현재 URL만 발송(기본 문구 도입 시 동일 정책 필요)",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "created_on": "2026-08-25 15:46:14",
       "link": "https://projects.rsupport.com/issues/278226"
     },
@@ -3951,10 +3951,10 @@
     "assignees": [
       {
         "name": "김미령",
-        "total": 47,
+        "total": 46,
         "done": 44,
         "complete": false,
-        "rate": 93
+        "rate": 95
       },
       {
         "name": "김성식",
@@ -4007,7 +4007,7 @@
       },
       {
         "name": "송건호",
-        "total": 99,
+        "total": 100,
         "done": 91,
         "complete": false,
         "rate": 91
