@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-25T08:45:35.167990+00:00",
+  "fetchedAt": "2026-08-25T08:51:06.375501+00:00",
   "count": 343,
   "issues": [
     {
@@ -29,7 +29,7 @@
       "번호": 3,
       "일감번호": 278160,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][다국어][연결] 연결 진행 화면 단계 안내 문구 4종이 언어 설정과 무관하게 한국어 고정 — 'PNS 연결 중'·'WebRTC 설정 중' 등 내부 기술 용어가 고객에게 그대로 노출, 전 플랫폼 공통",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -3944,8 +3944,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 53,
-      "done": 289,
+      "notDone": 52,
+      "done": 290,
       "total": 342
     },
     "assignees": [
@@ -4015,9 +4015,9 @@
       {
         "name": "오세진",
         "total": 81,
-        "done": 77,
+        "done": 78,
         "complete": false,
-        "rate": 95
+        "rate": 96
       },
       {
         "name": "이경준",
@@ -4062,15 +4062,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 37,
-        "done": 243,
+        "progress": 36,
+        "done": 244,
         "total": 280
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 32
+        "count": 31
       },
       {
         "label": "진행",
@@ -4082,7 +4082,7 @@
       },
       {
         "label": "해결",
-        "count": 171
+        "count": 172
       },
       {
         "label": "피드백",
@@ -4391,10 +4391,10 @@
       {
         "date": "2026-08-25",
         "cumIssue": 343,
-        "cumDone": 289,
-        "rate": 84,
+        "cumDone": 290,
+        "rate": 85,
         "newCount": 3,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
