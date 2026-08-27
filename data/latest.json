@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-27T05:30:05.059825+00:00",
+  "fetchedAt": "2026-08-27T05:35:40.073324+00:00",
   "count": 358,
   "issues": [
     {
@@ -18,7 +18,7 @@
       "번호": 2,
       "일감번호": 278470,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][에이전트] 홈 GNB '상담원 상태(상담 가능/상담 대기)' 토글·상태 모델 미구현 — 1차 범위 여부 및 세션 공유 대상 판정 기준과의 관계 확인 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -4065,8 +4065,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 56,
-      "done": 301,
+      "notDone": 55,
+      "done": 302,
       "total": 357
     },
     "assignees": [
@@ -4080,9 +4080,9 @@
       {
         "name": "김미령",
         "total": 50,
-        "done": 47,
+        "done": 48,
         "complete": false,
-        "rate": 94
+        "rate": 96
       },
       {
         "name": "김성식",
@@ -4185,8 +4185,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 11,
-        "done": 48,
+        "progress": 10,
+        "done": 49,
         "total": 59
       },
       {
@@ -4205,7 +4205,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 36
+        "count": 35
       },
       {
         "label": "진행",
@@ -4217,7 +4217,7 @@
       },
       {
         "label": "해결",
-        "count": 181
+        "count": 182
       },
       {
         "label": "피드백",
@@ -4542,10 +4542,10 @@
       {
         "date": "2026-08-27",
         "cumIssue": 358,
-        "cumDone": 301,
+        "cumDone": 302,
         "rate": 84,
         "newCount": 4,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
