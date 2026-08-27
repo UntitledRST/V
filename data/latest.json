@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-27T06:02:49.355577+00:00",
+  "fetchedAt": "2026-08-27T06:08:23.785459+00:00",
   "count": 359,
   "issues": [
     {
@@ -73,7 +73,7 @@
       "번호": 7,
       "일감번호": 278375,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][녹화] 일시정지·뷰어잠금 구간이 녹화 파일에 계속 기록됨 — 정본 VW-REC-005 '해당 구간 미저장(녹화 일시중단)' 위배, 웹·응용뷰어 공통",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4076,8 +4076,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 56,
-      "done": 302,
+      "notDone": 55,
+      "done": 303,
       "total": 358
     },
     "assignees": [
@@ -4147,9 +4147,9 @@
       {
         "name": "송건호",
         "total": 108,
-        "done": 97,
+        "done": 98,
         "complete": false,
-        "rate": 89
+        "rate": 90
       },
       {
         "name": "오세진",
@@ -4208,8 +4208,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 43,
-        "done": 248,
+        "progress": 42,
+        "done": 249,
         "total": 291
       }
     ],
@@ -4220,7 +4220,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -4228,7 +4228,7 @@
       },
       {
         "label": "해결",
-        "count": 182
+        "count": 183
       },
       {
         "label": "피드백",
@@ -4545,15 +4545,15 @@
       {
         "date": "2026-08-26",
         "cumIssue": 354,
-        "cumDone": 301,
+        "cumDone": 302,
         "rate": 85,
         "newCount": 11,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-08-27",
         "cumIssue": 359,
-        "cumDone": 302,
+        "cumDone": 303,
         "rate": 84,
         "newCount": 5,
         "doneCount": 1
