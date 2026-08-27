@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-26T04:02:11.380793+00:00",
-  "count": 191,
+  "fetchedAt": "2026-08-27T04:14:02.976871+00:00",
+  "count": 195,
   "issues": [
     {
       "번호": 1,
@@ -715,7 +715,7 @@
       "번호": 60,
       "일감번호": 275936,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 상담 이력 목록의 에이전트 타입이 응용뷰어·웹뷰어가 아닌 코드값으로 표시되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -979,7 +979,7 @@
       "번호": 82,
       "일감번호": 276418,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 어드민 사용 이력 상세의 변경 내역에서 변경 전/후 값이 잘못 표시됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1039,7 +1039,7 @@
       "번호": 87,
       "일감번호": 276585,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] APK 파일 상세 화면에서 [복원] 버튼 클릭 후, 다운로드 클릭할 경우, 다운로드 실패(에러코드 802200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1051,7 +1051,7 @@
       "번호": 88,
       "일감번호": 276593,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 모바일 앱 설치 정보 목록 수정 및 취소 버튼 클릭 시, 사용 이력에 '등록'으로 기록됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1063,7 +1063,7 @@
       "번호": 89,
       "일감번호": 276597,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 국가별 네트워크 그룹 수정 시 신규 행이 추가됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1375,7 +1375,7 @@
       "번호": 115,
       "일감번호": 277080,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 대시보드와 상담 이력의 오늘 건수 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1411,7 +1411,7 @@
       "번호": 118,
       "일감번호": 277086,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 대시보드 상담 건수 추이와 상담 이력 조회 건수 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1423,7 +1423,7 @@
       "번호": 119,
       "일감번호": 277088,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 대시보드의 상담 유형별 분포와 상담 이력 간 PC 상담 건수 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1447,7 +1447,7 @@
       "번호": 121,
       "일감번호": 277092,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 대시보드 라이선스 상태 분포 수치와 라이선스 목록 검색 건수 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1507,7 +1507,7 @@
       "번호": 126,
       "일감번호": 277100,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 대시보드 이달 상담 건수와 상담 이력 당월 조회 건수가  불일치",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1675,7 +1675,7 @@
       "번호": 140,
       "일감번호": 277237,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 라이선스 삭제 실패 사유 미노출",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1723,7 +1723,7 @@
       "번호": 144,
       "일감번호": 277263,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 승인대기 라이선스가 할당 가능 목록에 노출되어 할당이 허용됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1807,7 +1807,7 @@
       "번호": 151,
       "일감번호": 277371,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민] AI 어시스턴트 > 상담원 답변 자료 > 자료추가 : tsv/xls/xlsm 확장자 파일이 허용 용량 이내에서도 업로드 실패함 (에러코드 80200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1939,7 +1939,7 @@
       "번호": 162,
       "일감번호": 277733,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 라이선스 만료일 연장 후에도 User Admin 로그인 시 이용 기간 만료 팝업 노출",
       "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
@@ -2155,7 +2155,7 @@
       "번호": 180,
       "일감번호": 278245,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "중단(Stop)",
       "제목": "[파트너 어드민] 대시보드 에이전트 공지 목록이 명세의 5건 대신 4건만 표시되고 최신순으로  정렬되지 않음",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2287,20 +2287,68 @@
       "번호": 191,
       "일감번호": 278316,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[유저 어드민/FE] 회사 상세 화면에 CA 계정 아이디(companyUserName) 표시 연동",
       "우선순위": "보통(Normal)",
       "담당자": "심현수",
       "작성자": "이혁(Eden)",
       "created_on": "2026-08-26 11:14:34",
       "link": "https://projects.rsupport.com/issues/278316"
+    },
+    {
+      "번호": 192,
+      "일감번호": 278339,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 파트너사 > 접속페이지 10행 초과 시, 페이지네이션 미적용",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-26 14:13:55",
+      "link": "https://projects.rsupport.com/issues/278339"
+    },
+    {
+      "번호": 193,
+      "일감번호": 278366,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저/파트너 어드민] 소속 회사 유형별 부여 가능 권한 미제한 — 고객사 소속 사용자가 파트너 어드민 권한으로 고객사 생성 가능",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-08-26 16:00:32",
+      "link": "https://projects.rsupport.com/issues/278366"
+    },
+    {
+      "번호": 194,
+      "일감번호": 278441,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[파트너 어드민] 신규 고객사 등록 상위 파트너사 조회 API 기획(트리 셀렉트) 미충족 — flat 응답으로 트리 렌더링 불가",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-08-27 09:55:28",
+      "link": "https://projects.rsupport.com/issues/278441"
+    },
+    {
+      "번호": 195,
+      "일감번호": 278442,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민][FE] 신규 고객사 등록 상위 파트너사 트리 셀렉트 미구현 — 트리 응답 연동 필요",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-08-27 09:55:29",
+      "link": "https://projects.rsupport.com/issues/278442"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 116,
-      "done": 74,
-      "total": 190
+      "notDone": 104,
+      "done": 90,
+      "total": 194
     },
     "assignees": [
       {
@@ -2319,14 +2367,14 @@
       },
       {
         "name": "심현수",
-        "total": 28,
-        "done": 25,
+        "total": 29,
+        "done": 26,
         "complete": false,
         "rate": 89
       },
       {
         "name": "윤종익",
-        "total": 78,
+        "total": 79,
         "done": 31,
         "complete": false,
         "rate": 39
@@ -2340,33 +2388,33 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 50,
-        "done": 16,
+        "total": 52,
+        "done": 31,
         "complete": false,
-        "rate": 32
+        "rate": 59
       }
     ],
     "authors": [
       {
         "name": "윤종익",
         "total": 94,
-        "done": 33,
+        "done": 34,
         "complete": false,
-        "rate": 35
+        "rate": 36
       },
       {
         "name": "이명찬",
-        "total": 87,
-        "done": 34,
+        "total": 88,
+        "done": 48,
         "complete": false,
-        "rate": 39
+        "rate": 54
       },
       {
         "name": "이혁(Eden)",
-        "total": 10,
-        "done": 8,
+        "total": 13,
+        "done": 9,
         "complete": false,
-        "rate": 80
+        "rate": 69
       }
     ],
     "trackers": [
@@ -2384,19 +2432,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 94,
-        "done": 70,
-        "total": 164
+        "progress": 82,
+        "done": 86,
+        "total": 168
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 88
+        "count": 90
       },
       {
         "label": "진행",
-        "count": 25
+        "count": 11
       },
       {
         "label": "보류",
@@ -2404,7 +2452,7 @@
       },
       {
         "label": "해결",
-        "count": 35
+        "count": 50
       },
       {
         "label": "피드백",
@@ -2416,7 +2464,7 @@
       },
       {
         "label": "중단",
-        "count": 4
+        "count": 5
       },
       {
         "label": "완료실패",
@@ -2430,7 +2478,7 @@
       },
       {
         "label": "보통",
-        "count": 184
+        "count": 188
       },
       {
         "label": "높음",
@@ -2465,122 +2513,130 @@
       {
         "date": "2026-08-01",
         "newCount": 21,
-        "doneCount": 6,
+        "doneCount": 7,
         "cumIssue": 63,
-        "cumDone": 27,
-        "rate": 43
+        "cumDone": 28,
+        "rate": 44
       },
       {
         "date": "2026-08-03",
         "newCount": 7,
         "doneCount": 3,
         "cumIssue": 70,
-        "cumDone": 30,
-        "rate": 43
+        "cumDone": 31,
+        "rate": 44
       },
       {
         "date": "2026-08-06",
         "newCount": 13,
-        "doneCount": 8,
+        "doneCount": 9,
         "cumIssue": 83,
-        "cumDone": 38,
-        "rate": 46
+        "cumDone": 40,
+        "rate": 48
       },
       {
         "date": "2026-08-07",
         "newCount": 8,
-        "doneCount": 1,
+        "doneCount": 4,
         "cumIssue": 91,
-        "cumDone": 39,
-        "rate": 43
+        "cumDone": 44,
+        "rate": 48
       },
       {
         "date": "2026-08-10",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 93,
-        "cumDone": 39,
-        "rate": 42
+        "cumDone": 44,
+        "rate": 47
       },
       {
         "date": "2026-08-11",
         "newCount": 6,
         "doneCount": 0,
         "cumIssue": 99,
-        "cumDone": 39,
-        "rate": 39
+        "cumDone": 44,
+        "rate": 44
       },
       {
         "date": "2026-08-12",
         "newCount": 35,
-        "doneCount": 7,
+        "doneCount": 12,
         "cumIssue": 134,
-        "cumDone": 46,
-        "rate": 34
+        "cumDone": 56,
+        "rate": 42
       },
       {
         "date": "2026-08-13",
         "newCount": 12,
-        "doneCount": 4,
+        "doneCount": 6,
         "cumIssue": 146,
-        "cumDone": 50,
-        "rate": 34
+        "cumDone": 62,
+        "rate": 42
       },
       {
         "date": "2026-08-14",
         "newCount": 6,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 152,
-        "cumDone": 51,
-        "rate": 34
+        "cumDone": 64,
+        "rate": 42
       },
       {
         "date": "2026-08-18",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 160,
-        "cumDone": 56,
-        "rate": 35
+        "cumDone": 69,
+        "rate": 43
       },
       {
         "date": "2026-08-19",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 161,
-        "cumDone": 56,
-        "rate": 35
+        "cumDone": 69,
+        "rate": 43
       },
       {
         "date": "2026-08-20",
         "newCount": 6,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 167,
-        "cumDone": 58,
-        "rate": 35
+        "cumDone": 72,
+        "rate": 43
       },
       {
         "date": "2026-08-24",
         "newCount": 7,
         "doneCount": 6,
         "cumIssue": 174,
-        "cumDone": 64,
-        "rate": 37
+        "cumDone": 78,
+        "rate": 45
       },
       {
         "date": "2026-08-25",
         "newCount": 15,
-        "doneCount": 9,
+        "doneCount": 10,
         "cumIssue": 189,
-        "cumDone": 73,
-        "rate": 39
+        "cumDone": 88,
+        "rate": 47
       },
       {
         "date": "2026-08-26",
+        "newCount": 4,
+        "doneCount": 2,
+        "cumIssue": 193,
+        "cumDone": 90,
+        "rate": 47
+      },
+      {
+        "date": "2026-08-27",
         "newCount": 2,
-        "doneCount": 1,
-        "cumIssue": 191,
-        "cumDone": 74,
-        "rate": 39
+        "doneCount": 0,
+        "cumIssue": 195,
+        "cumDone": 90,
+        "rate": 46
       }
     ]
   },
