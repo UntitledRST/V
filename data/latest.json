@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T06:56:09.019552+00:00",
+  "fetchedAt": "2026-08-28T07:01:43.277264+00:00",
   "count": 373,
   "issues": [
     {
@@ -51,7 +51,7 @@
       "번호": 5,
       "일감번호": 278594,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][영상지원 PC웹][파일 공유] 문서 공유 수신 화면이 카메라 영상 크기로 작게 고정 표시 — 가용 영역 미활용·확대 불가",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4235,8 +4235,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 59,
-      "done": 313,
+      "notDone": 58,
+      "done": 314,
       "total": 372
     },
     "assignees": [
@@ -4313,9 +4313,9 @@
       {
         "name": "오세진",
         "total": 88,
-        "done": 80,
+        "done": 81,
         "complete": false,
-        "rate": 90
+        "rate": 92
       },
       {
         "name": "이경준",
@@ -4367,15 +4367,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 44,
-        "done": 255,
+        "progress": 43,
+        "done": 256,
         "total": 299
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 40
+        "count": 39
       },
       {
         "label": "진행",
@@ -4387,7 +4387,7 @@
       },
       {
         "label": "해결",
-        "count": 193
+        "count": 194
       },
       {
         "label": "피드백",
@@ -4720,10 +4720,10 @@
       {
         "date": "2026-08-28",
         "cumIssue": 373,
-        "cumDone": 313,
+        "cumDone": 314,
         "rate": 84,
         "newCount": 7,
-        "doneCount": 2
+        "doneCount": 3
       }
     ]
   }
