@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T03:29:31.573844+00:00",
+  "fetchedAt": "2026-08-28T03:35:10.421270+00:00",
   "count": 370,
   "issues": [
     {
@@ -183,7 +183,7 @@
       "번호": 17,
       "일감번호": 278411,
       "분류": "개선(Improving)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][GNB] AI 아이콘 사이즈·스타일 통일감 및 GNB 아이콘 회색톤 조정 — PM 요구사항(08.12)",
       "우선순위": "보통(Normal)",
       "담당자": "라경연",
@@ -4202,8 +4202,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 64,
-      "done": 305,
+      "notDone": 63,
+      "done": 306,
       "total": 369
     },
     "assignees": [
@@ -4245,9 +4245,9 @@
       {
         "name": "라경연",
         "total": 3,
-        "done": 2,
-        "complete": false,
-        "rate": 66
+        "done": 3,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "박승진",
@@ -4328,8 +4328,8 @@
       },
       {
         "label": "개선(Improving)",
-        "progress": 2,
-        "done": 6,
+        "progress": 1,
+        "done": 7,
         "total": 8
       },
       {
@@ -4342,7 +4342,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 43
+        "count": 42
       },
       {
         "label": "진행",
@@ -4354,7 +4354,7 @@
       },
       {
         "label": "해결",
-        "count": 185
+        "count": 186
       },
       {
         "label": "피드백",
@@ -4671,15 +4671,15 @@
       {
         "date": "2026-08-26",
         "cumIssue": 354,
-        "cumDone": 302,
-        "rate": 85,
+        "cumDone": 303,
+        "rate": 86,
         "newCount": 11,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-08-27",
         "cumIssue": 366,
-        "cumDone": 304,
+        "cumDone": 305,
         "rate": 83,
         "newCount": 12,
         "doneCount": 2
@@ -4687,8 +4687,8 @@
       {
         "date": "2026-08-28",
         "cumIssue": 370,
-        "cumDone": 305,
-        "rate": 82,
+        "cumDone": 306,
+        "rate": 83,
         "newCount": 4,
         "doneCount": 1
       }
