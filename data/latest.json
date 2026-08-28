@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T04:25:19.155057+00:00",
+  "fetchedAt": "2026-08-28T04:31:02.080025+00:00",
   "count": 370,
   "issues": [
     {
@@ -282,7 +282,7 @@
       "번호": 26,
       "일감번호": 278328,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][연결][재연결] 뷰어가 먼저 세션을 종료한 뒤 호스트 네트워크 복구 시 '연결 중' 화면 무기한 지속 — 재연결 피어 대기 타임아웃·종료 수렴 없음(HOST-NETSYNC 위반, #274329 재연결 경로 대칭)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4202,8 +4202,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 62,
-      "done": 307,
+      "notDone": 61,
+      "done": 308,
       "total": 369
     },
     "assignees": [
@@ -4280,9 +4280,9 @@
       {
         "name": "오세진",
         "total": 87,
-        "done": 78,
+        "done": 79,
         "complete": false,
-        "rate": 89
+        "rate": 90
       },
       {
         "name": "이경준",
@@ -4334,8 +4334,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 46,
-        "done": 250,
+        "progress": 45,
+        "done": 251,
         "total": 296
       }
     ],
@@ -4346,7 +4346,7 @@
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 12
       },
       {
         "label": "보류",
@@ -4354,7 +4354,7 @@
       },
       {
         "label": "해결",
-        "count": 187
+        "count": 188
       },
       {
         "label": "피드백",
@@ -4671,15 +4671,15 @@
       {
         "date": "2026-08-26",
         "cumIssue": 354,
-        "cumDone": 304,
+        "cumDone": 305,
         "rate": 86,
         "newCount": 11,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-08-27",
         "cumIssue": 366,
-        "cumDone": 306,
+        "cumDone": 307,
         "rate": 84,
         "newCount": 12,
         "doneCount": 2
@@ -4687,7 +4687,7 @@
       {
         "date": "2026-08-28",
         "cumIssue": 370,
-        "cumDone": 307,
+        "cumDone": 308,
         "rate": 83,
         "newCount": 4,
         "doneCount": 1
