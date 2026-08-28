@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T02:38:20.148437+00:00",
+  "fetchedAt": "2026-08-28T02:44:32.196232+00:00",
   "count": 368,
   "issues": [
     {
@@ -3760,7 +3760,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.1_QA][결함] win10 응용 뷰어(agent) 실행 에러(앱초기화 실패)",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "송건호",
       "created_on": "2026-07-08 09:07:24",
       "link": "https://projects.rsupport.com/issues/273829"
     },
@@ -4250,17 +4250,17 @@
       },
       {
         "name": "송건호",
-        "total": 112,
+        "total": 113,
         "done": 98,
         "complete": false,
-        "rate": 87
+        "rate": 86
       },
       {
         "name": "오세진",
-        "total": 87,
+        "total": 86,
         "done": 78,
         "complete": false,
-        "rate": 89
+        "rate": 90
       },
       {
         "name": "이경준",
