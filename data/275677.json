@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T00:46:49.908711+00:00",
-  "count": 197,
+  "fetchedAt": "2026-08-28T07:16:20.114581+00:00",
+  "count": 206,
   "issues": [
     {
       "번호": 1,
@@ -2347,7 +2347,7 @@
       "번호": 196,
       "일감번호": 278508,
       "분류": "업무(Job)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민][FE] member/me companyTree 연동 및 고객사·파트너사 등록 지사(BRANCH) 상위 선택·지사 옵션 규칙 반영",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -2366,13 +2366,121 @@
       "작성자": "윤종익",
       "created_on": "2026-08-28 00:54:59",
       "link": "https://projects.rsupport.com/issues/278560"
+    },
+    {
+      "번호": 198,
+      "일감번호": 278574,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 스토리지 서버 신규 등록 저장 실패(에러 80200)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 10:47:14",
+      "link": "https://projects.rsupport.com/issues/278574"
+    },
+    {
+      "번호": 199,
+      "일감번호": 278575,
+      "분류": "결함(Serverity)",
+      "상태": "피드백(Feedback)",
+      "제목": "[파트너 어드민] APK 파일 추가 저장 시 400 오류로 등록 실패",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 10:55:50",
+      "link": "https://projects.rsupport.com/issues/278575"
+    },
+    {
+      "번호": 200,
+      "일감번호": 278576,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[파트너 어드민] iOS 디바이스 모델 등록 시 저장 실패(에러코드 80200)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 11:01:04",
+      "link": "https://projects.rsupport.com/issues/278576"
+    },
+    {
+      "번호": 201,
+      "일감번호": 278580,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 에이전트 공지 등록 저장 시 400 오류로 등록 실패",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 11:07:52",
+      "link": "https://projects.rsupport.com/issues/278580"
+    },
+    {
+      "번호": 202,
+      "일감번호": 278591,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 모바일 실행 가능 앱 추가 시 팝업 미종료",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 11:37:44",
+      "link": "https://projects.rsupport.com/issues/278591"
+    },
+    {
+      "번호": 203,
+      "일감번호": 278598,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 고객사 승인대기 목록 컬럼 정렬 미동작",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 12:01:51",
+      "link": "https://projects.rsupport.com/issues/278598"
+    },
+    {
+      "번호": 204,
+      "일감번호": 278625,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 모바일 실행 가능 앱 > 항목 11개 중에서 1개 삭제 시, 빈 목록 오표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "심현수",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 13:45:04",
+      "link": "https://projects.rsupport.com/issues/278625"
+    },
+    {
+      "번호": 205,
+      "일감번호": 278640,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 어드민 사용 이력 > 목록 진입 시 기간 기본값이 '오늘'이 아닌 '최근 30일'로 설정됨",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 14:58:01",
+      "link": "https://projects.rsupport.com/issues/278640"
+    },
+    {
+      "번호": 206,
+      "일감번호": 278651,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 그룹 옵션 '공유함 관리 권한'이 '관리자 전용'일 때, 'OP권한 > 공유함 > 내 설정 탭' 접근 가능",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-28 15:47:53",
+      "link": "https://projects.rsupport.com/issues/278651"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 101,
-      "done": 95,
-      "total": 196
+      "notDone": 109,
+      "done": 96,
+      "total": 205
     },
     "assignees": [
       {
@@ -2391,17 +2499,17 @@
       },
       {
         "name": "심현수",
-        "total": 29,
+        "total": 32,
         "done": 26,
         "complete": false,
-        "rate": 89
+        "rate": 81
       },
       {
         "name": "윤종익",
-        "total": 81,
-        "done": 32,
+        "total": 82,
+        "done": 33,
         "complete": false,
-        "rate": 39
+        "rate": 40
       },
       {
         "name": "이명찬",
@@ -2412,10 +2520,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 52,
+        "total": 57,
         "done": 35,
         "complete": false,
-        "rate": 67
+        "rate": 61
       }
     ],
     "authors": [
@@ -2428,24 +2536,24 @@
       },
       {
         "name": "이명찬",
-        "total": 88,
+        "total": 97,
         "done": 50,
         "complete": false,
-        "rate": 56
+        "rate": 51
       },
       {
         "name": "이혁(Eden)",
         "total": 14,
-        "done": 10,
+        "done": 11,
         "complete": false,
-        "rate": 71
+        "rate": 78
       }
     ],
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 21,
-        "done": 4,
+        "progress": 20,
+        "done": 5,
         "total": 25
       },
       {
@@ -2456,15 +2564,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 78,
+        "progress": 87,
         "done": 90,
-        "total": 168
+        "total": 177
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 90
+        "count": 97
       },
       {
         "label": "진행",
@@ -2476,11 +2584,11 @@
       },
       {
         "label": "해결",
-        "count": 54
+        "count": 55
       },
       {
         "label": "피드백",
-        "count": 3
+        "count": 4
       },
       {
         "label": "완료성공",
@@ -2502,7 +2610,7 @@
       },
       {
         "label": "보통",
-        "count": 190
+        "count": 199
       },
       {
         "label": "높음",
@@ -2657,18 +2765,18 @@
       {
         "date": "2026-08-27",
         "newCount": 3,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 196,
-        "cumDone": 94,
+        "cumDone": 95,
         "rate": 48
       },
       {
         "date": "2026-08-28",
-        "newCount": 1,
+        "newCount": 10,
         "doneCount": 1,
-        "cumIssue": 197,
-        "cumDone": 95,
-        "rate": 48
+        "cumIssue": 206,
+        "cumDone": 96,
+        "rate": 47
       }
     ]
   },
