@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T01:58:51.466030+00:00",
+  "fetchedAt": "2026-08-28T02:04:20.936513+00:00",
   "count": 368,
   "issues": [
     {
       "번호": 1,
       "일감번호": 278566,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][파일 공유] 화면 비율 조정 드롭다운 항목 구성 미확정 — 기획서 v2.4 '75/125/150/175% 삭제' vs Figma 코멘트 '드롭다운 3단(50/100/200)+[-/+] 7단' 제안 후 확정 없음, 현행 코드는 드롭다운 7단 노출",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -4180,8 +4180,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 63,
-      "done": 304,
+      "notDone": 62,
+      "done": 305,
       "total": 367
     },
     "assignees": [
@@ -4195,9 +4195,9 @@
       {
         "name": "김미령",
         "total": 53,
-        "done": 48,
+        "done": 49,
         "complete": false,
-        "rate": 90
+        "rate": 92
       },
       {
         "name": "김성식",
@@ -4300,8 +4300,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 14,
-        "done": 49,
+        "progress": 13,
+        "done": 50,
         "total": 63
       },
       {
@@ -4320,7 +4320,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 42
+        "count": 41
       },
       {
         "label": "진행",
@@ -4332,7 +4332,7 @@
       },
       {
         "label": "해결",
-        "count": 184
+        "count": 185
       },
       {
         "label": "피드백",
@@ -4665,10 +4665,10 @@
       {
         "date": "2026-08-28",
         "cumIssue": 368,
-        "cumDone": 304,
+        "cumDone": 305,
         "rate": 83,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       }
     ]
   }
