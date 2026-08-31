@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-28T07:16:20.114581+00:00",
+  "fetchedAt": "2026-08-31T00:43:19.410625+00:00",
   "count": 206,
   "issues": [
     {
@@ -1039,7 +1039,7 @@
       "번호": 87,
       "일감번호": 276585,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[파트너 어드민] APK 파일 상세 화면에서 [복원] 버튼 클릭 후, 다운로드 클릭할 경우, 다운로드 실패(에러코드 802200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1051,7 +1051,7 @@
       "번호": 88,
       "일감번호": 276593,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 모바일 앱 설치 정보 목록 수정 및 취소 버튼 클릭 시, 사용 이력에 '등록'으로 기록됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1063,7 +1063,7 @@
       "번호": 89,
       "일감번호": 276597,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[파트너 어드민] 국가별 네트워크 그룹 수정 시 신규 행이 추가됨",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2335,7 +2335,7 @@
       "번호": 195,
       "일감번호": 278442,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민][FE] 신규 고객사 등록 상위 파트너사 트리 셀렉트 미구현 — 트리 응답 연동 필요",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -2478,8 +2478,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 109,
-      "done": 96,
+      "notDone": 110,
+      "done": 95,
       "total": 205
     },
     "assignees": [
@@ -2507,9 +2507,9 @@
       {
         "name": "윤종익",
         "total": 82,
-        "done": 33,
+        "done": 34,
         "complete": false,
-        "rate": 40
+        "rate": 41
       },
       {
         "name": "이명찬",
@@ -2521,9 +2521,9 @@
       {
         "name": "이혁(Eden)",
         "total": 57,
-        "done": 35,
+        "done": 33,
         "complete": false,
-        "rate": 61
+        "rate": 57
       }
     ],
     "authors": [
@@ -2537,16 +2537,16 @@
       {
         "name": "이명찬",
         "total": 97,
-        "done": 50,
+        "done": 48,
         "complete": false,
-        "rate": 51
+        "rate": 49
       },
       {
         "name": "이혁(Eden)",
         "total": 14,
-        "done": 11,
+        "done": 12,
         "complete": false,
-        "rate": 78
+        "rate": 85
       }
     ],
     "trackers": [
@@ -2564,15 +2564,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 87,
-        "done": 90,
+        "progress": 88,
+        "done": 89,
         "total": 177
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 97
+        "count": 96
       },
       {
         "label": "진행",
@@ -2584,15 +2584,15 @@
       },
       {
         "label": "해결",
-        "count": 55
+        "count": 53
       },
       {
         "label": "피드백",
-        "count": 4
+        "count": 6
       },
       {
         "label": "완료성공",
-        "count": 35
+        "count": 36
       },
       {
         "label": "중단",
@@ -2669,105 +2669,105 @@
       {
         "date": "2026-08-07",
         "newCount": 8,
-        "doneCount": 4,
+        "doneCount": 2,
         "cumIssue": 91,
-        "cumDone": 46,
-        "rate": 51
+        "cumDone": 44,
+        "rate": 48
       },
       {
         "date": "2026-08-10",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 93,
-        "cumDone": 46,
-        "rate": 49
+        "cumDone": 44,
+        "rate": 47
       },
       {
         "date": "2026-08-11",
         "newCount": 6,
         "doneCount": 0,
         "cumIssue": 99,
-        "cumDone": 46,
-        "rate": 46
+        "cumDone": 44,
+        "rate": 44
       },
       {
         "date": "2026-08-12",
         "newCount": 35,
         "doneCount": 12,
         "cumIssue": 134,
-        "cumDone": 58,
-        "rate": 43
+        "cumDone": 56,
+        "rate": 42
       },
       {
         "date": "2026-08-13",
         "newCount": 12,
         "doneCount": 6,
         "cumIssue": 146,
-        "cumDone": 64,
-        "rate": 44
+        "cumDone": 62,
+        "rate": 42
       },
       {
         "date": "2026-08-14",
         "newCount": 6,
         "doneCount": 3,
         "cumIssue": 152,
-        "cumDone": 67,
-        "rate": 44
+        "cumDone": 65,
+        "rate": 43
       },
       {
         "date": "2026-08-18",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 160,
-        "cumDone": 72,
-        "rate": 45
+        "cumDone": 70,
+        "rate": 44
       },
       {
         "date": "2026-08-19",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 161,
-        "cumDone": 72,
-        "rate": 45
+        "cumDone": 70,
+        "rate": 43
       },
       {
         "date": "2026-08-20",
         "newCount": 6,
         "doneCount": 3,
         "cumIssue": 167,
-        "cumDone": 75,
-        "rate": 45
+        "cumDone": 73,
+        "rate": 44
       },
       {
         "date": "2026-08-24",
         "newCount": 7,
         "doneCount": 6,
         "cumIssue": 174,
-        "cumDone": 81,
-        "rate": 47
+        "cumDone": 79,
+        "rate": 45
       },
       {
         "date": "2026-08-25",
         "newCount": 15,
         "doneCount": 10,
         "cumIssue": 189,
-        "cumDone": 91,
-        "rate": 48
+        "cumDone": 89,
+        "rate": 47
       },
       {
         "date": "2026-08-26",
         "newCount": 4,
         "doneCount": 2,
         "cumIssue": 193,
-        "cumDone": 93,
-        "rate": 48
+        "cumDone": 91,
+        "rate": 47
       },
       {
         "date": "2026-08-27",
         "newCount": 3,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 196,
-        "cumDone": 95,
+        "cumDone": 94,
         "rate": 48
       },
       {
@@ -2775,8 +2775,8 @@
         "newCount": 10,
         "doneCount": 1,
         "cumIssue": 206,
-        "cumDone": 96,
-        "rate": 47
+        "cumDone": 95,
+        "rate": 46
       }
     ]
   },
