@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-31T03:52:51.879727+00:00",
+  "fetchedAt": "2026-08-31T03:58:33.702698+00:00",
   "count": 383,
   "issues": [
     {
@@ -117,7 +117,7 @@
       "번호": 11,
       "일감번호": 278643,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][영상지원][연결 종료] 뷰어 종료 시 간헐적으로 raw 종료 화면 \"사유: CloseCode.viewer_disconnect\" 노출 — 정상 종료 화면(프로필·시간·배너) 대신 SupportStatusPage 종료 상태가 남음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4350,8 +4350,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 60,
-      "done": 322,
+      "notDone": 59,
+      "done": 323,
       "total": 382
     },
     "assignees": [
@@ -4428,9 +4428,9 @@
       {
         "name": "오세진",
         "total": 90,
-        "done": 83,
+        "done": 84,
         "complete": false,
-        "rate": 92
+        "rate": 93
       },
       {
         "name": "이경준",
@@ -4489,15 +4489,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 41,
-        "done": 262,
+        "progress": 40,
+        "done": 263,
         "total": 303
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 43
+        "count": 42
       },
       {
         "label": "진행",
@@ -4509,7 +4509,7 @@
       },
       {
         "label": "해결",
-        "count": 201
+        "count": 202
       },
       {
         "label": "피드백",
@@ -4842,15 +4842,15 @@
       {
         "date": "2026-08-28",
         "cumIssue": 376,
-        "cumDone": 321,
-        "rate": 85,
+        "cumDone": 322,
+        "rate": 86,
         "newCount": 10,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 322,
+        "cumDone": 323,
         "rate": 84,
         "newCount": 7,
         "doneCount": 1
