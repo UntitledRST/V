@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-31T03:02:49.042722+00:00",
+  "fetchedAt": "2026-08-31T03:08:29.395642+00:00",
   "count": 382,
   "issues": [
     {
@@ -128,7 +128,7 @@
       "번호": 12,
       "일감번호": 278628,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][Win][다운로드 exe] 호스트 실행 파일을 1초 내 2회 실행하면 \"RWPort Error … (os error 1224)\" 오류 팝업 — 런처가 같은 초 타임스탬프 폴더에 동시 추출(동시 기동 방어 없음), 호스트 기동 실패 가능",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4339,8 +4339,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 60,
-      "done": 321,
+      "notDone": 59,
+      "done": 322,
       "total": 381
     },
     "assignees": [
@@ -4417,9 +4417,9 @@
       {
         "name": "오세진",
         "total": 90,
-        "done": 82,
+        "done": 83,
         "complete": false,
-        "rate": 91
+        "rate": 92
       },
       {
         "name": "이경준",
@@ -4478,15 +4478,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 42,
-        "done": 261,
+        "progress": 41,
+        "done": 262,
         "total": 303
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 43
+        "count": 42
       },
       {
         "label": "진행",
@@ -4498,7 +4498,7 @@
       },
       {
         "label": "해결",
-        "count": 200
+        "count": 201
       },
       {
         "label": "피드백",
@@ -4831,15 +4831,15 @@
       {
         "date": "2026-08-28",
         "cumIssue": 376,
-        "cumDone": 320,
+        "cumDone": 321,
         "rate": 85,
         "newCount": 10,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-08-31",
         "cumIssue": 382,
-        "cumDone": 321,
+        "cumDone": 322,
         "rate": 84,
         "newCount": 6,
         "doneCount": 1
