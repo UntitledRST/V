@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-08-31T00:43:19.410625+00:00",
-  "count": 206,
+  "fetchedAt": "2026-08-31T04:05:07.727427+00:00",
+  "count": 208,
   "issues": [
     {
       "번호": 1,
@@ -2023,10 +2023,10 @@
       "번호": 169,
       "일감번호": 278044,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[유저 어드민] 미등록 이메일 입력하여 비밀번호 재설정 요청 시, 안내 없이 로그인 화면 복귀",
       "우선순위": "보통(Normal)",
-      "담당자": "심현수",
+      "담당자": "윤종익",
       "작성자": "이명찬",
       "created_on": "2026-08-24 11:09:26",
       "link": "https://projects.rsupport.com/issues/278044"
@@ -2143,9 +2143,9 @@
       "번호": 179,
       "일감번호": 278230,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] MA, BP 권한 사용자 로그인 불가",
-      "우선순위": "보통(Normal)",
+      "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
       "작성자": "이명찬",
       "created_on": "2026-08-25 15:59:07",
@@ -2395,7 +2395,7 @@
       "번호": 200,
       "일감번호": 278576,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] iOS 디바이스 모델 등록 시 저장 실패(에러코드 80200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2474,13 +2474,37 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 15:47:53",
       "link": "https://projects.rsupport.com/issues/278651"
+    },
+    {
+      "번호": 207,
+      "일감번호": 278751,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] '고객사 > 사용자'에서 파트너사의 고객사 이름 클릭 시, 404 에러 발생",
+      "우선순위": "높음(High)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-08-31 10:16:09",
+      "link": "https://projects.rsupport.com/issues/278751"
+    },
+    {
+      "번호": 208,
+      "일감번호": 278766,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민][FE] 네트워크 관리 서버 목록 — 클라이언트 Name 정렬 시 No 순번 뒤섞임(재계산 누락)",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-08-31 11:08:55",
+      "link": "https://projects.rsupport.com/issues/278766"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 110,
+      "notDone": 112,
       "done": 95,
-      "total": 205
+      "total": 207
     },
     "assignees": [
       {
@@ -2499,17 +2523,17 @@
       },
       {
         "name": "심현수",
-        "total": 32,
-        "done": 26,
+        "total": 31,
+        "done": 25,
         "complete": false,
-        "rate": 81
+        "rate": 80
       },
       {
         "name": "윤종익",
-        "total": 82,
+        "total": 84,
         "done": 34,
         "complete": false,
-        "rate": 41
+        "rate": 40
       },
       {
         "name": "이명찬",
@@ -2520,10 +2544,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 57,
-        "done": 33,
+        "total": 58,
+        "done": 34,
         "complete": false,
-        "rate": 57
+        "rate": 58
       }
     ],
     "authors": [
@@ -2536,17 +2560,17 @@
       },
       {
         "name": "이명찬",
-        "total": 97,
+        "total": 98,
         "done": 48,
         "complete": false,
-        "rate": 49
+        "rate": 48
       },
       {
         "name": "이혁(Eden)",
-        "total": 14,
+        "total": 15,
         "done": 12,
         "complete": false,
-        "rate": 85
+        "rate": 80
       }
     ],
     "trackers": [
@@ -2564,19 +2588,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 88,
+        "progress": 90,
         "done": 89,
-        "total": 177
+        "total": 179
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 96
+        "count": 98
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 7
       },
       {
         "label": "보류",
@@ -2584,15 +2608,15 @@
       },
       {
         "label": "해결",
-        "count": 53
+        "count": 52
       },
       {
         "label": "피드백",
-        "count": 6
+        "count": 7
       },
       {
         "label": "완료성공",
-        "count": 36
+        "count": 37
       },
       {
         "label": "중단",
@@ -2614,7 +2638,7 @@
       },
       {
         "label": "높음",
-        "count": 7
+        "count": 9
       },
       {
         "label": "긴급",
@@ -2741,9 +2765,9 @@
       {
         "date": "2026-08-24",
         "newCount": 7,
-        "doneCount": 6,
+        "doneCount": 5,
         "cumIssue": 174,
-        "cumDone": 79,
+        "cumDone": 78,
         "rate": 45
       },
       {
@@ -2751,7 +2775,7 @@
         "newCount": 15,
         "doneCount": 10,
         "cumIssue": 189,
-        "cumDone": 89,
+        "cumDone": 88,
         "rate": 47
       },
       {
@@ -2759,7 +2783,7 @@
         "newCount": 4,
         "doneCount": 2,
         "cumIssue": 193,
-        "cumDone": 91,
+        "cumDone": 90,
         "rate": 47
       },
       {
@@ -2767,14 +2791,22 @@
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 196,
-        "cumDone": 94,
-        "rate": 48
+        "cumDone": 93,
+        "rate": 47
       },
       {
         "date": "2026-08-28",
         "newCount": 10,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 206,
+        "cumDone": 95,
+        "rate": 46
+      },
+      {
+        "date": "2026-08-31",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 208,
         "cumDone": 95,
         "rate": 46
       }
