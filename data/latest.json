@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-01T08:22:59.141525+00:00",
+  "fetchedAt": "2026-09-01T08:28:33.327495+00:00",
   "count": 396,
   "issues": [
     {
@@ -271,7 +271,7 @@
       "번호": 25,
       "일감번호": 278748,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트][로그] 원격 제어 시작 시마다 \"PNS message parsing failed\" error 로그 기록 — 파일 전송 서비스가 무관한 PNS 메시지까지 파싱, 기능 영향 없이 error 로그·서버 전송 오염",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4498,8 +4498,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 61,
-      "done": 334,
+      "notDone": 60,
+      "done": 335,
       "total": 395
     },
     "assignees": [
@@ -4569,9 +4569,9 @@
       {
         "name": "오세진",
         "total": 98,
-        "done": 89,
+        "done": 90,
         "complete": false,
-        "rate": 90
+        "rate": 91
       },
       {
         "name": "이경준",
@@ -4630,8 +4630,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 36,
-        "done": 268,
+        "progress": 35,
+        "done": 269,
         "total": 304
       }
     ],
@@ -4642,7 +4642,7 @@
       },
       {
         "label": "진행",
-        "count": 12
+        "count": 11
       },
       {
         "label": "보류",
@@ -4650,7 +4650,7 @@
       },
       {
         "label": "해결",
-        "count": 211
+        "count": 212
       },
       {
         "label": "피드백",
@@ -4991,16 +4991,16 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 332,
+        "cumDone": 333,
         "rate": 87,
         "newCount": 12,
-        "doneCount": 5
+        "doneCount": 6
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 334,
-        "rate": 84,
+        "cumDone": 335,
+        "rate": 85,
         "newCount": 13,
         "doneCount": 2
       }
