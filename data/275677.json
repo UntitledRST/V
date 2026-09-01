@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-01T00:38:01.570012+00:00",
-  "count": 208,
+  "fetchedAt": "2026-09-01T05:21:06.358323+00:00",
+  "count": 212,
   "issues": [
     {
       "번호": 1,
@@ -1039,7 +1039,7 @@
       "번호": 87,
       "일감번호": 276585,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] APK 파일 상세 화면에서 [복원] 버튼 클릭 후, 다운로드 클릭할 경우, 다운로드 실패(에러코드 802200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1327,7 +1327,7 @@
       "번호": 111,
       "일감번호": 277066,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 로그인 계정 잠금 해제 후 비밀번호 오입력하여 로그인 12회 시도 시, 계정 잠금되지 않음",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2191,7 +2191,7 @@
       "번호": 183,
       "일감번호": 278265,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 고객사 상세 > 접속페이지 탭 내 검색 버튼 미노출 ",
       "우선순위": "보통(Normal)",
       "담당자": "심현수",
@@ -2203,7 +2203,7 @@
       "번호": 184,
       "일감번호": 278266,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 고객사 상세 > 고객 지원 이력 탭에서 10행 초과 시 페이지네이션 미노출",
       "우선순위": "보통(Normal)",
       "담당자": "심현수",
@@ -2371,7 +2371,7 @@
       "번호": 198,
       "일감번호": 278574,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 스토리지 서버 신규 등록 저장 실패(에러 80200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2395,7 +2395,7 @@
       "번호": 200,
       "일감번호": 278576,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] iOS 디바이스 모델 등록 시 저장 실패(에러코드 80200)",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2407,7 +2407,7 @@
       "번호": 201,
       "일감번호": 278580,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 에이전트 공지 등록 저장 시 400 오류로 등록 실패",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -2498,13 +2498,61 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-08-31 11:08:55",
       "link": "https://projects.rsupport.com/issues/278766"
+    },
+    {
+      "번호": 209,
+      "일감번호": 278902,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] ASP 관리자(AA)가 고객사 등록 시 승인 대기 상태로 등록됨(기능 ID : CCRT-017 비고 내용 위반)",
+      "우선순위": "높음(High)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-09-01 10:16:46",
+      "link": "https://projects.rsupport.com/issues/278902"
+    },
+    {
+      "번호": 210,
+      "일감번호": 278915,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 기존 등록된 iOS 디바이스 모델과 동일 모델 이름 저장 시, 명확한 실패 원인  미노출",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "이명찬",
+      "created_on": "2026-09-01 11:05:07",
+      "link": "https://projects.rsupport.com/issues/278915"
+    },
+    {
+      "번호": 211,
+      "일감번호": 278917,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 어드민 사용 이력 엑셀 다운로드 시 시간이 웹과 상이(엑셀 KST, 웹 UTC)",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "이명찬",
+      "created_on": "2026-09-01 11:17:27",
+      "link": "https://projects.rsupport.com/issues/278917"
+    },
+    {
+      "번호": 212,
+      "일감번호": 278920,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 어드민 사용 이력 상세 > responseStatus 미노출('기능 ID: AUDH-002' 위반)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이명찬",
+      "created_on": "2026-09-01 11:25:10",
+      "link": "https://projects.rsupport.com/issues/278920"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 112,
-      "done": 95,
-      "total": 207
+      "notDone": 113,
+      "done": 98,
+      "total": 211
     },
     "assignees": [
       {
@@ -2530,10 +2578,10 @@
       },
       {
         "name": "윤종익",
-        "total": 84,
+        "total": 86,
         "done": 34,
         "complete": false,
-        "rate": 40
+        "rate": 39
       },
       {
         "name": "이명찬",
@@ -2544,10 +2592,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 58,
-        "done": 34,
+        "total": 60,
+        "done": 37,
         "complete": false,
-        "rate": 58
+        "rate": 61
       }
     ],
     "authors": [
@@ -2560,10 +2608,10 @@
       },
       {
         "name": "이명찬",
-        "total": 98,
-        "done": 48,
+        "total": 102,
+        "done": 51,
         "complete": false,
-        "rate": 48
+        "rate": 50
       },
       {
         "name": "이혁(Eden)",
@@ -2588,19 +2636,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 90,
-        "done": 89,
-        "total": 179
+        "progress": 91,
+        "done": 92,
+        "total": 183
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 96
+        "count": 100
       },
       {
         "label": "진행",
-        "count": 9
+        "count": 7
       },
       {
         "label": "보류",
@@ -2608,15 +2656,15 @@
       },
       {
         "label": "해결",
-        "count": 52
+        "count": 51
       },
       {
         "label": "피드백",
-        "count": 7
+        "count": 6
       },
       {
         "label": "완료성공",
-        "count": 37
+        "count": 41
       },
       {
         "label": "중단",
@@ -2634,11 +2682,11 @@
       },
       {
         "label": "보통",
-        "count": 199
+        "count": 202
       },
       {
         "label": "높음",
-        "count": 9
+        "count": 10
       },
       {
         "label": "긴급",
@@ -2693,49 +2741,49 @@
       {
         "date": "2026-08-07",
         "newCount": 8,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 91,
-        "cumDone": 44,
-        "rate": 48
+        "cumDone": 45,
+        "rate": 49
       },
       {
         "date": "2026-08-10",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 93,
-        "cumDone": 44,
-        "rate": 47
+        "cumDone": 45,
+        "rate": 48
       },
       {
         "date": "2026-08-11",
         "newCount": 6,
         "doneCount": 0,
         "cumIssue": 99,
-        "cumDone": 44,
-        "rate": 44
+        "cumDone": 45,
+        "rate": 45
       },
       {
         "date": "2026-08-12",
         "newCount": 35,
         "doneCount": 12,
         "cumIssue": 134,
-        "cumDone": 56,
-        "rate": 42
+        "cumDone": 57,
+        "rate": 43
       },
       {
         "date": "2026-08-13",
         "newCount": 12,
         "doneCount": 6,
         "cumIssue": 146,
-        "cumDone": 62,
-        "rate": 42
+        "cumDone": 63,
+        "rate": 43
       },
       {
         "date": "2026-08-14",
         "newCount": 6,
         "doneCount": 3,
         "cumIssue": 152,
-        "cumDone": 65,
+        "cumDone": 66,
         "rate": 43
       },
       {
@@ -2743,7 +2791,7 @@
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 160,
-        "cumDone": 70,
+        "cumDone": 71,
         "rate": 44
       },
       {
@@ -2751,15 +2799,15 @@
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 161,
-        "cumDone": 70,
-        "rate": 43
+        "cumDone": 71,
+        "rate": 44
       },
       {
         "date": "2026-08-20",
         "newCount": 6,
         "doneCount": 3,
         "cumIssue": 167,
-        "cumDone": 73,
+        "cumDone": 74,
         "rate": 44
       },
       {
@@ -2767,7 +2815,7 @@
         "newCount": 7,
         "doneCount": 5,
         "cumIssue": 174,
-        "cumDone": 78,
+        "cumDone": 79,
         "rate": 45
       },
       {
@@ -2775,7 +2823,7 @@
         "newCount": 15,
         "doneCount": 10,
         "cumIssue": 189,
-        "cumDone": 88,
+        "cumDone": 89,
         "rate": 47
       },
       {
@@ -2783,7 +2831,7 @@
         "newCount": 4,
         "doneCount": 2,
         "cumIssue": 193,
-        "cumDone": 90,
+        "cumDone": 91,
         "rate": 47
       },
       {
@@ -2791,23 +2839,31 @@
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 196,
-        "cumDone": 93,
-        "rate": 47
+        "cumDone": 94,
+        "rate": 48
       },
       {
         "date": "2026-08-28",
         "newCount": 10,
-        "doneCount": 2,
+        "doneCount": 4,
         "cumIssue": 206,
-        "cumDone": 95,
-        "rate": 46
+        "cumDone": 98,
+        "rate": 48
       },
       {
         "date": "2026-08-31",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 208,
-        "cumDone": 95,
+        "cumDone": 98,
+        "rate": 47
+      },
+      {
+        "date": "2026-09-01",
+        "newCount": 4,
+        "doneCount": 0,
+        "cumIssue": 212,
+        "cumDone": 98,
         "rate": 46
       }
     ]
