@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T05:47:08.154514+00:00",
+  "fetchedAt": "2026-09-02T05:52:49.740098+00:00",
   "count": 396,
   "issues": [
     {
@@ -29,7 +29,7 @@
       "번호": 3,
       "일감번호": 278942,
       "분류": "업무(Job)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [작업][뷰어] 소리공유 마이크 버튼 토글이 꺼지지 않음 + stream mute 처리 제거",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4505,8 +4505,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 52,
-      "done": 343,
+      "notDone": 51,
+      "done": 344,
       "total": 395
     },
     "assignees": [
@@ -4569,9 +4569,9 @@
       {
         "name": "송건호",
         "total": 116,
-        "done": 109,
+        "done": 110,
         "complete": false,
-        "rate": 93
+        "rate": 94
       },
       {
         "name": "오세진",
@@ -4619,8 +4619,8 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 11,
-        "done": 10,
+        "progress": 10,
+        "done": 11,
         "total": 21
       },
       {
@@ -4649,7 +4649,7 @@
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 6
       },
       {
         "label": "보류",
@@ -4657,7 +4657,7 @@
       },
       {
         "label": "해결",
-        "count": 220
+        "count": 221
       },
       {
         "label": "피드백",
@@ -5006,10 +5006,10 @@
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 343,
+        "cumDone": 344,
         "rate": 87,
         "newCount": 13,
-        "doneCount": 5
+        "doneCount": 6
       }
     ]
   }
