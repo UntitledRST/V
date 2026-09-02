@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T04:45:02.318408+00:00",
+  "fetchedAt": "2026-09-02T04:50:34.630972+00:00",
   "count": 396,
   "issues": [
     {
@@ -84,7 +84,7 @@
       "번호": 8,
       "일감번호": 278937,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [작업][호스트] wakelock 미적용 — macOS 화면 잠금으로 세션 중단",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -817,12 +817,29 @@
       "번호": 74,
       "일감번호": 277329,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][접속대기] 대기 종료 확인 팝업 문구 2건 — 버튼 명칭 '대기종료' 현행 유지 안내 + 본문 \"홈 화면으로 이동합니다\" 유지 여부 판단 요청",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
       "created_on": "2026-08-14 11:08:50",
-      "link": "https://projects.rsupport.com/issues/277329"
+      "link": "https://projects.rsupport.com/issues/277329",
+      "comments": [
+        {
+          "author": "김미령",
+          "created_on": "2026-08-14T13:12:38+09:00",
+          "note": "*[기획 확인 회신] 대기 종료 확인 팝업 문구 2건*\n\n*■ 확인 1 (상단바 버튼 '대기종료') — 현행 유지 확정*\n개발 현행 \"대기종료\"를 정본으로 확정합니다. 상단바 공간·간결성상 적절하고, 확인 팝업 타이틀('접속 대기 종료')·버튼('종료')이 기획 표기를 따르고 있어 혼선 없습니다. 기획서(Figma) 표기 '뷰어 접속 대기 종료'를 '대기종료'로 정정했습니다. *코드 수정 불필요* (@appbar_end_waiting@=\"대기종료\" 이미 일치).\n\n*■ 확인 2 (팝업 본문 '…홈 화면으로 이동합니다.') — 실동작 기준 정정 (B)*\n[종료] 시 실제로는 대기 세션 취소 + 대기 창/탭 닫기만 일어나고 '홈 화면 이동'은 보장되지 않습니다(웹=탭 닫히며 직전 탭으로 포커스 / 응용=대기 창만 종료, 홈 창 자동 전면화 안 됨). 확인 팝업 본문은 실제 되는 것만 안내해야 오인이 없으므로, 본문을 *\"접속 대기를 종료합니다.\"* 로 정정합니다.\n* 반영 범위: @viewer_wait_exit_message@ *8개 로케일 동시 정정* 요청(타이틀 @viewer_wait_exit_title@ · 버튼 @viewer_wait_exit_button@ 무수정).\n* 문구안(원어민 검수 권장):\n** ko: 접속 대기를 종료합니다.\n** en: Standby will end.\n** ja: 接続待機を終了します。\n** zh-CN: 将结束连接等待。\n** zh-TW: 將結束連線等待。\n** fr: L'attente de connexion prend fin.\n** es: La espera de conexión finalizará.\n** pt: A espera de conexão será encerrada.\n\n*■ Figma*\n* 정본 화면([웹뷰어] 상담원_원격지원 대기_C01): https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=3739-14048\n* 결정 콜아웃(Callout-#277329): https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=21297-37106\n\n*■ Daily History*: v0.3.7 · #277329 대기 종료 팝업 문구 2건 확정(버튼 '대기종료' 정본화 · 본문 '홈 이동' 표현 → '접속 대기를 종료합니다.' 실동작 정정)\n*■ 근거*: UX-POP-004 신설 · connect-progress CPRG-WAIT-005 정정\n\n확인 2의 본문 8개 로케일 정정을 요청드리며 송건호님께 재할당합니다. (확인 1은 코드 변경 없음)"
+        },
+        {
+          "author": "송건호",
+          "created_on": "2026-08-18T15:54:52+09:00",
+          "note": "*[개발 반영 완료] MR !1686 머지*\n\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1686\nmerge commit: aad10cac1\n\n*■ 확인 1 (상단바 버튼 '대기종료') — 코드 변경 없음*\n기획 확정대로 개발 현행이 정본입니다. @appbar_end_waiting@ 이 이미 \"대기종료\"로 확정안과 일치해 변경 대상이 없었습니다.\n\n*■ 확인 2 (팝업 본문) — B안(실동작 기준 정정) 반영*\n@viewer_wait_exit_message@ 를 8개 로케일 모두 정정했습니다. 타이틀(@viewer_wait_exit_title@)·버튼(@viewer_wait_exit_button@)은 무수정입니다.\n\n|_. 로케일 |_. 정정 후 |\n| ko | 접속 대기를 종료합니다. |\n| en | Standby will end. |\n| ja | 接続待機を終了します。 |\n| zh-CN | 将结束连接等待。 |\n| zh-TW | 將結束連線等待。 |\n| fr | L'attente de connexion prend fin. |\n| es | La espera de conexión finalizará. |\n| pt | A espera de conexão será encerrada. |\n\nGoogle Sheet(단일 원본) 수정 후 build_runner 재생성 경로를 따랐고, CSV·생성 Dart 파일은 직접 편집하지 않았습니다.\n\n*■ 원인*\n확인 팝업 본문이 실제 동작과 무관한 안내를 담고 있었습니다. [종료] 경로(@viewer_wait_view.dart@ 의 @_closePendingWaitSessionAndWindow@)는 대기 세션 취소 + 창/탭 닫기만 수행하고 홈 화면 이동 코드가 없습니다. web은 @window.close()@ 후 브라우저가 직전 탭으로 포커스하고, 응용은 @controller.terminate()@ 로 프로세스를 종료하므로 에이전트 홈의 전면화가 보장되지 않습니다. QA 지적이 코드와 정확히 일치했습니다.\n\n*■ 동반 처리 — 회귀 테스트 4건 복구*\n#274590 구현 때 문구·버튼 라벨이 바뀌었으나 테스트 기대값이 따라가지 않아 develop 에서 이미 실패 중이었습니다(기대 \"…이동하시겠습니까?\"/\"확인\" vs 구현 \"…이동합니다.\"/\"종료\"). viewer 테스트 baseline 이 red 라 신호가 묻혀 있었습니다.\n기대값을 리터럴 대신 위젯 트리에 주입된 번역 리소스에서 읽도록 바꿔(@stringsOf@ 헬퍼) 이후 문구 정정에는 다시 깨지지 않게 했습니다.\n\n*■ 검증*\n* CI 파이프라인 25745: success (viewer:web:build · host:viewer:e2e:live · i18n:hardcoded-korean · semantics:identifiers · ssot:review · ai-review 전부 통과)\n* viewer 전체 회귀: develop 22 fail -> 본 변경 18 fail (차이 = 복구한 4건)\n* flutter analyze: 변경 파일 지적 0건\n* 언어리소스 키 손실 없음 (1126 -> 1128)\n\n*■ 참고 / 잔여*\n* 8개 로케일 문구는 기획 회신의 문구안을 그대로 반영했습니다. 기획이 권장한 원어민 검수는 미완입니다.\n* 언어리소스 재생성이 시트에 선행 반영돼 있던 타 작업 키 2건(@operationrecord_file_share_start@ / @operationrecord_file_share_end@)을 함께 포함했습니다. 생성물은 부분 재생성이 불가하며, 두 키 모두 현재 사용처가 없어 동작 영향은 없습니다."
+        },
+        {
+          "author": "김신혜",
+          "created_on": "2026-09-02T13:27:35+09:00",
+          "note": "*[QA 재확인] 팝업 본문이 확정 문구와 다릅니다*\n\n* 확정(08-14 · MR !1686 반영): \"접속 대기를 종료합니다.\"\n* 현 develop(l10n 시트 08-19 변경분, 커밋 @062767074@ 동승): \"고객에게 안내한 접속번호가 만료됩니다.\" — 8개 로케일 전부, 연결 일감 없음.\n\n@mrkim 님 정본 확인 부탁드립니다(확정 유지 / 변경분으로 재확정). @ghsong 님 08-19 변경 경위 확인 부탁드립니다. 확인 전까지 완료 전환 보류합니다."
+        }
+      ]
     },
     {
       "번호": 75,
@@ -4569,16 +4586,16 @@
       {
         "name": "송건호",
         "total": 116,
-        "done": 109,
+        "done": 108,
         "complete": false,
         "rate": 93
       },
       {
         "name": "오세진",
         "total": 98,
-        "done": 93,
+        "done": 94,
         "complete": false,
-        "rate": 94
+        "rate": 95
       },
       {
         "name": "이경준",
@@ -4619,14 +4636,14 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 12,
-        "done": 9,
+        "progress": 11,
+        "done": 10,
         "total": 21
       },
       {
         "label": "기능(Function)",
-        "progress": 8,
-        "done": 55,
+        "progress": 9,
+        "done": 54,
         "total": 63
       },
       {
@@ -4645,7 +4662,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 38
+        "count": 37
       },
       {
         "label": "진행",
@@ -4661,7 +4678,7 @@
       },
       {
         "label": "피드백",
-        "count": 9
+        "count": 10
       },
       {
         "label": "완료성공",
@@ -4926,15 +4943,15 @@
       {
         "date": "2026-08-14",
         "cumIssue": 326,
-        "cumDone": 290,
+        "cumDone": 289,
         "rate": 89,
         "newCount": 4,
-        "doneCount": 4
+        "doneCount": 3
       },
       {
         "date": "2026-08-18",
         "cumIssue": 330,
-        "cumDone": 294,
+        "cumDone": 293,
         "rate": 89,
         "newCount": 4,
         "doneCount": 4
@@ -4942,7 +4959,7 @@
       {
         "date": "2026-08-19",
         "cumIssue": 334,
-        "cumDone": 298,
+        "cumDone": 297,
         "rate": 89,
         "newCount": 4,
         "doneCount": 4
@@ -4950,7 +4967,7 @@
       {
         "date": "2026-08-20",
         "cumIssue": 337,
-        "cumDone": 301,
+        "cumDone": 300,
         "rate": 89,
         "newCount": 3,
         "doneCount": 3
@@ -4958,7 +4975,7 @@
       {
         "date": "2026-08-24",
         "cumIssue": 339,
-        "cumDone": 303,
+        "cumDone": 302,
         "rate": 89,
         "newCount": 2,
         "doneCount": 2
@@ -4966,7 +4983,7 @@
       {
         "date": "2026-08-25",
         "cumIssue": 342,
-        "cumDone": 306,
+        "cumDone": 305,
         "rate": 89,
         "newCount": 3,
         "doneCount": 3
@@ -4974,7 +4991,7 @@
       {
         "date": "2026-08-26",
         "cumIssue": 352,
-        "cumDone": 314,
+        "cumDone": 313,
         "rate": 89,
         "newCount": 10,
         "doneCount": 8
@@ -4982,7 +4999,7 @@
       {
         "date": "2026-08-27",
         "cumIssue": 362,
-        "cumDone": 323,
+        "cumDone": 322,
         "rate": 89,
         "newCount": 10,
         "doneCount": 9
@@ -4990,7 +5007,7 @@
       {
         "date": "2026-08-28",
         "cumIssue": 371,
-        "cumDone": 330,
+        "cumDone": 329,
         "rate": 89,
         "newCount": 9,
         "doneCount": 7
@@ -4998,7 +5015,7 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 338,
+        "cumDone": 337,
         "rate": 88,
         "newCount": 12,
         "doneCount": 8
@@ -5009,7 +5026,7 @@
         "cumDone": 342,
         "rate": 86,
         "newCount": 13,
-        "doneCount": 4
+        "doneCount": 5
       }
     ]
   }
