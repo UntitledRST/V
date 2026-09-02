@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T09:17:14.080753+00:00",
+  "fetchedAt": "2026-09-02T09:22:50.119687+00:00",
   "count": 396,
   "issues": [
     {
@@ -1455,12 +1455,24 @@
       "번호": 130,
       "일감번호": 275976,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [기획 요청][응용뷰어] 파일 다운로드 계열(상담 로그·지원이력 엑셀·수신 파일)의 저장 위치 기획 정의 없음 — 무언 저장 + 안내에 경로·파일명 부재로 사용자가 저장 위치를 인지할 수 없음",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
       "created_on": "2026-08-03 10:06:56",
-      "link": "https://projects.rsupport.com/issues/275976"
+      "link": "https://projects.rsupport.com/issues/275976",
+      "comments": [
+        {
+          "author": "김미령",
+          "created_on": "2026-08-03T11:52:17+09:00",
+          "note": "[기획 확정 회신] 응용 뷰어 파일 다운로드 3계열(상담 로그·지원이력 엑셀·수신 파일) — 저장 경로·완료 인지·파일명 정본 정의\n\n■ 확인 내용 (코드 실측 develop@624a7dd81 기준, QA 지적 3축 모두 사실 확인)\n1. 저장 경로 정본: 3기능 공통, 응용 뷰어 = OS 다운로드(Downloads) 폴더 확정 (웹 뷰어 = 브라우저 다운로드, 현행 유지)\n - 캡쳐(#275468)·녹화(#275727)·호스트 수신(#275053)의 공용문서 계열과 의도적으로 다르게 확정: 상담 로그·이력 엑셀은 고객 개인정보 포함 → 전 사용자 열람 가능한 공용문서 부적합, 사용자별 영역이 보안상 우월. 별도 경로 설정(기능설정)은 신설하지 않음(차기 후보).\n2. 저장 완료 인지 수단:\n - 상담 로그·엑셀: 완료 토스트에 파일명 표기 + [폴더 열기] 액션 제공(응용). 저장 후 폴더 자동 열기는 미채택. 웹은 브라우저 다운로드 표시줄로 충분.\n - 수신 파일: 채팅 수신 완료 메시지(기구현) + '받은 파일 열기'(응용 전용). '받은 파일 열기'는 구 PRD 잔재가 아니라 현행 기획서(전송 메뉴 페이지)에 살아있는 정본으로 확인 → 유효 확정. 호출 대상 = 다운로드 폴더. 현행 코드 미구현 → 개발 대상.\n3. 파일명 규칙(epoch 폐기, 녹화 #275727 계열 통일, 파일명에 PII 미포함):\n - 상담 로그 RemoteCall_Log_YYYYMMDD_HHMMSS_<세션ID>.txt / 엑셀 RemoteCall_History_YYYYMMDD_HHMMSS.xlsx / 수신 파일 원본명 유지\n - 동일 파일명 존재 시 덮어쓰기 금지, '이름 (1).확장자' 자동 접미로 구분 저장(#275978 처리 방향 근거 제공)\n\n■ Figma 위치 (정본 셀)\n- 상담 종료(상담 로그, PC원격/모바일/영상 각 2프레임 = 6곳 일괄 정정):\n PC① https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44204\n PC② https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44205\n 모바일① https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44206\n 모바일② https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44207\n 영상① https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44208\n 영상② https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-44209\n- 상담이력(엑셀저장 정본 셀): https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-48553\n- 전송 메뉴(수신 파일 정본 셀 3곳):\n https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-48564\n https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-48565\n https://www.figma.com/design/icu9b2zktP4ofsqbDNvgOz/?node-id=20055-48566\n\n■ 조치 내용\n- 상담 종료 페이지: 낡은 웹 전제 문구(\"브라우저에서 설정한 파일 저장 경로\") → 웹/응용 분리 정본으로 6곳 일괄 교체\n- 상담이력 페이지: 엑셀저장 셀에 저장 위치·파일명·완료 안내 정의 추가 (엑셀 내용/컬럼 구성 정의는 #275977 별건으로 처리)\n- 전송 메뉴 페이지: 수신 파일 저장 위치·중복 접미·'받은 파일 열기' 유효 확정 보강\n- 스펙 정본 신설: rc8/design/docs/spec/viewer-download/viewer-download-policy.md (VW-DL-001~005) + INDEX 등록\n\n■ Daily History\n- 상담 종료 v0.1.7 / 상담이력 v0.2.11 / 전송 메뉴 v0.2.15\n\n■ 후속 개발 항목 (뷰어)\n① FileDownloadService 반환 경로 배선 → 완료 토스트 파일명 표기 + [폴더 열기] (openFolder 기구현 재사용, l10n 신규 키)\n② 상담 로그·엑셀 파일명 규칙 교체 ③ 수신 파일 동일명 (1) 접미 — #275978과 동일 코드 경로 ④ '받은 파일 열기' 구현(응용 전용)\n연관: #275977(엑셀 내용, 별건) · #275978(덮어쓰기 결함) · #275053(호스트 수신 경로) · #275727(녹화 정책) · #275468(캡쳐 동선)"
+        },
+        {
+          "author": "김신혜",
+          "created_on": "2026-09-02T18:21:55+09:00",
+          "note": "[후속 개발 항목 미착수 확인 + '받은 파일 열기' 메뉴명 문의]\n\n■ 요지\n- 08-03 확정 후속 개발 항목 4건 중 ③(#275978)만 반영되었고, ①②④는 개발 일감이 생성되지 않아 미착수입니다(코드 실측: service develop 8.0.1+669). 후속 개발 일감 생성 부탁드립니다.\n\n■ 미착수 3건 (응용 뷰어)\n- ① 저장 경로 반환 배선 -> 완료 토스트 파일명 표기 + [폴더 열기]: FileDownloadService.downloadFile 이 여전히 반환형 void 로, 네이티브 저장 지점이 돌려주는 실제 저장 경로를 버립니다(file_download_service.dart:20). 완료 토스트에 파일명/경로/후속 액션 없음.\n- ② 파일명 규칙: 상담 로그 support_log_{roomId}_{epoch}.txt(viewer_finish_complete_page.dart:229) · 지원이력 엑셀 consultation_history_{epoch}.xlsx(dashboard_bloc.dart:38) — 확정 규칙(RemoteCall_Log_/RemoteCall_History_) 미적용.\n- ④ '받은 파일 열기': 관련 문구/버튼/호출부 전건 0건. 전송 패널에는 [파일 보내기]·[파일 가져오기]·[공유함] 3개만 노출되고, 채팅의 수신 파일 항목에도 클릭 동작이 없습니다.\n\n■ 문의 - '받은 파일 열기' 메뉴명과 동작 정합 (@mrkim, ④ 구현 전 확정 요청)\n- 확정 정의는 \"클릭 시 받은 파일이 저장된 폴더 호출\"인데, 메뉴명 '받은 파일 열기'는 사용자에게 파일 자체가 실행된다는 기대를 주어 실제 동작(폴더 열기)과 어긋나 보입니다.\n- 같은 앱 내 명명: 뷰어는 폴더를 여는 기능을 이미 '폴더 열기'(캡쳐·녹화 폴더)로 별도 명명하고 있습니다.\n- 고객(호스트) 측 대칭: 채팅의 받은/보낸 파일 항목 클릭은 원본 파일을 연결 프로그램으로 실행하도록 확정·구현되어 있습니다(#275391, Figma 867:13760 Description 2-2). 같은 '파일 열기' 표현이 뷰어에서는 폴더를 여는 형태가 되어 양측 결과가 달라집니다.\n- 확인 요청: (A) 메뉴명을 동작에 맞게 조정(예: '받은 파일 폴더 열기') 또는 (B) 동작을 메뉴명에 맞춰 파일 실행으로 정의 — (B)라면 수신 파일이 여러 건일 때 열기 대상 선택 기준(최근 1건·목록 제공 등) 정의가 추가로 필요합니다.\n- 참고: 원 질의(본 일감 [참고 사항])에서 저희가 '받은 파일 열기'의 Figma 유효 여부만 확인 요청드려, 명칭·동작 정합 축은 포함하지 못했습니다.\n\n■ 상태\n- ④ 메뉴명·동작 정합 회신이 필요해 상태를 피드백으로 전환합니다. 회신 확정 후 다시 종결 처리 부탁드립니다.\n- 개발 축(①②④)은 본 일감이 아닌 신규 개발 일감으로 추적 부탁드립니다."
+        }
+      ]
     },
     {
       "번호": 131,
@@ -4517,17 +4529,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 50,
-      "done": 345,
+      "notDone": 51,
+      "done": 344,
       "total": 395
     },
     "assignees": [
       {
         "name": "김미령",
         "total": 52,
-        "done": 52,
-        "complete": true,
-        "rate": 100
+        "done": 51,
+        "complete": false,
+        "rate": 98
       },
       {
         "name": "김성식",
@@ -4637,8 +4649,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 8,
-        "done": 55,
+        "progress": 9,
+        "done": 54,
         "total": 63
       },
       {
@@ -4669,11 +4681,11 @@
       },
       {
         "label": "해결",
-        "count": 222
+        "count": 221
       },
       {
         "label": "피드백",
-        "count": 10
+        "count": 11
       },
       {
         "label": "완료성공",
@@ -4866,23 +4878,23 @@
       {
         "date": "2026-08-03",
         "cumIssue": 276,
-        "cumDone": 247,
+        "cumDone": 246,
         "rate": 89,
         "newCount": 10,
-        "doneCount": 10
+        "doneCount": 9
       },
       {
         "date": "2026-08-04",
         "cumIssue": 287,
-        "cumDone": 257,
-        "rate": 90,
+        "cumDone": 256,
+        "rate": 89,
         "newCount": 11,
         "doneCount": 10
       },
       {
         "date": "2026-08-05",
         "cumIssue": 299,
-        "cumDone": 266,
+        "cumDone": 265,
         "rate": 89,
         "newCount": 12,
         "doneCount": 9
@@ -4890,7 +4902,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 301,
-        "cumDone": 268,
+        "cumDone": 267,
         "rate": 89,
         "newCount": 2,
         "doneCount": 2
@@ -4898,31 +4910,31 @@
       {
         "date": "2026-08-07",
         "cumIssue": 306,
-        "cumDone": 271,
-        "rate": 89,
+        "cumDone": 270,
+        "rate": 88,
         "newCount": 5,
         "doneCount": 3
       },
       {
         "date": "2026-08-10",
         "cumIssue": 309,
-        "cumDone": 274,
-        "rate": 89,
+        "cumDone": 273,
+        "rate": 88,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-11",
         "cumIssue": 311,
-        "cumDone": 276,
-        "rate": 89,
+        "cumDone": 275,
+        "rate": 88,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-12",
         "cumIssue": 317,
-        "cumDone": 282,
+        "cumDone": 281,
         "rate": 89,
         "newCount": 6,
         "doneCount": 6
@@ -4930,7 +4942,7 @@
       {
         "date": "2026-08-13",
         "cumIssue": 322,
-        "cumDone": 287,
+        "cumDone": 286,
         "rate": 89,
         "newCount": 5,
         "doneCount": 5
@@ -4938,7 +4950,7 @@
       {
         "date": "2026-08-14",
         "cumIssue": 326,
-        "cumDone": 291,
+        "cumDone": 290,
         "rate": 89,
         "newCount": 4,
         "doneCount": 4
@@ -4946,7 +4958,7 @@
       {
         "date": "2026-08-18",
         "cumIssue": 330,
-        "cumDone": 295,
+        "cumDone": 294,
         "rate": 89,
         "newCount": 4,
         "doneCount": 4
@@ -4954,39 +4966,39 @@
       {
         "date": "2026-08-19",
         "cumIssue": 334,
-        "cumDone": 299,
-        "rate": 90,
+        "cumDone": 298,
+        "rate": 89,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-20",
         "cumIssue": 337,
-        "cumDone": 302,
-        "rate": 90,
+        "cumDone": 301,
+        "rate": 89,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-24",
         "cumIssue": 339,
-        "cumDone": 304,
-        "rate": 90,
+        "cumDone": 303,
+        "rate": 89,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-25",
         "cumIssue": 342,
-        "cumDone": 307,
-        "rate": 90,
+        "cumDone": 306,
+        "rate": 89,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-26",
         "cumIssue": 352,
-        "cumDone": 315,
+        "cumDone": 314,
         "rate": 89,
         "newCount": 10,
         "doneCount": 8
@@ -4994,15 +5006,15 @@
       {
         "date": "2026-08-27",
         "cumIssue": 362,
-        "cumDone": 324,
-        "rate": 90,
+        "cumDone": 323,
+        "rate": 89,
         "newCount": 10,
         "doneCount": 9
       },
       {
         "date": "2026-08-28",
         "cumIssue": 371,
-        "cumDone": 331,
+        "cumDone": 330,
         "rate": 89,
         "newCount": 9,
         "doneCount": 7
@@ -5010,15 +5022,15 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 339,
-        "rate": 89,
+        "cumDone": 338,
+        "rate": 88,
         "newCount": 12,
         "doneCount": 8
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 345,
+        "cumDone": 344,
         "rate": 87,
         "newCount": 13,
         "doneCount": 6
