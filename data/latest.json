@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T01:52:34.550714+00:00",
+  "fetchedAt": "2026-09-02T01:58:19.773955+00:00",
   "count": 396,
   "issues": [
     {
@@ -95,7 +95,7 @@
       "번호": 9,
       "일감번호": 278936,
       "분류": "업무(Job)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [작업][호스트] 중계페이지 서버 조회 시 PNS 부재가 무처리로 종료페이지 이동 — /server/info 에 networkGroupId 추가",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -161,7 +161,7 @@
       "번호": 15,
       "일감번호": 278794,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [접속페이지][연결] 세션 추적 시작 시점의 일시 네트워크 오류 시 '상담 종료' 화면으로 전이 — 상담이 시작·종료되지 않았는데 종료로 오인 표시, 오류 안내·재시도 수단 없음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4498,8 +4498,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 58,
-      "done": 337,
+      "notDone": 56,
+      "done": 339,
       "total": 395
     },
     "assignees": [
@@ -4569,9 +4569,9 @@
       {
         "name": "오세진",
         "total": 98,
-        "done": 91,
+        "done": 93,
         "complete": false,
-        "rate": 92
+        "rate": 94
       },
       {
         "name": "이경준",
@@ -4612,8 +4612,8 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 13,
-        "done": 8,
+        "progress": 12,
+        "done": 9,
         "total": 21
       },
       {
@@ -4630,8 +4630,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 35,
-        "done": 269,
+        "progress": 34,
+        "done": 270,
         "total": 304
       }
     ],
@@ -4642,7 +4642,7 @@
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 9
       },
       {
         "label": "보류",
@@ -4650,7 +4650,7 @@
       },
       {
         "label": "해결",
-        "count": 214
+        "count": 216
       },
       {
         "label": "피드백",
@@ -4991,18 +4991,18 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 334,
+        "cumDone": 335,
         "rate": 87,
         "newCount": 12,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 337,
-        "rate": 85,
+        "cumDone": 339,
+        "rate": 86,
         "newCount": 13,
-        "doneCount": 3
+        "doneCount": 4
       }
     ]
   }
