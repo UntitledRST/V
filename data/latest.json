@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T06:04:15.605255+00:00",
+  "fetchedAt": "2026-09-02T06:10:48.142136+00:00",
   "count": 396,
   "issues": [
     {
@@ -3824,18 +3824,7 @@
       "담당자": "박예지",
       "created_on": "2026-07-10 14:39:57",
       "link": "https://projects.rsupport.com/issues/274112",
-      "comments": [
-        {
-          "author": "강승아",
-          "created_on": "2026-07-10T14:50:14+09:00",
-          "note": "안녕하세요 우영님, 검증팀으로부터 디자인 관련 이슈가 넘어와서 전달드립니다.\r\n\r\n*제공되는 기능이 누락되지 않는 이상 UI 순서 등은 디자인과 기획이 모두 동일하지 않더라도 문제가 되지 않는다* 고 생각합니다.\r\n검증팀에서는 기획 화면과 디자인이 동일하지 않으면 이슈를 등록하는 것으로 보여서 추후 기획 담당자분이 변경되었을 때 유사한 이슈가 넘어오면 \r\n내용 검토 후 기능 누락이 아닌 이상 문제 없다고 답변해주시면 될 것 같습니다."
-        },
-        {
-          "author": "변우영",
-          "created_on": "2026-08-07T16:34:34+09:00",
-          "note": "확인 결과 제공 기능은 누락 없이 모두 동일합니다. 말씀하신 항목들은 기능 차이가 아닌 표현·배치 차이로 확인되어 아래와 같이 정리합니다.\n\n1. 그리기 유형 '동그라미' 문구\n- 기획서 표기(원형)에 맞춰 '원형'으로 수정했습니다. 언어리소스 반영 완료되어 다음 빌드부터 적용됩니다.\n\n2. [취소] / [다시] 버튼\n- 글자 대신 아이콘으로 표기되어 있으나 기능 누락이 아닌 표현의 차이이므로 문제되지 않습니다. 현행 유지합니다.\n\n3. 항목명, 유형 버튼 배열, 스티커·텍스트 순서\n- 참고해주신 기획 화면은 RC8 디자인 확정 이전 버전입니다. 현재 구현이 확정 디자인 기준이므로 현행 유지합니다.\n\n기능 누락이 아닌 UI 배치·순서 차이는 결함으로 보지 않고 현행 유지로 정리하겠습니다.\n\ncc. @mrkim"
-        }
-      ]
+      "comments": []
     },
     {
       "번호": 343,
@@ -4012,18 +4001,7 @@
       "담당자": "김재원",
       "created_on": "2026-07-08 17:07:32",
       "link": "https://projects.rsupport.com/issues/273905",
-      "comments": [
-        {
-          "author": "이경준",
-          "created_on": "2026-09-02T14:44:04+09:00",
-          "note": "클라 실측 결과 공유 (2026-09-01, alpha=stapn):\n\n- ② 버전 미연계 / ④ 고객 연결 정보 전무 → 서버 수정 반영 확인했습니다 (상담원 version에 브라우저 풀버전 연계, 고객 OS/PC명/브라우저/버전 채워짐).\n- ① agentType은 잔존합니다: clientKind(WEB)를 전송하는 현재 클라로 새로 만든 세션에서도 상세 API(/consultation/support/detail/{roomId})의 agentConnectionInfo.agentType이 \"REGISTERED\"로 내려옵니다. 기획(rc8/design docs/prompts/01_agent/04_agent-history.md §3.2·§3.11)상 에이전트 타입 도메인은 응용 프로그램/웹뷰어 2종으로 client-info clientKind(APPLICATION|WEB)와 1:1이니, 세션 시점 clientKind가 agentType으로 기록되도록 서버 확인 부탁드립니다.\n- 참고: 상세의 agentConnectionInfo는 세션 시점 스냅샷으로 확인됩니다(client-info 갱신 후 기존 세션 재조회 시 불변).\n\n클라이언트는 코드값 표시 매핑을 반영했습니다(MR !1997, https://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1997): APPLICATION→응용 프로그램, WEB→웹뷰어, 계약 밖 값(REGISTERED 등)은 원시 코드 대신 '-' 표시. PC앱 호스트의 고객 브라우저 placeholder(\"Unknown\")도 '-' 처리했습니다."
-        },
-        {
-          "author": "이경준",
-          "created_on": "2026-09-02T14:56:32+09:00",
-          "note": "@jwkim 님, 앞선 코멘트의 정정/보강입니다 (백엔드 소스 대조 완료). 서버 측 수정 확인 부탁드립니다.\n\n[정정]\n- \"세션 시점 스냅샷\" 표현은 정정합니다 — rt_agent_log는 agent_id PK의 현재 상태 미러(upsert)이며, 과거 세션이 안 변하는 것은 로그인마다 새 agentId가 발급되기 때문입니다.\n- \"REGISTERED\"는 깨진 값이 아니라 등록 형태 enum AgentType{REGISTERED/GUEST/AI}의 정상값입니다. 즉 값 오염이 아니라 **축이 다른 필드를 내려주는 오매핑**입니다.\n\n[수정 요청 명확화]\n- 화면이 기대하는 축(응용 프로그램/웹뷰어)은 AgentClientKind(WEB|APPLICATION)이고, 이 값은 이미 POST /agent/client-info → rt_agent.client_kind → rt_agent_log.client_kind로 저장되고 있습니다. 상세 API가 그 컬럼을 읽지 않을 뿐입니다.\n- 수정 범위(2곳): api ConsultationServiceImpl.kt:837의 agentType 매핑을 agentLog.agentType → clientKind로, ConsultationSupportDetailVO.kt:23의 필드 타입을 AgentClientKind?로.\n- padmin에 동일 결함 수정 선례가 있습니다: 103f64aa fix(#275936) \"상담 이력 에이전트 타입이 코드값(REGISTERED)으로 노출\" — 목록/상세/Excel 3곳을 clientKind로 교체한 커밋으로, 그대로 참고 가능합니다.\n\n[클라 대응 현황]\n- 과거 이력·client-info 미제출 세션은 수정 후 null로 내려올 텐데, 뷰어는 null/계약 밖 값 모두 '-' 처리를 반영해 두었습니다(MR !1997). 서버 수정 배포 전까지는 REGISTERED가 '-'로 표시됩니다."
-        }
-      ]
+      "comments": []
     },
     {
       "번호": 359,
