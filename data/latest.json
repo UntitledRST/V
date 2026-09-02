@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-01T10:57:50.252645+00:00",
+  "fetchedAt": "2026-09-02T00:40:56.000926+00:00",
   "count": 404,
   "issues": [
     {
@@ -4315,7 +4315,7 @@
       "번호": 360,
       "일감번호": 278512,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][파일 공유] 문서 공유 페이지 상한(현행 30페이지) 및 초과 시 안내 정책 정의 필요 — 31페이지 이후는 안내 없이 잘려 상담원이 인지 불가",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4771,7 +4771,7 @@
       "번호": 398,
       "일감번호": 278939,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][개선] [작업][호스트] 영상지원 스팟라이트·레이저 포인터 크기 축소",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4854,8 +4854,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 68,
-      "done": 335,
+      "notDone": 66,
+      "done": 337,
       "total": 403
     },
     "assignees": [
@@ -4925,16 +4925,16 @@
       {
         "name": "송건호",
         "total": 117,
-        "done": 106,
+        "done": 107,
         "complete": false,
-        "rate": 90
+        "rate": 91
       },
       {
         "name": "오세진",
         "total": 98,
-        "done": 90,
+        "done": 91,
         "complete": false,
-        "rate": 91
+        "rate": 92
       },
       {
         "name": "이경준",
@@ -4983,16 +4983,16 @@
       {
         "name": "김성식",
         "total": 26,
-        "done": 9,
+        "done": 10,
         "complete": false,
-        "rate": 34
+        "rate": 38
       },
       {
         "name": "김신혜",
         "total": 228,
-        "done": 196,
+        "done": 197,
         "complete": false,
-        "rate": 85
+        "rate": 86
       },
       {
         "name": "라경연",
@@ -5033,14 +5033,14 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 14,
-        "done": 7,
+        "progress": 13,
+        "done": 8,
         "total": 21
       },
       {
         "label": "기능(Function)",
-        "progress": 16,
-        "done": 53,
+        "progress": 15,
+        "done": 54,
         "total": 69
       },
       {
@@ -5059,11 +5059,11 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 47
+        "count": 46
       },
       {
         "label": "진행",
-        "count": 13
+        "count": 12
       },
       {
         "label": "보류",
@@ -5071,7 +5071,7 @@
       },
       {
         "label": "해결",
-        "count": 212
+        "count": 214
       },
       {
         "label": "피드백",
@@ -5396,17 +5396,17 @@
       {
         "date": "2026-08-27",
         "newCount": 12,
-        "doneCount": 8,
+        "doneCount": 9,
         "cumIssue": 366,
-        "cumDone": 320,
-        "rate": 87
+        "cumDone": 321,
+        "rate": 88
       },
       {
         "date": "2026-08-28",
         "newCount": 10,
         "doneCount": 7,
         "cumIssue": 376,
-        "cumDone": 327,
+        "cumDone": 328,
         "rate": 87
       },
       {
@@ -5414,15 +5414,15 @@
         "newCount": 14,
         "doneCount": 6,
         "cumIssue": 390,
-        "cumDone": 333,
-        "rate": 85
+        "cumDone": 334,
+        "rate": 86
       },
       {
         "date": "2026-09-01",
         "newCount": 14,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 404,
-        "cumDone": 335,
+        "cumDone": 337,
         "rate": 83
       }
     ]
