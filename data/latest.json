@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-02T02:20:29.425596+00:00",
+  "fetchedAt": "2026-09-02T02:26:05.910112+00:00",
   "count": 396,
   "issues": [
     {
@@ -205,7 +205,7 @@
       "번호": 19,
       "일감번호": 278778,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][그리기] 그리기 모드 중 마우스 우클릭 동작 정의 필요 — 현행: 우클릭·우클릭 드래그도 그리기 실행(웹·응용 공통) / RC7: 웹뷰어 무반응·응용뷰어 그리기 메뉴 표시",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4498,8 +4498,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 55,
-      "done": 340,
+      "notDone": 54,
+      "done": 341,
       "total": 395
     },
     "assignees": [
@@ -4562,9 +4562,9 @@
       {
         "name": "송건호",
         "total": 116,
-        "done": 107,
+        "done": 108,
         "complete": false,
-        "rate": 92
+        "rate": 93
       },
       {
         "name": "오세진",
@@ -4618,8 +4618,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 9,
-        "done": 54,
+        "progress": 8,
+        "done": 55,
         "total": 63
       },
       {
@@ -4642,7 +4642,7 @@
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 7
       },
       {
         "label": "보류",
@@ -4650,7 +4650,7 @@
       },
       {
         "label": "해결",
-        "count": 217
+        "count": 218
       },
       {
         "label": "피드백",
@@ -4991,15 +4991,15 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 336,
+        "cumDone": 337,
         "rate": 88,
         "newCount": 12,
-        "doneCount": 7
+        "doneCount": 8
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 340,
+        "cumDone": 341,
         "rate": 86,
         "newCount": 13,
         "doneCount": 4
