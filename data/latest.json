@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-03T04:47:59.466863+00:00",
+  "fetchedAt": "2026-09-03T04:54:08.085229+00:00",
   "count": 396,
   "issues": [
     {
@@ -817,7 +817,7 @@
       "번호": 74,
       "일감번호": 277329,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][뷰어][접속대기] 대기 종료 확인 팝업 문구 2건 — 버튼 명칭 '대기종료' 현행 유지 안내 + 본문 \"홈 화면으로 이동합니다\" 유지 여부 판단 요청",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4529,8 +4529,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 50,
-      "done": 344,
+      "notDone": 49,
+      "done": 345,
       "total": 394
     },
     "assignees": [
@@ -4593,9 +4593,9 @@
       {
         "name": "송건호",
         "total": 116,
-        "done": 110,
+        "done": 111,
         "complete": false,
-        "rate": 94
+        "rate": 95
       },
       {
         "name": "오세진",
@@ -4649,8 +4649,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 11,
-        "done": 52,
+        "progress": 10,
+        "done": 53,
         "total": 63
       },
       {
@@ -4673,7 +4673,7 @@
       },
       {
         "label": "진행",
-        "count": 8
+        "count": 7
       },
       {
         "label": "보류",
@@ -4681,7 +4681,7 @@
       },
       {
         "label": "해결",
-        "count": 221
+        "count": 222
       },
       {
         "label": "피드백",
@@ -4950,23 +4950,23 @@
       {
         "date": "2026-08-14",
         "cumIssue": 326,
-        "cumDone": 291,
-        "rate": 89,
+        "cumDone": 292,
+        "rate": 90,
         "newCount": 4,
-        "doneCount": 3
+        "doneCount": 4
       },
       {
         "date": "2026-08-18",
         "cumIssue": 330,
-        "cumDone": 295,
-        "rate": 89,
+        "cumDone": 296,
+        "rate": 90,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-19",
         "cumIssue": 334,
-        "cumDone": 299,
+        "cumDone": 300,
         "rate": 90,
         "newCount": 4,
         "doneCount": 4
@@ -4974,7 +4974,7 @@
       {
         "date": "2026-08-20",
         "cumIssue": 337,
-        "cumDone": 302,
+        "cumDone": 303,
         "rate": 90,
         "newCount": 3,
         "doneCount": 3
@@ -4982,7 +4982,7 @@
       {
         "date": "2026-08-24",
         "cumIssue": 339,
-        "cumDone": 304,
+        "cumDone": 305,
         "rate": 90,
         "newCount": 2,
         "doneCount": 2
@@ -4990,15 +4990,15 @@
       {
         "date": "2026-08-25",
         "cumIssue": 342,
-        "cumDone": 306,
-        "rate": 89,
+        "cumDone": 307,
+        "rate": 90,
         "newCount": 3,
         "doneCount": 2
       },
       {
         "date": "2026-08-26",
         "cumIssue": 352,
-        "cumDone": 314,
+        "cumDone": 315,
         "rate": 89,
         "newCount": 10,
         "doneCount": 8
@@ -5006,15 +5006,15 @@
       {
         "date": "2026-08-27",
         "cumIssue": 362,
-        "cumDone": 323,
-        "rate": 89,
+        "cumDone": 324,
+        "rate": 90,
         "newCount": 10,
         "doneCount": 9
       },
       {
         "date": "2026-08-28",
         "cumIssue": 371,
-        "cumDone": 330,
+        "cumDone": 331,
         "rate": 89,
         "newCount": 9,
         "doneCount": 7
@@ -5022,15 +5022,15 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 338,
-        "rate": 88,
+        "cumDone": 339,
+        "rate": 89,
         "newCount": 12,
         "doneCount": 8
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 344,
+        "cumDone": 345,
         "rate": 87,
         "newCount": 13,
         "doneCount": 6
