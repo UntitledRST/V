@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-03T02:57:57.173102+00:00",
+  "fetchedAt": "2026-09-03T03:03:40.919123+00:00",
   "count": 396,
   "issues": [
     {
@@ -2378,24 +2378,12 @@
       "번호": 210,
       "일감번호": 275265,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "보류(Pause)",
       "제목": "[SaaS_8.0.1_QA][결함] [호스트] [Win 10] 특정 PC 환경에서 프로그램 공유 팝업 미노출 및 세션 연결 무한 대기 — 상담 진행 불가",
       "우선순위": "높음(High)",
-      "담당자": "박예지",
+      "담당자": "김신혜",
       "created_on": "2026-07-24 11:33:23",
-      "link": "https://projects.rsupport.com/issues/275265",
-      "comments": [
-        {
-          "author": "김신혜",
-          "created_on": "2026-07-24T14:27:49+09:00",
-          "note": "windows11 pro insider Preview 26220.8575 에서도 재현되어 재현환경을 추가합니다.\r\n호스트 로그 남지 않아 첨부 불가."
-        },
-        {
-          "author": "오세진",
-          "created_on": "2026-09-03T10:24:49+09:00",
-          "note": "@yjpark \r\n\r\n안녕하세요 예지님!\r\n해당 이슈가 제가 가진 기기에서는 재현이 어려워서\r\n혹시 해당 이슈 다시 한번 테스트를 부탁드립니다\r\n\r\n이후에 해당 세션 로그 조회 후 해결에 참고하도록 하겠습니다."
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/275265"
     },
     {
       "번호": 211,
@@ -4541,9 +4529,9 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 50,
+      "notDone": 49,
       "done": 345,
-      "total": 395
+      "total": 394
     },
     "assignees": [
       {
@@ -4562,10 +4550,10 @@
       },
       {
         "name": "김신혜",
-        "total": 12,
-        "done": 9,
+        "total": 13,
+        "done": 10,
         "complete": false,
-        "rate": 75
+        "rate": 76
       },
       {
         "name": "김재원",
@@ -4590,10 +4578,10 @@
       },
       {
         "name": "박예지",
-        "total": 9,
+        "total": 8,
         "done": 3,
         "complete": false,
-        "rate": 33
+        "rate": 37
       },
       {
         "name": "변우영",
@@ -4673,8 +4661,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 29,
-        "done": 275,
+        "progress": 28,
+        "done": 276,
         "total": 304
       }
     ],
@@ -4689,7 +4677,7 @@
       },
       {
         "label": "보류",
-        "count": 1
+        "count": 2
       },
       {
         "label": "해결",
@@ -4697,7 +4685,7 @@
       },
       {
         "label": "피드백",
-        "count": 12
+        "count": 11
       },
       {
         "label": "완료성공",
