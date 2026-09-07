@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-07T04:59:15.209125+00:00",
+  "fetchedAt": "2026-09-07T05:04:49.231691+00:00",
   "count": 404,
   "issues": [
     {
@@ -73,7 +73,7 @@
       "번호": 7,
       "일감번호": 279297,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][개발] [응용뷰어][파일 다운로드] 저장 위치 인지·파일명 규칙·'받은 파일 폴더 열기' 구현 (#275976 후속 ①②④)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4600,8 +4600,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 52,
-      "done": 350,
+      "notDone": 51,
+      "done": 351,
       "total": 402
     },
     "assignees": [
@@ -4671,7 +4671,7 @@
       {
         "name": "송건호",
         "total": 118,
-        "done": 111,
+        "done": 112,
         "complete": false,
         "rate": 94
       },
@@ -4727,8 +4727,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 9,
-        "done": 55,
+        "progress": 8,
+        "done": 56,
         "total": 64
       },
       {
@@ -4751,7 +4751,7 @@
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 5
       },
       {
         "label": "보류",
@@ -4759,7 +4759,7 @@
       },
       {
         "label": "해결",
-        "count": 223
+        "count": 224
       },
       {
         "label": "피드백",
@@ -5116,15 +5116,15 @@
       {
         "date": "2026-09-03",
         "cumIssue": 400,
-        "cumDone": 349,
-        "rate": 87,
+        "cumDone": 350,
+        "rate": 88,
         "newCount": 4,
-        "doneCount": 1
+        "doneCount": 2
       },
       {
         "date": "2026-09-04",
         "cumIssue": 403,
-        "cumDone": 350,
+        "cumDone": 351,
         "rate": 87,
         "newCount": 3,
         "doneCount": 1
@@ -5132,7 +5132,7 @@
       {
         "date": "2026-09-07",
         "cumIssue": 404,
-        "cumDone": 350,
+        "cumDone": 351,
         "rate": 87,
         "newCount": 1,
         "doneCount": 0
