@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-07T02:47:13.722307+00:00",
+  "fetchedAt": "2026-09-07T02:52:59.377425+00:00",
   "count": 404,
   "issues": [
     {
@@ -62,7 +62,7 @@
       "번호": 6,
       "일감번호": 279356,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹뷰어][다국어][바코드 인식] 인식 모드 상단 바 라벨이 언어 설정과 무관하게 \"바코드\" 한국어 고정 — 같은 화면의 [Barcode] 버튼·안내 문구는 번역돼 언어 혼재",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4600,8 +4600,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 53,
-      "done": 349,
+      "notDone": 52,
+      "done": 350,
       "total": 402
     },
     "assignees": [
@@ -4671,9 +4671,9 @@
       {
         "name": "송건호",
         "total": 118,
-        "done": 110,
+        "done": 111,
         "complete": false,
-        "rate": 93
+        "rate": 94
       },
       {
         "name": "오세진",
@@ -4739,8 +4739,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 30,
-        "done": 277,
+        "progress": 29,
+        "done": 278,
         "total": 307
       }
     ],
@@ -4751,7 +4751,7 @@
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 6
       },
       {
         "label": "보류",
@@ -4759,7 +4759,7 @@
       },
       {
         "label": "해결",
-        "count": 222
+        "count": 223
       },
       {
         "label": "피드백",
@@ -5116,15 +5116,15 @@
       {
         "date": "2026-09-03",
         "cumIssue": 400,
-        "cumDone": 348,
+        "cumDone": 349,
         "rate": 87,
         "newCount": 4,
-        "doneCount": 0
+        "doneCount": 1
       },
       {
         "date": "2026-09-04",
         "cumIssue": 403,
-        "cumDone": 349,
+        "cumDone": 350,
         "rate": 87,
         "newCount": 3,
         "doneCount": 1
@@ -5132,8 +5132,8 @@
       {
         "date": "2026-09-07",
         "cumIssue": 404,
-        "cumDone": 349,
-        "rate": 86,
+        "cumDone": 350,
+        "rate": 87,
         "newCount": 1,
         "doneCount": 0
       }
