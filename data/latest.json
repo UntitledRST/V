@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-08T10:38:37.594105+00:00",
+  "fetchedAt": "2026-09-08T10:44:16.645205+00:00",
   "count": 406,
   "issues": [
     {
@@ -425,24 +425,12 @@
       "번호": 39,
       "일감번호": 278643,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][영상지원][연결 종료] 뷰어 종료 시 간헐적으로 raw 종료 화면 \"사유: CloseCode.viewer_disconnect\" 노출 — 정상 종료 화면(프로필·시간·배너) 대신 SupportStatusPage 종료 상태가 남음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-08-28 15:04:13",
-      "link": "https://projects.rsupport.com/issues/278643",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-08-31T12:56:19+09:00",
-          "note": "MR !1948 머지 완료\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1948\nmerge commit: ab41d3b56"
-        },
-        {
-          "author": "김신혜",
-          "created_on": "2026-09-08T09:12:15+09:00",
-          "note": "[QA 해결 검수 결과: FAIL — 재수정 요청]\n\nMR !1948 반영분 검수 결과, 종료 화면에 내부 코드 문구(CloseCode.…)가 노출되던 원 증상은 해소를 확인했습니다. 다만 처리내용에 명시하신 \"같은 탭 2회차 상담 재시작 시 종료 화면 일원화\"가 재현되어 FAIL 처리합니다.\n\n[재현 환경]\n- 클라: 호스트 영상지원 웹(Android Chrome) 8.0.1.685 / 뷰어(상담원)\n- 서버: BE 8.0.1(#19) · stbtn\n\n[재현 절차]\n1. Android Chrome 으로 영상지원 웹 호스트에 접속해 상담을 연결·종료한다(1회차). → 정상 종료 화면 표시(정상)\n2. [원격지원 다시 받기]로 재접속해 2회차 상담을 연결한다.\n3. 모바일(호스트)에서 상담을 종료한다.\n\n[실제 결과]\n- 2회차 종료 시 정상 종료 화면 대신 \"원격지원 연결을 기다리는 중 / 연결되면 진행 상태가 자동으로 표시됩니다.\" 대기 화면(스피너)이 표시된다.\n- 1회차 종료는 정상, 2회차부터 재현.\n\n[기대 결과]\n- 2회차 이후에도 종료 시 정상 종료 화면(상담원명·지원 시작/종료 시간·배너·[원격지원 다시 받기])이 표시된다.\n\n[첨부] 2회차 종료 후 대기 화면 캡처(8.0.1.685)"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/278643"
     },
     {
       "번호": 40,
@@ -4646,8 +4634,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 51,
-      "done": 353,
+      "notDone": 50,
+      "done": 354,
       "total": 404
     },
     "assignees": [
@@ -4724,9 +4712,9 @@
       {
         "name": "오세진",
         "total": 99,
-        "done": 93,
+        "done": 94,
         "complete": false,
-        "rate": 93
+        "rate": 94
       },
       {
         "name": "이경준",
@@ -4785,8 +4773,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 30,
-        "done": 278,
+        "progress": 29,
+        "done": 279,
         "total": 308
       }
     ],
@@ -4805,11 +4793,11 @@
       },
       {
         "label": "해결",
-        "count": 224
+        "count": 225
       },
       {
         "label": "피드백",
-        "count": 12
+        "count": 11
       },
       {
         "label": "완료성공",
@@ -5138,15 +5126,15 @@
       {
         "date": "2026-08-28",
         "cumIssue": 371,
-        "cumDone": 333,
+        "cumDone": 334,
         "rate": 90,
         "newCount": 9,
-        "doneCount": 6
+        "doneCount": 7
       },
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 341,
+        "cumDone": 342,
         "rate": 89,
         "newCount": 12,
         "doneCount": 8
@@ -5154,7 +5142,7 @@
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 349,
+        "cumDone": 350,
         "rate": 88,
         "newCount": 13,
         "doneCount": 8
@@ -5162,7 +5150,7 @@
       {
         "date": "2026-09-03",
         "cumIssue": 400,
-        "cumDone": 352,
+        "cumDone": 353,
         "rate": 88,
         "newCount": 4,
         "doneCount": 3
@@ -5170,7 +5158,7 @@
       {
         "date": "2026-09-04",
         "cumIssue": 403,
-        "cumDone": 353,
+        "cumDone": 354,
         "rate": 88,
         "newCount": 3,
         "doneCount": 1
@@ -5178,15 +5166,15 @@
       {
         "date": "2026-09-07",
         "cumIssue": 404,
-        "cumDone": 353,
-        "rate": 87,
+        "cumDone": 354,
+        "rate": 88,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-09-08",
         "cumIssue": 406,
-        "cumDone": 353,
+        "cumDone": 354,
         "rate": 87,
         "newCount": 2,
         "doneCount": 0
