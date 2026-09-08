@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-07T10:23:35.150442+00:00",
+  "fetchedAt": "2026-09-08T00:43:25.332423+00:00",
   "count": 412,
   "issues": [
     {
       "번호": 1,
       "일감번호": 273581,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] windows host : Windows 11 Pro Insider Preview host에서 실행 실패",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -4471,7 +4471,7 @@
       "번호": 373,
       "일감번호": 278643,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [웹호스트][영상지원][연결 종료] 뷰어 종료 시 간헐적으로 raw 종료 화면 \"사유: CloseCode.viewer_disconnect\" 노출 — 정상 종료 화면(프로필·시간·배너) 대신 SupportStatusPage 종료 상태가 남음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4855,7 +4855,7 @@
       "번호": 405,
       "일감번호": 279287,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][녹화] 로컬 녹화 파일명이 확정 규칙 미반영 — 현행 browser_recorder_<epoch> → RemoteCall_YYYYMMDD_HHMMSS_<세션ID> (VW-REC-003)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -5021,16 +5021,16 @@
       {
         "name": "송건호",
         "total": 119,
-        "done": 112,
+        "done": 113,
         "complete": false,
         "rate": 94
       },
       {
         "name": "오세진",
         "total": 98,
-        "done": 95,
+        "done": 94,
         "complete": false,
-        "rate": 96
+        "rate": 95
       },
       {
         "name": "이경준",
@@ -5072,9 +5072,9 @@
       {
         "name": "김미령",
         "total": 9,
-        "done": 6,
+        "done": 7,
         "complete": false,
-        "rate": 66
+        "rate": 77
       },
       {
         "name": "김성식",
@@ -5086,9 +5086,9 @@
       {
         "name": "김신혜",
         "total": 230,
-        "done": 203,
+        "done": 202,
         "complete": false,
-        "rate": 88
+        "rate": 87
       },
       {
         "name": "라경연",
@@ -5159,7 +5159,7 @@
       },
       {
         "label": "진행",
-        "count": 7
+        "count": 6
       },
       {
         "label": "보류",
@@ -5167,15 +5167,15 @@
       },
       {
         "label": "해결",
-        "count": 225
+        "count": 224
       },
       {
         "label": "피드백",
-        "count": 10
+        "count": 11
       },
       {
         "label": "완료성공",
-        "count": 118
+        "count": 119
       },
       {
         "label": "중단",
@@ -5500,9 +5500,9 @@
       {
         "date": "2026-08-28",
         "newCount": 10,
-        "doneCount": 7,
+        "doneCount": 6,
         "cumIssue": 376,
-        "cumDone": 335,
+        "cumDone": 334,
         "rate": 89
       },
       {
@@ -5510,7 +5510,7 @@
         "newCount": 14,
         "doneCount": 8,
         "cumIssue": 390,
-        "cumDone": 343,
+        "cumDone": 342,
         "rate": 88
       },
       {
@@ -5518,13 +5518,13 @@
         "newCount": 14,
         "doneCount": 6,
         "cumIssue": 404,
-        "cumDone": 349,
+        "cumDone": 348,
         "rate": 86
       },
       {
         "date": "2026-09-03",
         "newCount": 4,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 408,
         "cumDone": 351,
         "rate": 86
