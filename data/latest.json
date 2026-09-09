@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-09T06:20:52.604107+00:00",
+  "fetchedAt": "2026-09-09T06:26:30.394271+00:00",
   "count": 410,
   "issues": [
     {
@@ -29,12 +29,19 @@
       "번호": 3,
       "일감번호": 280040,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [개발 확인][BE][보안] 무인증 접속정보 조회 API(/host/accessInfo/{code})가 상담원 이메일·로그인 ID·세션 토큰을 반환하고 호출마다 clientId 를 생성 — 응답 범위·접속번호 추측 시도 보호·clientId 정리 정책 검토 요청",
       "우선순위": "보통(Normal)",
-      "담당자": "김재원",
+      "담당자": "김신혜",
       "created_on": "2026-09-09 09:12:17",
-      "link": "https://projects.rsupport.com/issues/280040"
+      "link": "https://projects.rsupport.com/issues/280040",
+      "comments": [
+        {
+          "author": "김재원",
+          "created_on": "2026-09-09T14:58:57+09:00",
+          "note": "1.응답 범위 : 클라이언트 및 기획에서 확인 후 응답에 필요없으면 제거하도록 하겠습니다\n\n2.추측 시도 보호: 호출 제한·차단·감사 로그 모두 적용되어 있습니다. (#277526, 2026-08-18 반영 / 베타 배포 확인)\n\n기준\n* 클라이언트 IP 단위\n\n차단 조건\n* 5분 내 실패 10회\n\n차단 응답\n* 429 HOST_ACCESS_TOO_MANY_ATTEMPTS(40007) + remainingSeconds / blockedUntil / Retry-After\n\n해제\n* 5분 창 만료 시 자동 (성공해도 리셋되지 않음)\n\n감사 로그\n* 세션 라이프사이클 이벤트 api.host_access_info — 실패 시 result=FAIL + errorCode + prop.access_code. 429 차단도 동일하게 기록.\n* access log(access_api.YYYY-MM-DD.log)에 호출 IP·상태코드.\n\n200/404 존재 판별\n* 종료(CLOSE)된 방을 조회 대상에서 제외해 \"없는 코드\"와 같은 404로 합쳐 둔 상태입니다. 응답으로 코드의 유효/무효를 가릴 수 없습니다.\n\nQA 실측 448회가 차단되지 않은 이유\n* 스로틀은 실패(404)만 집계합니다. 유효한 접속번호 448회는 전부 200이라 집계 대상이 아닙니다. → 접속번호 열거 방어는 동작하며, 유효 코드 반복 조회에 대한 호출량 제한은 없습니다.\n\n\n3.clientId 생성: 의도된 동작입니다. clientId 로 호스트 토큰 만들때 시그니처링해서 추후 이 호스트가 맞는지 검증합니다"
+        }
+      ]
     },
     {
       "번호": 4,
@@ -4754,17 +4761,17 @@
       },
       {
         "name": "김신혜",
-        "total": 13,
+        "total": 14,
         "done": 10,
         "complete": false,
-        "rate": 76
+        "rate": 71
       },
       {
         "name": "김재원",
-        "total": 5,
+        "total": 4,
         "done": 4,
-        "complete": false,
-        "rate": 80
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "라경연",
@@ -4873,7 +4880,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 34
+        "count": 33
       },
       {
         "label": "진행",
@@ -4889,7 +4896,7 @@
       },
       {
         "label": "피드백",
-        "count": 10
+        "count": 11
       },
       {
         "label": "완료성공",
