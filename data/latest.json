@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-09T07:11:35.525302+00:00",
+  "fetchedAt": "2026-09-09T07:17:11.248585+00:00",
   "count": 410,
   "issues": [
     {
@@ -32,7 +32,7 @@
       "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.1_QA] [개발 확인][BE][보안] 무인증 접속정보 조회 API(/host/accessInfo/{code})가 상담원 이메일·로그인 ID·세션 토큰을 반환하고 호출마다 clientId 를 생성 — 응답 범위·접속번호 추측 시도 보호·clientId 정리 정책 검토 요청",
       "우선순위": "보통(Normal)",
-      "담당자": "김신혜",
+      "담당자": "김재원",
       "created_on": "2026-09-09 09:12:17",
       "link": "https://projects.rsupport.com/issues/280040",
       "comments": [
@@ -4761,17 +4761,17 @@
       },
       {
         "name": "김신혜",
-        "total": 14,
+        "total": 13,
         "done": 10,
         "complete": false,
-        "rate": 71
+        "rate": 76
       },
       {
         "name": "김재원",
-        "total": 4,
+        "total": 5,
         "done": 4,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 80
       },
       {
         "name": "라경연",
