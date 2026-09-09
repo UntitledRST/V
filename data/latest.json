@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-09T02:26:40.402762+00:00",
+  "fetchedAt": "2026-09-09T02:48:20.959529+00:00",
   "count": 408,
   "issues": [
     {
@@ -645,7 +645,7 @@
       "번호": 59,
       "일감번호": 278359,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][호스트][접속대기] 접속방식 '아이콘' — 어드민 옵션·기획 화면은 유효하나 접속페이지 미구현, 1차 제공 범위 확정 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -4718,8 +4718,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 52,
-      "done": 354,
+      "notDone": 53,
+      "done": 353,
       "total": 406
     },
     "assignees": [
@@ -4733,9 +4733,9 @@
       {
         "name": "김미령",
         "total": 52,
-        "done": 52,
-        "complete": true,
-        "rate": 100
+        "done": 51,
+        "complete": false,
+        "rate": 98
       },
       {
         "name": "김성식",
@@ -4845,8 +4845,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 10,
-        "done": 56,
+        "progress": 11,
+        "done": 55,
         "total": 66
       },
       {
@@ -4869,7 +4869,7 @@
       },
       {
         "label": "진행",
-        "count": 5
+        "count": 6
       },
       {
         "label": "보류",
@@ -4877,7 +4877,7 @@
       },
       {
         "label": "해결",
-        "count": 225
+        "count": 224
       },
       {
         "label": "피드백",
@@ -5194,15 +5194,15 @@
       {
         "date": "2026-08-26",
         "cumIssue": 352,
-        "cumDone": 317,
+        "cumDone": 316,
         "rate": 90,
         "newCount": 10,
-        "doneCount": 8
+        "doneCount": 7
       },
       {
         "date": "2026-08-27",
         "cumIssue": 362,
-        "cumDone": 326,
+        "cumDone": 325,
         "rate": 90,
         "newCount": 10,
         "doneCount": 9
@@ -5210,15 +5210,15 @@
       {
         "date": "2026-08-28",
         "cumIssue": 371,
-        "cumDone": 333,
-        "rate": 90,
+        "cumDone": 332,
+        "rate": 89,
         "newCount": 9,
         "doneCount": 7
       },
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 341,
+        "cumDone": 340,
         "rate": 89,
         "newCount": 12,
         "doneCount": 8
@@ -5226,7 +5226,7 @@
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 350,
+        "cumDone": 349,
         "rate": 88,
         "newCount": 13,
         "doneCount": 9
@@ -5234,7 +5234,7 @@
       {
         "date": "2026-09-03",
         "cumIssue": 400,
-        "cumDone": 353,
+        "cumDone": 352,
         "rate": 88,
         "newCount": 4,
         "doneCount": 3
@@ -5242,7 +5242,7 @@
       {
         "date": "2026-09-04",
         "cumIssue": 403,
-        "cumDone": 354,
+        "cumDone": 353,
         "rate": 88,
         "newCount": 3,
         "doneCount": 1
@@ -5250,15 +5250,15 @@
       {
         "date": "2026-09-07",
         "cumIssue": 404,
-        "cumDone": 354,
-        "rate": 88,
+        "cumDone": 353,
+        "rate": 87,
         "newCount": 1,
         "doneCount": 0
       },
       {
         "date": "2026-09-08",
         "cumIssue": 406,
-        "cumDone": 354,
+        "cumDone": 353,
         "rate": 87,
         "newCount": 2,
         "doneCount": 0
@@ -5266,7 +5266,7 @@
       {
         "date": "2026-09-09",
         "cumIssue": 408,
-        "cumDone": 354,
+        "cumDone": 353,
         "rate": 87,
         "newCount": 2,
         "doneCount": 0
