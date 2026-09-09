@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-09T07:00:09.222095+00:00",
+  "fetchedAt": "2026-09-09T07:05:57.231551+00:00",
   "count": 410,
   "issues": [
     {
@@ -377,7 +377,7 @@
       "번호": 34,
       "일감번호": 278757,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [작업][공통] 응용 뷰어(Win/Mac)에 프록시 지원 적용 - Dio 주입 지점 정리 선행",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -388,7 +388,7 @@
       "번호": 35,
       "일감번호": 278756,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [작업][공통] 응용/모바일 호스트에 프록시 지원 적용 (Win/Mac/Android/iOS)",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -4733,8 +4733,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 51,
-      "done": 357,
+      "notDone": 49,
+      "done": 359,
       "total": 408
     },
     "assignees": [
@@ -4755,9 +4755,9 @@
       {
         "name": "김성식",
         "total": 30,
-        "done": 14,
+        "done": 16,
         "complete": false,
-        "rate": 46
+        "rate": 53
       },
       {
         "name": "김신혜",
@@ -4854,8 +4854,8 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 10,
-        "done": 15,
+        "progress": 8,
+        "done": 17,
         "total": 25
       },
       {
@@ -4880,7 +4880,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 33
+        "count": 31
       },
       {
         "label": "진행",
@@ -4892,7 +4892,7 @@
       },
       {
         "label": "해결",
-        "count": 224
+        "count": 226
       },
       {
         "label": "피드백",
@@ -5233,15 +5233,15 @@
       {
         "date": "2026-08-31",
         "cumIssue": 383,
-        "cumDone": 342,
-        "rate": 89,
+        "cumDone": 344,
+        "rate": 90,
         "newCount": 12,
-        "doneCount": 8
+        "doneCount": 10
       },
       {
         "date": "2026-09-01",
         "cumIssue": 396,
-        "cumDone": 351,
+        "cumDone": 353,
         "rate": 89,
         "newCount": 13,
         "doneCount": 9
@@ -5249,23 +5249,23 @@
       {
         "date": "2026-09-03",
         "cumIssue": 400,
-        "cumDone": 354,
-        "rate": 88,
+        "cumDone": 356,
+        "rate": 89,
         "newCount": 4,
         "doneCount": 3
       },
       {
         "date": "2026-09-04",
         "cumIssue": 403,
-        "cumDone": 355,
-        "rate": 88,
+        "cumDone": 357,
+        "rate": 89,
         "newCount": 3,
         "doneCount": 1
       },
       {
         "date": "2026-09-07",
         "cumIssue": 404,
-        "cumDone": 355,
+        "cumDone": 357,
         "rate": 88,
         "newCount": 1,
         "doneCount": 0
@@ -5273,16 +5273,16 @@
       {
         "date": "2026-09-08",
         "cumIssue": 406,
-        "cumDone": 355,
-        "rate": 87,
+        "cumDone": 357,
+        "rate": 88,
         "newCount": 2,
         "doneCount": 0
       },
       {
         "date": "2026-09-09",
         "cumIssue": 410,
-        "cumDone": 357,
-        "rate": 87,
+        "cumDone": 359,
+        "rate": 88,
         "newCount": 4,
         "doneCount": 2
       }
