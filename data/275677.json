@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-09T02:18:37.059500+00:00",
-  "count": 152,
+  "fetchedAt": "2026-09-10T01:10:27.537134+00:00",
+  "count": 151,
   "issues": [
     {
       "번호": 1,
@@ -1577,18 +1577,6 @@
     },
     {
       "번호": 132,
-      "일감번호": 278049,
-      "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
-      "제목": "[유저 어드민] 구글 간편 로그인 이메일 입력하여 비밀번호 재설정 발송 후 안내 없이 로그인 화면 복귀",
-      "우선순위": "보통(Normal)",
-      "담당자": "심현수",
-      "작성자": "이명찬",
-      "created_on": "2026-08-24 11:13:28",
-      "link": "https://projects.rsupport.com/issues/278049"
-    },
-    {
-      "번호": 133,
       "일감번호": 278051,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1600,7 +1588,7 @@
       "link": "https://projects.rsupport.com/issues/278051"
     },
     {
-      "번호": 134,
+      "번호": 133,
       "일감번호": 278053,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1612,7 +1600,7 @@
       "link": "https://projects.rsupport.com/issues/278053"
     },
     {
-      "번호": 135,
+      "번호": 134,
       "일감번호": 278061,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1624,7 +1612,7 @@
       "link": "https://projects.rsupport.com/issues/278061"
     },
     {
-      "번호": 136,
+      "번호": 135,
       "일감번호": 278230,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1636,7 +1624,7 @@
       "link": "https://projects.rsupport.com/issues/278230"
     },
     {
-      "번호": 137,
+      "번호": 136,
       "일감번호": 278260,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1648,7 +1636,7 @@
       "link": "https://projects.rsupport.com/issues/278260"
     },
     {
-      "번호": 138,
+      "번호": 137,
       "일감번호": 278264,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1660,7 +1648,7 @@
       "link": "https://projects.rsupport.com/issues/278264"
     },
     {
-      "번호": 139,
+      "번호": 138,
       "일감번호": 278265,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1672,7 +1660,7 @@
       "link": "https://projects.rsupport.com/issues/278265"
     },
     {
-      "번호": 140,
+      "번호": 139,
       "일감번호": 278266,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1684,7 +1672,7 @@
       "link": "https://projects.rsupport.com/issues/278266"
     },
     {
-      "번호": 141,
+      "번호": 140,
       "일감번호": 278270,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1696,7 +1684,7 @@
       "link": "https://projects.rsupport.com/issues/278270"
     },
     {
-      "번호": 142,
+      "번호": 141,
       "일감번호": 278272,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1708,7 +1696,7 @@
       "link": "https://projects.rsupport.com/issues/278272"
     },
     {
-      "번호": 143,
+      "번호": 142,
       "일감번호": 278315,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1720,7 +1708,7 @@
       "link": "https://projects.rsupport.com/issues/278315"
     },
     {
-      "번호": 144,
+      "번호": 143,
       "일감번호": 278316,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1732,7 +1720,7 @@
       "link": "https://projects.rsupport.com/issues/278316"
     },
     {
-      "번호": 145,
+      "번호": 144,
       "일감번호": 278366,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1744,7 +1732,7 @@
       "link": "https://projects.rsupport.com/issues/278366"
     },
     {
-      "번호": 146,
+      "번호": 145,
       "일감번호": 278441,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1756,7 +1744,7 @@
       "link": "https://projects.rsupport.com/issues/278441"
     },
     {
-      "번호": 147,
+      "번호": 146,
       "일감번호": 278442,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1768,7 +1756,7 @@
       "link": "https://projects.rsupport.com/issues/278442"
     },
     {
-      "번호": 148,
+      "번호": 147,
       "일감번호": 278508,
       "분류": "업무(Job)",
       "상태": "해결(Complete)",
@@ -1780,7 +1768,7 @@
       "link": "https://projects.rsupport.com/issues/278508"
     },
     {
-      "번호": 149,
+      "번호": 148,
       "일감번호": 278560,
       "분류": "업무(Job)",
       "상태": "중단(Stop)",
@@ -1792,7 +1780,7 @@
       "link": "https://projects.rsupport.com/issues/278560"
     },
     {
-      "번호": 150,
+      "번호": 149,
       "일감번호": 278576,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1804,7 +1792,7 @@
       "link": "https://projects.rsupport.com/issues/278576"
     },
     {
-      "번호": 151,
+      "번호": 150,
       "일감번호": 278580,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1816,7 +1804,7 @@
       "link": "https://projects.rsupport.com/issues/278580"
     },
     {
-      "번호": 152,
+      "번호": 151,
       "일감번호": 278766,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1831,8 +1819,8 @@
   "summary": {
     "completion": {
       "notDone": 62,
-      "done": 89,
-      "total": 151
+      "done": 88,
+      "total": 150
     },
     "assignees": [
       {
@@ -1844,8 +1832,8 @@
       },
       {
         "name": "심현수",
-        "total": 23,
-        "done": 23,
+        "total": 22,
+        "done": 22,
         "complete": true,
         "rate": 100
       },
@@ -1881,8 +1869,8 @@
       },
       {
         "name": "이명찬",
-        "total": 42,
-        "done": 42,
+        "total": 41,
+        "done": 41,
         "complete": true,
         "rate": 100
       },
@@ -1910,8 +1898,8 @@
       {
         "label": "결함(Serverity)",
         "progress": 40,
-        "done": 83,
-        "total": 123
+        "done": 82,
+        "total": 122
       }
     ],
     "statuses": [
@@ -1929,7 +1917,7 @@
       },
       {
         "label": "해결",
-        "count": 29
+        "count": 28
       },
       {
         "label": "피드백",
@@ -1955,7 +1943,7 @@
       },
       {
         "label": "보통",
-        "count": 147
+        "count": 146
       },
       {
         "label": "높음",
@@ -2069,51 +2057,51 @@
       },
       {
         "date": "2026-08-24",
-        "newCount": 4,
-        "doneCount": 4,
-        "cumIssue": 135,
-        "cumDone": 74,
-        "rate": 55
+        "newCount": 3,
+        "doneCount": 3,
+        "cumIssue": 134,
+        "cumDone": 73,
+        "rate": 54
       },
       {
         "date": "2026-08-25",
         "newCount": 7,
         "doneCount": 7,
-        "cumIssue": 142,
-        "cumDone": 81,
+        "cumIssue": 141,
+        "cumDone": 80,
         "rate": 57
       },
       {
         "date": "2026-08-26",
         "newCount": 3,
         "doneCount": 2,
-        "cumIssue": 145,
-        "cumDone": 83,
+        "cumIssue": 144,
+        "cumDone": 82,
         "rate": 57
       },
       {
         "date": "2026-08-27",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 148,
-        "cumDone": 86,
+        "cumIssue": 147,
+        "cumDone": 85,
         "rate": 58
       },
       {
         "date": "2026-08-28",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 151,
-        "cumDone": 89,
+        "cumIssue": 150,
+        "cumDone": 88,
         "rate": 59
       },
       {
         "date": "2026-08-31",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 152,
-        "cumDone": 89,
-        "rate": 59
+        "cumIssue": 151,
+        "cumDone": 88,
+        "rate": 58
       }
     ]
   },
