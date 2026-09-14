@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-11T00:48:46.302261+00:00",
+  "fetchedAt": "2026-09-14T00:46:36.260544+00:00",
   "count": 151,
   "issues": [
     {
@@ -679,7 +679,7 @@
       "번호": 57,
       "일감번호": 275933,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "완료성공(End/Success)",
       "제목": "[기획] 상세 화면 탭 목록의 상단 타이틀이 기획서 9건의 정의와 달리 건수만 표시되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1231,7 +1231,7 @@
       "번호": 103,
       "일감번호": 277081,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "완료성공(End/Success)",
       "제목": "[사용자 목록(파트너)] 계정 상태 필터에 기간 만료가 없고 비활성을 고르면 전체가 조회되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1291,7 +1291,7 @@
       "번호": 108,
       "일감번호": 277093,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "완료성공(End/Success)",
       "제목": "[라이선스 옵션(파트너)] 하단 버튼 영역에 변경 이력 보기 버튼이 없는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1363,7 +1363,7 @@
       "번호": 114,
       "일감번호": 277171,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "완료성공(End/Success)",
       "제목": "[모바일 실행 가능 앱] 추가 모달에서 필수 항목 미입력 시 인라인 오류 없이 저장 버튼만 비활성되는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1375,7 +1375,7 @@
       "번호": 115,
       "일감번호": 277172,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[APK 파일] SaaS 빌드에서 메뉴에 없는 솔루션 전용 모바일 화면 3종이 URL 직접 접근으로 열리는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1399,7 +1399,7 @@
       "번호": 117,
       "일감번호": 277230,
       "분류": "업무(Job)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[유저·파트너 어드민] 기획에서 삭제된 그룹 옵션의 표시 상수가 어드민 FE 에 남아 있는 이슈",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -1818,8 +1818,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 62,
-      "done": 88,
+      "notDone": 58,
+      "done": 92,
       "total": 150
     },
     "assignees": [
@@ -1840,9 +1840,9 @@
       {
         "name": "윤종익",
         "total": 67,
-        "done": 34,
+        "done": 38,
         "complete": false,
-        "rate": 50
+        "rate": 56
       },
       {
         "name": "이명찬",
@@ -1863,9 +1863,9 @@
       {
         "name": "윤종익",
         "total": 95,
-        "done": 36,
+        "done": 40,
         "complete": false,
-        "rate": 37
+        "rate": 42
       },
       {
         "name": "이명찬",
@@ -1885,8 +1885,8 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 20,
-        "done": 5,
+        "progress": 17,
+        "done": 8,
         "total": 25
       },
       {
@@ -1897,19 +1897,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 40,
-        "done": 82,
+        "progress": 39,
+        "done": 83,
         "total": 122
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 53
+        "count": 48
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 7
       },
       {
         "label": "보류",
@@ -1917,7 +1917,7 @@
       },
       {
         "label": "해결",
-        "count": 28
+        "count": 27
       },
       {
         "label": "피드백",
@@ -1925,7 +1925,7 @@
       },
       {
         "label": "완료성공",
-        "count": 59
+        "count": 64
       },
       {
         "label": "중단",
@@ -1978,130 +1978,130 @@
       {
         "date": "2026-08-01",
         "newCount": 21,
-        "doneCount": 7,
+        "doneCount": 8,
         "cumIssue": 63,
-        "cumDone": 29,
-        "rate": 46
+        "cumDone": 30,
+        "rate": 48
       },
       {
         "date": "2026-08-03",
         "newCount": 7,
         "doneCount": 3,
         "cumIssue": 70,
-        "cumDone": 32,
-        "rate": 46
+        "cumDone": 33,
+        "rate": 47
       },
       {
         "date": "2026-08-06",
         "newCount": 11,
         "doneCount": 10,
         "cumIssue": 81,
-        "cumDone": 42,
-        "rate": 52
+        "cumDone": 43,
+        "rate": 53
       },
       {
         "date": "2026-08-07",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 85,
-        "cumDone": 45,
-        "rate": 53
+        "cumDone": 46,
+        "rate": 54
       },
       {
         "date": "2026-08-11",
         "newCount": 2,
         "doneCount": 0,
         "cumIssue": 87,
-        "cumDone": 45,
-        "rate": 52
+        "cumDone": 46,
+        "rate": 53
       },
       {
         "date": "2026-08-12",
         "newCount": 26,
-        "doneCount": 10,
+        "doneCount": 12,
         "cumIssue": 113,
-        "cumDone": 55,
-        "rate": 49
+        "cumDone": 58,
+        "rate": 51
       },
       {
         "date": "2026-08-13",
         "newCount": 8,
-        "doneCount": 5,
+        "doneCount": 6,
         "cumIssue": 121,
-        "cumDone": 60,
-        "rate": 50
+        "cumDone": 64,
+        "rate": 53
       },
       {
         "date": "2026-08-14",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 124,
-        "cumDone": 63,
-        "rate": 51
+        "cumDone": 67,
+        "rate": 54
       },
       {
         "date": "2026-08-18",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 128,
-        "cumDone": 67,
-        "rate": 52
+        "cumDone": 71,
+        "rate": 55
       },
       {
         "date": "2026-08-20",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 131,
-        "cumDone": 70,
-        "rate": 53
+        "cumDone": 74,
+        "rate": 56
       },
       {
         "date": "2026-08-24",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 134,
-        "cumDone": 73,
-        "rate": 54
+        "cumDone": 77,
+        "rate": 57
       },
       {
         "date": "2026-08-25",
         "newCount": 7,
         "doneCount": 7,
         "cumIssue": 141,
-        "cumDone": 80,
-        "rate": 57
+        "cumDone": 84,
+        "rate": 60
       },
       {
         "date": "2026-08-26",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 144,
-        "cumDone": 82,
-        "rate": 57
+        "cumDone": 86,
+        "rate": 60
       },
       {
         "date": "2026-08-27",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 147,
-        "cumDone": 85,
-        "rate": 58
+        "cumDone": 89,
+        "rate": 61
       },
       {
         "date": "2026-08-28",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 150,
-        "cumDone": 88,
-        "rate": 59
+        "cumDone": 92,
+        "rate": 61
       },
       {
         "date": "2026-08-31",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 151,
-        "cumDone": 88,
-        "rate": 58
+        "cumDone": 92,
+        "rate": 61
       }
     ]
   },
