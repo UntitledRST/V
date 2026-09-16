@@ -121,9 +121,6 @@ const SOURCES = [
 // 유일한 타임아웃 설정: 별도 timeoutMs 가 없는 모든 소스가 이 값 하나만 사용한다.
 const TIMEOUT_MS = 1100;
 
-// 실시간 조회로 간주하는 경로 타입 (그 외는 스냅샷/캐시로 표시)
-const LIVE_ROUTE_TYPES = ['direct', 'direct-http1', 'proxy'];
-
 function buildFallbackResult(src) {
   const date = parseAsUTCDate(src.fallback.time);
   const text = formatKST(date);
@@ -139,7 +136,6 @@ function buildFallbackResult(src) {
     updateDateText: text,
     isToday: !!compare && compare === todayKSTDateStr(),
     isFallback: true,
-    source: 'fallback',
     downloadUrl: src.siteUrl || src.url || null,
     downloadLabel: '바로가기',
   };
@@ -409,8 +405,7 @@ function parseKeyValueText(text) {
   return matched ? obj : null;
 }
 
-// 여러 경로를 순서대로 시도하고, 성공한 경로 정보까지 함께 돌려준다.
-// 반환값: { text, routeType, snapshotAt }
+// 여러 경로를 순서대로 시도하고, 가장 먼저 성공한 응답 본문을 돌려준다.
 async function fetchViaChain(src, bustedUrl, timeoutMs) {
   const errors = [];
   const share = Math.floor(timeoutMs / src.sources.length);
@@ -434,7 +429,7 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
           ? await fetchViaNodeHttps(targetUrl, { headers }, slice)
           : await fetchWithTimeout(targetUrl, { headers }, { timeoutMs: slice, allowNodeHttpsFallback: false });
         if (!res.ok) throw httpStatusError(res.status);
-        return { text: await res.text(), routeType: route.type, snapshotAt: null };
+        return await res.text();
       }
 
       if (route.type === 'file') {
@@ -443,11 +438,7 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
         const target = path.join(process.cwd(), route.path);
         const snap = JSON.parse(fs.readFileSync(target, 'utf8'));
         if (!snap || snap.body == null) throw new Error('스냅샷에 body 가 없음');
-        return {
-          text: String(snap.body),
-          routeType: route.type,
-          snapshotAt: snap.fetchedAt ? formatKST(new Date(snap.fetchedAt)) : null,
-        };
+        return String(snap.body);
       }
 
       if (route.type === 'mirror') {
@@ -462,11 +453,7 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
             throw new Error(`미러가 ${Math.round(age)}분 전 값이라 사용하지 않음`);
           }
         }
-        return {
-          text: String(snap.body),
-          routeType: route.type,
-          snapshotAt: snap.fetchedAt ? formatKST(new Date(snap.fetchedAt)) : null,
-        };
+        return String(snap.body);
       }
 
       if (route.type === 'proxy') {
@@ -482,11 +469,7 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
         if (typeof payload.status === 'number' && (payload.status < 200 || payload.status >= 300)) {
           throw httpStatusError(payload.status);
         }
-        return {
-          text: String(payload.body != null ? payload.body : ''),
-          routeType: route.type,
-          snapshotAt: null,
-        };
+        return String(payload.body != null ? payload.body : '');
       }
 
       throw new Error(`알 수 없는 경로 타입: ${route.type}`);
@@ -505,14 +488,8 @@ async function fetchAdminTxt(src) {
   const bustedUrl = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
 
   let text;
-  let sourceType = 'live';
-  let snapshotAt = null;
-
   if (src.sources && src.sources.length) {
-    const chain = await fetchViaChain(src, bustedUrl, timeoutMs);
-    text = chain.text;
-    sourceType = LIVE_ROUTE_TYPES.indexOf(chain.routeType) !== -1 ? 'live' : chain.routeType;
-    snapshotAt = chain.snapshotAt;
+    text = await fetchViaChain(src, bustedUrl, timeoutMs);
   } else if (src.proxyUrl) {
     const proxied = src.proxyUrl + (src.proxyUrl.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(bustedUrl);
     const res = await fetchWithTimeout(
@@ -555,8 +532,6 @@ async function fetchAdminTxt(src) {
       updateDateForCompare: null,
       downloadUrl: src.siteUrl,
       downloadLabel: '바로가기',
-      _source: sourceType,
-      _snapshotAt: snapshotAt,
       _debug: { reason: 'JSON도 key=value 텍스트도 아님(파싱 실패)', rawSnippet: text.slice(0, 300) },
     };
   }
@@ -617,8 +592,6 @@ async function fetchAdminTxt(src) {
     updateDateForCompare,
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
-    _source: sourceType,
-    _snapshotAt: snapshotAt,
   };
   if (updateDateText === null || build === null) {
     const missing = [];
@@ -774,7 +747,6 @@ async function fetchOne(src) {
       updateDateText: null,
       staticNote: src.staticNote || null,
       isToday: false,
-      source: 'live',
       downloadUrl: src.siteUrl || src.url || null,
       downloadLabel: '바로가기',
     };
@@ -802,11 +774,9 @@ async function fetchOne(src) {
       build: data.build,
       updateDateText: data.updateDateText,
       isToday,
-      source: data._source || 'live',
       downloadUrl: data.downloadUrl,
       downloadLabel: data.downloadLabel,
     };
-    if (data._snapshotAt) out.snapshotAt = data._snapshotAt;
     if (data._debug) out._debug = data._debug;
 
     return out;
@@ -843,7 +813,6 @@ async function fetchOne(src) {
       build: null,
       updateDateText: null,
       isToday: false,
-      source: 'live',
       downloadUrl: src.siteUrl || src.pageUrl || null,
       downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
     };
@@ -869,7 +838,6 @@ function buildHardDeadlineResult(src) {
     build: null,
     updateDateText: null,
     isToday: false,
-    source: 'live',
     downloadUrl: src.siteUrl || src.pageUrl || src.url || null,
     downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
   };
