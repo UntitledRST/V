@@ -15,11 +15,13 @@ import { dirname, join } from 'node:path';
 
 // ---------------------------------------------------------------------------
 // 수집 대상
+// 아래 주소는 사내망에서만 접속됩니다. 따라서 이 스크립트는 사내망에 설치한
+// self-hosted runner 에서 실행되어야 합니다. (GitHub 클라우드 러너에서는 실패)
 // ---------------------------------------------------------------------------
 const TARGETS = [
   {
     name: '베타 파트너 어드민',
-    url: 'https://stbtn.startsupport.com/version.txt',
+    url: 'https://stbtnpartners.startsupport.com/version.txt',
     out: 'version/version-cache/beta-partneradmin.json',
   },
 ];
