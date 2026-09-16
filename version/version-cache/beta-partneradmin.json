@@ -1,5 +1,6 @@
-﻿{
-    "fetchedAt":  "2026-08-13T08:38:01Z",
-    "status":  200,
-    "body":  "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.1\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-08-13T06:41:29.728Z\",\"version\":\"8.0.1\",\"buildNumber\":\"10\"}}"
+{
+  "fetchedAt": "2026-09-16T01:23:18.020Z",
+  "status": 200,
+  "url": "https://stbtn.startsupport.com/version.txt",
+  "body": "{\"app\":{\"name\":\"RC8 API\",\"version\":\"8.0.2\"},\"build\":{\"artifact\":\"api\",\"name\":\"api\",\"time\":\"2026-09-09T06:34:36.212Z\",\"version\":\"8.0.2\",\"buildNumber\":\"21\"}}"
 }
