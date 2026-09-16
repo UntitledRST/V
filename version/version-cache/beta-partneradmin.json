@@ -2,5 +2,5 @@
   "fetchedAt": "2026-09-16T03:05:50.579Z",
   "status": 200,
   "url": "https://stbtnpartners.startsupport.com/version.txt",
-  "body": "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.2\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-09-09T07:43:05.723Z\",\"version\":\"8.0.2\",\"buildNumber\":\"15\"}}"
+  "body": "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.2\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-09-09T07:43:05.729Z\",\"version\":\"8.0.2\",\"buildNumber\":\"15\"}}"
 }
