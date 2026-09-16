@@ -433,6 +433,30 @@
     font-weight: 600;
   }
 
+  /* 실시간 조회가 아니라 스냅샷/최후값에서 온 데이터임을 표시 */
+  .source-tag{
+    display:inline-block;
+    margin-top: 4px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .source-tag.cache{
+    color: var(--orange);
+    background: var(--orange-soft);
+    border: 1px solid rgba(245,165,36,0.35);
+  }
+  .source-tag.fallback{
+    color: var(--text-tertiary);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--panel-border);
+  }
+  .app-row-source.source-tag{ margin-top: 0; flex-shrink: 0; }
+
   .diag-text{
     font-size: 9.5px;
     font-weight: 500;
@@ -593,6 +617,35 @@
       .replace(/"/g, '&quot;');
   }
 
+  // ---------- 데이터 출처 배지 ----------
+  // 서버가 내려주는 source 값:
+  //   'live'   : 원본 서버에서 실시간으로 조회 (배지 없음)
+  //   'file'   : GitHub Actions 가 주기적으로 받아 저장한 저장소 안 스냅샷
+  //   'mirror' : 같은 스냅샷을 HTTP 로 읽어온 값
+  //   'fallback' : 모든 경로 실패 시 코드에 하드코딩된 최후 값
+  function sourceTagInfo(item){
+    if (item.isFallback || item.source === 'fallback'){
+      return { cls: 'fallback', text: '최후 저장값', title: '모든 조회 경로가 실패해 코드에 저장된 값을 표시합니다.' };
+    }
+    if (item.source === 'file' || item.source === 'mirror'){
+      var when = item.snapshotAt ? ' · ' + item.snapshotAt : '';
+      return {
+        cls: 'cache',
+        text: '스냅샷' + when,
+        title: '원본 서버에 직접 닿지 못해 주기적으로 수집해 둔 스냅샷을 표시합니다.'
+          + (item.snapshotAt ? ' (수집 시각: ' + item.snapshotAt + ')' : '')
+      };
+    }
+    return null;
+  }
+
+  function sourceTagHtml(item, extraClass){
+    var info = sourceTagInfo(item);
+    if (!info) return '';
+    return '<span class="source-tag ' + info.cls + (extraClass ? ' ' + extraClass : '') +
+      '" title="' + escapeHtml(info.title) + '">' + escapeHtml(info.text) + '</span>';
+  }
+
   // ---------- 다운로드 링크 처리 ----------
   // 아래 목록에 있는 소스만 /api/download 중계를 거친다.
   // 베타 파일 서버가 .dmg 에 Content-Disposition 을 주지 않아 브라우저가 저장하지 않고
@@ -632,6 +685,8 @@
     } else {
       updateHtml = '<div class="update-text err">업데이트: 조회 실패</div>';
     }
+
+    updateHtml += sourceTagHtml(item);
 
     var diagText = null;
     if (item._debug && item._debug.reason) diagText = item._debug.reason;
@@ -708,6 +763,7 @@
       '<span class="app-row-name">' + escapeHtml(item.label || '') + '</span>' +
       '<span class="app-row-build' + (hasBuild ? '' : ' na') + '">' + buildText + '</span>' +
       '<span class="app-row-update ' + updateClass + '">' + updateText + '</span>' +
+      sourceTagHtml(item, 'app-row-source') +
       downloadHtml;
 
     return row;
