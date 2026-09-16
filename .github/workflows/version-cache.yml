@@ -1,8 +1,8 @@
 name: version-cache
 
-# 베타 파트너 어드민 버전 정보를 주기적으로 받아 저장소에 스냅샷으로 커밋합니다.
-# 커밋이 생기면 Vercel 이 자동 재배포되고, /api/builds 의 { type: 'file' } 경로가
-# 새 스냅샷을 읽게 됩니다.
+# 베타 파트너 어드민 버전 정보(stbtnpartners.startsupport.com)는 사내망에서만 접속됩니다.
+# 따라서 이 워크플로는 사내망 Windows PC 에 설치한 self-hosted runner 에서 실행됩니다.
+# 러너가 꺼져 있으면 예약 실행은 큐에 쌓였다가 러너가 켜지면 실행됩니다.
 
 on:
   schedule:
@@ -19,10 +19,14 @@ concurrency:
 
 jobs:
   snapshot:
-    runs-on: ubuntu-latest
+    # 러너 등록 시 지정한 라벨. 사내망 PC 에만 이 라벨을 붙이세요.
+    runs-on: [self-hosted, windows, stbtn-partner]
+    timeout-minutes: 10
+
     steps:
       - uses: actions/checkout@v4
 
+      # PC 에 Node 20 이 이미 설치돼 있다면 이 단계를 지워도 됩니다.
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -30,10 +34,12 @@ jobs:
       - name: 버전 정보 수집
         id: fetch
         continue-on-error: true
+        shell: bash
         run: node scripts/fetch-version-cache.mjs
 
       - name: 변경분 커밋
         if: always()
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -47,6 +53,7 @@ jobs:
 
       - name: 수집 실패 시 워크플로 실패 처리
         if: steps.fetch.outcome == 'failure'
+        shell: bash
         run: |
           echo "버전 정보 수집에 실패했습니다. 위 로그를 확인하세요."
           exit 1
