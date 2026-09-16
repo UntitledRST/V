@@ -3,6 +3,12 @@
 // 브라우저로 내려줍니다. 서버 -> 원본 서버 요청이므로 브라우저 CORS 제한을 받지 않습니다.
 // Vercel Node.js 서버리스 함수 형식 (Node 18+ 전역 fetch 사용)
 
+// 베타 파트너 어드민 버전 정보 수집 주소.
+// GitHub Actions(scripts/fetch-version-cache.mjs)도 같은 주소를 주기적으로 받아
+// version/version-cache/beta-partneradmin.json 스냅샷으로 커밋합니다.
+// 주소를 바꿀 때는 이 상수와 스크립트의 TARGETS 를 함께 수정하세요.
+const BETA_PARTNERADMIN_VERSION_URL = 'https://stbtn.startsupport.com/version.txt';
+
 const SOURCES = [
   // ---------------- ALPHA / APP (Host) ----------------
   { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Win',
@@ -73,26 +79,24 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/version.json',
     pageUrl: 'https://stbtn.113366.com', type: 'web-relay' },
   { key: 'beta-web-partneradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'Partner\nAdmin',
-    url: 'https://stbtnpartners.startsupport.com/version.txt',
+    // 버전 정보를 받아오는 주소 (카드의 '바로가기' 는 siteUrl 로 따로 유지)
+    url: BETA_PARTNERADMIN_VERSION_URL,
     siteUrl: 'https://stbtnpartners.startsupport.com', type: 'admin-txt',
     timeField: 'time', timeMode: 'utc',
     timeoutMs: 2500,
     sources: [
-      // 0) version.json 에서 직접 불러오기 (1순위)
-      { type: 'direct', url: 'https://stbtnpartners.startsupport.com/version.json' },
-      // 1) 원본 version.txt 에 직접 요청
+      // 1) 원본에 직접 요청 (실시간 값이 항상 우선)
       { type: 'direct' },
-      // 2) HTTP/1.1 강제
+      // 2) HTTP/1.1 강제 (HTTP/2 협상 단계에서 막히는 경우 대비)
       { type: 'direct-http1' },
       // 3) GitHub Actions 가 주기적으로 받아 저장소에 커밋해 둔 스냅샷
-      //    ↓ 경로 수정: version/version-cache/beta-partneradmin.json
       { type: 'file', path: 'version/version-cache/beta-partneradmin.json' },
       // 4) 위 파일을 디스크에서 못 읽는 경우를 대비해 같은 파일을 HTTP 로도 읽어본다
       { type: 'mirror', url: 'https://rc-version-check.vercel.app/version-cache/beta-partneradmin.json' },
       // 5) Cloudflare Worker 중계가 필요하면 주석을 푸세요 (version-proxy-worker.js)
       // { type: 'proxy', url: 'https://version-proxy.<계정>.workers.dev' },
     ],
-    // ↓ fallback 값 최신으로 업데이트
+    // 위 경로가 모두 실패했을 때만 쓰이는 최후 값
     fallback: { build: '10', time: '2026-08-13T06:41:29.728Z' },
   },
   { key: 'beta-web-useradmin', channel: 'beta', group: 'web', platform: 'admin', label: 'User\nAdmin',
@@ -114,8 +118,11 @@ const SOURCES = [
     timeField: 'time', timeMode: 'utc' },
 ];
 
-// 유일한 타임아웃 설정: 모든 소스가 이 값(1초) 하나만 사용한다.
+// 유일한 타임아웃 설정: 별도 timeoutMs 가 없는 모든 소스가 이 값 하나만 사용한다.
 const TIMEOUT_MS = 1100;
+
+// 실시간 조회로 간주하는 경로 타입 (그 외는 스냅샷/캐시로 표시)
+const LIVE_ROUTE_TYPES = ['direct', 'direct-http1', 'proxy'];
 
 function buildFallbackResult(src) {
   const date = parseAsUTCDate(src.fallback.time);
@@ -132,6 +139,7 @@ function buildFallbackResult(src) {
     updateDateText: text,
     isToday: !!compare && compare === todayKSTDateStr(),
     isFallback: true,
+    source: 'fallback',
     downloadUrl: src.siteUrl || src.url || null,
     downloadLabel: '바로가기',
   };
@@ -401,6 +409,8 @@ function parseKeyValueText(text) {
   return matched ? obj : null;
 }
 
+// 여러 경로를 순서대로 시도하고, 성공한 경로 정보까지 함께 돌려준다.
+// 반환값: { text, routeType, snapshotAt }
 async function fetchViaChain(src, bustedUrl, timeoutMs) {
   const errors = [];
   const share = Math.floor(timeoutMs / src.sources.length);
@@ -417,11 +427,14 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
     try {
       if (route.type === 'direct' || route.type === 'direct-http1') {
         const headers = { Accept: 'application/json, text/plain, */*', 'Cache-Control': 'no-cache', Pragma: 'no-cache' };
+        const targetUrl = route.url
+          ? route.url + (route.url.includes('?') ? '&' : '?') + '_=' + Date.now()
+          : bustedUrl;
         const res = route.type === 'direct-http1'
-          ? await fetchViaNodeHttps(bustedUrl, { headers }, slice)
-          : await fetchWithTimeout(bustedUrl, { headers }, { timeoutMs: slice, allowNodeHttpsFallback: false });
+          ? await fetchViaNodeHttps(targetUrl, { headers }, slice)
+          : await fetchWithTimeout(targetUrl, { headers }, { timeoutMs: slice, allowNodeHttpsFallback: false });
         if (!res.ok) throw httpStatusError(res.status);
-        return await res.text();
+        return { text: await res.text(), routeType: route.type, snapshotAt: null };
       }
 
       if (route.type === 'file') {
@@ -430,7 +443,11 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
         const target = path.join(process.cwd(), route.path);
         const snap = JSON.parse(fs.readFileSync(target, 'utf8'));
         if (!snap || snap.body == null) throw new Error('스냅샷에 body 가 없음');
-        return String(snap.body);
+        return {
+          text: String(snap.body),
+          routeType: route.type,
+          snapshotAt: snap.fetchedAt ? formatKST(new Date(snap.fetchedAt)) : null,
+        };
       }
 
       if (route.type === 'mirror') {
@@ -445,7 +462,11 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
             throw new Error(`미러가 ${Math.round(age)}분 전 값이라 사용하지 않음`);
           }
         }
-        return String(snap.body);
+        return {
+          text: String(snap.body),
+          routeType: route.type,
+          snapshotAt: snap.fetchedAt ? formatKST(new Date(snap.fetchedAt)) : null,
+        };
       }
 
       if (route.type === 'proxy') {
@@ -461,7 +482,11 @@ async function fetchViaChain(src, bustedUrl, timeoutMs) {
         if (typeof payload.status === 'number' && (payload.status < 200 || payload.status >= 300)) {
           throw httpStatusError(payload.status);
         }
-        return String(payload.body != null ? payload.body : '');
+        return {
+          text: String(payload.body != null ? payload.body : ''),
+          routeType: route.type,
+          snapshotAt: null,
+        };
       }
 
       throw new Error(`알 수 없는 경로 타입: ${route.type}`);
@@ -480,8 +505,14 @@ async function fetchAdminTxt(src) {
   const bustedUrl = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
 
   let text;
+  let sourceType = 'live';
+  let snapshotAt = null;
+
   if (src.sources && src.sources.length) {
-    text = await fetchViaChain(src, bustedUrl, timeoutMs);
+    const chain = await fetchViaChain(src, bustedUrl, timeoutMs);
+    text = chain.text;
+    sourceType = LIVE_ROUTE_TYPES.indexOf(chain.routeType) !== -1 ? 'live' : chain.routeType;
+    snapshotAt = chain.snapshotAt;
   } else if (src.proxyUrl) {
     const proxied = src.proxyUrl + (src.proxyUrl.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(bustedUrl);
     const res = await fetchWithTimeout(
@@ -524,6 +555,8 @@ async function fetchAdminTxt(src) {
       updateDateForCompare: null,
       downloadUrl: src.siteUrl,
       downloadLabel: '바로가기',
+      _source: sourceType,
+      _snapshotAt: snapshotAt,
       _debug: { reason: 'JSON도 key=value 텍스트도 아님(파싱 실패)', rawSnippet: text.slice(0, 300) },
     };
   }
@@ -584,6 +617,8 @@ async function fetchAdminTxt(src) {
     updateDateForCompare,
     downloadUrl: src.siteUrl,
     downloadLabel: '바로가기',
+    _source: sourceType,
+    _snapshotAt: snapshotAt,
   };
   if (updateDateText === null || build === null) {
     const missing = [];
@@ -739,6 +774,7 @@ async function fetchOne(src) {
       updateDateText: null,
       staticNote: src.staticNote || null,
       isToday: false,
+      source: 'live',
       downloadUrl: src.siteUrl || src.url || null,
       downloadLabel: '바로가기',
     };
@@ -766,9 +802,11 @@ async function fetchOne(src) {
       build: data.build,
       updateDateText: data.updateDateText,
       isToday,
+      source: data._source || 'live',
       downloadUrl: data.downloadUrl,
       downloadLabel: data.downloadLabel,
     };
+    if (data._snapshotAt) out.snapshotAt = data._snapshotAt;
     if (data._debug) out._debug = data._debug;
 
     return out;
@@ -805,6 +843,7 @@ async function fetchOne(src) {
       build: null,
       updateDateText: null,
       isToday: false,
+      source: 'live',
       downloadUrl: src.siteUrl || src.pageUrl || null,
       downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
     };
@@ -830,6 +869,7 @@ function buildHardDeadlineResult(src) {
     build: null,
     updateDateText: null,
     isToday: false,
+    source: 'live',
     downloadUrl: src.siteUrl || src.pageUrl || src.url || null,
     downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
   };
@@ -868,11 +908,16 @@ function checkSnapshot(src) {
 
   try {
     const snap = JSON.parse(fs.readFileSync(target, 'utf8'));
+    const ageMin = snap.fetchedAt
+      ? Math.round((Date.now() - new Date(snap.fetchedAt).getTime()) / 60000)
+      : null;
     return {
       경로: route.path,
       배포루트: process.cwd(),
       읽기: '성공',
       수집시각: snap.fetchedAt || null,
+      수집시각_KST: snap.fetchedAt ? formatKST(new Date(snap.fetchedAt)) : null,
+      경과분: ageMin,
       원문길이: snap.body ? String(snap.body).length : 0,
       원문앞부분: snap.body ? String(snap.body).slice(0, 200) : null,
     };
@@ -931,6 +976,7 @@ async function runDiagnostic(key, timeoutMs) {
 
   const success = attempts.find((a) => a.결과 === '성공');
   const region = process.env.VERCEL_REGION || null;
+  const effectiveTimeout = src.timeoutMs != null ? src.timeoutMs : TIMEOUT_MS;
 
   return {
     ok: true,
@@ -944,12 +990,12 @@ async function runDiagnostic(key, timeoutMs) {
       : `서울(icn1)이 아닙니다. vercel.json 의 regions 설정과 재배포 여부를 확인하세요.`,
     나가는곳: await checkEgress(),
     스냅샷파일: checkSnapshot(src),
-    대시보드_타임아웃ms: TIMEOUT_MS,
+    대시보드_타임아웃ms: effectiveTimeout,
     전체소요ms: Date.now() - started,
     판정: !success
-      ? '응답을 받지 못했습니다. 서버가 막고 있거나 도달할 수 없는 상태입니다.'
-      : (success.소요시간ms > TIMEOUT_MS
-          ? `응답은 오지만 ${success.소요시간ms}ms 가 걸려 대시보드 제한(${TIMEOUT_MS}ms)을 넘습니다.`
+      ? '응답을 받지 못했습니다. 서버가 막고 있거나 도달할 수 없는 상태입니다. (스냅샷 경로로 대체됩니다)'
+      : (success.소요시간ms > effectiveTimeout
+          ? `응답은 오지만 ${success.소요시간ms}ms 가 걸려 대시보드 제한(${effectiveTimeout}ms)을 넘습니다.`
           : '정상입니다. 대시보드 제한 안에서 응답합니다.'),
     시도: attempts,
   };
