@@ -3,11 +3,11 @@
 // 브라우저로 내려줍니다. 서버 -> 원본 서버 요청이므로 브라우저 CORS 제한을 받지 않습니다.
 // Vercel Node.js 서버리스 함수 형식 (Node 18+ 전역 fetch 사용)
 
-// 베타 파트너 어드민 버전 정보 수집 주소.
-// GitHub Actions(scripts/fetch-version-cache.mjs)도 같은 주소를 주기적으로 받아
-// version/version-cache/beta-partneradmin.json 스냅샷으로 커밋합니다.
-// 주소를 바꿀 때는 이 상수와 스크립트의 TARGETS 를 함께 수정하세요.
-const BETA_PARTNERADMIN_VERSION_URL = 'https://stbtn.startsupport.com/version.txt';
+// 베타 파트너 어드민 버전 정보 수집 주소 (사내망에서만 접속 가능).
+// Vercel 서버는 이 주소에 닿지 못하므로 direct/direct-http1 경로는 대부분 실패하고,
+// 사내망 self-hosted runner 가 주기적으로 받아 커밋해 둔 스냅샷(file/mirror)이 사용됩니다.
+// 주소를 바꿀 때는 이 상수와 scripts/fetch-version-cache.mjs 의 TARGETS 를 함께 수정하세요.
+const BETA_PARTNERADMIN_VERSION_URL = 'https://stbtnpartners.startsupport.com/version.txt';
 
 const SOURCES = [
   // ---------------- ALPHA / APP (Host) ----------------
