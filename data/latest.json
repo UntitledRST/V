@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-16T11:01:49.093752+00:00",
+  "fetchedAt": "2026-09-17T03:01:23.625658+00:00",
   "count": 378,
   "issues": [
     {
@@ -623,7 +623,7 @@
       "번호": 57,
       "일감번호": 277791,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [iOS 호스트][화면 공유] 최초 연결 첫 화면공유 시작 완료 후에도 뷰어 \"화면 공유가 중단되었습니다\" 딤 오버레이 잔존 — 고객이 공유 중단 후 재공유해야 해소, 잔존 동안 원격 제어 입력 차단",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -733,7 +733,7 @@
       "번호": 67,
       "일감번호": 277415,
       "분류": "기능(Function)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [기획 확인][접속페이지·모바일 호스트] 접속번호 6자리 입력 후 접속 실행 방식 플랫폼 불일치 — 웹: 클릭 전용(Enter 무동작·Tab 도달 불가), 모바일 앱: 즉시 자동접속. 통일 여부 정의 요청",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1371,7 +1371,7 @@
       "번호": 123,
       "일감번호": 275757,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA][결함] [Agent] [상담이력] 상담 구분 필터 및 상담 이력 지원 유형 노출 불일치 ",
       "우선순위": "보통(Normal)",
       "담당자": "장기중(Jay)",
@@ -2869,7 +2869,7 @@
       "번호": 257,
       "일감번호": 274893,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [뷰어] 모바일 호스트 – 텍스트 생성 완료 후 크기·위치 변경 및 기존 텍스트 박스 잔상이 노출됨",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3034,7 +3034,7 @@
       "번호": 272,
       "일감번호": 274799,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] 멀티 모니터 환경의 Mac Host 연결 — 화면 조절/PIP 전환 시 모니터 화면 노출 비정상 (블랙아웃 유지) ",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3243,7 +3243,7 @@
       "번호": 291,
       "일감번호": 274622,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][접속대기] 이메일 전송 폼 '내용 입력' 필드 미구현 — 기획(최대 200자·그룹옵션 기본 문구)과 불일치, 주소 입력만 제공",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -3419,24 +3419,12 @@
       "번호": 307,
       "일감번호": 274329,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [호스트][PC원격지원] 뷰어 이탈(대기 중 종료) 후 Host 실행 시 '연결 중(Step 4 of 8 — 피어 연결 대기)'에서 무한 정지 — 타임아웃·오류 안내·취소 수단 부재",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "created_on": "2026-07-13 18:30:29",
-      "link": "https://projects.rsupport.com/issues/274329",
-      "comments": [
-        {
-          "author": "오세진",
-          "created_on": "2026-08-31T16:23:07+09:00",
-          "note": "MR !1949 머지 완료했습니다.\nhttps://gitlab.rsupport.com/RemoteCall/rc8/service/-/merge_requests/1949\nmerge commit: 80d313c230\n\n기대 결과의 '이른 단계(접속번호 검증/입장 시점) 차단'은 채택하지 않았습니다. 검증 단계의 랑데뷰가 상담원 생존을 확인하더라도 이후 세션 연결 전까지 방을 구독하지 않는 공백이 있고, 그 공백은 약관·권한·화면 캡처 동의 등 사용자 조작에 걸려 길이에 상한이 없습니다. 확인 시점과 사용 시점이 벌어지는 한 조기 차단으로는 막히지 않아, 실제로 기다리는 지점에 시한을 두는 방식으로 처리했습니다."
-        },
-        {
-          "author": "김신혜",
-          "created_on": "2026-09-08T17:37:41+09:00",
-          "note": "[QA 해결 검수 결과: FAIL(피드백) — 시한·오류 화면 확인, 안내 문구 언어 재수정 요청]\n\n■ 재현 환경\n- 호스트 Win(이 PC) 8.0.1.685 / 웹뷰어(Chrome) 8.0.1.685 / BE 8.0.1(#19) · 베타(stbtn) · 호스트 UI 언어 한국어\n\n■ 확인된 것(수정 의도대로 동작)\n- 뷰어 이탈 시점 3종 모두 '연결 중' 무한 대기 없음\n  A. exe 실행 전 이탈 → 접속번호 검증에서 \"Room not found by accessCode\" 로 종료(17:13:57Z)\n  B. UAC 표시 후 [예] 전 이탈 → 서버 join 거부 40001 \"상담이 이미 진행 중이거나 종료되었습니다\" 오류 화면(17:15:07Z)\n  C. 세션 join 후 피어 대기 중 뷰어 부재 → agentWait 진입(17:12:41.98Z) 후 정확히 30.0초(17:13:12.00Z)에 오류 화면 전환, [연결 종료]로 정상 종료(17:13:16Z, CloseCode.host_exception)\n\n■ FAIL 사유 — 30초 시한 오류 문구가 한국어 UI에서 영어로 표시\n- 케이스 C 오류 화면 본문이 \"Unable to connect to the agent.\" 로 표시됨(캡처 첨부). 같은 화면의 안내 \"오류 내용을 복사하여 상담원에게 전달해주세요.\"·[연결 종료]와 같은 세션의 40001 안내는 한국어.\n- 호스트 로그: kernel 프로세스 `RcSessionBloc` \"=== ERROR EVENT RECEIVED === Error reason: Unable to connect to the agent.\"(rc-host.1788855197300929.91492.jsonl 17:13:12.002Z)\n\n■ 기대\n- 호스트 UI 언어(한국어)에 맞춰 \"상담원과 연결할 수 없습니다.\" 가 표시되어야 함(처리내용에 8개 언어 리소스 추가로 기재).\n\n■ 참고 사항\n- 문구 생성 지점은 kernel 프로세스의 rc_session_bloc.dart:978 `L.error_app_peer_wait_timeout`. `L` 의 언어 전환(`changeLocale`) 호출처는 앱 프로세스(application.dart:36·언어 설정 페이지)에만 있고 kernel 프로세스(kernel_process.dart)·기동 인자(process_runner.dart:45)에는 언어 초기화/전달이 없어 기본값 `_EN`(localization.l10n.g.dart:130)이 유지되는 것으로 보임. 앱은 전달받은 문자열을 connect_error_page.dart:129-130 에서 그대로 표시. (develop c5cf3f30f 기준, 개발 확인 요청)\n- 동일 kernel 측의 다른 오류 사유('세션 데이터 없음'·'연결 실패' 등 rc_session_bloc.dart:528·586·902·1024·1066·1171)는 한국어 하드코딩이라 영어 UI에서는 반대 현상이 예상됨 — 본 건 범위 외, 참고.\n- 연관: #278328(재연결 대기 시한, 동일 30초)"
-        }
-      ]
+      "link": "https://projects.rsupport.com/issues/274329"
     },
     {
       "번호": 308,
@@ -4283,8 +4271,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 23,
-      "done": 353,
+      "notDone": 22,
+      "done": 354,
       "total": 376
     },
     "assignees": [
@@ -4361,9 +4349,9 @@
       {
         "name": "오세진",
         "total": 92,
-        "done": 89,
+        "done": 90,
         "complete": false,
-        "rate": 96
+        "rate": 97
       },
       {
         "name": "이경준",
@@ -4422,8 +4410,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 12,
-        "done": 284,
+        "progress": 11,
+        "done": 285,
         "total": 296
       }
     ],
@@ -4442,15 +4430,15 @@
       },
       {
         "label": "해결",
-        "count": 206
+        "count": 201
       },
       {
         "label": "피드백",
-        "count": 7
+        "count": 6
       },
       {
         "label": "완료성공",
-        "count": 138
+        "count": 144
       },
       {
         "label": "중단",
@@ -4527,47 +4515,47 @@
       {
         "date": "2026-07-13",
         "cumIssue": 72,
-        "cumDone": 65,
-        "rate": 90,
+        "cumDone": 66,
+        "rate": 92,
         "newCount": 16,
-        "doneCount": 14
+        "doneCount": 15
       },
       {
         "date": "2026-07-14",
         "cumIssue": 77,
-        "cumDone": 70,
-        "rate": 91,
+        "cumDone": 71,
+        "rate": 92,
         "newCount": 5,
         "doneCount": 5
       },
       {
         "date": "2026-07-15",
         "cumIssue": 83,
-        "cumDone": 76,
-        "rate": 92,
+        "cumDone": 77,
+        "rate": 93,
         "newCount": 6,
         "doneCount": 6
       },
       {
         "date": "2026-07-16",
         "cumIssue": 99,
-        "cumDone": 92,
-        "rate": 93,
+        "cumDone": 93,
+        "rate": 94,
         "newCount": 16,
         "doneCount": 16
       },
       {
         "date": "2026-07-20",
         "cumIssue": 111,
-        "cumDone": 104,
-        "rate": 94,
+        "cumDone": 105,
+        "rate": 95,
         "newCount": 12,
         "doneCount": 12
       },
       {
         "date": "2026-07-21",
         "cumIssue": 129,
-        "cumDone": 122,
+        "cumDone": 123,
         "rate": 95,
         "newCount": 18,
         "doneCount": 18
@@ -4575,7 +4563,7 @@
       {
         "date": "2026-07-22",
         "cumIssue": 160,
-        "cumDone": 150,
+        "cumDone": 151,
         "rate": 94,
         "newCount": 31,
         "doneCount": 28
@@ -4583,31 +4571,31 @@
       {
         "date": "2026-07-23",
         "cumIssue": 180,
-        "cumDone": 170,
-        "rate": 94,
+        "cumDone": 171,
+        "rate": 95,
         "newCount": 20,
         "doneCount": 20
       },
       {
         "date": "2026-07-24",
         "cumIssue": 194,
-        "cumDone": 183,
-        "rate": 94,
+        "cumDone": 184,
+        "rate": 95,
         "newCount": 14,
         "doneCount": 13
       },
       {
         "date": "2026-07-27",
         "cumIssue": 215,
-        "cumDone": 201,
-        "rate": 93,
+        "cumDone": 202,
+        "rate": 94,
         "newCount": 21,
         "doneCount": 18
       },
       {
         "date": "2026-07-28",
         "cumIssue": 228,
-        "cumDone": 214,
+        "cumDone": 215,
         "rate": 94,
         "newCount": 13,
         "doneCount": 13
@@ -4615,15 +4603,15 @@
       {
         "date": "2026-07-29",
         "cumIssue": 243,
-        "cumDone": 229,
-        "rate": 94,
+        "cumDone": 230,
+        "rate": 95,
         "newCount": 15,
         "doneCount": 15
       },
       {
         "date": "2026-07-30",
         "cumIssue": 257,
-        "cumDone": 243,
+        "cumDone": 244,
         "rate": 95,
         "newCount": 14,
         "doneCount": 14
@@ -4631,7 +4619,7 @@
       {
         "date": "2026-07-31",
         "cumIssue": 258,
-        "cumDone": 244,
+        "cumDone": 245,
         "rate": 95,
         "newCount": 1,
         "doneCount": 1
@@ -4639,7 +4627,7 @@
       {
         "date": "2026-08-03",
         "cumIssue": 268,
-        "cumDone": 254,
+        "cumDone": 255,
         "rate": 95,
         "newCount": 10,
         "doneCount": 10
@@ -4647,7 +4635,7 @@
       {
         "date": "2026-08-04",
         "cumIssue": 278,
-        "cumDone": 264,
+        "cumDone": 265,
         "rate": 95,
         "newCount": 10,
         "doneCount": 10
@@ -4655,7 +4643,7 @@
       {
         "date": "2026-08-05",
         "cumIssue": 288,
-        "cumDone": 273,
+        "cumDone": 274,
         "rate": 95,
         "newCount": 10,
         "doneCount": 9
@@ -4663,7 +4651,7 @@
       {
         "date": "2026-08-06",
         "cumIssue": 290,
-        "cumDone": 275,
+        "cumDone": 276,
         "rate": 95,
         "newCount": 2,
         "doneCount": 2
@@ -4671,7 +4659,7 @@
       {
         "date": "2026-08-07",
         "cumIssue": 292,
-        "cumDone": 277,
+        "cumDone": 278,
         "rate": 95,
         "newCount": 2,
         "doneCount": 2
@@ -4679,7 +4667,7 @@
       {
         "date": "2026-08-10",
         "cumIssue": 295,
-        "cumDone": 280,
+        "cumDone": 281,
         "rate": 95,
         "newCount": 3,
         "doneCount": 3
@@ -4687,7 +4675,7 @@
       {
         "date": "2026-08-11",
         "cumIssue": 297,
-        "cumDone": 282,
+        "cumDone": 283,
         "rate": 95,
         "newCount": 2,
         "doneCount": 2
@@ -4695,7 +4683,7 @@
       {
         "date": "2026-08-12",
         "cumIssue": 303,
-        "cumDone": 287,
+        "cumDone": 288,
         "rate": 95,
         "newCount": 6,
         "doneCount": 5
@@ -4703,7 +4691,7 @@
       {
         "date": "2026-08-13",
         "cumIssue": 308,
-        "cumDone": 292,
+        "cumDone": 293,
         "rate": 95,
         "newCount": 5,
         "doneCount": 5
@@ -4711,7 +4699,7 @@
       {
         "date": "2026-08-14",
         "cumIssue": 312,
-        "cumDone": 296,
+        "cumDone": 297,
         "rate": 95,
         "newCount": 4,
         "doneCount": 4
@@ -4719,7 +4707,7 @@
       {
         "date": "2026-08-18",
         "cumIssue": 316,
-        "cumDone": 300,
+        "cumDone": 301,
         "rate": 95,
         "newCount": 4,
         "doneCount": 4
@@ -4727,7 +4715,7 @@
       {
         "date": "2026-08-19",
         "cumIssue": 320,
-        "cumDone": 304,
+        "cumDone": 305,
         "rate": 95,
         "newCount": 4,
         "doneCount": 4
@@ -4735,7 +4723,7 @@
       {
         "date": "2026-08-20",
         "cumIssue": 323,
-        "cumDone": 307,
+        "cumDone": 308,
         "rate": 95,
         "newCount": 3,
         "doneCount": 3
@@ -4743,7 +4731,7 @@
       {
         "date": "2026-08-24",
         "cumIssue": 325,
-        "cumDone": 309,
+        "cumDone": 310,
         "rate": 95,
         "newCount": 2,
         "doneCount": 2
@@ -4751,7 +4739,7 @@
       {
         "date": "2026-08-25",
         "cumIssue": 328,
-        "cumDone": 312,
+        "cumDone": 313,
         "rate": 95,
         "newCount": 3,
         "doneCount": 3
@@ -4759,7 +4747,7 @@
       {
         "date": "2026-08-26",
         "cumIssue": 336,
-        "cumDone": 319,
+        "cumDone": 320,
         "rate": 95,
         "newCount": 8,
         "doneCount": 7
@@ -4767,7 +4755,7 @@
       {
         "date": "2026-08-27",
         "cumIssue": 344,
-        "cumDone": 327,
+        "cumDone": 328,
         "rate": 95,
         "newCount": 8,
         "doneCount": 8
@@ -4775,7 +4763,7 @@
       {
         "date": "2026-08-28",
         "cumIssue": 351,
-        "cumDone": 333,
+        "cumDone": 334,
         "rate": 95,
         "newCount": 7,
         "doneCount": 6
@@ -4783,7 +4771,7 @@
       {
         "date": "2026-08-31",
         "cumIssue": 363,
-        "cumDone": 344,
+        "cumDone": 345,
         "rate": 95,
         "newCount": 12,
         "doneCount": 11
@@ -4791,23 +4779,23 @@
       {
         "date": "2026-09-01",
         "cumIssue": 365,
-        "cumDone": 344,
-        "rate": 94,
+        "cumDone": 345,
+        "rate": 95,
         "newCount": 2,
         "doneCount": 0
       },
       {
         "date": "2026-09-03",
         "cumIssue": 369,
-        "cumDone": 348,
-        "rate": 94,
+        "cumDone": 349,
+        "rate": 95,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-09-04",
         "cumIssue": 372,
-        "cumDone": 349,
+        "cumDone": 350,
         "rate": 94,
         "newCount": 3,
         "doneCount": 1
@@ -4815,7 +4803,7 @@
       {
         "date": "2026-09-07",
         "cumIssue": 373,
-        "cumDone": 349,
+        "cumDone": 350,
         "rate": 94,
         "newCount": 1,
         "doneCount": 0
@@ -4823,7 +4811,7 @@
       {
         "date": "2026-09-09",
         "cumIssue": 377,
-        "cumDone": 353,
+        "cumDone": 354,
         "rate": 94,
         "newCount": 4,
         "doneCount": 4
@@ -4831,8 +4819,8 @@
       {
         "date": "2026-09-11",
         "cumIssue": 378,
-        "cumDone": 353,
-        "rate": 93,
+        "cumDone": 354,
+        "rate": 94,
         "newCount": 1,
         "doneCount": 0
       }
