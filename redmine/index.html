@@ -403,7 +403,8 @@
   var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null };
   var chart = null;
 
-  var DEFAULT_DESC_SORT_SQUADS = ['275677'];
+  // ====== 기본 내림차순 정렬 대상 스쿼드에 admin802 추가 ======
+  var DEFAULT_DESC_SORT_SQUADS = ['275677', 'admin802'];
 
   function defaultSortDirFor(squadId){
     return DEFAULT_DESC_SORT_SQUADS.indexOf(String(squadId)) !== -1 ? 'desc' : null;
@@ -456,15 +457,17 @@
 
   function fmtTime(t){
     if (!t) return '<span style="color:var(--text-tertiary)">&mdash;</span>';
-    var parts = t.split(' ');
+    var parts = String(t).split(' ');
     return escapeHtml(parts[0]) + '<br><span style="color:#ffffff;font-size:14px;font-weight:600">' + escapeHtml(parts[1] || '') + '</span>';
   }
 
   function isNotDoneStatus(s){
+    if (!s) return false;
     return ['신규','진행','피드백'].some(function(k){ return (s||'').indexOf(k) !== -1; });
   }
 
   function getAuthor(it){
+    if (!it) return '';
     var v = it.작성자 || it.등록자 || it.author_name ||
             (it.author && (it.author.name || it.author)) || '';
     return String(v).trim();
@@ -581,7 +584,7 @@
         { label: '접속/연결/로그인', keywords: ['접속', '연결', '로그인', 'login', '로그아웃', '세션', '중계', 'vp', '재연결', '대기', 'welcome', '입장', '네트워크', '버전', '업데이트', '실행 실패', '초기화', '모듈'] },
         { label: '화면공유/모니터', keywords: ['화면 공유', '화면공유', '모니터', 'pip', '화면 조절', '화면조절', '전체 화면', '전체화면', '화질', '디스플레이', '해상도', '축소', '확대', '화면 미표시', '화면 전환', '미니맵', '회색', '카메라', '마이크'] },
         { label: '파일전송/공유함', keywords: ['파일 전송', '파일전송', '공유함', '파일함', '업로드', '다운로드', '첨부'] },
-        { label: '그리기/원격제어', keywords: ['그리기', '원격 제어', '원격제어', '포인터', '커서', '오브젝트', '스티커', '특수키', '마우스', '텍스트'] },
+        { label: '그리기/원격제어', keywords: ['그리기', '원격 제어', '원격제어', '포인터', '커서', '스티커', '특수키', '마우스', '텍스트'] },
         { label: '상담/채팅/UI', keywords: ['상담', '채팅', '다국어', '문구', '팝업', 'ui', '버튼', '툴바', '메뉴', 'gnb', '설정', '알럿', '토스트', '메시지'] }
       ]
     },
@@ -626,8 +629,18 @@
     return null;
   }
 
+  // ====== 이슈 데이터 정규화 및 분류 보완 ======
   function classifyIssues(issues){
-    issues.forEach(function(it){
+    (issues || []).forEach(function(it){
+      // 필드명 데이터 보완 (데이터 원본에 대응)
+      it.일감번호 = it.일감번호 || it.id || '';
+      it.제목 = it.제목 || it.subject || it.title || '';
+      it.상태 = it.상태 || it.status_name || (it.status && it.status.name) || '신규';
+      it.우선순위 = it.우선순위 || it.priority_name || (it.priority && it.priority.name) || '보통';
+      it.담당자 = it.담당자 || it.assignee_name || (it.assigned_to && it.assigned_to.name) || '미배정';
+      it.분류 = it.분류 || it.tracker_name || (it.tracker && it.tracker.name) || '이슈';
+      it.link = it.link || (it.일감번호 ? 'https://projects.rsupport.com/issues/' + it.일감번호 : '#');
+
       var allTags = parseTags(it.제목);
       var tags = allTags.slice(1);
       var tagText = tags.join(' ');
@@ -688,7 +701,7 @@
 
   function aggregateGeneric(list, keyField, order){
     var map = {};
-    list.forEach(function(it){
+    (list || []).forEach(function(it){
       var key = it[keyField] || '기타';
       if (!map[key]) map[key] = { label: key, progress: 0, done: 0, total: 0 };
       map[key].total++;
@@ -726,7 +739,7 @@
     var squad = findSquad(squadId) || findSquad(state.squad);
     if (!squad){
       document.getElementById('errorBox').innerHTML =
-        '<div class="error-box">스쿼드 목록이 비어 있습니다. index.html 상단의 SQUADS 배열을 확인해주세요.</div>';
+        '<div class="error-box">스쿼드 목록이 비어 있습니다. SQUADS 배열을 확인해주세요.</div>';
       return;
     }
 
@@ -745,7 +758,12 @@
       if (String(state.squad) !== String(squad.id)) return;
 
       state.issues = data.issues || [];
-      state.summary = data.summary;
+      state.summary = data.summary || {
+        completion: { done: 0, total: 0 },
+        assignees: [],
+        statuses: [],
+        timeline: []
+      };
       state.filter = null;
       state.sortDir = defaultSortDirFor(state.squad);
       updateSortHeader();
@@ -757,7 +775,7 @@
       renderAll();
 
       document.getElementById('lastUpdated').innerHTML =
-        escapeHtml(squad.label) + ' · 마지막 업데이트: <span>' + d.toLocaleString('ko-KR') + '</span> · 총 ' + (data.count != null ? data.count : state.issues.length) + '건';
+        escapeHtml(squad.label) + ' · 마지막 업데이트: <span>' + (isNaN(d) ? '방금 전' : d.toLocaleString('ko-KR')) + '</span> · 총 ' + (data.count != null ? data.count : state.issues.length) + '건';
     } catch (err) {
       document.getElementById('lastUpdated').textContent = '';
       document.getElementById('errorBox').innerHTML =
@@ -786,7 +804,7 @@
   function renderAll(){
     if (!state.summary){
       document.getElementById('errorBox').innerHTML =
-        '<div class="error-box">데이터 파일에 summary 정보가 없습니다. 릴레이 스크립트가 최신 버전인지 확인해주세요.</div>';
+        '<div class="error-box">데이터 파일에 summary 정보가 없습니다.</div>';
       return;
     }
     renderStats();
@@ -937,7 +955,7 @@
   }
 
   function renderStats(){
-    var c = state.summary.completion;
+    var c = (state.summary && state.summary.completion) || { done: 0, total: 0 };
     var totalAll = state.issues.length;
     var rate = totalAll === 0 ? 0 : Math.round((c.done / totalAll) * 100);
     document.getElementById('headerRateBadge').textContent = '완료율 ' + rate + '%';
@@ -952,7 +970,8 @@
   }
 
   function renderAssignees(){
-    var sorted = state.summary.assignees.slice().sort(function(a, b){ return b.total - a.total; });
+    var assignees = (state.summary && state.summary.assignees) || [];
+    var sorted = assignees.slice().sort(function(a, b){ return b.total - a.total; });
     var rows = sorted.map(function(a){
       return '<tr class="clickable" data-filter-type="assignee" data-filter-value="' + escapeHtml(a.name) + '">' +
         '<td>' + escapeHtml(a.name) + '</td>' +
@@ -992,7 +1011,7 @@
 
     var body = document.getElementById('authorBody');
     if (!rows.length){
-      body.innerHTML = '<tr><td colspan="3" class="empty">작성자 정보가 없습니다 &mdash; 데이터 파일에 작성자 필드를 추가해주세요</td></tr>';
+      body.innerHTML = '<tr><td colspan="3" class="empty">작성자 정보가 없습니다</td></tr>';
       return;
     }
 
@@ -1131,7 +1150,7 @@
   }
 
   function renderStatuses(){
-    var s = state.summary.statuses;
+    var s = (state.summary && state.summary.statuses) || [];
     var sum = 0;
     var rows = s.map(function(x){
       sum += x.count;
@@ -1176,7 +1195,7 @@
   }
 
   function renderChart(){
-    var tl = state.summary.timeline;
+    var tl = (state.summary && state.summary.timeline) || [];
     var ctx = document.getElementById('trendChart').getContext('2d');
     var labels = tl.map(function(x){ return x.date; });
     var cumIssue = tl.map(function(x){ return x.cumIssue; });
@@ -1228,7 +1247,7 @@
     if (!tooltipModel || tooltipModel.opacity === 0) return;
 
     var idx = (tooltipModel.dataPoints && tooltipModel.dataPoints.length) ? tooltipModel.dataPoints[0].dataIndex : null;
-    if (idx === null) return;
+    if (idx === null || !state.summary || !state.summary.timeline) return;
     var day = state.summary.timeline[idx];
     if (!day) return;
 
@@ -1359,7 +1378,7 @@
   }
 
   function createdKey(it){
-    return String((it && it.created_on) || '');
+    return String((it && (it.created_on || it.created_at)) || '');
   }
 
   function sortIssueList(list){
@@ -1410,7 +1429,7 @@
   })();
 
   function renderIssues(){
-    var list = state.issues;
+    var list = state.issues || [];
     var f = state.filter;
     updateHeaderNotdoneButton();
     if (f){
@@ -1479,7 +1498,7 @@
         '</td>' +
         '<td>' + escapeHtml(it.우선순위) + '</td>' +
         '<td>' + escapeHtml(it.담당자) + '</td>' +
-        '<td>' + fmtTime(it.created_on) + '</td>' +
+        '<td>' + fmtTime(it.created_on || it.created_at) + '</td>' +
       '</tr>';
     }).join('');
     document.getElementById('issuesBody').innerHTML = rows || '<tr><td colspan="8" class="empty">해당 조건의 이슈가 없습니다</td></tr>';
