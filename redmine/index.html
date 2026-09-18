@@ -579,20 +579,27 @@
 
   // ====== 스쿼드 목록 ======
   // 스쿼드가 늘어나면 아래 배열에 한 줄만 추가하면 됩니다. (api/issues.js는 수정 불필요)
-  //   id    : 'latest' 이거나 상위 일감번호.
-  //           'latest'        → data/latest.json  (제목 prefix 기준 기존 전체 목록)
-  //           상위 일감번호     → data/<id>.json    (해당 상위 일감의 하위 일감)
+  //   id    : 데이터 파일명과 동일합니다. data/<id>.json 을 읽습니다.
+  //           'latest'        → data/latest.json   (제목 prefix 기준 기존 전체 목록)
+  //           'saas802'       → data/saas802.json  (제목이 [SaaS_8.0.2_QA] 인 목록)
+  //           상위 일감번호     → data/<번호>.json    (해당 상위 일감의 하위 일감)
   //   label : 드롭다운에 보이는 이름
   var SQUADS = [
+    { id: 'saas802', label: 'SaaS 8.0.2 QA' },
     { id: 'latest', label: 'SaaS 8.0.1 QA' },
     { id: '275677', label: 'Squad1_275677' }
     // { id: '000000', label: 'Squad2_000000' },
   ];
 
+  // ====== 접속 시 기본으로 열 스쿼드 ======
+  // 주소에 ?squad= 가 있으면 그 값이 우선하고, 없으면 항상 아래 값으로 엽니다.
+  // 예전처럼 '마지막에 본 스쿼드'를 기억해서 열고 싶으면 이 줄을 지우면 됩니다.
+  var DEFAULT_SQUAD = 'saas802';
+
   // ====== 작성자별 패널 노출 대상 ======
-  // 여기에 적힌 스쿼드에서는 '작성자별' 패널을 감춥니다. (RC 8.0.1 QA = 'latest')
+  // 여기에 적힌 스쿼드에서는 '작성자별' 패널을 감춥니다. (QA 목록은 작성자가 대부분 동일하므로 제외)
   // 새 스쿼드가 추가되면 별도 설정 없이 자동으로 표시됩니다.
-  var AUTHOR_PANEL_EXCLUDE_SQUADS = ['latest'];
+  var AUTHOR_PANEL_EXCLUDE_SQUADS = ['latest', 'saas802'];
 
   function isAuthorPanelEnabled(){
     return AUTHOR_PANEL_EXCLUDE_SQUADS.indexOf(String(state.squad)) === -1;
@@ -611,10 +618,11 @@
     try { localStorage.setItem(SQUAD_STORAGE_KEY, id); } catch (e) { /* 무시 */ }
   }
 
-  // 우선순위: URL 쿼리(?squad=) > 마지막 선택값 > 목록의 첫 번째
+  // 우선순위: URL 쿼리(?squad=) > DEFAULT_SQUAD > 마지막 선택값 > 목록의 첫 번째
   function resolveInitialSquad(){
     var fromUrl = new URLSearchParams(location.search).get('squad');
     if (findSquad(fromUrl)) return String(fromUrl);
+    if (findSquad(DEFAULT_SQUAD)) return String(DEFAULT_SQUAD);
     var saved = readSavedSquad();
     if (findSquad(saved)) return String(saved);
     return SQUADS.length ? String(SQUADS[0].id) : null;
@@ -1222,7 +1230,7 @@
   }
 
   // ====== 작성자별 ======
-  // RC 8.0.1 QA(latest)에서는 패널을 숨기고, 그리드도 기존 2행 담당자별 레이아웃으로 되돌립니다.
+  // QA 목록(latest, saas802)에서는 패널을 숨기고, 그리드도 기존 2행 담당자별 레이아웃으로 되돌립니다.
   function renderAuthors(){
     var panel = document.getElementById('authorPanel');
     var grid = document.getElementById('statRow');
