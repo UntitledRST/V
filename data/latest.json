@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-18T01:06:34.983668+00:00",
+  "fetchedAt": "2026-09-18T01:12:18.613315+00:00",
   "count": 378,
   "issues": [
     {
@@ -2451,7 +2451,7 @@
       "번호": 219,
       "일감번호": 275053,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA] [호스트][파일전송] 수신 파일 저장 경로 기획 불일치 — 기획(공용문서\rsupport\remotecall\received files\\날짜폴더) vs 실기(내 문서\\RemoteCall\\ReceivedFiles·날짜 폴더 없음, Win/Mac 공통)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -4430,7 +4430,7 @@
       },
       {
         "label": "해결",
-        "count": 193
+        "count": 192
       },
       {
         "label": "피드백",
@@ -4438,7 +4438,7 @@
       },
       {
         "label": "완료성공",
-        "count": 152
+        "count": 153
       },
       {
         "label": "중단",
