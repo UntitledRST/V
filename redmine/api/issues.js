@@ -6,6 +6,7 @@
 // 스쿼드는 데이터 파일 하나에 대응하며, 스쿼드 id 가 곧 파일명입니다.
 //   /api/issues?squad=275677   →  data/275677.json    (상위 일감번호 기준 하위 일감)
 //   /api/issues?squad=saas802  →  data/saas802.json   (제목 prefix 기준 목록)
+//   /api/issues?squad=admin802 →  data/admin802.json  (제목 [SaaS_8.0.2_QA] 하위일감)
 //   /api/issues                →  data/latest.json    (하위호환)
 //
 // 스쿼드가 늘어나도 이 파일은 수정할 필요가 없습니다.
@@ -13,16 +14,13 @@
 // index.html 상단의 SQUADS 배열에 한 줄만 추가하면 됩니다.
 // ─────────────────────────────────────────────────────────────
 
-// 실제 값으로 수정해주세요 (relay_to_github.py와 동일한 저장소/경로여야 합니다)
 const GITHUB_OWNER = 'UntitledRST';
 const GITHUB_REPO = 'V';
 const GITHUB_BRANCH = 'main';
 const GITHUB_DATA_DIR = 'data';
-
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_DATA_DIR}`;
 
 // 경로 조작(../, 슬래시, 점 등)을 막기 위해 영문/숫자/밑줄/하이픈만 허용합니다.
-// 숫자만으로 된 상위 일감번호(275677)와 이름 형태의 id(saas802) 둘 다 이 규칙을 통과합니다.
 const SQUAD_ID_PATTERN = /^[A-Za-z0-9_-]{1,32}$/;
 
 function resolveFileName(squad) {
@@ -34,7 +32,6 @@ function resolveFileName(squad) {
 
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-
   const squad = (req.query && req.query.squad) || '';
   const fileName = resolveFileName(squad);
 
@@ -57,6 +54,7 @@ module.exports = async (req, res) => {
         (fileName === 'latest.json' ? ' (relay_to_github.py의 UPLOAD_LEGACY_LATEST가 True인지 확인)' : '')
       );
     }
+
     if (!response.ok) {
       throw new Error(
         `GitHub에서 데이터 파일을 가져오지 못함 (HTTP ${response.status}). 저장소/브랜치 설정을 확인해주세요.`
@@ -64,7 +62,6 @@ module.exports = async (req, res) => {
     }
 
     const data = await response.json();
-
     // 어느 스쿼드 데이터인지 프론트가 알 수 있도록 표시해서 함께 내려줌
     res.status(200).json({ ...data, squad: squad || null, source: `${GITHUB_DATA_DIR}/${fileName}` });
   } catch (err) {
