@@ -432,6 +432,29 @@
   a.issue-link{ color:var(--blue); text-decoration:none; font-family:var(--mono); }
   a.issue-link:hover{ text-decoration:underline; }
   .title-cell{ max-width:900px; }
+  /* 묶음 일감(하위를 거느린 첫번째 하위 일감) — 건수에 포함되지 않음 */
+  tr.group-row td{ background:rgba(255,255,255,0.02); color:var(--text-secondary); }
+  tr.group-row .title-link{ color:var(--text-secondary); font-weight:700; }
+  .group-badge{
+    display:inline-block; margin-left:6px; font-size:11px; font-weight:700;
+    padding:1px 7px; border-radius:999px; color:var(--text-tertiary);
+    border:1px solid var(--panel-border); background:rgba(255,255,255,0.03);
+  }
+
+  /* 하위 일감 접기/펼치기 버튼 */
+  .tree-toggle{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px; margin-right:6px; padding:0;
+    background:rgba(255,255,255,0.05); border:1px solid var(--panel-border);
+    border-radius:5px; color:var(--text-secondary);
+    font-family:var(--mono); font-size:11px; line-height:1; cursor:pointer;
+    transition: border-color .12s ease, color .12s ease;
+    vertical-align:middle;
+  }
+  .tree-toggle:hover{ border-color:var(--blue); color:var(--blue); }
+  .tree-toggle.collapsed{ color:var(--yellow); border-color:rgba(251,191,36,0.4); }
+  .child-count{ color:var(--text-tertiary); font-size:12px; margin-left:6px; }
+
   /* 계층(상위-하위) 표시 */
   .tree-indent{ display:inline-block; }
   .tree-branch{ color:var(--text-tertiary); font-family:var(--mono); margin-right:4px; }
@@ -570,7 +593,8 @@
 </div>
 
 <script>
-  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null };
+  // collapsed: 접어둔 일감번호 모음 { '101': true }. 필터·정렬을 바꿔도 유지됩니다.
+  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null, collapsed: {} };
   var chart = null;
 
   // ====== 전체 이슈 목록 기본 정렬 ======
@@ -1005,6 +1029,7 @@
       state.issues = data.issues || [];
       state.summary = data.summary;
       state.filter = null;   // 스쿼드가 바뀌면 이전 필터는 의미가 없으므로 해제
+      state.collapsed = {};  // 접어둔 상태도 초기화
       state.sortDir = defaultSortDirFor(state.squad);  // 스쿼드별 기본 정렬로 초기화
       updateSortHeader();
       document.getElementById('filterChip').classList.remove('active');
@@ -1078,7 +1103,7 @@
   // '분석 메모 없음' 섹션에 제목과 함께 표시해서 누락되지 않도록 합니다.
   function buildFeedbackItems(){
     var map = getFeedbackAnalysisMap();
-    return state.issues
+    return countedIssues()
       .filter(function(it){ return isFeedbackStatus(it.상태); })
       .map(function(it){
         var memo = map[String(it.일감번호)];
@@ -1202,7 +1227,7 @@
     //       기준 시각은 브라우저 시계가 아니라 데이터가 수집된 시각(fetchedAt)을 씁니다.
     var today = state.today || kstDateStr(new Date());
 
-    var count = state.issues.filter(function(it){
+    var count = countedIssues().filter(function(it){
       return (it.created_on || '').slice(0, 10) === today;
     }).length;
 
@@ -1215,11 +1240,11 @@
   function renderStats(){
     var c = state.summary.completion;
     // 전체 이슈 건수는 상태와 무관하게 전체 이슈 목록 기준(보류 포함)으로 계산
-    var totalAll = state.issues.length;
+    var totalAll = countedIssues().length;
     var rate = totalAll === 0 ? 0 : Math.round((c.done / totalAll) * 100);
     document.getElementById('headerRateBadge').textContent = '완료율 ' + rate + '%';
 
-    var highCount = state.issues.filter(function(it){
+    var highCount = countedIssues().filter(function(it){
       return isNotDoneStatus(it.상태) && isHighPriority(it.우선순위);
     }).length;
     document.getElementById('headerHighValue').textContent = highCount;
@@ -1258,7 +1283,7 @@
     grid.classList.remove('no-author');
 
     var map = {};
-    state.issues.forEach(function(it){
+    countedIssues().forEach(function(it){
       var name = getAuthor(it);
       if (!name) return;
       if (!map[name]) map[name] = { name: name, total: 0, done: 0 };
@@ -1457,13 +1482,13 @@
   }
 
   function renderPart(){
-    renderAggPanel('partBody', aggregateGeneric(state.issues, '__part', CLASSIFY_RULES.part.order), 'part');
+    renderAggPanel('partBody', aggregateGeneric(countedIssues(), '__part', CLASSIFY_RULES.part.order), 'part');
   }
 
   function renderConnType(){
     var rule = SQUAD_CONN_RULES[state.squad];
     var order = rule ? rule.order : CLASSIFY_RULES.connType.order;
-    renderAggPanel('connTypeBody', aggregateGeneric(state.issues, '__connType', order), 'conntype');
+    renderAggPanel('connTypeBody', aggregateGeneric(countedIssues(), '__connType', order), 'conntype');
   }
 
   function bindFilterableRows(tbodyId){
@@ -1662,16 +1687,73 @@
     var isNotdoneActive = f && f.type === 'quick' && f.value === 'notdone';
     if (isNotdoneActive){
       el.firstChild.textContent = '전체 ';
-      valueEl.textContent = state.issues.length;
+      valueEl.textContent = countedIssues().length;
     } else {
       el.firstChild.textContent = '미처리 ';
-      valueEl.textContent = state.issues.filter(function(it){ return isNotDoneStatus(it.상태); }).length;
+      valueEl.textContent = countedIssues().filter(function(it){ return isNotDoneStatus(it.상태); }).length;
     }
   }
 
   // ====== 작성시간 정렬 ======
   // created_on 은 'YYYY-MM-DD HH:MM:SS' 형태의 KST 문자열이라 문자열 비교만으로 시간순이 맞습니다.
   // 작성시간이 비어 있는 이슈는 정렬 방향과 무관하게 항상 맨 아래로 보냅니다.
+  // ====== 집계 대상 ======
+  // 릴레이가 '집계제외'로 표시한 묶음 일감(하위를 거느린 첫번째 하위 일감)은
+  // 건수·통계에서 빼고, 목록에는 묶음 줄로만 보여줍니다.
+  function isCounted(it){
+    return !(it && it.집계제외);
+  }
+
+  function countedIssues(){
+    return (state.issues || []).filter(isCounted);
+  }
+
+  // ====== 하위 일감 접기/펼치기 ======
+  // 어떤 일감을 접으면 그 아래 모든 자손 행을 숨깁니다.
+  function buildChildMap(list){
+    var map = {};
+    list.forEach(function(it){
+      var pid = it.상위일감;
+      if (pid == null) return;
+      var key = String(pid);
+      (map[key] = map[key] || []).push(it);
+    });
+    return map;
+  }
+
+  function buildIdMap(list){
+    var map = {};
+    list.forEach(function(it){ map[String(it.일감번호)] = it; });
+    return map;
+  }
+
+  function countDescendants(childMap, id){
+    var total = 0;
+    (childMap[String(id)] || []).forEach(function(c){
+      total += 1 + countDescendants(childMap, c.일감번호);
+    });
+    return total;
+  }
+
+  // 조상 중 하나라도 접혀 있으면 이 행은 숨깁니다.
+  function isHiddenByCollapse(idMap, it){
+    var guard = 0;
+    var cur = it;
+    while (cur && cur.상위일감 != null && guard++ < 20){
+      var pid = String(cur.상위일감);
+      if (state.collapsed[pid]) return true;
+      cur = idMap[pid];
+    }
+    return false;
+  }
+
+  function toggleCollapse(id){
+    var key = String(id);
+    if (state.collapsed[key]) delete state.collapsed[key];
+    else state.collapsed[key] = true;
+    renderIssues();
+  }
+
   // ====== 계층 표시 ======
   // 릴레이가 넣어주는 '깊이' 값(0 = 상위 일감의 직계 하위)을 읽어 제목 앞을 들여씁니다.
   // 정렬을 걸면 트리 순서가 흐트러지므로, 그때는 들여쓰기를 하지 않습니다.
@@ -1691,6 +1773,26 @@
     if (d === 0) return '';
     return '<span class="tree-indent" style="width:' + (d * 16) + 'px"></span>' +
            '<span class="tree-branch">&#8627;</span>';
+  }
+
+  // 하위가 있는 일감에만 접기 버튼을 붙입니다.
+  function toggleButton(treeOn, childMap, it){
+    if (!treeOn) return '';
+    var kids = childMap[String(it.일감번호)] || [];
+    if (!kids.length) return '';
+    var collapsed = !!state.collapsed[String(it.일감번호)];
+    return '<button type="button" class="tree-toggle' + (collapsed ? ' collapsed' : '') + '"' +
+      ' data-toggle-id="' + escapeHtml(it.일감번호) + '"' +
+      ' title="' + (collapsed ? '하위 일감 펼치기' : '하위 일감 숨기기') + '">' +
+      (collapsed ? '&#9654;' : '&#9660;') + '</button>';
+  }
+
+  // 접혀 있을 때 몇 건이 숨겨졌는지 알려줍니다.
+  function childCountLabel(treeOn, childMap, it){
+    if (!treeOn) return '';
+    if (!state.collapsed[String(it.일감번호)]) return '';
+    var n = countDescendants(childMap, it.일감번호);
+    return n ? '<span class="child-count">하위 ' + n + '건 숨김</span>' : '';
   }
 
   function createdKey(it){
@@ -1802,20 +1904,35 @@
       }
     }
 
-    document.getElementById('issueCount').textContent = list.length;
+    document.getElementById('issueCount').textContent = list.filter(isCounted).length;
 
     list = sortIssueList(list);
 
-    var rows = list.map(function(it, idx){
+    var treeOn = hasHierarchy();
+    var childMap = treeOn ? buildChildMap(list) : {};
+    var idMap = treeOn ? buildIdMap(list) : {};
+
+    // 접혀 있는 조상이 있는 행은 아예 그리지 않습니다
+    if (treeOn){
+      list = list.filter(function(it){ return !isHiddenByCollapse(idMap, it); });
+    }
+
+    var seq = 0;
+    var rows = list.map(function(it){
       var notDone = isNotDoneStatus(it.상태);
       var depth = depthOf(it);
-      return '<tr class="depth-' + depth + '">' +
-        '<td>' + (idx + 1) + '</td>' +
+      var counted = isCounted(it);
+      // 묶음 일감은 번호를 매기지 않아, 번호가 곧 실제 일감 건수가 되도록 합니다
+      var no = counted ? String(++seq) : '<span style="color:var(--text-tertiary)">&mdash;</span>';
+      return '<tr class="depth-' + depth + (counted ? '' : ' group-row') + '">' +
+        '<td>' + no + '</td>' +
         '<td><a class="issue-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">#' + escapeHtml(it.일감번호) + '</a></td>' +
         '<td>' + escapeHtml(it.분류) + '</td>' +
         '<td><span class="status-badge ' + (notDone ? 'notdone' : 'done') + '">' + escapeHtml(it.상태) + '</span></td>' +
-        '<td class="title-cell">' + treePrefix(it) +
+        '<td class="title-cell">' + treePrefix(it) + toggleButton(treeOn, childMap, it) +
           '<a class="title-link" href="' + escapeHtml(it.link) + '" target="_blank" rel="noopener">' + escapeHtml(it.제목) + '</a>' +
+          (counted ? '' : '<span class="group-badge">묶음</span>') +
+          childCountLabel(treeOn, childMap, it) +
         '</td>' +
         '<td>' + escapeHtml(it.우선순위) + '</td>' +
         '<td>' + escapeHtml(it.담당자) + '</td>' +
@@ -1823,6 +1940,15 @@
       '</tr>';
     }).join('');
     document.getElementById('issuesBody').innerHTML = rows || '<tr><td colspan="8" class="empty">해당 조건의 이슈가 없습니다</td></tr>';
+
+    // 접기/펼치기 버튼 연결
+    document.querySelectorAll('#issuesBody .tree-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        toggleCollapse(btn.getAttribute('data-toggle-id'));
+      });
+    });
   }
 
   document.getElementById('filterChip').addEventListener('click', function(){
