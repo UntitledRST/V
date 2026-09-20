@@ -454,6 +454,11 @@
   .tree-toggle:hover{ border-color:var(--blue); color:var(--blue); }
   .tree-toggle.collapsed{ color:var(--yellow); border-color:rgba(251,191,36,0.4); }
   .child-count{ color:var(--text-tertiary); font-size:12px; margin-left:6px; }
+  /* 숨긴 건수는 눈에 띄도록 진하게 */
+  .child-count .n{
+    color:var(--yellow); font-family:var(--mono); font-weight:800; font-size:13.5px;
+    padding:0 2px;
+  }
 
   /* 계층(상위-하위) 표시 */
   .tree-indent{ display:inline-block; }
@@ -1810,7 +1815,7 @@
     if (!treeOn) return '';
     if (!state.collapsed[String(it.일감번호)]) return '';
     var n = countDescendants(childMap, it.일감번호);
-    return n ? '<span class="child-count">하위 ' + n + '건 숨김</span>' : '';
+    return n ? '<span class="child-count">하위 <span class="n">' + n + '</span>건 숨김</span>' : '';
   }
 
   // ====== 전체 이슈 목록 높이 자동 맞춤 ======
