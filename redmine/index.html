@@ -594,7 +594,8 @@
 
 <script>
   // collapsed: 접어둔 일감번호 모음 { '101': true }. 필터·정렬을 바꿔도 유지됩니다.
-  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null, collapsed: {} };
+  var state = { issues: [], summary: null, filter: null, feedbackItems: [], squad: null, sortDir: null,
+                collapsed: {}, userResizedIssues: false };
   var chart = null;
 
   // ====== 전체 이슈 목록 기본 정렬 ======
@@ -1811,6 +1812,30 @@
     return n ? '<span class="child-count">하위 ' + n + '건 숨김</span>' : '';
   }
 
+  // ====== 전체 이슈 목록 높이 자동 맞춤 ======
+  // 접힌 상태에서 보이는 행이 모두 들어가도록 목록 높이를 늘립니다.
+  // 화면을 넘길 만큼 많아지면 아래 상한(ISSUES_MAX_VH)에서 멈추고 스크롤로 전환됩니다.
+  // 손잡이를 드래그해 직접 높이를 정한 뒤에는 건드리지 않습니다.
+  // 아래 대시보드(담당자별·차트 등)가 너무 눌리지 않도록 상한을 둡니다.
+  // 목록을 더 길게 보고 싶으면 이 숫자를 올리세요.
+  var ISSUES_MAX_VH = 55;   // 목록이 차지할 수 있는 최대 높이(화면 비율 %)
+  var ISSUES_MIN_PX = 90;
+
+  function fitIssuesHeight(){
+    if (state.userResizedIssues) return;
+    var box = document.getElementById('issuesTableScroll');
+    if (!box) return;
+
+    var table = box.querySelector('table');
+    if (!table) return;
+
+    // 일시적으로 제한을 풀어 실제 필요한 높이를 잽니다
+    box.style.maxHeight = 'none';
+    var needed = table.offsetHeight + 2;
+    var cap = Math.round(window.innerHeight * ISSUES_MAX_VH / 100);
+    box.style.maxHeight = Math.max(ISSUES_MIN_PX, Math.min(needed, cap)) + 'px';
+  }
+
   function createdKey(it){
     return String((it && it.created_on) || '');
   }
@@ -1957,6 +1982,9 @@
     }).join('');
     document.getElementById('issuesBody').innerHTML = rows || '<tr><td colspan="8" class="empty">해당 조건의 이슈가 없습니다</td></tr>';
 
+    // 행 수가 바뀌었으니 목록 높이를 다시 맞춥니다
+    fitIssuesHeight();
+
     // 접기/펼치기 버튼 연결
     document.querySelectorAll('#issuesBody .tree-toggle').forEach(function(btn){
       btn.addEventListener('click', function(e){
@@ -2026,6 +2054,7 @@
       if (!dragging) return;
       dragging = false;
       document.body.style.userSelect = '';
+      state.userResizedIssues = true;   // 직접 정한 높이를 존중합니다
     }
 
     handle.addEventListener('mousedown', onPointerDown);
@@ -2037,7 +2066,10 @@
 
     // 창 크기가 바뀌면 드래그로 고정했던 높이값을 지워서, 새 창 크기에 맞는 기본값(19vh)으로 되돌림
     window.addEventListener('resize', function(){
+      // 창 크기가 바뀌면 직접 조절한 값을 버리고 다시 내용에 맞춥니다
+      state.userResizedIssues = false;
       scrollBox.style.maxHeight = '';
+      fitIssuesHeight();
     });
   })();
 
