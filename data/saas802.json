@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-18T04:03:23.807529+00:00",
-  "count": 15,
+  "fetchedAt": "2026-09-20T13:36:25.730366+00:00",
+  "count": 25,
   "issues": [
     {
       "번호": 1,
@@ -19,10 +19,10 @@
       "번호": 2,
       "일감번호": 280968,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][로그인] 비정상 종료(크래시·브라우저 강제 종료) 후 로그인 세션이 서버에 잔존 — 강제 로그아웃 옵션 사용안함(기본값) 상담원은 어드민 원격 로그아웃 외 재로그인 수단 없음",
       "우선순위": "높음(High)",
-      "담당자": "김미령",
+      "담당자": "송건호",
       "작성자": "김신혜",
       "created_on": "2026-09-16 14:44:30",
       "link": "https://projects.rsupport.com/issues/280968"
@@ -115,7 +115,7 @@
       "번호": 10,
       "일감번호": 281223,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA][결함][iOS호스트] Web 영상지원 > 사진 촬영 기능 동작하지 않아 사진 모드 상담 불가",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -175,49 +175,169 @@
       "번호": 15,
       "일감번호": 281370,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [호스트][Android][파일전송] 채팅의 수신 파일(이미지) 탭 시 갤러리가 '!' 깨진 이미지로 표시 — 앱 FileProvider 가 공용 Download 파일 열기에서 EACCES 반환",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
       "작성자": "김신혜",
       "created_on": "2026-09-18 10:08:43",
       "link": "https://projects.rsupport.com/issues/281370"
+    },
+    {
+      "번호": 16,
+      "일감번호": 281412,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[SaaS_8.0.2_QA][결함][웹뷰어] 상담중 > 상담이력정보 [메모장으로 복사] 버튼 기획질의",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-09-18 13:15:32",
+      "link": "https://projects.rsupport.com/issues/281412"
+    },
+    {
+      "번호": 17,
+      "일감번호": 281423,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [뷰어][파일전송] 용량 초과 안내 토스트가 English 에서 말줄임되어 최대 용량 값이 보이지 않음 — 토스트 기본 1줄 + 최대 폭 478 제약(#276252 와 같은 계열, 적용 범위 누락)",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 14:00:30",
+      "link": "https://projects.rsupport.com/issues/281423"
+    },
+    {
+      "번호": 18,
+      "일감번호": 281424,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [뷰어][다국어][파일전송] 채팅 드래그 앤 드롭 실패 안내 6종이 다국어 리소스를 거치지 않아 English 에서도 한국어 노출 — 폴더 드롭 시 '파일을 읽을 수 없습니다…' 실측",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 14:16:43",
+      "link": "https://projects.rsupport.com/issues/281424"
+    },
+    {
+      "번호": 19,
+      "일감번호": 281426,
+      "분류": "기능(Function)",
+      "상태": "진행(Doing)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][파일전송] 채팅 드래그 앤 드롭 혼합 드롭 처리 기준 정의 요청 — 차단 확장자 혼합은 전체 중단+안내 / 폴더 혼합은 무음 부분 전송(위반 유형별 비대칭)",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 14:28:37",
+      "link": "https://projects.rsupport.com/issues/281426"
+    },
+    {
+      "번호": 20,
+      "일감번호": 281430,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][대기화면] 지원 모드가 미확정인데 타이틀이 'PC 원격지원'으로 단정 표기됨",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "송건호",
+      "created_on": "2026-09-18 15:09:15",
+      "link": "https://projects.rsupport.com/issues/281430"
+    },
+    {
+      "번호": 21,
+      "일감번호": 281494,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][로그인 세션] 대기 후 호스트 연결 성사 직후 세션 만료로 상담 강제 종료 — 서버 강제 로그아웃(REUSE_DETECTED) 수신, 대시보드+대기 창 동시 실행·토큰 만료 직후 재현",
+      "우선순위": "높음(High)",
+      "담당자": "송건호",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 16:25:52",
+      "link": "https://projects.rsupport.com/issues/281494"
+    },
+    {
+      "번호": 22,
+      "일감번호": 281496,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][상담일지] 상담일지 입력 길이 규격 및 산출물(목록·엑셀) 상담내용 표기 범위 정의 요청 — 클라 무제한·서버 길이검증·엑셀 축약이 서로 다른 기준으로 동작",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 16:32:36",
+      "link": "https://projects.rsupport.com/issues/281496"
+    },
+    {
+      "번호": 23,
+      "일감번호": 281497,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [뷰어][상담이력] 엑셀 저장 파일의 상담내용이 원본보다 짧게 기재됨 — 100자 입력분이 80자에서 잘리고 절단 표시 없음(상세 화면은 전문 표시)",
+      "우선순위": "보통(Normal)",
+      "담당자": "김재원",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 16:38:30",
+      "link": "https://projects.rsupport.com/issues/281497"
+    },
+    {
+      "번호": 24,
+      "일감번호": 281498,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [웹뷰어][접속 전 대기] 카메라 미리보기 좌우로 화면 전폭 흰 띠(#F5F5F7) 표시 — 영상은 가운데 401px, 좌우 합계 약 1,500px 이 대기 화면 배경을 덮음",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 16:57:48",
+      "link": "https://projects.rsupport.com/issues/281498"
+    },
+    {
+      "번호": 25,
+      "일감번호": 281499,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][접속대기] 모바일지원·영상지원 세션에는 대기 단계 카메라/마이크 사전 권한 획득 동선 부재 — PC원격지원 전용 '원격 지원 대기' 화면만 정의, 타 지원 유형 제공 여부 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "작성자": "김신혜",
+      "created_on": "2026-09-18 16:58:22",
+      "link": "https://projects.rsupport.com/issues/281499"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 14,
-      "done": 1,
-      "total": 15
+      "notDone": 18,
+      "done": 7,
+      "total": 25
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
+        "total": 2,
+        "done": 2,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "김재원",
-        "total": 1,
+        "total": 2,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
         "name": "송건호",
-        "total": 5,
-        "done": 0,
+        "total": 13,
+        "done": 2,
         "complete": false,
-        "rate": 0
+        "rate": 15
       },
       {
         "name": "오세진",
         "total": 6,
-        "done": 1,
+        "done": 3,
         "complete": false,
-        "rate": 16
+        "rate": 50
       },
       {
         "name": "이경준",
@@ -237,25 +357,32 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 10,
-        "done": 0,
+        "total": 18,
+        "done": 4,
         "complete": false,
-        "rate": 0
+        "rate": 22
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 5,
-        "done": 1,
+        "total": 6,
+        "done": 2,
         "complete": false,
-        "rate": 20
+        "rate": 33
+      },
+      {
+        "name": "송건호",
+        "total": 1,
+        "done": 1,
+        "complete": true,
+        "rate": 100
       }
     ],
     "trackers": [
       {
         "label": "기능(Function)",
         "progress": 1,
-        "done": 0,
-        "total": 1
+        "done": 4,
+        "total": 5
       },
       {
         "label": "개선(Improving)",
@@ -265,19 +392,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 12,
-        "done": 1,
-        "total": 13
+        "progress": 16,
+        "done": 3,
+        "total": 19
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 13
+        "count": 16
       },
       {
         "label": "진행",
-        "count": 1
+        "count": 2
       },
       {
         "label": "보류",
@@ -285,7 +412,7 @@
       },
       {
         "label": "해결",
-        "count": 1
+        "count": 7
       },
       {
         "label": "피드백",
@@ -311,11 +438,11 @@
       },
       {
         "label": "보통",
-        "count": 12
+        "count": 21
       },
       {
         "label": "높음",
-        "count": 3
+        "count": 4
       },
       {
         "label": "긴급",
@@ -330,26 +457,26 @@
       {
         "date": "2026-09-16",
         "newCount": 4,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 4,
-        "cumDone": 1,
-        "rate": 25
+        "cumDone": 2,
+        "rate": 50
       },
       {
         "date": "2026-09-17",
         "newCount": 8,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 12,
-        "cumDone": 1,
-        "rate": 8
+        "cumDone": 3,
+        "rate": 25
       },
       {
         "date": "2026-09-18",
-        "newCount": 3,
-        "doneCount": 0,
-        "cumIssue": 15,
-        "cumDone": 1,
-        "rate": 7
+        "newCount": 13,
+        "doneCount": 4,
+        "cumIssue": 25,
+        "cumDone": 7,
+        "rate": 28
       }
     ]
   },
