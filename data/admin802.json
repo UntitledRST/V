@@ -1,21 +1,387 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-18T04:03:26.640141+00:00",
-  "count": 0,
-  "issues": [],
+  "fetchedAt": "2026-09-20T13:36:29.899382+00:00",
+  "count": 24,
+  "issues": [
+    {
+      "번호": 1,
+      "일감번호": 279223,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[Admin] 어드민 이슈 트래킹 (9/2 ~ 9/4)",
+      "우선순위": "긴급(Emergency)",
+      "담당자": "이명찬",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-02 19:52:03",
+      "link": "https://projects.rsupport.com/issues/279223"
+    },
+    {
+      "번호": 2,
+      "일감번호": 279224,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저/파트너 어드민] 그룹 옵션 카탈로그 기획 정합 — 종료 팝업 독립 옵션 신설·기본값 2건 정정·레이블·저장 검증",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-02 19:59:00",
+      "link": "https://projects.rsupport.com/issues/279224"
+    },
+    {
+      "번호": 3,
+      "일감번호": 279225,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저/파트너 어드민] 회사 옵션 카탈로그 기획 정합 — 서버녹화 보관기간 신설·2FA 기본값·노출 정책",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-02 19:59:00",
+      "link": "https://projects.rsupport.com/issues/279225"
+    },
+    {
+      "번호": 4,
+      "일감번호": 279226,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민] 고객사 옵션 '직접 관리 허용' 기능 구현",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-02 19:59:01",
+      "link": "https://projects.rsupport.com/issues/279226"
+    },
+    {
+      "번호": 5,
+      "일감번호": 279399,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[QA] 어드민 결함",
+      "우선순위": "높음(High)",
+      "담당자": "이명찬",
+      "작성자": "윤종익",
+      "created_on": "2026-09-04 10:26:40",
+      "link": "https://projects.rsupport.com/issues/279399"
+    },
+    {
+      "번호": 6,
+      "일감번호": 279400,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[Admin] 상시 개선·업무",
+      "우선순위": "높음(High)",
+      "담당자": "",
+      "작성자": "윤종익",
+      "created_on": "2026-09-04 10:26:41",
+      "link": "https://projects.rsupport.com/issues/279400"
+    },
+    {
+      "번호": 7,
+      "일감번호": 280106,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[파트너 어드민] 배너관리 기능 개발",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "작성자": "권정희",
+      "created_on": "2026-09-09 15:49:10",
+      "link": "https://projects.rsupport.com/issues/280106"
+    },
+    {
+      "번호": 8,
+      "일감번호": 280503,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저·파트너어드민][BE] 권한 정합 감사 — 즉시 수정 통합 (유령 authority·AA 누락·토큰 EP 보호 외)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-11 13:33:33",
+      "link": "https://projects.rsupport.com/issues/280503"
+    },
+    {
+      "번호": 9,
+      "일감번호": 280504,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[기획확인] 관리자 역할·권한 정의 미결 15문항 — 권한 정합 감사 후속",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-11 13:33:33",
+      "link": "https://projects.rsupport.com/issues/280504"
+    },
+    {
+      "번호": 10,
+      "일감번호": 280606,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저·파트너어드민][BE] 로그인 TC 미구현 4건 구현 — 아이디 형식 검증·임시 비밀번호 만료(40218)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 09:36:22",
+      "link": "https://projects.rsupport.com/issues/280606"
+    },
+    {
+      "번호": 11,
+      "일감번호": 280607,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저·파트너어드민][BE] 로그인 TC 기획상충 즉시수정 6건 — 2FA 전용코드(40213/40214)·P5/P6 분리",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 09:36:23",
+      "link": "https://projects.rsupport.com/issues/280607"
+    },
+    {
+      "번호": 12,
+      "일감번호": 280660,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 사용자 라이선스 할당 팝업 — 단일 라이선스가 지원유형별 복수 행 노출, 라이선스 단위 그룹핑",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 14:46:13",
+      "link": "https://projects.rsupport.com/issues/280660"
+    },
+    {
+      "번호": 13,
+      "일감번호": 280664,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 라이선스 등록 초기 승인상태 — 본사(SU·SA·AA) 등록 시 즉시 승인완료 (기획 §2-1 정합)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 15:05:44",
+      "link": "https://projects.rsupport.com/issues/280664"
+    },
+    {
+      "번호": 14,
+      "일감번호": 280680,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 사용자 라이선스 할당 — §1-6 동일유형·기간겹침 검증 미구현 보강",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 15:24:58",
+      "link": "https://projects.rsupport.com/issues/280680"
+    },
+    {
+      "번호": 15,
+      "일감번호": 280704,
+      "분류": "업무(Job)",
+      "상태": "중단(Stop)",
+      "제목": "[파트너어드민][BE][TEST] 라이선스 회사 전체 멤버 일괄 할당 테스트 API",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-14 16:21:18",
+      "link": "https://projects.rsupport.com/issues/280704"
+    },
+    {
+      "번호": 16,
+      "일감번호": 280720,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][FE] 사용자 라이선스 할당 팝업 — 라이선스 단위 응답 반영",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "윤종익",
+      "created_on": "2026-09-14 17:58:18",
+      "link": "https://projects.rsupport.com/issues/280720"
+    },
+    {
+      "번호": 17,
+      "일감번호": 280785,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[유저·파트너 어드민] 간편 로그인 연동 — 창을 닫아도 실패 안내, 실패 원인별 문구 미구분",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "작성자": "윤종익",
+      "created_on": "2026-09-15 13:35:43",
+      "link": "https://projects.rsupport.com/issues/280785"
+    },
+    {
+      "번호": 18,
+      "일감번호": 280787,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 파트너 그룹 이동 API 신설 — 유저 BE /group/move 계약 미러 (#280619 후속)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-15 13:41:07",
+      "link": "https://projects.rsupport.com/issues/280787"
+    },
+    {
+      "번호": 19,
+      "일감번호": 280929,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 라이선스 목록 조회 응답에 회사 유형(companyType) 추가",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-16 11:37:06",
+      "link": "https://projects.rsupport.com/issues/280929"
+    },
+    {
+      "번호": 20,
+      "일감번호": 281047,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[파트너어드민][BE] 사용자 라이선스 수동 할당 시 라이선스 옵션 자동 seed — 획득경로 불일치 해소",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-16 16:15:34",
+      "link": "https://projects.rsupport.com/issues/281047"
+    },
+    {
+      "번호": 21,
+      "일감번호": 281378,
+      "분류": "업무(Job)",
+      "상태": "신규(New)",
+      "제목": "[스쿼드 통합테스트] 어드민 결함 ",
+      "우선순위": "보통(Normal)",
+      "담당자": "",
+      "작성자": "윤종익",
+      "created_on": "2026-09-18 10:33:39",
+      "link": "https://projects.rsupport.com/issues/281378"
+    },
+    {
+      "번호": 22,
+      "일감번호": 281388,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저어드민][BE] SU·SA 를 CA 동일 지위로 — 로그인 허용·라이선스/그룹 게이트 면제",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-18 11:47:09",
+      "link": "https://projects.rsupport.com/issues/281388"
+    },
+    {
+      "번호": 23,
+      "일감번호": 281395,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[유저 어드민] 잠금 해제된 계정에 틀린 비밀번호 입력 시 잘못된 에러코드·실패카운트 미갱신",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-18 11:58:13",
+      "link": "https://projects.rsupport.com/issues/281395"
+    },
+    {
+      "번호": 24,
+      "일감번호": 281564,
+      "분류": "개선(Improving)",
+      "상태": "신규(New)",
+      "제목": "미지원 OS가 있는 옵션에 미지원안내 문구를 추가",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "작성자": "권정희",
+      "created_on": "2026-09-20 16:27:07",
+      "link": "https://projects.rsupport.com/issues/281564"
+    }
+  ],
   "summary": {
     "completion": {
-      "notDone": 0,
-      "done": 0,
-      "total": 0
+      "notDone": 8,
+      "done": 16,
+      "total": 24
     },
-    "assignees": [],
-    "authors": [],
-    "trackers": [],
+    "assignees": [
+      {
+        "name": "(미배정)",
+        "total": 2,
+        "done": 0,
+        "complete": false,
+        "rate": 0
+      },
+      {
+        "name": "권정희",
+        "total": 3,
+        "done": 0,
+        "complete": false,
+        "rate": 0
+      },
+      {
+        "name": "윤종익",
+        "total": 2,
+        "done": 2,
+        "complete": true,
+        "rate": 100
+      },
+      {
+        "name": "이명찬",
+        "total": 2,
+        "done": 0,
+        "complete": false,
+        "rate": 0
+      },
+      {
+        "name": "이혁(Eden)",
+        "total": 15,
+        "done": 14,
+        "complete": false,
+        "rate": 93
+      }
+    ],
+    "authors": [
+      {
+        "name": "권정희",
+        "total": 2,
+        "done": 0,
+        "complete": false,
+        "rate": 0
+      },
+      {
+        "name": "윤종익",
+        "total": 5,
+        "done": 2,
+        "complete": false,
+        "rate": 40
+      },
+      {
+        "name": "이혁(Eden)",
+        "total": 17,
+        "done": 14,
+        "complete": false,
+        "rate": 82
+      }
+    ],
+    "trackers": [
+      {
+        "label": "업무(Job)",
+        "progress": 7,
+        "done": 14,
+        "total": 21
+      },
+      {
+        "label": "개선(Improving)",
+        "progress": 1,
+        "done": 0,
+        "total": 1
+      },
+      {
+        "label": "결함(Serverity)",
+        "progress": 0,
+        "done": 2,
+        "total": 2
+      }
+    ],
     "statuses": [
       {
         "label": "신규",
-        "count": 0
+        "count": 8
       },
       {
         "label": "진행",
@@ -27,7 +393,7 @@
       },
       {
         "label": "해결",
-        "count": 0
+        "count": 15
       },
       {
         "label": "피드백",
@@ -39,7 +405,7 @@
       },
       {
         "label": "중단",
-        "count": 0
+        "count": 1
       },
       {
         "label": "완료실패",
@@ -53,28 +419,100 @@
       },
       {
         "label": "보통",
-        "count": 0
+        "count": 21
       },
       {
         "label": "높음",
-        "count": 0
+        "count": 2
       },
       {
         "label": "긴급",
-        "count": 0
+        "count": 1
       },
       {
         "label": "즉시",
         "count": 0
       }
     ],
-    "timeline": []
+    "timeline": [
+      {
+        "date": "2026-09-02",
+        "newCount": 4,
+        "doneCount": 2,
+        "cumIssue": 4,
+        "cumDone": 2,
+        "rate": 50
+      },
+      {
+        "date": "2026-09-04",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 6,
+        "cumDone": 2,
+        "rate": 33
+      },
+      {
+        "date": "2026-09-09",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 7,
+        "cumDone": 2,
+        "rate": 29
+      },
+      {
+        "date": "2026-09-11",
+        "newCount": 2,
+        "doneCount": 1,
+        "cumIssue": 9,
+        "cumDone": 3,
+        "rate": 33
+      },
+      {
+        "date": "2026-09-14",
+        "newCount": 7,
+        "doneCount": 7,
+        "cumIssue": 16,
+        "cumDone": 10,
+        "rate": 62
+      },
+      {
+        "date": "2026-09-15",
+        "newCount": 2,
+        "doneCount": 2,
+        "cumIssue": 18,
+        "cumDone": 12,
+        "rate": 67
+      },
+      {
+        "date": "2026-09-16",
+        "newCount": 2,
+        "doneCount": 2,
+        "cumIssue": 20,
+        "cumDone": 14,
+        "rate": 70
+      },
+      {
+        "date": "2026-09-18",
+        "newCount": 3,
+        "doneCount": 2,
+        "cumIssue": 23,
+        "cumDone": 16,
+        "rate": 70
+      },
+      {
+        "date": "2026-09-20",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 24,
+        "cumDone": 16,
+        "rate": 67
+      }
+    ]
   },
   "squad": "admin802",
   "squadLabel": "Admin_8.0.2",
   "parent": {
     "id": "279282",
     "link": "https://projects.rsupport.com/issues/279282"
-  },
-  "titlePrefix": "[saas_8.0.2_qa]"
+  }
 }
