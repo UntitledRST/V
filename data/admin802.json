@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-20T13:50:47.092943+00:00",
-  "count": 363,
+  "fetchedAt": "2026-09-20T14:05:29.167466+00:00",
+  "count": 359,
   "issues": [
     {
       "번호": 1,
@@ -15,7 +15,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-02 19:52:03",
       "link": "https://projects.rsupport.com/issues/279223",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": true
     },
     {
       "번호": 2,
@@ -29,7 +30,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:26",
       "link": "https://projects.rsupport.com/issues/279430",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 3,
@@ -43,7 +45,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 08:56:30",
       "link": "https://projects.rsupport.com/issues/279366",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 4,
@@ -57,7 +60,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:38",
       "link": "https://projects.rsupport.com/issues/279431",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 5,
@@ -71,7 +75,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:53",
       "link": "https://projects.rsupport.com/issues/280218",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 6,
@@ -85,7 +90,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:39",
       "link": "https://projects.rsupport.com/issues/279432",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 7,
@@ -99,7 +105,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:53",
       "link": "https://projects.rsupport.com/issues/280219",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 8,
@@ -113,7 +120,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:40",
       "link": "https://projects.rsupport.com/issues/279433",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 9,
@@ -127,7 +135,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-07 10:18:34",
       "link": "https://projects.rsupport.com/issues/279714",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 10,
@@ -141,7 +150,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 16:44:49",
       "link": "https://projects.rsupport.com/issues/280372",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 11,
@@ -155,7 +165,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 16:44:49",
       "link": "https://projects.rsupport.com/issues/280373",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 12,
@@ -169,7 +180,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 19:25:22",
       "link": "https://projects.rsupport.com/issues/280416",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 13,
@@ -183,7 +195,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:41",
       "link": "https://projects.rsupport.com/issues/279434",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 14,
@@ -197,7 +210,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:42",
       "link": "https://projects.rsupport.com/issues/279435",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 15,
@@ -211,7 +225,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:43",
       "link": "https://projects.rsupport.com/issues/279436",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 16,
@@ -225,7 +240,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:44",
       "link": "https://projects.rsupport.com/issues/279437",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 17,
@@ -239,7 +255,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:45",
       "link": "https://projects.rsupport.com/issues/279438",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 18,
@@ -253,7 +270,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:46",
       "link": "https://projects.rsupport.com/issues/279439",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 19,
@@ -267,7 +285,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:53",
       "link": "https://projects.rsupport.com/issues/280220",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 20,
@@ -281,7 +300,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:47",
       "link": "https://projects.rsupport.com/issues/279440",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 21,
@@ -295,7 +315,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:48",
       "link": "https://projects.rsupport.com/issues/279441",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 22,
@@ -309,7 +330,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:49",
       "link": "https://projects.rsupport.com/issues/279442",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 23,
@@ -323,7 +345,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-09 12:49:17",
       "link": "https://projects.rsupport.com/issues/280071",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 24,
@@ -337,7 +360,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:50",
       "link": "https://projects.rsupport.com/issues/279443",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 25,
@@ -351,7 +375,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-08 16:57:19",
       "link": "https://projects.rsupport.com/issues/279969",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 26,
@@ -365,7 +390,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:51",
       "link": "https://projects.rsupport.com/issues/279444",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 27,
@@ -379,7 +405,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-09 13:50:50",
       "link": "https://projects.rsupport.com/issues/280084",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 28,
@@ -393,7 +420,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:52",
       "link": "https://projects.rsupport.com/issues/279445",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 29,
@@ -407,7 +435,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:54",
       "link": "https://projects.rsupport.com/issues/280221",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 30,
@@ -421,7 +450,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:52",
       "link": "https://projects.rsupport.com/issues/279446",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 31,
@@ -435,7 +465,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:53",
       "link": "https://projects.rsupport.com/issues/279447",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 32,
@@ -449,7 +480,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:54",
       "link": "https://projects.rsupport.com/issues/279448",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 33,
@@ -463,7 +495,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:55",
       "link": "https://projects.rsupport.com/issues/279449",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 34,
@@ -477,7 +510,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:56",
       "link": "https://projects.rsupport.com/issues/279450",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 35,
@@ -491,7 +525,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:54",
       "link": "https://projects.rsupport.com/issues/280222",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 36,
@@ -505,7 +540,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:57",
       "link": "https://projects.rsupport.com/issues/279451",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 37,
@@ -519,7 +555,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:54",
       "link": "https://projects.rsupport.com/issues/280223",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 38,
@@ -533,7 +570,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:57",
       "link": "https://projects.rsupport.com/issues/279452",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 39,
@@ -547,7 +585,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-09 15:30:04",
       "link": "https://projects.rsupport.com/issues/280103",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 40,
@@ -561,7 +600,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:58",
       "link": "https://projects.rsupport.com/issues/279453",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 41,
@@ -575,7 +615,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:55",
       "link": "https://projects.rsupport.com/issues/280224",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 42,
@@ -589,7 +630,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 10:52:22",
       "link": "https://projects.rsupport.com/issues/280260",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 43,
@@ -603,7 +645,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 11:19:13",
       "link": "https://projects.rsupport.com/issues/280278",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 44,
@@ -617,7 +660,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 19:31:40",
       "link": "https://projects.rsupport.com/issues/280418",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 45,
@@ -631,7 +675,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:58",
       "link": "https://projects.rsupport.com/issues/279454",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 46,
@@ -645,7 +690,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:55",
       "link": "https://projects.rsupport.com/issues/280225",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 47,
@@ -659,7 +705,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 11:52:48",
       "link": "https://projects.rsupport.com/issues/280296",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 48,
@@ -673,7 +720,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 11:52:48",
       "link": "https://projects.rsupport.com/issues/280297",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 49,
@@ -687,7 +735,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:26:59",
       "link": "https://projects.rsupport.com/issues/279455",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 50,
@@ -701,7 +750,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:00",
       "link": "https://projects.rsupport.com/issues/279456",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 51,
@@ -715,7 +765,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:00",
       "link": "https://projects.rsupport.com/issues/279457",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 52,
@@ -729,7 +780,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-07 17:45:12",
       "link": "https://projects.rsupport.com/issues/279819",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 53,
@@ -743,7 +795,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:01",
       "link": "https://projects.rsupport.com/issues/279458",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 54,
@@ -757,7 +810,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 15:07:03",
       "link": "https://projects.rsupport.com/issues/280348",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 55,
@@ -771,7 +825,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:02",
       "link": "https://projects.rsupport.com/issues/279459",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 56,
@@ -785,7 +840,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:03",
       "link": "https://projects.rsupport.com/issues/279460",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 57,
@@ -799,7 +855,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:04",
       "link": "https://projects.rsupport.com/issues/279461",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 58,
@@ -813,7 +870,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:55",
       "link": "https://projects.rsupport.com/issues/280226",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 59,
@@ -827,7 +885,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 16:22:00",
       "link": "https://projects.rsupport.com/issues/280364",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 60,
@@ -841,7 +900,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 16:37:58",
       "link": "https://projects.rsupport.com/issues/280368",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 61,
@@ -855,7 +915,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:05",
       "link": "https://projects.rsupport.com/issues/279462",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 62,
@@ -869,7 +930,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:56",
       "link": "https://projects.rsupport.com/issues/280227",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 63,
@@ -883,7 +945,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 16:53:05",
       "link": "https://projects.rsupport.com/issues/280374",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 64,
@@ -897,7 +960,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:06",
       "link": "https://projects.rsupport.com/issues/279463",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 65,
@@ -911,7 +975,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 17:35:51",
       "link": "https://projects.rsupport.com/issues/280395",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 66,
@@ -925,7 +990,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:07",
       "link": "https://projects.rsupport.com/issues/279464",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 67,
@@ -939,7 +1005,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:56",
       "link": "https://projects.rsupport.com/issues/280228",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 68,
@@ -953,7 +1020,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 18:16:03",
       "link": "https://projects.rsupport.com/issues/280405",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 69,
@@ -967,7 +1035,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:07",
       "link": "https://projects.rsupport.com/issues/279465",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 70,
@@ -981,7 +1050,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:56",
       "link": "https://projects.rsupport.com/issues/280229",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 71,
@@ -995,7 +1065,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:08",
       "link": "https://projects.rsupport.com/issues/279466",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 72,
@@ -1009,7 +1080,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:57",
       "link": "https://projects.rsupport.com/issues/280230",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 73,
@@ -1023,7 +1095,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 19:18:31",
       "link": "https://projects.rsupport.com/issues/280415",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 74,
@@ -1037,7 +1110,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:09",
       "link": "https://projects.rsupport.com/issues/279467",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 75,
@@ -1051,7 +1125,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:57",
       "link": "https://projects.rsupport.com/issues/280231",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 76,
@@ -1065,7 +1140,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 19:00:09",
       "link": "https://projects.rsupport.com/issues/280412",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 77,
@@ -1079,7 +1155,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 21:31:07",
       "link": "https://projects.rsupport.com/issues/280428",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 78,
@@ -1093,7 +1170,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 23:26:34",
       "link": "https://projects.rsupport.com/issues/280437",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 79,
@@ -1107,7 +1185,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:09",
       "link": "https://projects.rsupport.com/issues/279468",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 80,
@@ -1121,7 +1200,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:10",
       "link": "https://projects.rsupport.com/issues/279469",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 81,
@@ -1135,7 +1215,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:58",
       "link": "https://projects.rsupport.com/issues/280232",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 82,
@@ -1149,7 +1230,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 16:37:58",
       "link": "https://projects.rsupport.com/issues/280369",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 83,
@@ -1163,7 +1245,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 18:34:22",
       "link": "https://projects.rsupport.com/issues/280408",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 84,
@@ -1177,7 +1260,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 21:31:07",
       "link": "https://projects.rsupport.com/issues/280427",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 85,
@@ -1191,7 +1275,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 22:16:41",
       "link": "https://projects.rsupport.com/issues/280435",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 86,
@@ -1205,7 +1290,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:11",
       "link": "https://projects.rsupport.com/issues/279470",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 87,
@@ -1219,7 +1305,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:11",
       "link": "https://projects.rsupport.com/issues/279471",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 88,
@@ -1233,7 +1320,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:12",
       "link": "https://projects.rsupport.com/issues/279472",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 89,
@@ -1247,7 +1335,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:13",
       "link": "https://projects.rsupport.com/issues/279473",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 90,
@@ -1261,7 +1350,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:13",
       "link": "https://projects.rsupport.com/issues/279474",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 91,
@@ -1275,7 +1365,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:14",
       "link": "https://projects.rsupport.com/issues/279475",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 92,
@@ -1289,7 +1380,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:14",
       "link": "https://projects.rsupport.com/issues/279476",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 93,
@@ -1303,7 +1395,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:15",
       "link": "https://projects.rsupport.com/issues/279477",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 94,
@@ -1317,7 +1410,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:58",
       "link": "https://projects.rsupport.com/issues/280233",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 95,
@@ -1331,7 +1425,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 16:37:59",
       "link": "https://projects.rsupport.com/issues/280370",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 96,
@@ -1345,7 +1440,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 18:46:39",
       "link": "https://projects.rsupport.com/issues/280410",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 97,
@@ -1359,7 +1455,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:16",
       "link": "https://projects.rsupport.com/issues/279478",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 98,
@@ -1373,7 +1470,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:58",
       "link": "https://projects.rsupport.com/issues/280234",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 99,
@@ -1387,7 +1485,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:17",
       "link": "https://projects.rsupport.com/issues/279479",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 100,
@@ -1401,7 +1500,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:17",
       "link": "https://projects.rsupport.com/issues/279480",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 101,
@@ -1415,7 +1515,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 09:20:59",
       "link": "https://projects.rsupport.com/issues/280235",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 102,
@@ -1429,7 +1530,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:18",
       "link": "https://projects.rsupport.com/issues/279481",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 103,
@@ -1443,7 +1545,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 11:19:14",
       "link": "https://projects.rsupport.com/issues/280472",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 104,
@@ -1457,7 +1560,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 13:27:18",
       "link": "https://projects.rsupport.com/issues/279482",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 105,
@@ -1471,7 +1575,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:16",
       "link": "https://projects.rsupport.com/issues/279500",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 106,
@@ -1485,7 +1590,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 20:48:18",
       "link": "https://projects.rsupport.com/issues/280422",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 107,
@@ -1499,7 +1605,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:17",
       "link": "https://projects.rsupport.com/issues/279501",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 108,
@@ -1513,7 +1620,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:33",
       "link": "https://projects.rsupport.com/issues/280330",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 109,
@@ -1527,7 +1635,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:17",
       "link": "https://projects.rsupport.com/issues/279502",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 110,
@@ -1541,7 +1650,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:38",
       "link": "https://projects.rsupport.com/issues/280339",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 111,
@@ -1555,7 +1665,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 21:20:31",
       "link": "https://projects.rsupport.com/issues/280424",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 112,
@@ -1569,7 +1680,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 22:16:40",
       "link": "https://projects.rsupport.com/issues/280432",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 113,
@@ -1583,7 +1695,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 11:19:13",
       "link": "https://projects.rsupport.com/issues/280471",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 114,
@@ -1597,7 +1710,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:18",
       "link": "https://projects.rsupport.com/issues/279503",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 115,
@@ -1611,7 +1725,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:38",
       "link": "https://projects.rsupport.com/issues/280340",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 116,
@@ -1625,7 +1740,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:18",
       "link": "https://projects.rsupport.com/issues/279504",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 117,
@@ -1639,7 +1755,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:19",
       "link": "https://projects.rsupport.com/issues/279505",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 118,
@@ -1653,7 +1770,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:39",
       "link": "https://projects.rsupport.com/issues/280341",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 119,
@@ -1667,7 +1785,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:19",
       "link": "https://projects.rsupport.com/issues/279506",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 120,
@@ -1681,7 +1800,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:34",
       "link": "https://projects.rsupport.com/issues/280331",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 121,
@@ -1695,7 +1815,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 21:20:55",
       "link": "https://projects.rsupport.com/issues/280426",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 122,
@@ -1709,7 +1830,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 21:31:08",
       "link": "https://projects.rsupport.com/issues/280429",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 123,
@@ -1723,7 +1845,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 22:16:40",
       "link": "https://projects.rsupport.com/issues/280433",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 124,
@@ -1737,7 +1860,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:20",
       "link": "https://projects.rsupport.com/issues/279507",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 125,
@@ -1751,7 +1875,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:21",
       "link": "https://projects.rsupport.com/issues/279508",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 126,
@@ -1765,7 +1890,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:35",
       "link": "https://projects.rsupport.com/issues/280332",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 127,
@@ -1779,7 +1905,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 20:44:08",
       "link": "https://projects.rsupport.com/issues/280421",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 128,
@@ -1793,7 +1920,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:21",
       "link": "https://projects.rsupport.com/issues/279509",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 129,
@@ -1807,7 +1935,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:35",
       "link": "https://projects.rsupport.com/issues/280333",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 130,
@@ -1821,7 +1950,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 11:19:11",
       "link": "https://projects.rsupport.com/issues/280468",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 131,
@@ -1835,7 +1965,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 14:15:22",
       "link": "https://projects.rsupport.com/issues/279510",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 132,
@@ -1849,7 +1980,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 11:19:11",
       "link": "https://projects.rsupport.com/issues/280469",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 133,
@@ -1863,7 +1995,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:02",
       "link": "https://projects.rsupport.com/issues/279546",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 134,
@@ -1877,7 +2010,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:03",
       "link": "https://projects.rsupport.com/issues/279547",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 135,
@@ -1891,7 +2025,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:03",
       "link": "https://projects.rsupport.com/issues/279548",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 136,
@@ -1905,7 +2040,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:04",
       "link": "https://projects.rsupport.com/issues/279549",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 137,
@@ -1919,7 +2055,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:04",
       "link": "https://projects.rsupport.com/issues/279550",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 138,
@@ -1933,7 +2070,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:05",
       "link": "https://projects.rsupport.com/issues/279551",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 139,
@@ -1947,7 +2085,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:05",
       "link": "https://projects.rsupport.com/issues/279552",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 140,
@@ -1961,7 +2100,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 21:20:32",
       "link": "https://projects.rsupport.com/issues/280425",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 141,
@@ -1975,7 +2115,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 22:16:41",
       "link": "https://projects.rsupport.com/issues/280434",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 142,
@@ -1989,7 +2130,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:06",
       "link": "https://projects.rsupport.com/issues/279553",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 143,
@@ -2003,7 +2145,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:36",
       "link": "https://projects.rsupport.com/issues/280334",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 144,
@@ -2017,7 +2160,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:06",
       "link": "https://projects.rsupport.com/issues/279554",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 145,
@@ -2031,7 +2175,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:36",
       "link": "https://projects.rsupport.com/issues/280335",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 146,
@@ -2045,7 +2190,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 21:37:11",
       "link": "https://projects.rsupport.com/issues/280430",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 147,
@@ -2059,7 +2205,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 11:19:12",
       "link": "https://projects.rsupport.com/issues/280470",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 148,
@@ -2073,7 +2220,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:06",
       "link": "https://projects.rsupport.com/issues/279555",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 149,
@@ -2087,7 +2235,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:07",
       "link": "https://projects.rsupport.com/issues/279556",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 150,
@@ -2101,7 +2250,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:36",
       "link": "https://projects.rsupport.com/issues/280336",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 151,
@@ -2115,7 +2265,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:07",
       "link": "https://projects.rsupport.com/issues/279557",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 152,
@@ -2129,7 +2280,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 21:04:04",
       "link": "https://projects.rsupport.com/issues/280423",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 153,
@@ -2143,7 +2295,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:08",
       "link": "https://projects.rsupport.com/issues/279558",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 154,
@@ -2157,7 +2310,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:37",
       "link": "https://projects.rsupport.com/issues/280337",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 155,
@@ -2171,7 +2325,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:08",
       "link": "https://projects.rsupport.com/issues/279559",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 156,
@@ -2185,7 +2340,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:39",
       "link": "https://projects.rsupport.com/issues/280342",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 157,
@@ -2199,7 +2355,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:09",
       "link": "https://projects.rsupport.com/issues/279560",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 158,
@@ -2213,7 +2370,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:09",
       "link": "https://projects.rsupport.com/issues/279561",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 159,
@@ -2227,7 +2385,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-10 14:50:37",
       "link": "https://projects.rsupport.com/issues/280338",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 160,
@@ -2241,7 +2400,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 16:44:09",
       "link": "https://projects.rsupport.com/issues/279562",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 161,
@@ -2255,7 +2415,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:15:01",
       "link": "https://projects.rsupport.com/issues/281503",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 162,
@@ -2269,7 +2430,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:16:03",
       "link": "https://projects.rsupport.com/issues/281505",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 163,
@@ -2283,7 +2445,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:16:04",
       "link": "https://projects.rsupport.com/issues/281506",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 164,
@@ -2297,7 +2460,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:15:29",
       "link": "https://projects.rsupport.com/issues/281504",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 165,
@@ -2311,7 +2475,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:16:50",
       "link": "https://projects.rsupport.com/issues/281507",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 166,
@@ -2325,7 +2490,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:16:51",
       "link": "https://projects.rsupport.com/issues/281508",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 167,
@@ -2339,7 +2505,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:40:52",
       "link": "https://projects.rsupport.com/issues/281509",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 168,
@@ -2353,7 +2520,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 22:41:08",
       "link": "https://projects.rsupport.com/issues/281510",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 169,
@@ -2367,7 +2535,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-02 19:59:00",
       "link": "https://projects.rsupport.com/issues/279224",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 170,
@@ -2381,7 +2550,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-02 19:59:00",
       "link": "https://projects.rsupport.com/issues/279225",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 171,
@@ -2395,7 +2565,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-02 19:59:01",
       "link": "https://projects.rsupport.com/issues/279226",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 172,
@@ -2409,7 +2580,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 10:26:40",
       "link": "https://projects.rsupport.com/issues/279399",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": true
     },
     {
       "번호": 173,
@@ -2423,7 +2595,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-06 16:03:52",
       "link": "https://projects.rsupport.com/issues/276386",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 174,
@@ -2437,7 +2610,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-06 17:51:38",
       "link": "https://projects.rsupport.com/issues/276423",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 175,
@@ -2451,7 +2625,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-07 14:31:40",
       "link": "https://projects.rsupport.com/issues/276559",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 176,
@@ -2465,7 +2640,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-07 14:35:50",
       "link": "https://projects.rsupport.com/issues/276561",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 177,
@@ -2479,7 +2655,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-07 17:01:20",
       "link": "https://projects.rsupport.com/issues/276597",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 178,
@@ -2493,7 +2670,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-07 17:18:22",
       "link": "https://projects.rsupport.com/issues/276600",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 179,
@@ -2507,7 +2685,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-10 17:05:06",
       "link": "https://projects.rsupport.com/issues/276790",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 180,
@@ -2521,7 +2700,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-10 18:58:37",
       "link": "https://projects.rsupport.com/issues/276820",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 181,
@@ -2535,7 +2715,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-11 11:49:56",
       "link": "https://projects.rsupport.com/issues/276864",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 182,
@@ -2549,7 +2730,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-11 12:04:11",
       "link": "https://projects.rsupport.com/issues/276868",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 183,
@@ -2563,7 +2745,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-11 12:13:13",
       "link": "https://projects.rsupport.com/issues/276869",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 184,
@@ -2577,7 +2760,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-11 14:50:25",
       "link": "https://projects.rsupport.com/issues/276898",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 185,
@@ -2591,7 +2775,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 14:21:43",
       "link": "https://projects.rsupport.com/issues/277069",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 186,
@@ -2605,7 +2790,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:13:20",
       "link": "https://projects.rsupport.com/issues/277083",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 187,
@@ -2619,7 +2805,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:48:24",
       "link": "https://projects.rsupport.com/issues/277094",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 188,
@@ -2633,7 +2820,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 15:55:42",
       "link": "https://projects.rsupport.com/issues/277098",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 189,
@@ -2647,7 +2835,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 16:05:59",
       "link": "https://projects.rsupport.com/issues/277104",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 190,
@@ -2661,7 +2850,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 16:16:29",
       "link": "https://projects.rsupport.com/issues/277106",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 191,
@@ -2675,7 +2865,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 17:53:43",
       "link": "https://projects.rsupport.com/issues/277132",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 192,
@@ -2689,7 +2880,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 17:59:10",
       "link": "https://projects.rsupport.com/issues/277134",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 193,
@@ -2703,7 +2895,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-12 18:06:55",
       "link": "https://projects.rsupport.com/issues/277135",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 194,
@@ -2717,7 +2910,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-13 13:57:38",
       "link": "https://projects.rsupport.com/issues/277237",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 195,
@@ -2731,7 +2925,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-13 15:20:50",
       "link": "https://projects.rsupport.com/issues/277255",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 196,
@@ -2745,7 +2940,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-13 16:55:19",
       "link": "https://projects.rsupport.com/issues/277262",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 197,
@@ -2759,7 +2955,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-13 18:57:11",
       "link": "https://projects.rsupport.com/issues/277283",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 198,
@@ -2773,7 +2970,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-14 11:41:12",
       "link": "https://projects.rsupport.com/issues/277343",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 199,
@@ -2787,7 +2985,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-14 13:13:00",
       "link": "https://projects.rsupport.com/issues/277349",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 200,
@@ -2801,7 +3000,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-14 15:48:07",
       "link": "https://projects.rsupport.com/issues/277402",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 201,
@@ -2815,7 +3015,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-18 16:38:55",
       "link": "https://projects.rsupport.com/issues/277543",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 202,
@@ -2829,7 +3030,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-18 17:42:19",
       "link": "https://projects.rsupport.com/issues/277559",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 203,
@@ -2843,7 +3045,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-18 18:05:50",
       "link": "https://projects.rsupport.com/issues/277564",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 204,
@@ -2857,7 +3060,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-18 18:12:17",
       "link": "https://projects.rsupport.com/issues/277567",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 205,
@@ -2871,7 +3075,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-19 13:41:09",
       "link": "https://projects.rsupport.com/issues/277626",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 206,
@@ -2885,7 +3090,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-20 11:11:13",
       "link": "https://projects.rsupport.com/issues/277737",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 207,
@@ -2899,7 +3105,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-20 14:28:25",
       "link": "https://projects.rsupport.com/issues/277788",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 208,
@@ -2913,7 +3120,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-20 15:13:25",
       "link": "https://projects.rsupport.com/issues/277797",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 209,
@@ -2927,7 +3135,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-24 11:05:15",
       "link": "https://projects.rsupport.com/issues/278043",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 210,
@@ -2941,7 +3150,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-24 11:09:26",
       "link": "https://projects.rsupport.com/issues/278044",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 211,
@@ -2955,7 +3165,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-24 11:13:28",
       "link": "https://projects.rsupport.com/issues/278049",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 212,
@@ -2969,7 +3180,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-24 13:58:26",
       "link": "https://projects.rsupport.com/issues/278071",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 213,
@@ -2983,7 +3195,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 10:34:05",
       "link": "https://projects.rsupport.com/issues/278159",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 214,
@@ -2997,7 +3210,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 11:28:31",
       "link": "https://projects.rsupport.com/issues/278180",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 215,
@@ -3011,7 +3225,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 11:43:43",
       "link": "https://projects.rsupport.com/issues/278185",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 216,
@@ -3025,7 +3240,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 12:21:26",
       "link": "https://projects.rsupport.com/issues/278193",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 217,
@@ -3039,7 +3255,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 17:17:18",
       "link": "https://projects.rsupport.com/issues/278245",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 218,
@@ -3053,7 +3270,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 18:28:09",
       "link": "https://projects.rsupport.com/issues/278267",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 219,
@@ -3067,7 +3285,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 19:18:20",
       "link": "https://projects.rsupport.com/issues/278271",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 220,
@@ -3081,7 +3300,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-25 19:43:16",
       "link": "https://projects.rsupport.com/issues/278273",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 221,
@@ -3095,7 +3315,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-26 14:13:55",
       "link": "https://projects.rsupport.com/issues/278339",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 222,
@@ -3109,7 +3330,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 10:47:14",
       "link": "https://projects.rsupport.com/issues/278574",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 223,
@@ -3123,7 +3345,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 10:55:50",
       "link": "https://projects.rsupport.com/issues/278575",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 224,
@@ -3137,7 +3360,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 11:37:44",
       "link": "https://projects.rsupport.com/issues/278591",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 225,
@@ -3151,7 +3375,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 12:01:51",
       "link": "https://projects.rsupport.com/issues/278598",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 226,
@@ -3165,7 +3390,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 13:45:04",
       "link": "https://projects.rsupport.com/issues/278625",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 227,
@@ -3179,7 +3405,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 14:58:01",
       "link": "https://projects.rsupport.com/issues/278640",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 228,
@@ -3193,7 +3420,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-28 15:47:53",
       "link": "https://projects.rsupport.com/issues/278651",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 229,
@@ -3207,7 +3435,8 @@
       "작성자": "이명찬",
       "created_on": "2026-08-31 10:16:09",
       "link": "https://projects.rsupport.com/issues/278751",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 230,
@@ -3221,7 +3450,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 10:16:46",
       "link": "https://projects.rsupport.com/issues/278902",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 231,
@@ -3235,7 +3465,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 11:05:07",
       "link": "https://projects.rsupport.com/issues/278915",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 232,
@@ -3249,7 +3480,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 11:17:27",
       "link": "https://projects.rsupport.com/issues/278917",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 233,
@@ -3263,7 +3495,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 11:25:10",
       "link": "https://projects.rsupport.com/issues/278920",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 234,
@@ -3277,7 +3510,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 16:05:33",
       "link": "https://projects.rsupport.com/issues/278982",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 235,
@@ -3291,7 +3525,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-01 19:54:42",
       "link": "https://projects.rsupport.com/issues/279017",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 236,
@@ -3305,7 +3540,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 09:47:31",
       "link": "https://projects.rsupport.com/issues/279070",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 237,
@@ -3319,7 +3555,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 10:31:22",
       "link": "https://projects.rsupport.com/issues/279080",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 238,
@@ -3333,7 +3570,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 12:21:09",
       "link": "https://projects.rsupport.com/issues/279101",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 239,
@@ -3347,7 +3585,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 17:20:07",
       "link": "https://projects.rsupport.com/issues/279151",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 240,
@@ -3361,7 +3600,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 17:34:05",
       "link": "https://projects.rsupport.com/issues/279153",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 241,
@@ -3375,7 +3615,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 17:54:13",
       "link": "https://projects.rsupport.com/issues/279159",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 242,
@@ -3389,7 +3630,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 18:55:35",
       "link": "https://projects.rsupport.com/issues/279205",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 243,
@@ -3403,7 +3645,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-02 19:02:16",
       "link": "https://projects.rsupport.com/issues/279219",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 244,
@@ -3417,7 +3660,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-03 17:31:28",
       "link": "https://projects.rsupport.com/issues/279342",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 245,
@@ -3431,7 +3675,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-04 14:14:41",
       "link": "https://projects.rsupport.com/issues/279499",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 246,
@@ -3445,7 +3690,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-05 16:43:18",
       "link": "https://projects.rsupport.com/issues/279611",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 247,
@@ -3459,7 +3705,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-05 17:14:36",
       "link": "https://projects.rsupport.com/issues/279613",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 248,
@@ -3473,7 +3720,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 10:02:57",
       "link": "https://projects.rsupport.com/issues/279707",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 249,
@@ -3487,7 +3735,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 12:31:04",
       "link": "https://projects.rsupport.com/issues/279746",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 250,
@@ -3501,7 +3750,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 13:29:10",
       "link": "https://projects.rsupport.com/issues/279750",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 251,
@@ -3515,7 +3765,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 15:41:42",
       "link": "https://projects.rsupport.com/issues/279786",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 252,
@@ -3529,7 +3780,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 16:17:51",
       "link": "https://projects.rsupport.com/issues/279803",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 253,
@@ -3543,7 +3795,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 17:45:57",
       "link": "https://projects.rsupport.com/issues/279820",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 254,
@@ -3557,7 +3810,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 18:05:47",
       "link": "https://projects.rsupport.com/issues/279823",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 255,
@@ -3571,7 +3825,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 18:56:10",
       "link": "https://projects.rsupport.com/issues/279828",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 256,
@@ -3585,7 +3840,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-07 19:31:03",
       "link": "https://projects.rsupport.com/issues/279838",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 257,
@@ -3599,7 +3855,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 16:05:36",
       "link": "https://projects.rsupport.com/issues/279953",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 258,
@@ -3613,7 +3870,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 17:33:55",
       "link": "https://projects.rsupport.com/issues/279975",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 259,
@@ -3627,7 +3885,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 18:52:14",
       "link": "https://projects.rsupport.com/issues/279994",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 260,
@@ -3641,7 +3900,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 19:22:16",
       "link": "https://projects.rsupport.com/issues/279998",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 261,
@@ -3655,7 +3915,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 19:51:39",
       "link": "https://projects.rsupport.com/issues/279999",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 262,
@@ -3669,7 +3930,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 20:01:16",
       "link": "https://projects.rsupport.com/issues/280000",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 263,
@@ -3683,7 +3945,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-08 20:05:56",
       "link": "https://projects.rsupport.com/issues/280001",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 264,
@@ -3697,7 +3960,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-09 13:14:52",
       "link": "https://projects.rsupport.com/issues/280073",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 265,
@@ -3711,7 +3975,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-09 14:45:26",
       "link": "https://projects.rsupport.com/issues/280098",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 266,
@@ -3725,7 +3990,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-09 16:28:16",
       "link": "https://projects.rsupport.com/issues/280123",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 267,
@@ -3739,7 +4005,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-09 17:32:19",
       "link": "https://projects.rsupport.com/issues/280161",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 268,
@@ -3753,7 +4020,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-10 11:50:35",
       "link": "https://projects.rsupport.com/issues/280295",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 269,
@@ -3767,7 +4035,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-10 14:25:36",
       "link": "https://projects.rsupport.com/issues/280325",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 270,
@@ -3781,7 +4050,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-10 17:18:57",
       "link": "https://projects.rsupport.com/issues/280386",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 271,
@@ -3795,7 +4065,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-11 18:16:44",
       "link": "https://projects.rsupport.com/issues/280571",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 272,
@@ -3809,7 +4080,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-14 13:23:38",
       "link": "https://projects.rsupport.com/issues/280638",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 273,
@@ -3823,7 +4095,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-14 13:37:30",
       "link": "https://projects.rsupport.com/issues/280640",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 274,
@@ -3837,7 +4110,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-14 13:55:20",
       "link": "https://projects.rsupport.com/issues/280645",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 275,
@@ -3851,7 +4125,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-14 14:37:30",
       "link": "https://projects.rsupport.com/issues/280657",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 276,
@@ -3865,7 +4140,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-17 11:47:06",
       "link": "https://projects.rsupport.com/issues/281162",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 277,
@@ -3879,7 +4155,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-17 11:55:43",
       "link": "https://projects.rsupport.com/issues/281164",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 278,
@@ -3893,7 +4170,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-17 14:14:40",
       "link": "https://projects.rsupport.com/issues/281187",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 279,
@@ -3907,7 +4185,8 @@
       "작성자": "이명찬",
       "created_on": "2026-09-17 14:23:28",
       "link": "https://projects.rsupport.com/issues/281191",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 280,
@@ -3921,7 +4200,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 10:26:41",
       "link": "https://projects.rsupport.com/issues/279400",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": true
     },
     {
       "번호": 281,
@@ -3935,7 +4215,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 08:43:55",
       "link": "https://projects.rsupport.com/issues/279365",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 282,
@@ -3949,7 +4230,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-04 09:27:55",
       "link": "https://projects.rsupport.com/issues/279390",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 283,
@@ -3963,7 +4245,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-08 17:16:29",
       "link": "https://projects.rsupport.com/issues/279971",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 284,
@@ -3977,7 +4260,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 17:12:42",
       "link": "https://projects.rsupport.com/issues/280384",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 285,
@@ -3991,7 +4275,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 21:43:27",
       "link": "https://projects.rsupport.com/issues/280431",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 286,
@@ -4005,7 +4290,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-10 22:39:37",
       "link": "https://projects.rsupport.com/issues/280436",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 287,
@@ -4019,7 +4305,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-11 22:43:29",
       "link": "https://projects.rsupport.com/issues/280583",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 288,
@@ -4033,7 +4320,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-11 22:44:12",
       "link": "https://projects.rsupport.com/issues/280584",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 289,
@@ -4047,7 +4335,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-11 23:41:55",
       "link": "https://projects.rsupport.com/issues/280585",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 290,
@@ -4061,7 +4350,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-12 20:29:27",
       "link": "https://projects.rsupport.com/issues/280597",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 291,
@@ -4075,7 +4365,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-14 09:45:46",
       "link": "https://projects.rsupport.com/issues/280609",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 292,
@@ -4089,7 +4380,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-14 10:53:32",
       "link": "https://projects.rsupport.com/issues/280619",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 293,
@@ -4103,7 +4395,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-14 11:08:49",
       "link": "https://projects.rsupport.com/issues/280620",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 294,
@@ -4117,7 +4410,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-14 11:30:41",
       "link": "https://projects.rsupport.com/issues/280624",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 295,
@@ -4131,7 +4425,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-15 14:47:48",
       "link": "https://projects.rsupport.com/issues/280802",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 296,
@@ -4145,7 +4440,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-20 10:45:03",
       "link": "https://projects.rsupport.com/issues/281550",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 297,
@@ -4159,7 +4455,8 @@
       "작성자": "권정희",
       "created_on": "2026-09-09 15:49:10",
       "link": "https://projects.rsupport.com/issues/280106",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 298,
@@ -4173,7 +4470,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 13:33:33",
       "link": "https://projects.rsupport.com/issues/280503",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 299,
@@ -4187,7 +4485,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-11 13:33:33",
       "link": "https://projects.rsupport.com/issues/280504",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 300,
@@ -4201,7 +4500,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 09:36:22",
       "link": "https://projects.rsupport.com/issues/280606",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 301,
@@ -4215,7 +4515,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 09:36:23",
       "link": "https://projects.rsupport.com/issues/280607",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 302,
@@ -4229,7 +4530,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 14:46:13",
       "link": "https://projects.rsupport.com/issues/280660",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 303,
@@ -4243,7 +4545,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 15:05:44",
       "link": "https://projects.rsupport.com/issues/280664",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 304,
@@ -4257,7 +4560,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 15:24:58",
       "link": "https://projects.rsupport.com/issues/280680",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 305,
@@ -4271,7 +4575,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-14 16:21:18",
       "link": "https://projects.rsupport.com/issues/280704",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 306,
@@ -4285,7 +4590,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-14 17:58:18",
       "link": "https://projects.rsupport.com/issues/280720",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 307,
@@ -4299,7 +4605,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-15 13:35:43",
       "link": "https://projects.rsupport.com/issues/280785",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 308,
@@ -4313,7 +4620,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-15 13:41:07",
       "link": "https://projects.rsupport.com/issues/280787",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 309,
@@ -4327,7 +4635,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-16 11:37:06",
       "link": "https://projects.rsupport.com/issues/280929",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 310,
@@ -4341,7 +4650,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-16 16:15:34",
       "link": "https://projects.rsupport.com/issues/281047",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 311,
@@ -4355,7 +4665,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 10:33:39",
       "link": "https://projects.rsupport.com/issues/281378",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": true
     },
     {
       "번호": 312,
@@ -4369,7 +4680,8 @@
       "작성자": "윤종익",
       "created_on": "2026-09-18 15:28:00",
       "link": "https://projects.rsupport.com/issues/281432",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 313,
@@ -4383,7 +4695,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:15",
       "link": "https://projects.rsupport.com/issues/281444",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 314,
@@ -4397,7 +4710,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:15",
       "link": "https://projects.rsupport.com/issues/281445",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 315,
@@ -4411,7 +4725,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:16",
       "link": "https://projects.rsupport.com/issues/281446",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 316,
@@ -4425,7 +4740,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:16",
       "link": "https://projects.rsupport.com/issues/281447",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 317,
@@ -4439,7 +4755,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:17",
       "link": "https://projects.rsupport.com/issues/281448",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 318,
@@ -4453,7 +4770,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:17",
       "link": "https://projects.rsupport.com/issues/281449",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 319,
@@ -4467,7 +4785,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:17",
       "link": "https://projects.rsupport.com/issues/281450",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 320,
@@ -4481,7 +4800,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:17",
       "link": "https://projects.rsupport.com/issues/281451",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 321,
@@ -4495,7 +4815,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:18",
       "link": "https://projects.rsupport.com/issues/281452",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 322,
@@ -4509,7 +4830,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:18",
       "link": "https://projects.rsupport.com/issues/281453",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 323,
@@ -4523,7 +4845,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:18",
       "link": "https://projects.rsupport.com/issues/281454",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 324,
@@ -4537,7 +4860,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:19",
       "link": "https://projects.rsupport.com/issues/281455",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 325,
@@ -4551,7 +4875,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:20",
       "link": "https://projects.rsupport.com/issues/281456",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 326,
@@ -4565,7 +4890,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:21",
       "link": "https://projects.rsupport.com/issues/281457",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 327,
@@ -4579,7 +4905,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:21",
       "link": "https://projects.rsupport.com/issues/281458",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 328,
@@ -4593,7 +4920,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:22",
       "link": "https://projects.rsupport.com/issues/281459",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 329,
@@ -4607,7 +4935,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:22",
       "link": "https://projects.rsupport.com/issues/281460",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 330,
@@ -4621,7 +4950,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:22",
       "link": "https://projects.rsupport.com/issues/281461",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 331,
@@ -4635,7 +4965,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:23",
       "link": "https://projects.rsupport.com/issues/281462",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 332,
@@ -4649,7 +4980,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 15:58:23",
       "link": "https://projects.rsupport.com/issues/281463",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 333,
@@ -4663,7 +4995,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:01",
       "link": "https://projects.rsupport.com/issues/281465",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 334,
@@ -4677,7 +5010,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:02",
       "link": "https://projects.rsupport.com/issues/281466",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 335,
@@ -4691,7 +5025,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:02",
       "link": "https://projects.rsupport.com/issues/281467",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 336,
@@ -4705,7 +5040,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:03",
       "link": "https://projects.rsupport.com/issues/281468",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 337,
@@ -4719,7 +5055,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:03",
       "link": "https://projects.rsupport.com/issues/281469",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 338,
@@ -4733,7 +5070,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:04",
       "link": "https://projects.rsupport.com/issues/281470",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 339,
@@ -4747,7 +5085,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:05",
       "link": "https://projects.rsupport.com/issues/281471",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 340,
@@ -4761,7 +5100,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:06",
       "link": "https://projects.rsupport.com/issues/281472",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 341,
@@ -4775,7 +5115,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:06",
       "link": "https://projects.rsupport.com/issues/281473",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 342,
@@ -4789,7 +5130,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:07",
       "link": "https://projects.rsupport.com/issues/281474",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 343,
@@ -4803,7 +5145,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:08",
       "link": "https://projects.rsupport.com/issues/281475",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 344,
@@ -4817,7 +5160,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:08",
       "link": "https://projects.rsupport.com/issues/281476",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 345,
@@ -4831,7 +5175,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:09",
       "link": "https://projects.rsupport.com/issues/281477",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 346,
@@ -4845,7 +5190,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:10",
       "link": "https://projects.rsupport.com/issues/281478",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 347,
@@ -4859,7 +5205,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:11",
       "link": "https://projects.rsupport.com/issues/281479",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 348,
@@ -4873,7 +5220,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:06:12",
       "link": "https://projects.rsupport.com/issues/281480",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 349,
@@ -4887,7 +5235,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:50",
       "link": "https://projects.rsupport.com/issues/281481",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 350,
@@ -4901,7 +5250,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:50",
       "link": "https://projects.rsupport.com/issues/281482",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 351,
@@ -4915,7 +5265,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:50",
       "link": "https://projects.rsupport.com/issues/281483",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 352,
@@ -4929,7 +5280,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:51",
       "link": "https://projects.rsupport.com/issues/281484",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 353,
@@ -4943,7 +5295,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:51",
       "link": "https://projects.rsupport.com/issues/281485",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 354,
@@ -4957,7 +5310,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:51",
       "link": "https://projects.rsupport.com/issues/281486",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 355,
@@ -4971,7 +5325,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:52",
       "link": "https://projects.rsupport.com/issues/281487",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 356,
@@ -4985,7 +5340,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:52",
       "link": "https://projects.rsupport.com/issues/281488",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 357,
@@ -4999,7 +5355,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:53",
       "link": "https://projects.rsupport.com/issues/281489",
-      "깊이": 1
+      "깊이": 1,
+      "집계제외": false
     },
     {
       "번호": 358,
@@ -5013,7 +5370,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:53",
       "link": "https://projects.rsupport.com/issues/281490",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 359,
@@ -5027,7 +5385,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:53",
       "link": "https://projects.rsupport.com/issues/281491",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 360,
@@ -5041,7 +5400,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 16:11:54",
       "link": "https://projects.rsupport.com/issues/281492",
-      "깊이": 2
+      "깊이": 2,
+      "집계제외": false
     },
     {
       "번호": 361,
@@ -5055,7 +5415,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 11:47:09",
       "link": "https://projects.rsupport.com/issues/281388",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 362,
@@ -5069,7 +5430,8 @@
       "작성자": "이혁(Eden)",
       "created_on": "2026-09-18 11:58:13",
       "link": "https://projects.rsupport.com/issues/281395",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     },
     {
       "번호": 363,
@@ -5083,19 +5445,20 @@
       "작성자": "권정희",
       "created_on": "2026-09-20 16:27:07",
       "link": "https://projects.rsupport.com/issues/281564",
-      "깊이": 0
+      "깊이": 0,
+      "집계제외": false
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 151,
+      "notDone": 147,
       "done": 203,
-      "total": 354
+      "total": 350
     },
     "assignees": [
       {
         "name": "(미배정)",
-        "total": 84,
+        "total": 82,
         "done": 16,
         "complete": false,
         "rate": 19
@@ -5123,10 +5486,10 @@
       },
       {
         "name": "이명찬",
-        "total": 16,
+        "total": 14,
         "done": 9,
         "complete": false,
-        "rate": 56
+        "rate": 64
       },
       {
         "name": "이혁(Eden)",
@@ -5153,10 +5516,10 @@
       },
       {
         "name": "윤종익",
-        "total": 139,
+        "total": 136,
         "done": 60,
         "complete": false,
-        "rate": 43
+        "rate": 44
       },
       {
         "name": "이명찬",
@@ -5167,7 +5530,7 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 115,
+        "total": 114,
         "done": 106,
         "complete": false,
         "rate": 92
@@ -5176,9 +5539,9 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 20,
+        "progress": 16,
         "done": 113,
-        "total": 133
+        "total": 129
       },
       {
         "label": "개선(Improving)",
@@ -5196,7 +5559,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 107
+        "count": 103
       },
       {
         "label": "진행",
@@ -5234,15 +5597,15 @@
       },
       {
         "label": "보통",
-        "count": 273
+        "count": 272
       },
       {
         "label": "높음",
-        "count": 58
+        "count": 56
       },
       {
         "label": "긴급",
-        "count": 4
+        "count": 3
       },
       {
         "label": "즉시",
@@ -5380,41 +5743,41 @@
       },
       {
         "date": "2026-09-02",
-        "newCount": 12,
+        "newCount": 11,
         "doneCount": 9,
-        "cumIssue": 75,
+        "cumIssue": 74,
         "cumDone": 36,
-        "rate": 48
+        "rate": 49
       },
       {
         "date": "2026-09-03",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 76,
+        "cumIssue": 75,
         "cumDone": 36,
-        "rate": 47
+        "rate": 48
       },
       {
         "date": "2026-09-04",
-        "newCount": 87,
+        "newCount": 85,
         "doneCount": 18,
-        "cumIssue": 163,
+        "cumIssue": 160,
         "cumDone": 54,
-        "rate": 33
+        "rate": 34
       },
       {
         "date": "2026-09-05",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 165,
+        "cumIssue": 162,
         "cumDone": 55,
-        "rate": 33
+        "rate": 34
       },
       {
         "date": "2026-09-07",
         "newCount": 11,
         "doneCount": 4,
-        "cumIssue": 176,
+        "cumIssue": 173,
         "cumDone": 59,
         "rate": 34
       },
@@ -5422,7 +5785,7 @@
         "date": "2026-09-08",
         "newCount": 9,
         "doneCount": 3,
-        "cumIssue": 185,
+        "cumIssue": 182,
         "cumDone": 62,
         "rate": 34
       },
@@ -5430,7 +5793,7 @@
         "date": "2026-09-09",
         "newCount": 8,
         "doneCount": 3,
-        "cumIssue": 193,
+        "cumIssue": 190,
         "cumDone": 65,
         "rate": 34
       },
@@ -5438,7 +5801,7 @@
         "date": "2026-09-10",
         "newCount": 72,
         "doneCount": 62,
-        "cumIssue": 265,
+        "cumIssue": 262,
         "cumDone": 127,
         "rate": 48
       },
@@ -5446,23 +5809,23 @@
         "date": "2026-09-11",
         "newCount": 11,
         "doneCount": 9,
-        "cumIssue": 276,
+        "cumIssue": 273,
         "cumDone": 136,
-        "rate": 49
+        "rate": 50
       },
       {
         "date": "2026-09-12",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 277,
+        "cumIssue": 274,
         "cumDone": 137,
-        "rate": 49
+        "rate": 50
       },
       {
         "date": "2026-09-14",
         "newCount": 15,
         "doneCount": 8,
-        "cumIssue": 292,
+        "cumIssue": 289,
         "cumDone": 145,
         "rate": 50
       },
@@ -5470,15 +5833,15 @@
         "date": "2026-09-15",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 295,
+        "cumIssue": 292,
         "cumDone": 148,
-        "rate": 50
+        "rate": 51
       },
       {
         "date": "2026-09-16",
         "newCount": 2,
         "doneCount": 2,
-        "cumIssue": 297,
+        "cumIssue": 294,
         "cumDone": 150,
         "rate": 51
       },
@@ -5486,25 +5849,25 @@
         "date": "2026-09-17",
         "newCount": 4,
         "doneCount": 0,
-        "cumIssue": 301,
+        "cumIssue": 298,
         "cumDone": 150,
         "rate": 50
       },
       {
         "date": "2026-09-18",
-        "newCount": 60,
+        "newCount": 59,
         "doneCount": 52,
-        "cumIssue": 361,
+        "cumIssue": 357,
         "cumDone": 202,
-        "rate": 56
+        "rate": 57
       },
       {
         "date": "2026-09-20",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 363,
+        "cumIssue": 359,
         "cumDone": 203,
-        "rate": 56
+        "rate": 57
       }
     ]
   },
