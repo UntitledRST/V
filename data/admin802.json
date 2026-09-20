@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-20T14:14:43.455852+00:00",
+  "fetchedAt": "2026-09-20T14:48:34.665888+00:00",
   "count": 298,
   "issues": [
     {
@@ -5872,7 +5872,7 @@
     ]
   },
   "squad": "admin802",
-  "squadLabel": "Admin_8.0.2",
+  "squadLabel": "Admin_8.0.2(279282)",
   "parent": {
     "id": "279282",
     "link": "https://projects.rsupport.com/issues/279282"
