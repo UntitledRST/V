@@ -1029,11 +1029,12 @@
       state.issues = data.issues || [];
       state.summary = data.summary;
       state.filter = null;   // 스쿼드가 바뀌면 이전 필터는 의미가 없으므로 해제
-      state.collapsed = {};  // 접어둔 상태도 초기화
+      state.collapsed = {};  // 접어둔 상태 초기화 (아래에서 기본 접힘을 다시 계산)
       state.sortDir = defaultSortDirFor(state.squad);  // 스쿼드별 기본 정렬로 초기화
       updateSortHeader();
       document.getElementById('filterChip').classList.remove('active');
       classifyIssues(state.issues);
+      initDefaultCollapse();
 
       var d = new Date(data.fetchedAt);
       // '오늘'의 기준은 브라우저 시계가 아니라 데이터가 수집된 시각(KST)으로 잡습니다.
@@ -1745,6 +1746,21 @@
       cur = idMap[pid];
     }
     return false;
+  }
+
+  // 처음 화면을 열 때는 '하위를 가진 첫번째 하위 일감'을 접은 상태로 보여줍니다.
+  // 목록이 한눈에 들어오고, 필요한 묶음만 펼쳐서 보면 됩니다.
+  // 항상 펼쳐서 시작하고 싶으면 이 함수 본문을 state.collapsed = {}; 한 줄로 바꾸세요.
+  function initDefaultCollapse(){
+    state.collapsed = {};
+    var list = state.issues || [];
+    var childMap = buildChildMap(list);
+    list.forEach(function(it){
+      if (depthOf(it) !== 0) return;
+      if ((childMap[String(it.일감번호)] || []).length){
+        state.collapsed[String(it.일감번호)] = true;
+      }
+    });
   }
 
   function toggleCollapse(id){
