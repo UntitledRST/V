@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-20T14:48:34.665888+00:00",
-  "count": 298,
+  "fetchedAt": "2026-09-20T15:04:00.574890+00:00",
+  "count": 363,
   "issues": [
     {
       "번호": 1,
@@ -16,7 +16,7 @@
       "created_on": "2026-09-02 19:52:03",
       "link": "https://projects.rsupport.com/issues/279223",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 2,
@@ -31,7 +31,7 @@
       "created_on": "2026-09-04 13:26:26",
       "link": "https://projects.rsupport.com/issues/279430",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 3,
@@ -61,7 +61,7 @@
       "created_on": "2026-09-04 13:26:38",
       "link": "https://projects.rsupport.com/issues/279431",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 5,
@@ -91,7 +91,7 @@
       "created_on": "2026-09-04 13:26:39",
       "link": "https://projects.rsupport.com/issues/279432",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 7,
@@ -121,7 +121,7 @@
       "created_on": "2026-09-04 13:26:40",
       "link": "https://projects.rsupport.com/issues/279433",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 9,
@@ -271,7 +271,7 @@
       "created_on": "2026-09-04 13:26:46",
       "link": "https://projects.rsupport.com/issues/279439",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 19,
@@ -331,7 +331,7 @@
       "created_on": "2026-09-04 13:26:49",
       "link": "https://projects.rsupport.com/issues/279442",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 23,
@@ -361,7 +361,7 @@
       "created_on": "2026-09-04 13:26:50",
       "link": "https://projects.rsupport.com/issues/279443",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 25,
@@ -391,7 +391,7 @@
       "created_on": "2026-09-04 13:26:51",
       "link": "https://projects.rsupport.com/issues/279444",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 27,
@@ -421,7 +421,7 @@
       "created_on": "2026-09-04 13:26:52",
       "link": "https://projects.rsupport.com/issues/279445",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 29,
@@ -511,7 +511,7 @@
       "created_on": "2026-09-04 13:26:56",
       "link": "https://projects.rsupport.com/issues/279450",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 35,
@@ -541,7 +541,7 @@
       "created_on": "2026-09-04 13:26:57",
       "link": "https://projects.rsupport.com/issues/279451",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 37,
@@ -571,7 +571,7 @@
       "created_on": "2026-09-04 13:26:57",
       "link": "https://projects.rsupport.com/issues/279452",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 39,
@@ -601,7 +601,7 @@
       "created_on": "2026-09-04 13:26:58",
       "link": "https://projects.rsupport.com/issues/279453",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 41,
@@ -676,7 +676,7 @@
       "created_on": "2026-09-04 13:26:58",
       "link": "https://projects.rsupport.com/issues/279454",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 46,
@@ -766,7 +766,7 @@
       "created_on": "2026-09-04 13:27:00",
       "link": "https://projects.rsupport.com/issues/279457",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 52,
@@ -796,7 +796,7 @@
       "created_on": "2026-09-04 13:27:01",
       "link": "https://projects.rsupport.com/issues/279458",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 54,
@@ -856,7 +856,7 @@
       "created_on": "2026-09-04 13:27:04",
       "link": "https://projects.rsupport.com/issues/279461",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 58,
@@ -916,7 +916,7 @@
       "created_on": "2026-09-04 13:27:05",
       "link": "https://projects.rsupport.com/issues/279462",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 62,
@@ -961,7 +961,7 @@
       "created_on": "2026-09-04 13:27:06",
       "link": "https://projects.rsupport.com/issues/279463",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 65,
@@ -991,7 +991,7 @@
       "created_on": "2026-09-04 13:27:07",
       "link": "https://projects.rsupport.com/issues/279464",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 67,
@@ -1036,7 +1036,7 @@
       "created_on": "2026-09-04 13:27:07",
       "link": "https://projects.rsupport.com/issues/279465",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 70,
@@ -1066,7 +1066,7 @@
       "created_on": "2026-09-04 13:27:08",
       "link": "https://projects.rsupport.com/issues/279466",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 72,
@@ -1111,7 +1111,7 @@
       "created_on": "2026-09-04 13:27:09",
       "link": "https://projects.rsupport.com/issues/279467",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 75,
@@ -1201,7 +1201,7 @@
       "created_on": "2026-09-04 13:27:10",
       "link": "https://projects.rsupport.com/issues/279469",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 81,
@@ -1396,7 +1396,7 @@
       "created_on": "2026-09-04 13:27:15",
       "link": "https://projects.rsupport.com/issues/279477",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 94,
@@ -1456,7 +1456,7 @@
       "created_on": "2026-09-04 13:27:16",
       "link": "https://projects.rsupport.com/issues/279478",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 98,
@@ -1501,7 +1501,7 @@
       "created_on": "2026-09-04 13:27:17",
       "link": "https://projects.rsupport.com/issues/279480",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 101,
@@ -1531,7 +1531,7 @@
       "created_on": "2026-09-04 13:27:18",
       "link": "https://projects.rsupport.com/issues/279481",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 103,
@@ -1576,7 +1576,7 @@
       "created_on": "2026-09-04 14:15:16",
       "link": "https://projects.rsupport.com/issues/279500",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 106,
@@ -1606,7 +1606,7 @@
       "created_on": "2026-09-04 14:15:17",
       "link": "https://projects.rsupport.com/issues/279501",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 108,
@@ -1636,7 +1636,7 @@
       "created_on": "2026-09-04 14:15:17",
       "link": "https://projects.rsupport.com/issues/279502",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 110,
@@ -1711,7 +1711,7 @@
       "created_on": "2026-09-04 14:15:18",
       "link": "https://projects.rsupport.com/issues/279503",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 115,
@@ -1756,7 +1756,7 @@
       "created_on": "2026-09-04 14:15:19",
       "link": "https://projects.rsupport.com/issues/279505",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 118,
@@ -1786,7 +1786,7 @@
       "created_on": "2026-09-04 14:15:19",
       "link": "https://projects.rsupport.com/issues/279506",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 120,
@@ -1876,7 +1876,7 @@
       "created_on": "2026-09-04 14:15:21",
       "link": "https://projects.rsupport.com/issues/279508",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 126,
@@ -1921,7 +1921,7 @@
       "created_on": "2026-09-04 14:15:21",
       "link": "https://projects.rsupport.com/issues/279509",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 129,
@@ -1966,7 +1966,7 @@
       "created_on": "2026-09-04 14:15:22",
       "link": "https://projects.rsupport.com/issues/279510",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 132,
@@ -2086,7 +2086,7 @@
       "created_on": "2026-09-04 16:44:05",
       "link": "https://projects.rsupport.com/issues/279552",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 140,
@@ -2131,7 +2131,7 @@
       "created_on": "2026-09-04 16:44:06",
       "link": "https://projects.rsupport.com/issues/279553",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 143,
@@ -2161,7 +2161,7 @@
       "created_on": "2026-09-04 16:44:06",
       "link": "https://projects.rsupport.com/issues/279554",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 145,
@@ -2236,7 +2236,7 @@
       "created_on": "2026-09-04 16:44:07",
       "link": "https://projects.rsupport.com/issues/279556",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 150,
@@ -2266,7 +2266,7 @@
       "created_on": "2026-09-04 16:44:07",
       "link": "https://projects.rsupport.com/issues/279557",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 152,
@@ -2296,7 +2296,7 @@
       "created_on": "2026-09-04 16:44:08",
       "link": "https://projects.rsupport.com/issues/279558",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 154,
@@ -2326,7 +2326,7 @@
       "created_on": "2026-09-04 16:44:08",
       "link": "https://projects.rsupport.com/issues/279559",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 156,
@@ -2371,7 +2371,7 @@
       "created_on": "2026-09-04 16:44:09",
       "link": "https://projects.rsupport.com/issues/279561",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 159,
@@ -2416,7 +2416,7 @@
       "created_on": "2026-09-18 22:15:01",
       "link": "https://projects.rsupport.com/issues/281503",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 162,
@@ -2461,7 +2461,7 @@
       "created_on": "2026-09-18 22:15:29",
       "link": "https://projects.rsupport.com/issues/281504",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 165,
@@ -2506,7 +2506,7 @@
       "created_on": "2026-09-18 22:40:52",
       "link": "https://projects.rsupport.com/issues/281509",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 168,
@@ -2536,7 +2536,7 @@
       "created_on": "2026-09-04 10:26:40",
       "link": "https://projects.rsupport.com/issues/279399",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 170,
@@ -4156,7 +4156,7 @@
       "created_on": "2026-09-04 10:26:41",
       "link": "https://projects.rsupport.com/issues/279400",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 278,
@@ -4261,7 +4261,7 @@
       "created_on": "2026-09-11 22:43:29",
       "link": "https://projects.rsupport.com/issues/280583",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 285,
@@ -4411,7 +4411,7 @@
       "created_on": "2026-09-18 10:33:39",
       "link": "https://projects.rsupport.com/issues/281378",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 295,
@@ -4441,7 +4441,7 @@
       "created_on": "2026-09-18 15:58:15",
       "link": "https://projects.rsupport.com/issues/281444",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 297,
@@ -4501,7 +4501,7 @@
       "created_on": "2026-09-18 15:58:17",
       "link": "https://projects.rsupport.com/issues/281448",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 301,
@@ -4561,7 +4561,7 @@
       "created_on": "2026-09-18 15:58:18",
       "link": "https://projects.rsupport.com/issues/281452",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 305,
@@ -4621,7 +4621,7 @@
       "created_on": "2026-09-18 15:58:20",
       "link": "https://projects.rsupport.com/issues/281456",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 309,
@@ -4681,7 +4681,7 @@
       "created_on": "2026-09-18 15:58:22",
       "link": "https://projects.rsupport.com/issues/281460",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 313,
@@ -4741,7 +4741,7 @@
       "created_on": "2026-09-18 16:06:01",
       "link": "https://projects.rsupport.com/issues/281465",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 317,
@@ -4801,7 +4801,7 @@
       "created_on": "2026-09-18 16:06:03",
       "link": "https://projects.rsupport.com/issues/281469",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 321,
@@ -4861,7 +4861,7 @@
       "created_on": "2026-09-18 16:06:06",
       "link": "https://projects.rsupport.com/issues/281473",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 325,
@@ -4921,7 +4921,7 @@
       "created_on": "2026-09-18 16:06:09",
       "link": "https://projects.rsupport.com/issues/281477",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 329,
@@ -4981,7 +4981,7 @@
       "created_on": "2026-09-18 16:11:50",
       "link": "https://projects.rsupport.com/issues/281481",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 333,
@@ -5041,7 +5041,7 @@
       "created_on": "2026-09-18 16:11:51",
       "link": "https://projects.rsupport.com/issues/281485",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 337,
@@ -5101,7 +5101,7 @@
       "created_on": "2026-09-18 16:11:53",
       "link": "https://projects.rsupport.com/issues/281489",
       "깊이": 1,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 341,
@@ -5451,17 +5451,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 115,
-      "done": 174,
-      "total": 289
+      "notDone": 151,
+      "done": 203,
+      "total": 354
     },
     "assignees": [
       {
         "name": "(미배정)",
-        "total": 36,
-        "done": 0,
+        "total": 84,
+        "done": 16,
         "complete": false,
-        "rate": 0
+        "rate": 19
       },
       {
         "name": "고유미",
@@ -5479,24 +5479,24 @@
       },
       {
         "name": "윤종익",
-        "total": 115,
-        "done": 75,
-        "complete": false,
-        "rate": 65
-      },
-      {
-        "name": "이명찬",
-        "total": 14,
-        "done": 9,
+        "total": 118,
+        "done": 76,
         "complete": false,
         "rate": 64
       },
       {
-        "name": "이혁(Eden)",
-        "total": 99,
-        "done": 83,
+        "name": "이명찬",
+        "total": 16,
+        "done": 9,
         "complete": false,
-        "rate": 83
+        "rate": 56
+      },
+      {
+        "name": "이혁(Eden)",
+        "total": 111,
+        "done": 95,
+        "complete": false,
+        "rate": 85
       },
       {
         "name": "장기중(Jay)",
@@ -5516,10 +5516,10 @@
       },
       {
         "name": "윤종익",
-        "total": 87,
-        "done": 43,
+        "total": 139,
+        "done": 60,
         "complete": false,
-        "rate": 49
+        "rate": 43
       },
       {
         "name": "이명찬",
@@ -5530,8 +5530,8 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 102,
-        "done": 94,
+        "total": 115,
+        "done": 106,
         "complete": false,
         "rate": 92
       }
@@ -5539,31 +5539,31 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 14,
-        "done": 101,
-        "total": 115
+        "progress": 20,
+        "done": 113,
+        "total": 133
       },
       {
         "label": "개선(Improving)",
-        "progress": 38,
-        "done": 5,
-        "total": 43
+        "progress": 43,
+        "done": 6,
+        "total": 49
       },
       {
         "label": "결함(Serverity)",
-        "progress": 63,
-        "done": 77,
-        "total": 140
+        "progress": 88,
+        "done": 93,
+        "total": 181
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 87
+        "count": 107
       },
       {
         "label": "진행",
-        "count": 28
+        "count": 44
       },
       {
         "label": "보류",
@@ -5571,7 +5571,7 @@
       },
       {
         "label": "해결",
-        "count": 120
+        "count": 147
       },
       {
         "label": "피드백",
@@ -5583,7 +5583,7 @@
       },
       {
         "label": "중단",
-        "count": 28
+        "count": 30
       },
       {
         "label": "완료실패",
@@ -5593,19 +5593,19 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 26
+        "count": 28
       },
       {
         "label": "보통",
-        "count": 224
+        "count": 273
       },
       {
         "label": "높음",
-        "count": 46
+        "count": 58
       },
       {
         "label": "긴급",
-        "count": 2
+        "count": 4
       },
       {
         "label": "즉시",
@@ -5743,131 +5743,131 @@
       },
       {
         "date": "2026-09-02",
-        "newCount": 11,
+        "newCount": 12,
         "doneCount": 9,
-        "cumIssue": 74,
-        "cumDone": 36,
-        "rate": 49
-      },
-      {
-        "date": "2026-09-03",
-        "newCount": 1,
-        "doneCount": 0,
         "cumIssue": 75,
         "cumDone": 36,
         "rate": 48
       },
       {
+        "date": "2026-09-03",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 76,
+        "cumDone": 36,
+        "rate": 47
+      },
+      {
         "date": "2026-09-04",
-        "newCount": 40,
-        "doneCount": 3,
-        "cumIssue": 115,
-        "cumDone": 39,
-        "rate": 34
+        "newCount": 87,
+        "doneCount": 18,
+        "cumIssue": 163,
+        "cumDone": 54,
+        "rate": 33
       },
       {
         "date": "2026-09-05",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 117,
-        "cumDone": 40,
-        "rate": 34
+        "cumIssue": 165,
+        "cumDone": 55,
+        "rate": 33
       },
       {
         "date": "2026-09-07",
         "newCount": 11,
         "doneCount": 4,
-        "cumIssue": 128,
-        "cumDone": 44,
+        "cumIssue": 176,
+        "cumDone": 59,
         "rate": 34
       },
       {
         "date": "2026-09-08",
         "newCount": 9,
         "doneCount": 3,
-        "cumIssue": 137,
-        "cumDone": 47,
+        "cumIssue": 185,
+        "cumDone": 62,
         "rate": 34
       },
       {
         "date": "2026-09-09",
         "newCount": 8,
         "doneCount": 3,
-        "cumIssue": 145,
-        "cumDone": 50,
+        "cumIssue": 193,
+        "cumDone": 65,
         "rate": 34
       },
       {
         "date": "2026-09-10",
         "newCount": 72,
         "doneCount": 62,
-        "cumIssue": 217,
-        "cumDone": 112,
-        "rate": 52
+        "cumIssue": 265,
+        "cumDone": 127,
+        "rate": 48
       },
       {
         "date": "2026-09-11",
-        "newCount": 10,
-        "doneCount": 8,
-        "cumIssue": 227,
-        "cumDone": 120,
-        "rate": 53
+        "newCount": 11,
+        "doneCount": 9,
+        "cumIssue": 276,
+        "cumDone": 136,
+        "rate": 49
       },
       {
         "date": "2026-09-12",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 228,
-        "cumDone": 121,
-        "rate": 53
+        "cumIssue": 277,
+        "cumDone": 137,
+        "rate": 49
       },
       {
         "date": "2026-09-14",
         "newCount": 15,
         "doneCount": 8,
-        "cumIssue": 243,
-        "cumDone": 129,
-        "rate": 53
+        "cumIssue": 292,
+        "cumDone": 145,
+        "rate": 50
       },
       {
         "date": "2026-09-15",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 246,
-        "cumDone": 132,
-        "rate": 54
+        "cumIssue": 295,
+        "cumDone": 148,
+        "rate": 50
       },
       {
         "date": "2026-09-16",
         "newCount": 2,
         "doneCount": 2,
-        "cumIssue": 248,
-        "cumDone": 134,
-        "rate": 54
+        "cumIssue": 297,
+        "cumDone": 150,
+        "rate": 51
       },
       {
         "date": "2026-09-17",
         "newCount": 4,
         "doneCount": 0,
-        "cumIssue": 252,
-        "cumDone": 134,
-        "rate": 53
+        "cumIssue": 301,
+        "cumDone": 150,
+        "rate": 50
       },
       {
         "date": "2026-09-18",
-        "newCount": 44,
-        "doneCount": 39,
-        "cumIssue": 296,
-        "cumDone": 173,
-        "rate": 58
+        "newCount": 60,
+        "doneCount": 52,
+        "cumIssue": 361,
+        "cumDone": 202,
+        "rate": 56
       },
       {
         "date": "2026-09-20",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 298,
-        "cumDone": 174,
-        "rate": 58
+        "cumIssue": 363,
+        "cumDone": 203,
+        "rate": 56
       }
     ]
   },
