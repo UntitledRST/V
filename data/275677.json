@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-20T14:44:34.638570+00:00",
-  "count": 152,
+  "fetchedAt": "2026-09-20T15:00:14.363975+00:00",
+  "count": 162,
   "issues": [
     {
       "번호": 1,
@@ -16,7 +16,7 @@
       "created_on": "2026-07-31 00:03:04",
       "link": "https://projects.rsupport.com/issues/275792",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 2,
@@ -46,7 +46,7 @@
       "created_on": "2026-07-31 00:37:59",
       "link": "https://projects.rsupport.com/issues/275796",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 4,
@@ -76,7 +76,7 @@
       "created_on": "2026-07-31 00:38:40",
       "link": "https://projects.rsupport.com/issues/275797",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 6,
@@ -106,7 +106,7 @@
       "created_on": "2026-07-31 00:41:17",
       "link": "https://projects.rsupport.com/issues/275798",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 8,
@@ -136,7 +136,7 @@
       "created_on": "2026-07-31 02:36:27",
       "link": "https://projects.rsupport.com/issues/275804",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 10,
@@ -166,7 +166,7 @@
       "created_on": "2026-07-31 06:58:15",
       "link": "https://projects.rsupport.com/issues/275813",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 12,
@@ -196,7 +196,7 @@
       "created_on": "2026-08-01 00:09:13",
       "link": "https://projects.rsupport.com/issues/275919",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 14,
@@ -226,7 +226,7 @@
       "created_on": "2026-08-01 05:07:40",
       "link": "https://projects.rsupport.com/issues/275926",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 16,
@@ -256,7 +256,7 @@
       "created_on": "2026-08-01 16:42:03",
       "link": "https://projects.rsupport.com/issues/275931",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 18,
@@ -286,7 +286,7 @@
       "created_on": "2026-08-06 10:00:07",
       "link": "https://projects.rsupport.com/issues/276293",
       "깊이": 0,
-      "집계제외": true
+      "집계제외": false
     },
     {
       "번호": 20,
@@ -2436,9 +2436,9 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 59,
-      "done": 92,
-      "total": 151
+      "notDone": 64,
+      "done": 97,
+      "total": 161
     },
     "assignees": [
       {
@@ -2457,8 +2457,8 @@
       },
       {
         "name": "윤종익",
-        "total": 65,
-        "done": 37,
+        "total": 73,
+        "done": 41,
         "complete": false,
         "rate": 56
       },
@@ -2471,17 +2471,17 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 43,
-        "done": 33,
+        "total": 45,
+        "done": 34,
         "complete": false,
-        "rate": 76
+        "rate": 75
       }
     ],
     "authors": [
       {
         "name": "윤종익",
-        "total": 97,
-        "done": 41,
+        "total": 106,
+        "done": 45,
         "complete": false,
         "rate": 42
       },
@@ -2494,10 +2494,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 14,
-        "done": 11,
+        "total": 15,
+        "done": 12,
         "complete": false,
-        "rate": 78
+        "rate": 80
       }
     ],
     "trackers": [
@@ -2510,20 +2510,20 @@
       {
         "label": "개선(Improving)",
         "progress": 2,
-        "done": 3,
-        "total": 5
+        "done": 4,
+        "total": 6
       },
       {
         "label": "결함(Serverity)",
-        "progress": 37,
-        "done": 82,
-        "total": 119
+        "progress": 42,
+        "done": 86,
+        "total": 128
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 50
+        "count": 54
       },
       {
         "label": "진행",
@@ -2535,11 +2535,11 @@
       },
       {
         "label": "해결",
-        "count": 27
+        "count": 32
       },
       {
         "label": "피드백",
-        "count": 2
+        "count": 3
       },
       {
         "label": "완료성공",
@@ -2561,7 +2561,7 @@
       },
       {
         "label": "보통",
-        "count": 147
+        "count": 157
       },
       {
         "label": "높음",
@@ -2587,147 +2587,147 @@
       },
       {
         "date": "2026-07-31",
-        "newCount": 21,
-        "doneCount": 8,
-        "cumIssue": 41,
-        "cumDone": 21,
+        "newCount": 27,
+        "doneCount": 11,
+        "cumIssue": 47,
+        "cumDone": 24,
         "rate": 51
       },
       {
         "date": "2026-08-01",
-        "newCount": 18,
-        "doneCount": 7,
-        "cumIssue": 59,
-        "cumDone": 28,
+        "newCount": 21,
+        "doneCount": 8,
+        "cumIssue": 68,
+        "cumDone": 32,
         "rate": 47
       },
       {
         "date": "2026-08-03",
         "newCount": 7,
         "doneCount": 3,
-        "cumIssue": 66,
-        "cumDone": 31,
+        "cumIssue": 75,
+        "cumDone": 35,
         "rate": 47
       },
       {
         "date": "2026-08-06",
-        "newCount": 13,
-        "doneCount": 12,
-        "cumIssue": 79,
-        "cumDone": 43,
+        "newCount": 14,
+        "doneCount": 13,
+        "cumIssue": 89,
+        "cumDone": 48,
         "rate": 54
       },
       {
         "date": "2026-08-07",
         "newCount": 4,
         "doneCount": 3,
-        "cumIssue": 83,
-        "cumDone": 46,
+        "cumIssue": 93,
+        "cumDone": 51,
         "rate": 55
       },
       {
         "date": "2026-08-10",
         "newCount": 3,
         "doneCount": 0,
-        "cumIssue": 86,
-        "cumDone": 46,
+        "cumIssue": 96,
+        "cumDone": 51,
         "rate": 53
       },
       {
         "date": "2026-08-11",
         "newCount": 2,
         "doneCount": 0,
-        "cumIssue": 88,
-        "cumDone": 46,
+        "cumIssue": 98,
+        "cumDone": 51,
         "rate": 52
       },
       {
         "date": "2026-08-12",
         "newCount": 26,
         "doneCount": 12,
-        "cumIssue": 114,
-        "cumDone": 58,
+        "cumIssue": 124,
+        "cumDone": 63,
         "rate": 51
       },
       {
         "date": "2026-08-13",
         "newCount": 8,
         "doneCount": 6,
-        "cumIssue": 122,
-        "cumDone": 64,
+        "cumIssue": 132,
+        "cumDone": 69,
         "rate": 52
       },
       {
         "date": "2026-08-14",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 125,
-        "cumDone": 67,
-        "rate": 54
+        "cumIssue": 135,
+        "cumDone": 72,
+        "rate": 53
       },
       {
         "date": "2026-08-18",
         "newCount": 4,
         "doneCount": 4,
-        "cumIssue": 129,
-        "cumDone": 71,
+        "cumIssue": 139,
+        "cumDone": 76,
         "rate": 55
       },
       {
         "date": "2026-08-20",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 132,
-        "cumDone": 74,
+        "cumIssue": 142,
+        "cumDone": 79,
         "rate": 56
       },
       {
         "date": "2026-08-24",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 135,
-        "cumDone": 77,
+        "cumIssue": 145,
+        "cumDone": 82,
         "rate": 57
       },
       {
         "date": "2026-08-25",
         "newCount": 7,
         "doneCount": 7,
-        "cumIssue": 142,
-        "cumDone": 84,
+        "cumIssue": 152,
+        "cumDone": 89,
         "rate": 59
       },
       {
         "date": "2026-08-26",
         "newCount": 3,
         "doneCount": 2,
-        "cumIssue": 145,
-        "cumDone": 86,
+        "cumIssue": 155,
+        "cumDone": 91,
         "rate": 59
       },
       {
         "date": "2026-08-27",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 148,
-        "cumDone": 89,
-        "rate": 60
+        "cumIssue": 158,
+        "cumDone": 94,
+        "rate": 59
       },
       {
         "date": "2026-08-28",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 151,
-        "cumDone": 92,
-        "rate": 61
+        "cumIssue": 161,
+        "cumDone": 97,
+        "rate": 60
       },
       {
         "date": "2026-08-31",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 152,
-        "cumDone": 92,
-        "rate": 61
+        "cumIssue": 162,
+        "cumDone": 97,
+        "rate": 60
       }
     ]
   },
