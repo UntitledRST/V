@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-21T00:53:37.311532+00:00",
-  "count": 363,
+  "fetchedAt": "2026-09-21T04:34:23.787211+00:00",
+  "count": 364,
   "issues": [
     {
       "번호": 1,
@@ -3622,7 +3622,7 @@
       "번호": 242,
       "일감번호": 279499,
       "분류": "결함(Serverity)",
-      "상태": "보류(Pause)",
+      "상태": "완료성공(End/Success)",
       "제목": "[파트너 어드민] 다른 사용자에 이미 연동된 구글 계정으로 간편 로그인 연결 시 명확한 실패 사유 미표시",
       "우선순위": "낮음(Low)",
       "담당자": "윤종익",
@@ -5447,13 +5447,28 @@
       "link": "https://projects.rsupport.com/issues/281564",
       "깊이": 0,
       "집계제외": false
+    },
+    {
+      "번호": 364,
+      "일감번호": 281589,
+      "분류": "업무(Job)",
+      "상태": "해결(Complete)",
+      "제목": "[유저어드민·파트너어드민][BE] 라이선스 할당 시 동일 LicenseType(로그인 유형)만 허용 — 정책 신규 반영",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "상위일감": 279282,
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-21 10:36:37",
+      "link": "https://projects.rsupport.com/issues/281589",
+      "깊이": 0,
+      "집계제외": false
     }
   ],
   "summary": {
     "completion": {
       "notDone": 151,
-      "done": 203,
-      "total": 354
+      "done": 205,
+      "total": 356
     },
     "assignees": [
       {
@@ -5500,8 +5515,8 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 111,
-        "done": 95,
+        "total": 112,
+        "done": 96,
         "complete": false,
         "rate": 85
       }
@@ -5530,8 +5545,8 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 115,
-        "done": 106,
+        "total": 116,
+        "done": 107,
         "complete": false,
         "rate": 92
       }
@@ -5540,8 +5555,8 @@
       {
         "label": "업무(Job)",
         "progress": 20,
-        "done": 113,
-        "total": 133
+        "done": 114,
+        "total": 134
       },
       {
         "label": "개선(Improving)",
@@ -5567,11 +5582,11 @@
       },
       {
         "label": "보류",
-        "count": 9
+        "count": 8
       },
       {
         "label": "해결",
-        "count": 147
+        "count": 148
       },
       {
         "label": "피드백",
@@ -5579,7 +5594,7 @@
       },
       {
         "label": "완료성공",
-        "count": 26
+        "count": 27
       },
       {
         "label": "중단",
@@ -5597,7 +5612,7 @@
       },
       {
         "label": "보통",
-        "count": 273
+        "count": 274
       },
       {
         "label": "높음",
@@ -5760,25 +5775,25 @@
       {
         "date": "2026-09-04",
         "newCount": 87,
-        "doneCount": 18,
+        "doneCount": 19,
         "cumIssue": 163,
-        "cumDone": 54,
-        "rate": 33
+        "cumDone": 55,
+        "rate": 34
       },
       {
         "date": "2026-09-05",
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 165,
-        "cumDone": 55,
-        "rate": 33
+        "cumDone": 56,
+        "rate": 34
       },
       {
         "date": "2026-09-07",
         "newCount": 11,
         "doneCount": 4,
         "cumIssue": 176,
-        "cumDone": 59,
+        "cumDone": 60,
         "rate": 34
       },
       {
@@ -5786,7 +5801,7 @@
         "newCount": 9,
         "doneCount": 3,
         "cumIssue": 185,
-        "cumDone": 62,
+        "cumDone": 63,
         "rate": 34
       },
       {
@@ -5794,7 +5809,7 @@
         "newCount": 8,
         "doneCount": 3,
         "cumIssue": 193,
-        "cumDone": 65,
+        "cumDone": 66,
         "rate": 34
       },
       {
@@ -5802,7 +5817,7 @@
         "newCount": 72,
         "doneCount": 62,
         "cumIssue": 265,
-        "cumDone": 127,
+        "cumDone": 128,
         "rate": 48
       },
       {
@@ -5810,23 +5825,23 @@
         "newCount": 11,
         "doneCount": 9,
         "cumIssue": 276,
-        "cumDone": 136,
-        "rate": 49
+        "cumDone": 137,
+        "rate": 50
       },
       {
         "date": "2026-09-12",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 277,
-        "cumDone": 137,
-        "rate": 49
+        "cumDone": 138,
+        "rate": 50
       },
       {
         "date": "2026-09-14",
         "newCount": 15,
         "doneCount": 8,
         "cumIssue": 292,
-        "cumDone": 145,
+        "cumDone": 146,
         "rate": 50
       },
       {
@@ -5834,15 +5849,15 @@
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 295,
-        "cumDone": 148,
-        "rate": 50
+        "cumDone": 149,
+        "rate": 51
       },
       {
         "date": "2026-09-16",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 297,
-        "cumDone": 150,
+        "cumDone": 151,
         "rate": 51
       },
       {
@@ -5850,7 +5865,7 @@
         "newCount": 4,
         "doneCount": 0,
         "cumIssue": 301,
-        "cumDone": 150,
+        "cumDone": 151,
         "rate": 50
       },
       {
@@ -5858,7 +5873,7 @@
         "newCount": 60,
         "doneCount": 52,
         "cumIssue": 361,
-        "cumDone": 202,
+        "cumDone": 203,
         "rate": 56
       },
       {
@@ -5866,7 +5881,15 @@
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 363,
-        "cumDone": 203,
+        "cumDone": 204,
+        "rate": 56
+      },
+      {
+        "date": "2026-09-21",
+        "newCount": 1,
+        "doneCount": 1,
+        "cumIssue": 364,
+        "cumDone": 205,
         "rate": 56
       }
     ]
