@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-28T07:38:30.003276+00:00",
+  "fetchedAt": "2026-09-28T07:44:10.463549+00:00",
   "count": 372,
   "issues": [
     {
@@ -73,7 +73,7 @@
       "번호": 7,
       "일감번호": 279520,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][미구현] [작업][공통] 프록시 확정·인증 실패 사유가 제품 화면에 드러나지 않음 (R-PROXY-1)",
       "우선순위": "보통(Normal)",
       "담당자": "",
@@ -161,7 +161,7 @@
       "번호": 15,
       "일감번호": 278921,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA][결함] [작업][공통] 프록시 자격증명이 프록시 경계를 넘어 전송됨 - 계정 잠금 위험",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -4217,17 +4217,17 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 22,
-      "done": 348,
+      "notDone": 20,
+      "done": 350,
       "total": 370
     },
     "assignees": [
       {
         "name": "(미배정)",
         "total": 5,
-        "done": 1,
+        "done": 2,
         "complete": false,
-        "rate": 20
+        "rate": 40
       },
       {
         "name": "김미령",
@@ -4239,9 +4239,9 @@
       {
         "name": "김성식",
         "total": 23,
-        "done": 18,
+        "done": 19,
         "complete": false,
-        "rate": 78
+        "rate": 82
       },
       {
         "name": "김신혜",
@@ -4331,8 +4331,8 @@
     "trackers": [
       {
         "label": "업무(Job)",
-        "progress": 6,
-        "done": 9,
+        "progress": 4,
+        "done": 11,
         "total": 15
       },
       {
@@ -4357,7 +4357,7 @@
     "statuses": [
       {
         "label": "신규",
-        "count": 10
+        "count": 8
       },
       {
         "label": "진행",
@@ -4369,7 +4369,7 @@
       },
       {
         "label": "해결",
-        "count": 156
+        "count": 158
       },
       {
         "label": "피드백",
@@ -4718,31 +4718,31 @@
       {
         "date": "2026-09-01",
         "cumIssue": 359,
-        "cumDone": 339,
-        "rate": 94,
+        "cumDone": 340,
+        "rate": 95,
         "newCount": 2,
-        "doneCount": 0
+        "doneCount": 1
       },
       {
         "date": "2026-09-03",
         "cumIssue": 363,
-        "cumDone": 343,
-        "rate": 94,
+        "cumDone": 344,
+        "rate": 95,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-09-04",
         "cumIssue": 366,
-        "cumDone": 344,
-        "rate": 94,
+        "cumDone": 346,
+        "rate": 95,
         "newCount": 3,
-        "doneCount": 1
+        "doneCount": 2
       },
       {
         "date": "2026-09-07",
         "cumIssue": 367,
-        "cumDone": 344,
+        "cumDone": 346,
         "rate": 94,
         "newCount": 1,
         "doneCount": 0
@@ -4750,7 +4750,7 @@
       {
         "date": "2026-09-09",
         "cumIssue": 371,
-        "cumDone": 348,
+        "cumDone": 350,
         "rate": 94,
         "newCount": 4,
         "doneCount": 4
@@ -4758,7 +4758,7 @@
       {
         "date": "2026-09-11",
         "cumIssue": 372,
-        "cumDone": 348,
+        "cumDone": 350,
         "rate": 94,
         "newCount": 1,
         "doneCount": 0
