@@ -462,6 +462,12 @@
   .child-count .breakdown{ margin-left:4px; }
   .child-count .n.open{ color:var(--yellow); }
   .child-count .n.done{ color:var(--green); }
+  .child-count .n.resolved{ color:var(--blue); }
+  /* 수정확인 필요 건수는 클릭할 수 있음 */
+  .child-count .resolved-link{
+    margin-left:4px; cursor:pointer; border-bottom:1px dashed rgba(91,157,255,0.5);
+  }
+  .child-count .resolved-link:hover{ color:var(--blue); border-bottom-color:var(--blue); }
 
   /* 계층(상위-하위) 표시 */
   .tree-indent{ display:inline-block; }
@@ -1012,7 +1018,7 @@
   }
 
   // 미리보기 전용 목데이터 (실제 API 호출 없음)
-  var MOCK_DATA = {"ok": true, "fetchedAt": "2026-09-29T02:00:00", "count": 20, "issues": [{"번호": 1, "일감번호": 101, "분류": "결함(Serverity)", "상태": "신규(New)", "제목": "파트너 어드민", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-10 09:00:00", "link": "https://projects.rsupport.com/issues/101"}, {"번호": 2, "일감번호": 1011, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "파트너 어드민 화면 오류 1", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-11 10:00:00", "link": "https://projects.rsupport.com/issues/1011"}, {"번호": 3, "일감번호": 10111, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "파트너 어드민 상세 버그 1", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 1011, "깊이": 2, "집계제외": false, "created_on": "2026-09-12 11:00:00", "link": "https://projects.rsupport.com/issues/10111"}, {"번호": 4, "일감번호": 10112, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "파트너 어드민 상세 버그 2", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 1011, "깊이": 2, "집계제외": false, "created_on": "2026-09-13 12:00:00", "link": "https://projects.rsupport.com/issues/10112"}, {"번호": 5, "일감번호": 1012, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "파트너 어드민 화면 오류 2", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-14 13:00:00", "link": "https://projects.rsupport.com/issues/1012"}, {"번호": 6, "일감번호": 1013, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "파트너 어드민 화면 오류 3", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-15 14:00:00", "link": "https://projects.rsupport.com/issues/1013"}, {"번호": 7, "일감번호": 102, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "유저 어드민", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-16 15:00:00", "link": "https://projects.rsupport.com/issues/102"}, {"번호": 8, "일감번호": 1021, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "유저 어드민 화면 오류 1", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-17 09:00:00", "link": "https://projects.rsupport.com/issues/1021"}, {"번호": 9, "일감번호": 10211, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "유저 어드민 상세 버그 1", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 1021, "깊이": 2, "집계제외": false, "created_on": "2026-09-18 10:00:00", "link": "https://projects.rsupport.com/issues/10211"}, {"번호": 10, "일감번호": 10212, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "유저 어드민 상세 버그 2", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 1021, "깊이": 2, "집계제외": false, "created_on": "2026-09-19 11:00:00", "link": "https://projects.rsupport.com/issues/10212"}, {"번호": 11, "일감번호": 1022, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "유저 어드민 화면 오류 2", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-20 12:00:00", "link": "https://projects.rsupport.com/issues/1022"}, {"번호": 12, "일감번호": 1023, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "유저 어드민 화면 오류 3", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-21 13:00:00", "link": "https://projects.rsupport.com/issues/1023"}, {"번호": 13, "일감번호": 103, "분류": "결함(Serverity)", "상태": "피드백(Feedback)", "제목": "AI 어시스턴트", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-10 14:00:00", "link": "https://projects.rsupport.com/issues/103"}, {"번호": 14, "일감번호": 1031, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "AI 어시스턴트 화면 오류 1", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-11 15:00:00", "link": "https://projects.rsupport.com/issues/1031"}, {"번호": 15, "일감번호": 10311, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "AI 어시스턴트 상세 버그 1", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 1031, "깊이": 2, "집계제외": false, "created_on": "2026-09-12 09:00:00", "link": "https://projects.rsupport.com/issues/10311"}, {"번호": 16, "일감번호": 10312, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "AI 어시스턴트 상세 버그 2", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 1031, "깊이": 2, "집계제외": false, "created_on": "2026-09-13 10:00:00", "link": "https://projects.rsupport.com/issues/10312"}, {"번호": 17, "일감번호": 1032, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "AI 어시스턴트 화면 오류 2", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-14 11:00:00", "link": "https://projects.rsupport.com/issues/1032"}, {"번호": 18, "일감번호": 1033, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "AI 어시스턴트 화면 오류 3", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-15 12:00:00", "link": "https://projects.rsupport.com/issues/1033"}, {"번호": 19, "일감번호": 150, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "단독 개선 건", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-16 13:00:00", "link": "https://projects.rsupport.com/issues/150"}, {"번호": 20, "일감번호": 151, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "문구 수정", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-17 14:00:00", "link": "https://projects.rsupport.com/issues/151"}], "summary": {"assignees": [{"name": "윤종익", "total": 5, "done": 0, "rate": 0}, {"name": "이혁", "total": 5, "done": 5, "rate": 100}, {"name": "고유미", "total": 5, "done": 0, "rate": 0}, {"name": "심현수", "total": 5, "done": 4, "rate": 80}], "statuses": [{"label": "완료성공(End/Success)", "count": 6}, {"label": "진행(Doing)", "count": 6}, {"label": "보류(Pause)", "count": 3}, {"label": "중단(Stop)", "count": 3}, {"label": "신규(New)", "count": 1}, {"label": "피드백(Feedback)", "count": 1}], "timeline": [{"date": "2026-09-10", "newCount": 2, "doneCount": 0, "cumIssue": 2, "cumDone": 0}, {"date": "2026-09-11", "newCount": 2, "doneCount": 2, "cumIssue": 4, "cumDone": 2}, {"date": "2026-09-12", "newCount": 2, "doneCount": 0, "cumIssue": 6, "cumDone": 2}, {"date": "2026-09-13", "newCount": 2, "doneCount": 2, "cumIssue": 8, "cumDone": 4}, {"date": "2026-09-14", "newCount": 2, "doneCount": 0, "cumIssue": 10, "cumDone": 4}, {"date": "2026-09-15", "newCount": 2, "doneCount": 2, "cumIssue": 12, "cumDone": 6}, {"date": "2026-09-16", "newCount": 2, "doneCount": 0, "cumIssue": 14, "cumDone": 6}, {"date": "2026-09-17", "newCount": 2, "doneCount": 1, "cumIssue": 16, "cumDone": 7}, {"date": "2026-09-18", "newCount": 1, "doneCount": 0, "cumIssue": 17, "cumDone": 7}, {"date": "2026-09-19", "newCount": 1, "doneCount": 1, "cumIssue": 18, "cumDone": 8}, {"date": "2026-09-20", "newCount": 1, "doneCount": 0, "cumIssue": 19, "cumDone": 8}, {"date": "2026-09-21", "newCount": 1, "doneCount": 1, "cumIssue": 20, "cumDone": 9}], "completion": {"done": 9, "total": 20}}};
+  var MOCK_DATA = {"ok": true, "fetchedAt": "2026-09-29T02:00:00", "count": 20, "issues": [{"번호": 1, "일감번호": 101, "분류": "결함(Serverity)", "상태": "신규(New)", "제목": "파트너 어드민", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-10 09:00:00", "link": "https://projects.rsupport.com/issues/101"}, {"번호": 2, "일감번호": 1011, "분류": "결함(Serverity)", "상태": "해결(Complete)", "제목": "파트너 어드민 화면 오류 1", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-11 10:00:00", "link": "https://projects.rsupport.com/issues/1011"}, {"번호": 3, "일감번호": 10111, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "파트너 어드민 상세 버그 1", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 1011, "깊이": 2, "집계제외": false, "created_on": "2026-09-12 11:00:00", "link": "https://projects.rsupport.com/issues/10111"}, {"번호": 4, "일감번호": 10112, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "파트너 어드민 상세 버그 2", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 1011, "깊이": 2, "집계제외": false, "created_on": "2026-09-13 12:00:00", "link": "https://projects.rsupport.com/issues/10112"}, {"번호": 5, "일감번호": 1012, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "파트너 어드민 화면 오류 2", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-14 13:00:00", "link": "https://projects.rsupport.com/issues/1012"}, {"번호": 6, "일감번호": 1013, "분류": "결함(Serverity)", "상태": "해결(Complete)", "제목": "파트너 어드민 화면 오류 3", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 101, "깊이": 1, "집계제외": false, "created_on": "2026-09-15 14:00:00", "link": "https://projects.rsupport.com/issues/1013"}, {"번호": 7, "일감번호": 102, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "유저 어드민", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-16 15:00:00", "link": "https://projects.rsupport.com/issues/102"}, {"번호": 8, "일감번호": 1021, "분류": "결함(Serverity)", "상태": "해결(Complete)", "제목": "유저 어드민 화면 오류 1", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-17 09:00:00", "link": "https://projects.rsupport.com/issues/1021"}, {"번호": 9, "일감번호": 10211, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "유저 어드민 상세 버그 1", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 1021, "깊이": 2, "집계제외": false, "created_on": "2026-09-18 10:00:00", "link": "https://projects.rsupport.com/issues/10211"}, {"번호": 10, "일감번호": 10212, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "유저 어드민 상세 버그 2", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 1021, "깊이": 2, "집계제외": false, "created_on": "2026-09-19 11:00:00", "link": "https://projects.rsupport.com/issues/10212"}, {"번호": 11, "일감번호": 1022, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "유저 어드민 화면 오류 2", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-20 12:00:00", "link": "https://projects.rsupport.com/issues/1022"}, {"번호": 12, "일감번호": 1023, "분류": "결함(Serverity)", "상태": "해결(Complete)", "제목": "유저 어드민 화면 오류 3", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 102, "깊이": 1, "집계제외": false, "created_on": "2026-09-21 13:00:00", "link": "https://projects.rsupport.com/issues/1023"}, {"번호": 13, "일감번호": 103, "분류": "결함(Serverity)", "상태": "피드백(Feedback)", "제목": "AI 어시스턴트", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-10 14:00:00", "link": "https://projects.rsupport.com/issues/103"}, {"번호": 14, "일감번호": 1031, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "AI 어시스턴트 화면 오류 1", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-11 15:00:00", "link": "https://projects.rsupport.com/issues/1031"}, {"번호": 15, "일감번호": 10311, "분류": "결함(Serverity)", "상태": "보류(Pause)", "제목": "AI 어시스턴트 상세 버그 1", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 1031, "깊이": 2, "집계제외": false, "created_on": "2026-09-12 09:00:00", "link": "https://projects.rsupport.com/issues/10311"}, {"번호": 16, "일감번호": 10312, "분류": "결함(Serverity)", "상태": "중단(Stop)", "제목": "AI 어시스턴트 상세 버그 2", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 1031, "깊이": 2, "집계제외": false, "created_on": "2026-09-13 10:00:00", "link": "https://projects.rsupport.com/issues/10312"}, {"번호": 17, "일감번호": 1032, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "AI 어시스턴트 화면 오류 2", "우선순위": "치명적(Critical)", "담당자": "윤종익", "작성자": "이명찬", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-14 11:00:00", "link": "https://projects.rsupport.com/issues/1032"}, {"번호": 18, "일감번호": 1033, "분류": "결함(Serverity)", "상태": "완료성공(End/Success)", "제목": "AI 어시스턴트 화면 오류 3", "우선순위": "중대함(Major)", "담당자": "이혁", "작성자": "권정희", "상위일감": 103, "깊이": 1, "집계제외": false, "created_on": "2026-09-15 12:00:00", "link": "https://projects.rsupport.com/issues/1033"}, {"번호": 19, "일감번호": 150, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "단독 개선 건", "우선순위": "경미함(Minor)", "담당자": "고유미", "작성자": "이명찬", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-16 13:00:00", "link": "https://projects.rsupport.com/issues/150"}, {"번호": 20, "일감번호": 151, "분류": "결함(Serverity)", "상태": "진행(Doing)", "제목": "문구 수정", "우선순위": "낮음(Low)", "담당자": "심현수", "작성자": "권정희", "상위일감": 279282, "깊이": 0, "집계제외": false, "created_on": "2026-09-17 14:00:00", "link": "https://projects.rsupport.com/issues/151"}], "summary": {"assignees": [{"name": "윤종익", "total": 5, "done": 0, "rate": 0}, {"name": "이혁", "total": 5, "done": 3, "rate": 60}, {"name": "고유미", "total": 5, "done": 0, "rate": 0}, {"name": "심현수", "total": 5, "done": 2, "rate": 40}], "statuses": [{"label": "진행(Doing)", "count": 6}, {"label": "해결(Complete)", "count": 4}, {"label": "보류(Pause)", "count": 3}, {"label": "중단(Stop)", "count": 3}, {"label": "완료성공(End/Success)", "count": 2}, {"label": "신규(New)", "count": 1}, {"label": "피드백(Feedback)", "count": 1}], "timeline": [{"date": "2026-09-10", "newCount": 2, "doneCount": 0, "cumIssue": 2, "cumDone": 0}, {"date": "2026-09-11", "newCount": 2, "doneCount": 2, "cumIssue": 4, "cumDone": 2}, {"date": "2026-09-12", "newCount": 2, "doneCount": 0, "cumIssue": 6, "cumDone": 2}, {"date": "2026-09-13", "newCount": 2, "doneCount": 2, "cumIssue": 8, "cumDone": 4}, {"date": "2026-09-14", "newCount": 2, "doneCount": 0, "cumIssue": 10, "cumDone": 4}, {"date": "2026-09-15", "newCount": 2, "doneCount": 2, "cumIssue": 12, "cumDone": 6}, {"date": "2026-09-16", "newCount": 2, "doneCount": 0, "cumIssue": 14, "cumDone": 6}, {"date": "2026-09-17", "newCount": 2, "doneCount": 1, "cumIssue": 16, "cumDone": 7}, {"date": "2026-09-18", "newCount": 1, "doneCount": 0, "cumIssue": 17, "cumDone": 7}, {"date": "2026-09-19", "newCount": 1, "doneCount": 1, "cumIssue": 18, "cumDone": 8}, {"date": "2026-09-20", "newCount": 1, "doneCount": 0, "cumIssue": 19, "cumDone": 8}, {"date": "2026-09-21", "newCount": 1, "doneCount": 1, "cumIssue": 20, "cumDone": 9}], "completion": {"done": 5, "total": 20}}};
 
   async function loadData(squadId){
     var sel = document.getElementById('squadSelect');
@@ -1709,6 +1715,16 @@
 
     var chip = document.getElementById('filterChip');
     var labelMap = { tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경', author: '작성자' };
+    if (state.filter && state.filter.type === 'resolvedUnder'){
+      chip.classList.add('active');
+      document.getElementById('filterLabel').textContent =
+        '#' + state.filter.value + ' 아래 수정확인 필요(해결) 이슈만 보는 중';
+      renderIssues();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var sb = document.querySelector('.issues-table-scroll');
+      if (sb) sb.scrollTop = 0;
+      return;
+    }
     var quickLabelMap = { notdone: '미처리', done: '처리완료', all: '전체 이슈', notdone_high: '미처리·우선순위 높음' };
     if (state.filter && state.filter.type === 'quick'){
       if (state.filter.value === 'all'){
@@ -1810,21 +1826,38 @@
     return 'etc';
   }
 
-  // 자손 전체를 훑어 총 건수와 진행중/완료 건수를 셉니다.
+  // 상태가 '해결'인 건 = 수정은 됐지만 확인이 남은 건
+  function isResolvedStatus(status){
+    return (status || '').indexOf('해결') !== -1;
+  }
+
+  // 자손 전체를 훑어 총 건수와 진행중/완료/수정확인 필요 건수를 셉니다.
   function countDescendantsByProgress(childMap, id){
-    var result = { total: 0, open: 0, done: 0 };
+    var result = { total: 0, open: 0, done: 0, resolved: 0 };
     (childMap[String(id)] || []).forEach(function(c){
       result.total += 1;
       var kind = classifyProgress(c.상태);
       if (kind === 'open') result.open += 1;
       else if (kind === 'done') result.done += 1;
+      if (isResolvedStatus(c.상태)) result.resolved += 1;
 
       var sub = countDescendantsByProgress(childMap, c.일감번호);
       result.total += sub.total;
       result.open += sub.open;
       result.done += sub.done;
+      result.resolved += sub.resolved;
     });
     return result;
+  }
+
+  // 특정 일감 아래의 모든 자손 일감번호를 모읍니다. (목록 필터링에 사용)
+  function collectDescendantIds(childMap, id, acc){
+    acc = acc || {};
+    (childMap[String(id)] || []).forEach(function(c){
+      acc[String(c.일감번호)] = true;
+      collectDescendantIds(childMap, c.일감번호, acc);
+    });
+    return acc;
   }
 
   // 조상 중 하나라도 접혀 있으면 이 행은 숨깁니다.
@@ -1900,8 +1933,17 @@
     if (!state.collapsed[String(it.일감번호)]) return '';
     var c = countDescendantsByProgress(childMap, it.일감번호);
     if (!c.total) return '';
-    return '<span class="child-count">하위 총 <span class="n">' + c.total + '</span>건 숨김' +
+
+    // '수정확인 필요'(상태=해결) 건수는 클릭하면 그 일감들만 목록에 보여줍니다
+    var resolvedPart = c.resolved
+      ? '<span class="resolved-link" data-resolved-id="' + escapeHtml(it.일감번호) + '"' +
+        ' title="클릭하면 이 아래의 해결 상태 일감만 봅니다">' +
+        '(수정확인 필요: <span class="n resolved">' + c.resolved + '</span>건)</span>'
+      : '';
+
+    return '<span class="child-count">총 <span class="n">' + c.total + '</span>건' +
       ' <span class="breakdown">(진행중 <span class="n open">' + c.open + '</span>건' +
+      resolvedPart +
       ' 완료 <span class="n done">' + c.done + '</span>건)</span></span>';
   }
 
@@ -2016,6 +2058,13 @@
     if (f){
       if (f.type === 'assignee'){
         list = list.filter(function(it){ return it.담당자 === f.value; });
+      } else if (f.type === 'resolvedUnder'){
+        // 특정 일감 아래의 '해결' 상태 일감만 보여줍니다
+        var cmAll = buildChildMap(state.issues || []);
+        var ids = collectDescendantIds(cmAll, f.value);
+        list = list.filter(function(it){
+          return ids[String(it.일감번호)] && isResolvedStatus(it.상태);
+        });
       } else if (f.type === 'author'){
         list = list.filter(function(it){ return getAuthor(it) === f.value; });
       } else if (f.type === 'tracker'){
@@ -2073,8 +2122,9 @@
     var childMap = treeOn ? buildChildMap(list) : {};
     var idMap = treeOn ? buildIdMap(list) : {};
 
-    // 접혀 있는 조상이 있는 행은 아예 그리지 않습니다
-    if (treeOn){
+    // 접혀 있는 조상이 있는 행은 아예 그리지 않습니다.
+    // 단, '수정확인 필요' 필터는 접힌 아래를 보려는 것이므로 이때는 접힘을 무시합니다.
+    if (treeOn && !(f && f.type === 'resolvedUnder')){
       list = list.filter(function(it){ return !isHiddenByCollapse(idMap, it); });
     }
 
@@ -2104,6 +2154,15 @@
 
     // 행 수가 바뀌었으니 목록 높이를 다시 맞춥니다
     fitIssuesHeight();
+
+    // '수정확인 필요' 건수 클릭 연결
+    document.querySelectorAll('#issuesBody .resolved-link').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        setFilter('resolvedUnder', el.getAttribute('data-resolved-id'));
+      });
+    });
 
     // 접기/펼치기 버튼 연결
     document.querySelectorAll('#issuesBody .tree-toggle').forEach(function(btn){
