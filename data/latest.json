@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-29T04:48:34.767434+00:00",
+  "fetchedAt": "2026-09-29T04:54:11.828090+00:00",
   "count": 370,
   "issues": [
     {
@@ -117,7 +117,7 @@
       "번호": 11,
       "일감번호": 279287,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어][녹화] 로컬 녹화 파일명이 확정 규칙 미반영 — 현행 browser_recorder_<epoch> → RemoteCall_YYYYMMDD_HHMMSS_<세션ID> (VW-REC-003)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -4354,7 +4354,7 @@
       },
       {
         "label": "해결",
-        "count": 153
+        "count": 152
       },
       {
         "label": "피드백",
@@ -4362,7 +4362,7 @@
       },
       {
         "label": "완료성공",
-        "count": 185
+        "count": 186
       },
       {
         "label": "중단",
