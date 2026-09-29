@@ -459,6 +459,9 @@
     color:var(--yellow); font-family:var(--mono); font-weight:800; font-size:13.5px;
     padding:0 2px;
   }
+  .child-count .breakdown{ margin-left:4px; }
+  .child-count .n.open{ color:var(--yellow); }
+  .child-count .n.done{ color:var(--green); }
 
   /* 계층(상위-하위) 표시 */
   .tree-indent{ display:inline-block; }
@@ -1783,6 +1786,43 @@
     return total;
   }
 
+  // ====== 접힌 하위 일감의 진행 상태 집계 ======
+  // 진행중: 신규, 진행, 피드백, 보류, 해결
+  // 완료  : 완료성공, 중단
+  // 목록에 없는 상태는 어느 쪽에도 넣지 않고 총 건수에만 포함합니다.
+  var DONE_STATUS_KEYWORDS = ['완료성공', '중단'];
+  var OPEN_STATUS_KEYWORDS = ['신규', '진행', '피드백', '보류', '해결'];
+
+  function matchStatus(status, keywords){
+    var s = status || '';
+    return keywords.some(function(k){ return s.indexOf(k) !== -1; });
+  }
+
+  // 주의: '해결'은 진행중, '완료성공'은 완료입니다.
+  // '완료성공'에 '완료'가 들어 있어 먼저 검사해야 '해결'과 섞이지 않습니다.
+  function classifyProgress(status){
+    if (matchStatus(status, DONE_STATUS_KEYWORDS)) return 'done';
+    if (matchStatus(status, OPEN_STATUS_KEYWORDS)) return 'open';
+    return 'etc';
+  }
+
+  // 자손 전체를 훑어 총 건수와 진행중/완료 건수를 셉니다.
+  function countDescendantsByProgress(childMap, id){
+    var result = { total: 0, open: 0, done: 0 };
+    (childMap[String(id)] || []).forEach(function(c){
+      result.total += 1;
+      var kind = classifyProgress(c.상태);
+      if (kind === 'open') result.open += 1;
+      else if (kind === 'done') result.done += 1;
+
+      var sub = countDescendantsByProgress(childMap, c.일감번호);
+      result.total += sub.total;
+      result.open += sub.open;
+      result.done += sub.done;
+    });
+    return result;
+  }
+
   // 조상 중 하나라도 접혀 있으면 이 행은 숨깁니다.
   function isHiddenByCollapse(idMap, it){
     var guard = 0;
@@ -1854,8 +1894,11 @@
   function childCountLabel(treeOn, childMap, it){
     if (!treeOn) return '';
     if (!state.collapsed[String(it.일감번호)]) return '';
-    var n = countDescendants(childMap, it.일감번호);
-    return n ? '<span class="child-count">하위 <span class="n">' + n + '</span>건 숨김</span>' : '';
+    var c = countDescendantsByProgress(childMap, it.일감번호);
+    if (!c.total) return '';
+    return '<span class="child-count">하위 총 <span class="n">' + c.total + '</span>건 숨김' +
+      ' <span class="breakdown">(진행중 <span class="n open">' + c.open + '</span>건' +
+      ' 완료 <span class="n done">' + c.done + '</span>건)</span></span>';
   }
 
   // ====== 전체 이슈 목록 높이 자동 맞춤 ======
