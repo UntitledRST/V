@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-09-30T01:02:19.472718+00:00",
-  "count": 63,
+  "fetchedAt": "2026-09-30T09:05:37.568391+00:00",
+  "count": 72,
   "issues": [
     {
       "번호": 1,
@@ -228,7 +228,7 @@
       "번호": 18,
       "일감번호": 281426,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][파일전송] 채팅 드래그 앤 드롭 혼합 드롭 처리 기준 정의 요청 — 차단 확장자 혼합은 전체 중단+안내 / 폴더 혼합은 무음 부분 전송(위반 유형별 비대칭)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -774,7 +774,7 @@
       "번호": 60,
       "일감번호": 282622,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [접속페이지][다운로드] 인터넷 끊김으로 설치파일 다운로드 실패 시 안내의 오류 아이콘·접기 버튼 미표시 — 네트워크 복구 후에도 같은 페이지에서 미복구",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -803,7 +803,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.2_QA] [웹뷰어][PIP] 웹뷰어 창 최소화 상태에서 PIP [파일 보내기] 클릭 시 PIP만 종료·파일 선택 창 미표시 — 웹뷰어 창 복원 안 됨([파일 가져오기]는 정상)",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "이명찬",
       "상위일감": null,
       "작성자": "김신혜",
       "created_on": "2026-09-30 08:46:24",
@@ -821,13 +821,130 @@
       "작성자": "김신혜",
       "created_on": "2026-09-30 09:57:21",
       "link": "https://projects.rsupport.com/issues/282816"
+    },
+    {
+      "번호": 64,
+      "일감번호": 282824,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][로그인][네트워크 설정] [저장] 실패 시 안내 문구·입력칸 오류 표시가 스크롤 영역 밖에 있으면 보이지 않음 — 화면 변화 없어 '반응 없음'으로 인지",
+      "우선순위": "보통(Normal)",
+      "담당자": "김성식",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 10:04:08",
+      "link": "https://projects.rsupport.com/issues/282824"
+    },
+    {
+      "번호": 65,
+      "일감번호": 282838,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][접속 대기] 영상지원 라이선스 미보유 계정 '영상지원으로 시작하기' 토글 노출·클릭 무반응 — 미보유 시 표시 방식 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 10:28:54",
+      "link": "https://projects.rsupport.com/issues/282838"
+    },
+    {
+      "번호": 66,
+      "일감번호": 282856,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][로그인] 언어 선택 드롭다운에 마우스 호버 시 클릭 커서 미표시 — 클릭 가능 요소가 안내 텍스트처럼 보임(로그인 푸터·제품정보 창)",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 11:08:42",
+      "link": "https://projects.rsupport.com/issues/282856"
+    },
+    {
+      "번호": 67,
+      "일감번호": 282859,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][Win][설치] 설치 마법사 언어 목록에 번체 중국어(繁體中文) 미포함 — 앱 지원 언어 8종과 불일치(설치 7종)",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 11:10:18",
+      "link": "https://projects.rsupport.com/issues/282859"
+    },
+    {
+      "번호": 68,
+      "일감번호": 282899,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][그리기] 텍스트 입력 중 다른 도구(유형·스티커) 선택 시 입력 박스 유지 — 패널 선택과 화면 상태 불일치, 입력 텍스트 처리 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 12:10:16",
+      "link": "https://projects.rsupport.com/issues/282899"
+    },
+    {
+      "번호": 69,
+      "일감번호": 282956,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [호스트][Mac] 상담원 마이크 Off → On 후 호스트에서 상담원 음성 재생 안 됨 — 호스트 오디오 출력 정지 후 재개 안 됨(Win10 호스트 정상)",
+      "우선순위": "보통(Normal)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 14:20:28",
+      "link": "https://projects.rsupport.com/issues/282956"
+    },
+    {
+      "번호": 70,
+      "일감번호": 282966,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [호스트][Mac] 상담원 마이크 On 중 세션 패널(상단 바·상담원 이름·채팅)이 약 5초 주기로 사라졌다 복귀 — 마이크 Off 시 미발생(Win10 호스트 정상)",
+      "우선순위": "보통(Normal)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 14:25:08",
+      "link": "https://projects.rsupport.com/issues/282966"
+    },
+    {
+      "번호": 71,
+      "일감번호": 282976,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][PIP 모드] 카메라·마이크 Off 후 약 5초간 버튼 재클릭 불가 — 우측 패널에는 없는 대기, 동작 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 14:41:34",
+      "link": "https://projects.rsupport.com/issues/282976"
+    },
+    {
+      "번호": 72,
+      "일감번호": 283014,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][Win][프록시] 실행 중 시스템 프록시 해제가 반영되지 않음 — 해제 후에도 기존 프록시로 통신(인증창 표시), 앱 재시작 전 미복구",
+      "우선순위": "보통(Normal)",
+      "담당자": "김성식",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-09-30 16:08:58",
+      "link": "https://projects.rsupport.com/issues/283014"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 23,
-      "done": 40,
-      "total": 63
+      "notDone": 28,
+      "done": 44,
+      "total": 72
     },
     "assignees": [
       {
@@ -839,14 +956,14 @@
       },
       {
         "name": "김미령",
-        "total": 19,
+        "total": 22,
         "done": 11,
         "complete": false,
-        "rate": 57
+        "rate": 50
       },
       {
         "name": "김성식",
-        "total": 1,
+        "total": 3,
         "done": 0,
         "complete": false,
         "rate": 0
@@ -874,10 +991,10 @@
       },
       {
         "name": "송건호",
-        "total": 19,
-        "done": 15,
+        "total": 20,
+        "done": 18,
         "complete": false,
-        "rate": 78
+        "rate": 90
       },
       {
         "name": "엄순호",
@@ -888,10 +1005,10 @@
       },
       {
         "name": "오세진",
-        "total": 13,
-        "done": 10,
+        "total": 15,
+        "done": 11,
         "complete": false,
-        "rate": 76
+        "rate": 73
       },
       {
         "name": "이경준",
@@ -899,6 +1016,13 @@
         "done": 2,
         "complete": false,
         "rate": 66
+      },
+      {
+        "name": "이명찬",
+        "total": 1,
+        "done": 0,
+        "complete": false,
+        "rate": 0
       },
       {
         "name": "장기중(Jay)",
@@ -911,10 +1035,10 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 46,
-        "done": 28,
+        "total": 55,
+        "done": 32,
         "complete": false,
-        "rate": 60
+        "rate": 58
       },
       {
         "name": "류보배(QA_Bobae)",
@@ -934,9 +1058,9 @@
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 7,
-        "done": 10,
-        "total": 17
+        "progress": 9,
+        "done": 11,
+        "total": 20
       },
       {
         "label": "개선(Improving)",
@@ -946,19 +1070,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 15,
-        "done": 29,
-        "total": 44
+        "progress": 18,
+        "done": 32,
+        "total": 50
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 16
+        "count": 22
       },
       {
         "label": "진행",
-        "count": 4
+        "count": 3
       },
       {
         "label": "보류",
@@ -966,7 +1090,7 @@
       },
       {
         "label": "해결",
-        "count": 34
+        "count": 38
       },
       {
         "label": "피드백",
@@ -992,7 +1116,7 @@
       },
       {
         "label": "보통",
-        "count": 58
+        "count": 67
       },
       {
         "label": "높음",
@@ -1027,58 +1151,58 @@
       {
         "date": "2026-09-18",
         "newCount": 13,
-        "doneCount": 10,
+        "doneCount": 11,
         "cumIssue": 24,
-        "cumDone": 19,
-        "rate": 79
+        "cumDone": 20,
+        "rate": 83
       },
       {
         "date": "2026-09-21",
         "newCount": 7,
         "doneCount": 5,
         "cumIssue": 31,
-        "cumDone": 24,
-        "rate": 77
+        "cumDone": 25,
+        "rate": 81
       },
       {
         "date": "2026-09-22",
         "newCount": 6,
         "doneCount": 4,
         "cumIssue": 37,
-        "cumDone": 28,
-        "rate": 76
+        "cumDone": 29,
+        "rate": 78
       },
       {
         "date": "2026-09-23",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 45,
-        "cumDone": 33,
-        "rate": 73
+        "cumDone": 34,
+        "rate": 76
       },
       {
         "date": "2026-09-28",
         "newCount": 11,
         "doneCount": 7,
         "cumIssue": 56,
-        "cumDone": 40,
-        "rate": 71
+        "cumDone": 41,
+        "rate": 73
       },
       {
         "date": "2026-09-29",
         "newCount": 5,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 61,
-        "cumDone": 40,
-        "rate": 66
+        "cumDone": 42,
+        "rate": 69
       },
       {
         "date": "2026-09-30",
-        "newCount": 2,
-        "doneCount": 0,
-        "cumIssue": 63,
-        "cumDone": 40,
-        "rate": 63
+        "newCount": 11,
+        "doneCount": 2,
+        "cumIssue": 72,
+        "cumDone": 44,
+        "rate": 61
       }
     ]
   },
