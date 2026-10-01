@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-01T04:32:26.936627+00:00",
+  "fetchedAt": "2026-10-01T04:38:06.359139+00:00",
   "count": 369,
   "issues": [
     {
@@ -373,7 +373,7 @@
       "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [호스트 중계페이지] '고객명 입력 사용' 옵션 접속대기 화면(접속번호형) 레이아웃 추가",
       "우선순위": "보통(Normal)",
-      "담당자": "라경연",
+      "담당자": "윤효주",
       "created_on": "2026-08-27 17:08:51",
       "link": "https://projects.rsupport.com/issues/278531"
     },
@@ -428,7 +428,7 @@
       "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [뷰어][GNB] AI 아이콘 사이즈·스타일 통일감 및 GNB 아이콘 회색톤 조정 — PM 요구사항(08.12)",
       "우선순위": "보통(Normal)",
-      "담당자": "라경연",
+      "담당자": "윤효주",
       "created_on": "2026-08-26 18:50:40",
       "link": "https://projects.rsupport.com/issues/278411"
     },
@@ -714,7 +714,7 @@
       "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.1_QA] [응용뷰어][GNB] '항상 위' 버튼 전용 아이콘 디자인 요청 — 임시 pin 아이콘 사용 중 (#274708 후속)",
       "우선순위": "보통(Normal)",
-      "담당자": "라경연",
+      "담당자": "윤효주",
       "created_on": "2026-08-14 15:07:42",
       "link": "https://projects.rsupport.com/issues/277389"
     },
@@ -4232,13 +4232,6 @@
         "rate": 100
       },
       {
-        "name": "라경연",
-        "total": 3,
-        "done": 3,
-        "complete": true,
-        "rate": 100
-      },
-      {
         "name": "박승진",
         "total": 1,
         "done": 1,
@@ -4272,6 +4265,13 @@
         "done": 90,
         "complete": false,
         "rate": 98
+      },
+      {
+        "name": "윤효주",
+        "total": 3,
+        "done": 3,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "이경준",
