@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-01T09:42:19.542709+00:00",
+  "fetchedAt": "2026-10-06T00:45:37.727724+00:00",
   "count": 500,
   "issues": [
     {
@@ -4297,10 +4297,10 @@
       "번호": 287,
       "일감번호": 282460,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[서비스][기획 요청] 세션 지원 유형 판정 기준 정의 요청(V 라이선스 적용 경로 부재)",
       "우선순위": "높음(High)",
-      "담당자": "장기중(Jay)",
+      "담당자": "김미령",
       "상위일감": 279399,
       "작성자": "이명찬",
       "created_on": "2026-09-28 17:08:37",
@@ -4417,7 +4417,7 @@
       "번호": 295,
       "일감번호": 283374,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 만료일이 30일 이내(2026-10-31, 오늘: 2026-10-01)인 라이선스의 만료 임박 강조 색상 미표시 (상세 화면·필터는 30일 이내로 처리)",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -5875,7 +5875,7 @@
       "상태": "진행(Doing)",
       "제목": "[BE][유저·파트너어드민] 09-29 해결 처리 일감의 미반영 항목 8건 — 반영 또는 보류 사유 요청",
       "우선순위": "보통(Normal)",
-      "담당자": "이혁(Eden)",
+      "담당자": "권정희",
       "상위일감": 279400,
       "작성자": "윤종익",
       "created_on": "2026-09-30 09:26:27",
@@ -7506,8 +7506,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 181,
-      "done": 311,
+      "notDone": 179,
+      "done": 313,
       "total": 492
     },
     "assignees": [
@@ -7527,10 +7527,17 @@
       },
       {
         "name": "권정희",
-        "total": 56,
+        "total": 57,
         "done": 18,
         "complete": false,
-        "rate": 32
+        "rate": 31
+      },
+      {
+        "name": "김미령",
+        "total": 1,
+        "done": 1,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "송건호",
@@ -7542,9 +7549,9 @@
       {
         "name": "윤종익",
         "total": 149,
-        "done": 126,
+        "done": 127,
         "complete": false,
-        "rate": 84
+        "rate": 85
       },
       {
         "name": "이경준",
@@ -7562,17 +7569,17 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 178,
+        "total": 177,
         "done": 140,
         "complete": false,
-        "rate": 78
+        "rate": 79
       },
       {
         "name": "장기중(Jay)",
-        "total": 2,
+        "total": 1,
         "done": 1,
-        "complete": false,
-        "rate": 50
+        "complete": true,
+        "rate": 100
       }
     ],
     "authors": [
@@ -7593,9 +7600,9 @@
       {
         "name": "이명찬",
         "total": 125,
-        "done": 75,
+        "done": 77,
         "complete": false,
-        "rate": 60
+        "rate": 61
       },
       {
         "name": "이혁(Eden)",
@@ -7620,19 +7627,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 75,
-        "done": 128,
+        "progress": 73,
+        "done": 130,
         "total": 203
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 137
+        "count": 136
       },
       {
         "label": "진행",
-        "count": 43
+        "count": 42
       },
       {
         "label": "보류",
@@ -7640,7 +7647,7 @@
       },
       {
         "label": "해결",
-        "count": 221
+        "count": 223
       },
       {
         "label": "피드백",
@@ -7981,17 +7988,17 @@
       {
         "date": "2026-09-28",
         "newCount": 21,
-        "doneCount": 5,
+        "doneCount": 6,
         "cumIssue": 469,
-        "cumDone": 288,
-        "rate": 61
+        "cumDone": 289,
+        "rate": 62
       },
       {
         "date": "2026-09-29",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 473,
-        "cumDone": 292,
+        "cumDone": 293,
         "rate": 62
       },
       {
@@ -7999,16 +8006,16 @@
         "newCount": 23,
         "doneCount": 19,
         "cumIssue": 496,
-        "cumDone": 311,
+        "cumDone": 312,
         "rate": 63
       },
       {
         "date": "2026-10-01",
         "newCount": 4,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 500,
-        "cumDone": 311,
-        "rate": 62
+        "cumDone": 313,
+        "rate": 63
       }
     ]
   },
