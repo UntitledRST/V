@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-06T09:16:13.469083+00:00",
+  "fetchedAt": "2026-10-07T00:58:04.820748+00:00",
   "count": 90,
   "issues": [
     {
@@ -800,7 +800,7 @@
       "번호": 62,
       "일감번호": 282793,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [웹뷰어][PIP] 웹뷰어 창 최소화 상태에서 PIP [파일 보내기] 클릭 시 PIP만 종료·파일 선택 창 미표시 — 웹뷰어 창 복원 안 됨([파일 가져오기]는 정상)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1099,7 +1099,7 @@
       "번호": 85,
       "일감번호": 283589,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][Mac][다국어] OS 카메라/마이크 권한 팝업 설명 문구가 OS 언어와 무관하게 한국어로 고정 노출 — 제목은 영어, 설명 줄만 한국어 (호스트 #278430 동일 구조)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1176,8 +1176,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 21,
-      "done": 69,
+      "notDone": 19,
+      "done": 71,
       "total": 90
     },
     "assignees": [
@@ -1219,9 +1219,9 @@
       {
         "name": "송건호",
         "total": 26,
-        "done": 19,
+        "done": 21,
         "complete": false,
-        "rate": 73
+        "rate": 80
       },
       {
         "name": "엄순호",
@@ -1270,9 +1270,9 @@
       {
         "name": "김신혜",
         "total": 71,
-        "done": 54,
+        "done": 56,
         "complete": false,
-        "rate": 76
+        "rate": 78
       },
       {
         "name": "류보배(QA_Bobae)",
@@ -1304,8 +1304,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 16,
-        "done": 48,
+        "progress": 14,
+        "done": 50,
         "total": 64
       }
     ],
@@ -1316,7 +1316,7 @@
       },
       {
         "label": "진행",
-        "count": 4
+        "count": 2
       },
       {
         "label": "보류",
@@ -1324,7 +1324,7 @@
       },
       {
         "label": "해결",
-        "count": 63
+        "count": 65
       },
       {
         "label": "피드백",
@@ -1433,34 +1433,34 @@
       {
         "date": "2026-09-30",
         "newCount": 11,
-        "doneCount": 9,
+        "doneCount": 10,
         "cumIssue": 72,
-        "cumDone": 64,
-        "rate": 89
+        "cumDone": 65,
+        "rate": 90
       },
       {
         "date": "2026-10-01",
         "newCount": 8,
         "doneCount": 4,
         "cumIssue": 80,
-        "cumDone": 68,
-        "rate": 85
+        "cumDone": 69,
+        "rate": 86
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 85,
-        "cumDone": 69,
-        "rate": 81
+        "cumDone": 71,
+        "rate": 84
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 0,
         "cumIssue": 90,
-        "cumDone": 69,
-        "rate": 77
+        "cumDone": 71,
+        "rate": 79
       }
     ]
   },
