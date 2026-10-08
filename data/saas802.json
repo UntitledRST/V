@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-07T10:45:56.484292+00:00",
+  "fetchedAt": "2026-10-08T02:11:21.483661+00:00",
   "count": 93,
   "issues": [
     {
@@ -72,10 +72,10 @@
       "번호": 6,
       "일감번호": 281130,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA][결함][UserAdmin] 상담이력 상세 > 에이전트 접속정보의 에이전트 타입이 응용프로그램 접속 시 웹뷰어로 노출",
       "우선순위": "보통(Normal)",
-      "담당자": "류보배(QA_Bobae)",
+      "담당자": "장기중(Jay)",
       "상위일감": null,
       "작성자": "류보배(QA_Bobae)",
       "created_on": "2026-09-17 10:15:23",
@@ -1047,7 +1047,7 @@
       "번호": 81,
       "일감번호": 283412,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [웹뷰어][PIP] 고객(Mac) 화면 공유 중단 시 PIP 창에 중단 상태 미표시 — 직전 화면 정지 / 중단 상태에서 PIP 진입 시 검은 화면",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1215,8 +1215,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 17,
-      "done": 76,
+      "notDone": 16,
+      "done": 77,
       "total": 93
     },
     "assignees": [
@@ -1250,10 +1250,10 @@
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 2,
+        "total": 1,
         "done": 1,
-        "complete": false,
-        "rate": 50
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "변우영",
@@ -1303,6 +1303,13 @@
         "done": 0,
         "complete": false,
         "rate": 0
+      },
+      {
+        "name": "장기중(Jay)",
+        "total": 1,
+        "done": 1,
+        "complete": true,
+        "rate": 100
       }
     ],
     "authors": [
@@ -1316,9 +1323,9 @@
       {
         "name": "류보배(QA_Bobae)",
         "total": 17,
-        "done": 13,
+        "done": 14,
         "complete": false,
-        "rate": 76
+        "rate": 82
       },
       {
         "name": "송건호",
@@ -1343,19 +1350,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 14,
-        "done": 52,
+        "progress": 13,
+        "done": 53,
         "total": 66
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 9
+        "count": 8
       },
       {
         "label": "진행",
-        "count": 5
+        "count": 6
       },
       {
         "label": "보류",
@@ -1363,11 +1370,11 @@
       },
       {
         "label": "해결",
-        "count": 70
+        "count": 71
       },
       {
         "label": "피드백",
-        "count": 3
+        "count": 2
       },
       {
         "label": "완료성공",
@@ -1416,98 +1423,98 @@
       {
         "date": "2026-09-17",
         "newCount": 8,
-        "doneCount": 7,
+        "doneCount": 8,
         "cumIssue": 11,
-        "cumDone": 9,
-        "rate": 82
+        "cumDone": 10,
+        "rate": 91
       },
       {
         "date": "2026-09-18",
         "newCount": 13,
         "doneCount": 13,
         "cumIssue": 24,
-        "cumDone": 22,
-        "rate": 92
+        "cumDone": 23,
+        "rate": 96
       },
       {
         "date": "2026-09-21",
         "newCount": 7,
         "doneCount": 6,
         "cumIssue": 31,
-        "cumDone": 28,
-        "rate": 90
+        "cumDone": 29,
+        "rate": 94
       },
       {
         "date": "2026-09-22",
         "newCount": 6,
         "doneCount": 5,
         "cumIssue": 37,
-        "cumDone": 33,
-        "rate": 89
+        "cumDone": 34,
+        "rate": 92
       },
       {
         "date": "2026-09-23",
         "newCount": 8,
         "doneCount": 6,
         "cumIssue": 45,
-        "cumDone": 39,
-        "rate": 87
+        "cumDone": 40,
+        "rate": 89
       },
       {
         "date": "2026-09-28",
         "newCount": 11,
         "doneCount": 11,
         "cumIssue": 56,
-        "cumDone": 50,
-        "rate": 89
+        "cumDone": 51,
+        "rate": 91
       },
       {
         "date": "2026-09-29",
         "newCount": 5,
         "doneCount": 5,
         "cumIssue": 61,
-        "cumDone": 55,
-        "rate": 90
+        "cumDone": 56,
+        "rate": 92
       },
       {
         "date": "2026-09-30",
         "newCount": 11,
         "doneCount": 10,
         "cumIssue": 72,
-        "cumDone": 65,
-        "rate": 90
+        "cumDone": 66,
+        "rate": 92
       },
       {
         "date": "2026-10-01",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 80,
-        "cumDone": 70,
-        "rate": 88
+        "cumDone": 71,
+        "rate": 89
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
         "doneCount": 2,
         "cumIssue": 85,
-        "cumDone": 72,
-        "rate": 85
+        "cumDone": 73,
+        "rate": 86
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 90,
-        "cumDone": 75,
-        "rate": 83
+        "cumDone": 76,
+        "rate": 84
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 1,
         "cumIssue": 93,
-        "cumDone": 76,
-        "rate": 82
+        "cumDone": 77,
+        "rate": 83
       }
     ]
   },
