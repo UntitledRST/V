@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-08T02:11:21.483661+00:00",
-  "count": 93,
+  "fetchedAt": "2026-10-12T00:41:30.595363+00:00",
+  "count": 98,
   "issues": [
     {
       "번호": 1,
@@ -72,7 +72,7 @@
       "번호": 6,
       "일감번호": 281130,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA][결함][UserAdmin] 상담이력 상세 > 에이전트 접속정보의 에이전트 타입이 응용프로그램 접속 시 웹뷰어로 노출",
       "우선순위": "보통(Normal)",
       "담당자": "장기중(Jay)",
@@ -1047,7 +1047,7 @@
       "번호": 81,
       "일감번호": 283412,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [웹뷰어][PIP] 고객(Mac) 화면 공유 중단 시 PIP 창에 중단 상태 미표시 — 직전 화면 정지 / 중단 상태에서 PIP 진입 시 검은 화면",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1211,13 +1211,78 @@
       "작성자": "김신혜",
       "created_on": "2026-10-07 16:22:38",
       "link": "https://projects.rsupport.com/issues/284257"
+    },
+    {
+      "번호": 94,
+      "일감번호": 284423,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][유저·파트너어드민·뷰어][상담 이력] '에이전트 타입'·'에이전트 플랫폼' 화면별 혼용 — 용어 적용 범위·표시값 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-08 11:35:52",
+      "link": "https://projects.rsupport.com/issues/284423"
+    },
+    {
+      "번호": 95,
+      "일감번호": 284435,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][세션 공유·전달] 상담 중·뷰어대기창 상태 상담원의 초대 수신 처리 정의 요청 — 초대 팝업 홈 화면에만 노출, 대기창 상태 [확인] 시 요청자에게 거절 표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-08 11:52:38",
+      "link": "https://projects.rsupport.com/issues/284435"
+    },
+    {
+      "번호": 96,
+      "일감번호": 284445,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][세션 공유][연결] 공유 참여 상담원이 연결 복구 중 세션에서 나가면 방장 뷰어에 '재연결 · 네트워크 연결에 문제가 발생했습니다.' 배너가 사라지지 않음 — 고객(호스트) 연결은 정상",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-08 12:16:14",
+      "link": "https://projects.rsupport.com/issues/284445"
+    },
+    {
+      "번호": 97,
+      "일감번호": 284506,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어] 사용자 조작 없이 상담 종료·로그아웃되는 경우 사유 안내 방식 — 3초 토스트 1회만 표시, 종료/로그인 화면에 사유 미표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-08 14:53:33",
+      "link": "https://projects.rsupport.com/issues/284506"
+    },
+    {
+      "번호": 98,
+      "일감번호": 284804,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어·호스트][세션 공유·전달] 고객 동의 대기 시간·무응답 처리 정의 요청 — 현행 서버 30초 만료 시 고객 결정 없이 동의 팝업 자동 닫힘",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-12 08:32:37",
+      "link": "https://projects.rsupport.com/issues/284804"
     }
   ],
   "summary": {
     "completion": {
       "notDone": 16,
-      "done": 77,
-      "total": 93
+      "done": 82,
+      "total": 98
     },
     "assignees": [
       {
@@ -1229,10 +1294,10 @@
       },
       {
         "name": "김미령",
-        "total": 24,
-        "done": 24,
-        "complete": true,
-        "rate": 100
+        "total": 28,
+        "done": 27,
+        "complete": false,
+        "rate": 96
       },
       {
         "name": "김성식",
@@ -1264,10 +1329,10 @@
       },
       {
         "name": "송건호",
-        "total": 28,
-        "done": 22,
+        "total": 29,
+        "done": 24,
         "complete": false,
-        "rate": 78
+        "rate": 82
       },
       {
         "name": "엄순호",
@@ -1315,10 +1380,10 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 74,
-        "done": 61,
+        "total": 79,
+        "done": 66,
         "complete": false,
-        "rate": 82
+        "rate": 83
       },
       {
         "name": "류보배(QA_Bobae)",
@@ -1338,9 +1403,9 @@
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 3,
-        "done": 22,
-        "total": 25
+        "progress": 4,
+        "done": 25,
+        "total": 29
       },
       {
         "label": "개선(Improving)",
@@ -1350,19 +1415,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 13,
-        "done": 53,
-        "total": 66
+        "progress": 12,
+        "done": 55,
+        "total": 67
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 8
+        "count": 9
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 5
       },
       {
         "label": "보류",
@@ -1370,7 +1435,7 @@
       },
       {
         "label": "해결",
-        "count": 71
+        "count": 75
       },
       {
         "label": "피드백",
@@ -1378,7 +1443,7 @@
       },
       {
         "label": "완료성공",
-        "count": 5
+        "count": 6
       },
       {
         "label": "중단",
@@ -1396,7 +1461,7 @@
       },
       {
         "label": "보통",
-        "count": 87
+        "count": 92
       },
       {
         "label": "높음",
@@ -1495,26 +1560,42 @@
       {
         "date": "2026-10-02",
         "newCount": 5,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 85,
-        "cumDone": 73,
-        "rate": 86
+        "cumDone": 74,
+        "rate": 87
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 90,
-        "cumDone": 76,
-        "rate": 84
+        "cumDone": 77,
+        "rate": 86
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 1,
         "cumIssue": 93,
-        "cumDone": 77,
-        "rate": 83
+        "cumDone": 78,
+        "rate": 84
+      },
+      {
+        "date": "2026-10-08",
+        "newCount": 4,
+        "doneCount": 4,
+        "cumIssue": 97,
+        "cumDone": 82,
+        "rate": 85
+      },
+      {
+        "date": "2026-10-12",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 98,
+        "cumDone": 82,
+        "rate": 84
       }
     ]
   },
