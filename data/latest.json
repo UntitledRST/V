@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-14T09:24:36.859818+00:00",
+  "fetchedAt": "2026-10-14T09:45:16.346320+00:00",
   "count": 340,
   "issues": [
     {
@@ -3636,7 +3636,7 @@
       "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.1_QA][개선] 채팅 수신 메시지 개별 복사 기능 부재 — 기획 정의 필요",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "변우영",
       "created_on": "2026-07-07 09:31:41",
       "link": "https://projects.rsupport.com/issues/273703"
     },
@@ -3853,10 +3853,10 @@
       },
       {
         "name": "변우영",
-        "total": 1,
+        "total": 2,
         "done": 1,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 50
       },
       {
         "name": "송건호",
@@ -3867,10 +3867,10 @@
       },
       {
         "name": "오세진",
-        "total": 91,
+        "total": 90,
         "done": 90,
-        "complete": false,
-        "rate": 98
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "윤효주",
