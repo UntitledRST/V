@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-12T00:41:30.595363+00:00",
-  "count": 98,
+  "fetchedAt": "2026-10-14T00:39:51.755831+00:00",
+  "count": 104,
   "issues": [
     {
       "번호": 1,
@@ -969,10 +969,10 @@
       "번호": 75,
       "일감번호": 283101,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.2_QA][결함][뷰어] 선택 공유 상태에서 Win+L 동작 후 전체 공유로 변경되는 현상",
       "우선순위": "보통(Normal)",
-      "담당자": "오세진",
+      "담당자": "류보배(QA_Bobae)",
       "상위일감": null,
       "작성자": "류보배(QA_Bobae)",
       "created_on": "2026-10-01 09:50:41",
@@ -1203,7 +1203,7 @@
       "번호": 93,
       "일감번호": 284257,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [뷰어·호스트][채팅] 1,000자 초과 붙여넣기 시 초과분이 안내 없이 잘림 — 기획 확정 안내 토스트(\"1,000자를 초과했습니다. 긴 내용은 파일 전송을 이용하세요.\") 미표시",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -1268,7 +1268,7 @@
       "번호": 98,
       "일감번호": 284804,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어·호스트][세션 공유·전달] 고객 동의 대기 시간·무응답 처리 정의 요청 — 현행 서버 30초 만료 시 고객 결정 없이 동의 팝업 자동 닫힘",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1276,13 +1276,91 @@
       "작성자": "김신혜",
       "created_on": "2026-10-12 08:32:37",
       "link": "https://projects.rsupport.com/issues/284804"
+    },
+    {
+      "번호": 99,
+      "일감번호": 284835,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][웹뷰어][기능 설정] 캡쳐 저장 위치 안내 문구와 실제 저장 동작 불일치 — '상담 중 폴더 선택 창에서 지정한 위치' 안내, 실제는 폴더 선택 없이 브라우저 다운로드 폴더 저장",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-12 11:24:19",
+      "link": "https://projects.rsupport.com/issues/284835"
+    },
+    {
+      "번호": 100,
+      "일감번호": 284921,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][Win][화면 캡쳐] 상담 중 화면 캡쳐 시 응용뷰어 프로세스 크래시(0xC0000005, flutter_windows.dll+0x2c4527) — Mac 호스트 캡처 동의 [허용] 직후, #278641 동일 서명 재발, 907 설치본 flutter_windows.dll 8월 구판",
+      "우선순위": "높음(High)",
+      "담당자": "이경준",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-12 13:58:06",
+      "link": "https://projects.rsupport.com/issues/284921"
+    },
+    {
+      "번호": 101,
+      "일감번호": 285014,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][에이전트][기능 설정] '고객 화면 캡쳐 및 전송' 항목명·설명과 실제 설정 구성 불일치 — 캡쳐·공유·저장 사용 설정 안내, 실제는 저장 위치·폴더 자동 팝업만 제공(ON/OFF 토글 미구현)",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-12 17:15:34",
+      "link": "https://projects.rsupport.com/issues/285014"
+    },
+    {
+      "번호": 102,
+      "일감번호": 285065,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [뷰어][내비게이터] 전체 모니터 보기 미니맵 — 모니터 사이 빈 공간에 뒤쪽 원격 화면이 비쳐 보임",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-13 09:42:08",
+      "link": "https://projects.rsupport.com/issues/285065"
+    },
+    {
+      "번호": 103,
+      "일감번호": 285088,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.2_QA] [응용뷰어][그리기][영상지원] 동영상 모드에서 그리기 커서 반응 지연 — 영상 영역 진입 시 약 0.8~0.9초 커서 미표시·이탈 시 펜·화살표 동시 표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-13 10:45:05",
+      "link": "https://projects.rsupport.com/issues/285088"
+    },
+    {
+      "번호": 104,
+      "일감번호": 285097,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [BE][상담이력] 엑셀 다운로드 헤더 — 상담원 언어가 ko/en 외(日本語 등)일 때 한국어가 아닌 영어로 생성 — 기획 'ko/en 외 한국어 폴백' 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "김재원",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-13 11:31:34",
+      "link": "https://projects.rsupport.com/issues/285097"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 16,
-      "done": 82,
-      "total": 98
+      "notDone": 17,
+      "done": 87,
+      "total": 104
     },
     "assignees": [
       {
@@ -1294,8 +1372,8 @@
       },
       {
         "name": "김미령",
-        "total": 28,
-        "done": 27,
+        "total": 30,
+        "done": 29,
         "complete": false,
         "rate": 96
       },
@@ -1308,17 +1386,17 @@
       },
       {
         "name": "김재원",
-        "total": 1,
+        "total": 2,
         "done": 1,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 50
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 1,
+        "total": 2,
         "done": 1,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 50
       },
       {
         "name": "변우영",
@@ -1329,10 +1407,10 @@
       },
       {
         "name": "송건호",
-        "total": 29,
-        "done": 24,
+        "total": 30,
+        "done": 25,
         "complete": false,
-        "rate": 82
+        "rate": 83
       },
       {
         "name": "엄순호",
@@ -1343,24 +1421,24 @@
       },
       {
         "name": "오세진",
-        "total": 19,
+        "total": 18,
         "done": 17,
         "complete": false,
-        "rate": 89
+        "rate": 94
       },
       {
         "name": "윤효주",
-        "total": 3,
+        "total": 4,
         "done": 2,
         "complete": false,
-        "rate": 66
+        "rate": 50
       },
       {
         "name": "이경준",
-        "total": 4,
-        "done": 3,
-        "complete": false,
-        "rate": 75
+        "total": 5,
+        "done": 5,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "이명찬",
@@ -1380,8 +1458,8 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 79,
-        "done": 66,
+        "total": 85,
+        "done": 71,
         "complete": false,
         "rate": 83
       },
@@ -1404,8 +1482,8 @@
       {
         "label": "기능(Function)",
         "progress": 4,
-        "done": 25,
-        "total": 29
+        "done": 27,
+        "total": 31
       },
       {
         "label": "개선(Improving)",
@@ -1415,9 +1493,9 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 12,
-        "done": 55,
-        "total": 67
+        "progress": 13,
+        "done": 58,
+        "total": 71
       }
     ],
     "statuses": [
@@ -1435,11 +1513,11 @@
       },
       {
         "label": "해결",
-        "count": 75
+        "count": 80
       },
       {
         "label": "피드백",
-        "count": 2
+        "count": 3
       },
       {
         "label": "완료성공",
@@ -1461,11 +1539,11 @@
       },
       {
         "label": "보통",
-        "count": 92
+        "count": 97
       },
       {
         "label": "높음",
-        "count": 6
+        "count": 7
       },
       {
         "label": "긴급",
@@ -1576,25 +1654,33 @@
       {
         "date": "2026-10-07",
         "newCount": 3,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 93,
-        "cumDone": 78,
-        "rate": 84
+        "cumDone": 79,
+        "rate": 85
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 97,
-        "cumDone": 82,
-        "rate": 85
+        "cumDone": 83,
+        "rate": 86
       },
       {
         "date": "2026-10-12",
-        "newCount": 1,
-        "doneCount": 0,
-        "cumIssue": 98,
-        "cumDone": 82,
+        "newCount": 4,
+        "doneCount": 3,
+        "cumIssue": 101,
+        "cumDone": 86,
+        "rate": 85
+      },
+      {
+        "date": "2026-10-13",
+        "newCount": 3,
+        "doneCount": 1,
+        "cumIssue": 104,
+        "cumDone": 87,
         "rate": 84
       }
     ]
