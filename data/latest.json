@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-15T03:05:53.024170+00:00",
+  "fetchedAt": "2026-10-15T03:11:15.370018+00:00",
   "count": 321,
   "issues": [
     {
@@ -1553,7 +1553,7 @@
       "번호": 140,
       "일감번호": 275383,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "중단(Stop)",
       "제목": "[SaaS_8.0.1_QA][결함] [뷰어] A 뷰어에서 [세션 공유/전달] 실행 시, 호스트 승인 없이 B 뷰어에게 세션 공유/전달 요청 전송 ",
       "우선순위": "보통(Normal)",
       "담당자": "박예지",
@@ -3554,8 +3554,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 4,
-      "done": 317,
+      "notDone": 3,
+      "done": 318,
       "total": 321
     },
     "assignees": [
@@ -3597,9 +3597,9 @@
       {
         "name": "박예지",
         "total": 6,
-        "done": 5,
-        "complete": false,
-        "rate": 83
+        "done": 6,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "변우영",
@@ -3679,15 +3679,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 2,
-        "done": 270,
+        "progress": 1,
+        "done": 271,
         "total": 272
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 2
+        "count": 1
       },
       {
         "label": "진행",
@@ -3711,7 +3711,7 @@
       },
       {
         "label": "중단",
-        "count": 10
+        "count": 11
       },
       {
         "label": "완료실패",
@@ -3856,167 +3856,167 @@
       {
         "date": "2026-07-27",
         "cumIssue": 193,
-        "cumDone": 191,
+        "cumDone": 192,
         "rate": 99,
         "newCount": 18,
-        "doneCount": 16
+        "doneCount": 17
       },
       {
         "date": "2026-07-28",
         "cumIssue": 204,
-        "cumDone": 202,
-        "rate": 99,
+        "cumDone": 203,
+        "rate": 100,
         "newCount": 11,
         "doneCount": 11
       },
       {
         "date": "2026-07-29",
         "cumIssue": 218,
-        "cumDone": 216,
-        "rate": 99,
+        "cumDone": 217,
+        "rate": 100,
         "newCount": 14,
         "doneCount": 14
       },
       {
         "date": "2026-07-30",
         "cumIssue": 231,
-        "cumDone": 229,
-        "rate": 99,
+        "cumDone": 230,
+        "rate": 100,
         "newCount": 13,
         "doneCount": 13
       },
       {
         "date": "2026-07-31",
         "cumIssue": 232,
-        "cumDone": 230,
-        "rate": 99,
+        "cumDone": 231,
+        "rate": 100,
         "newCount": 1,
         "doneCount": 1
       },
       {
         "date": "2026-08-03",
         "cumIssue": 240,
-        "cumDone": 238,
-        "rate": 99,
+        "cumDone": 239,
+        "rate": 100,
         "newCount": 8,
         "doneCount": 8
       },
       {
         "date": "2026-08-04",
         "cumIssue": 246,
-        "cumDone": 244,
-        "rate": 99,
+        "cumDone": 245,
+        "rate": 100,
         "newCount": 6,
         "doneCount": 6
       },
       {
         "date": "2026-08-05",
         "cumIssue": 254,
-        "cumDone": 252,
-        "rate": 99,
+        "cumDone": 253,
+        "rate": 100,
         "newCount": 8,
         "doneCount": 8
       },
       {
         "date": "2026-08-06",
         "cumIssue": 255,
-        "cumDone": 253,
-        "rate": 99,
+        "cumDone": 254,
+        "rate": 100,
         "newCount": 1,
         "doneCount": 1
       },
       {
         "date": "2026-08-07",
         "cumIssue": 256,
-        "cumDone": 254,
-        "rate": 99,
+        "cumDone": 255,
+        "rate": 100,
         "newCount": 1,
         "doneCount": 1
       },
       {
         "date": "2026-08-10",
         "cumIssue": 259,
-        "cumDone": 257,
-        "rate": 99,
+        "cumDone": 258,
+        "rate": 100,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-11",
         "cumIssue": 260,
-        "cumDone": 258,
-        "rate": 99,
+        "cumDone": 259,
+        "rate": 100,
         "newCount": 1,
         "doneCount": 1
       },
       {
         "date": "2026-08-12",
         "cumIssue": 264,
-        "cumDone": 262,
-        "rate": 99,
+        "cumDone": 263,
+        "rate": 100,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-13",
         "cumIssue": 267,
-        "cumDone": 265,
-        "rate": 99,
+        "cumDone": 266,
+        "rate": 100,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-14",
         "cumIssue": 271,
-        "cumDone": 269,
-        "rate": 99,
+        "cumDone": 270,
+        "rate": 100,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-18",
         "cumIssue": 275,
-        "cumDone": 273,
-        "rate": 99,
+        "cumDone": 274,
+        "rate": 100,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-19",
         "cumIssue": 279,
-        "cumDone": 277,
-        "rate": 99,
+        "cumDone": 278,
+        "rate": 100,
         "newCount": 4,
         "doneCount": 4
       },
       {
         "date": "2026-08-20",
         "cumIssue": 282,
-        "cumDone": 280,
-        "rate": 99,
+        "cumDone": 281,
+        "rate": 100,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-24",
         "cumIssue": 284,
-        "cumDone": 282,
-        "rate": 99,
+        "cumDone": 283,
+        "rate": 100,
         "newCount": 2,
         "doneCount": 2
       },
       {
         "date": "2026-08-25",
         "cumIssue": 287,
-        "cumDone": 285,
-        "rate": 99,
+        "cumDone": 286,
+        "rate": 100,
         "newCount": 3,
         "doneCount": 3
       },
       {
         "date": "2026-08-26",
         "cumIssue": 295,
-        "cumDone": 292,
+        "cumDone": 293,
         "rate": 99,
         "newCount": 8,
         "doneCount": 7
@@ -4024,7 +4024,7 @@
       {
         "date": "2026-08-27",
         "cumIssue": 303,
-        "cumDone": 300,
+        "cumDone": 301,
         "rate": 99,
         "newCount": 8,
         "doneCount": 8
@@ -4032,7 +4032,7 @@
       {
         "date": "2026-08-28",
         "cumIssue": 310,
-        "cumDone": 307,
+        "cumDone": 308,
         "rate": 99,
         "newCount": 7,
         "doneCount": 7
@@ -4040,7 +4040,7 @@
       {
         "date": "2026-08-31",
         "cumIssue": 314,
-        "cumDone": 311,
+        "cumDone": 312,
         "rate": 99,
         "newCount": 4,
         "doneCount": 4
@@ -4048,7 +4048,7 @@
       {
         "date": "2026-09-03",
         "cumIssue": 318,
-        "cumDone": 315,
+        "cumDone": 316,
         "rate": 99,
         "newCount": 4,
         "doneCount": 4
@@ -4056,7 +4056,7 @@
       {
         "date": "2026-09-09",
         "cumIssue": 320,
-        "cumDone": 317,
+        "cumDone": 318,
         "rate": 99,
         "newCount": 2,
         "doneCount": 2
@@ -4064,7 +4064,7 @@
       {
         "date": "2026-09-11",
         "cumIssue": 321,
-        "cumDone": 317,
+        "cumDone": 318,
         "rate": 99,
         "newCount": 1,
         "doneCount": 0
