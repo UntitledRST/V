@@ -9,6 +9,9 @@
 // 주소를 바꿀 때는 이 상수와 scripts/fetch-version-cache.mjs 의 TARGETS 를 함께 수정하세요.
 const BETA_PARTNERADMIN_VERSION_URL = 'https://stbtnpartners.startsupport.com/version.txt';
 
+// iOS 는 TestFlight 로만 테스트하므로 빌드 연결(버전 조회/다운로드 링크)을 해제하고 안내 문구만 표시한다.
+const IOS_TESTFLIGHT_NOTE = 'TestFlight로 배포';
+
 const SOURCES = [
   // ---------------- ALPHA / APP (Host) ----------------
   { key: 'alpha-app-windows', channel: 'alpha', group: 'app-host', platform: 'windows', label: 'Win',
@@ -18,8 +21,9 @@ const SOURCES = [
     url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'alpha-app-android', channel: 'alpha', group: 'app-host', platform: 'android', label: 'And',
     url: 'https://stapn.113366.com/pub/android/version.json', type: 'app-json' },
+  // iOS: 빌드 연결 해제 (url 을 두지 않아야 '바로가기' 링크가 생기지 않음)
   { key: 'alpha-app-ios', channel: 'alpha', group: 'app-host', platform: 'ios', label: 'iOS',
-    url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json' },
+    type: 'app-json', disabled: true, staticNote: IOS_TESTFLIGHT_NOTE },
 
   // ---------------- ALPHA / APP (Viewer) ----------------
   { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Win',
@@ -62,8 +66,9 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'beta-app-android', channel: 'beta', group: 'app-host', platform: 'android', label: 'And',
     url: 'https://stbtn.113366.com/pub/android/version.json', type: 'app-json' },
+  // iOS: 빌드 연결 해제 (url 을 두지 않아야 '바로가기' 링크가 생기지 않음)
   { key: 'beta-app-ios', channel: 'beta', group: 'app-host', platform: 'ios', label: 'iOS',
-    url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json' },
+    type: 'app-json', disabled: true, staticNote: IOS_TESTFLIGHT_NOTE },
 
   // ---------------- BETA / APP (Viewer) ----------------
   { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Win',
@@ -736,6 +741,8 @@ async function fetchWebRelay(src) {
 
 async function fetchOne(src) {
   if (src.disabled) {
+    // 연결 해제된 소스: 원본 서버에 요청하지 않고 안내 문구(staticNote)만 내려준다.
+    // siteUrl 을 따로 지정한 경우에만 링크를 붙인다 (버전 조회용 url 은 링크로 쓰지 않음).
     return {
       key: src.key,
       channel: src.channel,
@@ -743,12 +750,13 @@ async function fetchOne(src) {
       platform: src.platform,
       label: src.label,
       ok: true,
+      disabled: true,
       build: null,
       updateDateText: null,
       staticNote: src.staticNote || null,
       isToday: false,
-      downloadUrl: src.siteUrl || src.url || null,
-      downloadLabel: '바로가기',
+      downloadUrl: src.siteUrl || null,
+      downloadLabel: src.siteUrl ? '바로가기' : null,
     };
   }
 
@@ -906,6 +914,14 @@ async function runDiagnostic(key, timeoutMs) {
   const src = SOURCES.find((s) => s.key === key);
   if (!src) {
     return { ok: false, error: `알 수 없는 소스: ${key}`, available: SOURCES.map((s) => s.key) };
+  }
+  if (src.disabled || !src.url) {
+    return {
+      ok: true,
+      소스: key,
+      판정: '연결이 해제된 소스입니다. 원본 서버에 요청하지 않습니다.',
+      안내문구: src.staticNote || null,
+    };
   }
 
   const url = src.url + (src.url.includes('?') ? '&' : '?') + '_=' + Date.now();
