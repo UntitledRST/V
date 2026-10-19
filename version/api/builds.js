@@ -119,7 +119,7 @@ const SOURCES = [
 ];
 
 // 유일한 타임아웃 설정: 별도 timeoutMs 가 없는 모든 소스가 이 값 하나만 사용한다.
-const TIMEOUT_MS = 1100;
+const TIMEOUT_MS = 1500;
 
 function buildFallbackResult(src) {
   const date = parseAsUTCDate(src.fallback.time);
