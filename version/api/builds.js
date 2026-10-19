@@ -9,7 +9,8 @@
 // 주소를 바꿀 때는 이 상수와 scripts/fetch-version-cache.mjs 의 TARGETS 를 함께 수정하세요.
 const BETA_PARTNERADMIN_VERSION_URL = 'https://stbtnpartners.startsupport.com/version.txt';
 
-// iOS 는 TestFlight 로만 테스트하므로 빌드 연결(버전 조회/다운로드 링크)을 해제하고 안내 문구만 표시한다.
+// iOS 는 TestFlight 로만 테스트하므로 다운로드 링크(빌드 연결)만 해제한다.
+// 현재 빌드/업데이트 시간은 예전처럼 조회해서 보여주고, 다운로드 버튼 자리에 이 문구를 표시한다.
 const IOS_TESTFLIGHT_NOTE = 'TestFlight로 배포';
 
 const SOURCES = [
@@ -21,9 +22,10 @@ const SOURCES = [
     url: 'https://stapn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'alpha-app-android', channel: 'alpha', group: 'app-host', platform: 'android', label: 'And',
     url: 'https://stapn.113366.com/pub/android/version.json', type: 'app-json' },
-  // iOS: 빌드 연결 해제 (url 을 두지 않아야 '바로가기' 링크가 생기지 않음)
+  // iOS: 버전 정보는 조회하되 다운로드 링크는 숨기고 TestFlight 안내 문구 표시
   { key: 'alpha-app-ios', channel: 'alpha', group: 'app-host', platform: 'ios', label: 'iOS',
-    type: 'app-json', disabled: true, staticNote: IOS_TESTFLIGHT_NOTE },
+    url: 'https://stapn.113366.com/pub/ios/version.json', type: 'app-json',
+    hideDownload: true, staticNote: IOS_TESTFLIGHT_NOTE },
 
   // ---------------- ALPHA / APP (Viewer) ----------------
   { key: 'alpha-appviewer-windows', channel: 'alpha', group: 'app-viewer', platform: 'windows', label: 'Win',
@@ -66,9 +68,10 @@ const SOURCES = [
     url: 'https://stbtn.113366.com/pub/macos/version.json', type: 'app-json' },
   { key: 'beta-app-android', channel: 'beta', group: 'app-host', platform: 'android', label: 'And',
     url: 'https://stbtn.113366.com/pub/android/version.json', type: 'app-json' },
-  // iOS: 빌드 연결 해제 (url 을 두지 않아야 '바로가기' 링크가 생기지 않음)
+  // iOS: 버전 정보는 조회하되 다운로드 링크는 숨기고 TestFlight 안내 문구 표시
   { key: 'beta-app-ios', channel: 'beta', group: 'app-host', platform: 'ios', label: 'iOS',
-    type: 'app-json', disabled: true, staticNote: IOS_TESTFLIGHT_NOTE },
+    url: 'https://stbtn.113366.com/pub/ios/version.json', type: 'app-json',
+    hideDownload: true, staticNote: IOS_TESTFLIGHT_NOTE },
 
   // ---------------- BETA / APP (Viewer) ----------------
   { key: 'beta-appviewer-windows', channel: 'beta', group: 'app-viewer', platform: 'windows', label: 'Win',
@@ -739,6 +742,18 @@ async function fetchWebRelay(src) {
   return result;
 }
 
+// 소스별 표시 옵션을 결과에 반영한다.
+// - staticNote: 다운로드 버튼 자리에 보여줄 안내 문구
+// - hideDownload: 버전 정보는 그대로 두고 다운로드/바로가기 링크만 제거
+function applyDisplayOptions(src, out) {
+  if (src.staticNote) out.staticNote = src.staticNote;
+  if (src.hideDownload) {
+    out.downloadUrl = null;
+    out.downloadLabel = null;
+  }
+  return out;
+}
+
 async function fetchOne(src) {
   if (src.disabled) {
     // 연결 해제된 소스: 원본 서버에 요청하지 않고 안내 문구(staticNote)만 내려준다.
@@ -787,7 +802,7 @@ async function fetchOne(src) {
     };
     if (data._debug) out._debug = data._debug;
 
-    return out;
+    return applyDisplayOptions(src, out);
   } catch (err) {
     if (src.fallback) {
       return buildFallbackResult(src);
@@ -807,7 +822,7 @@ async function fetchOne(src) {
       (networkErrorCode !== null && GATEWAY_NETWORK_CODES.indexOf(networkErrorCode) !== -1)
     );
 
-    return {
+    return applyDisplayOptions(src, {
       key: src.key,
       channel: src.channel,
       group: src.group,
@@ -823,7 +838,7 @@ async function fetchOne(src) {
       isToday: false,
       downloadUrl: src.siteUrl || src.pageUrl || null,
       downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
-    };
+    });
   }
 }
 
@@ -832,7 +847,7 @@ function buildHardDeadlineResult(src) {
     return buildFallbackResult(src);
   }
 
-  return {
+  return applyDisplayOptions(src, {
     key: src.key,
     channel: src.channel,
     group: src.group,
@@ -848,7 +863,7 @@ function buildHardDeadlineResult(src) {
     isToday: false,
     downloadUrl: src.siteUrl || src.pageUrl || src.url || null,
     downloadLabel: src.type === 'app-json' ? '다운로드' : '바로가기',
-  };
+  });
 }
 
 const REGION_NAMES = {
