@@ -56,10 +56,11 @@ const SOURCES = [
     type: 'admin-txt',
     timeField: 'time', timeMode: 'utc' },
   // ---------------- ALPHA / API RELAY ----------------
-  { key: 'alpha-api-relay', channel: 'alpha', group: 'api-server', platform: 'relay', label: 'Relay',
-    url: 'https://stapn.113366.com/version.txt',
-    type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
+  // API 카드는 Viewer 1개만 표시한다. Relay API 카드를 다시 보이게 하려면 아래 주석을 해제하세요.
+  // { key: 'alpha-api-relay', channel: 'alpha', group: 'api-server', platform: 'relay', label: 'Relay',
+  //   url: 'https://stapn.113366.com/version.txt',
+  //   type: 'admin-txt',
+  //   timeField: 'time', timeMode: 'utc' },
 
   // ---------------- BETA / APP (Host) ----------------
   { key: 'beta-app-windows', channel: 'beta', group: 'app-host', platform: 'windows', label: 'Win',
@@ -120,10 +121,11 @@ const SOURCES = [
     timeField: 'time', timeMode: 'utc' },
 
   // ---------------- BETA / API RELAY ----------------
-  { key: 'beta-api-relay', channel: 'beta', group: 'api-server', platform: 'relay', label: 'Relay',
-    url: 'https://stbtn.113366.com/version.txt',
-    type: 'admin-txt',
-    timeField: 'time', timeMode: 'utc' },
+  // API 카드는 Viewer 1개만 표시한다. Relay API 카드를 다시 보이게 하려면 아래 주석을 해제하세요.
+  // { key: 'beta-api-relay', channel: 'beta', group: 'api-server', platform: 'relay', label: 'Relay',
+  //   url: 'https://stbtn.113366.com/version.txt',
+  //   type: 'admin-txt',
+  //   timeField: 'time', timeMode: 'utc' },
 ];
 
 // 유일한 타임아웃 설정: 별도 timeoutMs 가 없는 모든 소스가 이 값 하나만 사용한다.
