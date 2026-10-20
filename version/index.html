@@ -229,8 +229,10 @@
   .app-subpanel-host .cards-grid{ grid-template-columns: repeat(4, minmax(90px, 1fr)); }
   .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
   .panel-web{ flex: 4 4 0; min-width: 0; }
-  .panel-api{ flex: 2 2 0; min-width: 0; }
-  .panel-api .cards-grid{ grid-template-columns: repeat(2, minmax(90px, 1fr)); }
+  /* API 패널은 카드 수(--api-cols, JS 에서 지정)에 맞춰 너비/열 수를 정한다.
+     카드 1개면 1열, 패널 비율도 1 이 되어 다른 패널의 카드와 크기가 같게 유지된다. */
+  .panel-api{ flex: var(--api-cols, 1) var(--api-cols, 1) 0; min-width: 0; }
+  .panel-api .cards-grid{ grid-template-columns: repeat(var(--api-cols, 1), minmax(90px, 1fr)); }
   .panel-title.api{ color: var(--green-accent); }
   .app-subpanel .card{ border-color: rgba(91,157,255,0.22); }
   .panel-api .card{ border-color: rgba(74,222,128,0.22); }
@@ -507,6 +509,8 @@
     .panel-app-outer{ flex-direction: column; }
     .app-subpanel-host .cards-grid{ grid-template-columns: repeat(2, 1fr); }
     .app-subpanel-viewer .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+    /* 모바일에서도 API 카드가 다른 카드와 같은 너비(2열 기준)로 보이도록 */
+    .panel-api .cards-grid{ grid-template-columns: repeat(2, 1fr); }
     .cards-grid{ flex: none; grid-auto-rows: auto; }
     .card{ min-height: 190px; }
     .channel{ flex: none; }
@@ -628,7 +632,9 @@
 
   var DOWNLOAD_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>';
 
-  function renderCard(item){
+  // opts.hideName: 카드 왼쪽 위의 아이콘과 이름(예: API 카드의 'Viewer')을 숨긴다. 상태 점은 그대로 오른쪽에 둔다.
+  function renderCard(item, opts){
+    opts = opts || {};
     var card = document.createElement('div');
     card.className = 'card';
     if (item.isToday) card.classList.add('updated-today');
@@ -667,9 +673,10 @@
     }
 
     var displayLabel = (item.label || '').replace(/\n/g, '<br>');
+    var nameHtml = opts.hideName ? '' : ((ICONS[item.platform] || '') + '<span>' + displayLabel + '</span>');
     card.innerHTML =
       '<div class="card-top">' +
-        '<div class="card-name">' + (ICONS[item.platform] || '') + '<span>' + displayLabel + '</span></div>' +
+        '<div class="card-name">' + nameHtml + '</div>' +
         '<span class="status-dot ' + (item.ok ? 'ok' : 'err') + '"></span>' +
       '</div>' +
       '<div class="card-mid">' +
@@ -824,6 +831,8 @@
       if (apiList && apiList.length) {
         var apiPanel = document.createElement('div');
         apiPanel.className = 'panel panel-api';
+        // 카드 수만큼 열/패널 비율을 맞춘다 (현재는 Viewer 1개 → 1열)
+        apiPanel.style.setProperty('--api-cols', String(apiList.length));
 
         var apiTitle = document.createElement('h2');
         apiTitle.className = 'panel-title api';
@@ -832,7 +841,8 @@
 
         var apiGrid = document.createElement('div');
         apiGrid.className = 'cards-grid';
-        apiList.forEach(function(item){ apiGrid.appendChild(renderCard(item)); });
+        // API 카드는 'Viewer' 문구와 아이콘 없이 표시
+        apiList.forEach(function(item){ apiGrid.appendChild(renderCard(item, { hideName: true })); });
         apiPanel.appendChild(apiGrid);
 
         panels.appendChild(apiPanel);
@@ -878,4 +888,4 @@
 })();
 </script>
 </body>
-</html> 
+</html>
