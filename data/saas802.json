@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-21T00:47:19.432158+00:00",
+  "fetchedAt": "2026-10-21T10:08:44.905599+00:00",
   "count": 152,
   "issues": [
     {
@@ -280,7 +280,7 @@
       "번호": 22,
       "일감번호": 281497,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [뷰어][상담이력] 엑셀 저장 파일의 상담내용이 원본보다 짧게 기재됨 — 100자 입력분이 80자에서 잘리고 절단 표시 없음(상세 화면은 전문 표시)",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -982,7 +982,7 @@
       "번호": 76,
       "일감번호": 283102,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][다국어][업데이트] 업데이트 실패 오류 안내 문구가 언어 설정과 무관하게 한국어 고정 — English 에서 본문만 한국어, 버튼은 번역",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -1346,7 +1346,7 @@
       "번호": 104,
       "일감번호": 285097,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [BE][상담이력] 엑셀 다운로드 헤더 — 상담원 언어가 ko/en 외(日本語 등)일 때 한국어가 아닌 영어로 생성 — 기획 'ko/en 외 한국어 폴백' 불일치",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -1775,7 +1775,7 @@
       "번호": 137,
       "일감번호": 286388,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][호스트][Mac][그리기] 호스트 그리기 활성 중 상담 패널이 macOS 시스템 메뉴(Wi-Fi 등) 위에 표시 — 그리기 중 창 표시 순서 정의 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1866,7 +1866,7 @@
       "번호": 144,
       "일감번호": 286805,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA][결함][모바일 호스트][iOS] Viewer 음성이 통화 수신부에서 출력되는 현상",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1879,7 +1879,7 @@
       "번호": 145,
       "일감번호": 286806,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [BE][로그인][그룹 옵션] 'MAC 접근허용' 전체사용 시 허용 목록에 응용뷰어 MAC 등록해도 응용뷰어 로그인 차단 — 웹뷰어도 차단(기획: 응용뷰어만 적용)",
       "우선순위": "높음(High)",
       "담당자": "이경준",
@@ -1892,7 +1892,7 @@
       "번호": 146,
       "일감번호": 286833,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][로그인·그룹 옵션] 여러 그룹 소속 상담원의 로그인 관련 그룹 옵션 판정 규칙 정의 요청 — 중복 로그인·IP·MAC·개인 목록·기본 그룹·최대 세션수 + 상담원이 적용 정책을 알 수 없음",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -1982,8 +1982,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 37,
-      "done": 115,
+      "notDone": 35,
+      "done": 117,
       "total": 152
     },
     "assignees": [
@@ -1997,16 +1997,16 @@
       {
         "name": "김미령",
         "total": 43,
-        "done": 39,
+        "done": 40,
         "complete": false,
-        "rate": 90
+        "rate": 93
       },
       {
         "name": "김성식",
         "total": 9,
-        "done": 5,
+        "done": 4,
         "complete": false,
-        "rate": 55
+        "rate": 44
       },
       {
         "name": "김신혜",
@@ -2060,9 +2060,9 @@
       {
         "name": "오세진",
         "total": 29,
-        "done": 24,
+        "done": 25,
         "complete": false,
-        "rate": 82
+        "rate": 86
       },
       {
         "name": "윤종익",
@@ -2081,9 +2081,9 @@
       {
         "name": "이경준",
         "total": 8,
-        "done": 6,
+        "done": 7,
         "complete": false,
-        "rate": 75
+        "rate": 87
       },
       {
         "name": "이명찬",
@@ -2111,16 +2111,16 @@
       {
         "name": "김신혜",
         "total": 132,
-        "done": 99,
+        "done": 100,
         "complete": false,
         "rate": 75
       },
       {
         "name": "류보배(QA_Bobae)",
         "total": 18,
-        "done": 14,
+        "done": 15,
         "complete": false,
-        "rate": 77
+        "rate": 83
       },
       {
         "name": "송건호",
@@ -2139,8 +2139,8 @@
       },
       {
         "label": "기능(Function)",
-        "progress": 10,
-        "done": 36,
+        "progress": 9,
+        "done": 37,
         "total": 46
       },
       {
@@ -2151,15 +2151,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 26,
-        "done": 77,
+        "progress": 25,
+        "done": 78,
         "total": 103
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 21
+        "count": 18
       },
       {
         "label": "진행",
@@ -2175,11 +2175,11 @@
       },
       {
         "label": "피드백",
-        "count": 5
+        "count": 6
       },
       {
         "label": "완료성공",
-        "count": 18
+        "count": 20
       },
       {
         "label": "중단",
@@ -2288,87 +2288,87 @@
       {
         "date": "2026-10-01",
         "newCount": 8,
-        "doneCount": 6,
+        "doneCount": 5,
         "cumIssue": 80,
-        "cumDone": 72,
-        "rate": 90
+        "cumDone": 71,
+        "rate": 89
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 85,
-        "cumDone": 75,
-        "rate": 88
+        "cumDone": 74,
+        "rate": 87
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 90,
-        "cumDone": 78,
-        "rate": 87
+        "cumDone": 77,
+        "rate": 86
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 93,
-        "cumDone": 80,
-        "rate": 86
+        "cumDone": 79,
+        "rate": 85
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 97,
-        "cumDone": 83,
-        "rate": 86
+        "cumDone": 82,
+        "rate": 85
       },
       {
         "date": "2026-10-12",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 101,
-        "cumDone": 86,
-        "rate": 85
+        "cumDone": 85,
+        "rate": 84
       },
       {
         "date": "2026-10-13",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 104,
-        "cumDone": 88,
-        "rate": 85
+        "cumDone": 87,
+        "rate": 84
       },
       {
         "date": "2026-10-14",
         "newCount": 8,
         "doneCount": 7,
         "cumIssue": 112,
-        "cumDone": 95,
-        "rate": 85
+        "cumDone": 94,
+        "rate": 84
       },
       {
         "date": "2026-10-15",
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 122,
-        "cumDone": 104,
-        "rate": 85
+        "cumDone": 103,
+        "rate": 84
       },
       {
         "date": "2026-10-16",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 130,
-        "cumDone": 109,
-        "rate": 84
+        "cumDone": 108,
+        "rate": 83
       },
       {
         "date": "2026-10-19",
         "newCount": 7,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 137,
         "cumDone": 112,
         "rate": 82
@@ -2376,10 +2376,10 @@
       {
         "date": "2026-10-20",
         "newCount": 15,
-        "doneCount": 3,
+        "doneCount": 5,
         "cumIssue": 152,
-        "cumDone": 115,
-        "rate": 76
+        "cumDone": 117,
+        "rate": 77
       }
     ]
   },
