@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-21T10:08:44.905599+00:00",
-  "count": 152,
+  "fetchedAt": "2026-10-22T01:48:31.245061+00:00",
+  "count": 153,
   "issues": [
     {
       "번호": 1,
@@ -826,7 +826,7 @@
       "번호": 64,
       "일감번호": 282824,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "피드백(Feedback)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][로그인][네트워크 설정] [저장] 실패 시 안내 문구·입력칸 오류 표시가 스크롤 영역 밖에 있으면 보이지 않음 — 화면 변화 없어 '반응 없음'으로 인지",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -1827,7 +1827,7 @@
       "번호": 141,
       "일감번호": 286775,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [파트너 어드민][고객사 등록] '상담원 아이디로 사용' 미체크 등록 시 회사 아이디 계정에 그룹 관리자 권한 추가 부여 — 기획은 고객사 관리자(CA)만",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1905,7 +1905,7 @@
       "번호": 147,
       "일감번호": 286890,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [유저 어드민][BE][진행중인 상담] GA 계정이 소속 밖 그룹의 세션 목록·상세를 조회 — [전체 그룹] 기본 진입·groupId 명시·플래그 없음 모두 범위 미적용(같은 토큰의 그룹 옵션 조회는 403)",
       "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
@@ -1918,7 +1918,7 @@
       "번호": 148,
       "일감번호": 286899,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.2_QA] [유저 어드민][BE][사용자 상세 > 그룹 옵션(사용자 설정)] GA 가 소속 밖 그룹의 사용자 개인 IP 허용 목록을 조회·저장 — 범위 밖 groupId 저장 200·영속(같은 토큰의 그룹 옵션은 403), FE 그룹 드롭다운도 범위 밖 그룹 노출",
       "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
@@ -1978,13 +1978,26 @@
       "작성자": "김신혜",
       "created_on": "2026-10-20 18:28:51",
       "link": "https://projects.rsupport.com/issues/286907"
+    },
+    {
+      "번호": 153,
+      "일감번호": 287216,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA][기획][뷰어] 상담일지 관련 UX문의",
+      "우선순위": "낮음(Low)",
+      "담당자": "변우영",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-10-22 09:29:16",
+      "link": "https://projects.rsupport.com/issues/287216"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 35,
-      "done": 117,
-      "total": 152
+      "notDone": 37,
+      "done": 116,
+      "total": 153
     },
     "assignees": [
       {
@@ -2004,9 +2017,9 @@
       {
         "name": "김성식",
         "total": 9,
-        "done": 4,
+        "done": 3,
         "complete": false,
-        "rate": 44
+        "rate": 33
       },
       {
         "name": "김신혜",
@@ -2038,10 +2051,10 @@
       },
       {
         "name": "변우영",
-        "total": 2,
+        "total": 3,
         "done": 2,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 66
       },
       {
         "name": "송건호",
@@ -2111,16 +2124,16 @@
       {
         "name": "김신혜",
         "total": 132,
-        "done": 100,
+        "done": 99,
         "complete": false,
         "rate": 75
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 18,
+        "total": 19,
         "done": 15,
         "complete": false,
-        "rate": 83
+        "rate": 78
       },
       {
         "name": "송건호",
@@ -2151,19 +2164,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 25,
-        "done": 78,
-        "total": 103
+        "progress": 27,
+        "done": 77,
+        "total": 104
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 18
+        "count": 16
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 14
       },
       {
         "label": "보류",
@@ -2171,11 +2184,11 @@
       },
       {
         "label": "해결",
-        "count": 96
+        "count": 95
       },
       {
         "label": "피드백",
-        "count": 6
+        "count": 7
       },
       {
         "label": "완료성공",
@@ -2193,7 +2206,7 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 0
+        "count": 1
       },
       {
         "label": "보통",
@@ -2280,81 +2293,81 @@
       {
         "date": "2026-09-30",
         "newCount": 11,
-        "doneCount": 10,
+        "doneCount": 9,
         "cumIssue": 72,
-        "cumDone": 66,
-        "rate": 92
+        "cumDone": 65,
+        "rate": 90
       },
       {
         "date": "2026-10-01",
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 80,
-        "cumDone": 71,
-        "rate": 89
+        "cumDone": 70,
+        "rate": 88
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 85,
-        "cumDone": 74,
-        "rate": 87
+        "cumDone": 73,
+        "rate": 86
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 90,
-        "cumDone": 77,
-        "rate": 86
+        "cumDone": 76,
+        "rate": 84
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 93,
-        "cumDone": 79,
-        "rate": 85
+        "cumDone": 78,
+        "rate": 84
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 97,
-        "cumDone": 82,
-        "rate": 85
+        "cumDone": 81,
+        "rate": 84
       },
       {
         "date": "2026-10-12",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 101,
-        "cumDone": 85,
-        "rate": 84
+        "cumDone": 84,
+        "rate": 83
       },
       {
         "date": "2026-10-13",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 104,
-        "cumDone": 87,
-        "rate": 84
+        "cumDone": 86,
+        "rate": 83
       },
       {
         "date": "2026-10-14",
         "newCount": 8,
         "doneCount": 7,
         "cumIssue": 112,
-        "cumDone": 94,
-        "rate": 84
+        "cumDone": 93,
+        "rate": 83
       },
       {
         "date": "2026-10-15",
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 122,
-        "cumDone": 103,
+        "cumDone": 102,
         "rate": 84
       },
       {
@@ -2362,24 +2375,32 @@
         "newCount": 8,
         "doneCount": 5,
         "cumIssue": 130,
-        "cumDone": 108,
-        "rate": 83
+        "cumDone": 107,
+        "rate": 82
       },
       {
         "date": "2026-10-19",
         "newCount": 7,
         "doneCount": 4,
         "cumIssue": 137,
-        "cumDone": 112,
-        "rate": 82
+        "cumDone": 111,
+        "rate": 81
       },
       {
         "date": "2026-10-20",
         "newCount": 15,
         "doneCount": 5,
         "cumIssue": 152,
-        "cumDone": 117,
-        "rate": 77
+        "cumDone": 116,
+        "rate": 76
+      },
+      {
+        "date": "2026-10-22",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 153,
+        "cumDone": 116,
+        "rate": 76
       }
     ]
   },
