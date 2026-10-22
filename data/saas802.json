@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-22T01:48:31.245061+00:00",
-  "count": 153,
+  "fetchedAt": "2026-10-22T08:06:17.806795+00:00",
+  "count": 154,
   "issues": [
     {
       "번호": 1,
@@ -46,7 +46,7 @@
       "번호": 4,
       "일감번호": 281120,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [뷰어][그리기][모바일 호스트] 고객 단말 회전으로 고객 화면 그리기가 지워진 뒤에도 뷰어 [취소]/[다시]/[전체 지우기] 이력·활성 상태가 그대로 남음 — 양측 그리기 상태 불일치(#276072 계열)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -566,7 +566,7 @@
       "번호": 44,
       "일감번호": 282002,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [호스트][Mac][연결·파일 전송] 세션 중 호스트 앱 강제 종료(SIGSEGV) 2회 — Flutter 래스터 스레드 동일 스택, 연결 직후·파일 수신 취소 직후 발생, 크래시 리포트 첨부(심볼화 확인 요청)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -579,7 +579,7 @@
       "번호": 45,
       "일감번호": 282006,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [뷰어][카메라·마이크] 고객에게 카메라/마이크 사용 요청 후 고객 거절 시 거절 토스트 2개 동시 표시 — 호스트 거절 송신은 1회",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -813,7 +813,7 @@
       "번호": 63,
       "일감번호": 282816,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [호스트·응용뷰어][Win][프록시] 시스템 프록시 주소가 'http://주소:포트' 형식이면 연결 실패 — 프록시 주소를 서버 이름으로 조회, 인증창 미표시",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -865,7 +865,7 @@
       "번호": 67,
       "일감번호": 282859,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][Win][설치] 설치 마법사 언어 목록에 번체 중국어(繁體中文) 미포함 — 앱 지원 언어 8종과 불일치(설치 7종)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1125,7 +1125,7 @@
       "번호": 87,
       "일감번호": 283940,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA][결함] [iOS 호스트][뷰어][화면공유] 영상지원 중 고객이 화면 방송 중지 후 모바일 지원 복귀 시 상담원 화면에 영상지원 카메라 화면 정지 표시 — 화면 공유 중단 안내 미노출",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1138,7 +1138,7 @@
       "번호": 88,
       "일감번호": 283943,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어·iOS 호스트][제어 패널] iOS 고객 화면 공유 ON/OFF 버튼 역할·상태 정의 요청 — 공유 시작 주체는 고객 OS 방송 시트, 현행 버튼은 원격 제어 거절 토스트·공유 중단 시 제어 패널 전체 비활성",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1320,7 +1320,7 @@
       "번호": 102,
       "일감번호": 285065,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [뷰어][내비게이터] 전체 모니터 보기 미니맵 — 모니터 사이 빈 공간에 뒤쪽 원격 화면이 비쳐 보임",
       "우선순위": "보통(Normal)",
       "담당자": "윤효주",
@@ -1669,19 +1669,6 @@
     },
     {
       "번호": 129,
-      "일감번호": 286088,
-      "분류": "결함(Serverity)",
-      "상태": "신규(New)",
-      "제목": "[SaaS_8.0.2_QA] [응용뷰어][로그인 세션] 자동 로그아웃 '사용안함'인데 상담 창 없이 약 1시간 경과 후 상담 창을 열면 세션 만료로 로그아웃 — 대시보드만 있는 동안 토큰 미갱신, 서버 강제 로그아웃(REUSE_DETECTED)",
-      "우선순위": "높음(High)",
-      "담당자": "이경준",
-      "상위일감": null,
-      "작성자": "김신혜",
-      "created_on": "2026-10-16 15:34:22",
-      "link": "https://projects.rsupport.com/issues/286088"
-    },
-    {
-      "번호": 130,
       "일감번호": 286089,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1694,7 +1681,7 @@
       "link": "https://projects.rsupport.com/issues/286089"
     },
     {
-      "번호": 131,
+      "번호": 130,
       "일감번호": 286227,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1707,7 +1694,7 @@
       "link": "https://projects.rsupport.com/issues/286227"
     },
     {
-      "번호": 132,
+      "번호": 131,
       "일감번호": 286242,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1720,7 +1707,7 @@
       "link": "https://projects.rsupport.com/issues/286242"
     },
     {
-      "번호": 133,
+      "번호": 132,
       "일감번호": 286244,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1733,7 +1720,7 @@
       "link": "https://projects.rsupport.com/issues/286244"
     },
     {
-      "번호": 134,
+      "번호": 133,
       "일감번호": 286313,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1746,7 +1733,7 @@
       "link": "https://projects.rsupport.com/issues/286313"
     },
     {
-      "번호": 135,
+      "번호": 134,
       "일감번호": 286333,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1759,7 +1746,7 @@
       "link": "https://projects.rsupport.com/issues/286333"
     },
     {
-      "번호": 136,
+      "번호": 135,
       "일감번호": 286365,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1772,7 +1759,7 @@
       "link": "https://projects.rsupport.com/issues/286365"
     },
     {
-      "번호": 137,
+      "번호": 136,
       "일감번호": 286388,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1785,7 +1772,7 @@
       "link": "https://projects.rsupport.com/issues/286388"
     },
     {
-      "번호": 138,
+      "번호": 137,
       "일감번호": 286478,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1798,7 +1785,7 @@
       "link": "https://projects.rsupport.com/issues/286478"
     },
     {
-      "번호": 139,
+      "번호": 138,
       "일감번호": 286524,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1811,7 +1798,7 @@
       "link": "https://projects.rsupport.com/issues/286524"
     },
     {
-      "번호": 140,
+      "번호": 139,
       "일감번호": 286774,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1824,7 +1811,7 @@
       "link": "https://projects.rsupport.com/issues/286774"
     },
     {
-      "번호": 141,
+      "번호": 140,
       "일감번호": 286775,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1837,7 +1824,7 @@
       "link": "https://projects.rsupport.com/issues/286775"
     },
     {
-      "번호": 142,
+      "번호": 141,
       "일감번호": 286778,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1850,7 +1837,7 @@
       "link": "https://projects.rsupport.com/issues/286778"
     },
     {
-      "번호": 143,
+      "번호": 142,
       "일감번호": 286779,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1863,7 +1850,7 @@
       "link": "https://projects.rsupport.com/issues/286779"
     },
     {
-      "번호": 144,
+      "번호": 143,
       "일감번호": 286805,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1876,7 +1863,7 @@
       "link": "https://projects.rsupport.com/issues/286805"
     },
     {
-      "번호": 145,
+      "번호": 144,
       "일감번호": 286806,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1889,7 +1876,7 @@
       "link": "https://projects.rsupport.com/issues/286806"
     },
     {
-      "번호": 146,
+      "번호": 145,
       "일감번호": 286833,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -1902,7 +1889,7 @@
       "link": "https://projects.rsupport.com/issues/286833"
     },
     {
-      "번호": 147,
+      "번호": 146,
       "일감번호": 286890,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1915,7 +1902,7 @@
       "link": "https://projects.rsupport.com/issues/286890"
     },
     {
-      "번호": 148,
+      "번호": 147,
       "일감번호": 286899,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1928,7 +1915,7 @@
       "link": "https://projects.rsupport.com/issues/286899"
     },
     {
-      "번호": 149,
+      "번호": 148,
       "일감번호": 286901,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1941,7 +1928,7 @@
       "link": "https://projects.rsupport.com/issues/286901"
     },
     {
-      "번호": 150,
+      "번호": 149,
       "일감번호": 286903,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1954,7 +1941,7 @@
       "link": "https://projects.rsupport.com/issues/286903"
     },
     {
-      "번호": 151,
+      "번호": 150,
       "일감번호": 286904,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1967,7 +1954,7 @@
       "link": "https://projects.rsupport.com/issues/286904"
     },
     {
-      "번호": 152,
+      "번호": 151,
       "일감번호": 286907,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1980,7 +1967,7 @@
       "link": "https://projects.rsupport.com/issues/286907"
     },
     {
-      "번호": 153,
+      "번호": 152,
       "일감번호": 287216,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1991,13 +1978,39 @@
       "작성자": "류보배(QA_Bobae)",
       "created_on": "2026-10-22 09:29:16",
       "link": "https://projects.rsupport.com/issues/287216"
+    },
+    {
+      "번호": 153,
+      "일감번호": 287247,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA] [기획 확인][뷰어][상담이력] plan 갱신 요청 — 상담이력 엑셀·상담로그 언어(지원 8개 언어)·엑셀 상담내용 전문 수록 미반영",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-22 10:59:44",
+      "link": "https://projects.rsupport.com/issues/287247"
+    },
+    {
+      "번호": 154,
+      "일감번호": 287373,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.2_QA][결함][뷰어][응용뷰어] 로그인화면 언어 변경시(한/영/일 제외) \"PC 시작 시 자동 실행\" 문구가 영어로 노출되는 현상",
+      "우선순위": "낮음(Low)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-10-22 15:02:12",
+      "link": "https://projects.rsupport.com/issues/287373"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 37,
-      "done": 116,
-      "total": 153
+      "notDone": 35,
+      "done": 119,
+      "total": 154
     },
     "assignees": [
       {
@@ -2009,10 +2022,10 @@
       },
       {
         "name": "김미령",
-        "total": 43,
+        "total": 44,
         "done": 40,
         "complete": false,
-        "rate": 93
+        "rate": 90
       },
       {
         "name": "김성식",
@@ -2058,10 +2071,10 @@
       },
       {
         "name": "송건호",
-        "total": 37,
-        "done": 33,
+        "total": 38,
+        "done": 35,
         "complete": false,
-        "rate": 89
+        "rate": 92
       },
       {
         "name": "엄순호",
@@ -2087,16 +2100,16 @@
       {
         "name": "윤효주",
         "total": 5,
-        "done": 2,
+        "done": 3,
         "complete": false,
-        "rate": 40
+        "rate": 60
       },
       {
         "name": "이경준",
-        "total": 8,
+        "total": 7,
         "done": 7,
-        "complete": false,
-        "rate": 87
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "이명찬",
@@ -2124,16 +2137,16 @@
       {
         "name": "김신혜",
         "total": 132,
-        "done": 99,
+        "done": 102,
         "complete": false,
-        "rate": 75
+        "rate": 77
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 19,
+        "total": 20,
         "done": 15,
         "complete": false,
-        "rate": 78
+        "rate": 75
       },
       {
         "name": "송건호",
@@ -2153,8 +2166,8 @@
       {
         "label": "기능(Function)",
         "progress": 9,
-        "done": 37,
-        "total": 46
+        "done": 38,
+        "total": 47
       },
       {
         "label": "개선(Improving)",
@@ -2164,19 +2177,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 27,
-        "done": 77,
+        "progress": 25,
+        "done": 79,
         "total": 104
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 16
+        "count": 17
       },
       {
         "label": "진행",
-        "count": 14
+        "count": 11
       },
       {
         "label": "보류",
@@ -2184,7 +2197,7 @@
       },
       {
         "label": "해결",
-        "count": 95
+        "count": 93
       },
       {
         "label": "피드백",
@@ -2192,7 +2205,7 @@
       },
       {
         "label": "완료성공",
-        "count": 20
+        "count": 25
       },
       {
         "label": "중단",
@@ -2206,15 +2219,15 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 1
+        "count": 2
       },
       {
         "label": "보통",
-        "count": 137
+        "count": 138
       },
       {
         "label": "높음",
-        "count": 15
+        "count": 14
       },
       {
         "label": "긴급",
@@ -2317,90 +2330,90 @@
       {
         "date": "2026-10-06",
         "newCount": 5,
-        "doneCount": 3,
+        "doneCount": 5,
         "cumIssue": 90,
-        "cumDone": 76,
-        "rate": 84
+        "cumDone": 78,
+        "rate": 87
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 93,
-        "cumDone": 78,
-        "rate": 84
+        "cumDone": 80,
+        "rate": 86
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 97,
-        "cumDone": 81,
-        "rate": 84
+        "cumDone": 83,
+        "rate": 86
       },
       {
         "date": "2026-10-12",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 101,
-        "cumDone": 84,
-        "rate": 83
+        "cumDone": 86,
+        "rate": 85
       },
       {
         "date": "2026-10-13",
         "newCount": 3,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 104,
-        "cumDone": 86,
-        "rate": 83
+        "cumDone": 89,
+        "rate": 86
       },
       {
         "date": "2026-10-14",
         "newCount": 8,
         "doneCount": 7,
         "cumIssue": 112,
-        "cumDone": 93,
-        "rate": 83
+        "cumDone": 96,
+        "rate": 86
       },
       {
         "date": "2026-10-15",
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 122,
-        "cumDone": 102,
-        "rate": 84
+        "cumDone": 105,
+        "rate": 86
       },
       {
         "date": "2026-10-16",
-        "newCount": 8,
+        "newCount": 7,
         "doneCount": 5,
-        "cumIssue": 130,
-        "cumDone": 107,
-        "rate": 82
+        "cumIssue": 129,
+        "cumDone": 110,
+        "rate": 85
       },
       {
         "date": "2026-10-19",
         "newCount": 7,
         "doneCount": 4,
-        "cumIssue": 137,
-        "cumDone": 111,
-        "rate": 81
+        "cumIssue": 136,
+        "cumDone": 114,
+        "rate": 84
       },
       {
         "date": "2026-10-20",
         "newCount": 15,
         "doneCount": 5,
-        "cumIssue": 152,
-        "cumDone": 116,
-        "rate": 76
+        "cumIssue": 151,
+        "cumDone": 119,
+        "rate": 79
       },
       {
         "date": "2026-10-22",
-        "newCount": 1,
+        "newCount": 3,
         "doneCount": 0,
-        "cumIssue": 153,
-        "cumDone": 116,
-        "rate": 76
+        "cumIssue": 154,
+        "cumDone": 119,
+        "rate": 77
       }
     ]
   },
