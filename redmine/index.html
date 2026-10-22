@@ -85,7 +85,7 @@
     grid-template-rows: auto auto auto;
     grid-template-areas:
       "status  part     assignee"
-      "status  conn     author"
+      "domain  conn     author"
       "chart   chart    chart";
     gap:8px;
   }
@@ -93,12 +93,13 @@
   .dashboard-grid.no-author{
     grid-template-areas:
       "status  part     assignee"
-      "status  conn     assignee"
+      "domain  conn     assignee"
       "chart   chart    chart";
   }
   .grid-assignee{ grid-area: assignee; min-width:0; }
   .grid-author{ grid-area: author; min-width:0; }
   .grid-status{ grid-area: status; min-width:0; }
+  .grid-domain{ grid-area: domain; min-width:0; }
   .grid-part{ grid-area: part; min-width:0; }
   .grid-conn{ grid-area: conn; min-width:0; }
   .grid-chart{ grid-area: chart; }
@@ -241,7 +242,7 @@
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
         "status  part"
-        "status  conn"
+        "domain  conn"
         "assignee assignee"
         "author  author"
         "chart   chart";
@@ -249,7 +250,7 @@
     .dashboard-grid.no-author{
       grid-template-areas:
         "status  part"
-        "status  conn"
+        "domain  conn"
         "assignee assignee"
         "chart   chart";
     }
@@ -291,6 +292,7 @@
       grid-template-columns: 1fr;
       grid-template-areas:
         "status"
+        "domain"
         "part"
         "conn"
         "assignee"
@@ -301,6 +303,7 @@
       grid-template-columns: 1fr;
       grid-template-areas:
         "status"
+        "domain"
         "part"
         "conn"
         "assignee"
@@ -564,6 +567,14 @@
       </table>
     </div>
 
+    <div class="panel grid-domain">
+      <h2 class="c-green">도메인별</h2>
+      <table>
+        <thead><tr><th>도메인</th><th style="text-align:right">진행중</th><th style="text-align:right">완료됨</th><th style="text-align:right">합계</th></tr></thead>
+        <tbody id="domainBody"><tr><td colspan="4" class="loading">불러오는 중&hellip;</td></tr></tbody>
+      </table>
+    </div>
+
     <div class="panel grid-part">
       <h2 class="c-blue">파트별</h2>
       <table>
@@ -818,6 +829,13 @@
     'admin802': ADMIN_CONN_RULE
   };
 
+  // ====== 도메인 분류 ======
+  // 제목에 '어드민'이 들어 있으면 어드민, 그 외는 모두 서비스
+  var DOMAIN_ORDER = ['어드민', '서비스'];
+  function classifyDomain(title){
+    return String(title || '').indexOf('어드민') !== -1 ? '어드민' : '서비스';
+  }
+
   var CLASSIFY_RULES = {
     part: {
       order: ['기획', '디자인', '개발'],
@@ -915,6 +933,9 @@
       var tags = allTags.slice(1);
       var tagText = tags.join(' ');
       var title = it.제목 || '';
+
+      // 도메인: 제목에 '어드민'이 있으면 어드민, 아니면 서비스
+      it.__domain = classifyDomain(title);
 
       // 파트: 대괄호 태그가 아니라 문장 전체 내용(표현)을 보고 기획/디자인/개발을 판단
       // ("기획(Figma)와 불일치" 같은 참고 문구가 워낙 많아, 단순 "기획" 단어 매칭은 오분류를 유발하기 쉬움)
@@ -1097,6 +1118,7 @@
     renderStatuses();
     renderPart();
     renderConnType();
+    renderDomain();
     renderTodaySummary();
     renderChart();
     renderIssues();
@@ -1547,6 +1569,10 @@
     renderAggPanel('connTypeBody', aggregateGeneric(countedIssues(), '__connType', order), 'conntype');
   }
 
+  function renderDomain(){
+    renderAggPanel('domainBody', aggregateGeneric(countedIssues(), '__domain', DOMAIN_ORDER), 'domain');
+  }
+
   function bindFilterableRows(tbodyId){
     var tbody = document.getElementById(tbodyId);
     if (!tbody) return;
@@ -1709,7 +1735,7 @@
     state.filter = isSame ? null : { type: type, value: value };
 
     var chip = document.getElementById('filterChip');
-    var labelMap = { tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경', author: '작성자' };
+    var labelMap = { tracker: '분류', status: '상태', priority: '우선순위', part: '파트', conntype: '접속유형', feature: '기능', env: '환경', author: '작성자', domain: '도메인' };
     if (state.filter && state.filter.type === 'resolvedUnder'){
       chip.classList.add('active');
       document.getElementById('filterLabel').textContent =
@@ -2125,6 +2151,8 @@
         list = list.filter(function(it){ return it.__part === f.value; });
       } else if (f.type === 'conntype'){
         list = list.filter(function(it){ return it.__connType === f.value; });
+      } else if (f.type === 'domain'){
+        list = list.filter(function(it){ return it.__domain === f.value; });
       } else if (f.type === 'feature'){
         list = list.filter(function(it){ return it.__feature === f.value; });
       } else if (f.type === 'env'){
