@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-22T08:06:17.806795+00:00",
+  "fetchedAt": "2026-10-23T00:51:46.895348+00:00",
   "count": 154,
   "issues": [
     {
@@ -982,7 +982,7 @@
       "번호": 76,
       "일감번호": 283102,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][다국어][업데이트] 업데이트 실패 오류 안내 문구가 언어 설정과 무관하게 한국어 고정 — English 에서 본문만 한국어, 버튼은 번역",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -995,7 +995,7 @@
       "번호": 77,
       "일감번호": 283103,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [응용뷰어][Mac][업데이트] DMG 에서 바로 실행한 뷰어의 업데이트 항상 실패 — 원인·조치 안내 없이 일반 실패 문구만 표시, [다시 시도] 시 재다운로드 후 동일 실패",
       "우선순위": "보통(Normal)",
       "담당자": "김성식",
@@ -2008,8 +2008,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 35,
-      "done": 119,
+      "notDone": 34,
+      "done": 120,
       "total": 154
     },
     "assignees": [
@@ -2030,9 +2030,9 @@
       {
         "name": "김성식",
         "total": 9,
-        "done": 3,
+        "done": 4,
         "complete": false,
-        "rate": 33
+        "rate": 44
       },
       {
         "name": "김신혜",
@@ -2137,9 +2137,9 @@
       {
         "name": "김신혜",
         "total": 132,
-        "done": 102,
+        "done": 103,
         "complete": false,
-        "rate": 77
+        "rate": 78
       },
       {
         "name": "류보배(QA_Bobae)",
@@ -2177,8 +2177,8 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 25,
-        "done": 79,
+        "progress": 24,
+        "done": 80,
         "total": 104
       }
     ],
@@ -2197,15 +2197,15 @@
       },
       {
         "label": "해결",
-        "count": 93
+        "count": 92
       },
       {
         "label": "피드백",
-        "count": 7
+        "count": 6
       },
       {
         "label": "완료성공",
-        "count": 25
+        "count": 27
       },
       {
         "label": "중단",
@@ -2314,97 +2314,97 @@
       {
         "date": "2026-10-01",
         "newCount": 8,
-        "doneCount": 5,
+        "doneCount": 6,
         "cumIssue": 80,
-        "cumDone": 70,
-        "rate": 88
+        "cumDone": 71,
+        "rate": 89
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
         "doneCount": 3,
         "cumIssue": 85,
-        "cumDone": 73,
-        "rate": 86
+        "cumDone": 74,
+        "rate": 87
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 5,
         "cumIssue": 90,
-        "cumDone": 78,
-        "rate": 87
+        "cumDone": 79,
+        "rate": 88
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 93,
-        "cumDone": 80,
-        "rate": 86
+        "cumDone": 81,
+        "rate": 87
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 97,
-        "cumDone": 83,
-        "rate": 86
+        "cumDone": 84,
+        "rate": 87
       },
       {
         "date": "2026-10-12",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 101,
-        "cumDone": 86,
-        "rate": 85
+        "cumDone": 87,
+        "rate": 86
       },
       {
         "date": "2026-10-13",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 104,
-        "cumDone": 89,
-        "rate": 86
+        "cumDone": 90,
+        "rate": 87
       },
       {
         "date": "2026-10-14",
         "newCount": 8,
         "doneCount": 7,
         "cumIssue": 112,
-        "cumDone": 96,
-        "rate": 86
+        "cumDone": 97,
+        "rate": 87
       },
       {
         "date": "2026-10-15",
         "newCount": 10,
         "doneCount": 9,
         "cumIssue": 122,
-        "cumDone": 105,
-        "rate": 86
+        "cumDone": 106,
+        "rate": 87
       },
       {
         "date": "2026-10-16",
         "newCount": 7,
         "doneCount": 5,
         "cumIssue": 129,
-        "cumDone": 110,
-        "rate": 85
+        "cumDone": 111,
+        "rate": 86
       },
       {
         "date": "2026-10-19",
         "newCount": 7,
         "doneCount": 4,
         "cumIssue": 136,
-        "cumDone": 114,
-        "rate": 84
+        "cumDone": 115,
+        "rate": 85
       },
       {
         "date": "2026-10-20",
         "newCount": 15,
         "doneCount": 5,
         "cumIssue": 151,
-        "cumDone": 119,
+        "cumDone": 120,
         "rate": 79
       },
       {
@@ -2412,8 +2412,8 @@
         "newCount": 3,
         "doneCount": 0,
         "cumIssue": 154,
-        "cumDone": 119,
-        "rate": 77
+        "cumDone": 120,
+        "rate": 78
       }
     ]
   },
