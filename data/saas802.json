@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-23T00:51:46.895348+00:00",
-  "count": 154,
+  "fetchedAt": "2026-10-23T07:58:38.959481+00:00",
+  "count": 153,
   "issues": [
     {
       "번호": 1,
@@ -954,19 +954,6 @@
     },
     {
       "번호": 74,
-      "일감번호": 283098,
-      "분류": "결함(Serverity)",
-      "상태": "신규(New)",
-      "제목": "[SaaS_8.0.2_QA][결함][응용뷰어] 호스트 화면에서 텍스트 입력 시 뷰어 키보드 한/영 변환이 정상적으로 동작하지 않음",
-      "우선순위": "높음(High)",
-      "담당자": "김성식",
-      "상위일감": null,
-      "작성자": "류보배(QA_Bobae)",
-      "created_on": "2026-10-01 09:31:45",
-      "link": "https://projects.rsupport.com/issues/283098"
-    },
-    {
-      "번호": 75,
       "일감번호": 283101,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -979,7 +966,7 @@
       "link": "https://projects.rsupport.com/issues/283101"
     },
     {
-      "번호": 76,
+      "번호": 75,
       "일감번호": 283102,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -992,7 +979,7 @@
       "link": "https://projects.rsupport.com/issues/283102"
     },
     {
-      "번호": 77,
+      "번호": 76,
       "일감번호": 283103,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1005,7 +992,7 @@
       "link": "https://projects.rsupport.com/issues/283103"
     },
     {
-      "번호": 78,
+      "번호": 77,
       "일감번호": 283130,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1018,7 +1005,7 @@
       "link": "https://projects.rsupport.com/issues/283130"
     },
     {
-      "번호": 79,
+      "번호": 78,
       "일감번호": 283293,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1031,7 +1018,7 @@
       "link": "https://projects.rsupport.com/issues/283293"
     },
     {
-      "번호": 80,
+      "번호": 79,
       "일감번호": 283298,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1044,7 +1031,7 @@
       "link": "https://projects.rsupport.com/issues/283298"
     },
     {
-      "번호": 81,
+      "번호": 80,
       "일감번호": 283412,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1057,7 +1044,7 @@
       "link": "https://projects.rsupport.com/issues/283412"
     },
     {
-      "번호": 82,
+      "번호": 81,
       "일감번호": 283416,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1070,7 +1057,7 @@
       "link": "https://projects.rsupport.com/issues/283416"
     },
     {
-      "번호": 83,
+      "번호": 82,
       "일감번호": 283570,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1083,7 +1070,7 @@
       "link": "https://projects.rsupport.com/issues/283570"
     },
     {
-      "번호": 84,
+      "번호": 83,
       "일감번호": 283571,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1096,7 +1083,7 @@
       "link": "https://projects.rsupport.com/issues/283571"
     },
     {
-      "번호": 85,
+      "번호": 84,
       "일감번호": 283589,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1109,7 +1096,7 @@
       "link": "https://projects.rsupport.com/issues/283589"
     },
     {
-      "번호": 86,
+      "번호": 85,
       "일감번호": 283915,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1122,7 +1109,7 @@
       "link": "https://projects.rsupport.com/issues/283915"
     },
     {
-      "번호": 87,
+      "번호": 86,
       "일감번호": 283940,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1135,7 +1122,7 @@
       "link": "https://projects.rsupport.com/issues/283940"
     },
     {
-      "번호": 88,
+      "번호": 87,
       "일감번호": 283943,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1148,7 +1135,7 @@
       "link": "https://projects.rsupport.com/issues/283943"
     },
     {
-      "번호": 89,
+      "번호": 88,
       "일감번호": 283949,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1161,7 +1148,7 @@
       "link": "https://projects.rsupport.com/issues/283949"
     },
     {
-      "번호": 90,
+      "번호": 89,
       "일감번호": 283969,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1174,7 +1161,7 @@
       "link": "https://projects.rsupport.com/issues/283969"
     },
     {
-      "번호": 91,
+      "번호": 90,
       "일감번호": 284184,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1187,7 +1174,7 @@
       "link": "https://projects.rsupport.com/issues/284184"
     },
     {
-      "번호": 92,
+      "번호": 91,
       "일감번호": 284191,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1200,7 +1187,7 @@
       "link": "https://projects.rsupport.com/issues/284191"
     },
     {
-      "번호": 93,
+      "번호": 92,
       "일감번호": 284257,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1213,7 +1200,7 @@
       "link": "https://projects.rsupport.com/issues/284257"
     },
     {
-      "번호": 94,
+      "번호": 93,
       "일감번호": 284423,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1226,7 +1213,7 @@
       "link": "https://projects.rsupport.com/issues/284423"
     },
     {
-      "번호": 95,
+      "번호": 94,
       "일감번호": 284435,
       "분류": "기능(Function)",
       "상태": "피드백(Feedback)",
@@ -1239,7 +1226,7 @@
       "link": "https://projects.rsupport.com/issues/284435"
     },
     {
-      "번호": 96,
+      "번호": 95,
       "일감번호": 284445,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1252,7 +1239,7 @@
       "link": "https://projects.rsupport.com/issues/284445"
     },
     {
-      "번호": 97,
+      "번호": 96,
       "일감번호": 284506,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1265,7 +1252,7 @@
       "link": "https://projects.rsupport.com/issues/284506"
     },
     {
-      "번호": 98,
+      "번호": 97,
       "일감번호": 284804,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -1278,7 +1265,7 @@
       "link": "https://projects.rsupport.com/issues/284804"
     },
     {
-      "번호": 99,
+      "번호": 98,
       "일감번호": 284835,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1291,7 +1278,7 @@
       "link": "https://projects.rsupport.com/issues/284835"
     },
     {
-      "번호": 100,
+      "번호": 99,
       "일감번호": 284921,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1304,7 +1291,7 @@
       "link": "https://projects.rsupport.com/issues/284921"
     },
     {
-      "번호": 101,
+      "번호": 100,
       "일감번호": 285014,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1317,7 +1304,7 @@
       "link": "https://projects.rsupport.com/issues/285014"
     },
     {
-      "번호": 102,
+      "번호": 101,
       "일감번호": 285065,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1330,7 +1317,7 @@
       "link": "https://projects.rsupport.com/issues/285065"
     },
     {
-      "번호": 103,
+      "번호": 102,
       "일감번호": 285088,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1343,7 +1330,7 @@
       "link": "https://projects.rsupport.com/issues/285088"
     },
     {
-      "번호": 104,
+      "번호": 103,
       "일감번호": 285097,
       "분류": "결함(Serverity)",
       "상태": "완료성공(End/Success)",
@@ -1356,7 +1343,7 @@
       "link": "https://projects.rsupport.com/issues/285097"
     },
     {
-      "번호": 105,
+      "번호": 104,
       "일감번호": 285523,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1369,7 +1356,7 @@
       "link": "https://projects.rsupport.com/issues/285523"
     },
     {
-      "번호": 106,
+      "번호": 105,
       "일감번호": 285538,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1382,7 +1369,7 @@
       "link": "https://projects.rsupport.com/issues/285538"
     },
     {
-      "번호": 107,
+      "번호": 106,
       "일감번호": 285539,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1395,7 +1382,7 @@
       "link": "https://projects.rsupport.com/issues/285539"
     },
     {
-      "번호": 108,
+      "번호": 107,
       "일감번호": 285548,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1408,7 +1395,7 @@
       "link": "https://projects.rsupport.com/issues/285548"
     },
     {
-      "번호": 109,
+      "번호": 108,
       "일감번호": 285549,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1421,7 +1408,7 @@
       "link": "https://projects.rsupport.com/issues/285549"
     },
     {
-      "번호": 110,
+      "번호": 109,
       "일감번호": 285555,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1434,10 +1421,10 @@
       "link": "https://projects.rsupport.com/issues/285555"
     },
     {
-      "번호": 111,
+      "번호": 110,
       "일감번호": 285661,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA][결함] [웹뷰어][Win 호스트] 상담 중 웹뷰어 새로고침 시 고객 화면 미수신 → 연결 종료·재연결 팝업 — [다시 시도] 해야 복구",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1447,7 +1434,7 @@
       "link": "https://projects.rsupport.com/issues/285661"
     },
     {
-      "번호": 112,
+      "번호": 111,
       "일감번호": 285700,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1460,7 +1447,7 @@
       "link": "https://projects.rsupport.com/issues/285700"
     },
     {
-      "번호": 113,
+      "번호": 112,
       "일감번호": 285744,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1473,7 +1460,7 @@
       "link": "https://projects.rsupport.com/issues/285744"
     },
     {
-      "번호": 114,
+      "번호": 113,
       "일감번호": 285759,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1486,7 +1473,7 @@
       "link": "https://projects.rsupport.com/issues/285759"
     },
     {
-      "번호": 115,
+      "번호": 114,
       "일감번호": 285764,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1499,7 +1486,7 @@
       "link": "https://projects.rsupport.com/issues/285764"
     },
     {
-      "번호": 116,
+      "번호": 115,
       "일감번호": 285801,
       "분류": "결함(Serverity)",
       "상태": "피드백(Feedback)",
@@ -1512,7 +1499,7 @@
       "link": "https://projects.rsupport.com/issues/285801"
     },
     {
-      "번호": 117,
+      "번호": 116,
       "일감번호": 285806,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1525,7 +1512,7 @@
       "link": "https://projects.rsupport.com/issues/285806"
     },
     {
-      "번호": 118,
+      "번호": 117,
       "일감번호": 285822,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1538,7 +1525,7 @@
       "link": "https://projects.rsupport.com/issues/285822"
     },
     {
-      "번호": 119,
+      "번호": 118,
       "일감번호": 285831,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1551,7 +1538,7 @@
       "link": "https://projects.rsupport.com/issues/285831"
     },
     {
-      "번호": 120,
+      "번호": 119,
       "일감번호": 285837,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1564,7 +1551,7 @@
       "link": "https://projects.rsupport.com/issues/285837"
     },
     {
-      "번호": 121,
+      "번호": 120,
       "일감번호": 285844,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1577,7 +1564,7 @@
       "link": "https://projects.rsupport.com/issues/285844"
     },
     {
-      "번호": 122,
+      "번호": 121,
       "일감번호": 285888,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1590,7 +1577,7 @@
       "link": "https://projects.rsupport.com/issues/285888"
     },
     {
-      "번호": 123,
+      "번호": 122,
       "일감번호": 285933,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1603,7 +1590,7 @@
       "link": "https://projects.rsupport.com/issues/285933"
     },
     {
-      "번호": 124,
+      "번호": 123,
       "일감번호": 285944,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1616,7 +1603,7 @@
       "link": "https://projects.rsupport.com/issues/285944"
     },
     {
-      "번호": 125,
+      "번호": 124,
       "일감번호": 285948,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1629,10 +1616,10 @@
       "link": "https://projects.rsupport.com/issues/285948"
     },
     {
-      "번호": 126,
+      "번호": 125,
       "일감번호": 285965,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [모바일 호스트][Android·iOS][화면 공유] 상담 중 단말 무조작 시 화면 꺼짐·자동 잠금으로 화면 공유 중단 — 모바일 호스트 화면 켜짐 유지 미적용(#278937 데스크톱만 적용), 고객 조작 전까지 미복구",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -1642,10 +1629,10 @@
       "link": "https://projects.rsupport.com/issues/285965"
     },
     {
-      "번호": 127,
+      "번호": 126,
       "일감번호": 285978,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [호스트][Win][프로그램 공유] UWP 앱(계산기·설정 등)이 'ApplicationFrameHost' 한 행으로 합쳐지고 한 행 선택 시 다른 UWP 앱까지 함께 송출 — 고객 미선택 앱 노출",
       "우선순위": "높음(High)",
       "담당자": "오세진",
@@ -1655,7 +1642,7 @@
       "link": "https://projects.rsupport.com/issues/285978"
     },
     {
-      "번호": 128,
+      "번호": 127,
       "일감번호": 286001,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1668,7 +1655,7 @@
       "link": "https://projects.rsupport.com/issues/286001"
     },
     {
-      "번호": 129,
+      "번호": 128,
       "일감번호": 286089,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1681,7 +1668,7 @@
       "link": "https://projects.rsupport.com/issues/286089"
     },
     {
-      "번호": 130,
+      "번호": 129,
       "일감번호": 286227,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1694,7 +1681,7 @@
       "link": "https://projects.rsupport.com/issues/286227"
     },
     {
-      "번호": 131,
+      "번호": 130,
       "일감번호": 286242,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1707,7 +1694,7 @@
       "link": "https://projects.rsupport.com/issues/286242"
     },
     {
-      "번호": 132,
+      "번호": 131,
       "일감번호": 286244,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1720,10 +1707,10 @@
       "link": "https://projects.rsupport.com/issues/286244"
     },
     {
-      "번호": 133,
+      "번호": 132,
       "일감번호": 286313,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [호스트][Win][원격 제어] '고객측 알림창 제어 차단' 전체사용인데 상담원 키보드 입력(Tab·Enter)으로 호스트 동의 팝업 버튼 실행됨 — 마우스 클릭만 차단, 상담원 대리 동의 가능",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1733,7 +1720,7 @@
       "link": "https://projects.rsupport.com/issues/286313"
     },
     {
-      "번호": 134,
+      "번호": 133,
       "일감번호": 286333,
       "분류": "결함(Serverity)",
       "상태": "진행(Doing)",
@@ -1746,7 +1733,7 @@
       "link": "https://projects.rsupport.com/issues/286333"
     },
     {
-      "번호": 135,
+      "번호": 134,
       "일감번호": 286365,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1759,7 +1746,7 @@
       "link": "https://projects.rsupport.com/issues/286365"
     },
     {
-      "번호": 136,
+      "번호": 135,
       "일감번호": 286388,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1772,7 +1759,7 @@
       "link": "https://projects.rsupport.com/issues/286388"
     },
     {
-      "번호": 137,
+      "번호": 136,
       "일감번호": 286478,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1785,7 +1772,7 @@
       "link": "https://projects.rsupport.com/issues/286478"
     },
     {
-      "번호": 138,
+      "번호": 137,
       "일감번호": 286524,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1798,7 +1785,7 @@
       "link": "https://projects.rsupport.com/issues/286524"
     },
     {
-      "번호": 139,
+      "번호": 138,
       "일감번호": 286774,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1811,10 +1798,10 @@
       "link": "https://projects.rsupport.com/issues/286774"
     },
     {
-      "번호": 140,
+      "번호": 139,
       "일감번호": 286775,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [파트너 어드민][고객사 등록] '상담원 아이디로 사용' 미체크 등록 시 회사 아이디 계정에 그룹 관리자 권한 추가 부여 — 기획은 고객사 관리자(CA)만",
       "우선순위": "보통(Normal)",
       "담당자": "이혁(Eden)",
@@ -1824,7 +1811,7 @@
       "link": "https://projects.rsupport.com/issues/286775"
     },
     {
-      "번호": 141,
+      "번호": 140,
       "일감번호": 286778,
       "분류": "결함(Serverity)",
       "상태": "해결(Complete)",
@@ -1837,7 +1824,7 @@
       "link": "https://projects.rsupport.com/issues/286778"
     },
     {
-      "번호": 142,
+      "번호": 141,
       "일감번호": 286779,
       "분류": "기능(Function)",
       "상태": "해결(Complete)",
@@ -1850,10 +1837,10 @@
       "link": "https://projects.rsupport.com/issues/286779"
     },
     {
-      "번호": 143,
+      "번호": 142,
       "일감번호": 286805,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA][결함][모바일 호스트][iOS] Viewer 음성이 통화 수신부에서 출력되는 현상",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -1863,10 +1850,10 @@
       "link": "https://projects.rsupport.com/issues/286805"
     },
     {
-      "번호": 144,
+      "번호": 143,
       "일감번호": 286806,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.2_QA] [BE][로그인][그룹 옵션] 'MAC 접근허용' 전체사용 시 허용 목록에 응용뷰어 MAC 등록해도 응용뷰어 로그인 차단 — 웹뷰어도 차단(기획: 응용뷰어만 적용)",
       "우선순위": "높음(High)",
       "담당자": "이경준",
@@ -1876,7 +1863,7 @@
       "link": "https://projects.rsupport.com/issues/286806"
     },
     {
-      "번호": 145,
+      "번호": 144,
       "일감번호": 286833,
       "분류": "기능(Function)",
       "상태": "진행(Doing)",
@@ -1889,10 +1876,10 @@
       "link": "https://projects.rsupport.com/issues/286833"
     },
     {
-      "번호": 146,
+      "번호": 145,
       "일감번호": 286890,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [유저 어드민][BE][진행중인 상담] GA 계정이 소속 밖 그룹의 세션 목록·상세를 조회 — [전체 그룹] 기본 진입·groupId 명시·플래그 없음 모두 범위 미적용(같은 토큰의 그룹 옵션 조회는 403)",
       "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
@@ -1902,10 +1889,10 @@
       "link": "https://projects.rsupport.com/issues/286890"
     },
     {
-      "번호": 147,
+      "번호": 146,
       "일감번호": 286899,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.2_QA] [유저 어드민][BE][사용자 상세 > 그룹 옵션(사용자 설정)] GA 가 소속 밖 그룹의 사용자 개인 IP 허용 목록을 조회·저장 — 범위 밖 groupId 저장 200·영속(같은 토큰의 그룹 옵션은 403), FE 그룹 드롭다운도 범위 밖 그룹 노출",
       "우선순위": "높음(High)",
       "담당자": "이혁(Eden)",
@@ -1915,7 +1902,7 @@
       "link": "https://projects.rsupport.com/issues/286899"
     },
     {
-      "번호": 148,
+      "번호": 147,
       "일감번호": 286901,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1928,7 +1915,7 @@
       "link": "https://projects.rsupport.com/issues/286901"
     },
     {
-      "번호": 149,
+      "번호": 148,
       "일감번호": 286903,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1941,7 +1928,7 @@
       "link": "https://projects.rsupport.com/issues/286903"
     },
     {
-      "번호": 150,
+      "번호": 149,
       "일감번호": 286904,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1954,7 +1941,7 @@
       "link": "https://projects.rsupport.com/issues/286904"
     },
     {
-      "번호": 151,
+      "번호": 150,
       "일감번호": 286907,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1967,7 +1954,7 @@
       "link": "https://projects.rsupport.com/issues/286907"
     },
     {
-      "번호": 152,
+      "번호": 151,
       "일감번호": 287216,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -1980,7 +1967,7 @@
       "link": "https://projects.rsupport.com/issues/287216"
     },
     {
-      "번호": 153,
+      "번호": 152,
       "일감번호": 287247,
       "분류": "기능(Function)",
       "상태": "신규(New)",
@@ -1993,7 +1980,7 @@
       "link": "https://projects.rsupport.com/issues/287247"
     },
     {
-      "번호": 154,
+      "번호": 153,
       "일감번호": 287373,
       "분류": "결함(Serverity)",
       "상태": "신규(New)",
@@ -2008,9 +1995,9 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 34,
-      "done": 120,
-      "total": 154
+      "notDone": 30,
+      "done": 123,
+      "total": 153
     },
     "assignees": [
       {
@@ -2029,10 +2016,10 @@
       },
       {
         "name": "김성식",
-        "total": 9,
+        "total": 8,
         "done": 4,
         "complete": false,
-        "rate": 44
+        "rate": 50
       },
       {
         "name": "김신혜",
@@ -2121,9 +2108,9 @@
       {
         "name": "이혁(Eden)",
         "total": 3,
-        "done": 0,
-        "complete": false,
-        "rate": 0
+        "done": 3,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "장기중(Jay)",
@@ -2137,16 +2124,16 @@
       {
         "name": "김신혜",
         "total": 132,
-        "done": 103,
+        "done": 106,
         "complete": false,
-        "rate": 78
+        "rate": 80
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 20,
+        "total": 19,
         "done": 15,
         "complete": false,
-        "rate": 75
+        "rate": 78
       },
       {
         "name": "송건호",
@@ -2177,19 +2164,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 24,
-        "done": 80,
-        "total": 104
+        "progress": 20,
+        "done": 83,
+        "total": 103
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 17
+        "count": 16
       },
       {
         "label": "진행",
-        "count": 11
+        "count": 8
       },
       {
         "label": "보류",
@@ -2197,7 +2184,7 @@
       },
       {
         "label": "해결",
-        "count": 92
+        "count": 89
       },
       {
         "label": "피드백",
@@ -2205,7 +2192,7 @@
       },
       {
         "label": "완료성공",
-        "count": 27
+        "count": 33
       },
       {
         "label": "중단",
@@ -2227,7 +2214,7 @@
       },
       {
         "label": "높음",
-        "count": 14
+        "count": 13
       },
       {
         "label": "긴급",
@@ -2313,57 +2300,57 @@
       },
       {
         "date": "2026-10-01",
-        "newCount": 8,
+        "newCount": 7,
         "doneCount": 6,
-        "cumIssue": 80,
+        "cumIssue": 79,
         "cumDone": 71,
-        "rate": 89
+        "rate": 90
       },
       {
         "date": "2026-10-02",
         "newCount": 5,
         "doneCount": 3,
-        "cumIssue": 85,
+        "cumIssue": 84,
         "cumDone": 74,
-        "rate": 87
+        "rate": 88
       },
       {
         "date": "2026-10-06",
         "newCount": 5,
         "doneCount": 5,
-        "cumIssue": 90,
+        "cumIssue": 89,
         "cumDone": 79,
-        "rate": 88
+        "rate": 89
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
         "doneCount": 2,
-        "cumIssue": 93,
+        "cumIssue": 92,
         "cumDone": 81,
-        "rate": 87
+        "rate": 88
       },
       {
         "date": "2026-10-08",
         "newCount": 4,
         "doneCount": 3,
-        "cumIssue": 97,
+        "cumIssue": 96,
         "cumDone": 84,
-        "rate": 87
+        "rate": 88
       },
       {
         "date": "2026-10-12",
         "newCount": 4,
         "doneCount": 3,
-        "cumIssue": 101,
+        "cumIssue": 100,
         "cumDone": 87,
-        "rate": 86
+        "rate": 87
       },
       {
         "date": "2026-10-13",
         "newCount": 3,
         "doneCount": 3,
-        "cumIssue": 104,
+        "cumIssue": 103,
         "cumDone": 90,
         "rate": 87
       },
@@ -2371,7 +2358,7 @@
         "date": "2026-10-14",
         "newCount": 8,
         "doneCount": 7,
-        "cumIssue": 112,
+        "cumIssue": 111,
         "cumDone": 97,
         "rate": 87
       },
@@ -2379,41 +2366,41 @@
         "date": "2026-10-15",
         "newCount": 10,
         "doneCount": 9,
-        "cumIssue": 122,
+        "cumIssue": 121,
         "cumDone": 106,
-        "rate": 87
+        "rate": 88
       },
       {
         "date": "2026-10-16",
         "newCount": 7,
         "doneCount": 5,
-        "cumIssue": 129,
+        "cumIssue": 128,
         "cumDone": 111,
-        "rate": 86
+        "rate": 87
       },
       {
         "date": "2026-10-19",
         "newCount": 7,
         "doneCount": 4,
-        "cumIssue": 136,
+        "cumIssue": 135,
         "cumDone": 115,
         "rate": 85
       },
       {
         "date": "2026-10-20",
         "newCount": 15,
-        "doneCount": 5,
-        "cumIssue": 151,
-        "cumDone": 120,
-        "rate": 79
+        "doneCount": 8,
+        "cumIssue": 150,
+        "cumDone": 123,
+        "rate": 82
       },
       {
         "date": "2026-10-22",
         "newCount": 3,
         "doneCount": 0,
-        "cumIssue": 154,
-        "cumDone": 120,
-        "rate": 78
+        "cumIssue": 153,
+        "cumDone": 123,
+        "rate": 80
       }
     ]
   },
