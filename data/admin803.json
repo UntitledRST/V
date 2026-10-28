@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-27T09:40:05.467085+00:00",
+  "fetchedAt": "2026-10-28T00:48:03.013266+00:00",
   "count": 80,
   "issues": [
     {
@@ -547,7 +547,7 @@
       "번호": 37,
       "일감번호": 284209,
       "분류": "개선(Improving)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[서비스][기획요청] 동시 상담 가능 수 오류 시, 서버 내부 예외 메세지 노출됨(사용자용 안내 문구 + 오류 코드로 변경 필요)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -1206,8 +1206,8 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 56,
-      "done": 24,
+      "notDone": 55,
+      "done": 25,
       "total": 80
     },
     "assignees": [
@@ -1235,9 +1235,9 @@
       {
         "name": "송건호",
         "total": 2,
-        "done": 1,
-        "complete": false,
-        "rate": 50
+        "done": 2,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "윤종익",
@@ -1293,9 +1293,9 @@
       {
         "name": "이명찬",
         "total": 42,
-        "done": 21,
+        "done": 22,
         "complete": false,
-        "rate": 50
+        "rate": 52
       },
       {
         "name": "이혁(Eden)",
@@ -1321,8 +1321,8 @@
       },
       {
         "label": "개선(Improving)",
-        "progress": 4,
-        "done": 2,
+        "progress": 3,
+        "done": 3,
         "total": 6
       },
       {
@@ -1339,7 +1339,7 @@
       },
       {
         "label": "진행",
-        "count": 24
+        "count": 23
       },
       {
         "label": "보류",
@@ -1347,7 +1347,7 @@
       },
       {
         "label": "해결",
-        "count": 5
+        "count": 6
       },
       {
         "label": "피드백",
@@ -1560,90 +1560,90 @@
       {
         "date": "2026-10-07",
         "newCount": 3,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 41,
-        "cumDone": 19,
-        "rate": 46
+        "cumDone": 20,
+        "rate": 49
       },
       {
         "date": "2026-10-12",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 42,
-        "cumDone": 19,
-        "rate": 45
+        "cumDone": 20,
+        "rate": 48
       },
       {
         "date": "2026-10-14",
         "newCount": 3,
         "doneCount": 1,
         "cumIssue": 45,
-        "cumDone": 20,
-        "rate": 44
+        "cumDone": 21,
+        "rate": 47
       },
       {
         "date": "2026-10-15",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 46,
-        "cumDone": 21,
-        "rate": 46
+        "cumDone": 22,
+        "rate": 48
       },
       {
         "date": "2026-10-16",
         "newCount": 4,
         "doneCount": 1,
         "cumIssue": 50,
-        "cumDone": 22,
-        "rate": 44
+        "cumDone": 23,
+        "rate": 46
       },
       {
         "date": "2026-10-20",
         "newCount": 6,
         "doneCount": 1,
         "cumIssue": 56,
-        "cumDone": 23,
-        "rate": 41
+        "cumDone": 24,
+        "rate": 43
       },
       {
         "date": "2026-10-21",
         "newCount": 3,
         "doneCount": 1,
         "cumIssue": 59,
-        "cumDone": 24,
-        "rate": 41
+        "cumDone": 25,
+        "rate": 42
       },
       {
         "date": "2026-10-22",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 60,
-        "cumDone": 24,
-        "rate": 40
+        "cumDone": 25,
+        "rate": 42
       },
       {
         "date": "2026-10-23",
         "newCount": 18,
         "doneCount": 0,
         "cumIssue": 78,
-        "cumDone": 24,
-        "rate": 31
+        "cumDone": 25,
+        "rate": 32
       },
       {
         "date": "2026-10-26",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 79,
-        "cumDone": 24,
-        "rate": 30
+        "cumDone": 25,
+        "rate": 32
       },
       {
         "date": "2026-10-27",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 80,
-        "cumDone": 24,
-        "rate": 30
+        "cumDone": 25,
+        "rate": 31
       }
     ]
   },
