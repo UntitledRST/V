@@ -1,5 +1,5 @@
 ﻿{
-    "fetchedAt":  "2026-10-21T04:10:51Z",
+    "fetchedAt":  "2026-10-28T08:05:30Z",
     "status":  200,
-    "body":  "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.3\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-10-20T07:35:35.806Z\",\"version\":\"8.0.3\",\"buildNumber\":\"19\"}}"
+    "body":  "{\"app\":{\"name\":\"RC8 Partner Admin\",\"version\":\"8.0.3\"},\"build\":{\"artifact\":\"padmin\",\"name\":\"padmin\",\"time\":\"2026-10-28T06:10:03.654Z\",\"version\":\"8.0.3\",\"buildNumber\":\"20\"}}"
 }
