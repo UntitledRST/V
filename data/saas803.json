@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-28T00:47:51.827702+00:00",
-  "count": 56,
+  "fetchedAt": "2026-10-30T01:19:28.051609+00:00",
+  "count": 64,
   "issues": [
     {
       "번호": 1,
@@ -98,7 +98,7 @@
       "번호": 8,
       "일감번호": 278561,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.3_QA][법률검토] [기획 확인][공통] 고객 PC 진단 정보(OS·CPU·메모리·네트워크 등)를 고객 동의·어드민 옵션 게이트 없이 수집 — 기획서는 'PC 진단 정보 수집 동의서' 항목 #삭제, 수집 자체의 동의/고지 정책 정의 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -150,7 +150,7 @@
       "번호": 12,
       "일감번호": 283026,
       "분류": "개선(Improving)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [개선][뷰어][파일 공유] 미리보기 썸네일 개별 삭제(X) 시 삭제 안내 없음 — 상담원이 삭제 여부를 인지하기 어려움",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -722,7 +722,7 @@
       "번호": 56,
       "일감번호": 288141,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][결함][뷰어] iOS호스트 영상 모드 > 카메라 제어 및 전환 시 화면 멈춤 현상",
       "우선순위": "높음(High)",
       "담당자": "김성식",
@@ -730,35 +730,139 @@
       "작성자": "류보배(QA_Bobae)",
       "created_on": "2026-10-27 14:38:16",
       "link": "https://projects.rsupport.com/issues/288141"
+    },
+    {
+      "번호": 57,
+      "일감번호": 288361,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA][결함][뷰어][환경설정] 기본 정보 > 프로필 이미지 [기본 이미지] 선택창 B, C, D로 노출되는 현상",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-10-28 13:43:18",
+      "link": "https://projects.rsupport.com/issues/288361"
+    },
+    {
+      "번호": 58,
+      "일감번호": 288416,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][상담이력][연결 정보] 브라우저 없이 접속한 경우 '브라우저' 항목 표시 미정의 — PC 앱 고객 '-'(뷰어 상담 상세) · 응용뷰어 상담원 'Unknown'(유저 어드민)",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-28 15:40:27",
+      "link": "https://projects.rsupport.com/issues/288416"
+    },
+    {
+      "번호": 59,
+      "일감번호": 288573,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][뷰어][자동 로그아웃] 장시간 미사용 자동 로그아웃 안내 문구 정의 요청 — 화면 문구와 기획 문서 문구 상이",
+      "우선순위": "낮음(Low)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-29 13:34:48",
+      "link": "https://projects.rsupport.com/issues/288573"
+    },
+    {
+      "번호": 60,
+      "일감번호": 288576,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][호스트][Win] '다운로드 모듈 삭제' 옵션 동작 요구사항 검토 요청 — RC7 대비 '사용안함'의 다음 연결 단축 효용 없음 · 비정상 종료 잔존분 미회수",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-29 14:39:01",
+      "link": "https://projects.rsupport.com/issues/288576"
+    },
+    {
+      "번호": 61,
+      "일감번호": 288582,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [유저 어드민][상담 이력 상세] 비고 저장 시 \"저장되었습니다\" 표시되나 저장 안 됨 — 새로고침하면 비고 사라짐(파트너 어드민은 서버 저장 호출)",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-29 17:25:17",
+      "link": "https://projects.rsupport.com/issues/288582"
+    },
+    {
+      "번호": 62,
+      "일감번호": 288583,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][뷰어·유저 어드민][상담일지] '상담 구분' 입력 경로 미정의 — 어드민 정의·상세·통계·서버 저장은 있으나 뷰어 상담일지에 선택 항목 없음",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-29 17:35:03",
+      "link": "https://projects.rsupport.com/issues/288583"
+    },
+    {
+      "번호": 63,
+      "일감번호": 288633,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어][알림] 에이전트 공지 본문 HTML 태그 원문 노출 — 알림 목록 미리보기·공지 상세",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-30 09:42:42",
+      "link": "https://projects.rsupport.com/issues/288633"
+    },
+    {
+      "번호": 64,
+      "일감번호": 288643,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][유저 어드민·뷰어][단축메시지] 지원유형 목록 기준·수정 주체·뷰어 그룹 값 처리·화면 문구 미정의",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-30 10:07:24",
+      "link": "https://projects.rsupport.com/issues/288643"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 33,
-      "done": 23,
-      "total": 56
+      "notDone": 35,
+      "done": 29,
+      "total": 64
     },
     "assignees": [
       {
         "name": "권정희",
-        "total": 8,
+        "total": 9,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
         "name": "김미령",
-        "total": 22,
-        "done": 15,
+        "total": 26,
+        "done": 19,
         "complete": false,
-        "rate": 68
+        "rate": 73
       },
       {
         "name": "김성식",
         "total": 2,
-        "done": 0,
+        "done": 1,
         "complete": false,
-        "rate": 0
+        "rate": 50
       },
       {
         "name": "김재원",
@@ -776,10 +880,10 @@
       },
       {
         "name": "송건호",
-        "total": 7,
-        "done": 5,
+        "total": 9,
+        "done": 6,
         "complete": false,
-        "rate": 71
+        "rate": 66
       },
       {
         "name": "오세진",
@@ -787,6 +891,13 @@
         "done": 2,
         "complete": true,
         "rate": 100
+      },
+      {
+        "name": "윤종익",
+        "total": 1,
+        "done": 0,
+        "complete": false,
+        "rate": 0
       },
       {
         "name": "윤효주",
@@ -820,47 +931,47 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 53,
-        "done": 22,
+        "total": 60,
+        "done": 27,
         "complete": false,
-        "rate": 41
+        "rate": 45
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 3,
-        "done": 1,
+        "total": 4,
+        "done": 2,
         "complete": false,
-        "rate": 33
+        "rate": 50
       }
     ],
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 14,
-        "done": 14,
-        "total": 28
+        "progress": 15,
+        "done": 18,
+        "total": 33
       },
       {
         "label": "개선(Improving)",
-        "progress": 1,
-        "done": 0,
+        "progress": 0,
+        "done": 1,
         "total": 1
       },
       {
         "label": "결함(Serverity)",
-        "progress": 18,
-        "done": 9,
-        "total": 27
+        "progress": 20,
+        "done": 10,
+        "total": 30
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 15
+        "count": 16
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 17
       },
       {
         "label": "보류",
@@ -868,7 +979,7 @@
       },
       {
         "label": "해결",
-        "count": 22
+        "count": 28
       },
       {
         "label": "피드백",
@@ -890,11 +1001,11 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 2
+        "count": 3
       },
       {
         "label": "보통",
-        "count": 50
+        "count": 57
       },
       {
         "label": "높음",
@@ -977,74 +1088,98 @@
       {
         "date": "2026-09-30",
         "newCount": 1,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 12,
-        "cumDone": 3,
-        "rate": 25
+        "cumDone": 4,
+        "rate": 33
       },
       {
         "date": "2026-10-08",
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 14,
-        "cumDone": 4,
-        "rate": 29
+        "cumDone": 5,
+        "rate": 36
       },
       {
         "date": "2026-10-15",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 15,
-        "cumDone": 5,
-        "rate": 33
+        "cumDone": 6,
+        "rate": 40
       },
       {
         "date": "2026-10-19",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 16,
-        "cumDone": 6,
-        "rate": 38
+        "cumDone": 7,
+        "rate": 44
       },
       {
         "date": "2026-10-20",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 17,
-        "cumDone": 6,
-        "rate": 35
+        "cumDone": 7,
+        "rate": 41
       },
       {
         "date": "2026-10-22",
         "newCount": 9,
         "doneCount": 2,
         "cumIssue": 26,
-        "cumDone": 8,
-        "rate": 31
+        "cumDone": 9,
+        "rate": 35
       },
       {
         "date": "2026-10-23",
         "newCount": 19,
         "doneCount": 7,
         "cumIssue": 45,
-        "cumDone": 15,
-        "rate": 33
+        "cumDone": 16,
+        "rate": 36
       },
       {
         "date": "2026-10-26",
         "newCount": 5,
         "doneCount": 4,
         "cumIssue": 50,
-        "cumDone": 19,
-        "rate": 38
+        "cumDone": 20,
+        "rate": 40
       },
       {
         "date": "2026-10-27",
         "newCount": 6,
-        "doneCount": 4,
+        "doneCount": 5,
         "cumIssue": 56,
-        "cumDone": 23,
-        "rate": 41
+        "cumDone": 25,
+        "rate": 45
+      },
+      {
+        "date": "2026-10-28",
+        "newCount": 2,
+        "doneCount": 1,
+        "cumIssue": 58,
+        "cumDone": 26,
+        "rate": 45
+      },
+      {
+        "date": "2026-10-29",
+        "newCount": 4,
+        "doneCount": 3,
+        "cumIssue": 62,
+        "cumDone": 29,
+        "rate": 47
+      },
+      {
+        "date": "2026-10-30",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 64,
+        "cumDone": 29,
+        "rate": 45
       }
     ]
   },
