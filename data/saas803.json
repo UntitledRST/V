@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-10-30T01:19:28.051609+00:00",
-  "count": 64,
+  "fetchedAt": "2026-11-02T05:16:42.283211+00:00",
+  "count": 67,
   "issues": [
     {
       "번호": 1,
@@ -280,7 +280,7 @@
       "번호": 22,
       "일감번호": 287398,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [BE][로그인] 상담원 최초 로그인(초기 비밀번호 111111)에 P15(40413) 대신 P12(40412) 응답 — 계정 생성 시 INITIAL_SETUP 이력 미기록",
       "우선순위": "보통(Normal)",
       "담당자": "김재원",
@@ -735,7 +735,7 @@
       "번호": 57,
       "일감번호": 288361,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.3_QA][결함][뷰어][환경설정] 기본 정보 > 프로필 이미지 [기본 이미지] 선택창 B, C, D로 노출되는 현상",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -813,7 +813,7 @@
       "번호": 63,
       "일감번호": 288633,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [뷰어][알림] 에이전트 공지 본문 HTML 태그 원문 노출 — 알림 목록 미리보기·공지 상세",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -834,28 +834,67 @@
       "작성자": "김신혜",
       "created_on": "2026-10-30 10:07:24",
       "link": "https://projects.rsupport.com/issues/288643"
+    },
+    {
+      "번호": 65,
+      "일감번호": 288657,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][유저 어드민·파트너 어드민·서버][접속페이지] 네트워크 그룹·접속 네트워크 자동 설정의 적용 접속 경로 미정의",
+      "우선순위": "보통(Normal)",
+      "담당자": "권정희",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-30 10:55:52",
+      "link": "https://projects.rsupport.com/issues/288657"
+    },
+    {
+      "번호": 66,
+      "일감번호": 288801,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][호스트·뷰어][스크린샷 미리보기] 멀티 모니터 고객의 미리보기 캡처 범위 미정의 — 주 모니터만 전송, 보조 모니터의 프로그램 선택 창 미표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-10-30 15:31:29",
+      "link": "https://projects.rsupport.com/issues/288801"
+    },
+    {
+      "번호": 67,
+      "일감번호": 288886,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [응용뷰어·호스트][연결][스크린샷 미리보기] 연결 실패가 이어지는 동안 상담원 뷰어가 메시지 서버 재연결을 끊임없이 반복 → 호스트가 약 1분 30초 만에 연결 종료 — 상담원 화면은 종료를 모른 채 대기 유지",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-02 09:15:53",
+      "link": "https://projects.rsupport.com/issues/288886"
     }
   ],
   "summary": {
     "completion": {
       "notDone": 35,
-      "done": 29,
-      "total": 64
+      "done": 32,
+      "total": 67
     },
     "assignees": [
       {
         "name": "권정희",
-        "total": 9,
+        "total": 10,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
         "name": "김미령",
-        "total": 26,
-        "done": 19,
+        "total": 27,
+        "done": 20,
         "complete": false,
-        "rate": 73
+        "rate": 74
       },
       {
         "name": "김성식",
@@ -867,9 +906,9 @@
       {
         "name": "김재원",
         "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
+        "done": 1,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "박승진",
@@ -880,10 +919,10 @@
       },
       {
         "name": "송건호",
-        "total": 9,
-        "done": 6,
+        "total": 10,
+        "done": 7,
         "complete": false,
-        "rate": 66
+        "rate": 70
       },
       {
         "name": "오세진",
@@ -931,10 +970,10 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 60,
-        "done": 27,
+        "total": 63,
+        "done": 30,
         "complete": false,
-        "rate": 45
+        "rate": 47
       },
       {
         "name": "류보배(QA_Bobae)",
@@ -947,9 +986,9 @@
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 15,
-        "done": 18,
-        "total": 33
+        "progress": 16,
+        "done": 19,
+        "total": 35
       },
       {
         "label": "개선(Improving)",
@@ -959,9 +998,9 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 20,
-        "done": 10,
-        "total": 30
+        "progress": 19,
+        "done": 12,
+        "total": 31
       }
     ],
     "statuses": [
@@ -979,7 +1018,7 @@
       },
       {
         "label": "해결",
-        "count": 28
+        "count": 31
       },
       {
         "label": "피드백",
@@ -1005,7 +1044,7 @@
       },
       {
         "label": "보통",
-        "count": 57
+        "count": 60
       },
       {
         "label": "높음",
@@ -1128,58 +1167,66 @@
       {
         "date": "2026-10-22",
         "newCount": 9,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 26,
-        "cumDone": 9,
-        "rate": 35
+        "cumDone": 10,
+        "rate": 38
       },
       {
         "date": "2026-10-23",
         "newCount": 19,
         "doneCount": 7,
         "cumIssue": 45,
-        "cumDone": 16,
-        "rate": 36
+        "cumDone": 17,
+        "rate": 38
       },
       {
         "date": "2026-10-26",
         "newCount": 5,
         "doneCount": 4,
         "cumIssue": 50,
-        "cumDone": 20,
-        "rate": 40
+        "cumDone": 21,
+        "rate": 42
       },
       {
         "date": "2026-10-27",
         "newCount": 6,
         "doneCount": 5,
         "cumIssue": 56,
-        "cumDone": 25,
-        "rate": 45
+        "cumDone": 26,
+        "rate": 46
       },
       {
         "date": "2026-10-28",
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 58,
-        "cumDone": 26,
-        "rate": 45
+        "cumDone": 27,
+        "rate": 47
       },
       {
         "date": "2026-10-29",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 62,
-        "cumDone": 29,
-        "rate": 47
+        "cumDone": 30,
+        "rate": 48
       },
       {
         "date": "2026-10-30",
-        "newCount": 2,
+        "newCount": 4,
+        "doneCount": 2,
+        "cumIssue": 66,
+        "cumDone": 32,
+        "rate": 48
+      },
+      {
+        "date": "2026-11-02",
+        "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 64,
-        "cumDone": 29,
-        "rate": 45
+        "cumIssue": 67,
+        "cumDone": 32,
+        "rate": 48
       }
     ]
   },
