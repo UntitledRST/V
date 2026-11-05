@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-11-02T08:53:41.390117+00:00",
-  "count": 86,
+  "fetchedAt": "2026-11-05T01:16:58.373275+00:00",
+  "count": 93,
   "issues": [
     {
       "번호": 1,
@@ -562,7 +562,7 @@
       "번호": 38,
       "일감번호": 284292,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[서비스]공용 계정 라이선스에서 다른 상담원의 세션이 합산되어 상담원별 최대 세션수 초과(40704)로 차단됨",
       "우선순위": "높음(High)",
       "담당자": "이경준",
@@ -850,7 +850,7 @@
       "상태": "신규(New)",
       "제목": "[서비스] PC 라이선스에 대해 '사용중'과 '기간만료' 각 1개씩 보유 계정 > 로그인 시, 뷰어 실행 불가('할당된 라이선스가 없습니다'로 표시)",
       "우선순위": "보통(Normal)",
-      "담당자": "송건호",
+      "담당자": "김재원",
       "상위일감": 286548,
       "작성자": "이명찬",
       "created_on": "2026-11-02 17:03:53",
@@ -860,12 +860,57 @@
     },
     {
       "번호": 58,
+      "일감번호": 289174,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[서비스] 「시작 전」 라이선스가 사용 및 지원 가능 라이선스로 표시 ",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": 286548,
+      "작성자": "이명찬",
+      "created_on": "2026-11-03 10:48:28",
+      "link": "https://projects.rsupport.com/issues/289174",
+      "깊이": 1,
+      "집계제외": false
+    },
+    {
+      "번호": 59,
+      "일감번호": 289270,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[서비스] 비밀번호 찾기로 받은 임시 비밀번호로 로그인 시 '비밀번호 변경 안내' 팝업 미출력 ",
+      "우선순위": "보통(Normal)",
+      "담당자": "김재원",
+      "상위일감": 286548,
+      "작성자": "이명찬",
+      "created_on": "2026-11-03 14:11:17",
+      "link": "https://projects.rsupport.com/issues/289270",
+      "깊이": 1,
+      "집계제외": false
+    },
+    {
+      "번호": 60,
+      "일감번호": 289355,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[서비스] 잠금 계정을 간편 로그인 연결 팝업에 입력하면 '요청 처리에 실패했습니다' 범용 오류 표시 — S10(계정 잠금) 문구 미표시",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": 286548,
+      "작성자": "이명찬",
+      "created_on": "2026-11-03 15:57:06",
+      "link": "https://projects.rsupport.com/issues/289355",
+      "깊이": 1,
+      "집계제외": false
+    },
+    {
+      "번호": 61,
       "일감번호": 286549,
       "분류": "업무(Job)",
       "상태": "신규(New)",
       "제목": "[Admin] 상시 개선·업무",
       "우선순위": "보통(Normal)",
-      "담당자": "",
+      "담당자": "윤종익",
       "상위일감": 286493,
       "작성자": "윤종익",
       "created_on": "2026-10-20 11:22:53",
@@ -874,7 +919,7 @@
       "집계제외": false
     },
     {
-      "번호": 59,
+      "번호": 62,
       "일감번호": 285679,
       "분류": "개선(Improving)",
       "상태": "신규(New)",
@@ -889,7 +934,7 @@
       "집계제외": false
     },
     {
-      "번호": 60,
+      "번호": 63,
       "일감번호": 285680,
       "분류": "개선(Improving)",
       "상태": "해결(Complete)",
@@ -904,10 +949,10 @@
       "집계제외": false
     },
     {
-      "번호": 61,
+      "번호": 64,
       "일감번호": 286554,
       "분류": "업무(Job)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[파트너 어드민] 배너관리 기능 개발",
       "우선순위": "보통(Normal)",
       "담당자": "권정희",
@@ -919,10 +964,10 @@
       "집계제외": false
     },
     {
-      "번호": 62,
+      "번호": 65,
       "일감번호": 285697,
       "분류": "업무(Job)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[FE][파트너 어드민] 배너 목록·등록/수정 화면 재작성(새 배너 API)",
       "우선순위": "보통(Normal)",
       "담당자": "윤종익",
@@ -934,7 +979,7 @@
       "집계제외": false
     },
     {
-      "번호": 63,
+      "번호": 66,
       "일감번호": 286555,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -949,7 +994,7 @@
       "집계제외": false
     },
     {
-      "번호": 64,
+      "번호": 67,
       "일감번호": 282365,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -964,7 +1009,7 @@
       "집계제외": false
     },
     {
-      "번호": 65,
+      "번호": 68,
       "일감번호": 287721,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -979,7 +1024,7 @@
       "집계제외": false
     },
     {
-      "번호": 66,
+      "번호": 69,
       "일감번호": 287722,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -994,7 +1039,7 @@
       "집계제외": false
     },
     {
-      "번호": 67,
+      "번호": 70,
       "일감번호": 287723,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1009,7 +1054,7 @@
       "집계제외": false
     },
     {
-      "번호": 68,
+      "번호": 71,
       "일감번호": 287724,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1024,7 +1069,7 @@
       "집계제외": false
     },
     {
-      "번호": 69,
+      "번호": 72,
       "일감번호": 287725,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1039,7 +1084,7 @@
       "집계제외": false
     },
     {
-      "번호": 70,
+      "번호": 73,
       "일감번호": 287726,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1054,7 +1099,7 @@
       "집계제외": false
     },
     {
-      "번호": 71,
+      "번호": 74,
       "일감번호": 287727,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1069,7 +1114,7 @@
       "집계제외": false
     },
     {
-      "번호": 72,
+      "번호": 75,
       "일감번호": 287728,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1084,7 +1129,7 @@
       "집계제외": false
     },
     {
-      "번호": 73,
+      "번호": 76,
       "일감번호": 287729,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1099,7 +1144,7 @@
       "집계제외": false
     },
     {
-      "번호": 74,
+      "번호": 77,
       "일감번호": 287730,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1114,7 +1159,7 @@
       "집계제외": false
     },
     {
-      "번호": 75,
+      "번호": 78,
       "일감번호": 287731,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1129,7 +1174,7 @@
       "집계제외": false
     },
     {
-      "번호": 76,
+      "번호": 79,
       "일감번호": 287732,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1144,7 +1189,7 @@
       "집계제외": false
     },
     {
-      "번호": 77,
+      "번호": 80,
       "일감번호": 287733,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1159,7 +1204,7 @@
       "집계제외": false
     },
     {
-      "번호": 78,
+      "번호": 81,
       "일감번호": 287734,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1174,7 +1219,7 @@
       "집계제외": false
     },
     {
-      "번호": 79,
+      "번호": 82,
       "일감번호": 287735,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1189,7 +1234,7 @@
       "집계제외": false
     },
     {
-      "번호": 80,
+      "번호": 83,
       "일감번호": 287736,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1204,7 +1249,7 @@
       "집계제외": false
     },
     {
-      "번호": 81,
+      "번호": 84,
       "일감번호": 287737,
       "분류": "업무(Job)",
       "상태": "진행(Doing)",
@@ -1219,7 +1264,7 @@
       "집계제외": false
     },
     {
-      "번호": 82,
+      "번호": 85,
       "일감번호": 276533,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1234,7 +1279,7 @@
       "집계제외": false
     },
     {
-      "번호": 83,
+      "번호": 86,
       "일감번호": 279226,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1249,7 +1294,67 @@
       "집계제외": false
     },
     {
-      "번호": 84,
+      "번호": 87,
+      "일감번호": 279480,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[유저 어드민][전역 > 다운로드 시도] 다운로드 사유 입력 없음",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "상위일감": 286493,
+      "작성자": "윤종익",
+      "created_on": "2026-09-04 13:27:17",
+      "link": "https://projects.rsupport.com/issues/279480",
+      "깊이": 0,
+      "집계제외": false
+    },
+    {
+      "번호": 88,
+      "일감번호": 279505,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[파트너어드민][라이선스 상세 > 라이선스 증서 발급] 라이선스 증서 발급 API 존재하지 않음",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤종익",
+      "상위일감": 286493,
+      "작성자": "윤종익",
+      "created_on": "2026-09-04 14:15:19",
+      "link": "https://projects.rsupport.com/issues/279505",
+      "깊이": 0,
+      "집계제외": false
+    },
+    {
+      "번호": 89,
+      "일감번호": 280235,
+      "분류": "업무(Job)",
+      "상태": "진행(Doing)",
+      "제목": "[유저어드민][BE] 다운로드 사유 입력 API 신설 (RC7 참고)",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "상위일감": 286493,
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-10 09:20:59",
+      "link": "https://projects.rsupport.com/issues/280235",
+      "깊이": 0,
+      "집계제외": false
+    },
+    {
+      "번호": 90,
+      "일감번호": 280341,
+      "분류": "업무(Job)",
+      "상태": "진행(Doing)",
+      "제목": "[파트너어드민][BE] 라이선스 증서 발급 API 신설 — PDF 양식 확보 후 구현",
+      "우선순위": "보통(Normal)",
+      "담당자": "이혁(Eden)",
+      "상위일감": 286493,
+      "작성자": "이혁(Eden)",
+      "created_on": "2026-09-10 14:50:39",
+      "link": "https://projects.rsupport.com/issues/280341",
+      "깊이": 0,
+      "집계제외": false
+    },
+    {
+      "번호": 91,
       "일감번호": 280504,
       "분류": "업무(Job)",
       "상태": "신규(New)",
@@ -1264,7 +1369,7 @@
       "집계제외": false
     },
     {
-      "번호": 85,
+      "번호": 92,
       "일감번호": 281564,
       "분류": "개선(Improving)",
       "상태": "신규(New)",
@@ -1279,7 +1384,7 @@
       "집계제외": false
     },
     {
-      "번호": 86,
+      "번호": 93,
       "일감번호": 286857,
       "분류": "개선(Improving)",
       "상태": "해결(Complete)",
@@ -1296,52 +1401,45 @@
   ],
   "summary": {
     "completion": {
-      "notDone": 61,
-      "done": 25,
-      "total": 86
+      "notDone": 64,
+      "done": 29,
+      "total": 93
     },
     "assignees": [
       {
-        "name": "(미배정)",
-        "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
-      },
-      {
         "name": "권정희",
         "total": 39,
-        "done": 0,
+        "done": 1,
         "complete": false,
-        "rate": 0
+        "rate": 2
       },
       {
         "name": "김재원",
-        "total": 2,
+        "total": 4,
         "done": 0,
         "complete": false,
         "rate": 0
       },
       {
         "name": "송건호",
-        "total": 3,
-        "done": 2,
+        "total": 4,
+        "done": 3,
         "complete": false,
-        "rate": 66
+        "rate": 75
       },
       {
         "name": "윤종익",
-        "total": 6,
-        "done": 2,
+        "total": 9,
+        "done": 3,
         "complete": false,
         "rate": 33
       },
       {
         "name": "이경준",
         "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
+        "done": 1,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "이명찬",
@@ -1352,10 +1450,10 @@
       },
       {
         "name": "이혁(Eden)",
-        "total": 30,
+        "total": 32,
         "done": 20,
         "complete": false,
-        "rate": 66
+        "rate": 62
       },
       {
         "name": "장기중(Jay)",
@@ -1375,24 +1473,24 @@
       },
       {
         "name": "윤종익",
-        "total": 7,
-        "done": 0,
+        "total": 9,
+        "done": 2,
         "complete": false,
-        "rate": 0
+        "rate": 22
       },
       {
         "name": "이명찬",
-        "total": 47,
-        "done": 22,
+        "total": 50,
+        "done": 24,
         "complete": false,
-        "rate": 46
+        "rate": 48
       },
       {
         "name": "이혁(Eden)",
-        "total": 4,
+        "total": 6,
         "done": 1,
         "complete": false,
-        "rate": 25
+        "rate": 16
       },
       {
         "name": "장기중(Jay)",
@@ -1406,8 +1504,8 @@
       {
         "label": "업무(Job)",
         "progress": 33,
-        "done": 1,
-        "total": 34
+        "done": 3,
+        "total": 36
       },
       {
         "label": "개선(Improving)",
@@ -1417,19 +1515,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 25,
-        "done": 21,
-        "total": 46
+        "progress": 28,
+        "done": 23,
+        "total": 51
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 36
+        "count": 38
       },
       {
         "label": "진행",
-        "count": 24
+        "count": 26
       },
       {
         "label": "보류",
@@ -1437,11 +1535,11 @@
       },
       {
         "label": "해결",
-        "count": 6
+        "count": 10
       },
       {
         "label": "피드백",
-        "count": 1
+        "count": 0
       },
       {
         "label": "완료성공",
@@ -1463,7 +1561,7 @@
       },
       {
         "label": "보통",
-        "count": 68
+        "count": 75
       },
       {
         "label": "높음",
@@ -1552,212 +1650,236 @@
         "rate": 54
       },
       {
+        "date": "2026-09-04",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 15,
+        "cumDone": 7,
+        "rate": 47
+      },
+      {
         "date": "2026-09-07",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 14,
+        "cumIssue": 16,
         "cumDone": 8,
-        "rate": 57
+        "rate": 50
       },
       {
         "date": "2026-09-08",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 15,
+        "cumIssue": 17,
         "cumDone": 9,
-        "rate": 60
+        "rate": 53
       },
       {
         "date": "2026-09-09",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 16,
+        "cumIssue": 18,
         "cumDone": 10,
-        "rate": 62
+        "rate": 56
+      },
+      {
+        "date": "2026-09-10",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 20,
+        "cumDone": 10,
+        "rate": 50
       },
       {
         "date": "2026-09-11",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 17,
+        "cumIssue": 21,
         "cumDone": 10,
-        "rate": 59
+        "rate": 48
       },
       {
         "date": "2026-09-14",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 19,
+        "cumIssue": 23,
         "cumDone": 11,
-        "rate": 58
+        "rate": 48
       },
       {
         "date": "2026-09-17",
         "newCount": 2,
         "doneCount": 1,
-        "cumIssue": 21,
+        "cumIssue": 25,
         "cumDone": 12,
-        "rate": 57
+        "rate": 48
       },
       {
         "date": "2026-09-20",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 22,
+        "cumIssue": 26,
         "cumDone": 12,
-        "rate": 55
+        "rate": 46
       },
       {
         "date": "2026-09-22",
         "newCount": 9,
         "doneCount": 3,
-        "cumIssue": 31,
+        "cumIssue": 35,
         "cumDone": 15,
-        "rate": 48
+        "rate": 43
       },
       {
         "date": "2026-09-28",
         "newCount": 2,
         "doneCount": 0,
-        "cumIssue": 33,
+        "cumIssue": 37,
         "cumDone": 15,
-        "rate": 45
+        "rate": 41
       },
       {
         "date": "2026-09-30",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 34,
+        "cumIssue": 38,
         "cumDone": 15,
-        "rate": 44
+        "rate": 39
       },
       {
         "date": "2026-10-01",
         "newCount": 3,
         "doneCount": 2,
-        "cumIssue": 37,
+        "cumIssue": 41,
         "cumDone": 17,
-        "rate": 46
+        "rate": 41
       },
       {
         "date": "2026-10-06",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 38,
+        "cumIssue": 42,
         "cumDone": 18,
-        "rate": 47
+        "rate": 43
       },
       {
         "date": "2026-10-07",
         "newCount": 3,
-        "doneCount": 2,
-        "cumIssue": 41,
-        "cumDone": 20,
-        "rate": 49
+        "doneCount": 3,
+        "cumIssue": 45,
+        "cumDone": 21,
+        "rate": 47
       },
       {
         "date": "2026-10-12",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 42,
-        "cumDone": 20,
-        "rate": 48
+        "cumIssue": 46,
+        "cumDone": 21,
+        "rate": 46
       },
       {
         "date": "2026-10-14",
         "newCount": 3,
-        "doneCount": 1,
-        "cumIssue": 45,
-        "cumDone": 21,
+        "doneCount": 2,
+        "cumIssue": 49,
+        "cumDone": 23,
         "rate": 47
       },
       {
         "date": "2026-10-15",
         "newCount": 1,
         "doneCount": 1,
-        "cumIssue": 46,
-        "cumDone": 22,
+        "cumIssue": 50,
+        "cumDone": 24,
         "rate": 48
       },
       {
         "date": "2026-10-16",
         "newCount": 4,
         "doneCount": 1,
-        "cumIssue": 50,
-        "cumDone": 23,
+        "cumIssue": 54,
+        "cumDone": 25,
         "rate": 46
       },
       {
         "date": "2026-10-20",
         "newCount": 6,
-        "doneCount": 1,
-        "cumIssue": 56,
-        "cumDone": 24,
-        "rate": 43
+        "doneCount": 2,
+        "cumIssue": 60,
+        "cumDone": 27,
+        "rate": 45
       },
       {
         "date": "2026-10-21",
         "newCount": 3,
         "doneCount": 1,
-        "cumIssue": 59,
-        "cumDone": 25,
-        "rate": 42
+        "cumIssue": 63,
+        "cumDone": 28,
+        "rate": 44
       },
       {
         "date": "2026-10-22",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 60,
-        "cumDone": 25,
-        "rate": 42
+        "cumIssue": 64,
+        "cumDone": 28,
+        "rate": 44
       },
       {
         "date": "2026-10-23",
         "newCount": 18,
         "doneCount": 0,
-        "cumIssue": 78,
-        "cumDone": 25,
-        "rate": 32
+        "cumIssue": 82,
+        "cumDone": 28,
+        "rate": 34
       },
       {
         "date": "2026-10-26",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 79,
-        "cumDone": 25,
-        "rate": 32
+        "cumIssue": 83,
+        "cumDone": 28,
+        "rate": 34
       },
       {
         "date": "2026-10-27",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 80,
-        "cumDone": 25,
-        "rate": 31
+        "cumIssue": 84,
+        "cumDone": 28,
+        "rate": 33
       },
       {
         "date": "2026-10-28",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 81,
-        "cumDone": 25,
-        "rate": 31
+        "cumIssue": 85,
+        "cumDone": 28,
+        "rate": 33
       },
       {
         "date": "2026-10-30",
         "newCount": 1,
         "doneCount": 0,
-        "cumIssue": 82,
-        "cumDone": 25,
-        "rate": 30
+        "cumIssue": 86,
+        "cumDone": 28,
+        "rate": 33
       },
       {
         "date": "2026-11-02",
         "newCount": 4,
         "doneCount": 0,
-        "cumIssue": 86,
-        "cumDone": 25,
-        "rate": 29
+        "cumIssue": 90,
+        "cumDone": 28,
+        "rate": 31
+      },
+      {
+        "date": "2026-11-03",
+        "newCount": 3,
+        "doneCount": 1,
+        "cumIssue": 93,
+        "cumDone": 29,
+        "rate": 31
       }
     ]
   },
