@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-11-05T01:16:45.057702+00:00",
-  "count": 79,
+  "fetchedAt": "2026-11-06T01:14:09.532125+00:00",
+  "count": 82,
   "issues": [
     {
       "번호": 1,
@@ -254,7 +254,7 @@
       "번호": 20,
       "일감번호": 287372,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [뷰어][로그인] 라이선스 미할당·승인대기 로그인(서버 40205 LOGIN_LICENSE_UNAVAILABLE)에 \"인증 대기 계정 / 가입 시 작성한 이메일을 확인\" 팝업 표시 — 기획 P5 \"라이선스 이용 불가\" 문구 없음(유저 어드민은 같은 40205 에 P5 정상)",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -943,7 +943,7 @@
       "번호": 73,
       "일감번호": 289538,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [뷰어][접속대기] SMS 전송 시 서버 오류(49001) — SMS 서버 '자동설정' 그룹에서 \"SMS 서버 설정을 확인할 수 없습니다\", 동일 설정 타 고객사는 정상 발송",
       "우선순위": "보통(Normal)",
       "담당자": "장기중(Jay)",
@@ -956,7 +956,7 @@
       "번호": 74,
       "일감번호": 289557,
       "분류": "기능(Function)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [기획 확인][뷰어][접속대기] 고객 권한 준비 단계 카드 — '대기 시간' 표시 여부 확정 및 plan 반영 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -969,7 +969,7 @@
       "번호": 75,
       "일감번호": 289558,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "진행(Doing)",
       "제목": "[SaaS_8.0.3_QA] [뷰어][접속대기] 고객 권한 준비 카드 제목 줄바꿈 — \"고객님이 카메라 권한을 설정하고 있어\" / \"요\" 마지막 한 글자만 둘째 줄 표시",
       "우선순위": "보통(Normal)",
       "담당자": "윤효주",
@@ -1029,13 +1029,52 @@
       "작성자": "송건호",
       "created_on": "2026-11-05 09:13:26",
       "link": "https://projects.rsupport.com/issues/289621"
+    },
+    {
+      "번호": 80,
+      "일감번호": 289652,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA][결함][웹호스트][영상지원] 접속번호 입력한 뒤, [<] 버튼 선택 시 무한 로딩 현상",
+      "우선순위": "보통(Normal)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-05 11:13:04",
+      "link": "https://projects.rsupport.com/issues/289652"
+    },
+    {
+      "번호": 81,
+      "일감번호": 289682,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][호스트·뷰어][접속대기] 준비 단계 카드 '앱 화면' 표시 — 모바일 적용 범위 및 '스크린샷 미리보기' 옵션 연동 정의 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-05 12:28:00",
+      "link": "https://projects.rsupport.com/issues/289682"
+    },
+    {
+      "번호": 82,
+      "일감번호": 289776,
+      "분류": "결함(Serverity)",
+      "상태": "진행(Doing)",
+      "제목": "[SaaS_8.0.3_QA][결함][뷰어][종료화면] Fr/Es/Pt 언어 설정 시 종료화면 버튼명에 말줄임표(...)가 노출되는 현상",
+      "우선순위": "낮음(Low)",
+      "담당자": "변우영",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-05 16:12:49",
+      "link": "https://projects.rsupport.com/issues/289776"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 41,
-      "done": 38,
-      "total": 79
+      "notDone": 40,
+      "done": 42,
+      "total": 82
     },
     "assignees": [
       {
@@ -1047,10 +1086,10 @@
       },
       {
         "name": "김미령",
-        "total": 29,
-        "done": 21,
+        "total": 30,
+        "done": 22,
         "complete": false,
-        "rate": 72
+        "rate": 73
       },
       {
         "name": "김성식",
@@ -1074,18 +1113,25 @@
         "rate": 0
       },
       {
+        "name": "변우영",
+        "total": 1,
+        "done": 0,
+        "complete": false,
+        "rate": 0
+      },
+      {
         "name": "송건호",
         "total": 13,
-        "done": 10,
+        "done": 11,
         "complete": false,
-        "rate": 76
+        "rate": 84
       },
       {
         "name": "오세진",
-        "total": 3,
-        "done": 2,
+        "total": 4,
+        "done": 3,
         "complete": false,
-        "rate": 66
+        "rate": 75
       },
       {
         "name": "윤종익",
@@ -1118,25 +1164,25 @@
       {
         "name": "장기중(Jay)",
         "total": 3,
-        "done": 1,
+        "done": 2,
         "complete": false,
-        "rate": 33
+        "rate": 66
       }
     ],
     "authors": [
       {
         "name": "김신혜",
-        "total": 74,
-        "done": 35,
+        "total": 75,
+        "done": 38,
         "complete": false,
-        "rate": 47
+        "rate": 50
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 4,
-        "done": 3,
+        "total": 6,
+        "done": 4,
         "complete": false,
-        "rate": 75
+        "rate": 66
       },
       {
         "name": "송건호",
@@ -1150,8 +1196,8 @@
       {
         "label": "기능(Function)",
         "progress": 18,
-        "done": 20,
-        "total": 38
+        "done": 21,
+        "total": 39
       },
       {
         "label": "개선(Improving)",
@@ -1161,19 +1207,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 23,
-        "done": 17,
-        "total": 40
+        "progress": 22,
+        "done": 20,
+        "total": 42
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 24
+        "count": 21
       },
       {
         "label": "진행",
-        "count": 16
+        "count": 18
       },
       {
         "label": "보류",
@@ -1181,7 +1227,7 @@
       },
       {
         "label": "해결",
-        "count": 37
+        "count": 41
       },
       {
         "label": "피드백",
@@ -1203,11 +1249,11 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 3
+        "count": 4
       },
       {
         "label": "보통",
-        "count": 70
+        "count": 72
       },
       {
         "label": "높음",
@@ -1322,90 +1368,90 @@
       {
         "date": "2026-10-22",
         "newCount": 9,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 25,
-        "cumDone": 11,
-        "rate": 44
+        "cumDone": 12,
+        "rate": 48
       },
       {
         "date": "2026-10-23",
         "newCount": 19,
         "doneCount": 7,
         "cumIssue": 44,
-        "cumDone": 18,
-        "rate": 41
+        "cumDone": 19,
+        "rate": 43
       },
       {
         "date": "2026-10-26",
         "newCount": 5,
         "doneCount": 4,
         "cumIssue": 49,
-        "cumDone": 22,
-        "rate": 45
+        "cumDone": 23,
+        "rate": 47
       },
       {
         "date": "2026-10-27",
         "newCount": 6,
         "doneCount": 5,
         "cumIssue": 55,
-        "cumDone": 27,
-        "rate": 49
+        "cumDone": 28,
+        "rate": 51
       },
       {
         "date": "2026-10-28",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 57,
-        "cumDone": 29,
-        "rate": 51
+        "cumDone": 30,
+        "rate": 53
       },
       {
         "date": "2026-10-29",
         "newCount": 4,
         "doneCount": 3,
         "cumIssue": 61,
-        "cumDone": 32,
-        "rate": 52
+        "cumDone": 33,
+        "rate": 54
       },
       {
         "date": "2026-10-30",
         "newCount": 4,
         "doneCount": 2,
         "cumIssue": 65,
-        "cumDone": 34,
-        "rate": 52
+        "cumDone": 35,
+        "rate": 54
       },
       {
         "date": "2026-11-02",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 67,
-        "cumDone": 36,
-        "rate": 54
+        "cumDone": 37,
+        "rate": 55
       },
       {
         "date": "2026-11-03",
         "newCount": 4,
         "doneCount": 1,
         "cumIssue": 71,
-        "cumDone": 37,
-        "rate": 52
+        "cumDone": 38,
+        "rate": 54
       },
       {
         "date": "2026-11-04",
         "newCount": 7,
-        "doneCount": 1,
+        "doneCount": 3,
         "cumIssue": 78,
-        "cumDone": 38,
-        "rate": 49
+        "cumDone": 41,
+        "rate": 53
       },
       {
         "date": "2026-11-05",
-        "newCount": 1,
-        "doneCount": 0,
-        "cumIssue": 79,
-        "cumDone": 38,
-        "rate": 48
+        "newCount": 4,
+        "doneCount": 1,
+        "cumIssue": 82,
+        "cumDone": 42,
+        "rate": 51
       }
     ]
   },
