@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-11-10T01:44:28.504402+00:00",
-  "count": 45,
+  "fetchedAt": "2026-11-13T00:52:57.799684+00:00",
+  "count": 54,
   "issues": [
     {
       "번호": 1,
@@ -85,7 +85,7 @@
       "번호": 7,
       "일감번호": 278540,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][법률검토] [기획 확인][공통][로그] 뷰어·호스트·접속페이지 시스템 로그가 상담원·세션 식별자와 함께 서비스 서버로 상시 원격 전송(OTLP) — 고지·보존 기간·옵트아웃 정책 정의 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -98,7 +98,7 @@
       "번호": 8,
       "일감번호": 278561,
       "분류": "기능(Function)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][법률검토] [기획 확인][공통] 고객 PC 진단 정보(OS·CPU·메모리·네트워크 등)를 고객 동의·어드민 옵션 게이트 없이 수집 — 기획서는 'PC 진단 정보 수집 동의서' 항목 #삭제, 수집 자체의 동의/고지 정책 정의 요청",
       "우선순위": "보통(Normal)",
       "담당자": "김미령",
@@ -527,7 +527,7 @@
       "번호": 41,
       "일감번호": 289621,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [BE][세션 공유] 공유 참여자가 상담방(방장) 기준 옵션을 조회할 API 없음 — 참여자 뷰어가 본인 라이선스 옵션으로 기능 버튼 노출",
       "우선순위": "보통(Normal)",
       "담당자": "장기중(Jay)",
@@ -587,28 +587,145 @@
       "작성자": "김신혜",
       "created_on": "2026-11-06 14:25:27",
       "link": "https://projects.rsupport.com/issues/289913"
+    },
+    {
+      "번호": 46,
+      "일감번호": 290472,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA][결함][응용호스트] 설치형 프로그램의 언어 설정 및 설치 유지 정책 확인 요청",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-10 14:48:55",
+      "link": "https://projects.rsupport.com/issues/290472"
+    },
+    {
+      "번호": 47,
+      "일감번호": 290762,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA][결함][응용뷰어][Mac호스트] 상담 진입 시 고객 마우스 커서 표시 설정과 관계없이 커서가 노출되는 현상",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-11 15:14:08",
+      "link": "https://projects.rsupport.com/issues/290762"
+    },
+    {
+      "번호": 48,
+      "일감번호": 290831,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어][파일 전송][디자인] 공유함 파일 전송 확인 팝업 — 안내 문구와 파일명이 같은 글자 모양으로 이어져 구분 어려움, 호스트 전송 확인창과 구성 상이",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-11 17:21:06",
+      "link": "https://projects.rsupport.com/issues/290831"
+    },
+    {
+      "번호": 49,
+      "일감번호": 291139,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [응용뷰어][Win][업데이트] 인앱 업데이트 후 UAC [예] → 뷰어 종료·재실행 없음·설치 미적용 — 다시 실행하면 업데이트 창 반복, 실패 안내 없음",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-12 16:57:56",
+      "link": "https://projects.rsupport.com/issues/291139"
+    },
+    {
+      "번호": 50,
+      "일감번호": 291163,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [응용뷰어][로그인][네트워크 설정] 프록시 서버 도달 불가로 [저장] 실패 시 \"서비스 체크에 실패했습니다\"·서버 주소 칸 강조로 안내 — 프록시 원인 구분 불가, [연결 테스트] 안내와 불일치",
+      "우선순위": "보통(Normal)",
+      "담당자": "김성식",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-12 17:44:18",
+      "link": "https://projects.rsupport.com/issues/291163"
+    },
+    {
+      "번호": 51,
+      "일감번호": 291165,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][응용뷰어][로그인][네트워크 설정] [저장] 실패(서비스 체크 실패) 표시인데 프록시 설정은 저장·적용됨 — [취소] 후에도 변경된 프록시 유지로 로그인 불가",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-12 17:46:58",
+      "link": "https://projects.rsupport.com/issues/291165"
+    },
+    {
+      "번호": 52,
+      "일감번호": 291166,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [응용뷰어][로그인][네트워크 설정][디자인] 프록시 '자동 설정' 선택 시 비활성 입력칸(프록시 주소·포트·아이디·비밀번호)이 활성 칸과 구분되지 않음 — 배경·라벨 동일, 테두리·글자색만 미세 변화",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-12 17:50:04",
+      "link": "https://projects.rsupport.com/issues/291166"
+    },
+    {
+      "번호": 53,
+      "일감번호": 291167,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [응용뷰어][로그인][네트워크 설정] 한국어에서 [기본값 복원] 버튼 이름이 \"기본값 …\"으로 말줄임 — 버튼 폭 고정",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-12 17:52:07",
+      "link": "https://projects.rsupport.com/issues/291167"
+    },
+    {
+      "번호": 54,
+      "일감번호": 291269,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어][제어 패널][디자인] 레이저·스팟라이트 켜면 원격 카드에 안내가 끼어들어 아래 메뉴 전체가 밀림 — 방금 누른 포인터 버튼이 커서 위치에서 벗어남",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-13 09:36:24",
+      "link": "https://projects.rsupport.com/issues/291269"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 9,
-      "done": 36,
-      "total": 45
+      "notDone": 14,
+      "done": 40,
+      "total": 54
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 18,
-        "done": 13,
+        "total": 20,
+        "done": 16,
         "complete": false,
-        "rate": 72
+        "rate": 80
       },
       {
         "name": "김성식",
-        "total": 3,
+        "total": 4,
         "done": 2,
         "complete": false,
-        "rate": 66
+        "rate": 50
       },
       {
         "name": "박승진",
@@ -626,10 +743,10 @@
       },
       {
         "name": "송건호",
-        "total": 11,
+        "total": 13,
         "done": 11,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 84
       },
       {
         "name": "오세진",
@@ -640,10 +757,10 @@
       },
       {
         "name": "윤효주",
-        "total": 2,
+        "total": 6,
         "done": 2,
-        "complete": true,
-        "rate": 100
+        "complete": false,
+        "rate": 33
       },
       {
         "name": "이경준",
@@ -655,40 +772,40 @@
       {
         "name": "장기중(Jay)",
         "total": 3,
-        "done": 2,
-        "complete": false,
-        "rate": 66
+        "done": 3,
+        "complete": true,
+        "rate": 100
       }
     ],
     "authors": [
       {
         "name": "김신혜",
-        "total": 38,
-        "done": 30,
+        "total": 45,
+        "done": 32,
         "complete": false,
-        "rate": 78
+        "rate": 71
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 6,
-        "done": 6,
-        "complete": true,
-        "rate": 100
+        "total": 8,
+        "done": 7,
+        "complete": false,
+        "rate": 87
       },
       {
         "name": "송건호",
         "total": 1,
-        "done": 0,
-        "complete": false,
-        "rate": 0
+        "done": 1,
+        "complete": true,
+        "rate": 100
       }
     ],
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 6,
-        "done": 12,
-        "total": 18
+        "progress": 5,
+        "done": 14,
+        "total": 19
       },
       {
         "label": "개선(Improving)",
@@ -698,19 +815,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 3,
-        "done": 23,
-        "total": 26
+        "progress": 9,
+        "done": 25,
+        "total": 34
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 3
+        "count": 10
       },
       {
         "label": "진행",
-        "count": 5
+        "count": 3
       },
       {
         "label": "보류",
@@ -718,7 +835,7 @@
       },
       {
         "label": "해결",
-        "count": 35
+        "count": 39
       },
       {
         "label": "피드백",
@@ -744,7 +861,7 @@
       },
       {
         "label": "보통",
-        "count": 42
+        "count": 51
       },
       {
         "label": "높음",
@@ -795,146 +912,178 @@
       {
         "date": "2026-08-27",
         "newCount": 3,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 7,
-        "cumDone": 2,
-        "rate": 29
+        "cumDone": 3,
+        "rate": 43
       },
       {
         "date": "2026-08-28",
         "newCount": 2,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 9,
-        "cumDone": 3,
-        "rate": 33
+        "cumDone": 5,
+        "rate": 56
       },
       {
         "date": "2026-09-23",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 10,
-        "cumDone": 4,
-        "rate": 40
+        "cumDone": 6,
+        "rate": 60
       },
       {
         "date": "2026-09-30",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 11,
-        "cumDone": 5,
-        "rate": 45
+        "cumDone": 7,
+        "rate": 64
       },
       {
         "date": "2026-10-08",
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 13,
-        "cumDone": 6,
-        "rate": 46
+        "cumDone": 8,
+        "rate": 62
       },
       {
         "date": "2026-10-15",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 14,
-        "cumDone": 7,
-        "rate": 50
+        "cumDone": 9,
+        "rate": 64
       },
       {
         "date": "2026-10-19",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 15,
-        "cumDone": 8,
-        "rate": 53
+        "cumDone": 10,
+        "rate": 67
       },
       {
         "date": "2026-10-22",
         "newCount": 3,
         "doneCount": 3,
         "cumIssue": 18,
-        "cumDone": 11,
-        "rate": 61
+        "cumDone": 13,
+        "rate": 72
       },
       {
         "date": "2026-10-23",
         "newCount": 6,
         "doneCount": 6,
         "cumIssue": 24,
-        "cumDone": 17,
-        "rate": 71
+        "cumDone": 19,
+        "rate": 79
       },
       {
         "date": "2026-10-26",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 28,
-        "cumDone": 21,
-        "rate": 75
+        "cumDone": 23,
+        "rate": 82
       },
       {
         "date": "2026-10-27",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 30,
-        "cumDone": 23,
-        "rate": 77
+        "cumDone": 25,
+        "rate": 83
       },
       {
         "date": "2026-10-28",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 32,
-        "cumDone": 25,
-        "rate": 78
+        "cumDone": 27,
+        "rate": 84
       },
       {
         "date": "2026-10-30",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 33,
-        "cumDone": 26,
-        "rate": 79
+        "cumDone": 28,
+        "rate": 85
       },
       {
         "date": "2026-11-02",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 35,
-        "cumDone": 28,
-        "rate": 80
+        "cumDone": 30,
+        "rate": 86
       },
       {
         "date": "2026-11-03",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 36,
-        "cumDone": 28,
-        "rate": 78
+        "cumDone": 30,
+        "rate": 83
       },
       {
         "date": "2026-11-04",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 40,
-        "cumDone": 32,
-        "rate": 80
+        "cumDone": 34,
+        "rate": 85
       },
       {
         "date": "2026-11-05",
         "newCount": 4,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 44,
-        "cumDone": 35,
-        "rate": 80
+        "cumDone": 38,
+        "rate": 86
       },
       {
         "date": "2026-11-06",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 45,
-        "cumDone": 36,
-        "rate": 80
+        "cumDone": 39,
+        "rate": 87
+      },
+      {
+        "date": "2026-11-10",
+        "newCount": 1,
+        "doneCount": 1,
+        "cumIssue": 46,
+        "cumDone": 40,
+        "rate": 87
+      },
+      {
+        "date": "2026-11-11",
+        "newCount": 2,
+        "doneCount": 0,
+        "cumIssue": 48,
+        "cumDone": 40,
+        "rate": 83
+      },
+      {
+        "date": "2026-11-12",
+        "newCount": 5,
+        "doneCount": 0,
+        "cumIssue": 53,
+        "cumDone": 40,
+        "rate": 75
+      },
+      {
+        "date": "2026-11-13",
+        "newCount": 1,
+        "doneCount": 0,
+        "cumIssue": 54,
+        "cumDone": 40,
+        "rate": 74
       }
     ]
   },
