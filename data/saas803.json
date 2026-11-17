@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-11-13T00:52:57.799684+00:00",
-  "count": 54,
+  "fetchedAt": "2026-11-17T06:46:44.634996+00:00",
+  "count": 62,
   "issues": [
     {
       "번호": 1,
@@ -605,7 +605,7 @@
       "번호": 47,
       "일감번호": 290762,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][결함][응용뷰어][Mac호스트] 상담 진입 시 고객 마우스 커서 표시 설정과 관계없이 커서가 노출되는 현상",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -631,7 +631,7 @@
       "번호": 49,
       "일감번호": 291139,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [응용뷰어][Win][업데이트] 인앱 업데이트 후 UAC [예] → 뷰어 종료·재실행 없음·설치 미적용 — 다시 실행하면 업데이트 창 반복, 실패 안내 없음",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -660,7 +660,7 @@
       "상태": "신규(New)",
       "제목": "[SaaS_8.0.3_QA] [기획 확인][응용뷰어][로그인][네트워크 설정] [저장] 실패(서비스 체크 실패) 표시인데 프록시 설정은 저장·적용됨 — [취소] 후에도 변경된 프록시 유지로 로그인 불가",
       "우선순위": "보통(Normal)",
-      "담당자": "김미령",
+      "담당자": "윤효주",
       "상위일감": null,
       "작성자": "김신혜",
       "created_on": "2026-11-12 17:46:58",
@@ -704,19 +704,123 @@
       "작성자": "김신혜",
       "created_on": "2026-11-13 09:36:24",
       "link": "https://projects.rsupport.com/issues/291269"
+    },
+    {
+      "번호": 55,
+      "일감번호": 291316,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA][결함][뷰어][그리기] [새 연결 시작하기]로 신규 상담 시작 시 이전 상담에서 선택한 그리기 도구가 유지되는 현상",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-13 11:20:55",
+      "link": "https://projects.rsupport.com/issues/291316"
+    },
+    {
+      "번호": 56,
+      "일감번호": 291342,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA][결함][뷰어][재연결] Android 호스트 앱 백그라운드 상태에서 재연결 시 연결 실패 팝업이 노출되는 현상",
+      "우선순위": "높음(High)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-13 13:05:46",
+      "link": "https://projects.rsupport.com/issues/291342"
+    },
+    {
+      "번호": 57,
+      "일감번호": 291396,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][호스트][Mac] '다운로드 모듈 삭제' 사용안함 시 다운로드 폴더 누적 — #274642 해소 증상 재현",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-13 14:19:23",
+      "link": "https://projects.rsupport.com/issues/291396"
+    },
+    {
+      "번호": 58,
+      "일감번호": 291684,
+      "분류": "결함(Serverity)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어·호스트][영상지원][인식] 상담 일시정지 중 OCR·바코드 인식이 시작·유지됨 — 고객 화면에 일시정지 안내와 인식 화면이 겹치고, OCR [전송] 시 카메라 내용이 상담원에게 전달됨",
+      "우선순위": "보통(Normal)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-16 15:35:14",
+      "link": "https://projects.rsupport.com/issues/291684"
+    },
+    {
+      "번호": 59,
+      "일감번호": 291693,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [호스트][영상지원][토스트] 사진 모드 촬영 전 그리기 비활성 안내 토스트가 2줄에서 말줄임 — \"…사진을 촬영...\"으로 잘려 사용 가능 조건이 전달되지 않음",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-16 16:01:29",
+      "link": "https://projects.rsupport.com/issues/291693"
+    },
+    {
+      "번호": 60,
+      "일감번호": 291752,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [웹호스트][영상지원][연결 종료] 같은 탭에서 열린 웹 호스트는 상담 종료 후 '연결을 종료하는 중' 화면 고착 — 접속페이지 응답 지연으로 새 창이 막힌 경우·주소 직접 접속, 탭 미닫힘·이동 수단 없음",
+      "우선순위": "보통(Normal)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-16 17:16:07",
+      "link": "https://projects.rsupport.com/issues/291752"
+    },
+    {
+      "번호": 61,
+      "일감번호": 291859,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][호스트·뷰어][모바일앱][지원 방식 전환] 음성 대화 중 모바일지원→영상지원 전환 시 고객 마이크 해제·재동의 — 같은 음성 대화 기능인데 끊기고 다시 요청·허용 필요",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-17 11:09:22",
+      "link": "https://projects.rsupport.com/issues/291859"
+    },
+    {
+      "번호": 62,
+      "일감번호": 291948,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA][결함][뷰어] 제어 메뉴 내 특수키(Win+L, Alt+F4 등) 실행되지 않는 현상",
+      "우선순위": "높음(High)",
+      "담당자": "오세진",
+      "상위일감": null,
+      "작성자": "류보배(QA_Bobae)",
+      "created_on": "2026-11-17 15:15:37",
+      "link": "https://projects.rsupport.com/issues/291948"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 14,
-      "done": 40,
-      "total": 54
+      "notDone": 17,
+      "done": 45,
+      "total": 62
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 20,
-        "done": 16,
+        "total": 21,
+        "done": 17,
         "complete": false,
         "rate": 80
       },
@@ -743,24 +847,24 @@
       },
       {
         "name": "송건호",
-        "total": 13,
-        "done": 11,
+        "total": 15,
+        "done": 14,
         "complete": false,
-        "rate": 84
+        "rate": 93
       },
       {
         "name": "오세진",
-        "total": 5,
-        "done": 4,
+        "total": 8,
+        "done": 5,
         "complete": false,
-        "rate": 80
+        "rate": 62
       },
       {
         "name": "윤효주",
-        "total": 6,
+        "total": 8,
         "done": 2,
         "complete": false,
-        "rate": 33
+        "rate": 25
       },
       {
         "name": "이경준",
@@ -780,17 +884,17 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 45,
-        "done": 32,
+        "total": 50,
+        "done": 35,
         "complete": false,
-        "rate": 71
+        "rate": 70
       },
       {
         "name": "류보배(QA_Bobae)",
-        "total": 8,
-        "done": 7,
+        "total": 11,
+        "done": 9,
         "complete": false,
-        "rate": 87
+        "rate": 81
       },
       {
         "name": "송건호",
@@ -803,9 +907,9 @@
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 5,
-        "done": 14,
-        "total": 19
+        "progress": 6,
+        "done": 15,
+        "total": 21
       },
       {
         "label": "개선(Improving)",
@@ -815,15 +919,15 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 9,
-        "done": 25,
-        "total": 34
+        "progress": 11,
+        "done": 29,
+        "total": 40
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 10
+        "count": 13
       },
       {
         "label": "진행",
@@ -835,7 +939,7 @@
       },
       {
         "label": "해결",
-        "count": 39
+        "count": 44
       },
       {
         "label": "피드백",
@@ -861,11 +965,11 @@
       },
       {
         "label": "보통",
-        "count": 51
+        "count": 57
       },
       {
         "label": "높음",
-        "count": 2
+        "count": 4
       },
       {
         "label": "긴급",
@@ -1064,26 +1168,42 @@
       {
         "date": "2026-11-11",
         "newCount": 2,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 48,
-        "cumDone": 40,
-        "rate": 83
+        "cumDone": 41,
+        "rate": 85
       },
       {
         "date": "2026-11-12",
         "newCount": 5,
-        "doneCount": 0,
+        "doneCount": 1,
         "cumIssue": 53,
-        "cumDone": 40,
-        "rate": 75
+        "cumDone": 42,
+        "rate": 79
       },
       {
         "date": "2026-11-13",
-        "newCount": 1,
+        "newCount": 4,
+        "doneCount": 2,
+        "cumIssue": 57,
+        "cumDone": 44,
+        "rate": 77
+      },
+      {
+        "date": "2026-11-16",
+        "newCount": 3,
+        "doneCount": 1,
+        "cumIssue": 60,
+        "cumDone": 45,
+        "rate": 75
+      },
+      {
+        "date": "2026-11-17",
+        "newCount": 2,
         "doneCount": 0,
-        "cumIssue": 54,
-        "cumDone": 40,
-        "rate": 74
+        "cumIssue": 62,
+        "cumDone": 45,
+        "rate": 73
       }
     ]
   },
