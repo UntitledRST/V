@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "fetchedAt": "2026-11-20T01:02:42.413437+00:00",
-  "count": 68,
+  "fetchedAt": "2026-11-23T05:39:55.485127+00:00",
+  "count": 75,
   "issues": [
     {
       "번호": 1,
@@ -319,7 +319,7 @@
       "번호": 25,
       "일감번호": 287815,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [호스트] 뷰어 숫자 키패드 입력이 호스트에 반영되지 않는 이슈 — 연산자(Windows·Android)·숫자(Android)",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -345,7 +345,7 @@
       "번호": 27,
       "일감번호": 287909,
       "분류": "결함(Serverity)",
-      "상태": "해결(Complete)",
+      "상태": "완료성공(End/Success)",
       "제목": "[SaaS_8.0.3_QA] [응용뷰어][로그인 세션] 상담 중 로그아웃 후 재로그인 시 이전 토큰 사용 — 약 30분 뒤 상담 연결 중 세션 만료",
       "우선순위": "보통(Normal)",
       "담당자": "송건호",
@@ -540,7 +540,7 @@
       "번호": 42,
       "일감번호": 289652,
       "분류": "결함(Serverity)",
-      "상태": "피드백(Feedback)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][결함][웹호스트][영상지원] 접속번호 입력한 뒤, [<] 버튼 선택 시 무한 로딩 현상",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -722,7 +722,7 @@
       "번호": 56,
       "일감번호": 291342,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA][결함][뷰어][재연결] Android 호스트 앱 백그라운드 상태에서 재연결 시 연결 실패 팝업이 노출되는 현상",
       "우선순위": "높음(High)",
       "담당자": "송건호",
@@ -774,7 +774,7 @@
       "번호": 60,
       "일감번호": 291752,
       "분류": "결함(Serverity)",
-      "상태": "신규(New)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [웹호스트][영상지원][연결 종료] 같은 탭에서 열린 웹 호스트는 상담 종료 후 '연결을 종료하는 중' 화면 고착 — 접속페이지 응답 지연으로 새 창이 막힌 경우·주소 직접 접속, 탭 미닫힘·이동 수단 없음",
       "우선순위": "보통(Normal)",
       "담당자": "오세진",
@@ -826,7 +826,7 @@
       "번호": 64,
       "일감번호": 292680,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [웹뷰어][접속 전 대기] '카메라 기능 사용'=사용안함인데 대기 화면에 \"Camera and Microphone Permission Guide\" 노출 — 카메라 권한만 거부된 상태에서도 안내 팝업 표시",
       "우선순위": "보통(Normal)",
       "담당자": "이경준",
@@ -839,7 +839,7 @@
       "번호": 65,
       "일감번호": 292683,
       "분류": "결함(Serverity)",
-      "상태": "진행(Doing)",
+      "상태": "해결(Complete)",
       "제목": "[SaaS_8.0.3_QA] [뷰어][권한 안내][다국어] 카메라·마이크 권한 안내 팝업 상단 설명 문구가 English 등에서 읽을 수 없는 크기로 축소 — 한국어·일본어만 정상",
       "우선순위": "보통(Normal)",
       "담당자": "변우영",
@@ -886,21 +886,112 @@
       "작성자": "김신혜",
       "created_on": "2026-11-19 18:14:05",
       "link": "https://projects.rsupport.com/issues/292776"
+    },
+    {
+      "번호": 69,
+      "일감번호": 292806,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][응용뷰어][자동 로그아웃] 세션 만료 팝업 본문이 기획 문구 대신 오류코드 시트 문구로 표시 — 네트워크 오류 \"네트워크에 연결할 수 없습니다.\" ↔ 기획 \"네트워크 연결에 문제가 발생했습니다.\"",
+      "우선순위": "낮음(Low)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 10:07:16",
+      "link": "https://projects.rsupport.com/issues/292806"
+    },
+    {
+      "번호": 70,
+      "일감번호": 292826,
+      "분류": "기능(Function)",
+      "상태": "해결(Complete)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][응용뷰어][로그인 세션] 비정상 종료(강제 종료·크래시) 후 재실행 시 저장된 로그인으로 대시보드 자동 진입 — [X] 종료는 로그아웃, 네트워크 오류 \"자동 로그아웃\" 안내 후에도 로그인 유지",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 11:22:32",
+      "link": "https://projects.rsupport.com/issues/292826"
+    },
+    {
+      "번호": 71,
+      "일감번호": 292835,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [호스트][Mac][워터마크][다국어] 영문 호스트 상담 중 화면 우하단 \"Remote Support in Progress\" 문구가 매우 작게 표시되어 식별 곤란 — 긴 언어 문구일수록 축소(RC7 대비)",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 11:56:30",
+      "link": "https://projects.rsupport.com/issues/292835"
+    },
+    {
+      "번호": 72,
+      "일감번호": 292854,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어][상담이력] 상담 이력 상세 '연결된 상담지원 이력' [상세 보기] 시 상대 상담원 이력이 같은 모양 팝업으로 기존 팝업 위에 겹쳐 열림 — 열림·닫힘 및 누구 이력인지 구분 불가",
+      "우선순위": "보통(Normal)",
+      "담당자": "윤효주",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 13:48:22",
+      "link": "https://projects.rsupport.com/issues/292854"
+    },
+    {
+      "번호": 73,
+      "일감번호": 292896,
+      "분류": "기능(Function)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [기획 확인][뷰어][어드민][상담 이력·통계] 세션 전달·공유 상담의 상담원별 지원 시간·이력 표기 기준 정의 요청 — 이력 카드·통계에 방 전체 시간이 최종 처리자에게 귀속",
+      "우선순위": "보통(Normal)",
+      "담당자": "김미령",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 15:05:21",
+      "link": "https://projects.rsupport.com/issues/292896"
+    },
+    {
+      "번호": 74,
+      "일감번호": 292907,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어][iOS 모바일 지원][GNB 도구] 화면 공유 중 화면 아무 곳이나 클릭하면 \"도구를 사용하려면 영상 지원으로 전환하세요.\" 토스트 표시 — [도구] 탭 클릭이 아닌 경우에도 노출",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 15:45:43",
+      "link": "https://projects.rsupport.com/issues/292907"
+    },
+    {
+      "번호": 75,
+      "일감번호": 292991,
+      "분류": "결함(Serverity)",
+      "상태": "신규(New)",
+      "제목": "[SaaS_8.0.3_QA] [뷰어·호스트][재연결] 상담원 새로고침 재입장과 고객 호스트 PNS 재연결이 겹치면 데이터 채널 미복구 — 채팅·원격 제어 입력 무음 실패, 상태바 PC 이름 누락",
+      "우선순위": "보통(Normal)",
+      "담당자": "송건호",
+      "상위일감": null,
+      "작성자": "김신혜",
+      "created_on": "2026-11-20 17:45:11",
+      "link": "https://projects.rsupport.com/issues/292991"
     }
   ],
   "summary": {
     "completion": {
-      "notDone": 23,
-      "done": 45,
-      "total": 68
+      "notDone": 22,
+      "done": 53,
+      "total": 75
     },
     "assignees": [
       {
         "name": "김미령",
-        "total": 21,
-        "done": 18,
+        "total": 24,
+        "done": 20,
         "complete": false,
-        "rate": 85
+        "rate": 83
       },
       {
         "name": "김성식",
@@ -919,37 +1010,37 @@
       {
         "name": "변우영",
         "total": 2,
-        "done": 1,
-        "complete": false,
-        "rate": 50
+        "done": 2,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "송건호",
-        "total": 15,
-        "done": 14,
+        "total": 17,
+        "done": 15,
         "complete": false,
-        "rate": 93
+        "rate": 88
       },
       {
         "name": "오세진",
         "total": 9,
-        "done": 4,
+        "done": 7,
         "complete": false,
-        "rate": 44
+        "rate": 77
       },
       {
         "name": "윤효주",
-        "total": 10,
+        "total": 12,
         "done": 2,
         "complete": false,
-        "rate": 20
+        "rate": 16
       },
       {
         "name": "이경준",
         "total": 2,
-        "done": 1,
-        "complete": false,
-        "rate": 50
+        "done": 2,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "장기중(Jay)",
@@ -962,17 +1053,17 @@
     "authors": [
       {
         "name": "김신혜",
-        "total": 56,
-        "done": 35,
+        "total": 63,
+        "done": 41,
         "complete": false,
-        "rate": 62
+        "rate": 65
       },
       {
         "name": "류보배(QA_Bobae)",
         "total": 11,
-        "done": 9,
-        "complete": false,
-        "rate": 81
+        "done": 11,
+        "complete": true,
+        "rate": 100
       },
       {
         "name": "송건호",
@@ -985,9 +1076,9 @@
     "trackers": [
       {
         "label": "기능(Function)",
-        "progress": 5,
-        "done": 16,
-        "total": 21
+        "progress": 6,
+        "done": 18,
+        "total": 24
       },
       {
         "label": "개선(Improving)",
@@ -997,19 +1088,19 @@
       },
       {
         "label": "결함(Serverity)",
-        "progress": 18,
-        "done": 28,
-        "total": 46
+        "progress": 16,
+        "done": 34,
+        "total": 50
       }
     ],
     "statuses": [
       {
         "label": "신규",
-        "count": 15
+        "count": 18
       },
       {
         "label": "진행",
-        "count": 6
+        "count": 3
       },
       {
         "label": "보류",
@@ -1017,15 +1108,15 @@
       },
       {
         "label": "해결",
-        "count": 38
+        "count": 45
       },
       {
         "label": "피드백",
-        "count": 2
+        "count": 1
       },
       {
         "label": "완료성공",
-        "count": 7
+        "count": 8
       },
       {
         "label": "중단",
@@ -1039,11 +1130,11 @@
     "priorities": [
       {
         "label": "낮음",
-        "count": 1
+        "count": 2
       },
       {
         "label": "보통",
-        "count": 63
+        "count": 69
       },
       {
         "label": "높음",
@@ -1166,130 +1257,138 @@
       {
         "date": "2026-10-26",
         "newCount": 4,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 28,
-        "cumDone": 22,
-        "rate": 79
+        "cumDone": 23,
+        "rate": 82
       },
       {
         "date": "2026-10-27",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 30,
-        "cumDone": 24,
-        "rate": 80
+        "cumDone": 25,
+        "rate": 83
       },
       {
         "date": "2026-10-28",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 32,
-        "cumDone": 26,
-        "rate": 81
+        "cumDone": 27,
+        "rate": 84
       },
       {
         "date": "2026-10-30",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 33,
-        "cumDone": 27,
-        "rate": 82
+        "cumDone": 28,
+        "rate": 85
       },
       {
         "date": "2026-11-02",
         "newCount": 2,
         "doneCount": 2,
         "cumIssue": 35,
-        "cumDone": 29,
-        "rate": 83
+        "cumDone": 30,
+        "rate": 86
       },
       {
         "date": "2026-11-03",
         "newCount": 1,
         "doneCount": 0,
         "cumIssue": 36,
-        "cumDone": 29,
-        "rate": 81
+        "cumDone": 30,
+        "rate": 83
       },
       {
         "date": "2026-11-04",
         "newCount": 4,
         "doneCount": 4,
         "cumIssue": 40,
-        "cumDone": 33,
-        "rate": 82
+        "cumDone": 34,
+        "rate": 85
       },
       {
         "date": "2026-11-05",
         "newCount": 4,
-        "doneCount": 3,
+        "doneCount": 4,
         "cumIssue": 44,
-        "cumDone": 36,
-        "rate": 82
+        "cumDone": 38,
+        "rate": 86
       },
       {
         "date": "2026-11-06",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 45,
-        "cumDone": 37,
-        "rate": 82
+        "cumDone": 39,
+        "rate": 87
       },
       {
         "date": "2026-11-10",
         "newCount": 1,
         "doneCount": 1,
         "cumIssue": 46,
-        "cumDone": 38,
-        "rate": 83
+        "cumDone": 40,
+        "rate": 87
       },
       {
         "date": "2026-11-11",
         "newCount": 2,
         "doneCount": 1,
         "cumIssue": 48,
-        "cumDone": 39,
-        "rate": 81
+        "cumDone": 41,
+        "rate": 85
       },
       {
         "date": "2026-11-12",
         "newCount": 5,
         "doneCount": 1,
         "cumIssue": 53,
-        "cumDone": 40,
-        "rate": 75
+        "cumDone": 42,
+        "rate": 79
       },
       {
         "date": "2026-11-13",
         "newCount": 4,
-        "doneCount": 2,
+        "doneCount": 3,
         "cumIssue": 57,
-        "cumDone": 42,
-        "rate": 74
+        "cumDone": 45,
+        "rate": 79
       },
       {
         "date": "2026-11-16",
         "newCount": 3,
-        "doneCount": 1,
+        "doneCount": 2,
         "cumIssue": 60,
-        "cumDone": 43,
-        "rate": 72
+        "cumDone": 47,
+        "rate": 78
       },
       {
         "date": "2026-11-17",
         "newCount": 3,
         "doneCount": 2,
         "cumIssue": 63,
-        "cumDone": 45,
-        "rate": 71
+        "cumDone": 49,
+        "rate": 78
       },
       {
         "date": "2026-11-19",
         "newCount": 5,
-        "doneCount": 0,
+        "doneCount": 2,
         "cumIssue": 68,
-        "cumDone": 45,
-        "rate": 66
+        "cumDone": 51,
+        "rate": 75
+      },
+      {
+        "date": "2026-11-20",
+        "newCount": 7,
+        "doneCount": 2,
+        "cumIssue": 75,
+        "cumDone": 53,
+        "rate": 71
       }
     ]
   },
